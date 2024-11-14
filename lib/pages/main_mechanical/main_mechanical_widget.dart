@@ -74,7 +74,7 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                 model: _model.sideNavModel,
                 updateCallback: () => safeSetState(() {}),
                 child: SideNavWidget(
-                  selectedNav: 8,
+                  selectedNav: 1,
                 ),
               ),
               Expanded(
@@ -113,6 +113,7 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                                   .override(
                                     fontFamily: 'Outfit',
                                     letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                             ),
                           ),
@@ -125,6 +126,7 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                                   .labelMedium
                                   .override(
                                     fontFamily: 'Plus Jakarta Sans',
+                                    fontSize: 16.0,
                                     letterSpacing: 0.0,
                                   ),
                             ),

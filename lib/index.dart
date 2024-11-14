@@ -1,7 +1,5 @@
 // Export pages
-export '/pages/main_notifications/main_notifications_widget.dart'
-    show MainNotificationsWidget;
-export '/pages/main_users/main_users_widget.dart' show MainUsersWidget;
+export '/pages/main_staff/main_staff_widget.dart' show MainStaffWidget;
 export '/pages/main_recent/main_recent_widget.dart' show MainRecentWidget;
 export '/pages/main_profile/main_profile_widget.dart' show MainProfileWidget;
 export '/pages/main_dashboard/main_dashboard_widget.dart'
@@ -33,6 +31,11 @@ export '/pages/lighting_equipment/lighting_equipment_widget.dart'
     show LightingEquipmentWidget;
 export '/food_safety_planflow/food_safety_planflow_widget.dart'
     show FoodSafetyPlanflowWidget;
-export '/pages/main_products/main_products_widget.dart' show MainProductsWidget;
 export '/pages/main_mechanical/main_mechanical_widget.dart'
     show MainMechanicalWidget;
+export '/pages/main_products/main_products_widget.dart' show MainProductsWidget;
+export '/pages/main_nutrients/main_nutrients_widget.dart'
+    show MainNutrientsWidget;
+export '/pages/main_settings/main_settings_widget.dart' show MainSettingsWidget;
+export '/pages/main_notifications_copy/main_notifications_copy_widget.dart'
+    show MainNotificationsCopyWidget;

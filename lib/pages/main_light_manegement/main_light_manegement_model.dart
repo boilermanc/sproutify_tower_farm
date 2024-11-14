@@ -1,10 +1,10 @@
 import '/backend/supabase/supabase.dart';
 import '/components/assign_towers_to_zones_copy_widget.dart';
 import '/components/light_schedule_data_table_widget.dart';
-import '/components/lighting_zone_towers_widget.dart';
 import '/components/no_lighting_widget.dart';
 import '/components/select_fixture_quantity_widget.dart';
 import '/components/side_nav_widget.dart';
+import '/components/tower_zone_grid_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';

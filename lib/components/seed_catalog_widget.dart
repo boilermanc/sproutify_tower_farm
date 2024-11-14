@@ -330,7 +330,7 @@ class _SeedCatalogWidgetState extends State<SeedCatalogWidget> {
                                       'farm_id',
                                       FFAppState().farmID,
                                     )
-                                    .is_(
+                                    .isFilter(
                                       'is_core',
                                       true,
                                     )

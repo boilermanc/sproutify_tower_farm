@@ -1,10 +1,10 @@
 import '/backend/supabase/supabase.dart';
 import '/components/assign_towers_to_zones_copy_widget.dart';
 import '/components/light_schedule_data_table_widget.dart';
-import '/components/lighting_zone_towers_widget.dart';
 import '/components/no_lighting_widget.dart';
 import '/components/select_fixture_quantity_widget.dart';
 import '/components/side_nav_widget.dart';
+import '/components/tower_zone_grid_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -106,7 +106,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                 model: _model.sideNavModel,
                 updateCallback: () => safeSetState(() {}),
                 child: SideNavWidget(
-                  selectedNav: 8,
+                  selectedNav: 1,
                 ),
               ),
               Expanded(
@@ -157,6 +157,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                   .labelMedium
                                   .override(
                                     fontFamily: 'Plus Jakarta Sans',
+                                    fontSize: 16.0,
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -2108,6 +2109,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
 
                                               return Container(
                                                 width: 800.0,
+                                                height: double.infinity,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -2189,90 +2191,89 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                 child: Container(
-                                                                                  width: 150.0,
-                                                                                  height: 320.0,
+                                                                                  width: 200.0,
+                                                                                  height: 187.0,
                                                                                   decoration: BoxDecoration(
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                  ),
-                                                                                  alignment: AlignmentDirectional(0.0, -1.0),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                                                                                    child: Row(
-                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                                      children: [
-                                                                                        FFButtonWidget(
-                                                                                          onPressed: () async {
-                                                                                            await showModalBottomSheet(
-                                                                                              isScrollControlled: true,
-                                                                                              backgroundColor: Colors.transparent,
-                                                                                              enableDrag: false,
-                                                                                              context: context,
-                                                                                              builder: (context) {
-                                                                                                return GestureDetector(
-                                                                                                  onTap: () => FocusScope.of(context).unfocus(),
-                                                                                                  child: Padding(
-                                                                                                    padding: MediaQuery.viewInsetsOf(context),
-                                                                                                    child: AssignTowersToZonesCopyWidget(
-                                                                                                      parameter1: [],
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                );
-                                                                                              },
-                                                                                            ).then((value) => safeSetState(() {}));
-                                                                                          },
-                                                                                          text: 'Add Towers',
-                                                                                          options: FFButtonOptions(
-                                                                                            height: 40.0,
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                            color: FlutterFlowTheme.of(context).primary,
-                                                                                            textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
-                                                                                                  color: Colors.white,
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
-                                                                                            elevation: 0.0,
-                                                                                            borderRadius: BorderRadius.circular(8.0),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
+                                                                                    borderRadius: BorderRadius.only(
+                                                                                      bottomLeft: Radius.circular(10.0),
+                                                                                      bottomRight: Radius.circular(10.0),
+                                                                                      topLeft: Radius.circular(10.0),
+                                                                                      topRight: Radius.circular(10.0),
+                                                                                    ),
+                                                                                    border: Border.all(
+                                                                                      color: FlutterFlowTheme.of(context).alternate,
+                                                                                      width: 1.0,
                                                                                     ),
                                                                                   ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                          Column(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-                                                                                child: Container(
-                                                                                  width: 200.0,
-                                                                                  height: 320.0,
-                                                                                  decoration: BoxDecoration(
-                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                  ),
                                                                                   alignment: AlignmentDirectional(0.0, -1.0),
                                                                                   child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                                                                                    child: Row(
+                                                                                    padding: EdgeInsets.all(5.0),
+                                                                                    child: Column(
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       children: [
                                                                                         Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              zonePageViewItem.zoneName,
-                                                                                              'No Zone',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                                  fontFamily: 'Outfit',
-                                                                                                  letterSpacing: 0.0,
-                                                                                                  fontWeight: FontWeight.bold,
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                                                            children: [
+                                                                                              Text(
+                                                                                                valueOrDefault<String>(
+                                                                                                  zonePageViewItem.zoneName,
+                                                                                                  'No Zone',
                                                                                                 ),
+                                                                                                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                                      fontFamily: 'Outfit',
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                                                            children: [
+                                                                                              FFButtonWidget(
+                                                                                                onPressed: () async {
+                                                                                                  await showModalBottomSheet(
+                                                                                                    isScrollControlled: true,
+                                                                                                    backgroundColor: Colors.transparent,
+                                                                                                    enableDrag: false,
+                                                                                                    context: context,
+                                                                                                    builder: (context) {
+                                                                                                      return GestureDetector(
+                                                                                                        onTap: () => FocusScope.of(context).unfocus(),
+                                                                                                        child: Padding(
+                                                                                                          padding: MediaQuery.viewInsetsOf(context),
+                                                                                                          child: AssignTowersToZonesCopyWidget(
+                                                                                                            parameter1: [],
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      );
+                                                                                                    },
+                                                                                                  ).then((value) => safeSetState(() {}));
+                                                                                                },
+                                                                                                text: 'Add Towers',
+                                                                                                options: FFButtonOptions(
+                                                                                                  height: 40.0,
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                                                  iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                  color: FlutterFlowTheme.of(context).primary,
+                                                                                                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                        color: Colors.white,
+                                                                                                        letterSpacing: 0.0,
+                                                                                                      ),
+                                                                                                  elevation: 0.0,
+                                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ],
                                                                                           ),
                                                                                         ),
                                                                                       ],
@@ -2295,6 +2296,10 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                                           'farm_id',
                                                                                           FFAppState().farmID,
                                                                                         )
+                                                                                        .eq(
+                                                                                          'zone_id',
+                                                                                          zonePageViewItem.id,
+                                                                                        )
                                                                                         .order('tower_identifier', ascending: true),
                                                                                   ),
                                                                                   builder: (context, snapshot) {
@@ -2316,14 +2321,12 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
 
                                                                                     return Container(
                                                                                       width: 500.0,
-                                                                                      height: 320.0,
+                                                                                      height: 270.0,
                                                                                       decoration: BoxDecoration(
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                       ),
-                                                                                      child: LightingZoneTowersWidget(
-                                                                                        key: Key('Keyipi_${zonePageViewIndex}_of_${zonePageView.length}'),
-                                                                                        parameter2: containerLightingZoneTowersRowList.first.zoneId,
-                                                                                        parameter1: containerLightingZoneTowersRowList,
+                                                                                      child: TowerZoneGridWidget(
+                                                                                        key: Key('Key3l6_${zonePageViewIndex}_of_${zonePageView.length}'),
                                                                                       ),
                                                                                     );
                                                                                   },
@@ -2984,7 +2987,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                                 ControllerPinsDropdownViewTable().queryRows(
                                                                               queryFn: (q) => q.eq(
                                                                                 'lighting_controller_id',
-                                                                                _model.selectControllerValue,
+                                                                                _model.selectControllerValue!,
                                                                               ),
                                                                             ),
                                                                             builder:
@@ -3059,7 +3062,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                                 LightingControllersTable().queryRows(
                                                                               queryFn: (q) => q.eq(
                                                                                 'controller_id',
-                                                                                _model.selectControllerValue,
+                                                                                _model.selectControllerValue!,
                                                                               ),
                                                                             ),
                                                                             builder:
@@ -3230,7 +3233,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                                 },
                                                                                 matchingRows: (rows) => rows.eq(
                                                                                   'relay_pin',
-                                                                                  _model.selecRelayValue,
+                                                                                  _model.selecRelayValue!,
                                                                                 ),
                                                                               );
                                                                             },
@@ -4435,8 +4438,10 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                   .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
-                                                  lightZoneUsageItem.periodDay
-                                                      ?.toString(),
+                                                  dateTimeFormat(
+                                                      "MEd",
+                                                      lightZoneUsageItem
+                                                          .periodDay),
                                                   ' No Date',
                                                 ),
                                                 style:
@@ -4488,7 +4493,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                             Text(
                                               valueOrDefault<String>(
                                                 dateTimeFormat(
-                                                    "M/d H:mm",
+                                                    "M/d h:mm a",
                                                     lightZoneUsageItem
                                                         .latestPeriodEnd),
                                                 'No End',

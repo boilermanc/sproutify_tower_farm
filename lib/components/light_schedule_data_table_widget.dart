@@ -197,7 +197,7 @@ class _LightScheduleDataTableWidgetState
                       },
                       matchingRows: (rows) => rows.eq(
                         'id',
-                        dataTableScheduleItem.scheduleId,
+                        dataTableScheduleItem.scheduleId!,
                       ),
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -283,7 +283,7 @@ class _LightScheduleDataTableWidgetState
                       },
                       matchingRows: (rows) => rows.eq(
                         'id',
-                        dataTableScheduleItem.scheduleId,
+                        dataTableScheduleItem.scheduleId!,
                       ),
                     );
                     ScaffoldMessenger.of(context).showSnackBar(

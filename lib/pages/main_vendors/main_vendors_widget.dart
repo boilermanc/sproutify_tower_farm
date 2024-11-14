@@ -90,7 +90,7 @@ class _MainVendorsWidgetState extends State<MainVendorsWidget> {
                     model: _model.sideNavModel,
                     updateCallback: () => safeSetState(() {}),
                     child: SideNavWidget(
-                      selectedNav: 10,
+                      selectedNav: 12,
                     ),
                   ),
                   Expanded(
@@ -128,6 +128,7 @@ class _MainVendorsWidgetState extends State<MainVendorsWidget> {
                                       .override(
                                         fontFamily: 'Outfit',
                                         letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                 ),
                               ),
@@ -140,6 +141,7 @@ class _MainVendorsWidgetState extends State<MainVendorsWidget> {
                                       .labelMedium
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
                                 ),

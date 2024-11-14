@@ -60,7 +60,7 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                 model: _model.sideNavModel,
                 updateCallback: () => safeSetState(() {}),
                 child: SideNavWidget(
-                  selectedNav: 7,
+                  selectedNav: 8,
                 ),
               ),
               Expanded(

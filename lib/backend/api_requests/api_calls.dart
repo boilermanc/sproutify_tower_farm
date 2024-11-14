@@ -84,6 +84,105 @@ class TowerDashboardCall {
       alwaysAllowBody: false,
     );
   }
+
+  static List? actionDate(dynamic response) => getJsonField(
+        response,
+        r'''$[:].action_date''',
+        true,
+      ) as List?;
+  static List<String>? towerLocation(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].tower_location''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List? actionType(dynamic response) => getJsonField(
+        response,
+        r'''$[:].action_type_name''',
+        true,
+      ) as List?;
+  static List? actionColor(dynamic response) => getJsonField(
+        response,
+        r'''$[:].action_type_color''',
+        true,
+      ) as List?;
+  static List? quantity(dynamic response) => getJsonField(
+        response,
+        r'''$[:].quantity''',
+        true,
+      ) as List?;
+  static List? lastName(dynamic response) => getJsonField(
+        response,
+        r'''$[:].last_name''',
+        true,
+      ) as List?;
+  static List<int>? portsUsed(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].ports_used''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? totalPorts(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].total_ports''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? usedPorts(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].used_ports''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? availablePorts(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].available_ports''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List? seededDate(dynamic response) => getJsonField(
+        response,
+        r'''$[:].seeded_date''',
+        true,
+      ) as List?;
+  static List<int>? totalQuantity(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].total_quantity''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? availableQuantity(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].available_quantity''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List? plantName(dynamic response) => getJsonField(
+        response,
+        r'''$[:].plant_name''',
+        true,
+      ) as List?;
 }
 
 class GetTowerDetailCall {
@@ -297,6 +396,52 @@ class UpsertLightingFixtureAllocationCall {
       alwaysAllowBody: false,
     );
   }
+}
+
+class GetOpenWeatherCall {
+  static Future<ApiCallResponse> call({
+    String? farmLongitude = '',
+    String? farmLatitude = '',
+    String? farmUnit = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getOpenWeather',
+      apiUrl:
+          'https://api.openweathermap.org/data/2.5/weather?lat=${farmLatitude}&lon=${farmLongitude}&units=${farmUnit}&appid=e7fb73b24708a4b7b5d163f7ca179c2e',
+      callType: ApiCallType.GET,
+      headers: {
+        'api': 'e7fb73b24708a4b7b5d163f7ca179c2e',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static int? localHumidity(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.main.humidity''',
+      ));
+  static double? localTemp(dynamic response) => castToType<double>(getJsonField(
+        response,
+        r'''$.main.temp''',
+      ));
+  static int? localWindSpeed(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.wind.speed''',
+      ));
+  static int? localClouds(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.clouds.all''',
+      ));
+  static String? localCity(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.name''',
+      ));
 }
 
 class ApiPagingParams {

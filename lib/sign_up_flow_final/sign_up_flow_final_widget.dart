@@ -202,7 +202,7 @@ class _SignUpFlowFinalWidgetState extends State<SignUpFlowFinalWidget> {
                                     ),
                                   );
 
-                                  context.pushNamed('main_dashboard');
+                                  context.pushNamed('main_Dashboard');
                                 },
                                 text: 'Happy Farming!',
                                 options: FFButtonOptions(

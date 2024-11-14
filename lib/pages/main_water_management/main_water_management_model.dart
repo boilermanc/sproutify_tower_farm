@@ -20,7 +20,7 @@ class MainWaterManagementModel
     extends FlutterFlowModel<MainWaterManagementWidget> {
   ///  Local state fields for this page.
 
-  int selectedPage = 2;
+  int selectedPage = 6;
 
   ///  State fields for stateful widgets in this page.
 

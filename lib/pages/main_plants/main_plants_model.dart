@@ -14,7 +14,7 @@ import 'package:provider/provider.dart';
 class MainPlantsModel extends FlutterFlowModel<MainPlantsWidget> {
   ///  Local state fields for this page.
 
-  int selectedPage = 2;
+  int selectedPage = 8;
 
   ///  State fields for stateful widgets in this page.
 

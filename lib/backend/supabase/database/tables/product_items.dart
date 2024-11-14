@@ -54,4 +54,15 @@ class ProductItemsRow extends SupabaseDataRow {
 
   String get vendorId => getField<String>('vendor_id')!;
   set vendorId(String value) => setField<String>('vendor_id', value);
+
+  double? get initialQuantity => getField<double>('initial_quantity');
+  set initialQuantity(double? value) =>
+      setField<double>('initial_quantity', value);
+
+  double? get minimumQuantity => getField<double>('minimum_quantity');
+  set minimumQuantity(double? value) =>
+      setField<double>('minimum_quantity', value);
+
+  bool? get deleteFlag => getField<bool>('delete_flag');
+  set deleteFlag(bool? value) => setField<bool>('delete_flag', value);
 }

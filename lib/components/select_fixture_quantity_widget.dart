@@ -348,7 +348,7 @@ class _SelectFixtureQuantityWidgetState
                                         .queryRows(
                                   queryFn: (q) => q.eq(
                                     'zone_id',
-                                    widget!.zoneID,
+                                    widget!.zoneID!,
                                   ),
                                 );
                                 FFAppState().currentQuantity = _model
@@ -365,7 +365,7 @@ class _SelectFixtureQuantityWidgetState
                                   },
                                   matchingRows: (rows) => rows.eq(
                                     'zone_id',
-                                    widget!.zoneID,
+                                    widget!.zoneID!,
                                   ),
                                 );
                                 Navigator.pop(context);

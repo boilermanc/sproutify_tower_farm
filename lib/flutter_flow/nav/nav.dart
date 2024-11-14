@@ -91,18 +91,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : MainLoginWidget(),
         ),
         FFRoute(
-          name: 'main_notifications',
-          path: '/mainNotifications',
+          name: 'main_Staff',
+          path: '/mainStaff',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_notifications')
-              : MainNotificationsWidget(),
-        ),
-        FFRoute(
-          name: 'main_users',
-          path: '/mainUsers',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_users')
-              : MainUsersWidget(),
+              ? NavBarPage(initialPage: 'main_Staff')
+              : MainStaffWidget(),
         ),
         FFRoute(
           name: 'main_recent',
@@ -119,10 +112,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : MainProfileWidget(),
         ),
         FFRoute(
-          name: 'main_dashboard',
+          name: 'main_Dashboard',
           path: '/mainDashboard',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_dashboard')
+              ? NavBarPage(initialPage: 'main_Dashboard')
               : MainDashboardWidget(),
         ),
         FFRoute(
@@ -232,6 +225,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => FoodSafetyPlanflowWidget(),
         ),
         FFRoute(
+          name: 'main_Mechanical',
+          path: '/main_Mechanical',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'main_Mechanical')
+              : MainMechanicalWidget(),
+        ),
+        FFRoute(
           name: 'main_products',
           path: '/mainProducts',
           builder: (context, params) => params.isEmpty
@@ -239,11 +239,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : MainProductsWidget(),
         ),
         FFRoute(
-          name: 'main_Mechanical',
-          path: '/main_Mechanical',
+          name: 'main_Nutrients',
+          path: '/mainNutrients',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_Mechanical')
-              : MainMechanicalWidget(),
+              ? NavBarPage(initialPage: 'main_Nutrients')
+              : MainNutrientsWidget(),
+        ),
+        FFRoute(
+          name: 'main_Settings',
+          path: '/mainSettings',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'main_Settings')
+              : MainSettingsWidget(),
+        ),
+        FFRoute(
+          name: 'main_notificationsCopy',
+          path: '/mainNotificationsCopy',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'main_notificationsCopy')
+              : MainNotificationsCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

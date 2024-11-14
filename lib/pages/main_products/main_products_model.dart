@@ -1,5 +1,6 @@
 import '/backend/supabase/supabase.dart';
-import '/components/add_customer_copy_widget.dart';
+import '/components/add_new_product_widget.dart';
+import '/components/delete_product_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
@@ -24,8 +25,11 @@ class MainProductsModel extends FlutterFlowModel<MainProductsWidget> {
   // Model for sideNav component.
   late SideNavModel sideNavModel;
   // State field(s) for PaginatedDataTable widget.
-  final paginatedDataTableController =
+  final paginatedDataTableController1 =
       FlutterFlowDataTableController<ProductSummaryViewRow>();
+  // State field(s) for PaginatedDataTable widget.
+  final paginatedDataTableController2 =
+      FlutterFlowDataTableController<ProductPestChemicalsRow>();
 
   @override
   void initState(BuildContext context) {
@@ -35,6 +39,7 @@ class MainProductsModel extends FlutterFlowModel<MainProductsWidget> {
   @override
   void dispose() {
     sideNavModel.dispose();
-    paginatedDataTableController.dispose();
+    paginatedDataTableController1.dispose();
+    paginatedDataTableController2.dispose();
   }
 }

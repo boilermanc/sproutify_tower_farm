@@ -52,4 +52,7 @@ class PestControlApplicationsRow extends SupabaseDataRow {
 
   String get productId => getField<String>('product_id')!;
   set productId(String value) => setField<String>('product_id', value);
+
+  bool get safetyConfirmed => getField<bool>('safety_confirmed')!;
+  set safetyConfirmed(bool value) => setField<bool>('safety_confirmed', value);
 }

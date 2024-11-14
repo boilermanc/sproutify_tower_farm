@@ -1570,7 +1570,7 @@ class _SignUpFlowWidgetState extends State<SignUpFlowWidget> {
                                             100.0, 20.0, 0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            context.pushNamed('main_dashboard');
+                                            context.pushNamed('main_Dashboard');
                                           },
                                           text: 'Happy Farming!',
                                           options: FFButtonOptions(

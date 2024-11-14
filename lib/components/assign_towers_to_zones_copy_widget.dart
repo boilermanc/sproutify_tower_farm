@@ -698,7 +698,7 @@ class _AssignTowersToZonesCopyWidgetState
                                                           'farm_id',
                                                           FFAppState().farmID,
                                                         )
-                                                        .in_(
+                                                        .inFilter(
                                                           'tower_identifier',
                                                           _model.draggedTowers,
                                                         ),

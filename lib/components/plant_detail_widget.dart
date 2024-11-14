@@ -66,7 +66,7 @@ class _PlantDetailWidgetState extends State<PlantDetailWidget> {
               future: PlantsTable().querySingleRow(
                 queryFn: (q) => q.eq(
                   'plant_id',
-                  widget!.plantID,
+                  widget!.plantID!,
                 ),
               ),
               builder: (context, snapshot) {

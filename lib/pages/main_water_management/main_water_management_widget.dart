@@ -102,7 +102,7 @@ class _MainWaterManagementWidgetState extends State<MainWaterManagementWidget>
                     model: _model.sideNavModel,
                     updateCallback: () => safeSetState(() {}),
                     child: SideNavWidget(
-                      selectedNav: 5,
+                      selectedNav: 6,
                     ),
                   ),
                   Expanded(
@@ -140,6 +140,7 @@ class _MainWaterManagementWidgetState extends State<MainWaterManagementWidget>
                                       .override(
                                         fontFamily: 'Outfit',
                                         letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                 ),
                               ),
@@ -158,6 +159,7 @@ class _MainWaterManagementWidgetState extends State<MainWaterManagementWidget>
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
+                                              fontSize: 16.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),

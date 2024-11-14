@@ -39,7 +39,27 @@ class ProductChemicalDetailsRow extends SupabaseDataRow {
   set activeIngredients(List<String>? value) =>
       setListField<String>('active_ingredients', value);
 
-  String? get applicationMethod => getField<String>('application_method');
-  set applicationMethod(String? value) =>
-      setField<String>('application_method', value);
+  String? get notes => getField<String>('notes');
+  set notes(String? value) => setField<String>('notes', value);
+
+  String? get sdsId => getField<String>('sds_id');
+  set sdsId(String? value) => setField<String>('sds_id', value);
+
+  String? get labelPath => getField<String>('label_path');
+  set labelPath(String? value) => setField<String>('label_path', value);
+
+  bool get noSdsEntry => getField<bool>('no_sds_entry')!;
+  set noSdsEntry(bool value) => setField<bool>('no_sds_entry', value);
+
+  bool get omriRated => getField<bool>('omri_rated')!;
+  set omriRated(bool value) => setField<bool>('omri_rated', value);
+
+  bool get isCustom => getField<bool>('is_custom')!;
+  set isCustom(bool value) => setField<bool>('is_custom', value);
+
+  String get farmId => getField<String>('farm_id')!;
+  set farmId(String value) => setField<String>('farm_id', value);
+
+  DateTime get updatedAt => getField<DateTime>('updated_at')!;
+  set updatedAt(DateTime value) => setField<DateTime>('updated_at', value);
 }

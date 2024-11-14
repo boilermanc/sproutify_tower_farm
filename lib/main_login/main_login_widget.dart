@@ -310,7 +310,7 @@ class _MainLoginWidgetState extends State<MainLoginWidget> {
                                       }
 
                                       context.goNamedAuth(
-                                          'main_dashboard', context.mounted);
+                                          'main_Dashboard', context.mounted);
                                     },
                                     text: 'Sign In',
                                     options: FFButtonOptions(

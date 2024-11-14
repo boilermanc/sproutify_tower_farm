@@ -62,4 +62,8 @@ class WaterQualityTestsRow extends SupabaseDataRow {
 
   String? get reportUrl => getField<String>('report_url');
   set reportUrl(String? value) => setField<String>('report_url', value);
+
+  DateTime? get nextTestDueDate => getField<DateTime>('next_test_due_date');
+  set nextTestDueDate(DateTime? value) =>
+      setField<DateTime>('next_test_due_date', value);
 }

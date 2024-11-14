@@ -108,7 +108,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'main_dashboard';
+  String _currentPageName = 'main_Dashboard';
   late Widget? _currentPage;
 
   @override
@@ -121,8 +121,7 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'main_users': MainUsersWidget(),
-      'main_notifications': MainNotificationsWidget(),
+      'main_Staff': MainStaffWidget(),
       'main_recent': MainRecentWidget(),
       'main_Profile': MainProfileWidget(),
       'main_waterManagement': MainWaterManagementWidget(),
@@ -133,9 +132,12 @@ class _NavBarPageState extends State<NavBarPage> {
       'main_Customers': MainCustomersWidget(),
       'main_LightManegement': MainLightManegementWidget(),
       'lightingEquipment': LightingEquipmentWidget(),
-      'main_products': MainProductsWidget(),
-      'main_dashboard': MainDashboardWidget(),
+      'main_Dashboard': MainDashboardWidget(),
       'main_Mechanical': MainMechanicalWidget(),
+      'main_products': MainProductsWidget(),
+      'main_Nutrients': MainNutrientsWidget(),
+      'main_Settings': MainSettingsWidget(),
+      'main_notificationsCopy': MainNotificationsCopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -166,14 +168,6 @@ class _NavBarPageState extends State<NavBarPage> {
                 size: 24.0,
               ),
               label: '__',
-              tooltip: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.notifications_rounded,
-                size: 24.0,
-              ),
-              label: '--',
               tooltip: '',
             ),
             BottomNavigationBarItem(
@@ -258,10 +252,34 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
+                Icons.account_circle_outlined,
+                size: 24.0,
+              ),
+              label: '__',
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
                 Icons.groups_sharp,
                 size: 24.0,
               ),
               label: '__',
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.groups_sharp,
+                size: 24.0,
+              ),
+              label: '__',
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.notifications_rounded,
+                size: 24.0,
+              ),
+              label: '--',
               tooltip: '',
             ),
             BottomNavigationBarItem(

@@ -26,4 +26,11 @@ class ActionTypesRow extends SupabaseDataRow {
   bool? get showInMainActions => getField<bool>('show_in_main_actions');
   set showInMainActions(bool? value) =>
       setField<bool>('show_in_main_actions', value);
+
+  String? get description => getField<String>('description');
+  set description(String? value) => setField<String>('description', value);
+
+  String? get dashboardColor => getField<String>('dashboard_color');
+  set dashboardColor(String? value) =>
+      setField<String>('dashboard_color', value);
 }

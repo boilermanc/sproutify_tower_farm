@@ -38,6 +38,10 @@ class TowerDashboardRow extends SupabaseDataRow {
   set actionTypeColor(String? value) =>
       setField<String>('action_type_color', value);
 
+  String? get dashboardColor => getField<String>('dashboard_color');
+  set dashboardColor(String? value) =>
+      setField<String>('dashboard_color', value);
+
   int? get quantity => getField<int>('quantity');
   set quantity(int? value) => setField<int>('quantity', value);
 

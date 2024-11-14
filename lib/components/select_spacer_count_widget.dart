@@ -1,0 +1,88 @@
+import '/flutter_flow/flutter_flow_count_controller.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'select_spacer_count_model.dart';
+export 'select_spacer_count_model.dart';
+
+class SelectSpacerCountWidget extends StatefulWidget {
+  const SelectSpacerCountWidget({super.key});
+
+  @override
+  State<SelectSpacerCountWidget> createState() =>
+      _SelectSpacerCountWidgetState();
+}
+
+class _SelectSpacerCountWidgetState extends State<SelectSpacerCountWidget> {
+  late SelectSpacerCountModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => SelectSpacerCountModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.maybeDispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(),
+      child: Container(
+        width: 120.0,
+        height: 40.0,
+        decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).secondaryBackground,
+          borderRadius: BorderRadius.circular(8.0),
+          shape: BoxShape.rectangle,
+        ),
+        child: FlutterFlowCountController(
+          decrementIconBuilder: (enabled) => Icon(
+            Icons.remove_rounded,
+            color: enabled
+                ? FlutterFlowTheme.of(context).secondaryText
+                : FlutterFlowTheme.of(context).alternate,
+            size: 24.0,
+          ),
+          incrementIconBuilder: (enabled) => Icon(
+            Icons.add_rounded,
+            color: enabled
+                ? FlutterFlowTheme.of(context).primary
+                : FlutterFlowTheme.of(context).alternate,
+            size: 24.0,
+          ),
+          countBuilder: (count) => Text(
+            count.toString(),
+            style: FlutterFlowTheme.of(context).titleLarge.override(
+                  fontFamily: 'Plus Jakarta Sans',
+                  letterSpacing: 0.0,
+                ),
+          ),
+          count: _model.countControllerValue ??= 0,
+          updateCount: (count) async {
+            safeSetState(() => _model.countControllerValue = count);
+            FFAppState().selectSpacerCount = FFAppState().selectSpacerCount + 1;
+            safeSetState(() {});
+          },
+          stepSize: 1,
+          contentPadding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+        ),
+      ),
+    );
+  }
+}

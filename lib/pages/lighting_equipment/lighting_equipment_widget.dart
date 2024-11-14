@@ -102,6 +102,7 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                       .override(
                                         fontFamily: 'Outfit',
                                         letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                 ),
                               ),
@@ -120,6 +121,7 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                       .labelMedium
                                       .override(
                                         fontFamily: 'Plus Jakarta Sans',
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
                                 ),

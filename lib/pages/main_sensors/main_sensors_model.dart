@@ -18,7 +18,7 @@ import 'package:provider/provider.dart';
 class MainSensorsModel extends FlutterFlowModel<MainSensorsWidget> {
   ///  Local state fields for this page.
 
-  int selectedPage = 2;
+  int selectedPage = 7;
 
   ///  State fields for stateful widgets in this page.
 

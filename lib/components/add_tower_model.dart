@@ -25,6 +25,8 @@ class AddTowerModel extends FlutterFlowModel<AddTowerWidget> {
   // State field(s) for numberPorts widget.
   int? numberPortsValue;
   FormFieldController<int>? numberPortsValueController;
+  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
+  List<TowersRow>? towerValidation8822;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   TowersRow? towerAdded8877;
 

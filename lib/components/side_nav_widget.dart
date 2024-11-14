@@ -1,9 +1,10 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
+import '/components/no_products_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:math';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -180,10 +181,8 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             width: FFAppState().navOpen == true ? 50.0 : 36.0,
                             height: FFAppState().navOpen == true ? 50.0 : 36.0,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).accent1,
                               borderRadius: BorderRadius.circular(12.0),
                               border: Border.all(
-                                color: FlutterFlowTheme.of(context).primary,
                                 width: 2.0,
                               ),
                             ),
@@ -191,13 +190,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               padding: EdgeInsets.all(2.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
-                                child: CachedNetworkImage(
-                                  fadeInDuration: Duration(milliseconds: 500),
-                                  fadeOutDuration: Duration(milliseconds: 500),
-                                  imageUrl:
-                                      'https://images.unsplash.com/photo-1624561172888-ac93c696e10c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHVzZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-                                  width: 44.0,
-                                  height: 44.0,
+                                child: Image.asset(
+                                  'assets/images/AFFLogoFinal.png',
+                                  width: double.infinity,
+                                  height: double.infinity,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -225,12 +221,17 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
-                                        FFAppState().farmID,
+                                        FFAppState().firstName,
                                         style: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              fontSize: 16.0,
                                               letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
                                             ),
                                       ),
                                     ),
@@ -279,7 +280,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_dashboard',
+                                'main_Dashboard',
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -296,7 +297,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered1!) {
+                                  if (_model.mouseRegion1Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
                                   } else if (widget!.selectedNav == 1) {
@@ -347,11 +348,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           ),
                         ),
                         onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered1 = true);
+                          safeSetState(() => _model.mouseRegion1Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered1 = false);
+                              () => _model.mouseRegion1Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -367,7 +368,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_users',
+                                'main_Staff',
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -384,7 +385,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered2!) {
+                                  if (_model.mouseRegion2Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
                                   } else if (widget!.selectedNav == 2) {
@@ -419,7 +420,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                     if (FFAppState().navOpen == true)
                                       Expanded(
                                         child: Text(
-                                          'Users',
+                                          'Staff',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -435,11 +436,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           ),
                         ),
                         onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered2 = true);
+                          safeSetState(() => _model.mouseRegion2Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered2 = false);
+                              () => _model.mouseRegion2Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -455,7 +456,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_notifications',
+                                'main_notificationsCopy',
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -472,7 +473,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered3!) {
+                                  if (_model.mouseRegion3Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
                                   } else if (widget!.selectedNav == 3) {
@@ -507,7 +508,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                     if (FFAppState().navOpen == true)
                                       Expanded(
                                         child: Text(
-                                          'Notifications',
+                                          'Farm Operations',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -559,11 +560,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           ),
                         ),
                         onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered3 = true);
+                          safeSetState(() => _model.mouseRegion3Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered3 = false);
+                              () => _model.mouseRegion3Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -596,7 +597,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered4!) {
+                                  if (_model.mouseRegion4Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
                                   } else if (widget!.selectedNav == 4) {
@@ -647,11 +648,99 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           ),
                         ),
                         onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered4 = true);
+                          safeSetState(() => _model.mouseRegion4Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered4 = false);
+                              () => _model.mouseRegion4Hovered = false);
+                        }),
+                      ),
+                      MouseRegion(
+                        opaque: false,
+                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                'main_Nutrients',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            },
+                            child: AnimatedContainer(
+                              duration: Duration(milliseconds: 200),
+                              curve: Curves.easeInOut,
+                              width: double.infinity,
+                              height: 44.0,
+                              decoration: BoxDecoration(
+                                color: () {
+                                  if (_model.mouseRegion5Hovered!) {
+                                    return FlutterFlowTheme.of(context)
+                                        .secondaryBackground;
+                                  } else if (widget!.selectedNav == 5) {
+                                    return FlutterFlowTheme.of(context).accent1;
+                                  } else {
+                                    return FlutterFlowTheme.of(context)
+                                        .primaryBackground;
+                                  }
+                                }(),
+                                borderRadius: BorderRadius.circular(12.0),
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(4.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 8.0, 0.0),
+                                      child: Icon(
+                                        Icons.science,
+                                        color: _model.selectedNav == 4
+                                            ? FlutterFlowTheme.of(context)
+                                                .primary
+                                            : FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                    if (FFAppState().navOpen == true)
+                                      Expanded(
+                                        child: Text(
+                                          'Nutrient Management',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Plus Jakarta Sans',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        onEnter: ((event) async {
+                          safeSetState(() => _model.mouseRegion5Hovered = true);
+                        }),
+                        onExit: ((event) async {
+                          safeSetState(
+                              () => _model.mouseRegion5Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -684,10 +773,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered5!) {
+                                  if (_model.mouseRegion6Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
-                                  } else if (widget!.selectedNav == 5) {
+                                  } else if (widget!.selectedNav == 6) {
                                     return FlutterFlowTheme.of(context).accent1;
                                   } else {
                                     return FlutterFlowTheme.of(context)
@@ -735,11 +824,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           ),
                         ),
                         onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered5 = true);
+                          safeSetState(() => _model.mouseRegion6Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered5 = false);
+                              () => _model.mouseRegion6Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -772,10 +861,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered6!) {
+                                  if (_model.mouseRegion7Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
-                                  } else if (widget!.selectedNav == 6) {
+                                  } else if (widget!.selectedNav == 7) {
                                     return FlutterFlowTheme.of(context).accent1;
                                   } else {
                                     return FlutterFlowTheme.of(context)
@@ -823,11 +912,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           ),
                         ),
                         onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered6 = true);
+                          safeSetState(() => _model.mouseRegion7Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered6 = false);
+                              () => _model.mouseRegion7Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -860,10 +949,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered7!) {
+                                  if (_model.mouseRegion8Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
-                                  } else if (widget!.selectedNav == 7) {
+                                  } else if (widget!.selectedNav == 8) {
                                     return FlutterFlowTheme.of(context).accent1;
                                   } else {
                                     return FlutterFlowTheme.of(context)
@@ -911,11 +1000,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           ),
                         ),
                         onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered7 = true);
+                          safeSetState(() => _model.mouseRegion8Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered7 = false);
+                              () => _model.mouseRegion8Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -948,10 +1037,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered8!) {
+                                  if (_model.mouseRegion9Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
-                                  } else if (widget!.selectedNav == 8) {
+                                  } else if (widget!.selectedNav == 9) {
                                     return FlutterFlowTheme.of(context).accent1;
                                   } else {
                                     return FlutterFlowTheme.of(context)
@@ -999,11 +1088,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           ),
                         ),
                         onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered8 = true);
+                          safeSetState(() => _model.mouseRegion9Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered8 = false);
+                              () => _model.mouseRegion9Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -1036,10 +1125,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered9!) {
+                                  if (_model.mouseRegion10Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
-                                  } else if (widget!.selectedNav == 9) {
+                                  } else if (widget!.selectedNav == 10) {
                                     return FlutterFlowTheme.of(context).accent1;
                                   } else {
                                     return FlutterFlowTheme.of(context)
@@ -1087,11 +1176,12 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           ),
                         ),
                         onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegionHovered9 = true);
+                          safeSetState(
+                              () => _model.mouseRegion10Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered9 = false);
+                              () => _model.mouseRegion10Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -1106,16 +1196,45 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed(
-                                'main_products',
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 0),
-                                  ),
-                                },
+                              _model.checkProduct8734 =
+                                  await ProductItemsTable().queryRows(
+                                queryFn: (q) => q.eq(
+                                  'farm_id',
+                                  FFAppState().farmID,
+                                ),
                               );
+                              if (_model.checkProduct8734 != null &&
+                                  (_model.checkProduct8734)!.isNotEmpty) {
+                                context.pushNamed(
+                                  'main_products',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
+                                    ),
+                                  },
+                                );
+                              } else {
+                                // launchPopUp
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  enableDrag: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: Container(
+                                        height: 400.0,
+                                        child: NoProductsWidget(),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => safeSetState(() {}));
+                              }
+
+                              safeSetState(() {});
                             },
                             child: AnimatedContainer(
                               duration: Duration(milliseconds: 200),
@@ -1124,10 +1243,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered10!) {
+                                  if (_model.mouseRegion11Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
-                                  } else if (widget!.selectedNav == 10) {
+                                  } else if (widget!.selectedNav == 11) {
                                     return FlutterFlowTheme.of(context).accent1;
                                   } else {
                                     return FlutterFlowTheme.of(context)
@@ -1176,11 +1295,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                         ),
                         onEnter: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered10 = true);
+                              () => _model.mouseRegion11Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered10 = false);
+                              () => _model.mouseRegion11Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -1213,10 +1332,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered11!) {
+                                  if (_model.mouseRegion12Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
-                                  } else if (widget!.selectedNav == 11) {
+                                  } else if (widget!.selectedNav == 12) {
                                     return FlutterFlowTheme.of(context).accent1;
                                   } else {
                                     return FlutterFlowTheme.of(context)
@@ -1265,11 +1384,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                         ),
                         onEnter: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered11 = true);
+                              () => _model.mouseRegion12Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered11 = false);
+                              () => _model.mouseRegion12Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -1302,10 +1421,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegionHovered12!) {
+                                  if (_model.mouseRegion13Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
-                                  } else if (widget!.selectedNav == 12) {
+                                  } else if (widget!.selectedNav == 13) {
                                     return FlutterFlowTheme.of(context).accent1;
                                   } else {
                                     return FlutterFlowTheme.of(context)
@@ -1354,11 +1473,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                         ),
                         onEnter: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered12 = true);
+                              () => _model.mouseRegion13Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered12 = false);
+                              () => _model.mouseRegion13Hovered = false);
                         }),
                       ),
                       if (FFAppState().navOpen == true)
@@ -1388,10 +1507,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             height: 44.0,
                             decoration: BoxDecoration(
                               color: () {
-                                if (_model.mouseRegionHovered13!) {
+                                if (_model.mouseRegion14Hovered!) {
                                   return FlutterFlowTheme.of(context)
                                       .secondaryBackground;
-                                } else if (widget!.selectedNav == 13) {
+                                } else if (widget!.selectedNav == 14) {
                                   return FlutterFlowTheme.of(context).accent1;
                                 } else {
                                   return FlutterFlowTheme.of(context)
@@ -1438,11 +1557,11 @@ class _SideNavWidgetState extends State<SideNavWidget>
                         ),
                         onEnter: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered13 = true);
+                              () => _model.mouseRegion14Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegionHovered13 = false);
+                              () => _model.mouseRegion14Hovered = false);
                         }),
                       ),
                     ].divide(SizedBox(height: 12.0)),

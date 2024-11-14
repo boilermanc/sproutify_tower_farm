@@ -34,4 +34,14 @@ class MonitoringFarmRangesRow extends SupabaseDataRow {
       getField<int>('max_hours_since_last_reading')!;
   set maxHoursSinceLastReading(int value) =>
       setField<int>('max_hours_since_last_reading', value);
+
+  int? get normalCheckIntervalHours =>
+      getField<int>('normal_check_interval_hours');
+  set normalCheckIntervalHours(int? value) =>
+      setField<int>('normal_check_interval_hours', value);
+
+  int? get issueCheckIntervalHours =>
+      getField<int>('issue_check_interval_hours');
+  set issueCheckIntervalHours(int? value) =>
+      setField<int>('issue_check_interval_hours', value);
 }

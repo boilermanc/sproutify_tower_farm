@@ -14,32 +14,26 @@ Future<List<String>> updateFixtureAllocation(
   String zoneId,
   int quantityChange,
 ) async {
-  // Fetch current allocation from lighting_fixture_allocations
-  final response = await SupaFlow.client
-      .from('lighting_fixture_allocations')
-      .select()
-      .eq('lighting_fixture_id', fixtureId)
-      .eq('zone_id', zoneId)
-      .maybeSingle();
-
-  if (response.error != null) {
-    return [
-      'false',
-      'Error fetching current allocation: ${response.error.message}'
-    ];
-  }
-
-  final currentAllocation = response.data;
-
-  // Calculate new quantity
-  int newQuantity =
-      (currentAllocation?['quantity'] as int? ?? 0) + quantityChange;
-
-  if (newQuantity < 0) {
-    return ['false', 'Insufficient quantity for removal'];
-  }
-
   try {
+    // Fetch current allocation from lighting_fixture_allocations
+    final response = await SupaFlow.client
+        .from('lighting_fixture_allocations')
+        .select()
+        .eq('lighting_fixture_id', fixtureId)
+        .eq('zone_id', zoneId)
+        .maybeSingle();
+
+    // In v2, response is directly the data
+    final currentAllocation = response as Map<String, dynamic>?;
+
+    // Calculate new quantity
+    int newQuantity =
+        (currentAllocation?['quantity'] as int? ?? 0) + quantityChange;
+
+    if (newQuantity < 0) {
+      return ['false', 'Insufficient quantity for removal'];
+    }
+
     if (currentAllocation == null && newQuantity > 0) {
       // Insert new allocation
       await SupaFlow.client.from('lighting_fixture_allocations').insert({

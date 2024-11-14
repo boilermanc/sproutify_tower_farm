@@ -49,149 +49,114 @@ class _LightingZoneTowersWidgetState extends State<LightingZoneTowersWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
-    return FutureBuilder<List<LightingZoneTowersRow>>(
-      future: LightingZoneTowersTable().queryRows(
-        queryFn: (q) => q
-            .eq(
-              'farm_id',
-              FFAppState().farmID,
-            )
-            .eq(
-              'zone_id',
-              widget!.parameter2,
-            )
-            .order('zone_name', ascending: true),
+    return Container(
+      width: 499.0,
+      decoration: BoxDecoration(
+        color: FlutterFlowTheme.of(context).info,
       ),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 50.0,
-              height: 50.0,
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(
-                  FlutterFlowTheme.of(context).primary,
+      alignment: AlignmentDirectional(0.0, 0.0),
+      child: Builder(
+        builder: (context) {
+          final towersInZone = widget!.parameter1?.toList() ?? [];
+
+          return FlutterFlowDataTable<LightingZoneTowersRow>(
+            controller: _model.paginatedDataTableController,
+            data: towersInZone,
+            columnsBuilder: (onSortChanged) => [
+              DataColumn2(
+                label: DefaultTextStyle.merge(
+                  softWrap: true,
+                  child: Text(
+                    'Tower',
+                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                          fontFamily: 'Plus Jakarta Sans',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
                 ),
               ),
-            ),
-          );
-        }
-        List<LightingZoneTowersRow> containerLightingZoneTowersRowList =
-            snapshot.data!;
-
-        return Container(
-          width: 499.0,
-          decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).info,
-          ),
-          alignment: AlignmentDirectional(0.0, 0.0),
-          child: Builder(
-            builder: (context) {
-              final towersInZone = containerLightingZoneTowersRowList.toList();
-
-              return FlutterFlowDataTable<LightingZoneTowersRow>(
-                controller: _model.paginatedDataTableController,
-                data: towersInZone,
-                columnsBuilder: (onSortChanged) => [
-                  DataColumn2(
-                    label: DefaultTextStyle.merge(
-                      softWrap: true,
-                      child: Text(
-                        'Tower',
-                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                              fontFamily: 'Plus Jakarta Sans',
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                    ),
+              DataColumn2(
+                label: DefaultTextStyle.merge(
+                  softWrap: true,
+                  child: Text(
+                    'Edit Header 2',
+                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                          fontFamily: 'Plus Jakarta Sans',
+                          letterSpacing: 0.0,
+                        ),
                   ),
-                  DataColumn2(
-                    label: DefaultTextStyle.merge(
-                      softWrap: true,
-                      child: Text(
-                        'Edit Header 2',
-                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                              fontFamily: 'Plus Jakarta Sans',
-                              letterSpacing: 0.0,
-                            ),
-                      ),
-                    ),
-                  ),
-                  DataColumn2(
-                    label: DefaultTextStyle.merge(
-                      softWrap: true,
-                      child: Text(
-                        'Edit Header 3',
-                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                              fontFamily: 'Plus Jakarta Sans',
-                              letterSpacing: 0.0,
-                            ),
-                      ),
-                    ),
-                  ),
-                ],
-                dataRowBuilder: (towersInZoneItem, towersInZoneIndex, selected,
-                        onSelectChanged) =>
-                    DataRow(
-                  color: MaterialStateProperty.all(
-                    towersInZoneIndex % 2 == 0
-                        ? FlutterFlowTheme.of(context).secondaryBackground
-                        : FlutterFlowTheme.of(context).primaryBackground,
-                  ),
-                  cells: [
-                    Text(
-                      valueOrDefault<String>(
-                        towersInZoneItem.towerIdentifier,
-                        'Not Assigned',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                    Text(
-                      'Edit Column 2',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                    Text(
-                      'Edit Column 3',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                  ].map((c) => DataCell(c)).toList(),
                 ),
-                paginated: true,
-                selectable: false,
-                hidePaginator: false,
-                showFirstLastButtons: false,
-                headingRowHeight: 56.0,
-                dataRowHeight: 48.0,
-                columnSpacing: 20.0,
-                headingRowColor: FlutterFlowTheme.of(context).secondaryText,
-                borderRadius: BorderRadius.circular(8.0),
-                addHorizontalDivider: true,
-                addTopAndBottomDivider: false,
-                hideDefaultHorizontalDivider: true,
-                horizontalDividerColor:
-                    FlutterFlowTheme.of(context).secondaryBackground,
-                horizontalDividerThickness: 1.0,
-                addVerticalDivider: false,
-              );
-            },
-          ),
-        );
-      },
+              ),
+              DataColumn2(
+                label: DefaultTextStyle.merge(
+                  softWrap: true,
+                  child: Text(
+                    'Edit Header 3',
+                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                          fontFamily: 'Plus Jakarta Sans',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                ),
+              ),
+            ],
+            dataRowBuilder: (towersInZoneItem, towersInZoneIndex, selected,
+                    onSelectChanged) =>
+                DataRow(
+              color: MaterialStateProperty.all(
+                towersInZoneIndex % 2 == 0
+                    ? FlutterFlowTheme.of(context).secondaryBackground
+                    : FlutterFlowTheme.of(context).primaryBackground,
+              ),
+              cells: [
+                Text(
+                  valueOrDefault<String>(
+                    towersInZoneItem.towerIdentifier,
+                    'Not Assigned',
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Plus Jakarta Sans',
+                        letterSpacing: 0.0,
+                      ),
+                ),
+                Text(
+                  'Edit Column 2',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Plus Jakarta Sans',
+                        letterSpacing: 0.0,
+                      ),
+                ),
+                Text(
+                  'Edit Column 3',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Plus Jakarta Sans',
+                        letterSpacing: 0.0,
+                      ),
+                ),
+              ].map((c) => DataCell(c)).toList(),
+            ),
+            paginated: true,
+            selectable: false,
+            hidePaginator: false,
+            showFirstLastButtons: false,
+            headingRowHeight: 0.0,
+            dataRowHeight: 48.0,
+            columnSpacing: 20.0,
+            headingRowColor: FlutterFlowTheme.of(context).secondaryText,
+            borderRadius: BorderRadius.circular(8.0),
+            addHorizontalDivider: true,
+            addTopAndBottomDivider: false,
+            hideDefaultHorizontalDivider: true,
+            horizontalDividerColor:
+                FlutterFlowTheme.of(context).secondaryBackground,
+            horizontalDividerThickness: 1.0,
+            addVerticalDivider: false,
+          );
+        },
+      ),
     );
   }
 }

@@ -78,4 +78,19 @@ class FarmsRow extends SupabaseDataRow {
 
   bool? get usesLighting => getField<bool>('uses_lighting');
   set usesLighting(bool? value) => setField<bool>('uses_lighting', value);
+
+  String? get farmType => getField<String>('farm_type');
+  set farmType(String? value) => setField<String>('farm_type', value);
+
+  String? get status => getField<String>('status');
+  set status(String? value) => setField<String>('status', value);
+
+  String? get farmSize => getField<String>('farm_size');
+  set farmSize(String? value) => setField<String>('farm_size', value);
+
+  double? get latitude => getField<double>('latitude');
+  set latitude(double? value) => setField<double>('latitude', value);
+
+  double? get longitude => getField<double>('longitude');
+  set longitude(double? value) => setField<double>('longitude', value);
 }

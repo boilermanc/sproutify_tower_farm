@@ -116,18 +116,6 @@ class FFAppState extends ChangeNotifier {
     _hasTower = value;
   }
 
-  DateTime? _lightTimeOn;
-  DateTime? get lightTimeOn => _lightTimeOn;
-  set lightTimeOn(DateTime? value) {
-    _lightTimeOn = value;
-  }
-
-  DateTime? _lightTimeOff;
-  DateTime? get lightTimeOff => _lightTimeOff;
-  set lightTimeOff(DateTime? value) {
-    _lightTimeOff = value;
-  }
-
   bool _usesLighting = false;
   bool get usesLighting => _usesLighting;
   set usesLighting(bool value) {
@@ -216,6 +204,179 @@ class FFAppState extends ChangeNotifier {
   int get currentQuantity => _currentQuantity;
   set currentQuantity(int value) {
     _currentQuantity = value;
+  }
+
+  String _selectedProductId = '';
+  String get selectedProductId => _selectedProductId;
+  set selectedProductId(String value) {
+    _selectedProductId = value;
+  }
+
+  bool _hasProduct = false;
+  bool get hasProduct => _hasProduct;
+  set hasProduct(bool value) {
+    _hasProduct = value;
+  }
+
+  String _selectedSDS = '';
+  String get selectedSDS => _selectedSDS;
+  set selectedSDS(String value) {
+    _selectedSDS = value;
+  }
+
+  bool _noSDSSelected = false;
+  bool get noSDSSelected => _noSDSSelected;
+  set noSDSSelected(bool value) {
+    _noSDSSelected = value;
+  }
+
+  String _selectedProductName = '';
+  String get selectedProductName => _selectedProductName;
+  set selectedProductName(String value) {
+    _selectedProductName = value;
+  }
+
+  String _selectedProductType = '';
+  String get selectedProductType => _selectedProductType;
+  set selectedProductType(String value) {
+    _selectedProductType = value;
+  }
+
+  String _selectedSDSName = '';
+  String get selectedSDSName => _selectedSDSName;
+  set selectedSDSName(String value) {
+    _selectedSDSName = value;
+  }
+
+  String _farmLongitude = '';
+  String get farmLongitude => _farmLongitude;
+  set farmLongitude(String value) {
+    _farmLongitude = value;
+  }
+
+  String _farmLatitiude = '';
+  String get farmLatitiude => _farmLatitiude;
+  set farmLatitiude(String value) {
+    _farmLatitiude = value;
+  }
+
+  String _localTemp = '';
+  String get localTemp => _localTemp;
+  set localTemp(String value) {
+    _localTemp = value;
+  }
+
+  String _localHumdity = '';
+  String get localHumdity => _localHumdity;
+  set localHumdity(String value) {
+    _localHumdity = value;
+  }
+
+  String _localCloudCover = '';
+  String get localCloudCover => _localCloudCover;
+  set localCloudCover(String value) {
+    _localCloudCover = value;
+  }
+
+  String _localWindSpeed = '';
+  String get localWindSpeed => _localWindSpeed;
+  set localWindSpeed(String value) {
+    _localWindSpeed = value;
+  }
+
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+  set isLoading(bool value) {
+    _isLoading = value;
+  }
+
+  List<String> _selectedRoles = [];
+  List<String> get selectedRoles => _selectedRoles;
+  set selectedRoles(List<String> value) {
+    _selectedRoles = value;
+  }
+
+  void addToSelectedRoles(String value) {
+    selectedRoles.add(value);
+  }
+
+  void removeFromSelectedRoles(String value) {
+    selectedRoles.remove(value);
+  }
+
+  void removeAtIndexFromSelectedRoles(int index) {
+    selectedRoles.removeAt(index);
+  }
+
+  void updateSelectedRolesAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    selectedRoles[index] = updateFn(_selectedRoles[index]);
+  }
+
+  void insertAtIndexInSelectedRoles(int index, String value) {
+    selectedRoles.insert(index, value);
+  }
+
+  String _weatherCity = '';
+  String get weatherCity => _weatherCity;
+  set weatherCity(String value) {
+    _weatherCity = value;
+  }
+
+  String _intelligenceSetting = 'critical';
+  String get intelligenceSetting => _intelligenceSetting;
+  set intelligenceSetting(String value) {
+    _intelligenceSetting = value;
+  }
+
+  String _selectedintelligenceTower = '';
+  String get selectedintelligenceTower => _selectedintelligenceTower;
+  set selectedintelligenceTower(String value) {
+    _selectedintelligenceTower = value;
+  }
+
+  int _taskInsertID = 0;
+  int get taskInsertID => _taskInsertID;
+  set taskInsertID(int value) {
+    _taskInsertID = value;
+  }
+
+  String _taskInsertName = '';
+  String get taskInsertName => _taskInsertName;
+  set taskInsertName(String value) {
+    _taskInsertName = value;
+  }
+
+  DateTime? _taskInsertDate;
+  DateTime? get taskInsertDate => _taskInsertDate;
+  set taskInsertDate(DateTime? value) {
+    _taskInsertDate = value;
+  }
+
+  String _taskInsertStaffID = '';
+  String get taskInsertStaffID => _taskInsertStaffID;
+  set taskInsertStaffID(String value) {
+    _taskInsertStaffID = value;
+  }
+
+  String _taskInsertRoleID = '';
+  String get taskInsertRoleID => _taskInsertRoleID;
+  set taskInsertRoleID(String value) {
+    _taskInsertRoleID = value;
+  }
+
+  int _selectSpacerCount = 0;
+  int get selectSpacerCount => _selectSpacerCount;
+  set selectSpacerCount(int value) {
+    _selectSpacerCount = value;
+  }
+
+  int _selectPlantCatalogQuantity = 0;
+  int get selectPlantCatalogQuantity => _selectPlantCatalogQuantity;
+  set selectPlantCatalogQuantity(int value) {
+    _selectPlantCatalogQuantity = value;
   }
 }
 
