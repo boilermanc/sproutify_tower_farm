@@ -37,7 +37,7 @@ class _MainSensorsWidgetState extends State<MainSensorsWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.farmEmployeeList = await ProfilesTable().queryRows(
-        queryFn: (q) => q.eq(
+        queryFn: (q) => q.eqOrNull(
           'farm_id',
           FFAppState().farmID,
         ),
@@ -60,7 +60,7 @@ class _MainSensorsWidgetState extends State<MainSensorsWidget>
 
     return FutureBuilder<List<SensorsRow>>(
       future: SensorsTable().queryRows(
-        queryFn: (q) => q.eq(
+        queryFn: (q) => q.eqOrNull(
           'farm_id',
           FFAppState().farmID,
         ),

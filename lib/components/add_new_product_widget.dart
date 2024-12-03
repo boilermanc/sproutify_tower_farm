@@ -182,12 +182,12 @@ class _AddNewProductWidgetState extends State<AddNewProductWidget> {
                                   _model.checkProductName2299 =
                                       await ProductItemsTable().queryRows(
                                     queryFn: (q) => q
-                                        .eq(
+                                        .eqOrNull(
                                           'product_name',
                                           _model
                                               .productNameTextController1.text,
                                         )
-                                        .eq(
+                                        .eqOrNull(
                                           'farm_id',
                                           FFAppState().farmID,
                                         ),
@@ -521,7 +521,7 @@ class _AddNewProductWidgetState extends State<AddNewProductWidget> {
                                                 future: ProductTypesTable()
                                                     .queryRows(
                                                   queryFn: (q) => q
-                                                      .eq(
+                                                      .eqOrNull(
                                                         'product_category_id',
                                                         _model.categorySelected,
                                                       )
@@ -711,7 +711,7 @@ class _AddNewProductWidgetState extends State<AddNewProductWidget> {
                                               FutureBuilder<List<VendorsRow>>(
                                             future: VendorsTable().queryRows(
                                               queryFn: (q) => q
-                                                  .eq(
+                                                  .eqOrNull(
                                                     'farm_id',
                                                     FFAppState().farmID,
                                                   )
@@ -1073,9 +1073,9 @@ class _AddNewProductWidgetState extends State<AddNewProductWidget> {
                                                     ProductTypeUnitViewTable()
                                                         .queryRows(
                                                   queryFn: (q) => q
-                                                      .eq(
+                                                      .eqOrNull(
                                                         'product_type_id',
-                                                        _model.typeValue!,
+                                                        _model.typeValue,
                                                       )
                                                       .order('unit_name',
                                                           ascending: true),

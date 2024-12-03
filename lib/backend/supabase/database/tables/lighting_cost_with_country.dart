@@ -26,10 +26,6 @@ class LightingCostWithCountryRow extends SupabaseDataRow {
   set farmCurrencySettingId(int? value) =>
       setField<int>('farm_currency_setting_id', value);
 
-  double? get costRatePerKwh => getField<double>('cost_rate_per_kwh');
-  set costRatePerKwh(double? value) =>
-      setField<double>('cost_rate_per_kwh', value);
-
   String? get billingUnit => getField<String>('billing_unit');
   set billingUnit(String? value) => setField<String>('billing_unit', value);
 
@@ -39,6 +35,19 @@ class LightingCostWithCountryRow extends SupabaseDataRow {
 
   DateTime? get createdAt => getField<DateTime>('created_at');
   set createdAt(DateTime? value) => setField<DateTime>('created_at', value);
+
+  double? get baseCharge => getField<double>('base_charge');
+  set baseCharge(double? value) => setField<double>('base_charge', value);
+
+  double? get wholesalePowerAdj => getField<double>('wholesale_power_adj');
+  set wholesalePowerAdj(double? value) =>
+      setField<double>('wholesale_power_adj', value);
+
+  double? get franchiseFee => getField<double>('franchise_fee');
+  set franchiseFee(double? value) => setField<double>('franchise_fee', value);
+
+  double? get taxRate => getField<double>('tax_rate');
+  set taxRate(double? value) => setField<double>('tax_rate', value);
 
   String? get country => getField<String>('country');
   set country(String? value) => setField<String>('country', value);

@@ -93,7 +93,7 @@ class _FarmUnitSettingsWidgetState extends State<FarmUnitSettingsWidget> {
           ),
           FutureBuilder<List<FarmsRow>>(
             future: FarmsTable().querySingleRow(
-              queryFn: (q) => q.eq(
+              queryFn: (q) => q.eqOrNull(
                 'id',
                 FFAppState().farmID,
               ),
@@ -177,7 +177,7 @@ class _FarmUnitSettingsWidgetState extends State<FarmUnitSettingsWidget> {
                               data: {
                                 'measurement_system': _model.unitSelectionValue,
                               },
-                              matchingRows: (rows) => rows.eq(
+                              matchingRows: (rows) => rows.eqOrNull(
                                 'id',
                                 FFAppState().farmID,
                               ),

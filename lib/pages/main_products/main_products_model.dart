@@ -18,7 +18,7 @@ import 'package:provider/provider.dart';
 class MainProductsModel extends FlutterFlowModel<MainProductsWidget> {
   ///  Local state fields for this page.
 
-  int selectedPage = 2;
+  int selectedPage = 11;
 
   ///  State fields for stateful widgets in this page.
 

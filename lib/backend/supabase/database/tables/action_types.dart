@@ -33,4 +33,7 @@ class ActionTypesRow extends SupabaseDataRow {
   String? get dashboardColor => getField<String>('dashboard_color');
   set dashboardColor(String? value) =>
       setField<String>('dashboard_color', value);
+
+  String? get actionIcon => getField<String>('action_icon');
+  set actionIcon(String? value) => setField<String>('action_icon', value);
 }

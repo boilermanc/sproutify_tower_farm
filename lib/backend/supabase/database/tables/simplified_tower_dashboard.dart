@@ -38,6 +38,10 @@ class SimplifiedTowerDashboardRow extends SupabaseDataRow {
   String? get actionColor => getField<String>('action_color');
   set actionColor(String? value) => setField<String>('action_color', value);
 
+  String? get dashboardColor => getField<String>('dashboard_color');
+  set dashboardColor(String? value) =>
+      setField<String>('dashboard_color', value);
+
   int? get contentId => getField<int>('content_id');
   set contentId(int? value) => setField<int>('content_id', value);
 

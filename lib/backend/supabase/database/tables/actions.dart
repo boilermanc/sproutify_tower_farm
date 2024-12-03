@@ -20,8 +20,8 @@ class ActionsRow extends SupabaseDataRow {
   int get actionTypeId => getField<int>('action_type_id')!;
   set actionTypeId(int value) => setField<int>('action_type_id', value);
 
-  int get plantId => getField<int>('plant_id')!;
-  set plantId(int value) => setField<int>('plant_id', value);
+  int? get plantId => getField<int>('plant_id');
+  set plantId(int? value) => setField<int>('plant_id', value);
 
   int? get towerId => getField<int>('tower_id');
   set towerId(int? value) => setField<int>('tower_id', value);
@@ -49,4 +49,8 @@ class ActionsRow extends SupabaseDataRow {
 
   int? get towerContentId => getField<int>('tower_content_id');
   set towerContentId(int? value) => setField<int>('tower_content_id', value);
+
+  DateTime? get expectedReadyDate => getField<DateTime>('expected_ready_date');
+  set expectedReadyDate(DateTime? value) =>
+      setField<DateTime>('expected_ready_date', value);
 }

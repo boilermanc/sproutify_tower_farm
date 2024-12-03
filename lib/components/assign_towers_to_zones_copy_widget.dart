@@ -44,7 +44,7 @@ class _AssignTowersToZonesCopyWidgetState
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.towerListForZone7722 = await TowerViewTable().queryRows(
         queryFn: (q) => q
-            .eq(
+            .eqOrNull(
               'farm_id',
               FFAppState().farmID,
             )
@@ -116,7 +116,7 @@ class _AssignTowersToZonesCopyWidgetState
                                 List<LightingZonesWithControllerRow>>(
                               future:
                                   LightingZonesWithControllerTable().queryRows(
-                                queryFn: (q) => q.eq(
+                                queryFn: (q) => q.eqOrNull(
                                   'farm_id',
                                   FFAppState().farmID,
                                 ),
@@ -694,11 +694,11 @@ class _AssignTowersToZonesCopyWidgetState
                                                       'is_assigned': true,
                                                     },
                                                     matchingRows: (rows) => rows
-                                                        .eq(
+                                                        .eqOrNull(
                                                           'farm_id',
                                                           FFAppState().farmID,
                                                         )
-                                                        .inFilter(
+                                                        .inFilterOrNull(
                                                           'tower_identifier',
                                                           _model.draggedTowers,
                                                         ),

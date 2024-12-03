@@ -54,7 +54,7 @@ class _SdsDetailOverviewWidgetState extends State<SdsDetailOverviewWidget> {
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
       child: FutureBuilder<List<ProductDosingRatesViewRow>>(
         future: ProductDosingRatesViewTable().queryRows(
-          queryFn: (q) => q.eq(
+          queryFn: (q) => q.eqOrNull(
             'product_sds_id',
             FFAppState().selectedSDS,
           ),

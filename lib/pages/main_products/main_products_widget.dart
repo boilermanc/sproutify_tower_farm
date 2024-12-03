@@ -124,7 +124,7 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                             child:
                                 FutureBuilder<List<ProductDashboardMetricsRow>>(
                               future: ProductDashboardMetricsTable().queryRows(
-                                queryFn: (q) => q.eq(
+                                queryFn: (q) => q.eqOrNull(
                                   'farm_id',
                                   FFAppState().farmID,
                                 ),
@@ -977,11 +977,11 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                           FutureBuilder<List<ProductSummaryViewRow>>(
                             future: ProductSummaryViewTable().queryRows(
                               queryFn: (q) => q
-                                  .eq(
+                                  .eqOrNull(
                                     'farm_id',
                                     FFAppState().farmID,
                                   )
-                                  .eq(
+                                  .eqOrNull(
                                     'active',
                                     true,
                                   )
@@ -1276,40 +1276,45 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
-                                            Text(
-                                              valueOrDefault<String>(
-                                                farmProductsItem.stockStatus,
-                                                'None',
-                                              ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily:
-                                                        'Plus Jakarta Sans',
-                                                    color:
-                                                        valueOrDefault<Color>(
-                                                      () {
-                                                        if (farmProductsItem
-                                                                .stockStatus ==
-                                                            'Critical') {
-                                                          return Color(
-                                                              0xFFFF4444);
-                                                        } else if (farmProductsItem
-                                                                .stockStatus ==
-                                                            'Warning') {
-                                                          return Color(
-                                                              0xFFFFA500);
-                                                        } else {
-                                                          return Colors.green;
-                                                        }
-                                                      }(),
-                                                      Colors.green,
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(7.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  farmProductsItem.stockStatus,
+                                                  'None',
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          'Plus Jakarta Sans',
+                                                      color:
+                                                          valueOrDefault<Color>(
+                                                        () {
+                                                          if (farmProductsItem
+                                                                  .stockStatus ==
+                                                              'Critical') {
+                                                            return Color(
+                                                                0xFFFF4444);
+                                                          } else if (farmProductsItem
+                                                                  .stockStatus ==
+                                                              'Warning') {
+                                                            return Color(
+                                                                0xFFFFA500);
+                                                          } else {
+                                                            return Colors.green;
+                                                          }
+                                                        }(),
+                                                        Colors.green,
+                                                      ),
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
-                                                    fontSize: 16.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                              ),
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
@@ -1472,7 +1477,7 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                           FutureBuilder<List<ProductPestChemicalsRow>>(
                             future: ProductPestChemicalsTable().queryRows(
                               queryFn: (q) => q
-                                  .eq(
+                                  .eqOrNull(
                                     'farm_id',
                                     FFAppState().farmID,
                                   )

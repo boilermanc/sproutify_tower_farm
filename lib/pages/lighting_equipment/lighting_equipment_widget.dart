@@ -144,7 +144,7 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed('main_LightManegement');
+                                    context.pushNamed('main_LightManagement');
                                   },
                                 ),
                               ),
@@ -300,7 +300,7 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                             future: (_model.requestCompleter ??=
                                     Completer<List<ControllersRow>>()
                                       ..complete(ControllersTable().queryRows(
-                                        queryFn: (q) => q.eq(
+                                        queryFn: (q) => q.eqOrNull(
                                           'farm_id',
                                           FFAppState().farmID,
                                         ),
@@ -564,8 +564,8 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                                                     false,
                                                               },
                                                               matchingRows:
-                                                                  (rows) =>
-                                                                      rows.eq(
+                                                                  (rows) => rows
+                                                                      .eqOrNull(
                                                                 'id',
                                                                 lightingControllersItem
                                                                     .id,
@@ -605,8 +605,8 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                                                     true,
                                                               },
                                                               matchingRows:
-                                                                  (rows) =>
-                                                                      rows.eq(
+                                                                  (rows) => rows
+                                                                      .eqOrNull(
                                                                 'id',
                                                                 lightingControllersItem
                                                                     .id,
@@ -697,7 +697,7 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                               List<LightingFixtureSummaryWithVendorRow>>(
                             future: LightingFixtureSummaryWithVendorTable()
                                 .queryRows(
-                              queryFn: (q) => q.eq(
+                              queryFn: (q) => q.eqOrNull(
                                 'farm_id',
                                 FFAppState().farmID,
                               ),

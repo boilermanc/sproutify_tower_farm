@@ -158,7 +158,7 @@ class _InsertTaskRoleWidgetState extends State<InsertTaskRoleWidget> {
                                         FutureBuilder<List<RolesRow>>(
                                           future: RolesTable().queryRows(
                                             queryFn: (q) => q
-                                                .eq(
+                                                .eqOrNull(
                                                   'role_type',
                                                   'FARM_ROLES',
                                                 )

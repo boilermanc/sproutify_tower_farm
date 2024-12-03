@@ -1,6 +1,7 @@
 // Export pages
 export '/pages/main_staff/main_staff_widget.dart' show MainStaffWidget;
-export '/pages/main_recent/main_recent_widget.dart' show MainRecentWidget;
+export '/pages/main_recent_orders/main_recent_orders_widget.dart'
+    show MainRecentOrdersWidget;
 export '/pages/main_profile/main_profile_widget.dart' show MainProfileWidget;
 export '/pages/main_dashboard/main_dashboard_widget.dart'
     show MainDashboardWidget;
@@ -25,8 +26,8 @@ export '/sign_up_flow_two/sign_up_flow_two_widget.dart'
     show SignUpFlowTwoWidget;
 export '/sign_up_flow_final/sign_up_flow_final_widget.dart'
     show SignUpFlowFinalWidget;
-export '/pages/main_light_manegement/main_light_manegement_widget.dart'
-    show MainLightManegementWidget;
+export '/pages/main_light_management/main_light_management_widget.dart'
+    show MainLightManagementWidget;
 export '/pages/lighting_equipment/lighting_equipment_widget.dart'
     show LightingEquipmentWidget;
 export '/food_safety_planflow/food_safety_planflow_widget.dart'
@@ -37,5 +38,9 @@ export '/pages/main_products/main_products_widget.dart' show MainProductsWidget;
 export '/pages/main_nutrients/main_nutrients_widget.dart'
     show MainNutrientsWidget;
 export '/pages/main_settings/main_settings_widget.dart' show MainSettingsWidget;
-export '/pages/main_notifications_copy/main_notifications_copy_widget.dart'
-    show MainNotificationsCopyWidget;
+export '/pages/main_farm_operations/main_farm_operations_widget.dart'
+    show MainFarmOperationsWidget;
+export '/pages/main_configuration/main_configuration_widget.dart'
+    show MainConfigurationWidget;
+export '/sproutify_a_i/chat_ai_screen/chat_ai_screen_widget.dart'
+    show ChatAiScreenWidget;

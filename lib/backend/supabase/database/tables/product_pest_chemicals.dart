@@ -113,6 +113,38 @@ class ProductPestChemicalsRow extends SupabaseDataRow {
   String? get sdsPath => getField<String>('sds_path');
   set sdsPath(String? value) => setField<String>('sds_path', value);
 
+  bool? get omriRated => getField<bool>('omri_rated');
+  set omriRated(bool? value) => setField<bool>('omri_rated', value);
+
+  String? get labelPath => getField<String>('label_path');
+  set labelPath(String? value) => setField<String>('label_path', value);
+
+  double? get baseAmount => getField<double>('base_amount');
+  set baseAmount(double? value) => setField<double>('base_amount', value);
+
+  double? get perVolume => getField<double>('per_volume');
+  set perVolume(double? value) => setField<double>('per_volume', value);
+
+  String? get dosingNotes => getField<String>('dosing_notes');
+  set dosingNotes(String? value) => setField<String>('dosing_notes', value);
+
+  double? get standardDoseGallon => getField<double>('standard_dose_gallon');
+  set standardDoseGallon(double? value) =>
+      setField<double>('standard_dose_gallon', value);
+
+  String? get standardDoseGallonUnitId =>
+      getField<String>('standard_dose_gallon_unit_id');
+  set standardDoseGallonUnitId(String? value) =>
+      setField<String>('standard_dose_gallon_unit_id', value);
+
+  double? get minimumDilution => getField<double>('minimum_dilution');
+  set minimumDilution(double? value) =>
+      setField<double>('minimum_dilution', value);
+
+  double? get maximumDilution => getField<double>('maximum_dilution');
+  set maximumDilution(double? value) =>
+      setField<double>('maximum_dilution', value);
+
   String? get applicationMethods => getField<String>('application_methods');
   set applicationMethods(String? value) =>
       setField<String>('application_methods', value);

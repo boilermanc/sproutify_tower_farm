@@ -6,6 +6,7 @@ import '/components/select_fixture_quantity_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/components/tower_zone_grid_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -21,11 +22,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'main_light_manegement_model.dart';
-export 'main_light_manegement_model.dart';
+import 'main_light_management_model.dart';
+export 'main_light_management_model.dart';
 
-class MainLightManegementWidget extends StatefulWidget {
-  const MainLightManegementWidget({
+class MainLightManagementWidget extends StatefulWidget {
+  const MainLightManagementWidget({
     super.key,
     this.selectedFixtureQuantity,
   });
@@ -33,31 +34,31 @@ class MainLightManegementWidget extends StatefulWidget {
   final int? selectedFixtureQuantity;
 
   @override
-  State<MainLightManegementWidget> createState() =>
-      _MainLightManegementWidgetState();
+  State<MainLightManagementWidget> createState() =>
+      _MainLightManagementWidgetState();
 }
 
-class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
+class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
     with TickerProviderStateMixin {
-  late MainLightManegementModel _model;
+  late MainLightManagementModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MainLightManegementModel());
+    _model = createModel(context, () => MainLightManagementModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.farmEmployeeList = await ProfilesTable().queryRows(
-        queryFn: (q) => q.eq(
+        queryFn: (q) => q.eqOrNull(
           'farm_id',
           FFAppState().farmID,
         ),
       );
       _model.towerIdentifierList4433 = await TowerViewTable().queryRows(
-        queryFn: (q) => q.eq(
+        queryFn: (q) => q.eqOrNull(
           'farm_id',
           FFAppState().farmID,
         ),
@@ -164,7 +165,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                           ),
                           FutureBuilder<List<LightDashboardMetricsRow>>(
                             future: LightDashboardMetricsTable().queryRows(
-                              queryFn: (q) => q.eq(
+                              queryFn: (q) => q.eqOrNull(
                                 'farm_id',
                                 FFAppState().farmID,
                               ),
@@ -305,9 +306,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                             scrollDirection: Axis.horizontal,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 0.0, 8.0, 8.0),
+                                                padding: EdgeInsets.all(8.0),
                                                 child: Container(
                                                   width: 150.0,
                                                   decoration: BoxDecoration(
@@ -477,9 +476,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 8.0, 8.0),
+                                                padding: EdgeInsets.all(8.0),
                                                 child: Container(
                                                   width: 150.0,
                                                   decoration: BoxDecoration(
@@ -718,9 +715,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 16.0, 8.0),
+                                                padding: EdgeInsets.all(8.0),
                                                 child: Container(
                                                   width: 150.0,
                                                   decoration: BoxDecoration(
@@ -832,8 +827,9 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Plus Jakarta Sans',
-                                                                      color: Color(
-                                                                          0xFF57636C),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondary,
                                                                       fontSize:
                                                                           18.0,
                                                                       letterSpacing:
@@ -958,7 +954,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                     color: Colors.white,
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            8.0),
+                                                            0.0),
                                                     border: Border.all(
                                                       color: Color(0xFFE0E3E7),
                                                       width: 2.0,
@@ -974,138 +970,10 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
-                                                        Text(
-                                                          'Daily Usage',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .headlineMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: Color(
-                                                                    0xFF57636C),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                        ),
                                                         Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Time On:',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      color: Color(
-                                                                          0xFF57636C),
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          5.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Hello World',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Time Off:',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      color: Color(
-                                                                          0xFF57636C),
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          5.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Hello World',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ],
+                                                          children: [],
                                                         ),
                                                       ],
                                                     ),
@@ -1191,7 +1059,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                             _model.lightingZoneCount7755 =
                                                 await LightingZonesTable()
                                                     .queryRows(
-                                              queryFn: (q) => q.eq(
+                                              queryFn: (q) => q.eqOrNull(
                                                 'farm_id',
                                                 FFAppState().farmID,
                                               ),
@@ -1206,7 +1074,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                             _model.lightingZoneCount7755Copy =
                                                 await LightingZonesTable()
                                                     .queryRows(
-                                              queryFn: (q) => q.eq(
+                                              queryFn: (q) => q.eqOrNull(
                                                 'farm_id',
                                                 FFAppState().farmID,
                                               ),
@@ -1242,263 +1110,157 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: FutureBuilder<
-                                                        List<
-                                                            LatestLightStatusRow>>(
-                                                      future:
-                                                          LatestLightStatusTable()
-                                                              .queryRows(
-                                                        queryFn: (q) => q
-                                                            .eq(
-                                                              'farm_id',
-                                                              FFAppState()
-                                                                  .farmID,
-                                                            )
-                                                            .order('zone_name',
-                                                                ascending:
-                                                                    true),
+                                                        EdgeInsets.all(5.0),
+                                                    child: Container(
+                                                      width: 500.0,
+                                                      height: 290.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  10.0),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  10.0),
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  10.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  10.0),
+                                                        ),
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          width: 1.0,
+                                                        ),
                                                       ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50.0,
-                                                              height: 50.0,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                valueColor:
-                                                                    AlwaysStoppedAnimation<
-                                                                        Color>(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        List<LatestLightStatusRow>
-                                                            containerLatestLightStatusRowList =
-                                                            snapshot.data!;
-
-                                                        return Container(
-                                                          width: 500.0,
-                                                          height: 200.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryBackground,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .only(
-                                                              bottomLeft: Radius
-                                                                  .circular(
-                                                                      10.0),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                              topLeft: Radius
-                                                                  .circular(
-                                                                      10.0),
-                                                              topRight: Radius
-                                                                  .circular(
-                                                                      10.0),
-                                                            ),
-                                                            border: Border.all(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              width: 1.0,
-                                                            ),
-                                                          ),
-                                                          child: Builder(
-                                                            builder: (context) {
-                                                              final zoneStatus =
-                                                                  containerLatestLightStatusRowList
-                                                                      .toList();
-
-                                                              return FlutterFlowDataTable<
-                                                                  LatestLightStatusRow>(
-                                                                controller: _model
-                                                                    .paginatedDataTableController1,
-                                                                data:
-                                                                    zoneStatus,
-                                                                columnsBuilder:
-                                                                    (onSortChanged) =>
-                                                                        [
-                                                                  DataColumn2(
-                                                                    label: DefaultTextStyle
-                                                                        .merge(
-                                                                      softWrap:
-                                                                          true,
-                                                                      child:
-                                                                          Text(
-                                                                        'Zone',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .labelLarge
-                                                                            .override(
-                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                              fontSize: 16.0,
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  DataColumn2(
-                                                                    label: DefaultTextStyle
-                                                                        .merge(
-                                                                      softWrap:
-                                                                          true,
-                                                                      child:
-                                                                          Text(
-                                                                        'Event Time',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .labelLarge
-                                                                            .override(
-                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                              fontSize: 16.0,
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  DataColumn2(
-                                                                    label: DefaultTextStyle
-                                                                        .merge(
-                                                                      softWrap:
-                                                                          true,
-                                                                      child:
-                                                                          Text(
-                                                                        'Status',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .labelLarge
-                                                                            .override(
-                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                              fontSize: 16.0,
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                                dataRowBuilder: (zoneStatusItem,
-                                                                        zoneStatusIndex,
-                                                                        selected,
-                                                                        onSelectChanged) =>
-                                                                    DataRow(
-                                                                  color:
-                                                                      MaterialStateProperty
-                                                                          .all(
-                                                                    zoneStatusIndex %
-                                                                                2 ==
-                                                                            0
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .primaryBackground,
-                                                                  ),
-                                                                  cells: [
-                                                                    Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        zoneStatusItem
-                                                                            .zoneName,
-                                                                        'Zone Name',
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Plus Jakarta Sans',
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                          ),
-                                                                    ),
-                                                                    Text(
-                                                                      dateTimeFormat(
-                                                                          "M/d h:mm a",
-                                                                          zoneStatusItem
-                                                                              .eventTime!),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Plus Jakarta Sans',
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                          ),
-                                                                    ),
-                                                                    Text(
-                                                                      zoneStatusItem
-                                                                          .eventType!,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Plus Jakarta Sans',
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                          ),
-                                                                    ),
-                                                                  ]
-                                                                      .map((c) =>
-                                                                          DataCell(
-                                                                              c))
-                                                                      .toList(),
-                                                                ),
-                                                                paginated:
-                                                                    false,
-                                                                selectable:
-                                                                    false,
-                                                                headingRowHeight:
-                                                                    56.0,
-                                                                dataRowHeight:
-                                                                    48.0,
-                                                                columnSpacing:
-                                                                    20.0,
-                                                                headingRowColor:
+                                                      child: FutureBuilder<
+                                                          List<
+                                                              LightingHourlyChartRow>>(
+                                                        future:
+                                                            LightingHourlyChartTable()
+                                                                .queryRows(
+                                                          queryFn: (q) =>
+                                                              q.order('hour',
+                                                                  ascending:
+                                                                      true),
+                                                        ),
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          // Customize what your widget looks like when it's loading.
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Center(
+                                                              child: SizedBox(
+                                                                width: 50.0,
+                                                                height: 50.0,
+                                                                child:
+                                                                    CircularProgressIndicator(
+                                                                  valueColor:
+                                                                      AlwaysStoppedAnimation<
+                                                                          Color>(
                                                                     FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryText,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                                addHorizontalDivider:
-                                                                    true,
-                                                                addTopAndBottomDivider:
-                                                                    false,
-                                                                hideDefaultHorizontalDivider:
-                                                                    true,
-                                                                horizontalDividerColor:
+                                                                        .primary,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }
+                                                          List<LightingHourlyChartRow>
+                                                              chartLightingHourlyChartRowList =
+                                                              snapshot.data!;
+
+                                                          return Container(
+                                                            width: 370.0,
+                                                            height: 270.0,
+                                                            child:
+                                                                FlutterFlowBarChart(
+                                                              barData: [
+                                                                FFBarChartData(
+                                                                  yData: chartLightingHourlyChartRowList
+                                                                      .map((e) =>
+                                                                          e.energyKwh)
+                                                                      .withoutNulls
+                                                                      .toList(),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                )
+                                                              ],
+                                                              xLabels: chartLightingHourlyChartRowList
+                                                                  .map((e) =>
+                                                                      e.hour)
+                                                                  .withoutNulls
+                                                                  .toList()
+                                                                  .map((e) => e
+                                                                      .toString())
+                                                                  .toList(),
+                                                              barWidth: 16.0,
+                                                              barBorderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                              ),
+                                                              groupSpace: 8.0,
+                                                              alignment:
+                                                                  BarChartAlignment
+                                                                      .spaceAround,
+                                                              chartStylingInfo:
+                                                                  ChartStylingInfo(
+                                                                backgroundColor:
                                                                     FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryBackground,
-                                                                horizontalDividerThickness:
-                                                                    1.0,
-                                                                addVerticalDivider:
+                                                                showBorder:
                                                                     false,
-                                                              );
-                                                            },
-                                                          ),
-                                                        );
-                                                      },
+                                                              ),
+                                                              axisBounds:
+                                                                  AxisBounds(),
+                                                              xAxisLabelInfo:
+                                                                  AxisLabelInfo(
+                                                                title: 'Hour',
+                                                                titleTextStyle:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      14.0,
+                                                                ),
+                                                                reservedSize:
+                                                                    28.0,
+                                                              ),
+                                                              yAxisLabelInfo:
+                                                                  AxisLabelInfo(
+                                                                title:
+                                                                    'energy_kwh',
+                                                                titleTextStyle:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      14.0,
+                                                                ),
+                                                                reservedSize:
+                                                                    42.0,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
@@ -1777,14 +1539,13 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                         LightingZonesRow>>(
                                                                   future: LightingZonesTable()
                                                                       .queryRows(
-                                                                    queryFn:
-                                                                        (q) => q
-                                                                            .eq(
-                                                                              'farm_id',
-                                                                              FFAppState().farmID,
-                                                                            )
-                                                                            .order('zone_name',
-                                                                                ascending: true),
+                                                                    queryFn: (q) => q
+                                                                        .eqOrNull(
+                                                                          'farm_id',
+                                                                          FFAppState()
+                                                                              .farmID,
+                                                                        )
+                                                                        .order('zone_name', ascending: true),
                                                                   ),
                                                                   builder: (context,
                                                                       snapshot) {
@@ -1905,7 +1666,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                                                     child: FFButtonWidget(
                                                                                                       onPressed: () async {
                                                                                                         _model.isActive7788 = await LightingZonesTable().queryRows(
-                                                                                                          queryFn: (q) => q.eq(
+                                                                                                          queryFn: (q) => q.eqOrNull(
                                                                                                             'id',
                                                                                                             getZoneScheduleItem.id,
                                                                                                           ),
@@ -1915,7 +1676,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                                                             data: {
                                                                                                               'is_active': false,
                                                                                                             },
-                                                                                                            matchingRows: (rows) => rows.eq(
+                                                                                                            matchingRows: (rows) => rows.eqOrNull(
                                                                                                               'id',
                                                                                                               getZoneScheduleItem.id,
                                                                                                             ),
@@ -1925,7 +1686,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                                                             data: {
                                                                                                               'is_active': true,
                                                                                                             },
-                                                                                                            matchingRows: (rows) => rows.eq(
+                                                                                                            matchingRows: (rows) => rows.eqOrNull(
                                                                                                               'id',
                                                                                                               getZoneScheduleItem.id,
                                                                                                             ),
@@ -1962,11 +1723,11 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                                                   FutureBuilder<List<LightingZoneSchedulesWithDaysRow>>(
                                                                                                     future: LightingZoneSchedulesWithDaysTable().queryRows(
                                                                                                       queryFn: (q) => q
-                                                                                                          .eq(
+                                                                                                          .eqOrNull(
                                                                                                             'farm_id',
                                                                                                             FFAppState().farmID,
                                                                                                           )
-                                                                                                          .eq(
+                                                                                                          .eqOrNull(
                                                                                                             'zone_id',
                                                                                                             getZoneScheduleItem.id,
                                                                                                           )
@@ -2076,7 +1837,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                             future:
                                                 LightingZonesTable().queryRows(
                                               queryFn: (q) => q
-                                                  .eq(
+                                                  .eqOrNull(
                                                     'farm_id',
                                                     FFAppState().farmID,
                                                   )
@@ -2292,11 +2053,11 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                                 child: FutureBuilder<List<LightingZoneTowersRow>>(
                                                                                   future: LightingZoneTowersTable().queryRows(
                                                                                     queryFn: (q) => q
-                                                                                        .eq(
+                                                                                        .eqOrNull(
                                                                                           'farm_id',
                                                                                           FFAppState().farmID,
                                                                                         )
-                                                                                        .eq(
+                                                                                        .eqOrNull(
                                                                                           'zone_id',
                                                                                           zonePageViewItem.id,
                                                                                         )
@@ -2551,9 +2312,8 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                         LightingZonesWithControllerRow>>(
                                                                   future: LightingZonesWithControllerTable()
                                                                       .queryRows(
-                                                                    queryFn:
-                                                                        (q) => q
-                                                                            .eq(
+                                                                    queryFn: (q) =>
+                                                                        q.eqOrNull(
                                                                       'farm_id',
                                                                       FFAppState()
                                                                           .farmID,
@@ -2908,7 +2668,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                           future:
                                                                               ControllersViewTable().queryRows(
                                                                             queryFn: (q) =>
-                                                                                q.eq(
+                                                                                q.eqOrNull(
                                                                               'farm_id',
                                                                               FFAppState().farmID,
                                                                             ),
@@ -2985,9 +2745,9 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                               List<ControllerPinsDropdownViewRow>>(
                                                                             future:
                                                                                 ControllerPinsDropdownViewTable().queryRows(
-                                                                              queryFn: (q) => q.eq(
+                                                                              queryFn: (q) => q.eqOrNull(
                                                                                 'lighting_controller_id',
-                                                                                _model.selectControllerValue!,
+                                                                                _model.selectControllerValue,
                                                                               ),
                                                                             ),
                                                                             builder:
@@ -3060,9 +2820,9 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                               List<LightingControllersRow>>(
                                                                             future:
                                                                                 LightingControllersTable().queryRows(
-                                                                              queryFn: (q) => q.eq(
+                                                                              queryFn: (q) => q.eqOrNull(
                                                                                 'controller_id',
-                                                                                _model.selectControllerValue!,
+                                                                                _model.selectControllerValue,
                                                                               ),
                                                                             ),
                                                                             builder:
@@ -3231,9 +2991,9 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                                 data: {
                                                                                   'status': 'Assigned',
                                                                                 },
-                                                                                matchingRows: (rows) => rows.eq(
+                                                                                matchingRows: (rows) => rows.eqOrNull(
                                                                                   'relay_pin',
-                                                                                  _model.selecRelayValue!,
+                                                                                  _model.selecRelayValue,
                                                                                 ),
                                                                               );
                                                                             },
@@ -3492,7 +3252,8 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                         future:
                                                             LightingZonesWithControllerTable()
                                                                 .queryRows(
-                                                          queryFn: (q) => q.eq(
+                                                          queryFn: (q) =>
+                                                              q.eqOrNull(
                                                             'farm_id',
                                                             FFAppState().farmID,
                                                           ),
@@ -3730,7 +3491,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                               LightingFixtureSummaryWithVendorTable()
                                                                   .queryRows(
                                                             queryFn: (q) =>
-                                                                q.eq(
+                                                                q.eqOrNull(
                                                               'zone_id',
                                                               FFAppState()
                                                                   .selectedZone,
@@ -3782,7 +3543,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                                                                       LightingFixtureSummaryWithVendorRow>(
                                                                     controller:
                                                                         _model
-                                                                            .paginatedDataTableController2,
+                                                                            .paginatedDataTableController,
                                                                     data:
                                                                         fixtureAllocation,
                                                                     columnsBuilder:
@@ -4242,7 +4003,7 @@ class _MainLightManegementWidgetState extends State<MainLightManegementWidget>
                           FutureBuilder<List<LightZoneUsageSummaryRow>>(
                             future: LightZoneUsageSummaryTable().queryRows(
                               queryFn: (q) => q
-                                  .eq(
+                                  .eqOrNull(
                                     'farm_id',
                                     FFAppState().farmID,
                                   )

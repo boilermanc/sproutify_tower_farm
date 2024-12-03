@@ -11,6 +11,66 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
+/// Start neightn main chat Group Code
+
+class NeightnMainChatGroup {
+  static String getBaseUrl() =>
+      'https://n8n.sproutify.app/webhook/d6ef0f5e-ceb2-4981-bcfa-76a430d43e74';
+  static Map<String, String> headers = {
+    'Content-Type': 'application/json',
+  };
+  static SendFullPromptCall sendFullPromptCall = SendFullPromptCall();
+}
+
+class SendFullPromptCall {
+  Future<ApiCallResponse> call({
+    dynamic? promptJson,
+    String? userMessage = '',
+    String? farmID = '',
+  }) async {
+    final baseUrl = NeightnMainChatGroup.getBaseUrl();
+
+    final prompt = _serializeJson(promptJson);
+    final ffApiRequestBody = '''
+{
+  "text": "\${${userMessage}}",
+  "farmID": "${farmID}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Send Full Prompt',
+      apiUrl: '${baseUrl}/chat',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  int? createdTimestamp(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.created''',
+      ));
+  String? role(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.choices[:].message.role''',
+      ));
+  String? content(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.choices[:].message.content''',
+      ));
+}
+
+/// End neightn main chat Group Code
+
 class GetUserProfileCall {
   static Future<ApiCallResponse> call({
     String? userID = '',
@@ -359,6 +419,57 @@ class PlantCatalogSearchCall {
       alwaysAllowBody: false,
     );
   }
+
+  static List<String>? plantName(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].plant_name''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? shortDescription(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].short_description''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? plantImage(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].plant_image''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<bool>? isActive(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].is_active''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  static List<bool>? isCore(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].is_core''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  static List? farmID(dynamic response) => getJsonField(
+        response,
+        r'''$[:].farm_id''',
+        true,
+      ) as List?;
 }
 
 class UpsertLightingFixtureAllocationCall {

@@ -573,19 +573,19 @@ class _AddTowerWidgetState extends State<AddTowerWidget> {
                                               _model.towerValidation8822 =
                                                   await TowersTable().queryRows(
                                                 queryFn: (q) => q
-                                                    .eq(
+                                                    .eqOrNull(
                                                       'farm_id',
                                                       FFAppState().farmID,
                                                     )
-                                                    .eq(
+                                                    .eqOrNull(
                                                       'row_number',
-                                                      int.parse(_model
+                                                      int.tryParse(_model
                                                           .towerRowTextController
                                                           .text),
                                                     )
-                                                    .eq(
+                                                    .eqOrNull(
                                                       'tower_number_within_row',
-                                                      int.parse(_model
+                                                      int.tryParse(_model
                                                           .towerNumberTextController
                                                           .text),
                                                     ),

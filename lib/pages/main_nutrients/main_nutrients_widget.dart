@@ -224,7 +224,7 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                                                 'Plus Jakarta Sans',
                                                             color: Color(
                                                                 0xFF57636C),
-                                                            fontSize: 14.0,
+                                                            fontSize: 16.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
@@ -293,7 +293,7 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                                                 'Plus Jakarta Sans',
                                                             color: Color(
                                                                 0xFF57636C),
-                                                            fontSize: 14.0,
+                                                            fontSize: 16.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
@@ -363,11 +363,10 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                                                 'Plus Jakarta Sans',
                                                             color: Color(
                                                                 0xFF57636C),
-                                                            fontSize: 14.0,
+                                                            fontSize: 16.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
-                                                                FontWeight
-                                                                    .normal,
+                                                                FontWeight.bold,
                                                           ),
                                                     ),
                                                   ),
@@ -455,7 +454,7 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                   future: MonitoringIntelligenceViewTable()
                                       .queryRows(
                                     queryFn: (q) => q
-                                        .eq(
+                                        .eqOrNull(
                                           'severity',
                                           FFAppState().intelligenceSetting,
                                         )
@@ -729,6 +728,47 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                                       ),
                                                     ],
                                                   ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Report Date:',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        fontSize: 20.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  dateTimeFormat(
+                                                      "MEd",
+                                                      intelligenceContainerMonitoringIntelligenceViewRowList
+                                                          .first.createdAt!),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        fontSize: 20.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
                                                 ),
                                               ),
                                             ],
@@ -1016,9 +1056,8 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                                                         MonitoringIntelligenceViewRow>>(
                                                                   future: MonitoringIntelligenceViewTable()
                                                                       .querySingleRow(
-                                                                    queryFn:
-                                                                        (q) => q
-                                                                            .eq(
+                                                                    queryFn: (q) =>
+                                                                        q.eqOrNull(
                                                                       'id',
                                                                       FFAppState()
                                                                           .selectedintelligenceTower,
@@ -1178,9 +1217,8 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                                                         MonitoringIntelligenceViewRow>>(
                                                                   future: MonitoringIntelligenceViewTable()
                                                                       .querySingleRow(
-                                                                    queryFn:
-                                                                        (q) => q
-                                                                            .eq(
+                                                                    queryFn: (q) =>
+                                                                        q.eqOrNull(
                                                                       'id',
                                                                       FFAppState()
                                                                           .selectedintelligenceTower,
@@ -1305,11 +1343,11 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                         future: MonitoringTowerDashboardTable()
                                             .queryRows(
                                           queryFn: (q) => q
-                                              .eq(
+                                              .eqOrNull(
                                                 'farm_id',
                                                 FFAppState().farmID,
                                               )
-                                              .eq(
+                                              .eqOrNull(
                                                 'needs_attention',
                                                 true,
                                               ),

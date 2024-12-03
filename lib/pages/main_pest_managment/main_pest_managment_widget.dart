@@ -42,16 +42,6 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
     super.initState();
     _model = createModel(context, () => MainPestManagmentModel());
 
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.farmEmployeeList = await ProfilesTable().queryRows(
-        queryFn: (q) => q.eq(
-          'farm_id',
-          FFAppState().farmID,
-        ),
-      );
-    });
-
     _model.tabBarController = TabController(
       vsync: this,
       length: 6,
@@ -143,7 +133,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                           ),
                           FutureBuilder<List<IpmDashboardMetricsRow>>(
                             future: IpmDashboardMetricsTable().queryRows(
-                              queryFn: (q) => q.eq(
+                              queryFn: (q) => q.eqOrNull(
                                 'farm_id',
                                 FFAppState().farmID,
                               ),
@@ -224,9 +214,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                             scrollDirection: Axis.horizontal,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 0.0, 8.0, 8.0),
+                                                padding: EdgeInsets.all(5.0),
                                                 child: Container(
                                                   width: 130.0,
                                                   decoration: BoxDecoration(
@@ -241,7 +229,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(12.0),
+                                                        EdgeInsets.all(5.0),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -360,9 +348,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 8.0, 8.0),
+                                                padding: EdgeInsets.all(5.0),
                                                 child: Container(
                                                   width: 130.0,
                                                   decoration: BoxDecoration(
@@ -498,9 +484,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 16.0, 8.0),
+                                                padding: EdgeInsets.all(5.0),
                                                 child: Container(
                                                   width: 150.0,
                                                   decoration: BoxDecoration(
@@ -515,7 +499,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(12.0),
+                                                        EdgeInsets.all(5.0),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -741,7 +725,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                           _model.lightingZoneCount7755 =
                                               await LightingZonesTable()
                                                   .queryRows(
-                                            queryFn: (q) => q.eq(
+                                            queryFn: (q) => q.eqOrNull(
                                               'farm_id',
                                               FFAppState().farmID,
                                             ),
@@ -756,7 +740,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                           _model.lightingZoneCount7755Copy =
                                               await LightingZonesTable()
                                                   .queryRows(
-                                            queryFn: (q) => q.eq(
+                                            queryFn: (q) => q.eqOrNull(
                                               'farm_id',
                                               FFAppState().farmID,
                                             ),
@@ -980,7 +964,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                           future:
                                               LightingZonesTable().queryRows(
                                             queryFn: (q) => q
-                                                .eq(
+                                                .eqOrNull(
                                                   'farm_id',
                                                   FFAppState().farmID,
                                                 )
@@ -1194,11 +1178,11 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                                               child: FutureBuilder<List<LightingZoneTowersRow>>(
                                                                                 future: LightingZoneTowersTable().queryRows(
                                                                                   queryFn: (q) => q
-                                                                                      .eq(
+                                                                                      .eqOrNull(
                                                                                         'farm_id',
                                                                                         FFAppState().farmID,
                                                                                       )
-                                                                                      .eq(
+                                                                                      .eqOrNull(
                                                                                         'zone_id',
                                                                                         zonePageViewItem.id,
                                                                                       )
@@ -1374,7 +1358,8 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                         future:
                                                             LightingFixtureSummaryWithVendorTable()
                                                                 .queryRows(
-                                                          queryFn: (q) => q.eq(
+                                                          queryFn: (q) =>
+                                                              q.eqOrNull(
                                                             'zone_id',
                                                             FFAppState()
                                                                 .selectedZone,
@@ -1619,6 +1604,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
+                                                          fontSize: 18.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -1642,6 +1628,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -1666,6 +1653,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -1690,6 +1678,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -1714,6 +1703,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -1738,6 +1728,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -1941,9 +1932,14 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                               ],
                             ),
                           ),
-                          FutureBuilder<ApiCallResponse>(
-                            future: GetPestApplicationsCall.call(
-                              farmId: FFAppState().farmID,
+                          FutureBuilder<List<PestRecentApplicationsRow>>(
+                            future: PestRecentApplicationsTable().queryRows(
+                              queryFn: (q) => q
+                                  .eqOrNull(
+                                    'farm_id',
+                                    FFAppState().farmID,
+                                  )
+                                  .order('created_at', ascending: true),
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
@@ -1960,7 +1956,8 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                   ),
                                 );
                               }
-                              final containerGetPestApplicationsResponse =
+                              List<PestRecentApplicationsRow>
+                                  containerPestRecentApplicationsRowList =
                                   snapshot.data!;
 
                               return Container(
@@ -1976,14 +1973,14 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                   child: Builder(
                                     builder: (context) {
                                       final pestApplications =
-                                          containerGetPestApplicationsResponse
-                                              .jsonBody
+                                          containerPestRecentApplicationsRowList
                                               .toList();
                                       if (pestApplications.isEmpty) {
                                         return NoPestApplicationsWidget();
                                       }
 
-                                      return FlutterFlowDataTable<dynamic>(
+                                      return FlutterFlowDataTable<
+                                          PestRecentApplicationsRow>(
                                         controller:
                                             _model.waterTestsController2,
                                         data: pestApplications,
@@ -2002,56 +1999,9 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
+                                                          fontSize: 18.0,
                                                           letterSpacing: 0.0,
                                                         ),
-                                              ),
-                                            ),
-                                          ),
-                                          DataColumn2(
-                                            label: DefaultTextStyle.merge(
-                                              softWrap: true,
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Applied To',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          DataColumn2(
-                                            label: DefaultTextStyle.merge(
-                                              softWrap: true,
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Method',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
                                               ),
                                             ),
                                           ),
@@ -2073,6 +2023,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -2087,7 +2038,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                     .fromSTEB(
                                                         10.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'Application Rate',
+                                                  'Treatment Area',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelLarge
@@ -2097,6 +2048,57 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
+                                                        fontSize: 18.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          DataColumn2(
+                                            label: DefaultTextStyle.merge(
+                                              softWrap: true,
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Dose Amount',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        fontSize: 18.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          DataColumn2(
+                                            label: DefaultTextStyle.merge(
+                                              softWrap: true,
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Volume',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -2121,6 +2123,7 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -2143,11 +2146,11 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                           cells: [
                                             Text(
                                               valueOrDefault<String>(
-                                                getJsonField(
-                                                  pestApplicationsItem,
-                                                  r'''$.application_date''',
-                                                )?.toString(),
-                                                'Date',
+                                                dateTimeFormat(
+                                                    "MEd",
+                                                    pestApplicationsItem
+                                                        .applicationDate),
+                                                '01/01/1900',
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -2167,11 +2170,9 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                   .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
-                                                  getJsonField(
-                                                    pestApplicationsItem,
-                                                    r'''$.treatment_area''',
-                                                  )?.toString(),
-                                                  'Application Area',
+                                                  pestApplicationsItem
+                                                      .productName,
+                                                  'Product',
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2191,11 +2192,9 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                   .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
-                                                  getJsonField(
-                                                    pestApplicationsItem,
-                                                    r'''$.method_name''',
-                                                  )?.toString(),
-                                                  ' Method',
+                                                  pestApplicationsItem
+                                                      .treatmentArea,
+                                                  'Treatment Area',
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2212,11 +2211,10 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                   .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
-                                                  getJsonField(
-                                                    pestApplicationsItem,
-                                                    r'''$.product_name''',
-                                                  )?.toString(),
-                                                  'Product',
+                                                  pestApplicationsItem
+                                                      .doseAmount
+                                                      ?.toString(),
+                                                  'Dose Amount',
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2232,22 +2230,17 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Edit Column 5',
+                                                valueOrDefault<String>(
+                                                  pestApplicationsItem
+                                                      .volumeUnit,
+                                                  'Volume Unit',
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
-                                                          color:
-                                                              colorFromCssString(
-                                                            getJsonField(
-                                                              pestApplicationsItem,
-                                                              r'''$.severity_color''',
-                                                            ).toString(),
-                                                            defaultColor:
-                                                                Colors.black,
-                                                          ),
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -2257,10 +2250,8 @@ class _MainPestManagmentWidgetState extends State<MainPestManagmentWidget>
                                                   .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
-                                                  getJsonField(
-                                                    pestApplicationsItem,
-                                                    r'''$.user_name''',
-                                                  )?.toString(),
+                                                  pestApplicationsItem
+                                                      .applicatorName,
                                                   'Applicators Name',
                                                 ),
                                                 style:

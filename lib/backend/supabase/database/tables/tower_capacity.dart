@@ -26,4 +26,17 @@ class TowerCapacityRow extends SupabaseDataRow {
 
   int? get availablePorts => getField<int>('available_ports');
   set availablePorts(int? value) => setField<int>('available_ports', value);
+
+  String? get towerStatus => getField<String>('tower_status');
+  set towerStatus(String? value) => setField<String>('tower_status', value);
+
+  int? get plantId => getField<int>('plant_id');
+  set plantId(int? value) => setField<int>('plant_id', value);
+
+  String? get plantName => getField<String>('plant_name');
+  set plantName(String? value) => setField<String>('plant_name', value);
+
+  DateTime? get lastActionDate => getField<DateTime>('last_action_date');
+  set lastActionDate(DateTime? value) =>
+      setField<DateTime>('last_action_date', value);
 }

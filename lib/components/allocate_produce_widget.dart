@@ -205,11 +205,11 @@ class _AllocateProduceWidgetState extends State<AllocateProduceWidget> {
                               child: FutureBuilder<List<CustomerViewRow>>(
                                 future: CustomerViewTable().queryRows(
                                   queryFn: (q) => q
-                                      .eq(
+                                      .eqOrNull(
                                         'farm_id',
                                         FFAppState().farmID,
                                       )
-                                      .eq(
+                                      .eqOrNull(
                                         'active',
                                         true,
                                       ),
@@ -300,15 +300,15 @@ class _AllocateProduceWidgetState extends State<AllocateProduceWidget> {
                               child: FutureBuilder<List<CustomerViewRow>>(
                                 future: CustomerViewTable().queryRows(
                                   queryFn: (q) => q
-                                      .eq(
+                                      .eqOrNull(
                                         'farm_id',
                                         FFAppState().farmID,
                                       )
-                                      .eq(
+                                      .eqOrNull(
                                         'customer_type_name',
                                         'Restaruant',
                                       )
-                                      .eq(
+                                      .eqOrNull(
                                         'active',
                                         true,
                                       ),

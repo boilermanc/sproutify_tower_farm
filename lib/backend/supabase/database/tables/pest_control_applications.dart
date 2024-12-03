@@ -55,4 +55,16 @@ class PestControlApplicationsRow extends SupabaseDataRow {
 
   bool get safetyConfirmed => getField<bool>('safety_confirmed')!;
   set safetyConfirmed(bool value) => setField<bool>('safety_confirmed', value);
+
+  double? get doseAmount => getField<double>('dose_amount');
+  set doseAmount(double? value) => setField<double>('dose_amount', value);
+
+  String? get doseUnit => getField<String>('dose_unit');
+  set doseUnit(String? value) => setField<String>('dose_unit', value);
+
+  String? get volume => getField<String>('volume');
+  set volume(String? value) => setField<String>('volume', value);
+
+  String? get volumeUnit => getField<String>('volume_unit');
+  set volumeUnit(String? value) => setField<String>('volume_unit', value);
 }

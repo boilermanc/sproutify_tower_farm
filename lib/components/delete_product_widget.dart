@@ -120,7 +120,7 @@ class _DeleteProductWidgetState extends State<DeleteProductWidget> {
                   ),
                   FutureBuilder<List<ProductItemsRow>>(
                     future: ProductItemsTable().querySingleRow(
-                      queryFn: (q) => q.eq(
+                      queryFn: (q) => q.eqOrNull(
                         'product_id',
                         FFAppState().selectedProductId,
                       ),
@@ -154,7 +154,7 @@ class _DeleteProductWidgetState extends State<DeleteProductWidget> {
                             data: {
                               'delete_flag': true,
                             },
-                            matchingRows: (rows) => rows.eq(
+                            matchingRows: (rows) => rows.eqOrNull(
                               'product_id',
                               FFAppState().selectedProductId,
                             ),

@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -319,13 +320,18 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                               ),
                             ),
                           ),
-                          FutureBuilder<List<ExtendedFarmPlantsViewRow>>(
-                            future: ExtendedFarmPlantsViewTable().queryRows(
-                              queryFn: (q) => q.eq(
-                                'farm_id',
-                                FFAppState().farmID,
-                              ),
-                            ),
+                          FutureBuilder<List<FarmPlantsViewRow>>(
+                            future: (_model.requestCompleter ??= Completer<
+                                    List<FarmPlantsViewRow>>()
+                                  ..complete(FarmPlantsViewTable().queryRows(
+                                    queryFn: (q) => q
+                                        .eqOrNull(
+                                          'farm_id',
+                                          FFAppState().farmID,
+                                        )
+                                        .order('plant_name', ascending: true),
+                                  )))
+                                .future,
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -341,8 +347,8 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                   ),
                                 );
                               }
-                              List<ExtendedFarmPlantsViewRow>
-                                  containerExtendedFarmPlantsViewRowList =
+                              List<FarmPlantsViewRow>
+                                  containerFarmPlantsViewRowList =
                                   snapshot.data!;
 
                               return Container(
@@ -358,11 +364,11 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                   child: Builder(
                                     builder: (context) {
                                       final farmPlantList =
-                                          containerExtendedFarmPlantsViewRowList
+                                          containerFarmPlantsViewRowList
                                               .toList();
 
                                       return FlutterFlowDataTable<
-                                          ExtendedFarmPlantsViewRow>(
+                                          FarmPlantsViewRow>(
                                         controller:
                                             _model.paginatedDataTableController,
                                         data: farmPlantList,
@@ -381,7 +387,10 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
+                                                          fontSize: 18.0,
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                         ),
                                               ),
                                             ),
@@ -394,7 +403,7 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                                     .fromSTEB(
                                                         5.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'Last Planted',
+                                                  'Last Action',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelLarge
@@ -404,6 +413,7 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -420,7 +430,7 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                                     .fromSTEB(
                                                         5.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'Last Harvested',
+                                                  'Active',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelLarge
@@ -430,58 +440,7 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          DataColumn2(
-                                            label: DefaultTextStyle.merge(
-                                              softWrap: true,
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        5.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Add to Week',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          DataColumn2(
-                                            label: DefaultTextStyle.merge(
-                                              softWrap: true,
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        5.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Inventory',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -506,135 +465,202 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                                     .primaryBackground,
                                           ),
                                           cells: [
-                                            Text(
-                                              farmPlantListItem.plantName!,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                            Text(
-                                              valueOrDefault<String>(
-                                                farmPlantListItem
-                                                    .lastPlantingDate
-                                                    ?.toString(),
-                                                'No Action',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                            Text(
-                                              valueOrDefault<String>(
-                                                farmPlantListItem
-                                                    .lastHarvestingDate
-                                                    ?.toString(),
-                                                'No Action',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: FFButtonWidget(
-                                                onPressed: () {
-                                                  print('Button pressed ...');
-                                                },
-                                                text: 'Add',
-                                                options: FFButtonOptions(
-                                                  height: 40.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          24.0, 0.0, 24.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            color: Colors.white,
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                  elevation: 3.0,
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  farmPlantListItem.plantName,
+                                                  ' Plant',
                                                 ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: FFButtonWidget(
-                                                onPressed: () {
-                                                  print('Button pressed ...');
-                                                },
-                                                text: 'Inventory',
-                                                options: FFButtonOptions(
-                                                  height: 40.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          24.0, 0.0, 24.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            color: Colors.white,
-                                                            letterSpacing: 0.0,
+                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Edit Column 2',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                              child: Stack(
+                                                children: [
+                                                  if (farmPlantListItem
+                                                          .isActive ==
+                                                      false)
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        await FarmPlantsTable()
+                                                            .update(
+                                                          data: {
+                                                            'is_active': true,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows
+                                                                  .eqOrNull(
+                                                                    'farm_id',
+                                                                    FFAppState()
+                                                                        .farmID,
+                                                                  )
+                                                                  .eqOrNull(
+                                                                    'plant_id',
+                                                                    farmPlantListItem
+                                                                        .plantId,
+                                                                  ),
+                                                        );
+                                                        safeSetState(() => _model
+                                                                .requestCompleter =
+                                                            null);
+                                                        await _model
+                                                            .waitForRequestCompleted();
+                                                      },
+                                                      child: Container(
+                                                        width: 120.0,
+                                                        height: 30.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .tertiary,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      7.0),
+                                                        ),
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Text(
+                                                            'InActive',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
                                                           ),
-                                                  elevation: 3.0,
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  if (farmPlantListItem
+                                                          .isActive ==
+                                                      true)
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        await FarmPlantsTable()
+                                                            .update(
+                                                          data: {
+                                                            'is_active': false,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows
+                                                                  .eqOrNull(
+                                                                    'farm_id',
+                                                                    FFAppState()
+                                                                        .farmID,
+                                                                  )
+                                                                  .eqOrNull(
+                                                                    'plant_id',
+                                                                    farmPlantListItem
+                                                                        .plantId,
+                                                                  ),
+                                                        );
+                                                        safeSetState(() => _model
+                                                                .requestCompleter =
+                                                            null);
+                                                        await _model
+                                                            .waitForRequestCompleted();
+                                                      },
+                                                      child: Container(
+                                                        width: 120.0,
+                                                        height: 30.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondary,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      7.0),
+                                                        ),
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Text(
+                                                            'Active',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                ],
                                               ),
                                             ),
                                           ].map((c) => DataCell(c)).toList(),

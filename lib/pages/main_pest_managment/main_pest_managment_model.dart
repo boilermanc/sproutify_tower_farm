@@ -29,8 +29,6 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - Query Rows] action in main_PestManagment widget.
-  List<ProfilesRow>? farmEmployeeList;
   // Model for sideNav component.
   late SideNavModel sideNavModel;
   // State field(s) for TabBar widget.
@@ -57,7 +55,8 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
   // State field(s) for waterTests widget.
   final waterTestsController1 = FlutterFlowDataTableController<dynamic>();
   // State field(s) for waterTests widget.
-  final waterTestsController2 = FlutterFlowDataTableController<dynamic>();
+  final waterTestsController2 =
+      FlutterFlowDataTableController<PestRecentApplicationsRow>();
 
   @override
   void initState(BuildContext context) {

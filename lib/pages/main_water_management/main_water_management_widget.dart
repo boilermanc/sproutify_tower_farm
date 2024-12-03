@@ -39,7 +39,7 @@ class _MainWaterManagementWidgetState extends State<MainWaterManagementWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.farmEmployeeList = await ProfilesTable().queryRows(
-        queryFn: (q) => q.eq(
+        queryFn: (q) => q.eqOrNull(
           'farm_id',
           FFAppState().farmID,
         ),
@@ -62,7 +62,7 @@ class _MainWaterManagementWidgetState extends State<MainWaterManagementWidget>
 
     return FutureBuilder<List<WaterQualityTestDetailsRow>>(
       future: WaterQualityTestDetailsTable().queryRows(
-        queryFn: (q) => q.eq(
+        queryFn: (q) => q.eqOrNull(
           'farm_id',
           FFAppState().farmID,
         ),
@@ -301,15 +301,15 @@ class _MainWaterManagementWidgetState extends State<MainWaterManagementWidget>
                                                     WaterFlowAggregationTable()
                                                         .querySingleRow(
                                                   queryFn: (q) => q
-                                                      .eq(
+                                                      .eqOrNull(
                                                         'farm_id',
                                                         FFAppState().farmID,
                                                       )
-                                                      .eq(
+                                                      .eqOrNull(
                                                         'unit_type',
                                                         FFAppState().farmUnit,
                                                       )
-                                                      .eq(
+                                                      .eqOrNull(
                                                         'period_type',
                                                         'Daily',
                                                       ),
@@ -441,15 +441,15 @@ class _MainWaterManagementWidgetState extends State<MainWaterManagementWidget>
                                                     WaterFlowAggregationTable()
                                                         .querySingleRow(
                                                   queryFn: (q) => q
-                                                      .eq(
+                                                      .eqOrNull(
                                                         'farm_id',
                                                         FFAppState().farmID,
                                                       )
-                                                      .eq(
+                                                      .eqOrNull(
                                                         'unit_type',
                                                         FFAppState().farmUnit,
                                                       )
-                                                      .eq(
+                                                      .eqOrNull(
                                                         'period_type',
                                                         'Yearly',
                                                       ),
@@ -1085,11 +1085,11 @@ class _MainWaterManagementWidgetState extends State<MainWaterManagementWidget>
                               FutureBuilder<List<WaterFlowAggregationRow>>(
                                 future: WaterFlowAggregationTable().queryRows(
                                   queryFn: (q) => q
-                                      .eq(
+                                      .eqOrNull(
                                         'farm_id',
                                         FFAppState().farmID,
                                       )
-                                      .eq(
+                                      .eqOrNull(
                                         'unit_type',
                                         FFAppState().farmUnit,
                                       )

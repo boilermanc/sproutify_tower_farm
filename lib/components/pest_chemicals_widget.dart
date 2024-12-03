@@ -49,7 +49,7 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
       child: FutureBuilder<List<ProductPestChemicalsRow>>(
         future: ProductPestChemicalsTable().queryRows(
           queryFn: (q) => q
-              .eq(
+              .eqOrNull(
                 'farm_id',
                 FFAppState().farmID,
               )
@@ -91,11 +91,15 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
                       label: DefaultTextStyle.merge(
                         softWrap: true,
                         child: Text(
-                          'Edit Header 1',
+                          'Product',
                           style:
                               FlutterFlowTheme.of(context).labelLarge.override(
                                     fontFamily: 'Plus Jakarta Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                         ),
                       ),
@@ -104,11 +108,15 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
                       label: DefaultTextStyle.merge(
                         softWrap: true,
                         child: Text(
-                          'Edit Header 2',
+                          'Product Type',
                           style:
                               FlutterFlowTheme.of(context).labelLarge.override(
                                     fontFamily: 'Plus Jakarta Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                         ),
                       ),
@@ -117,11 +125,49 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
                       label: DefaultTextStyle.merge(
                         softWrap: true,
                         child: Text(
-                          'Edit Header 3',
+                          'Re-Entry',
                           style:
                               FlutterFlowTheme.of(context).labelLarge.override(
                                     fontFamily: 'Plus Jakarta Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                      ),
+                    ),
+                    DataColumn2(
+                      label: DefaultTextStyle.merge(
+                        softWrap: true,
+                        child: Text(
+                          'Pre-Harvest',
+                          style:
+                              FlutterFlowTheme.of(context).labelLarge.override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                      ),
+                    ),
+                    DataColumn2(
+                      label: DefaultTextStyle.merge(
+                        softWrap: true,
+                        child: Text(
+                          'OMRI Rated',
+                          style:
+                              FlutterFlowTheme.of(context).labelLarge.override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                         ),
                       ),
@@ -147,18 +193,58 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
                             ),
                       ),
                       Text(
-                        'Edit Column 2',
+                        valueOrDefault<String>(
+                          pestChemicalsItem.productTypeName,
+                          'Product Type',
+                        ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Plus Jakarta Sans',
                               letterSpacing: 0.0,
                             ),
                       ),
                       Text(
-                        'Edit Column 3',
+                        valueOrDefault<String>(
+                          pestChemicalsItem.reEntryInterval,
+                          'Re-Entry Interval',
+                        ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Plus Jakarta Sans',
                               letterSpacing: 0.0,
                             ),
+                      ),
+                      Text(
+                        valueOrDefault<String>(
+                          pestChemicalsItem.preHarvestInterval,
+                          'Pre-Harvest',
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Plus Jakarta Sans',
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                      Container(
+                        width: 70.0,
+                        height: 30.0,
+                        decoration: BoxDecoration(
+                          color: pestChemicalsItem.omriRated!
+                              ? FlutterFlowTheme.of(context).secondary
+                              : FlutterFlowTheme.of(context).tertiary,
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Text(
+                            'OMRI',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                        ),
                       ),
                     ].map((c) => DataCell(c)).toList(),
                   ),
@@ -166,7 +252,7 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
                   selectable: false,
                   hidePaginator: false,
                   showFirstLastButtons: false,
-                  headingRowHeight: 0.0,
+                  headingRowHeight: 48.0,
                   dataRowHeight: 48.0,
                   columnSpacing: 20.0,
                   headingRowColor: FlutterFlowTheme.of(context).secondaryText,

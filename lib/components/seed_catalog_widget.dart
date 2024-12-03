@@ -322,11 +322,11 @@ class _SeedCatalogWidgetState extends State<SeedCatalogWidget> {
                             child: FutureBuilder<List<PlantsRow>>(
                               future: PlantsTable().queryRows(
                                 queryFn: (q) => q
-                                    .eq(
+                                    .eqOrNull(
                                       'is_active',
                                       true,
                                     )
-                                    .eq(
+                                    .eqOrNull(
                                       'farm_id',
                                       FFAppState().farmID,
                                     )

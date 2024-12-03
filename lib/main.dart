@@ -122,7 +122,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'main_Staff': MainStaffWidget(),
-      'main_recent': MainRecentWidget(),
+      'main_RecentOrders': MainRecentOrdersWidget(),
       'main_Profile': MainProfileWidget(),
       'main_waterManagement': MainWaterManagementWidget(),
       'main_Sensors': MainSensorsWidget(),
@@ -130,14 +130,15 @@ class _NavBarPageState extends State<NavBarPage> {
       'main_vendors': MainVendorsWidget(),
       'main_PestManagment': MainPestManagmentWidget(),
       'main_Customers': MainCustomersWidget(),
-      'main_LightManegement': MainLightManegementWidget(),
+      'main_LightManagement': MainLightManagementWidget(),
       'lightingEquipment': LightingEquipmentWidget(),
       'main_Dashboard': MainDashboardWidget(),
       'main_Mechanical': MainMechanicalWidget(),
       'main_products': MainProductsWidget(),
       'main_Nutrients': MainNutrientsWidget(),
       'main_Settings': MainSettingsWidget(),
-      'main_notificationsCopy': MainNotificationsCopyWidget(),
+      'main_FarmOperations': MainFarmOperationsWidget(),
+      'main_Configuration': MainConfigurationWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -293,6 +294,14 @@ class _NavBarPageState extends State<NavBarPage> {
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.groups_sharp,
+                size: 24.0,
+              ),
+              label: '__',
+              tooltip: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_circle_outlined,
                 size: 24.0,
               ),
               label: '__',

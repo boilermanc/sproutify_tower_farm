@@ -39,7 +39,7 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.farmEmployeeList = await ProfilesTable().queryRows(
-        queryFn: (q) => q.eq(
+        queryFn: (q) => q.eqOrNull(
           'farm_id',
           FFAppState().farmID,
         ),
@@ -133,7 +133,7 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                           ),
                           FutureBuilder<List<LightDashboardMetricsRow>>(
                             future: LightDashboardMetricsTable().queryRows(
-                              queryFn: (q) => q.eq(
+                              queryFn: (q) => q.eqOrNull(
                                 'farm_id',
                                 FFAppState().farmID,
                               ),
@@ -1177,7 +1177,7 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                           FutureBuilder<List<LightZoneUsageSummaryRow>>(
                             future: LightZoneUsageSummaryTable().queryRows(
                               queryFn: (q) => q
-                                  .eq(
+                                  .eqOrNull(
                                     'farm_id',
                                     FFAppState().farmID,
                                   )
@@ -1477,7 +1477,7 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                           FutureBuilder<List<LightUsageSummaryRow>>(
                             future: LightUsageSummaryTable().queryRows(
                               queryFn: (q) => q
-                                  .eq(
+                                  .eqOrNull(
                                     'farm_id',
                                     FFAppState().farmID,
                                   )

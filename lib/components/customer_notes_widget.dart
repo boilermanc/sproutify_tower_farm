@@ -110,7 +110,7 @@ class _CustomerNotesWidgetState extends State<CustomerNotesWidget> {
               ),
               FutureBuilder<List<CustomerViewRow>>(
                 future: CustomerViewTable().querySingleRow(
-                  queryFn: (q) => q.eq(
+                  queryFn: (q) => q.eqOrNull(
                     'farm_id',
                     FFAppState().farmID,
                   ),

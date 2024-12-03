@@ -6,25 +6,25 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'main_recent_model.dart';
-export 'main_recent_model.dart';
+import 'main_recent_orders_model.dart';
+export 'main_recent_orders_model.dart';
 
-class MainRecentWidget extends StatefulWidget {
-  const MainRecentWidget({super.key});
+class MainRecentOrdersWidget extends StatefulWidget {
+  const MainRecentOrdersWidget({super.key});
 
   @override
-  State<MainRecentWidget> createState() => _MainRecentWidgetState();
+  State<MainRecentOrdersWidget> createState() => _MainRecentOrdersWidgetState();
 }
 
-class _MainRecentWidgetState extends State<MainRecentWidget> {
-  late MainRecentModel _model;
+class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget> {
+  late MainRecentOrdersModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MainRecentModel());
+    _model = createModel(context, () => MainRecentOrdersModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }

@@ -110,7 +110,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
               child: FutureBuilder<List<SeedInventoryViewRow>>(
                 future: SeedInventoryViewTable().queryRows(
-                  queryFn: (q) => q.eq(
+                  queryFn: (q) => q.eqOrNull(
                     'farm_id',
                     FFAppState().farmID,
                   ),

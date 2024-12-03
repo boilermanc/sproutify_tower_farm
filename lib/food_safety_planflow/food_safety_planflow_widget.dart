@@ -91,7 +91,7 @@ class _FoodSafetyPlanflowWidgetState extends State<FoodSafetyPlanflowWidget> {
               Expanded(
                 child: FutureBuilder<List<FarmsRow>>(
                   future: FarmsTable().querySingleRow(
-                    queryFn: (q) => q.eq(
+                    queryFn: (q) => q.eqOrNull(
                       'id',
                       FFAppState().farmID,
                     ),
@@ -326,11 +326,11 @@ class _FoodSafetyPlanflowWidgetState extends State<FoodSafetyPlanflowWidget> {
                                       future: ViewProfileRolesTable()
                                           .querySingleRow(
                                         queryFn: (q) => q
-                                            .eq(
+                                            .eqOrNull(
                                               'farm_id',
                                               FFAppState().farmID,
                                             )
-                                            .contains(
+                                            .containsOrNull(
                                               'roles',
                                               '{${'GAP Manager'}}',
                                             ),
@@ -914,7 +914,7 @@ class _FoodSafetyPlanflowWidgetState extends State<FoodSafetyPlanflowWidget> {
                                                             .text),
                                                   },
                                                   matchingRows: (rows) =>
-                                                      rows.eq(
+                                                      rows.eqOrNull(
                                                     'id',
                                                     FFAppState().farmID,
                                                   ),

@@ -367,16 +367,28 @@ class FFAppState extends ChangeNotifier {
     _taskInsertRoleID = value;
   }
 
-  int _selectSpacerCount = 0;
-  int get selectSpacerCount => _selectSpacerCount;
-  set selectSpacerCount(int value) {
-    _selectSpacerCount = value;
-  }
-
   int _selectPlantCatalogQuantity = 0;
   int get selectPlantCatalogQuantity => _selectPlantCatalogQuantity;
   set selectPlantCatalogQuantity(int value) {
     _selectPlantCatalogQuantity = value;
+  }
+
+  bool _togglePlantCatalog = false;
+  bool get togglePlantCatalog => _togglePlantCatalog;
+  set togglePlantCatalog(bool value) {
+    _togglePlantCatalog = value;
+  }
+
+  int _plantID = 0;
+  int get plantID => _plantID;
+  set plantID(int value) {
+    _plantID = value;
+  }
+
+  int _spacerPlantCount = 44;
+  int get spacerPlantCount => _spacerPlantCount;
+  set spacerPlantCount(int value) {
+    _spacerPlantCount = value;
   }
 }
 

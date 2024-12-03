@@ -51,7 +51,7 @@ class _TowerComponentWidgetState extends State<TowerComponentWidget> {
       child: FutureBuilder<List<TowerViewRow>>(
         future: TowerViewTable().queryRows(
           queryFn: (q) => q
-              .eq(
+              .eqOrNull(
                 'farm_id',
                 FFAppState().farmID,
               )

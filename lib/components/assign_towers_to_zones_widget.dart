@@ -94,7 +94,7 @@ class _AssignTowersToZonesWidgetState extends State<AssignTowersToZonesWidget> {
                                 List<LightingZonesWithControllerRow>>(
                               future:
                                   LightingZonesWithControllerTable().queryRows(
-                                queryFn: (q) => q.eq(
+                                queryFn: (q) => q.eqOrNull(
                                   'farm_id',
                                   FFAppState().farmID,
                                 ),
@@ -286,7 +286,8 @@ class _AssignTowersToZonesWidgetState extends State<AssignTowersToZonesWidget> {
                                                           List<TowerViewRow>>(
                                                         future: TowerViewTable()
                                                             .queryRows(
-                                                          queryFn: (q) => q.eq(
+                                                          queryFn: (q) =>
+                                                              q.eqOrNull(
                                                             'farm_id',
                                                             FFAppState().farmID,
                                                           ),

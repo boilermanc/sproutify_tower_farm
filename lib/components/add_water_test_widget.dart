@@ -717,7 +717,7 @@ class _AddWaterTestWidgetState extends State<AddWaterTestWidget> {
                     children: [
                       FutureBuilder<List<VendorsRow>>(
                         future: VendorsTable().queryRows(
-                          queryFn: (q) => q.eq(
+                          queryFn: (q) => q.eqOrNull(
                             'farm_id',
                             FFAppState().farmID,
                           ),

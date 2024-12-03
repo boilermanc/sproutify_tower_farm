@@ -195,9 +195,9 @@ class _LightScheduleDataTableWidgetState
                         'on_time': supaSerialize<PostgresTime>(
                             PostgresTime(_model.datePicked1)),
                       },
-                      matchingRows: (rows) => rows.eq(
+                      matchingRows: (rows) => rows.eqOrNull(
                         'id',
-                        dataTableScheduleItem.scheduleId!,
+                        dataTableScheduleItem.scheduleId,
                       ),
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -281,9 +281,9 @@ class _LightScheduleDataTableWidgetState
                         'off_time': supaSerialize<PostgresTime>(
                             PostgresTime(_model.datePicked2)),
                       },
-                      matchingRows: (rows) => rows.eq(
+                      matchingRows: (rows) => rows.eqOrNull(
                         'id',
-                        dataTableScheduleItem.scheduleId!,
+                        dataTableScheduleItem.scheduleId,
                       ),
                     );
                     ScaffoldMessenger.of(context).showSnackBar(

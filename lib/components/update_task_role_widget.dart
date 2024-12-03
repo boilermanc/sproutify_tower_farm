@@ -166,9 +166,9 @@ class _UpdateTaskRoleWidgetState extends State<UpdateTaskRoleWidget> {
                                                         TaskRolesListTable()
                                                             .queryRows(
                                                       queryFn: (q) => q
-                                                          .eq(
+                                                          .eqOrNull(
                                                             'task_id',
-                                                            widget!.taskID!,
+                                                            widget!.taskID,
                                                           )
                                                           .order('role_name',
                                                               ascending: true),
@@ -282,9 +282,9 @@ class _UpdateTaskRoleWidgetState extends State<UpdateTaskRoleWidget> {
                                                                         await TaskRolesTable()
                                                                             .delete(
                                                                           matchingRows: (rows) =>
-                                                                              rows.eq(
+                                                                              rows.eqOrNull(
                                                                             'task_id',
-                                                                            widget!.taskID!,
+                                                                            widget!.taskID,
                                                                           ),
                                                                         );
                                                                         await TaskRolesTable()

@@ -41,4 +41,7 @@ class TowersRow extends SupabaseDataRow {
 
   bool? get hasCamera => getField<bool>('has_camera');
   set hasCamera(bool? value) => setField<bool>('has_camera', value);
+
+  bool? get isSpacerTray => getField<bool>('is_spacer_tray');
+  set isSpacerTray(bool? value) => setField<bool>('is_spacer_tray', value);
 }

@@ -1667,7 +1667,7 @@ class _AddPestProductDetailsWidgetState
                                                                   DosingUnitsTable()
                                                                       .queryRows(
                                                                 queryFn: (q) =>
-                                                                    q.eq(
+                                                                    q.eqOrNull(
                                                                   'unit_type',
                                                                   'amount',
                                                                 ),
@@ -1997,7 +1997,7 @@ class _AddPestProductDetailsWidgetState
                                                                   DosingUnitsTable()
                                                                       .queryRows(
                                                                 queryFn: (q) =>
-                                                                    q.eq(
+                                                                    q.eqOrNull(
                                                                   'unit_type',
                                                                   'volume',
                                                                 ),

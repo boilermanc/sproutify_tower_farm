@@ -185,9 +185,10 @@ class _UpdateEmployeeRoleWidgetState extends State<UpdateEmployeeRoleWidget> {
                                                     ..complete(
                                                         ProfileRolesListTable()
                                                             .queryRows(
-                                                      queryFn: (q) => q.eq(
+                                                      queryFn: (q) =>
+                                                          q.eqOrNull(
                                                         'profile_id',
-                                                        widget!.employeeID!,
+                                                        widget!.employeeID,
                                                       ),
                                                     )))
                                               .future,
@@ -296,13 +297,13 @@ class _UpdateEmployeeRoleWidgetState extends State<UpdateEmployeeRoleWidget> {
                                                                           await ProfileRolesTable()
                                                                               .delete(
                                                                             matchingRows: (rows) => rows
-                                                                                .eq(
+                                                                                .eqOrNull(
                                                                                   'profile_id',
-                                                                                  widget!.employeeID!,
+                                                                                  widget!.employeeID,
                                                                                 )
-                                                                                .eq(
+                                                                                .eqOrNull(
                                                                                   'role_id',
-                                                                                  rolesListItem.roleId!,
+                                                                                  rolesListItem.roleId,
                                                                                 ),
                                                                           );
                                                                         } else {

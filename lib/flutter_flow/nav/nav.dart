@@ -98,11 +98,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : MainStaffWidget(),
         ),
         FFRoute(
-          name: 'main_recent',
-          path: '/mainRecent',
+          name: 'main_RecentOrders',
+          path: '/mainRecentOrders',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_recent')
-              : MainRecentWidget(),
+              ? NavBarPage(initialPage: 'main_RecentOrders')
+              : MainRecentOrdersWidget(),
         ),
         FFRoute(
           name: 'main_Profile',
@@ -201,11 +201,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SignUpFlowFinalWidget(),
         ),
         FFRoute(
-          name: 'main_LightManegement',
+          name: 'main_LightManagement',
           path: '/mainLIghtManagement',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_LightManegement')
-              : MainLightManegementWidget(
+              ? NavBarPage(initialPage: 'main_LightManagement')
+              : MainLightManagementWidget(
                   selectedFixtureQuantity: params.getParam(
                     'selectedFixtureQuantity',
                     ParamType.int,
@@ -253,11 +253,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : MainSettingsWidget(),
         ),
         FFRoute(
-          name: 'main_notificationsCopy',
-          path: '/mainNotificationsCopy',
+          name: 'main_FarmOperations',
+          path: '/mainFarmOperations',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_notificationsCopy')
-              : MainNotificationsCopyWidget(),
+              ? NavBarPage(initialPage: 'main_FarmOperations')
+              : MainFarmOperationsWidget(),
+        ),
+        FFRoute(
+          name: 'main_Configuration',
+          path: '/mainConfiguration',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'main_Configuration')
+              : MainConfigurationWidget(),
+        ),
+        FFRoute(
+          name: 'chat_ai_Screen',
+          path: '/chatAiScreen',
+          builder: (context, params) => ChatAiScreenWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

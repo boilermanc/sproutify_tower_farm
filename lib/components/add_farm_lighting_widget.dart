@@ -139,7 +139,7 @@ class _AddFarmLightingWidgetState extends State<AddFarmLightingWidget> {
                             EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                         child: FutureBuilder<List<FixturesRow>>(
                           future: FixturesTable().queryRows(
-                            queryFn: (q) => q.eq(
+                            queryFn: (q) => q.eqOrNull(
                               'farm_id',
                               FFAppState().farmID,
                             ),
@@ -378,11 +378,11 @@ class _AddFarmLightingWidgetState extends State<AddFarmLightingWidget> {
                         child: FutureBuilder<List<ControllersRow>>(
                           future: ControllersTable().queryRows(
                             queryFn: (q) => q
-                                .eq(
+                                .eqOrNull(
                                   'farm_id',
                                   FFAppState().farmID,
                                 )
-                                .eq(
+                                .eqOrNull(
                                   'is_active',
                                   true,
                                 ),

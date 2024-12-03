@@ -187,7 +187,7 @@ class _SignUpFlowFinalWidgetState extends State<SignUpFlowFinalWidget> {
                                       'number_of_towers':
                                           FFAppState().numberOfTowers,
                                     },
-                                    matchingRows: (rows) => rows.eq(
+                                    matchingRows: (rows) => rows.eqOrNull(
                                       'id',
                                       FFAppState().farmID,
                                     ),
@@ -196,7 +196,7 @@ class _SignUpFlowFinalWidgetState extends State<SignUpFlowFinalWidget> {
                                     data: {
                                       'farm_id': FFAppState().farmID,
                                     },
-                                    matchingRows: (rows) => rows.eq(
+                                    matchingRows: (rows) => rows.eqOrNull(
                                       'id',
                                       currentUserUid,
                                     ),

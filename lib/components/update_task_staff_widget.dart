@@ -165,9 +165,10 @@ class _UpdateTaskStaffWidgetState extends State<UpdateTaskStaffWidget> {
                                                     ..complete(
                                                         TaskUsersListTable()
                                                             .queryRows(
-                                                      queryFn: (q) => q.eq(
+                                                      queryFn: (q) =>
+                                                          q.eqOrNull(
                                                         'task_id',
-                                                        widget!.taskID!,
+                                                        widget!.taskID,
                                                       ),
                                                     )))
                                               .future,
@@ -276,13 +277,13 @@ class _UpdateTaskStaffWidgetState extends State<UpdateTaskStaffWidget> {
                                                                           await TaskUsersTable()
                                                                               .delete(
                                                                             matchingRows: (rows) => rows
-                                                                                .eq(
+                                                                                .eqOrNull(
                                                                                   'task_id',
-                                                                                  widget!.taskID!,
+                                                                                  widget!.taskID,
                                                                                 )
-                                                                                .eq(
+                                                                                .eqOrNull(
                                                                                   'user_id',
-                                                                                  usersListItem.profileId!,
+                                                                                  usersListItem.profileId,
                                                                                 ),
                                                                           );
                                                                         } else {

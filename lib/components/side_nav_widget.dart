@@ -384,17 +384,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               width: double.infinity,
                               height: 44.0,
                               decoration: BoxDecoration(
-                                color: () {
-                                  if (_model.mouseRegion2Hovered!) {
-                                    return FlutterFlowTheme.of(context)
-                                        .secondaryBackground;
-                                  } else if (widget!.selectedNav == 2) {
-                                    return FlutterFlowTheme.of(context).accent1;
-                                  } else {
-                                    return FlutterFlowTheme.of(context)
-                                        .primaryBackground;
-                                  }
-                                }(),
+                                color: FlutterFlowTheme.of(context).accent1,
                                 borderRadius: BorderRadius.circular(12.0),
                                 shape: BoxShape.rectangle,
                               ),
@@ -456,7 +446,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_notificationsCopy',
+                                'main_FarmOperations',
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -580,7 +570,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_recent',
+                                'main_RecentOrders',
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -1198,7 +1188,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             onTap: () async {
                               _model.checkProduct8734 =
                                   await ProductItemsTable().queryRows(
-                                queryFn: (q) => q.eq(
+                                queryFn: (q) => q.eqOrNull(
                                   'farm_id',
                                   FFAppState().farmID,
                                 ),
@@ -1404,7 +1394,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'farmConfig',
+                                'main_Configuration',
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,

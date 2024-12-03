@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'main_plants_widget.dart' show MainPlantsWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,6 +16,8 @@ class MainPlantsModel extends FlutterFlowModel<MainPlantsWidget> {
   ///  Local state fields for this page.
 
   int selectedPage = 8;
+
+  bool isActive = true;
 
   ///  State fields for stateful widgets in this page.
 
@@ -26,7 +29,8 @@ class MainPlantsModel extends FlutterFlowModel<MainPlantsWidget> {
   String? Function(BuildContext, String?)? textControllerValidator;
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController =
-      FlutterFlowDataTableController<ExtendedFarmPlantsViewRow>();
+      FlutterFlowDataTableController<FarmPlantsViewRow>();
+  Completer<List<FarmPlantsViewRow>>? requestCompleter;
 
   @override
   void initState(BuildContext context) {
@@ -40,5 +44,21 @@ class MainPlantsModel extends FlutterFlowModel<MainPlantsWidget> {
     textController?.dispose();
 
     paginatedDataTableController.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

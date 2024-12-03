@@ -199,7 +199,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                       0.0, 8.0, 0.0, 8.0),
                                   child: FutureBuilder<List<RolesRow>>(
                                     future: RolesTable().queryRows(
-                                      queryFn: (q) => q.eq(
+                                      queryFn: (q) => q.eqOrNull(
                                         'role_type',
                                         'FARM_ROLES',
                                       ),
@@ -389,7 +389,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                           ),
                           FutureBuilder<List<ViewProfileRolesRow>>(
                             future: ViewProfileRolesTable().queryRows(
-                              queryFn: (q) => q.eq(
+                              queryFn: (q) => q.eqOrNull(
                                 'farm_id',
                                 FFAppState().farmID,
                               ),

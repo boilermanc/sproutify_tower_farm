@@ -56,4 +56,13 @@ class TaskUserTaskListViewRow extends SupabaseDataRow {
 
   String? get displayColor => getField<String>('display_color');
   set displayColor(String? value) => setField<String>('display_color', value);
+
+  String? get displayBackgroundColor =>
+      getField<String>('display_background_color');
+  set displayBackgroundColor(String? value) =>
+      setField<String>('display_background_color', value);
+
+  String? get towerIdentifier => getField<String>('tower_identifier');
+  set towerIdentifier(String? value) =>
+      setField<String>('tower_identifier', value);
 }

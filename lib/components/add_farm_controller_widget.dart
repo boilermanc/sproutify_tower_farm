@@ -118,7 +118,7 @@ class _AddFarmControllerWidgetState extends State<AddFarmControllerWidget> {
                             EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                         child: FutureBuilder<List<ControllerTypeViewRow>>(
                           future: ControllerTypeViewTable().queryRows(
-                            queryFn: (q) => q.eq(
+                            queryFn: (q) => q.eqOrNull(
                               'controller_type',
                               'Lighting Controller',
                             ),

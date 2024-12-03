@@ -1247,7 +1247,8 @@ class _SignUpFlowWidgetState extends State<SignUpFlowWidget> {
                                                         .towerNumberTextController
                                                         .text),
                                               },
-                                              matchingRows: (rows) => rows.eq(
+                                              matchingRows: (rows) =>
+                                                  rows.eqOrNull(
                                                 'id',
                                                 FFAppState().farmID,
                                               ),

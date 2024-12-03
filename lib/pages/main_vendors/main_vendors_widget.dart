@@ -50,7 +50,7 @@ class _MainVendorsWidgetState extends State<MainVendorsWidget> {
     return FutureBuilder<List<VendorsRow>>(
       future: VendorsTable().queryRows(
         queryFn: (q) => q
-            .eq(
+            .eqOrNull(
               'farm_id',
               FFAppState().farmID,
             )

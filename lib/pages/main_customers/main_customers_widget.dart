@@ -108,7 +108,7 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                           ),
                           FutureBuilder<List<CustomerCareSayingsRow>>(
                             future: CustomerCareSayingsTable().querySingleRow(
-                              queryFn: (q) => q.eq(
+                              queryFn: (q) => q.eqOrNull(
                                 'date',
                                 supaSerialize<DateTime>(getCurrentTimestamp),
                               ),
@@ -359,7 +359,7 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                           ),
                           FutureBuilder<List<CustomerViewRow>>(
                             future: CustomerViewTable().queryRows(
-                              queryFn: (q) => q.eq(
+                              queryFn: (q) => q.eqOrNull(
                                 'farm_id',
                                 FFAppState().farmID,
                               ),

@@ -6,6 +6,7 @@ import '/components/select_fixture_quantity_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/components/tower_zone_grid_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -13,7 +14,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:math';
-import 'main_light_manegement_widget.dart' show MainLightManegementWidget;
+import 'main_light_management_widget.dart' show MainLightManagementWidget;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
@@ -23,8 +24,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class MainLightManegementModel
-    extends FlutterFlowModel<MainLightManegementWidget> {
+class MainLightManagementModel
+    extends FlutterFlowModel<MainLightManagementWidget> {
   ///  Local state fields for this page.
 
   List<String> draggedTowers = [];
@@ -49,9 +50,9 @@ class MainLightManegementModel
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - Query Rows] action in main_LightManegement widget.
+  // Stores action output result for [Backend Call - Query Rows] action in main_LightManagement widget.
   List<ProfilesRow>? farmEmployeeList;
-  // Stores action output result for [Backend Call - Query Rows] action in main_LightManegement widget.
+  // Stores action output result for [Backend Call - Query Rows] action in main_LightManagement widget.
   List<TowerViewRow>? towerIdentifierList4433;
   // Model for sideNav component.
   late SideNavModel sideNavModel;
@@ -60,9 +61,6 @@ class MainLightManegementModel
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
-  // State field(s) for PaginatedDataTable widget.
-  final paginatedDataTableController1 =
-      FlutterFlowDataTableController<LatestLightStatusRow>();
   // Stores action output result for [Backend Call - Query Rows] action in Tab widget.
   List<LightingZonesRow>? lightingZoneCount7755;
   // State field(s) for PageView widget.
@@ -103,7 +101,7 @@ class MainLightManegementModel
   TextEditingController? descriptionTextController;
   String? Function(BuildContext, String?)? descriptionTextControllerValidator;
   // State field(s) for PaginatedDataTable widget.
-  final paginatedDataTableController2 =
+  final paginatedDataTableController =
       FlutterFlowDataTableController<LightingFixtureSummaryWithVendorRow>();
   // State field(s) for waterTests widget.
   final waterTestsController =
@@ -118,14 +116,13 @@ class MainLightManegementModel
   void dispose() {
     sideNavModel.dispose();
     tabBarController?.dispose();
-    paginatedDataTableController1.dispose();
     zoneNameFocusNode?.dispose();
     zoneNameTextController?.dispose();
 
     descriptionFocusNode?.dispose();
     descriptionTextController?.dispose();
 
-    paginatedDataTableController2.dispose();
+    paginatedDataTableController.dispose();
     waterTestsController.dispose();
   }
 }

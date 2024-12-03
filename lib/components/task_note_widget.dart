@@ -239,13 +239,13 @@ class _TaskNoteWidgetState extends State<TaskNoteWidget> {
                                     _model.taskNoteFieldTextController.text,
                               },
                               matchingRows: (rows) => rows
-                                  .eq(
+                                  .eqOrNull(
                                     'farm_id',
                                     FFAppState().farmID,
                                   )
-                                  .eq(
+                                  .eqOrNull(
                                     'task_id',
-                                    widget!.taskID!,
+                                    widget!.taskID,
                                   ),
                             );
                             ScaffoldMessenger.of(context).showSnackBar(

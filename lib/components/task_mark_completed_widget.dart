@@ -179,13 +179,13 @@ class _TaskMarkCompletedWidgetState extends State<TaskMarkCompletedWidget> {
                                 'status': 'completed',
                               },
                               matchingRows: (rows) => rows
-                                  .eq(
+                                  .eqOrNull(
                                     'farm_id',
                                     FFAppState().farmID,
                                   )
-                                  .eq(
+                                  .eqOrNull(
                                     'task_id',
-                                    widget!.taskID!,
+                                    widget!.taskID,
                                   ),
                             );
                             ScaffoldMessenger.of(context).showSnackBar(

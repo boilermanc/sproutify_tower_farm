@@ -346,9 +346,9 @@ class _SelectFixtureQuantityWidgetState
                                 _model.getCurrentQuantity8877 =
                                     await LightingFixtureAllocationsTable()
                                         .queryRows(
-                                  queryFn: (q) => q.eq(
+                                  queryFn: (q) => q.eqOrNull(
                                     'zone_id',
-                                    widget!.zoneID!,
+                                    widget!.zoneID,
                                   ),
                                 );
                                 FFAppState().currentQuantity = _model
@@ -363,9 +363,9 @@ class _SelectFixtureQuantityWidgetState
                                   data: {
                                     'quantity': _model.updateAmount7766,
                                   },
-                                  matchingRows: (rows) => rows.eq(
+                                  matchingRows: (rows) => rows.eqOrNull(
                                     'zone_id',
-                                    widget!.zoneID!,
+                                    widget!.zoneID,
                                   ),
                                 );
                                 Navigator.pop(context);

@@ -53,6 +53,9 @@ class TaskListViewRow extends SupabaseDataRow {
   DateTime? get updatedAt => getField<DateTime>('updated_at');
   set updatedAt(DateTime? value) => setField<DateTime>('updated_at', value);
 
-  String? get displayColor => getField<String>('display_color');
-  set displayColor(String? value) => setField<String>('display_color', value);
+  String? get colorCode => getField<String>('color_code');
+  set colorCode(String? value) => setField<String>('color_code', value);
+
+  String? get bgColorCode => getField<String>('bg_color_code');
+  set bgColorCode(String? value) => setField<String>('bg_color_code', value);
 }

@@ -234,11 +234,11 @@ class _AddSeedsWidgetState extends State<AddSeedsWidget> {
                         child: FutureBuilder<List<VendorsWithTypesRow>>(
                           future: VendorsWithTypesTable().queryRows(
                             queryFn: (q) => q
-                                .eq(
+                                .eqOrNull(
                                   'farm_id',
                                   FFAppState().farmID,
                                 )
-                                .eq(
+                                .eqOrNull(
                                   'vendor_type_name',
                                   'Seeds',
                                 ),

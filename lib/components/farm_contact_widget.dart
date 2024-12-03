@@ -74,7 +74,7 @@ class _FarmContactWidgetState extends State<FarmContactWidget> {
           ),
           FutureBuilder<List<FarmsRow>>(
             future: FarmsTable().querySingleRow(
-              queryFn: (q) => q.eq(
+              queryFn: (q) => q.eqOrNull(
                 'id',
                 FFAppState().farmID,
               ),

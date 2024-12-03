@@ -28,4 +28,7 @@ class FarmPlantsRow extends SupabaseDataRow {
 
   String get createdBy => getField<String>('created_by')!;
   set createdBy(String value) => setField<String>('created_by', value);
+
+  bool get isActive => getField<bool>('is_active')!;
+  set isActive(bool value) => setField<bool>('is_active', value);
 }

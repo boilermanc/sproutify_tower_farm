@@ -76,7 +76,7 @@ class _SelectSpacerCountWidgetState extends State<SelectSpacerCountWidget> {
           count: _model.countControllerValue ??= 0,
           updateCount: (count) async {
             safeSetState(() => _model.countControllerValue = count);
-            FFAppState().selectSpacerCount = FFAppState().selectSpacerCount + 1;
+            FFAppState().spacerPlantCount = FFAppState().spacerPlantCount + 1;
             safeSetState(() {});
           },
           stepSize: 1,

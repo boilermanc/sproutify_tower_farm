@@ -354,9 +354,9 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                         future:
                                                                             TaskTypeHierarchyViewTable().queryRows(
                                                                           queryFn: (q) =>
-                                                                              q.eq(
+                                                                              q.eqOrNull(
                                                                             'main_category_id',
-                                                                            columnTaskMainCategoriesViewRow.mainCategoryId!,
+                                                                            columnTaskMainCategoriesViewRow.mainCategoryId,
                                                                           ),
                                                                         ),
                                                                         builder:

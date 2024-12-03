@@ -158,9 +158,9 @@ class _InsertTaskStaffWidgetState extends State<InsertTaskStaffWidget> {
                                         FutureBuilder<List<TaskUsersListRow>>(
                                           future:
                                               TaskUsersListTable().queryRows(
-                                            queryFn: (q) => q.eq(
+                                            queryFn: (q) => q.eqOrNull(
                                               'task_id',
-                                              widget!.taskID!,
+                                              widget!.taskID,
                                             ),
                                           ),
                                           builder: (context, snapshot) {

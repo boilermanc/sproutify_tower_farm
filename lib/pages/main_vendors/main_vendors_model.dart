@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 class MainVendorsModel extends FlutterFlowModel<MainVendorsWidget> {
   ///  Local state fields for this page.
 
-  int selectedPage = 2;
+  int selectedPage = 12;
 
   ///  State fields for stateful widgets in this page.
 

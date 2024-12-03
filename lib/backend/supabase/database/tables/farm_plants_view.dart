@@ -23,4 +23,7 @@ class FarmPlantsViewRow extends SupabaseDataRow {
 
   String? get plantName => getField<String>('plant_name');
   set plantName(String? value) => setField<String>('plant_name', value);
+
+  bool? get isActive => getField<bool>('is_active');
+  set isActive(bool? value) => setField<bool>('is_active', value);
 }
