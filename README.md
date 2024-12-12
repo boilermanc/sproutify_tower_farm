@@ -5,3 +5,4 @@ darker blue #BED5F8
 error #FF5963
 warning #EE8B60
 success #39D2C0
+ligth green - #22c55e
