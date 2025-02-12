@@ -1,11 +1,7 @@
 import '/backend/supabase/supabase.dart';
-import '/components/assign_towers_to_zones_copy_widget.dart';
-import '/components/light_schedule_data_table_widget.dart';
-import '/components/no_lighting_widget.dart';
-import '/components/select_fixture_quantity_widget.dart';
 import '/components/side_nav_widget.dart';
-import '/components/tower_zone_grid_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -13,7 +9,15 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/lighting/assign_towers_to_zones_copy/assign_towers_to_zones_copy_widget.dart';
+import '/lighting/edit_zone/edit_zone_widget.dart';
+import '/lighting/fixture_allocation_counter/fixture_allocation_counter_widget.dart';
+import '/lighting/light_schedule_data_table/light_schedule_data_table_widget.dart';
+import '/lighting/no_lighting/no_lighting_widget.dart';
+import '/lighting/tower_zone_grid/tower_zone_grid_widget.dart';
 import 'dart:math';
+import 'dart:ui';
+import 'dart:async';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
@@ -64,7 +68,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
         ),
       );
       _model.addToDraggableTowers(
-          _model.towerIdentifierList4433!.first.towerIdentifier!);
+          _model.towerIdentifierList4433!.firstOrNull!.towerIdentifier!);
       safeSetState(() {});
     });
 
@@ -94,7 +98,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -374,8 +381,8 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                 valueOrDefault<
                                                                     String>(
                                                                   containerLightDashboardMetricsRowList
-                                                                      .first
-                                                                      .activeFixtures
+                                                                      .firstOrNull
+                                                                      ?.activeFixtures
                                                                       ?.toString(),
                                                                   '0',
                                                                 ),
@@ -437,8 +444,8 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                   valueOrDefault<
                                                                       String>(
                                                                     containerLightDashboardMetricsRowList
-                                                                        .first
-                                                                        .totalFixtures
+                                                                        .firstOrNull
+                                                                        ?.totalFixtures
                                                                         ?.toString(),
                                                                     '0',
                                                                   ),
@@ -552,8 +559,8 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                     valueOrDefault<
                                                                         String>(
                                                                       containerLightDashboardMetricsRowList
-                                                                          .first
-                                                                          .currentMonthKwh
+                                                                          .firstOrNull
+                                                                          ?.currentMonthKwh
                                                                           ?.toString(),
                                                                       '0',
                                                                     ),
@@ -629,8 +636,8 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                     valueOrDefault<
                                                                         String>(
                                                                       containerLightDashboardMetricsRowList
-                                                                          .first
-                                                                          .energyChangePct
+                                                                          .firstOrNull
+                                                                          ?.energyChangePct
                                                                           ?.toString(),
                                                                       '0',
                                                                     ),
@@ -816,8 +823,8 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                 valueOrDefault<
                                                                     String>(
                                                                   containerLightDashboardMetricsRowList
-                                                                      .first
-                                                                      .currentMonthCost
+                                                                      .firstOrNull
+                                                                      ?.currentMonthCost
                                                                       .toString(),
                                                                   '0',
                                                                 ),
@@ -886,8 +893,8 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                 valueOrDefault<
                                                                     String>(
                                                                   containerLightDashboardMetricsRowList
-                                                                      .first
-                                                                      .costPerKwh
+                                                                      .firstOrNull
+                                                                      ?.costPerKwh
                                                                       ?.toString(),
                                                                   '0',
                                                                 ),
@@ -1010,12 +1017,8 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                 children: [
                                   Align(
                                     alignment: Alignment(0.0, 0),
-                                    child: TabBar(
-                                      labelColor: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      unselectedLabelColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                    child: FlutterFlowButtonTabBar(
+                                      useToggleButtonStyle: true,
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
@@ -1029,8 +1032,25 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                 fontFamily: 'Plus Jakarta Sans',
                                                 letterSpacing: 0.0,
                                               ),
-                                      indicatorColor:
-                                          FlutterFlowTheme.of(context).primary,
+                                      labelColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      unselectedLabelColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                      backgroundColor: Color(0xFFE5F3FD),
+                                      unselectedBackgroundColor:
+                                          FlutterFlowTheme.of(context).info,
+                                      borderColor: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      unselectedBorderColor:
+                                          FlutterFlowTheme.of(context)
+                                              .alternate,
+                                      borderWidth: 2.0,
+                                      borderRadius: 0.0,
+                                      elevation: 0.0,
+                                      buttonMargin:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              8.0, 0.0, 8.0, 0.0),
                                       tabs: [
                                         Tab(
                                           text: 'Dashboard',
@@ -1039,7 +1059,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                           text: 'Schedule',
                                         ),
                                         Tab(
-                                          text: 'Towers',
+                                          text: 'Tower LIght Zones',
                                         ),
                                         Tab(
                                           text: 'Zones',
@@ -1384,454 +1404,468 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                             ],
                                           ),
                                         ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        1.0, 0.0, 0.0, 0.0),
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  height: 350.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                  ),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Column(
+                                        Padding(
+                                          padding: EdgeInsets.all(5.0),
+                                          child: Container(
+                                            width: double.infinity,
+                                            height: 350.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      5.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Row(
                                                             mainAxisSize:
                                                                 MainAxisSize
                                                                     .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
                                                             children: [
                                                               Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
+                                                                            10.0,
                                                                             0.0,
-                                                                            5.0,
                                                                             0.0,
                                                                             0.0),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          Container(
-                                                                        width:
-                                                                            300.0,
-                                                                        height:
-                                                                            50.0,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).alternate,
-                                                                          borderRadius:
-                                                                              BorderRadius.only(
-                                                                            bottomLeft:
-                                                                                Radius.circular(10.0),
-                                                                            bottomRight:
-                                                                                Radius.circular(10.0),
-                                                                            topLeft:
-                                                                                Radius.circular(10.0),
-                                                                            topRight:
-                                                                                Radius.circular(0.0),
-                                                                          ),
-                                                                        ),
-                                                                        child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.spaceBetween,
-                                                                          children: [
-                                                                            Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                                                              child: Text(
-                                                                                'Master Control',
-                                                                                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                      fontFamily: 'Outfit',
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                            Stack(
-                                                                              children: [
-                                                                                FFButtonWidget(
-                                                                                  onPressed: () {
-                                                                                    print('Button pressed ...');
-                                                                                  },
-                                                                                  text: 'Button',
-                                                                                  options: FFButtonOptions(
-                                                                                    height: 40.0,
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                                                                    iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                          fontFamily: 'Plus Jakarta Sans',
-                                                                                          color: Colors.white,
-                                                                                          letterSpacing: 0.0,
-                                                                                        ),
-                                                                                    elevation: 0.0,
-                                                                                    borderRadius: BorderRadius.circular(8.0),
-                                                                                  ),
-                                                                                ),
-                                                                                FFButtonWidget(
-                                                                                  onPressed: () {
-                                                                                    print('Button pressed ...');
-                                                                                  },
-                                                                                  text: 'Button',
-                                                                                  options: FFButtonOptions(
-                                                                                    height: 40.0,
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                                                                    iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                          fontFamily: 'Plus Jakarta Sans',
-                                                                                          color: Colors.white,
-                                                                                          letterSpacing: 0.0,
-                                                                                        ),
-                                                                                    elevation: 0.0,
-                                                                                    borderRadius: BorderRadius.circular(8.0),
-                                                                                  ),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      ),
+                                                                child:
+                                                                    Container(
+                                                                  width: 300.0,
+                                                                  height: 50.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .only(
+                                                                      bottomLeft:
+                                                                          Radius.circular(
+                                                                              10.0),
+                                                                      bottomRight:
+                                                                          Radius.circular(
+                                                                              10.0),
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              10.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              0.0),
                                                                     ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        20.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: FutureBuilder<
-                                                                    List<
-                                                                        LightingZonesRow>>(
-                                                                  future: LightingZonesTable()
-                                                                      .queryRows(
-                                                                    queryFn: (q) => q
-                                                                        .eqOrNull(
-                                                                          'farm_id',
-                                                                          FFAppState()
-                                                                              .farmID,
-                                                                        )
-                                                                        .order('zone_name', ascending: true),
                                                                   ),
-                                                                  builder: (context,
-                                                                      snapshot) {
-                                                                    // Customize what your widget looks like when it's loading.
-                                                                    if (!snapshot
-                                                                        .hasData) {
-                                                                      return Center(
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .spaceBetween,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                         child:
-                                                                            SizedBox(
-                                                                          width:
-                                                                              50.0,
-                                                                          height:
-                                                                              50.0,
-                                                                          child:
-                                                                              CircularProgressIndicator(
-                                                                            valueColor:
-                                                                                AlwaysStoppedAnimation<Color>(
-                                                                              FlutterFlowTheme.of(context).primary,
+                                                                            Text(
+                                                                          'Master Control',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .headlineMedium
+                                                                              .override(
+                                                                                fontFamily: 'Outfit',
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FontWeight.bold,
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                      Stack(
+                                                                        children: [
+                                                                          FFButtonWidget(
+                                                                            onPressed:
+                                                                                () {
+                                                                              print('Button pressed ...');
+                                                                            },
+                                                                            text:
+                                                                                'Button',
+                                                                            options:
+                                                                                FFButtonOptions(
+                                                                              height: 40.0,
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    color: Colors.white,
+                                                                                    letterSpacing: 0.0,
+                                                                                  ),
+                                                                              elevation: 0.0,
+                                                                              borderRadius: BorderRadius.circular(8.0),
                                                                             ),
                                                                           ),
-                                                                        ),
-                                                                      );
-                                                                    }
-                                                                    List<LightingZonesRow>
-                                                                        ligthScheduleLightingZonesRowList =
-                                                                        snapshot
-                                                                            .data!;
-
-                                                                    return Container(
-                                                                      width:
-                                                                          800.0,
-                                                                      height:
-                                                                          230.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                        borderRadius:
-                                                                            BorderRadius.only(
-                                                                          bottomLeft:
-                                                                              Radius.circular(10.0),
-                                                                          bottomRight:
-                                                                              Radius.circular(10.0),
-                                                                          topLeft:
-                                                                              Radius.circular(10.0),
-                                                                          topRight:
-                                                                              Radius.circular(10.0),
-                                                                        ),
-                                                                      ),
-                                                                      child:
-                                                                          Builder(
-                                                                        builder:
-                                                                            (context) {
-                                                                          final getZoneSchedule =
-                                                                              ligthScheduleLightingZonesRowList.toList();
-
-                                                                          return Container(
-                                                                            width:
-                                                                                double.infinity,
-                                                                            height:
-                                                                                500.0,
-                                                                            child:
-                                                                                Stack(
-                                                                              children: [
-                                                                                Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
-                                                                                  child: PageView.builder(
-                                                                                    controller: _model.pageViewController1 ??= PageController(
-                                                                                        initialPage: max(
-                                                                                            0,
-                                                                                            min(
-                                                                                                valueOrDefault<int>(
-                                                                                                  FFAppState().zoneCount,
-                                                                                                  0,
-                                                                                                ),
-                                                                                                getZoneSchedule.length - 1))),
-                                                                                    scrollDirection: Axis.horizontal,
-                                                                                    itemCount: getZoneSchedule.length,
-                                                                                    itemBuilder: (context, getZoneScheduleIndex) {
-                                                                                      final getZoneScheduleItem = getZoneSchedule[getZoneScheduleIndex];
-                                                                                      return Container(
-                                                                                        width: 100.0,
-                                                                                        height: 100.0,
-                                                                                        decoration: BoxDecoration(
-                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                        ),
-                                                                                        child: Row(
-                                                                                          mainAxisSize: MainAxisSize.max,
-                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                          children: [
-                                                                                            Column(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                              children: [
-                                                                                                Row(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  children: [
-                                                                                                    Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                                      child: Text(
-                                                                                                        valueOrDefault<String>(
-                                                                                                          getZoneScheduleItem.zoneName,
-                                                                                                          'Zone Name',
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                                              fontFamily: 'Outfit',
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              fontWeight: FontWeight.bold,
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
-                                                                                                Align(
-                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                                  child: Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(20.0, 30.0, 0.0, 0.0),
-                                                                                                    child: FFButtonWidget(
-                                                                                                      onPressed: () async {
-                                                                                                        _model.isActive7788 = await LightingZonesTable().queryRows(
-                                                                                                          queryFn: (q) => q.eqOrNull(
-                                                                                                            'id',
-                                                                                                            getZoneScheduleItem.id,
-                                                                                                          ),
-                                                                                                        );
-                                                                                                        if (_model.isActive7788 != null && (_model.isActive7788)!.isNotEmpty) {
-                                                                                                          await LightingZonesTable().update(
-                                                                                                            data: {
-                                                                                                              'is_active': false,
-                                                                                                            },
-                                                                                                            matchingRows: (rows) => rows.eqOrNull(
-                                                                                                              'id',
-                                                                                                              getZoneScheduleItem.id,
-                                                                                                            ),
-                                                                                                          );
-                                                                                                        } else {
-                                                                                                          await LightingZonesTable().update(
-                                                                                                            data: {
-                                                                                                              'is_active': true,
-                                                                                                            },
-                                                                                                            matchingRows: (rows) => rows.eqOrNull(
-                                                                                                              'id',
-                                                                                                              getZoneScheduleItem.id,
-                                                                                                            ),
-                                                                                                          );
-                                                                                                        }
-
-                                                                                                        safeSetState(() {});
-                                                                                                      },
-                                                                                                      text: getZoneScheduleItem.isActive == false ? 'Not Active' : 'Active',
-                                                                                                      options: FFButtonOptions(
-                                                                                                        height: 40.0,
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                        color: getZoneScheduleItem.isActive! ? FlutterFlowTheme.of(context).success : FlutterFlowTheme.of(context).tertiary,
-                                                                                                        textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                                                              color: Colors.white,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                            ),
-                                                                                                        elevation: 0.0,
-                                                                                                        borderRadius: BorderRadius.circular(8.0),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                            Align(
-                                                                                              alignment: AlignmentDirectional(-1.0, 0.0),
-                                                                                              child: Column(
-                                                                                                mainAxisSize: MainAxisSize.min,
-                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                children: [
-                                                                                                  FutureBuilder<List<LightingZoneSchedulesWithDaysRow>>(
-                                                                                                    future: LightingZoneSchedulesWithDaysTable().queryRows(
-                                                                                                      queryFn: (q) => q
-                                                                                                          .eqOrNull(
-                                                                                                            'farm_id',
-                                                                                                            FFAppState().farmID,
-                                                                                                          )
-                                                                                                          .eqOrNull(
-                                                                                                            'zone_id',
-                                                                                                            getZoneScheduleItem.id,
-                                                                                                          )
-                                                                                                          .order('day_of_week', ascending: true),
-                                                                                                    ),
-                                                                                                    builder: (context, snapshot) {
-                                                                                                      // Customize what your widget looks like when it's loading.
-                                                                                                      if (!snapshot.hasData) {
-                                                                                                        return Center(
-                                                                                                          child: SizedBox(
-                                                                                                            width: 50.0,
-                                                                                                            height: 50.0,
-                                                                                                            child: CircularProgressIndicator(
-                                                                                                              valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                                FlutterFlowTheme.of(context).primary,
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        );
-                                                                                                      }
-                                                                                                      List<LightingZoneSchedulesWithDaysRow> containerLightingZoneSchedulesWithDaysRowList = snapshot.data!;
-
-                                                                                                      return Container(
-                                                                                                        width: 499.0,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          color: FlutterFlowTheme.of(context).info,
-                                                                                                        ),
-                                                                                                        alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                                        child: LightScheduleDataTableWidget(
-                                                                                                          key: Key('Keyze8_${getZoneScheduleIndex}_of_${getZoneSchedule.length}'),
-                                                                                                          parameter1: containerLightingZoneSchedulesWithDaysRowList,
-                                                                                                        ),
-                                                                                                      );
-                                                                                                    },
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ),
-                                                                                          ],
-                                                                                        ),
-                                                                                      );
-                                                                                    },
+                                                                          FFButtonWidget(
+                                                                            onPressed:
+                                                                                () {
+                                                                              print('Button pressed ...');
+                                                                            },
+                                                                            text:
+                                                                                'Button',
+                                                                            options:
+                                                                                FFButtonOptions(
+                                                                              height: 40.0,
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    color: Colors.white,
+                                                                                    letterSpacing: 0.0,
                                                                                   ),
-                                                                                ),
-                                                                                Align(
-                                                                                  alignment: AlignmentDirectional(0.0, 1.0),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                                                                                    child: smooth_page_indicator.SmoothPageIndicator(
-                                                                                      controller: _model.pageViewController1 ??= PageController(
-                                                                                          initialPage: max(
-                                                                                              0,
-                                                                                              min(
-                                                                                                  valueOrDefault<int>(
-                                                                                                    FFAppState().zoneCount,
-                                                                                                    0,
-                                                                                                  ),
-                                                                                                  getZoneSchedule.length - 1))),
-                                                                                      count: getZoneSchedule.length,
-                                                                                      axisDirection: Axis.horizontal,
-                                                                                      onDotClicked: (i) async {
-                                                                                        await _model.pageViewController1!.animateToPage(
-                                                                                          i,
-                                                                                          duration: Duration(milliseconds: 500),
-                                                                                          curve: Curves.ease,
-                                                                                        );
-                                                                                        safeSetState(() {});
-                                                                                      },
-                                                                                      effect: smooth_page_indicator.SlideEffect(
-                                                                                        spacing: 8.0,
-                                                                                        radius: 8.0,
-                                                                                        dotWidth: 8.0,
-                                                                                        dotHeight: 8.0,
-                                                                                        dotColor: FlutterFlowTheme.of(context).accent1,
-                                                                                        activeDotColor: FlutterFlowTheme.of(context).primary,
-                                                                                        paintStyle: PaintingStyle.fill,
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              ],
+                                                                              elevation: 0.0,
+                                                                              borderRadius: BorderRadius.circular(8.0),
                                                                             ),
-                                                                          );
-                                                                        },
+                                                                          ),
+                                                                        ],
                                                                       ),
-                                                                    );
-                                                                  },
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ],
                                                           ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      20.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: FutureBuilder<
+                                                              List<
+                                                                  LightingZonesRow>>(
+                                                            future: (_model
+                                                                        .requestCompleter ??=
+                                                                    Completer<
+                                                                        List<
+                                                                            LightingZonesRow>>()
+                                                                      ..complete(
+                                                                          LightingZonesTable()
+                                                                              .queryRows(
+                                                                        queryFn: (q) => q
+                                                                            .eqOrNull(
+                                                                              'farm_id',
+                                                                              FFAppState().farmID,
+                                                                            )
+                                                                            .order('zone_name', ascending: true),
+                                                                      )))
+                                                                .future,
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              // Customize what your widget looks like when it's loading.
+                                                              if (!snapshot
+                                                                  .hasData) {
+                                                                return Center(
+                                                                  child:
+                                                                      SizedBox(
+                                                                    width: 50.0,
+                                                                    height:
+                                                                        50.0,
+                                                                    child:
+                                                                        CircularProgressIndicator(
+                                                                      valueColor:
+                                                                          AlwaysStoppedAnimation<
+                                                                              Color>(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              }
+                                                              List<LightingZonesRow>
+                                                                  ligthScheduleLightingZonesRowList =
+                                                                  snapshot
+                                                                      .data!;
+
+                                                              return Container(
+                                                                width: 800.0,
+                                                                height: 260.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    bottomLeft:
+                                                                        Radius.circular(
+                                                                            10.0),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            10.0),
+                                                                    topLeft: Radius
+                                                                        .circular(
+                                                                            10.0),
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            10.0),
+                                                                  ),
+                                                                ),
+                                                                child: Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    final getZoneSchedule =
+                                                                        ligthScheduleLightingZonesRowList
+                                                                            .toList();
+
+                                                                    return Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          500.0,
+                                                                      child:
+                                                                          Stack(
+                                                                        children: [
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                40.0),
+                                                                            child:
+                                                                                PageView.builder(
+                                                                              controller: _model.pageViewController1 ??= PageController(initialPage: max(0, min(0, getZoneSchedule.length - 1))),
+                                                                              scrollDirection: Axis.horizontal,
+                                                                              itemCount: getZoneSchedule.length,
+                                                                              itemBuilder: (context, getZoneScheduleIndex) {
+                                                                                final getZoneScheduleItem = getZoneSchedule[getZoneScheduleIndex];
+                                                                                return Container(
+                                                                                  width: 100.0,
+                                                                                  height: 100.0,
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                  ),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                    children: [
+                                                                                      Column(
+                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                        children: [
+                                                                                          Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            children: [
+                                                                                              Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                                child: Text(
+                                                                                                  valueOrDefault<String>(
+                                                                                                    getZoneScheduleItem.zoneName,
+                                                                                                    'Zone Name',
+                                                                                                  ),
+                                                                                                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                                        fontFamily: 'Outfit',
+                                                                                                        letterSpacing: 0.0,
+                                                                                                        fontWeight: FontWeight.bold,
+                                                                                                      ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                          Align(
+                                                                                            alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                            child: Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 30.0, 0.0, 0.0),
+                                                                                              child: FFButtonWidget(
+                                                                                                onPressed: () async {
+                                                                                                  _model.isActive7788 = await LightingZonesTable().queryRows(
+                                                                                                    queryFn: (q) => q.eqOrNull(
+                                                                                                      'id',
+                                                                                                      getZoneScheduleItem.id,
+                                                                                                    ),
+                                                                                                  );
+                                                                                                  if (_model.isActive7788!.firstOrNull!.isActive!) {
+                                                                                                    await LightingZonesTable().update(
+                                                                                                      data: {
+                                                                                                        'is_active': false,
+                                                                                                      },
+                                                                                                      matchingRows: (rows) => rows.eqOrNull(
+                                                                                                        'id',
+                                                                                                        getZoneScheduleItem.id,
+                                                                                                      ),
+                                                                                                    );
+                                                                                                  } else {
+                                                                                                    await LightingZonesTable().update(
+                                                                                                      data: {
+                                                                                                        'is_active': true,
+                                                                                                      },
+                                                                                                      matchingRows: (rows) => rows.eqOrNull(
+                                                                                                        'id',
+                                                                                                        getZoneScheduleItem.id,
+                                                                                                      ),
+                                                                                                    );
+                                                                                                  }
+
+                                                                                                  safeSetState(() => _model.requestCompleter = null);
+                                                                                                  await _model.waitForRequestCompleted();
+
+                                                                                                  safeSetState(() {});
+                                                                                                },
+                                                                                                text: getZoneScheduleItem.isActive == false ? 'Not Active' : 'Active',
+                                                                                                options: FFButtonOptions(
+                                                                                                  height: 40.0,
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                                                  iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                  color: getZoneScheduleItem.isActive! ? FlutterFlowTheme.of(context).secondary : FlutterFlowTheme.of(context).tertiary,
+                                                                                                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                        color: Colors.white,
+                                                                                                        letterSpacing: 0.0,
+                                                                                                      ),
+                                                                                                  elevation: 0.0,
+                                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ],
+                                                                                      ),
+                                                                                      Align(
+                                                                                        alignment: AlignmentDirectional(-1.0, 0.0),
+                                                                                        child: Column(
+                                                                                          mainAxisSize: MainAxisSize.min,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            FutureBuilder<List<LightingZoneSchedulesWithDaysRow>>(
+                                                                                              future: LightingZoneSchedulesWithDaysTable().queryRows(
+                                                                                                queryFn: (q) => q
+                                                                                                    .eqOrNull(
+                                                                                                      'farm_id',
+                                                                                                      FFAppState().farmID,
+                                                                                                    )
+                                                                                                    .eqOrNull(
+                                                                                                      'zone_id',
+                                                                                                      getZoneScheduleItem.id,
+                                                                                                    )
+                                                                                                    .order('day_of_week', ascending: true),
+                                                                                              ),
+                                                                                              builder: (context, snapshot) {
+                                                                                                // Customize what your widget looks like when it's loading.
+                                                                                                if (!snapshot.hasData) {
+                                                                                                  return Center(
+                                                                                                    child: SizedBox(
+                                                                                                      width: 50.0,
+                                                                                                      height: 50.0,
+                                                                                                      child: CircularProgressIndicator(
+                                                                                                        valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                          FlutterFlowTheme.of(context).primary,
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  );
+                                                                                                }
+                                                                                                List<LightingZoneSchedulesWithDaysRow> containerLightingZoneSchedulesWithDaysRowList = snapshot.data!;
+
+                                                                                                return Container(
+                                                                                                  width: 499.0,
+                                                                                                  decoration: BoxDecoration(
+                                                                                                    color: FlutterFlowTheme.of(context).info,
+                                                                                                  ),
+                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                  child: LightScheduleDataTableWidget(
+                                                                                                    key: Key('Keyze8_${getZoneScheduleIndex}_of_${getZoneSchedule.length}'),
+                                                                                                    parameter1: containerLightingZoneSchedulesWithDaysRowList,
+                                                                                                  ),
+                                                                                                );
+                                                                                              },
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            ),
+                                                                          ),
+                                                                          Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(0.0, 1.0),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                                                                              child: smooth_page_indicator.SmoothPageIndicator(
+                                                                                controller: _model.pageViewController1 ??= PageController(initialPage: max(0, min(0, getZoneSchedule.length - 1))),
+                                                                                count: getZoneSchedule.length,
+                                                                                axisDirection: Axis.horizontal,
+                                                                                onDotClicked: (i) async {
+                                                                                  await _model.pageViewController1!.animateToPage(
+                                                                                    i,
+                                                                                    duration: Duration(milliseconds: 500),
+                                                                                    curve: Curves.ease,
+                                                                                  );
+                                                                                  safeSetState(() {});
+                                                                                },
+                                                                                effect: smooth_page_indicator.SlideEffect(
+                                                                                  spacing: 8.0,
+                                                                                  radius: 8.0,
+                                                                                  dotWidth: 12.0,
+                                                                                  dotHeight: 12.0,
+                                                                                  dotColor: FlutterFlowTheme.of(context).accent1,
+                                                                                  activeDotColor: FlutterFlowTheme.of(context).primary,
+                                                                                  paintStyle: PaintingStyle.fill,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              );
+                                                            },
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
                                                 ),
-                                              ),
+                                              ],
                                             ),
-                                          ],
+                                          ),
                                         ),
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 20.0, 0.0, 0.0),
+                                                  10.0, 20.0, 10.0, 10.0),
                                           child: FutureBuilder<
                                               List<LightingZonesRow>>(
                                             future:
@@ -2008,7 +2042,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                                     context: context,
                                                                                                     builder: (context) {
                                                                                                       return GestureDetector(
-                                                                                                        onTap: () => FocusScope.of(context).unfocus(),
+                                                                                                        onTap: () {
+                                                                                                          FocusScope.of(context).unfocus();
+                                                                                                          FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                        },
                                                                                                         child: Padding(
                                                                                                           padding: MediaQuery.viewInsetsOf(context),
                                                                                                           child: AssignTowersToZonesCopyWidget(
@@ -2305,7 +2342,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                     BoxDecoration(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryBackground,
+                                                                      .primaryBackground,
                                                                 ),
                                                                 child: FutureBuilder<
                                                                     List<
@@ -2419,10 +2456,44 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                         ),
                                                                                         Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 7.0, 0.0),
-                                                                                          child: Icon(
-                                                                                            Icons.settings_outlined,
-                                                                                            color: FlutterFlowTheme.of(context).primaryText,
-                                                                                            size: 24.0,
+                                                                                          child: InkWell(
+                                                                                            splashColor: Colors.transparent,
+                                                                                            focusColor: Colors.transparent,
+                                                                                            hoverColor: Colors.transparent,
+                                                                                            highlightColor: Colors.transparent,
+                                                                                            onTap: () async {
+                                                                                              await showModalBottomSheet(
+                                                                                                isScrollControlled: true,
+                                                                                                backgroundColor: Colors.transparent,
+                                                                                                enableDrag: false,
+                                                                                                context: context,
+                                                                                                builder: (context) {
+                                                                                                  return GestureDetector(
+                                                                                                    onTap: () {
+                                                                                                      FocusScope.of(context).unfocus();
+                                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                    },
+                                                                                                    child: Padding(
+                                                                                                      padding: MediaQuery.viewInsetsOf(context),
+                                                                                                      child: EditZoneWidget(
+                                                                                                        zoneID: listViewLightingZonesWithControllerRow.zoneId!,
+                                                                                                        zoneName: listViewLightingZonesWithControllerRow.zoneName!,
+                                                                                                        zoneDescription: listViewLightingZonesWithControllerRow.description!,
+                                                                                                        relayPinID: listViewLightingZonesWithControllerRow.relayPin!,
+                                                                                                        status: listViewLightingZonesWithControllerRow.isActive!.toString(),
+                                                                                                        controllerID: listViewLightingZonesWithControllerRow.lightingControllerId!,
+                                                                                                        relayPinDescription: listViewLightingZonesWithControllerRow.relayDescription!,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  );
+                                                                                                },
+                                                                                              ).then((value) => safeSetState(() {}));
+                                                                                            },
+                                                                                            child: Icon(
+                                                                                              Icons.settings_outlined,
+                                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                                              size: 24.0,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
                                                                                       ],
@@ -2536,7 +2607,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             0.0,
                                                                             0.0),
                                                                 child: Text(
-                                                                  'Zone Details',
+                                                                  'Add Zone',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .headlineMedium
@@ -2745,10 +2816,15 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               List<ControllerPinsDropdownViewRow>>(
                                                                             future:
                                                                                 ControllerPinsDropdownViewTable().queryRows(
-                                                                              queryFn: (q) => q.eqOrNull(
-                                                                                'lighting_controller_id',
-                                                                                _model.selectControllerValue,
-                                                                              ),
+                                                                              queryFn: (q) => q
+                                                                                  .eqOrNull(
+                                                                                    'lighting_controller_id',
+                                                                                    _model.selectControllerValue,
+                                                                                  )
+                                                                                  .eqOrNull(
+                                                                                    'status',
+                                                                                    'available',
+                                                                                  ),
                                                                             ),
                                                                             builder:
                                                                                 (context, snapshot) {
@@ -2998,7 +3074,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               );
                                                                             },
                                                                             text:
-                                                                                'Submit',
+                                                                                'Add Zone',
                                                                             options:
                                                                                 FFButtonOptions(
                                                                               height: 40.0,
@@ -3680,6 +3756,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Plus Jakarta Sans',
+                                                                                  fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
@@ -3698,6 +3775,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Plus Jakarta Sans',
+                                                                                  fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
@@ -3716,6 +3794,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Plus Jakarta Sans',
+                                                                                  fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
@@ -3724,84 +3803,11 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                           mainAxisSize:
                                                                               MainAxisSize.max,
                                                                           children: [
-                                                                            if (FFAppState().zoneSelected ==
-                                                                                true)
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                                                                child: InkWell(
-                                                                                  splashColor: Colors.transparent,
-                                                                                  focusColor: Colors.transparent,
-                                                                                  hoverColor: Colors.transparent,
-                                                                                  highlightColor: Colors.transparent,
-                                                                                  onTap: () async {
-                                                                                    await showModalBottomSheet(
-                                                                                      isScrollControlled: true,
-                                                                                      backgroundColor: Colors.transparent,
-                                                                                      enableDrag: false,
-                                                                                      context: context,
-                                                                                      builder: (context) {
-                                                                                        return GestureDetector(
-                                                                                          onTap: () => FocusScope.of(context).unfocus(),
-                                                                                          child: Padding(
-                                                                                            padding: MediaQuery.viewInsetsOf(context),
-                                                                                            child: SelectFixtureQuantityWidget(
-                                                                                              zoneName: FFAppState().selectedZoneName,
-                                                                                              zoneID: FFAppState().selectedZone,
-                                                                                              fixtureID: fixtureAllocationItem.fixtureTypeId!,
-                                                                                              allocatedQuantity: fixtureAllocationItem.allocatedQuantity!,
-                                                                                              availableQuantity: fixtureAllocationItem.availableQuantity!,
-                                                                                            ),
-                                                                                          ),
-                                                                                        );
-                                                                                      },
-                                                                                    ).then((value) => safeSetState(() {}));
-                                                                                  },
-                                                                                  child: Icon(
-                                                                                    Icons.add_circle,
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                    size: 24.0,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            if (FFAppState().zoneSelected ==
-                                                                                true)
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                                                                child: InkWell(
-                                                                                  splashColor: Colors.transparent,
-                                                                                  focusColor: Colors.transparent,
-                                                                                  hoverColor: Colors.transparent,
-                                                                                  highlightColor: Colors.transparent,
-                                                                                  onTap: () async {
-                                                                                    await showModalBottomSheet(
-                                                                                      isScrollControlled: true,
-                                                                                      backgroundColor: Colors.transparent,
-                                                                                      enableDrag: false,
-                                                                                      context: context,
-                                                                                      builder: (context) {
-                                                                                        return GestureDetector(
-                                                                                          onTap: () => FocusScope.of(context).unfocus(),
-                                                                                          child: Padding(
-                                                                                            padding: MediaQuery.viewInsetsOf(context),
-                                                                                            child: SelectFixtureQuantityWidget(
-                                                                                              zoneName: FFAppState().selectedZoneName,
-                                                                                              zoneID: FFAppState().selectedZone,
-                                                                                              fixtureID: fixtureAllocationItem.fixtureTypeId!,
-                                                                                              allocatedQuantity: fixtureAllocationItem.allocatedQuantity!,
-                                                                                              availableQuantity: fixtureAllocationItem.availableQuantity!,
-                                                                                            ),
-                                                                                          ),
-                                                                                        );
-                                                                                      },
-                                                                                    ).then((value) => safeSetState(() {}));
-                                                                                  },
-                                                                                  child: Icon(
-                                                                                    Icons.remove_circle_outline,
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                    size: 24.0,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
+                                                                            FixtureAllocationCounterWidget(
+                                                                              key: Key('Keyk2c_${fixtureAllocationIndex}_of_${fixtureAllocation.length}'),
+                                                                              fixtureAllocation: fixtureAllocationItem.allocatedQuantity,
+                                                                              zoneID: fixtureAllocationItem.zoneId!,
+                                                                            ),
                                                                           ],
                                                                         ),
                                                                       ]
@@ -4191,6 +4197,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -4214,25 +4221,49 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
+                                                          fontSize: 18.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
                                             ),
-                                            Text(
-                                              valueOrDefault<String>(
-                                                lightZoneUsageItem
-                                                    .totalUsageHours
-                                                    ?.toString(),
-                                                'No Hours',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 2.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      lightZoneUsageItem
+                                                          .totalUsageHours
+                                                          ?.toString(),
+                                                      'No Hours',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          fontSize: 18.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'hrs',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily:
                                                             'Plus Jakarta Sans',
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
+                                                ),
+                                              ],
                                             ),
                                             Text(
                                               valueOrDefault<String>(
@@ -4248,6 +4279,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                       .override(
                                                         fontFamily:
                                                             'Plus Jakarta Sans',
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -4265,6 +4297,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                       .override(
                                                         fontFamily:
                                                             'Plus Jakarta Sans',
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),

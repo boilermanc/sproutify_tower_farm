@@ -24,6 +24,8 @@ export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
 
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
+
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
 
@@ -81,6 +83,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
+      navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
           appStateNotifier.loggedIn ? NavBarPage() : MainLoginWidget(),
       routes: [
@@ -150,11 +153,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_vendors')
               : MainVendorsWidget(),
-        ),
-        FFRoute(
-          name: 'farmConfig',
-          path: '/farmConfig',
-          builder: (context, params) => FarmConfigWidget(),
         ),
         FFRoute(
           name: 'main_PestManagment',
@@ -270,6 +268,35 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'chat_ai_Screen',
           path: '/chatAiScreen',
           builder: (context, params) => ChatAiScreenWidget(),
+        ),
+        FFRoute(
+          name: 'invite',
+          path: '/invite',
+          builder: (context, params) => InviteWidget(
+            invitation: params.getParam(
+              'invitation',
+              ParamType.String,
+            ),
+            emailAddress: params.getParam(
+              'emailAddress',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'verify_invite',
+          path: '/verifyInvite',
+          builder: (context, params) => VerifyInviteWidget(
+            invitation: params.getParam(
+              'invitation',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'inviteSuccessLanding',
+          path: '/inviteSuccessLanding',
+          builder: (context, params) => InviteSuccessLandingWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

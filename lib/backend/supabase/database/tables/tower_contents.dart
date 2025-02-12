@@ -18,14 +18,14 @@ class TowerContentsRow extends SupabaseDataRow {
   int get contentId => getField<int>('content_id')!;
   set contentId(int value) => setField<int>('content_id', value);
 
-  int get towerId => getField<int>('tower_id')!;
-  set towerId(int value) => setField<int>('tower_id', value);
+  int? get towerId => getField<int>('tower_id');
+  set towerId(int? value) => setField<int>('tower_id', value);
 
-  int get plantId => getField<int>('plant_id')!;
-  set plantId(int value) => setField<int>('plant_id', value);
+  int? get plantId => getField<int>('plant_id');
+  set plantId(int? value) => setField<int>('plant_id', value);
 
-  DateTime get seededDate => getField<DateTime>('seeded_date')!;
-  set seededDate(DateTime value) => setField<DateTime>('seeded_date', value);
+  DateTime? get seededDate => getField<DateTime>('seeded_date');
+  set seededDate(DateTime? value) => setField<DateTime>('seeded_date', value);
 
   int get totalQuantity => getField<int>('total_quantity')!;
   set totalQuantity(int value) => setField<int>('total_quantity', value);
@@ -58,4 +58,7 @@ class TowerContentsRow extends SupabaseDataRow {
   DateTime? get lastResetDate => getField<DateTime>('last_reset_date');
   set lastResetDate(DateTime? value) =>
       setField<DateTime>('last_reset_date', value);
+
+  String get status => getField<String>('status')!;
+  set status(String value) => setField<String>('status', value);
 }

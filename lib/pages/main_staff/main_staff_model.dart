@@ -1,16 +1,19 @@
 import '/backend/supabase/supabase.dart';
 import '/components/farm_roles_widget.dart';
 import '/components/side_nav_widget.dart';
-import '/components/update_employee_role_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/registration_profile/create_staff_invitation/create_staff_invitation_widget.dart';
+import '/registration_profile/no_staff_invitations/no_staff_invitations_widget.dart';
+import '/registration_profile/staff_proile_update/staff_proile_update_widget.dart';
+import '/registration_profile/update_employee_role/update_employee_role_widget.dart';
+import 'dart:ui';
 import 'main_staff_widget.dart' show MainStaffWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -33,8 +36,11 @@ class MainStaffModel extends FlutterFlowModel<MainStaffWidget> {
   set choiceChipsValues(List<String>? val) =>
       choiceChipsValueController?.value = val;
   // State field(s) for staffTable widget.
-  final staffTableController =
-      FlutterFlowDataTableController<ViewProfileRolesRow>();
+  final staffTableController1 =
+      FlutterFlowDataTableController<FarmProfilesViewRow>();
+  // State field(s) for staffTable widget.
+  final staffTableController2 =
+      FlutterFlowDataTableController<InvitationsViewRow>();
 
   @override
   void initState(BuildContext context) {
@@ -47,6 +53,7 @@ class MainStaffModel extends FlutterFlowModel<MainStaffWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
 
-    staffTableController.dispose();
+    staffTableController1.dispose();
+    staffTableController2.dispose();
   }
 }

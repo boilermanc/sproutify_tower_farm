@@ -1,13 +1,14 @@
 import '/backend/supabase/supabase.dart';
-import '/components/add_farm_controller_widget.dart';
-import '/components/add_farm_lighting_widget.dart';
-import '/components/no_vendor_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/lighting/add_farm_controller/add_farm_controller_widget.dart';
+import '/lighting/add_farm_lighting/add_farm_lighting_widget.dart';
+import '/products/no_vendor/no_vendor_widget.dart';
+import 'dart:ui';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,7 +49,10 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -130,21 +134,17 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 20.0, 0.0),
                                 child: FlutterFlowIconButton(
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  borderRadius: 20.0,
-                                  borderWidth: 1.0,
+                                  borderRadius: 8.0,
                                   buttonSize: 40.0,
                                   fillColor:
-                                      FlutterFlowTheme.of(context).accent1,
+                                      FlutterFlowTheme.of(context).primary,
                                   icon: Icon(
-                                    Icons.close,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                    Icons.arrow_back,
+                                    color: FlutterFlowTheme.of(context).info,
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed('main_LightManagement');
+                                    context.safePop();
                                   },
                                 ),
                               ),
@@ -170,9 +170,13 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                           context: context,
                                           builder: (context) {
                                             return GestureDetector(
-                                              onTap: () =>
-                                                  FocusScope.of(context)
-                                                      .unfocus(),
+                                              onTap: () {
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
                                               child: Padding(
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
@@ -198,7 +202,9 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
                                               color: Colors.white,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
                                             ),
                                         elevation: 3.0,
                                         borderSide: BorderSide(
@@ -222,9 +228,13 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                           context: context,
                                           builder: (context) {
                                             return GestureDetector(
-                                              onTap: () =>
-                                                  FocusScope.of(context)
-                                                      .unfocus(),
+                                              onTap: () {
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
                                               child: Padding(
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
@@ -251,7 +261,9 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
                                               color: Colors.white,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
                                             ),
                                         elevation: 3.0,
                                         borderSide: BorderSide(
@@ -481,8 +493,11 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                           ),
                                           cells: [
                                             Text(
-                                              lightingControllersItem
-                                                  .controllerName!,
+                                              valueOrDefault<String>(
+                                                lightingControllersItem
+                                                    .controllerName,
+                                                ' Controller',
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -497,8 +512,11 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                                       ),
                                             ),
                                             Text(
-                                              lightingControllersItem
-                                                  .sproutifyModel!,
+                                              valueOrDefault<String>(
+                                                lightingControllersItem
+                                                    .sproutifyModel,
+                                                '  Model',
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -513,8 +531,11 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                                       ),
                                             ),
                                             Text(
-                                              lightingControllersItem
-                                                  .vendorName!,
+                                              valueOrDefault<String>(
+                                                lightingControllersItem
+                                                    .vendorName,
+                                                ' Vendor',
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -525,7 +546,11 @@ class _LightingEquipmentWidgetState extends State<LightingEquipmentWidget> {
                                                       ),
                                             ),
                                             Text(
-                                              lightingControllersItem.location!,
+                                              valueOrDefault<String>(
+                                                lightingControllersItem
+                                                    .location,
+                                                ' Location',
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium

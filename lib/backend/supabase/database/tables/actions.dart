@@ -53,4 +53,13 @@ class ActionsRow extends SupabaseDataRow {
   DateTime? get expectedReadyDate => getField<DateTime>('expected_ready_date');
   set expectedReadyDate(DateTime? value) =>
       setField<DateTime>('expected_ready_date', value);
+
+  int? get wasteAmount => getField<int>('waste_amount');
+  set wasteAmount(int? value) => setField<int>('waste_amount', value);
+
+  int? get spacerId => getField<int>('spacer_id');
+  set spacerId(int? value) => setField<int>('spacer_id', value);
+
+  int? get wasteReasonId => getField<int>('waste_reason_id');
+  set wasteReasonId(int? value) => setField<int>('waste_reason_id', value);
 }

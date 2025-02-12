@@ -1,7 +1,4 @@
 import '/backend/supabase/supabase.dart';
-import '/components/add_customer_widget.dart';
-import '/components/customer_notes_widget.dart';
-import '/components/no_customers_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
@@ -9,6 +6,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/produce_plants/add_customer/add_customer_widget.dart';
+import '/produce_plants/customer_notes/customer_notes_widget.dart';
+import '/produce_plants/no_customers/no_customers_widget.dart';
+import 'dart:ui';
+import 'dart:async';
 import 'main_customers_widget.dart' show MainCustomersWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,6 +38,7 @@ class MainCustomersModel extends FlutterFlowModel<MainCustomersWidget> {
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController =
       FlutterFlowDataTableController<CustomerViewRow>();
+  Completer<List<CustomerViewRow>>? requestCompleter;
 
   @override
   void initState(BuildContext context) {
@@ -49,5 +52,21 @@ class MainCustomersModel extends FlutterFlowModel<MainCustomersWidget> {
     textController?.dispose();
 
     paginatedDataTableController.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

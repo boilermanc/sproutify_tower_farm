@@ -1,15 +1,18 @@
 import '/backend/supabase/supabase.dart';
 import '/components/farm_roles_widget.dart';
 import '/components/side_nav_widget.dart';
-import '/components/update_employee_role_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/registration_profile/create_staff_invitation/create_staff_invitation_widget.dart';
+import '/registration_profile/no_staff_invitations/no_staff_invitations_widget.dart';
+import '/registration_profile/staff_proile_update/staff_proile_update_widget.dart';
+import '/registration_profile/update_employee_role/update_employee_role_widget.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'main_staff_model.dart';
@@ -50,7 +53,10 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -304,7 +310,6 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                       10.0, 0.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      HapticFeedback.lightImpact();
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
@@ -312,8 +317,11 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                         context: context,
                                         builder: (context) {
                                           return GestureDetector(
-                                            onTap: () => FocusScope.of(context)
-                                                .unfocus(),
+                                            onTap: () {
+                                              FocusScope.of(context).unfocus();
+                                              FocusManager.instance.primaryFocus
+                                                  ?.unfocus();
+                                            },
                                             child: Padding(
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
@@ -349,119 +357,78 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () {
-                                      print('addEmployee pressed ...');
-                                    },
-                                    text: 'Add Employee',
-                                    options: FFButtonOptions(
-                                      height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                ),
                               ]
                                   .addToStart(SizedBox(width: 16.0))
                                   .addToEnd(SizedBox(width: 16.0)),
                             ),
                           ),
-                          FutureBuilder<List<ViewProfileRolesRow>>(
-                            future: ViewProfileRolesTable().queryRows(
-                              queryFn: (q) => q.eqOrNull(
-                                'farm_id',
-                                FFAppState().farmID,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 12.0, 16.0, 0.0),
+                            child: FutureBuilder<List<FarmProfilesViewRow>>(
+                              future: FarmProfilesViewTable().queryRows(
+                                queryFn: (q) => q.eqOrNull(
+                                  'farm_id',
+                                  FFAppState().farmID,
+                                ),
                               ),
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
+                                        ),
                                       ),
                                     ),
+                                  );
+                                }
+                                List<FarmProfilesViewRow>
+                                    farmEmployeesFarmProfilesViewRowList =
+                                    snapshot.data!;
+
+                                return Container(
+                                  width: double.infinity,
+                                  height: 500.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context).info,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 3.0,
+                                        color: Color(0x33000000),
+                                        offset: Offset(
+                                          0.0,
+                                          1.0,
+                                        ),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                );
-                              }
-                              List<ViewProfileRolesRow>
-                                  farmEmployeesViewProfileRolesRowList =
-                                  snapshot.data!;
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 20.0, 20.0, 0.0),
+                                    child: Builder(
+                                      builder: (context) {
+                                        final farmRoleProfiles =
+                                            farmEmployeesFarmProfilesViewRowList
+                                                .toList();
 
-                              return Container(
-                                width: double.infinity,
-                                height: 500.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 20.0, 20.0, 0.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final farmRoleProfiles =
-                                          farmEmployeesViewProfileRolesRowList
-                                              .toList();
-
-                                      return FlutterFlowDataTable<
-                                          ViewProfileRolesRow>(
-                                        controller: _model.staffTableController,
-                                        data: farmRoleProfiles,
-                                        columnsBuilder: (onSortChanged) => [
-                                          DataColumn2(
-                                            label: DefaultTextStyle.merge(
-                                              softWrap: true,
-                                              child: Text(
-                                                'First Name',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                          DataColumn2(
-                                            label: DefaultTextStyle.merge(
-                                              softWrap: true,
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
+                                        return FlutterFlowDataTable<
+                                            FarmProfilesViewRow>(
+                                          controller:
+                                              _model.staffTableController1,
+                                          data: farmRoleProfiles,
+                                          columnsBuilder: (onSortChanged) => [
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
                                                 child: Text(
-                                                  'Last Name',
+                                                  'First Name',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelLarge
@@ -476,14 +443,692 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          DataColumn2(
-                                            label: DefaultTextStyle.merge(
-                                              softWrap: true,
-                                              child: Padding(
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Last Name',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Email',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Phone',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Role',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Status',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                          fontSize: 18.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Picture',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                          fontSize: 18.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                          dataRowBuilder: (farmRoleProfilesItem,
+                                                  farmRoleProfilesIndex,
+                                                  selected,
+                                                  onSelectChanged) =>
+                                              DataRow(
+                                            color: MaterialStateProperty.all(
+                                              farmRoleProfilesIndex % 2 == 0
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .secondaryBackground
+                                                  : FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                            ),
+                                            cells: [
+                                              Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 0.0, 0.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      enableDrag: false,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    context)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child: Padding(
+                                                            padding: MediaQuery
+                                                                .viewInsetsOf(
+                                                                    context),
+                                                            child:
+                                                                StaffProileUpdateWidget(),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
+                                                  },
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      farmRoleProfilesItem
+                                                          .firstName,
+                                                      'First Name',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .tertiary,
+                                                          fontSize: 14.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    farmRoleProfilesItem
+                                                        .lastName,
+                                                    ' Last Name',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    farmRoleProfilesItem.email,
+                                                    ' Email',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    farmRoleProfilesItem
+                                                        .phoneNumber,
+                                                    'Phone',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  SingleChildScrollView(
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            await showModalBottomSheet(
+                                                              isScrollControlled:
+                                                                  true,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              enableDrag: false,
+                                                              context: context,
+                                                              builder:
+                                                                  (context) {
+                                                                return GestureDetector(
+                                                                  onTap: () {
+                                                                    FocusScope.of(
+                                                                            context)
+                                                                        .unfocus();
+                                                                    FocusManager
+                                                                        .instance
+                                                                        .primaryFocus
+                                                                        ?.unfocus();
+                                                                  },
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: MediaQuery
+                                                                        .viewInsetsOf(
+                                                                            context),
+                                                                    child:
+                                                                        UpdateEmployeeRoleWidget(
+                                                                      employeeID:
+                                                                          farmRoleProfilesItem
+                                                                              .id!,
+                                                                      employeeFirstName:
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                        farmRoleProfilesItem
+                                                                            .firstName,
+                                                                        'First',
+                                                                      ),
+                                                                      employeeLastName:
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                        farmRoleProfilesItem
+                                                                            .lastName,
+                                                                        'Last',
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                safeSetState(
+                                                                    () {}));
+                                                          },
+                                                          child: Container(
+                                                            width: 125.0,
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Builder(
+                                                              builder:
+                                                                  (context) {
+                                                                final showRolesList =
+                                                                    farmRoleProfilesItem
+                                                                        .roles
+                                                                        .toList();
+
+                                                                return ListView
+                                                                    .builder(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  shrinkWrap:
+                                                                      true,
+                                                                  scrollDirection:
+                                                                      Axis.vertical,
+                                                                  itemCount:
+                                                                      showRolesList
+                                                                          .length,
+                                                                  itemBuilder:
+                                                                      (context,
+                                                                          showRolesListIndex) {
+                                                                    final showRolesListItem =
+                                                                        showRolesList[
+                                                                            showRolesListIndex];
+                                                                    return Text(
+                                                                      showRolesListItem,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Plus Jakarta Sans',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).tertiary,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                          ),
+                                                                    );
+                                                                  },
+                                                                );
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(20.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Container(
+                                                      width: 100.0,
+                                                      height: 30.0,
+                                                      decoration: BoxDecoration(
+                                                        color: farmRoleProfilesItem
+                                                                    .profileStatus ==
+                                                                'active'
+                                                            ? Color(0xFFAAF4C5)
+                                                            : FlutterFlowTheme
+                                                                    .of(context)
+                                                                .tertiary,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            farmRoleProfilesItem
+                                                                .profileStatus,
+                                                            'status',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 0.0, 0.0, 0.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.network(
+                                                    farmRoleProfilesItem
+                                                        .profileImageUrl!,
+                                                    width: 50.0,
+                                                    height: 50.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
+                                            ].map((c) => DataCell(c)).toList(),
+                                          ),
+                                          paginated: true,
+                                          selectable: false,
+                                          hidePaginator: false,
+                                          showFirstLastButtons: false,
+                                          headingRowHeight: 56.0,
+                                          dataRowHeight: 60.0,
+                                          columnSpacing: 10.0,
+                                          headingRowColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryText,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          addHorizontalDivider: true,
+                                          addTopAndBottomDivider: false,
+                                          hideDefaultHorizontalDivider: true,
+                                          horizontalDividerColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          horizontalDividerThickness: 1.0,
+                                          addVerticalDivider: true,
+                                          verticalDividerColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          verticalDividerThickness: 1.0,
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 20.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Staff Invitations',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                            fontFamily: 'Outfit',
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 0.0, 0.0, 0.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return GestureDetector(
+                                              onTap: () {
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child:
+                                                    CreateStaffInvitationWidget(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      },
+                                      text: 'Add Employee',
+                                      options: FFButtonOptions(
+                                        height: 40.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 12.0, 16.0, 0.0),
+                            child: FutureBuilder<List<InvitationsViewRow>>(
+                              future: InvitationsViewTable().queryRows(
+                                queryFn: (q) => q
+                                    .eqOrNull(
+                                      'farm_id',
+                                      FFAppState().farmID,
+                                    )
+                                    .gtOrNull(
+                                      'expires_at',
+                                      supaSerialize<DateTime>(
+                                          getCurrentTimestamp),
+                                    ),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+                                List<InvitationsViewRow>
+                                    farmEmployeesInvitationsViewRowList =
+                                    snapshot.data!;
+
+                                return Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 3.0,
+                                        color: Color(0x33000000),
+                                        offset: Offset(
+                                          0.0,
+                                          1.0,
+                                        ),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(20.0),
+                                    child: Builder(
+                                      builder: (context) {
+                                        final farmInvitations =
+                                            farmEmployeesInvitationsViewRowList
+                                                .toList();
+                                        if (farmInvitations.isEmpty) {
+                                          return NoStaffInvitationsWidget();
+                                        }
+
+                                        return FlutterFlowDataTable<
+                                            InvitationsViewRow>(
+                                          controller:
+                                              _model.staffTableController2,
+                                          data: farmInvitations,
+                                          columnsBuilder: (onSortChanged) => [
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
                                                 child: Text(
                                                   'Email',
                                                   style: FlutterFlowTheme.of(
@@ -500,355 +1145,264 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          DataColumn2(
-                                            label: DefaultTextStyle.merge(
-                                              softWrap: true,
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Phone',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          DataColumn2(
-                                            label: DefaultTextStyle.merge(
-                                              softWrap: true,
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Role',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          DataColumn2(
-                                            label: DefaultTextStyle.merge(
-                                              softWrap: true,
-                                              child: Container(),
-                                            ),
-                                          ),
-                                        ],
-                                        dataRowBuilder: (farmRoleProfilesItem,
-                                                farmRoleProfilesIndex,
-                                                selected,
-                                                onSelectChanged) =>
-                                            DataRow(
-                                          color: MaterialStateProperty.all(
-                                            farmRoleProfilesIndex % 2 == 0
-                                                ? FlutterFlowTheme.of(context)
-                                                    .secondaryBackground
-                                                : FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                          ),
-                                          cells: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  farmRoleProfilesItem
-                                                      .firstName,
-                                                  'First Name',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  farmRoleProfilesItem.lastName,
-                                                  ' Last Name',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  farmRoleProfilesItem.email,
-                                                  ' Email',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  farmRoleProfilesItem
-                                                      .phoneNumber,
-                                                  'Phone',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      width: 125.0,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Builder(
-                                                        builder: (context) {
-                                                          final showRolesList =
-                                                              farmRoleProfilesItem
-                                                                  .roles
-                                                                  .toList();
-
-                                                          return ListView
-                                                              .builder(
-                                                            padding:
-                                                                EdgeInsets.zero,
-                                                            shrinkWrap: true,
-                                                            scrollDirection:
-                                                                Axis.vertical,
-                                                            itemCount:
-                                                                showRolesList
-                                                                    .length,
-                                                            itemBuilder: (context,
-                                                                showRolesListIndex) {
-                                                              final showRolesListItem =
-                                                                  showRolesList[
-                                                                      showRolesListIndex];
-                                                              return Text(
-                                                                showRolesListItem,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                              );
-                                                            },
-                                                          );
-                                                        },
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Padding(
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
+                                                child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          20.0, 0.0, 0.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          await showModalBottomSheet(
-                                                            isScrollControlled:
-                                                                true,
-                                                            backgroundColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            enableDrag: false,
-                                                            context: context,
-                                                            builder: (context) {
-                                                              return GestureDetector(
-                                                                onTap: () =>
-                                                                    FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
-                                                                child: Padding(
-                                                                  padding: MediaQuery
-                                                                      .viewInsetsOf(
-                                                                          context),
-                                                                  child:
-                                                                      UpdateEmployeeRoleWidget(
-                                                                    employeeID:
-                                                                        farmRoleProfilesItem
-                                                                            .id!,
-                                                                    employeeFirstName:
-                                                                        farmRoleProfilesItem
-                                                                            .firstName!,
-                                                                    employeeLastName:
-                                                                        farmRoleProfilesItem
-                                                                            .lastName!,
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            },
-                                                          ).then((value) =>
-                                                              safeSetState(
-                                                                  () {}));
-                                                        },
-                                                        child: Icon(
-                                                          Icons.mode,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          size: 24.0,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                'Update',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Role',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                           letterSpacing: 0.0,
                                                         ),
+                                                  ),
+                                                ),
                                               ),
                                             ),
-                                          ].map((c) => DataCell(c)).toList(),
-                                        ),
-                                        paginated: true,
-                                        selectable: false,
-                                        hidePaginator: false,
-                                        showFirstLastButtons: false,
-                                        headingRowHeight: 56.0,
-                                        dataRowHeight: 60.0,
-                                        columnSpacing: 10.0,
-                                        headingRowColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        addHorizontalDivider: true,
-                                        addTopAndBottomDivider: false,
-                                        hideDefaultHorizontalDivider: true,
-                                        horizontalDividerColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                        horizontalDividerThickness: 1.0,
-                                        addVerticalDivider: true,
-                                        verticalDividerColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                        verticalDividerThickness: 1.0,
-                                      );
-                                    },
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Status',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Created',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            DataColumn2(
+                                              label: DefaultTextStyle.merge(
+                                                softWrap: true,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Expires',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                          dataRowBuilder: (farmInvitationsItem,
+                                                  farmInvitationsIndex,
+                                                  selected,
+                                                  onSelectChanged) =>
+                                              DataRow(
+                                            color: MaterialStateProperty.all(
+                                              farmInvitationsIndex % 2 == 0
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .secondaryBackground
+                                                  : FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                            ),
+                                            cells: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    farmInvitationsItem.email,
+                                                    'email',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    farmInvitationsItem
+                                                        .roleName,
+                                                    'Role',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    farmInvitationsItem.status,
+                                                    'status',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    dateTimeFormat(
+                                                        "MMMEd",
+                                                        farmInvitationsItem
+                                                            .createdAt),
+                                                    'date',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    dateTimeFormat(
+                                                        "MMMEd",
+                                                        farmInvitationsItem
+                                                            .expiresAt),
+                                                    'date',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ].map((c) => DataCell(c)).toList(),
+                                          ),
+                                          emptyBuilder: () =>
+                                              NoStaffInvitationsWidget(),
+                                          paginated: true,
+                                          selectable: false,
+                                          hidePaginator: false,
+                                          showFirstLastButtons: false,
+                                          headingRowHeight: 56.0,
+                                          dataRowHeight: 60.0,
+                                          columnSpacing: 10.0,
+                                          headingRowColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryText,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          addHorizontalDivider: true,
+                                          addTopAndBottomDivider: false,
+                                          hideDefaultHorizontalDivider: true,
+                                          horizontalDividerThickness: 1.0,
+                                          addVerticalDivider: true,
+                                          verticalDividerColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          verticalDividerThickness: 1.0,
+                                        );
+                                      },
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'TBD',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ),
-                            ],
+                                );
+                              },
+                            ),
                           ),
                         ].addToEnd(SizedBox(height: 64.0)),
                       ),

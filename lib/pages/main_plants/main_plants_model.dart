@@ -1,11 +1,13 @@
 import '/backend/supabase/supabase.dart';
-import '/components/plant_catalog_widget.dart';
-import '/components/seed_inventory_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/produce_plants/plant_catalog/plant_catalog_widget.dart';
+import '/produce_plants/plant_catalog_copy/plant_catalog_copy_widget.dart';
+import '/produce_plants/seed_inventory/seed_inventory_widget.dart';
+import 'dart:ui';
 import 'dart:async';
 import 'main_plants_widget.dart' show MainPlantsWidget;
 import 'package:flutter/material.dart';

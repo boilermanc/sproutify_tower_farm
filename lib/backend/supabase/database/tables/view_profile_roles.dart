@@ -41,4 +41,7 @@ class ViewProfileRolesRow extends SupabaseDataRow {
 
   List<String> get roles => getListField<String>('roles');
   set roles(List<String>? value) => setListField<String>('roles', value);
+
+  String? get fullName => getField<String>('full_name');
+  set fullName(String? value) => setField<String>('full_name', value);
 }

@@ -1,13 +1,15 @@
 import '/backend/supabase/supabase.dart';
-import '/components/add_new_product_widget.dart';
-import '/components/delete_product_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/produce_plants/chemical_catalog/chemical_catalog_widget.dart';
+import '/products/add_new_product/add_new_product_widget.dart';
+import '/products/delete_product/delete_product_widget.dart';
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -49,7 +51,10 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -189,10 +194,15 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                         context: context,
                                                         builder: (context) {
                                                           return GestureDetector(
-                                                            onTap: () =>
-                                                                FocusScope.of(
-                                                                        context)
-                                                                    .unfocus(),
+                                                            onTap: () {
+                                                              FocusScope.of(
+                                                                      context)
+                                                                  .unfocus();
+                                                              FocusManager
+                                                                  .instance
+                                                                  .primaryFocus
+                                                                  ?.unfocus();
+                                                            },
                                                             child: Padding(
                                                               padding: MediaQuery
                                                                   .viewInsetsOf(
@@ -206,6 +216,87 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                           safeSetState(() {}));
                                                     },
                                                     text: 'Add A Product',
+                                                    options: FFButtonOptions(
+                                                      height: 40.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  24.0,
+                                                                  0.0,
+                                                                  24.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                color: Colors
+                                                                    .white,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      elevation: 3.0,
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return GestureDetector(
+                                                            onTap: () {
+                                                              FocusScope.of(
+                                                                      context)
+                                                                  .unfocus();
+                                                              FocusManager
+                                                                  .instance
+                                                                  .primaryFocus
+                                                                  ?.unfocus();
+                                                            },
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  ChemicalCatalogWidget(),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
+                                                    },
+                                                    text: 'Add A Chemical',
                                                     options: FFButtonOptions(
                                                       height: 40.0,
                                                       padding:
@@ -396,8 +487,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                                       valueOrDefault<
                                                                           String>(
                                                                         productsDashboardProductDashboardMetricsRowList
-                                                                            .first
-                                                                            .inventoryValue
+                                                                            .firstOrNull
+                                                                            ?.inventoryValue
                                                                             ?.toString(),
                                                                         '0',
                                                                       ),
@@ -445,8 +536,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                                       valueOrDefault<
                                                                           String>(
                                                                         productsDashboardProductDashboardMetricsRowList
-                                                                            .first
-                                                                            .spendChangePercentage
+                                                                            .firstOrNull
+                                                                            ?.spendChangePercentage
                                                                             ?.toString(),
                                                                         '0',
                                                                       ),
@@ -602,8 +693,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                                         valueOrDefault<
                                                                             String>(
                                                                           productsDashboardProductDashboardMetricsRowList
-                                                                              .first
-                                                                              .totalAlerts
+                                                                              .firstOrNull
+                                                                              ?.totalAlerts
                                                                               ?.toString(),
                                                                           '0',
                                                                         ),
@@ -667,8 +758,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                                         valueOrDefault<
                                                                             String>(
                                                                           productsDashboardProductDashboardMetricsRowList
-                                                                              .first
-                                                                              .lowStockCount
+                                                                              .firstOrNull
+                                                                              ?.lowStockCount
                                                                               ?.toString(),
                                                                           '0',
                                                                         ),
@@ -718,8 +809,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                                     valueOrDefault<
                                                                         String>(
                                                                       productsDashboardProductDashboardMetricsRowList
-                                                                          .first
-                                                                          .outOfStockCount
+                                                                          .firstOrNull
+                                                                          ?.outOfStockCount
                                                                           ?.toString(),
                                                                       '0',
                                                                     ),
@@ -867,8 +958,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                                     valueOrDefault<
                                                                         String>(
                                                                       productsDashboardProductDashboardMetricsRowList
-                                                                          .first
-                                                                          .reorderValue
+                                                                          .firstOrNull
+                                                                          ?.reorderValue
                                                                           ?.toString(),
                                                                       '0',
                                                                     ),
@@ -907,8 +998,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                                     valueOrDefault<
                                                                         String>(
                                                                       productsDashboardProductDashboardMetricsRowList
-                                                                          .first
-                                                                          .itemsToReorder
+                                                                          .firstOrNull
+                                                                          ?.itemsToReorder
                                                                           ?.toString(),
                                                                       '0',
                                                                     ),
@@ -1386,10 +1477,13 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                     context: context,
                                                     builder: (context) {
                                                       return GestureDetector(
-                                                        onTap: () =>
-                                                            FocusScope.of(
-                                                                    context)
-                                                                .unfocus(),
+                                                        onTap: () {
+                                                          FocusScope.of(context)
+                                                              .unfocus();
+                                                          FocusManager.instance
+                                                              .primaryFocus
+                                                              ?.unfocus();
+                                                        },
                                                         child: Padding(
                                                           padding: MediaQuery
                                                               .viewInsetsOf(
@@ -1474,8 +1568,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                               ),
                             ),
                           ),
-                          FutureBuilder<List<ProductPestChemicalsRow>>(
-                            future: ProductPestChemicalsTable().queryRows(
+                          FutureBuilder<List<FarmChemicalsRow>>(
+                            future: FarmChemicalsTable().queryRows(
                               queryFn: (q) => q
                                   .eqOrNull(
                                     'farm_id',
@@ -1498,8 +1592,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                   ),
                                 );
                               }
-                              List<ProductPestChemicalsRow>
-                                  pesticideProductsProductPestChemicalsRowList =
+                              List<FarmChemicalsRow>
+                                  pesticideProductsFarmChemicalsRowList =
                                   snapshot.data!;
 
                               return Container(
@@ -1515,11 +1609,11 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                   child: Builder(
                                     builder: (context) {
                                       final pesticideProducts =
-                                          pesticideProductsProductPestChemicalsRowList
+                                          pesticideProductsFarmChemicalsRowList
                                               .toList();
 
                                       return FlutterFlowDataTable<
-                                          ProductPestChemicalsRow>(
+                                          FarmChemicalsRow>(
                                         controller: _model
                                             .paginatedDataTableController2,
                                         data: pesticideProducts,

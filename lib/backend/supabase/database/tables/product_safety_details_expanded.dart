@@ -58,4 +58,23 @@ class ProductSafetyDetailsExpandedRow extends SupabaseDataRow {
   String? get requiredEquipment => getField<String>('required_equipment');
   set requiredEquipment(String? value) =>
       setField<String>('required_equipment', value);
+
+  String? get dosingInterval => getField<String>('dosing_interval');
+  set dosingInterval(String? value) =>
+      setField<String>('dosing_interval', value);
+
+  double? get minimumDilution => getField<double>('minimum_dilution');
+  set minimumDilution(double? value) =>
+      setField<double>('minimum_dilution', value);
+
+  double? get maximumDilution => getField<double>('maximum_dilution');
+  set maximumDilution(double? value) =>
+      setField<double>('maximum_dilution', value);
+
+  String? get applicationMethods => getField<String>('application_methods');
+  set applicationMethods(String? value) =>
+      setField<String>('application_methods', value);
+
+  String? get notes => getField<String>('notes');
+  set notes(String? value) => setField<String>('notes', value);
 }

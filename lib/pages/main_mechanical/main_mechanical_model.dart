@@ -1,14 +1,15 @@
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/add_farm_controller_widget.dart';
-import '/components/no_lighting_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/lighting/add_farm_controller/add_farm_controller_widget.dart';
+import '/lighting/no_lighting/no_lighting_widget.dart';
 import 'dart:math';
+import 'dart:ui';
 import 'main_mechanical_widget.dart' show MainMechanicalWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

@@ -22,4 +22,10 @@ class PlantCatalogRow extends SupabaseDataRow {
 
   String? get plantUrl => getField<String>('plant_url');
   set plantUrl(String? value) => setField<String>('plant_url', value);
+
+  String? get farmId => getField<String>('farm_id');
+  set farmId(String? value) => setField<String>('farm_id', value);
+
+  bool? get isInFarm => getField<bool>('is_in_farm');
+  set isInFarm(bool? value) => setField<bool>('is_in_farm', value);
 }

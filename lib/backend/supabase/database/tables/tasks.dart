@@ -56,4 +56,8 @@ class TasksRow extends SupabaseDataRow {
 
   String? get farmId => getField<String>('farm_id');
   set farmId(String? value) => setField<String>('farm_id', value);
+
+  String? get readableDueDate => getField<String>('readable_due_date');
+  set readableDueDate(String? value) =>
+      setField<String>('readable_due_date', value);
 }

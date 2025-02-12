@@ -21,9 +21,6 @@ class WeeklyDeliveriesRow extends SupabaseDataRow {
   String get customerId => getField<String>('customer_id')!;
   set customerId(String value) => setField<String>('customer_id', value);
 
-  int get growSheetId => getField<int>('grow_sheet_id')!;
-  set growSheetId(int value) => setField<int>('grow_sheet_id', value);
-
   int get quantity => getField<int>('quantity')!;
   set quantity(int value) => setField<int>('quantity', value);
 
@@ -34,12 +31,18 @@ class WeeklyDeliveriesRow extends SupabaseDataRow {
   String? get status => getField<String>('status');
   set status(String? value) => setField<String>('status', value);
 
-  int get farmId => getField<int>('farm_id')!;
-  set farmId(int value) => setField<int>('farm_id', value);
-
   DateTime? get createdAt => getField<DateTime>('created_at');
   set createdAt(DateTime? value) => setField<DateTime>('created_at', value);
 
   DateTime? get updatedAt => getField<DateTime>('updated_at');
   set updatedAt(DateTime? value) => setField<DateTime>('updated_at', value);
+
+  int? get plantId => getField<int>('plant_id');
+  set plantId(int? value) => setField<int>('plant_id', value);
+
+  int? get itemId => getField<int>('item_id');
+  set itemId(int? value) => setField<int>('item_id', value);
+
+  String? get farmId => getField<String>('farm_id');
+  set farmId(String? value) => setField<String>('farm_id', value);
 }

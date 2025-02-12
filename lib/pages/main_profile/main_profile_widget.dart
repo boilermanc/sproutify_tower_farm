@@ -1,8 +1,9 @@
-import '/components/profile_component_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/registration_profile/profile_component/profile_component_widget.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +40,10 @@ class _MainProfileWidgetState extends State<MainProfileWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -64,10 +68,17 @@ class _MainProfileWidgetState extends State<MainProfileWidget> {
                       maxWidth: 970.0,
                     ),
                     decoration: BoxDecoration(),
-                    child: wrapWithModel(
-                      model: _model.profileComponentModel,
-                      updateCallback: () => safeSetState(() {}),
-                      child: ProfileComponentWidget(),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          wrapWithModel(
+                            model: _model.profileComponentModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: ProfileComponentWidget(),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

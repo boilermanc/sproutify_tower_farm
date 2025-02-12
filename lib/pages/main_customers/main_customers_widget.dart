@@ -1,7 +1,4 @@
 import '/backend/supabase/supabase.dart';
-import '/components/add_customer_widget.dart';
-import '/components/customer_notes_widget.dart';
-import '/components/no_customers_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
@@ -9,6 +6,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/produce_plants/add_customer/add_customer_widget.dart';
+import '/produce_plants/customer_notes/customer_notes_widget.dart';
+import '/produce_plants/no_customers/no_customers_widget.dart';
+import 'dart:ui';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,7 +53,10 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -315,8 +320,11 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                         context: context,
                                         builder: (context) {
                                           return GestureDetector(
-                                            onTap: () => FocusScope.of(context)
-                                                .unfocus(),
+                                            onTap: () {
+                                              FocusScope.of(context).unfocus();
+                                              FocusManager.instance.primaryFocus
+                                                  ?.unfocus();
+                                            },
                                             child: Padding(
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
@@ -358,12 +366,15 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                             ),
                           ),
                           FutureBuilder<List<CustomerViewRow>>(
-                            future: CustomerViewTable().queryRows(
-                              queryFn: (q) => q.eqOrNull(
-                                'farm_id',
-                                FFAppState().farmID,
-                              ),
-                            ),
+                            future: (_model.requestCompleter ??=
+                                    Completer<List<CustomerViewRow>>()
+                                      ..complete(CustomerViewTable().queryRows(
+                                        queryFn: (q) => q.eqOrNull(
+                                          'farm_id',
+                                          FFAppState().farmID,
+                                        ),
+                                      )))
+                                .future,
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -513,7 +524,7 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                                     .fromSTEB(
                                                         5.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'Active',
+                                                  'Status',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelLarge
@@ -534,42 +545,52 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                           DataColumn2(
                                             label: DefaultTextStyle.merge(
                                               softWrap: true,
-                                              child: Text(
-                                                'Notes',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Notes',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                ),
                                               ),
                                             ),
                                           ),
                                           DataColumn2(
                                             label: DefaultTextStyle.merge(
                                               softWrap: true,
-                                              child: Text(
-                                                'Order',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Order',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -656,25 +677,98 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                                         ),
                                               ),
                                             ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  farmCustomersItem.active
-                                                      ?.toString(),
-                                                  ' No Return',
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      await CustomersTable()
+                                                          .update(
+                                                        data: {
+                                                          'active':
+                                                              farmCustomersItem
+                                                                          .active ==
+                                                                      false
+                                                                  ? false
+                                                                  : true,
+                                                        },
+                                                        matchingRows: (rows) =>
+                                                            rows
+                                                                .eqOrNull(
+                                                                  'farm_id',
+                                                                  FFAppState()
+                                                                      .farmID,
+                                                                )
+                                                                .eqOrNull(
+                                                                  'customer_id',
+                                                                  farmCustomersItem
+                                                                      .customerId,
+                                                                ),
+                                                      );
+                                                      safeSetState(() => _model
+                                                              .requestCompleter =
+                                                          null);
+                                                      await _model
+                                                          .waitForRequestCompleted();
+                                                    },
+                                                    child: Container(
+                                                      width: 110.0,
+                                                      height: 40.0,
+                                                      decoration: BoxDecoration(
+                                                        color: farmCustomersItem
+                                                                    .active ==
+                                                                true
+                                                            ? Color(0xFFE9FDE7)
+                                                            : FlutterFlowTheme
+                                                                    .of(context)
+                                                                .tertiary,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Text(
+                                                        farmCustomersItem
+                                                                    .active ==
+                                                                true
+                                                            ? 'Active'
+                                                            : 'InActive',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              fontSize: 16.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
+                                              ],
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
@@ -691,10 +785,13 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                                     context: context,
                                                     builder: (context) {
                                                       return GestureDetector(
-                                                        onTap: () =>
-                                                            FocusScope.of(
-                                                                    context)
-                                                                .unfocus(),
+                                                        onTap: () {
+                                                          FocusScope.of(context)
+                                                              .unfocus();
+                                                          FocusManager.instance
+                                                              .primaryFocus
+                                                              ?.unfocus();
+                                                        },
                                                         child: Padding(
                                                           padding: MediaQuery
                                                               .viewInsetsOf(

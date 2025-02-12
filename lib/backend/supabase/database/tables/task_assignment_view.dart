@@ -47,4 +47,11 @@ class TaskAssignmentViewRow extends SupabaseDataRow {
 
   String? get bgColorCode => getField<String>('bg_color_code');
   set bgColorCode(String? value) => setField<String>('bg_color_code', value);
+
+  int? get towerId => getField<int>('tower_id');
+  set towerId(int? value) => setField<int>('tower_id', value);
+
+  String? get towerIdentifier => getField<String>('tower_identifier');
+  set towerIdentifier(String? value) =>
+      setField<String>('tower_identifier', value);
 }

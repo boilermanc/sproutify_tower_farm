@@ -120,6 +120,11 @@ class GetUserProfileCall {
         response,
         r'''$[:].measurement_system''',
       ));
+  static String? profileImage(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$[:].profile_image_url''',
+      ));
 }
 
 class TowerDashboardCall {
@@ -470,6 +475,96 @@ class PlantCatalogSearchCall {
         r'''$[:].farm_id''',
         true,
       ) as List?;
+  static List<String>? newImageURL(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].new_image_url''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+}
+
+class ChemicalCatalogSearchCall {
+  static Future<ApiCallResponse> call({
+    String? searchString = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'chemicalCatalogSearch',
+      apiUrl:
+          'https://rsndonfydqhykowljuyn.supabase.co/rest/v1/product_pest_catalog?product_name=ilike.*${searchString}*&select=*&order=product_name.asc',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
+        'Authorization':
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List<String>? plantName(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].plant_name''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? shortDescription(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].short_description''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? plantImage(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].plant_image''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<bool>? isActive(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].is_active''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  static List<bool>? isCore(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].is_core''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? farmID(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].farm_id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class UpsertLightingFixtureAllocationCall {
@@ -555,6 +650,186 @@ class GetOpenWeatherCall {
       ));
 }
 
+class PlantCatalogSearchFunctionCall {
+  static Future<ApiCallResponse> call({
+    String? farmID = '',
+    String? searchString = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'plantCatalogSearchFunction',
+      apiUrl:
+          'https://rsndonfydqhykowljuyn.supabase.co/rest/v1/rpc/get_plant_catalog?p_farm_id=${farmID}&search_term=${searchString}',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
+        'Authorization':
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List<int>? plantIDFunction(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].plant_id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? plantNameFunction(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].plant_name''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? plantImageFunction(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].plant_url''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<bool>? isInFarmFunction(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].is_in_farm''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+}
+
+class ResendAPITestCall {
+  static Future<ApiCallResponse> call({
+    String? emailAddress = '',
+    String? invitationVariable = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "from": "team@sproutify.app",
+  "to": "${escapeStringForJson(emailAddress)}",
+  "subject": "Sign Up for Sproutify Farm",
+  "html": "<h2>Welcome to Sproutify Farm!</h2><p>You've been invited to join our platform. Click the link below to create your account:</p><p><a href=\\"https://sproutifyfarmadmin.flutterflow.app/verifyinvite?invitation=${escapeStringForJson(invitationVariable)}\\">Create Your Account</a></p>"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'resendAPITest',
+      apiUrl: 'https://api.resend.com/emails',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer re_SKach3ee_MrU6LgXeLfY4VpLViHvuqh7Y',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class TowerPlantingCatalogCall {
+  static Future<ApiCallResponse> call({
+    String? searchString = '',
+    String? farmID = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'towerPlantingCatalog',
+      apiUrl:
+          'https://rsndonfydqhykowljuyn.supabase.co/rest/v1/tower_planting_catalog?farm_id=eq.${farmID}&is_active=eq.true&plant_name=ilike.%${searchString}%&order=is_spacer.desc,plant_name.asc',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
+        'Authorization':
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetWeeklyHarvestForcastCall {
+  static Future<ApiCallResponse> call({
+    String? searchString = '',
+    String? farmId = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getWeeklyHarvestForcast',
+      apiUrl:
+          'https://rsndonfydqhykowljuyn.supabase.co/rest/v1/weekly_harvest_forecast?farm_id=eq.${farmId}&plant_name=ilike.*${searchString}*&select=*&order=expected_ready_date.asc',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
+        'Authorization':
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GenerateTowerStatusReportwithNeightNCall {
+  static Future<ApiCallResponse> call({
+    String? farmID = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "farm_id": "${escapeStringForJson(farmID)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'generateTowerStatusReportwithNeightN',
+      apiUrl:
+          'https://n8n.sproutify.app/webhook/94d9e14a-17c3-4928-bad9-49656428bdc1',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
@@ -597,4 +872,15 @@ String _serializeJson(dynamic jsonVar, [bool isList = false]) {
     }
     return isList ? '[]' : '{}';
   }
+}
+
+String? escapeStringForJson(String? input) {
+  if (input == null) {
+    return null;
+  }
+  return input
+      .replaceAll('\\', '\\\\')
+      .replaceAll('"', '\\"')
+      .replaceAll('\n', '\\n')
+      .replaceAll('\t', '\\t');
 }

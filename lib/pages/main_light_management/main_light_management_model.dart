@@ -1,11 +1,7 @@
 import '/backend/supabase/supabase.dart';
-import '/components/assign_towers_to_zones_copy_widget.dart';
-import '/components/light_schedule_data_table_widget.dart';
-import '/components/no_lighting_widget.dart';
-import '/components/select_fixture_quantity_widget.dart';
 import '/components/side_nav_widget.dart';
-import '/components/tower_zone_grid_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -13,7 +9,15 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/lighting/assign_towers_to_zones_copy/assign_towers_to_zones_copy_widget.dart';
+import '/lighting/edit_zone/edit_zone_widget.dart';
+import '/lighting/fixture_allocation_counter/fixture_allocation_counter_widget.dart';
+import '/lighting/light_schedule_data_table/light_schedule_data_table_widget.dart';
+import '/lighting/no_lighting/no_lighting_widget.dart';
+import '/lighting/tower_zone_grid/tower_zone_grid_widget.dart';
 import 'dart:math';
+import 'dart:ui';
+import 'dart:async';
 import 'main_light_management_widget.dart' show MainLightManagementWidget;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -61,7 +65,7 @@ class MainLightManagementModel
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
-  // Stores action output result for [Backend Call - Query Rows] action in Tab widget.
+  // Stores action output result for [Backend Call - Query Rows] action in scheduleTab widget.
   List<LightingZonesRow>? lightingZoneCount7755;
   // State field(s) for PageView widget.
   PageController? pageViewController1;
@@ -73,7 +77,8 @@ class MainLightManagementModel
       : 0;
   // Stores action output result for [Backend Call - Query Rows] action in zoneActive widget.
   List<LightingZonesRow>? isActive7788;
-  // Stores action output result for [Backend Call - Query Rows] action in Tab widget.
+  Completer<List<LightingZonesRow>>? requestCompleter;
+  // Stores action output result for [Backend Call - Query Rows] action in towersTab widget.
   List<LightingZonesRow>? lightingZoneCount7755Copy;
   // State field(s) for PageView widget.
   PageController? pageViewController2;
@@ -124,5 +129,21 @@ class MainLightManagementModel
 
     paginatedDataTableController.dispose();
     waterTestsController.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

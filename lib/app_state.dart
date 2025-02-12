@@ -367,12 +367,6 @@ class FFAppState extends ChangeNotifier {
     _taskInsertRoleID = value;
   }
 
-  int _selectPlantCatalogQuantity = 0;
-  int get selectPlantCatalogQuantity => _selectPlantCatalogQuantity;
-  set selectPlantCatalogQuantity(int value) {
-    _selectPlantCatalogQuantity = value;
-  }
-
   bool _togglePlantCatalog = false;
   bool get togglePlantCatalog => _togglePlantCatalog;
   set togglePlantCatalog(bool value) {
@@ -389,6 +383,101 @@ class FFAppState extends ChangeNotifier {
   int get spacerPlantCount => _spacerPlantCount;
   set spacerPlantCount(int value) {
     _spacerPlantCount = value;
+  }
+
+  String _taskInsertStaffFullName = '';
+  String get taskInsertStaffFullName => _taskInsertStaffFullName;
+  set taskInsertStaffFullName(String value) {
+    _taskInsertStaffFullName = value;
+  }
+
+  String _taskInsertRoleName = '';
+  String get taskInsertRoleName => _taskInsertRoleName;
+  set taskInsertRoleName(String value) {
+    _taskInsertRoleName = value;
+  }
+
+  List<String> _taskInsertTowers = [];
+  List<String> get taskInsertTowers => _taskInsertTowers;
+  set taskInsertTowers(List<String> value) {
+    _taskInsertTowers = value;
+  }
+
+  void addToTaskInsertTowers(String value) {
+    taskInsertTowers.add(value);
+  }
+
+  void removeFromTaskInsertTowers(String value) {
+    taskInsertTowers.remove(value);
+  }
+
+  void removeAtIndexFromTaskInsertTowers(int index) {
+    taskInsertTowers.removeAt(index);
+  }
+
+  void updateTaskInsertTowersAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    taskInsertTowers[index] = updateFn(_taskInsertTowers[index]);
+  }
+
+  void insertAtIndexInTaskInsertTowers(int index, String value) {
+    taskInsertTowers.insert(index, value);
+  }
+
+  String _taskInsertNote = '';
+  String get taskInsertNote => _taskInsertNote;
+  set taskInsertNote(String value) {
+    _taskInsertNote = value;
+  }
+
+  String _taskInsertTowerSingle = '';
+  String get taskInsertTowerSingle => _taskInsertTowerSingle;
+  set taskInsertTowerSingle(String value) {
+    _taskInsertTowerSingle = value;
+  }
+
+  String _taskInsertTowerView = '';
+  String get taskInsertTowerView => _taskInsertTowerView;
+  set taskInsertTowerView(String value) {
+    _taskInsertTowerView = value;
+  }
+
+  int _taskInsertTowerID = 0;
+  int get taskInsertTowerID => _taskInsertTowerID;
+  set taskInsertTowerID(int value) {
+    _taskInsertTowerID = value;
+  }
+
+  String _inviteID = '';
+  String get inviteID => _inviteID;
+  set inviteID(String value) {
+    _inviteID = value;
+  }
+
+  String _inviteEmailAddress = '';
+  String get inviteEmailAddress => _inviteEmailAddress;
+  set inviteEmailAddress(String value) {
+    _inviteEmailAddress = value;
+  }
+
+  String _inviteFirstName = '';
+  String get inviteFirstName => _inviteFirstName;
+  set inviteFirstName(String value) {
+    _inviteFirstName = value;
+  }
+
+  String _inviteLastName = '';
+  String get inviteLastName => _inviteLastName;
+  set inviteLastName(String value) {
+    _inviteLastName = value;
+  }
+
+  String _profileImage = '';
+  String get profileImage => _profileImage;
+  set profileImage(String value) {
+    _profileImage = value;
   }
 }
 

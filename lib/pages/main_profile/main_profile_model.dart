@@ -1,8 +1,9 @@
-import '/components/profile_component_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/registration_profile/profile_component/profile_component_widget.dart';
+import 'dart:ui';
 import 'main_profile_widget.dart' show MainProfileWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

@@ -62,4 +62,7 @@ class ProductChemicalDetailsRow extends SupabaseDataRow {
 
   DateTime get updatedAt => getField<DateTime>('updated_at')!;
   set updatedAt(DateTime value) => setField<DateTime>('updated_at', value);
+
+  String? get imageUrl => getField<String>('image_url');
+  set imageUrl(String? value) => setField<String>('image_url', value);
 }

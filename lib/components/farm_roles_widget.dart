@@ -3,8 +3,8 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'farm_roles_model.dart';
@@ -43,196 +43,227 @@ class _FarmRolesWidgetState extends State<FarmRolesWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 912.0,
-      decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Farm Roles',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
+    return Align(
+      alignment: AlignmentDirectional(0.0, 0.0),
+      child: Container(
+        width: 700.0,
+        height: 600.0,
+        decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).secondaryBackground,
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Roles',
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily: 'Outfit',
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
-                  child: FlutterFlowIconButton(
-                    borderColor: FlutterFlowTheme.of(context).primary,
-                    borderRadius: 20.0,
-                    borderWidth: 1.0,
+                  ),
+                  FlutterFlowIconButton(
+                    borderRadius: 8.0,
                     buttonSize: 40.0,
-                    fillColor: FlutterFlowTheme.of(context).accent4,
+                    fillColor: FlutterFlowTheme.of(context).primary,
                     icon: Icon(
-                      Icons.close,
-                      color: FlutterFlowTheme.of(context).primaryText,
+                      Icons.arrow_back,
+                      color: FlutterFlowTheme.of(context).info,
                       size: 24.0,
                     ),
                     onPressed: () async {
-                      HapticFeedback.lightImpact();
                       Navigator.pop(context);
                     },
                   ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
-              child: FutureBuilder<List<RolesRow>>(
-                future: RolesTable().queryRows(
-                  queryFn: (q) => q,
-                ),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50.0,
-                        height: 50.0,
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            FlutterFlowTheme.of(context).primary,
-                          ),
-                        ),
-                      ),
-                    );
-                  }
-                  List<RolesRow> containerRolesRowList = snapshot.data!;
-
-                  return Container(
-                    decoration: BoxDecoration(),
-                    child: Builder(
-                      builder: (context) {
-                        final farmRoles = containerRolesRowList.toList();
-
-                        return FlutterFlowDataTable<RolesRow>(
-                          controller: _model.paginatedDataTableController,
-                          data: farmRoles,
-                          columnsBuilder: (onSortChanged) => [
-                            DataColumn2(
-                              label: DefaultTextStyle.merge(
-                                softWrap: true,
-                                child: Text(
-                                  'Farm Roies',
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelLarge
-                                      .override(
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ),
-                            ),
-                            DataColumn2(
-                              label: DefaultTextStyle.merge(
-                                softWrap: true,
-                                child: Text(
-                                  'Description',
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelLarge
-                                      .override(
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ),
-                            ),
-                          ],
-                          dataRowBuilder: (farmRolesItem, farmRolesIndex,
-                                  selected, onSelectChanged) =>
-                              DataRow(
-                            color: MaterialStateProperty.all(
-                              farmRolesIndex % 2 == 0
-                                  ? FlutterFlowTheme.of(context)
-                                      .secondaryBackground
-                                  : FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                            ),
-                            cells: [
-                              Text(
-                                valueOrDefault<String>(
-                                  farmRolesItem.roleName,
-                                  'Role Name',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Plus Jakarta Sans',
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                              Text(
-                                valueOrDefault<String>(
-                                  farmRolesItem.description,
-                                  'Description',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Plus Jakarta Sans',
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                            ].map((c) => DataCell(c)).toList(),
-                          ),
-                          paginated: false,
-                          selectable: false,
-                          headingRowHeight: 56.0,
-                          dataRowHeight: 48.0,
-                          columnSpacing: 20.0,
-                          headingRowColor:
-                              FlutterFlowTheme.of(context).secondaryText,
-                          borderRadius: BorderRadius.circular(8.0),
-                          addHorizontalDivider: true,
-                          addTopAndBottomDivider: false,
-                          hideDefaultHorizontalDivider: true,
-                          horizontalDividerColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          horizontalDividerThickness: 1.0,
-                          addVerticalDivider: false,
-                        );
-                      },
-                    ),
-                  );
-                },
+                ],
               ),
             ),
-          ),
-        ],
+            SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: FutureBuilder<List<RolesRow>>(
+                          future: RolesTable().queryRows(
+                            queryFn: (q) =>
+                                q.order('role_name', ascending: true),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            List<RolesRow> containerRolesRowList =
+                                snapshot.data!;
+
+                            return Container(
+                              width: 670.0,
+                              height: 500.0,
+                              child: Builder(
+                                builder: (context) {
+                                  final roleList =
+                                      containerRolesRowList.toList();
+
+                                  return FlutterFlowDataTable<RolesRow>(
+                                    controller:
+                                        _model.paginatedDataTableController,
+                                    data: roleList,
+                                    columnsBuilder: (onSortChanged) => [
+                                      DataColumn2(
+                                        label: DefaultTextStyle.merge(
+                                          softWrap: true,
+                                          child: Text(
+                                            'Role Name',
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelLarge
+                                                .override(
+                                                  fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  fontSize: 18.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      DataColumn2(
+                                        label: DefaultTextStyle.merge(
+                                          softWrap: true,
+                                          child: Text(
+                                            'Description',
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelLarge
+                                                .override(
+                                                  fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  fontSize: 18.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                    dataRowBuilder: (roleListItem,
+                                            roleListIndex,
+                                            selected,
+                                            onSelectChanged) =>
+                                        DataRow(
+                                      color: MaterialStateProperty.all(
+                                        roleListIndex % 2 == 0
+                                            ? FlutterFlowTheme.of(context)
+                                                .secondaryBackground
+                                            : FlutterFlowTheme.of(context)
+                                                .primaryBackground,
+                                      ),
+                                      cells: [
+                                        Text(
+                                          valueOrDefault<String>(
+                                            roleListItem.roleName,
+                                            'Role Name',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Plus Jakarta Sans',
+                                                fontSize: 16.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Flexible(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsets.all(5.0),
+                                                    child: Text(
+                                                      valueOrDefault<String>(
+                                                        roleListItem
+                                                            .description,
+                                                        'Description',
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Plus Jakarta Sans',
+                                                            fontSize: 16.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ].map((c) => DataCell(c)).toList(),
+                                    ),
+                                    paginated: true,
+                                    selectable: false,
+                                    hidePaginator: false,
+                                    showFirstLastButtons: false,
+                                    headingRowHeight: 56.0,
+                                    dataRowHeight: 95.0,
+                                    columnSpacing: 20.0,
+                                    headingRowColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    addHorizontalDivider: true,
+                                    addTopAndBottomDivider: false,
+                                    hideDefaultHorizontalDivider: true,
+                                    horizontalDividerColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                    horizontalDividerThickness: 1.0,
+                                    addVerticalDivider: false,
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

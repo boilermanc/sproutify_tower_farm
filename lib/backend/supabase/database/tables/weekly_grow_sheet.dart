@@ -22,8 +22,8 @@ class WeeklyGrowSheetRow extends SupabaseDataRow {
   set weekStartDate(DateTime value) =>
       setField<DateTime>('week_start_date', value);
 
-  int get contentId => getField<int>('content_id')!;
-  set contentId(int value) => setField<int>('content_id', value);
+  int? get contentId => getField<int>('content_id');
+  set contentId(int? value) => setField<int>('content_id', value);
 
   int get allocatedQuantity => getField<int>('allocated_quantity')!;
   set allocatedQuantity(int value) =>
@@ -42,4 +42,10 @@ class WeeklyGrowSheetRow extends SupabaseDataRow {
 
   String get farmId => getField<String>('farm_id')!;
   set farmId(String value) => setField<String>('farm_id', value);
+
+  int? get itemId => getField<int>('item_id');
+  set itemId(int? value) => setField<int>('item_id', value);
+
+  int? get plantId => getField<int>('plant_id');
+  set plantId(int? value) => setField<int>('plant_id', value);
 }

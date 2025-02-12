@@ -24,6 +24,9 @@ class SpacerInventoryRow extends SupabaseDataRow {
   String? get farmId => getField<String>('farm_id');
   set farmId(String? value) => setField<String>('farm_id', value);
 
+  int? get plantId => getField<int>('plant_id');
+  set plantId(int? value) => setField<int>('plant_id', value);
+
   int? get quantity => getField<int>('quantity');
   set quantity(int? value) => setField<int>('quantity', value);
 

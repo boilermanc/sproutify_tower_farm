@@ -45,4 +45,11 @@ class TaskTypesRow extends SupabaseDataRow {
 
   String get scope => getField<String>('scope')!;
   set scope(String value) => setField<String>('scope', value);
+
+  String? get towerFilter => getField<String>('tower_filter');
+  set towerFilter(String? value) => setField<String>('tower_filter', value);
+
+  String? get towerSelectionType => getField<String>('tower_selection_type');
+  set towerSelectionType(String? value) =>
+      setField<String>('tower_selection_type', value);
 }

@@ -1,10 +1,11 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/no_products_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/products/no_products/no_products_widget.dart';
 import 'dart:math';
+import 'dart:ui';
 import 'side_nav_widget.dart' show SideNavWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

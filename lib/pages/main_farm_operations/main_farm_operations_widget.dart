@@ -1,15 +1,18 @@
 import '/backend/supabase/supabase.dart';
-import '/components/add_task_widget.dart';
-import '/components/no_tower_display_widget.dart';
 import '/components/side_nav_widget.dart';
-import '/components/task_mark_completed_widget.dart';
-import '/components/task_note_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/produce_plants/no_tasks/no_tasks_widget.dart';
+import '/tasks/add_task/add_task_widget.dart';
+import '/tasks/task_mark_completed/task_mark_completed_widget.dart';
+import '/tasks/task_note/task_note_widget.dart';
+import '/towers/no_tower_display/no_tower_display_widget.dart';
 import 'dart:math';
+import 'dart:ui';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -58,7 +61,10 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -230,10 +236,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                         context: context,
                                                         builder: (context) {
                                                           return GestureDetector(
-                                                            onTap: () =>
-                                                                FocusScope.of(
-                                                                        context)
-                                                                    .unfocus(),
+                                                            onTap: () {
+                                                              FocusScope.of(
+                                                                      context)
+                                                                  .unfocus();
+                                                              FocusManager
+                                                                  .instance
+                                                                  .primaryFocus
+                                                                  ?.unfocus();
+                                                            },
                                                             child: Padding(
                                                               padding: MediaQuery
                                                                   .viewInsetsOf(
@@ -373,7 +384,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                         0.0,
                                                                         0.0),
                                                             child: Text(
-                                                              'Total Tasks',
+                                                              'Overdue',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .labelMedium
@@ -409,7 +420,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                   valueOrDefault<
                                                                       String>(
                                                                     metricsContainerTaskDashboardOverviewRow
-                                                                        ?.totalTasks
+                                                                        ?.overdueTasks
                                                                         ?.toString(),
                                                                     '0',
                                                                   ),
@@ -420,7 +431,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                         fontFamily:
                                                                             'Plus Jakarta Sans',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondary,
+                                                                            .tertiary,
                                                                         fontSize:
                                                                             30.0,
                                                                         letterSpacing:
@@ -473,7 +484,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                         0.0,
                                                                         0.0),
                                                             child: Text(
-                                                              'Pending Tasks',
+                                                              'Due Today',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .labelMedium
@@ -517,7 +528,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                       valueOrDefault<
                                                                           String>(
                                                                         metricsContainerTaskDashboardOverviewRow
-                                                                            ?.pendingTasks
+                                                                            ?.dueTodayTasks
                                                                             ?.toString(),
                                                                         '0',
                                                                       ),
@@ -588,7 +599,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                             0.0,
                                                                             0.0),
                                                                 child: Text(
-                                                                  'In Progress',
+                                                                  'Pending',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
@@ -625,7 +636,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                   valueOrDefault<
                                                                       String>(
                                                                     metricsContainerTaskDashboardOverviewRow
-                                                                        ?.inProgressTasks
+                                                                        ?.pendingTasks
                                                                         ?.toString(),
                                                                     '0',
                                                                   ),
@@ -680,23 +691,6 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          Text(
-                                                            'TBD',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .headlineMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  color: Color(
-                                                                      0xFF57636C),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                          ),
                                                           Row(
                                                             mainAxisSize:
                                                                 MainAxisSize
@@ -711,7 +705,62 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                             0.0,
                                                                             0.0),
                                                                 child: Text(
-                                                                  'Hello World',
+                                                                  'Completion  Rate: ',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Plus Jakarta Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  formatNumber(
+                                                                    metricsContainerTaskDashboardOverviewRow!
+                                                                        .completionRate!,
+                                                                    formatType:
+                                                                        FormatType
+                                                                            .decimal,
+                                                                    decimalType:
+                                                                        DecimalType
+                                                                            .periodDecimal,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Plus Jakarta Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  '%',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -741,7 +790,62 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                             0.0,
                                                                             0.0),
                                                                 child: Text(
-                                                                  'Hello World',
+                                                                  'Avg. Completion Time: ',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Plus Jakarta Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  formatNumber(
+                                                                    metricsContainerTaskDashboardOverviewRow!
+                                                                        .avgCompletionTimeHours!,
+                                                                    formatType:
+                                                                        FormatType
+                                                                            .decimal,
+                                                                    decimalType:
+                                                                        DecimalType
+                                                                            .periodDecimal,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Plus Jakarta Sans',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  'hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -856,13 +960,8 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                         children: [
                                           Align(
                                             alignment: Alignment(0.0, 0),
-                                            child: TabBar(
-                                              labelColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              unselectedLabelColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                            child: FlutterFlowButtonTabBar(
+                                              useToggleButtonStyle: true,
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleMedium
@@ -879,9 +978,30 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                             'Plus Jakarta Sans',
                                                         letterSpacing: 0.0,
                                                       ),
-                                              indicatorColor:
+                                              labelColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              unselectedLabelColor:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
+                                              backgroundColor:
+                                                  Color(0xFFE5F3FD),
+                                              unselectedBackgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              unselectedBorderColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              borderWidth: 2.0,
+                                              borderRadius: 8.0,
+                                              elevation: 0.0,
+                                              buttonMargin:
+                                                  EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          8.0, 0.0, 8.0, 0.0),
                                               tabs: [
                                                 Row(
                                                   mainAxisAlignment:
@@ -1083,6 +1203,10 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           (context) {
                                                                         final taskAssignements =
                                                                             containerTaskAssignmentViewRowList.toList();
+                                                                        if (taskAssignements
+                                                                            .isEmpty) {
+                                                                          return NoTasksWidget();
+                                                                        }
 
                                                                         return FlutterFlowDataTable<
                                                                             TaskAssignmentViewRow>(
@@ -1173,6 +1297,21 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 softWrap: true,
                                                                                 child: Text(
                                                                                   'Action',
+                                                                                  style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                        fontSize: 18.0,
+                                                                                        letterSpacing: 0.0,
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            DataColumn2(
+                                                                              label: DefaultTextStyle.merge(
+                                                                                softWrap: true,
+                                                                                child: Text(
+                                                                                  'Tower',
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: 'Plus Jakarta Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -1283,6 +1422,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                         'Close Task',
                                                                                         style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                               fontFamily: 'Plus Jakarta Sans',
+                                                                                              fontSize: 12.0,
                                                                                               letterSpacing: 0.0,
                                                                                             ),
                                                                                       ),
@@ -1312,7 +1452,10 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                             context: context,
                                                                                             builder: (context) {
                                                                                               return GestureDetector(
-                                                                                                onTap: () => FocusScope.of(context).unfocus(),
+                                                                                                onTap: () {
+                                                                                                  FocusScope.of(context).unfocus();
+                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                },
                                                                                                 child: Padding(
                                                                                                   padding: MediaQuery.viewInsetsOf(context),
                                                                                                   child: TaskMarkCompletedWidget(
@@ -1350,58 +1493,72 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                       ),
                                                                                     ),
                                                                                   ),
-                                                                                  AlignedTooltip(
-                                                                                    content: Padding(
-                                                                                      padding: EdgeInsets.all(4.0),
-                                                                                      child: Text(
-                                                                                        'Plant Tower',
-                                                                                        style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                                              letterSpacing: 0.0,
+                                                                                  if (taskAssignementsItem.status == 'Available')
+                                                                                    AlignedTooltip(
+                                                                                      content: Padding(
+                                                                                        padding: EdgeInsets.all(4.0),
+                                                                                        child: Text(
+                                                                                          'Plant Tower',
+                                                                                          style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                fontSize: 12.0,
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        ),
+                                                                                      ),
+                                                                                      offset: 4.0,
+                                                                                      preferredDirection: AxisDirection.down,
+                                                                                      borderRadius: BorderRadius.circular(8.0),
+                                                                                      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      elevation: 4.0,
+                                                                                      tailBaseWidth: 24.0,
+                                                                                      tailLength: 12.0,
+                                                                                      waitDuration: Duration(milliseconds: 100),
+                                                                                      showDuration: Duration(milliseconds: 1500),
+                                                                                      triggerMode: TooltipTriggerMode.tap,
+                                                                                      child: Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                                                                                        child: Container(
+                                                                                          width: 30.0,
+                                                                                          height: 30.0,
+                                                                                          decoration: BoxDecoration(
+                                                                                            color: FlutterFlowTheme.of(context).secondary,
+                                                                                            shape: BoxShape.circle,
+                                                                                            border: Border.all(
+                                                                                              color: FlutterFlowTheme.of(context).alternate,
                                                                                             ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    offset: 4.0,
-                                                                                    preferredDirection: AxisDirection.down,
-                                                                                    borderRadius: BorderRadius.circular(8.0),
-                                                                                    backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                    elevation: 4.0,
-                                                                                    tailBaseWidth: 24.0,
-                                                                                    tailLength: 12.0,
-                                                                                    waitDuration: Duration(milliseconds: 100),
-                                                                                    showDuration: Duration(milliseconds: 1500),
-                                                                                    triggerMode: TooltipTriggerMode.tap,
-                                                                                    child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
-                                                                                      child: Container(
-                                                                                        width: 30.0,
-                                                                                        height: 30.0,
-                                                                                        decoration: BoxDecoration(
-                                                                                          color: FlutterFlowTheme.of(context).secondary,
-                                                                                          shape: BoxShape.circle,
-                                                                                          border: Border.all(
-                                                                                            color: FlutterFlowTheme.of(context).alternate,
                                                                                           ),
-                                                                                        ),
-                                                                                        child: Align(
-                                                                                          alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                          child: Text(
-                                                                                            'P',
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                  letterSpacing: 0.0,
-                                                                                                  fontWeight: FontWeight.bold,
-                                                                                                ),
+                                                                                          child: Align(
+                                                                                            alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                            child: Text(
+                                                                                              'P',
+                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                  ),
+                                                                                            ),
                                                                                           ),
                                                                                         ),
                                                                                       ),
                                                                                     ),
-                                                                                  ),
                                                                                 ],
+                                                                              ),
+                                                                              Text(
+                                                                                valueOrDefault<String>(
+                                                                                  taskAssignementsItem.towerIdentifier,
+                                                                                  'N/A',
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      letterSpacing: 0.0,
+                                                                                    ),
                                                                               ),
                                                                             ].map((c) => DataCell(c)).toList(),
                                                                           ),
+                                                                          emptyBuilder: () =>
+                                                                              NoTasksWidget(),
                                                                           paginated:
                                                                               true,
                                                                           selectable:
@@ -1728,7 +1885,10 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 context: context,
                                                                                 builder: (context) {
                                                                                   return GestureDetector(
-                                                                                    onTap: () => FocusScope.of(context).unfocus(),
+                                                                                    onTap: () {
+                                                                                      FocusScope.of(context).unfocus();
+                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                                    },
                                                                                     child: Padding(
                                                                                       padding: MediaQuery.viewInsetsOf(context),
                                                                                       child: TaskNoteWidget(
@@ -1933,6 +2093,10 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                   final taskPlantings =
                                                                       containerTaskPlantingsRowList
                                                                           .toList();
+                                                                  if (taskPlantings
+                                                                      .isEmpty) {
+                                                                    return NoTasksWidget();
+                                                                  }
 
                                                                   return FlutterFlowDataTable<
                                                                       TaskPlantingsRow>(
@@ -2173,6 +2337,9 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               DataCell(c))
                                                                           .toList(),
                                                                     ),
+                                                                    emptyBuilder:
+                                                                        () =>
+                                                                            NoTasksWidget(),
                                                                     paginated:
                                                                         true,
                                                                     selectable:

@@ -14,6 +14,9 @@ class TowerStatusRow extends SupabaseDataRow {
   @override
   SupabaseTable get table => TowerStatusTable();
 
+  String? get farmId => getField<String>('farm_id');
+  set farmId(String? value) => setField<String>('farm_id', value);
+
   int? get towerId => getField<int>('tower_id');
   set towerId(int? value) => setField<int>('tower_id', value);
 
@@ -42,4 +45,9 @@ class TowerStatusRow extends SupabaseDataRow {
 
   String? get stateColor => getField<String>('state_color');
   set stateColor(String? value) => setField<String>('state_color', value);
+
+  String? get stateBackgroundColor =>
+      getField<String>('state_background_color');
+  set stateBackgroundColor(String? value) =>
+      setField<String>('state_background_color', value);
 }

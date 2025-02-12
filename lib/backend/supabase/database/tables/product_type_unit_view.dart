@@ -53,4 +53,22 @@ class ProductTypeUnitViewRow extends SupabaseDataRow {
 
   String? get system => getField<String>('system');
   set system(String? value) => setField<String>('system', value);
+
+  String? get typeName => getField<String>('type_name');
+  set typeName(String? value) => setField<String>('type_name', value);
+
+  String? get typeDescription => getField<String>('type_description');
+  set typeDescription(String? value) =>
+      setField<String>('type_description', value);
+
+  String? get productCategoryId => getField<String>('product_category_id');
+  set productCategoryId(String? value) =>
+      setField<String>('product_category_id', value);
+
+  String? get categoryName => getField<String>('category_name');
+  set categoryName(String? value) => setField<String>('category_name', value);
+
+  String? get categoryDescription => getField<String>('category_description');
+  set categoryDescription(String? value) =>
+      setField<String>('category_description', value);
 }

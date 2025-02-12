@@ -93,4 +93,10 @@ class FarmsRow extends SupabaseDataRow {
 
   double? get longitude => getField<double>('longitude');
   set longitude(double? value) => setField<double>('longitude', value);
+
+  String? get farmImageUrl => getField<String>('farm_image_url');
+  set farmImageUrl(String? value) => setField<String>('farm_image_url', value);
+
+  String? get farmIconUrl => getField<String>('farm_icon_url');
+  set farmIconUrl(String? value) => setField<String>('farm_icon_url', value);
 }

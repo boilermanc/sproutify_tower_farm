@@ -1,10 +1,11 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/no_products_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/products/no_products/no_products_widget.dart';
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -122,10 +123,14 @@ class _SideNavWidgetState extends State<SideNavWidget>
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Icon(
-                        Icons.add_task_rounded,
-                        color: FlutterFlowTheme.of(context).primary,
-                        size: 32.0,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          'assets/images/AFFLogoFinal.png',
+                          width: 50.0,
+                          height: 50.0,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       if (FFAppState().navOpen == true)
                         Flexible(
@@ -178,22 +183,20 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           AnimatedContainer(
                             duration: Duration(milliseconds: 200),
                             curve: Curves.easeInOut,
-                            width: FFAppState().navOpen == true ? 50.0 : 36.0,
-                            height: FFAppState().navOpen == true ? 50.0 : 36.0,
+                            width: FFAppState().navOpen == true ? 70.0 : 50.0,
+                            height: FFAppState().navOpen == true ? 70.0 : 50.0,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12.0),
-                              border: Border.all(
-                                width: 2.0,
-                              ),
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(2.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
-                                  'assets/images/AFFLogoFinal.png',
-                                  width: double.infinity,
-                                  height: double.infinity,
+                                child: Image.network(
+                                  FFAppState().profileImage != null &&
+                                          FFAppState().profileImage != ''
+                                      ? FFAppState().profileImage
+                                      : 'https://rsndonfydqhykowljuyn.supabase.co/storage/v1/object/public/profileImages/pics/default_profile.png',
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -384,7 +387,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               width: double.infinity,
                               height: 44.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).accent1,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 borderRadius: BorderRadius.circular(12.0),
                                 shape: BoxShape.rectangle,
                               ),
@@ -622,7 +625,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                     if (FFAppState().navOpen == true)
                                       Expanded(
                                         child: Text(
-                                          'Recent Orders',
+                                          'Manage Orders',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(

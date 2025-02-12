@@ -81,4 +81,7 @@ class MonitoringTowerDashboardRow extends SupabaseDataRow {
   String? get issueColorHex => getField<String>('issue_color_hex');
   set issueColorHex(String? value) =>
       setField<String>('issue_color_hex', value);
+
+  String? get readerName => getField<String>('reader_name');
+  set readerName(String? value) => setField<String>('reader_name', value);
 }

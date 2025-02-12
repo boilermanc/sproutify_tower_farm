@@ -6,6 +6,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
+import 'dart:ui';
+import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -72,7 +74,10 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
             mainNutrientsMonitoringTopDashboardRowList = snapshot.data!;
 
         return GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -191,7 +196,8 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                                   Text(
                                                     valueOrDefault<String>(
                                                       mainNutrientsMonitoringTopDashboardRowList
-                                                          .first.totalEcIssues
+                                                          .firstOrNull
+                                                          ?.totalEcIssues
                                                           ?.toString(),
                                                       'ec issues',
                                                     ),
@@ -261,7 +267,8 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                                   Text(
                                                     valueOrDefault<String>(
                                                       mainNutrientsMonitoringTopDashboardRowList
-                                                          .first.totalPhIssues
+                                                          .firstOrNull
+                                                          ?.totalPhIssues
                                                           ?.toString(),
                                                       'ph issues',
                                                     ),
@@ -330,8 +337,8 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                                   Text(
                                                     valueOrDefault<String>(
                                                       mainNutrientsMonitoringTopDashboardRowList
-                                                          .first
-                                                          .towersWithNoIssues
+                                                          .firstOrNull
+                                                          ?.towersWithNoIssues
                                                           ?.toString(),
                                                       'no issues',
                                                     ),
@@ -448,7 +455,7 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
+                                    16.0, 12.0, 16.0, 0.0),
                                 child: FutureBuilder<
                                     List<MonitoringIntelligenceViewRow>>(
                                   future: MonitoringIntelligenceViewTable()
@@ -487,8 +494,18 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 3.0,
+                                            color: Color(0x33000000),
+                                            offset: Offset(
+                                              0.0,
+                                              1.0,
+                                            ),
+                                          )
+                                        ],
                                         borderRadius:
-                                            BorderRadius.circular(12.0),
+                                            BorderRadius.circular(10.0),
                                         border: Border.all(
                                           color: FlutterFlowTheme.of(context)
                                               .alternate,
@@ -757,7 +774,8 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                                   dateTimeFormat(
                                                       "MEd",
                                                       intelligenceContainerMonitoringIntelligenceViewRowList
-                                                          .first.createdAt!),
+                                                          .firstOrNull!
+                                                          .createdAt!),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -913,7 +931,18 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                                                               width: 170.0,
                                                                               height: 30.0,
                                                                               decoration: BoxDecoration(
-                                                                                color: FlutterFlowTheme.of(context).secondary,
+                                                                                color: colorFromCssString(
+                                                                                  () {
+                                                                                    if (towerListItem.severity == 'critical') {
+                                                                                      return '#FF5963';
+                                                                                    } else if (towerListItem.severity == 'warning') {
+                                                                                      return '#EE8B60';
+                                                                                    } else {
+                                                                                      return '#39D2C0';
+                                                                                    }
+                                                                                  }(),
+                                                                                  defaultColor: FlutterFlowTheme.of(context).alternate,
+                                                                                ),
                                                                                 borderRadius: BorderRadius.only(
                                                                                   bottomLeft: Radius.circular(8.0),
                                                                                   bottomRight: Radius.circular(8.0),
@@ -1302,12 +1331,22 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
+                                    16.0, 12.0, 16.0, 12.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 3.0,
+                                        color: Color(0x33000000),
+                                        offset: Offset(
+                                          0.0,
+                                          1.0,
+                                        ),
+                                      )
+                                    ],
                                     borderRadius: BorderRadius.circular(12.0),
                                     border: Border.all(
                                       color: FlutterFlowTheme.of(context)
@@ -1342,15 +1381,10 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
                                           List<MonitoringTowerDashboardRow>>(
                                         future: MonitoringTowerDashboardTable()
                                             .queryRows(
-                                          queryFn: (q) => q
-                                              .eqOrNull(
-                                                'farm_id',
-                                                FFAppState().farmID,
-                                              )
-                                              .eqOrNull(
-                                                'needs_attention',
-                                                true,
-                                              ),
+                                          queryFn: (q) => q.eqOrNull(
+                                            'farm_id',
+                                            FFAppState().farmID,
+                                          ),
                                         ),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
@@ -1377,229 +1411,519 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget>
 
                                           return Container(
                                             decoration: BoxDecoration(),
-                                            child: Builder(
-                                              builder: (context) {
-                                                final phecData =
-                                                    phecDataMonitoringTowerDashboardRowList
-                                                        .toList();
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10.0),
+                                              child: Builder(
+                                                builder: (context) {
+                                                  final phecData =
+                                                      phecDataMonitoringTowerDashboardRowList
+                                                          .toList();
 
-                                                return FlutterFlowDataTable<
-                                                    MonitoringTowerDashboardRow>(
-                                                  controller: _model
-                                                      .paginatedDataTableController,
-                                                  data: phecData,
-                                                  columnsBuilder:
-                                                      (onSortChanged) => [
-                                                    DataColumn2(
-                                                      label: DefaultTextStyle
-                                                          .merge(
-                                                        softWrap: true,
-                                                        child: Text(
-                                                          'Tower',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    DataColumn2(
-                                                      label: DefaultTextStyle
-                                                          .merge(
-                                                        softWrap: true,
-                                                        child: Text(
-                                                          'Issue',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    DataColumn2(
-                                                      label: DefaultTextStyle
-                                                          .merge(
-                                                        softWrap: true,
-                                                        child: Text(
-                                                          'Last Read',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    DataColumn2(
-                                                      label: DefaultTextStyle
-                                                          .merge(
-                                                        softWrap: true,
-                                                        child: Text(
-                                                          'Action',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                  dataRowBuilder: (phecDataItem,
-                                                          phecDataIndex,
-                                                          selected,
-                                                          onSelectChanged) =>
-                                                      DataRow(
-                                                    color: MaterialStateProperty
-                                                        .all(
-                                                      phecDataIndex % 2 == 0
-                                                          ? FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryBackground
-                                                          : FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryBackground,
-                                                    ),
-                                                    cells: [
-                                                      Text(
-                                                        phecDataItem
-                                                            .towerIdentifier!,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
+                                                  return FlutterFlowDataTable<
+                                                      MonitoringTowerDashboardRow>(
+                                                    controller: _model
+                                                        .paginatedDataTableController,
+                                                    data: phecData,
+                                                    columnsBuilder:
+                                                        (onSortChanged) => [
+                                                      DataColumn2(
+                                                        label: DefaultTextStyle
+                                                            .merge(
+                                                          softWrap: true,
+                                                          child: Text(
+                                                            'Tower',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
                                                                 .override(
                                                                   fontFamily:
                                                                       'Plus Jakarta Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                                  fontSize:
+                                                                      18.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
                                                                 ),
-                                                      ),
-                                                      Text(
-                                                        valueOrDefault<String>(
-                                                          phecDataItem.issues,
-                                                          'None',
+                                                          ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
+                                                      ),
+                                                      DataColumn2(
+                                                        label: DefaultTextStyle
+                                                            .merge(
+                                                          softWrap: true,
+                                                          child: Text(
+                                                            'Status',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
                                                                 .override(
                                                                   fontFamily:
                                                                       'Plus Jakarta Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      DataColumn2(
+                                                        label: DefaultTextStyle
+                                                            .merge(
+                                                          softWrap: true,
+                                                          child: Text(
+                                                            'pH',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      DataColumn2(
+                                                        label: DefaultTextStyle
+                                                            .merge(
+                                                          softWrap: true,
+                                                          child: Text(
+                                                            'EC Range',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      DataColumn2(
+                                                        label: DefaultTextStyle
+                                                            .merge(
+                                                          softWrap: true,
+                                                          child: Text(
+                                                            'Last Read',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      DataColumn2(
+                                                        label: DefaultTextStyle
+                                                            .merge(
+                                                          softWrap: true,
+                                                          child: Text(
+                                                            'Read By',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      DataColumn2(
+                                                        label: DefaultTextStyle
+                                                            .merge(
+                                                          softWrap: true,
+                                                          child: Text(
+                                                            'Issues',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                    dataRowBuilder: (phecDataItem,
+                                                            phecDataIndex,
+                                                            selected,
+                                                            onSelectChanged) =>
+                                                        DataRow(
+                                                      color:
+                                                          MaterialStateProperty
+                                                              .all(
+                                                        phecDataIndex % 2 == 0
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground
+                                                            : FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBackground,
+                                                      ),
+                                                      cells: [
+                                                        Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            phecDataItem
+                                                                .towerIdentifier,
+                                                            ' 0.00',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                        ),
+                                                        Stack(
+                                                          children: [
+                                                            if (phecDataItem
+                                                                    .needsAttention !=
+                                                                true)
+                                                              AlignedTooltip(
+                                                                content:
+                                                                    Padding(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              4.0),
+                                                                  child: Text(
+                                                                    'All Good',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Plus Jakarta Sans',
+                                                                          fontSize:
+                                                                              10.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                                offset: 4.0,
+                                                                preferredDirection:
+                                                                    AxisDirection
+                                                                        .down,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                                backgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                elevation: 4.0,
+                                                                tailBaseWidth:
+                                                                    24.0,
+                                                                tailLength:
+                                                                    12.0,
+                                                                waitDuration:
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            100),
+                                                                showDuration:
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            1500),
+                                                                triggerMode:
+                                                                    TooltipTriggerMode
+                                                                        .tap,
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .check_circle,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary,
+                                                                  size: 24.0,
+                                                                ),
+                                                              ),
+                                                            if (phecDataItem
+                                                                    .needsAttention ==
+                                                                true)
+                                                              AlignedTooltip(
+                                                                content:
+                                                                    Padding(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              4.0),
+                                                                  child: Text(
+                                                                    'Needs Attention',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Plus Jakarta Sans',
+                                                                          fontSize:
+                                                                              10.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                                offset: 4.0,
+                                                                preferredDirection:
+                                                                    AxisDirection
+                                                                        .down,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                                backgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                elevation: 4.0,
+                                                                tailBaseWidth:
+                                                                    24.0,
+                                                                tailLength:
+                                                                    12.0,
+                                                                waitDuration:
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            100),
+                                                                showDuration:
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            1500),
+                                                                triggerMode:
+                                                                    TooltipTriggerMode
+                                                                        .tap,
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .warning_amber,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .tertiary,
+                                                                  size: 24.0,
+                                                                ),
+                                                              ),
+                                                          ],
+                                                        ),
+                                                        Container(
+                                                          width: 30.0,
+                                                          height: 30.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color:
+                                                                colorFromCssString(
+                                                              phecDataItem
+                                                                  .phColorHex!,
+                                                              defaultColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                            ),
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                        ),
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
+                                                              child: Container(
+                                                                width: 30.0,
+                                                                height: 30.0,
+                                                                decoration:
+                                                                    BoxDecoration(
                                                                   color:
                                                                       colorFromCssString(
                                                                     phecDataItem
-                                                                        .issueColorHex!,
+                                                                        .ecColorHex!,
                                                                     defaultColor:
-                                                                        Colors
-                                                                            .black,
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .alternate,
                                                                   ),
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                                  shape: BoxShape
+                                                                      .circle,
                                                                 ),
-                                                      ),
-                                                      Text(
-                                                        phecDataItem
-                                                            .lastReadHumanReadable!,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                      Text(
-                                                        'Edit Column 4',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                    ]
-                                                        .map((c) => DataCell(c))
-                                                        .toList(),
-                                                  ),
-                                                  paginated: true,
-                                                  selectable: false,
-                                                  hidePaginator: false,
-                                                  showFirstLastButtons: false,
-                                                  height: 600.0,
-                                                  headingRowHeight: 56.0,
-                                                  dataRowHeight: 48.0,
-                                                  columnSpacing: 20.0,
-                                                  headingRowColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryText,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  addHorizontalDivider: true,
-                                                  addTopAndBottomDivider: false,
-                                                  hideDefaultHorizontalDivider:
-                                                      true,
-                                                  horizontalDividerColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
-                                                  horizontalDividerThickness:
-                                                      1.0,
-                                                  addVerticalDivider: false,
-                                                );
-                                              },
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              phecDataItem
+                                                                  .ecRange!,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Plus Jakarta Sans',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Text(
+                                                          dateTimeFormat(
+                                                              "MEd",
+                                                              phecDataItem
+                                                                  .readAt!),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
+                                                        Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            phecDataItem
+                                                                .readerName,
+                                                            'N/A',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
+                                                        Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            phecDataItem.issues,
+                                                            'Issue',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                fontSize: 12.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
+                                                      ]
+                                                          .map((c) =>
+                                                              DataCell(c))
+                                                          .toList(),
+                                                    ),
+                                                    paginated: true,
+                                                    selectable: false,
+                                                    hidePaginator: false,
+                                                    showFirstLastButtons: false,
+                                                    height: 600.0,
+                                                    headingRowHeight: 56.0,
+                                                    dataRowHeight: 48.0,
+                                                    columnSpacing: 20.0,
+                                                    headingRowColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryText,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    addHorizontalDivider: true,
+                                                    addTopAndBottomDivider:
+                                                        false,
+                                                    hideDefaultHorizontalDivider:
+                                                        true,
+                                                    horizontalDividerColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryBackground,
+                                                    horizontalDividerThickness:
+                                                        1.0,
+                                                    addVerticalDivider: false,
+                                                  );
+                                                },
+                                              ),
                                             ),
                                           );
                                         },

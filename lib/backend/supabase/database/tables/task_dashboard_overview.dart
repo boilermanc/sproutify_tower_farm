@@ -31,7 +31,21 @@ class TaskDashboardOverviewRow extends SupabaseDataRow {
   int? get completedTasks => getField<int>('completed_tasks');
   set completedTasks(int? value) => setField<int>('completed_tasks', value);
 
-  int? get upcomingDueTasks => getField<int>('upcoming_due_tasks');
-  set upcomingDueTasks(int? value) =>
-      setField<int>('upcoming_due_tasks', value);
+  int? get overdueTasks => getField<int>('overdue_tasks');
+  set overdueTasks(int? value) => setField<int>('overdue_tasks', value);
+
+  int? get dueTodayTasks => getField<int>('due_today_tasks');
+  set dueTodayTasks(int? value) => setField<int>('due_today_tasks', value);
+
+  int? get upcomingTasks => getField<int>('upcoming_tasks');
+  set upcomingTasks(int? value) => setField<int>('upcoming_tasks', value);
+
+  double? get completionRate => getField<double>('completion_rate');
+  set completionRate(double? value) =>
+      setField<double>('completion_rate', value);
+
+  double? get avgCompletionTimeHours =>
+      getField<double>('avg_completion_time_hours');
+  set avgCompletionTimeHours(double? value) =>
+      setField<double>('avg_completion_time_hours', value);
 }

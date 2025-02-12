@@ -5,26 +5,28 @@ export '/pages/main_recent_orders/main_recent_orders_widget.dart'
 export '/pages/main_profile/main_profile_widget.dart' show MainProfileWidget;
 export '/pages/main_dashboard/main_dashboard_widget.dart'
     show MainDashboardWidget;
-export '/main_login/main_login_widget.dart' show MainLoginWidget;
+export '/registration_profile/main_login/main_login_widget.dart'
+    show MainLoginWidget;
 export '/pages/main_water_management/main_water_management_widget.dart'
     show MainWaterManagementWidget;
 export '/pages/main_sensors/main_sensors_widget.dart' show MainSensorsWidget;
 export '/pages/main_plants/main_plants_widget.dart' show MainPlantsWidget;
 export '/pages/main_vendors/main_vendors_widget.dart' show MainVendorsWidget;
-export '/farm_config/farm_config_widget.dart' show FarmConfigWidget;
 export '/pages/main_pest_managment/main_pest_managment_widget.dart'
     show MainPestManagmentWidget;
 export '/pages/main_customers/main_customers_widget.dart'
     show MainCustomersWidget;
-export '/create_account/create_account_widget.dart' show CreateAccountWidget;
-export '/sign_up_flow/sign_up_flow_widget.dart' show SignUpFlowWidget;
-export '/navigate_after_signup/navigate_after_signup_widget.dart'
+export '/registration_profile/create_account/create_account_widget.dart'
+    show CreateAccountWidget;
+export '/registration_profile/sign_up_flow/sign_up_flow_widget.dart'
+    show SignUpFlowWidget;
+export '/registration_profile/navigate_after_signup/navigate_after_signup_widget.dart'
     show NavigateAfterSignupWidget;
-export '/sign_up_flow_one/sign_up_flow_one_widget.dart'
+export '/registration_profile/sign_up_flow_one/sign_up_flow_one_widget.dart'
     show SignUpFlowOneWidget;
-export '/sign_up_flow_two/sign_up_flow_two_widget.dart'
+export '/registration_profile/sign_up_flow_two/sign_up_flow_two_widget.dart'
     show SignUpFlowTwoWidget;
-export '/sign_up_flow_final/sign_up_flow_final_widget.dart'
+export '/registration_profile/sign_up_flow_final/sign_up_flow_final_widget.dart'
     show SignUpFlowFinalWidget;
 export '/pages/main_light_management/main_light_management_widget.dart'
     show MainLightManagementWidget;
@@ -44,3 +46,8 @@ export '/pages/main_configuration/main_configuration_widget.dart'
     show MainConfigurationWidget;
 export '/sproutify_a_i/chat_ai_screen/chat_ai_screen_widget.dart'
     show ChatAiScreenWidget;
+export '/registration_profile/invite/invite_widget.dart' show InviteWidget;
+export '/registration_profile/verify_invite/verify_invite_widget.dart'
+    show VerifyInviteWidget;
+export '/registration_profile/invite_success_landing/invite_success_landing_widget.dart'
+    show InviteSuccessLandingWidget;

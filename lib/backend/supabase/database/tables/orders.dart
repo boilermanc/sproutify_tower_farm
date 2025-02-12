@@ -14,32 +14,68 @@ class OrdersRow extends SupabaseDataRow {
   @override
   SupabaseTable get table => OrdersTable();
 
-  int? get growSheetId => getField<int>('grow_sheet_id');
-  set growSheetId(int? value) => setField<int>('grow_sheet_id', value);
+  String get id => getField<String>('id')!;
+  set id(String value) => setField<String>('id', value);
 
-  DateTime? get weekStartDate => getField<DateTime>('week_start_date');
-  set weekStartDate(DateTime? value) =>
-      setField<DateTime>('week_start_date', value);
+  String get vendorId => getField<String>('vendor_id')!;
+  set vendorId(String value) => setField<String>('vendor_id', value);
 
-  int? get contentId => getField<int>('content_id');
-  set contentId(int? value) => setField<int>('content_id', value);
+  String get farmId => getField<String>('farm_id')!;
+  set farmId(String value) => setField<String>('farm_id', value);
 
-  String? get plantName => getField<String>('plant_name');
-  set plantName(String? value) => setField<String>('plant_name', value);
+  String get orderNumber => getField<String>('order_number')!;
+  set orderNumber(String value) => setField<String>('order_number', value);
 
-  int? get availableQuantity => getField<int>('available_quantity');
-  set availableQuantity(int? value) =>
-      setField<int>('available_quantity', value);
+  String get customerName => getField<String>('customer_name')!;
+  set customerName(String value) => setField<String>('customer_name', value);
 
-  int? get orderedQuantity => getField<int>('ordered_quantity');
-  set orderedQuantity(int? value) => setField<int>('ordered_quantity', value);
+  String? get customerEmail => getField<String>('customer_email');
+  set customerEmail(String? value) => setField<String>('customer_email', value);
 
-  String? get customerName => getField<String>('customer_name');
-  set customerName(String? value) => setField<String>('customer_name', value);
+  String? get customerPhone => getField<String>('customer_phone');
+  set customerPhone(String? value) => setField<String>('customer_phone', value);
 
-  String? get customerType => getField<String>('customer_type');
-  set customerType(String? value) => setField<String>('customer_type', value);
+  String? get orderType => getField<String>('order_type');
+  set orderType(String? value) => setField<String>('order_type', value);
 
-  String? get farmName => getField<String>('farm_name');
-  set farmName(String? value) => setField<String>('farm_name', value);
+  double? get orderTotal => getField<double>('order_total');
+  set orderTotal(double? value) => setField<double>('order_total', value);
+
+  String? get paymentStatus => getField<String>('payment_status');
+  set paymentStatus(String? value) => setField<String>('payment_status', value);
+
+  String? get paymentMethod => getField<String>('payment_method');
+  set paymentMethod(String? value) => setField<String>('payment_method', value);
+
+  String? get fulfillmentType => getField<String>('fulfillment_type');
+  set fulfillmentType(String? value) =>
+      setField<String>('fulfillment_type', value);
+
+  String? get fulfillmentAddress => getField<String>('fulfillment_address');
+  set fulfillmentAddress(String? value) =>
+      setField<String>('fulfillment_address', value);
+
+  DateTime? get fulfillmentDate => getField<DateTime>('fulfillment_date');
+  set fulfillmentDate(DateTime? value) =>
+      setField<DateTime>('fulfillment_date', value);
+
+  String? get fulfillmentTimeSlot => getField<String>('fulfillment_time_slot');
+  set fulfillmentTimeSlot(String? value) =>
+      setField<String>('fulfillment_time_slot', value);
+
+  String? get pickupLocation => getField<String>('pickup_location');
+  set pickupLocation(String? value) =>
+      setField<String>('pickup_location', value);
+
+  DateTime? get createdAt => getField<DateTime>('created_at');
+  set createdAt(DateTime? value) => setField<DateTime>('created_at', value);
+
+  DateTime? get updatedAt => getField<DateTime>('updated_at');
+  set updatedAt(DateTime? value) => setField<DateTime>('updated_at', value);
+
+  bool get isLocalline => getField<bool>('is_localline')!;
+  set isLocalline(bool value) => setField<bool>('is_localline', value);
+
+  int get orderStatusId => getField<int>('order_status_id')!;
+  set orderStatusId(int value) => setField<int>('order_status_id', value);
 }

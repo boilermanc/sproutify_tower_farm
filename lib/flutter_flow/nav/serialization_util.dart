@@ -218,8 +218,12 @@ dynamic deserializeParam<T>(
       case ParamType.SupabaseRow:
         final data = json.decode(param) as Map<String, dynamic>;
         switch (T) {
+          case WeeklyHarvestForecastRow:
+            return WeeklyHarvestForecastRow(data);
           case RolesRow:
             return RolesRow(data);
+          case TaskStatusSummaryByFarmAndRoleViewRow:
+            return TaskStatusSummaryByFarmAndRoleViewRow(data);
           case ProductTypeUnitsRow:
             return ProductTypeUnitsRow(data);
           case LatestLightStatusRow:
@@ -242,6 +246,8 @@ dynamic deserializeParam<T>(
             return ProductSdsApplicationMethodsRow(data);
           case UserFarmsRow:
             return UserFarmsRow(data);
+          case FarmProfilesViewRow:
+            return FarmProfilesViewRow(data);
           case TaskMainCategoryTasksFlatViewRow:
             return TaskMainCategoryTasksFlatViewRow(data);
           case MechanicalsHeaterDetailsRow:
@@ -254,6 +260,8 @@ dynamic deserializeParam<T>(
             return ControllersRow(data);
           case SensorTypesRow:
             return SensorTypesRow(data);
+          case TowerContentsTestRow:
+            return TowerContentsTestRow(data);
           case ControllerPinsDropdownViewRow:
             return ControllerPinsDropdownViewRow(data);
           case VLatestTowerActionsRow:
@@ -272,8 +280,14 @@ dynamic deserializeParam<T>(
             return ProductDailyUsageRow(data);
           case ProductInventoryThresholdsRow:
             return ProductInventoryThresholdsRow(data);
+          case SpacerWasteReasonsRow:
+            return SpacerWasteReasonsRow(data);
           case CustomerViewRow:
             return CustomerViewRow(data);
+          case TowerDisplayStatusRow:
+            return TowerDisplayStatusRow(data);
+          case HarvestInventoryRow:
+            return HarvestInventoryRow(data);
           case MonitoringTrendSummaryRow:
             return MonitoringTrendSummaryRow(data);
           case TowerStateSummaryRow:
@@ -284,6 +298,8 @@ dynamic deserializeParam<T>(
             return MethodProductDefaultsRow(data);
           case TaskDetailViewRow:
             return TaskDetailViewRow(data);
+          case FarmStoreInventoryRow:
+            return FarmStoreInventoryRow(data);
           case RoutineSchedulesRow:
             return RoutineSchedulesRow(data);
           case TowersStatusRow:
@@ -292,12 +308,18 @@ dynamic deserializeParam<T>(
             return VTowerActionValidationRow(data);
           case ProductInventoryLevelsRow:
             return ProductInventoryLevelsRow(data);
+          case PlantDistributionBreakdownRow:
+            return PlantDistributionBreakdownRow(data);
           case LatestWaterFlowReadingsRow:
             return LatestWaterFlowReadingsRow(data);
           case FarmsRow:
             return FarmsRow(data);
           case TowerPlantsDetailRow:
             return TowerPlantsDetailRow(data);
+          case PlantCatalogMvRow:
+            return PlantCatalogMvRow(data);
+          case SpacerWasteAnalysisRow:
+            return SpacerWasteAnalysisRow(data);
           case TowerAvailablePortsRow:
             return TowerAvailablePortsRow(data);
           case ViewProfileRolesRow:
@@ -320,10 +342,14 @@ dynamic deserializeParam<T>(
             return TowerDashboardBasicRow(data);
           case UnitConversionsRow:
             return UnitConversionsRow(data);
+          case SpacerWasteSeverityListRow:
+            return SpacerWasteSeverityListRow(data);
           case VendorsRow:
             return VendorsRow(data);
           case FarmImagesRow:
             return FarmImagesRow(data);
+          case PlantWasteReasonsRow:
+            return PlantWasteReasonsRow(data);
           case ControllerTypeViewRow:
             return ControllerTypeViewRow(data);
           case ColorCodesRow:
@@ -340,6 +366,8 @@ dynamic deserializeParam<T>(
             return ProfileRolesListRow(data);
           case PestTreatmentLocationsRow:
             return PestTreatmentLocationsRow(data);
+          case InvitationsViewRow:
+            return InvitationsViewRow(data);
           case WeeklyGrowSheetRow:
             return WeeklyGrowSheetRow(data);
           case TestPrecautionaryViewRow:
@@ -358,6 +386,8 @@ dynamic deserializeParam<T>(
             return SpacerInventoryRow(data);
           case MonitoringTopDashboardRow:
             return MonitoringTopDashboardRow(data);
+          case HarvestListViewRow:
+            return HarvestListViewRow(data);
           case ActionTypesRow:
             return ActionTypesRow(data);
           case ProductUnitsRow:
@@ -368,8 +398,8 @@ dynamic deserializeParam<T>(
             return LightUsageSummaryRow(data);
           case FarmRolesRow:
             return FarmRolesRow(data);
-          case TowerStatusAndTasksViewRow:
-            return TowerStatusAndTasksViewRow(data);
+          case PlantWasteSeverityListRow:
+            return PlantWasteSeverityListRow(data);
           case LightTotalSummaryRow:
             return LightTotalSummaryRow(data);
           case DeviceLogsRow:
@@ -384,8 +414,6 @@ dynamic deserializeParam<T>(
             return TowerHistoryRow(data);
           case VAvailableTowersRow:
             return VAvailableTowersRow(data);
-          case ChefWeeklyDeliveriesRow:
-            return ChefWeeklyDeliveriesRow(data);
           case WaterFlowQuarterlyTotalsRow:
             return WaterFlowQuarterlyTotalsRow(data);
           case TaskCategoryTasksViewRow:
@@ -396,8 +424,6 @@ dynamic deserializeParam<T>(
             return TaskPriorityConfigRow(data);
           case LightingUsageBillingSummaryRow:
             return LightingUsageBillingSummaryRow(data);
-          case ProductPestChemicalsRow:
-            return ProductPestChemicalsRow(data);
           case UnitConversionRow:
             return UnitConversionRow(data);
           case ProfileRolesRow:
@@ -408,20 +434,30 @@ dynamic deserializeParam<T>(
             return PestObservationsViewRow(data);
           case TestTypesRow:
             return TestTypesRow(data);
+          case PlantWasteRecordsRow:
+            return PlantWasteRecordsRow(data);
           case RestaurantOrdersRow:
             return RestaurantOrdersRow(data);
           case TowerContentsRow:
             return TowerContentsRow(data);
+          case FarmStoreInventoryViewRow:
+            return FarmStoreInventoryViewRow(data);
           case PestControlProductsRecentApplicationsRow:
             return PestControlProductsRecentApplicationsRow(data);
           case ProductMonthlyMetricsRow:
             return ProductMonthlyMetricsRow(data);
+          case PestLatestTreatmentsRow:
+            return PestLatestTreatmentsRow(data);
           case TaskPlantingsRow:
             return TaskPlantingsRow(data);
+          case TowerLastActionRow:
+            return TowerLastActionRow(data);
           case TaskDailyViewRow:
             return TaskDailyViewRow(data);
           case EmployeePresenceRow:
             return EmployeePresenceRow(data);
+          case LocallineOrderItemsViewRow:
+            return LocallineOrderItemsViewRow(data);
           case PestObservationsRow:
             return PestObservationsRow(data);
           case DebugLogsRow:
@@ -442,6 +478,8 @@ dynamic deserializeParam<T>(
             return MonitoringFarmRangesRow(data);
           case TestUnitsRow:
             return TestUnitsRow(data);
+          case SpacerWasteTrackingRow:
+            return SpacerWasteTrackingRow(data);
           case CustomerTypesRow:
             return CustomerTypesRow(data);
           case LightingControllersRow:
@@ -450,6 +488,8 @@ dynamic deserializeParam<T>(
             return HarvestListItemsRow(data);
           case TaskTypeDistributionRow:
             return TaskTypeDistributionRow(data);
+          case OrderItemsViewRow:
+            return OrderItemsViewRow(data);
           case LightingCostTiersRow:
             return LightingCostTiersRow(data);
           case SensorReadingsRow:
@@ -464,6 +504,12 @@ dynamic deserializeParam<T>(
             return ProductSafetyEquipmentRow(data);
           case TaskStatusConfigRow:
             return TaskStatusConfigRow(data);
+          case TowerPlantingCatalogRow:
+            return TowerPlantingCatalogRow(data);
+          case PlantImagesRow:
+            return PlantImagesRow(data);
+          case PlantWasteAreasListRow:
+            return PlantWasteAreasListRow(data);
           case MonitoringReportsRow:
             return MonitoringReportsRow(data);
           case ProductEquipmentDetailsRow:
@@ -498,12 +544,20 @@ dynamic deserializeParam<T>(
             return PestRecentApplicationsRow(data);
           case WaterFlowYearlyTotalsRow:
             return WaterFlowYearlyTotalsRow(data);
+          case TowerDisplayWithPlantsRow:
+            return TowerDisplayWithPlantsRow(data);
+          case TowerStateLogsRow:
+            return TowerStateLogsRow(data);
           case TowerActionSequencesRow:
             return TowerActionSequencesRow(data);
           case LightingZoneSchedulesRow:
             return LightingZoneSchedulesRow(data);
+          case SpacerWasteReasonsListRow:
+            return SpacerWasteReasonsListRow(data);
           case TowerWorkflowSetupRow:
             return TowerWorkflowSetupRow(data);
+          case WeeklyGrowSheetViewRow:
+            return WeeklyGrowSheetViewRow(data);
           case DonationTrackingRow:
             return DonationTrackingRow(data);
           case FarmLightingEntriesRow:
@@ -522,8 +576,14 @@ dynamic deserializeParam<T>(
             return LightScheduleRow(data);
           case ProductSafetyPrecautionsRow:
             return ProductSafetyPrecautionsRow(data);
+          case TowerGrowingPlantsRow:
+            return TowerGrowingPlantsRow(data);
           case ProductSummaryViewRow:
             return ProductSummaryViewRow(data);
+          case OrderItemsRow:
+            return OrderItemsRow(data);
+          case ProductPestCatalogRow:
+            return ProductPestCatalogRow(data);
           case CountryCodesRow:
             return CountryCodesRow(data);
           case MonitoringTaskStatusViewRow:
@@ -538,6 +598,10 @@ dynamic deserializeParam<T>(
             return TowerReservationsRow(data);
           case WaterQualityLogsRow:
             return WaterQualityLogsRow(data);
+          case PlantHarvestTimelineRow:
+            return PlantHarvestTimelineRow(data);
+          case SensorEnvironmentSummaryRow:
+            return SensorEnvironmentSummaryRow(data);
           case FarmPlantsViewRow:
             return FarmPlantsViewRow(data);
           case ProductInventoryTransactionsRow:
@@ -554,12 +618,18 @@ dynamic deserializeParam<T>(
             return TaskCategoryExpandableViewRow(data);
           case PestProductTypesRow:
             return PestProductTypesRow(data);
+          case ProductSdsInfoViewRow:
+            return ProductSdsInfoViewRow(data);
           case TowerStatusRow:
             return TowerStatusRow(data);
           case PlantCategoryRelationRow:
             return PlantCategoryRelationRow(data);
+          case LocallineOrderItemsRow:
+            return LocallineOrderItemsRow(data);
           case ProductGrowingMediumDetailsRow:
             return ProductGrowingMediumDetailsRow(data);
+          case LocallineOrderHeadersRow:
+            return LocallineOrderHeadersRow(data);
           case SensorsMacRow:
             return SensorsMacRow(data);
           case LightUsageCostTiersRow:
@@ -580,6 +650,8 @@ dynamic deserializeParam<T>(
             return MechanicalActionsRow(data);
           case MonitoringEcRangesRow:
             return MonitoringEcRangesRow(data);
+          case TowerTaskSelectionRow:
+            return TowerTaskSelectionRow(data);
           case AllocationsRow:
             return AllocationsRow(data);
           case CurrentTowerPlantsRow:
@@ -590,6 +662,8 @@ dynamic deserializeParam<T>(
             return TowerIdMappingRow(data);
           case ControllerPinsRow:
             return ControllerPinsRow(data);
+          case ActionRelationshipsRow:
+            return ActionRelationshipsRow(data);
           case TowerWorkflowTransitionsRow:
             return TowerWorkflowTransitionsRow(data);
           case VDonationDetailsRow:
@@ -630,6 +704,8 @@ dynamic deserializeParam<T>(
             return LightFixtureUsageSummaryRow(data);
           case ControllerTypesRow:
             return ControllerTypesRow(data);
+          case SpacerWasteRecordsRow:
+            return SpacerWasteRecordsRow(data);
           case TaskTypeHierarchyViewRow:
             return TaskTypeHierarchyViewRow(data);
           case MonitoringIntelligenceViewRow:
@@ -660,6 +736,8 @@ dynamic deserializeParam<T>(
             return TaskRolesRow(data);
           case MonitoringIntelligenceRow:
             return MonitoringIntelligenceRow(data);
+          case InvitationsRow:
+            return InvitationsRow(data);
           case LightStateLogsRow:
             return LightStateLogsRow(data);
           case LightZoneUsageSummaryRow:
@@ -668,6 +746,8 @@ dynamic deserializeParam<T>(
             return MechanicalsMechanicalRow(data);
           case PestsRow:
             return PestsRow(data);
+          case TaskAvailableStaffRow:
+            return TaskAvailableStaffRow(data);
           case HarvestListsRow:
             return HarvestListsRow(data);
           case LightingZonesRow:
@@ -678,8 +758,12 @@ dynamic deserializeParam<T>(
             return DosingUnitsRow(data);
           case ViewPlantDetailsByCategoryRow:
             return ViewPlantDetailsByCategoryRow(data);
+          case LocallineOrdersRow:
+            return LocallineOrdersRow(data);
           case TaskHistoryViewRow:
             return TaskHistoryViewRow(data);
+          case OrderStatusesRow:
+            return OrderStatusesRow(data);
           case PlantQuantityRow:
             return PlantQuantityRow(data);
           case ProductSdsRow:
@@ -688,6 +772,8 @@ dynamic deserializeParam<T>(
             return SensorProvisioningRow(data);
           case MonitoringTaskCompletionTypesRow:
             return MonitoringTaskCompletionTypesRow(data);
+          case OrderHeadersViewRow:
+            return OrderHeadersViewRow(data);
           case TasksRow:
             return TasksRow(data);
           case ComplianceStatusesRow:
@@ -696,6 +782,8 @@ dynamic deserializeParam<T>(
             return SafetyEquipmentRow(data);
           case PestLocationsRow:
             return PestLocationsRow(data);
+          case PlantWasteReasonsListRow:
+            return PlantWasteReasonsListRow(data);
           case SeedInventoryViewRow:
             return SeedInventoryViewRow(data);
           case ReadingTypesRow:
@@ -736,6 +824,8 @@ dynamic deserializeParam<T>(
             return OrdersRow(data);
           case MonitoringAttentionCountRow:
             return MonitoringAttentionCountRow(data);
+          case ProductApplicationTimingRow:
+            return ProductApplicationTimingRow(data);
           case TaskTypesRow:
             return TaskTypesRow(data);
           case ExtendedFarmPlantsViewRow:
@@ -744,10 +834,16 @@ dynamic deserializeParam<T>(
             return LightEventsRow(data);
           case TowerCapacityRow:
             return TowerCapacityRow(data);
+          case VPlantingMonitoringRow:
+            return VPlantingMonitoringRow(data);
           case SafetyPrecautionsRow:
             return SafetyPrecautionsRow(data);
+          case FarmChemicalsRow:
+            return FarmChemicalsRow(data);
           case SensorReadingsCompiledRow:
             return SensorReadingsCompiledRow(data);
+          case HarvestSummaryViewRow:
+            return HarvestSummaryViewRow(data);
           case PestControlProductsRow:
             return PestControlProductsRow(data);
           case ProductStockAlertsRow:
@@ -760,6 +856,10 @@ dynamic deserializeParam<T>(
             return VTowerActionsRow(data);
           case CurrentWeekGrowSheetRow:
             return CurrentWeekGrowSheetRow(data);
+          case OrderProductStatusRow:
+            return OrderProductStatusRow(data);
+          case FarmStoreTransactionsRow:
+            return FarmStoreTransactionsRow(data);
           case TestTowerDashboardRow:
             return TestTowerDashboardRow(data);
           case MainActionTypesRow:

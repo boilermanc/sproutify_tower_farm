@@ -1,14 +1,15 @@
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/add_farm_controller_widget.dart';
-import '/components/no_lighting_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/lighting/add_farm_controller/add_farm_controller_widget.dart';
+import '/lighting/no_lighting/no_lighting_widget.dart';
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -61,7 +62,10 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -196,10 +200,15 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                                                       context: context,
                                                       builder: (context) {
                                                         return GestureDetector(
-                                                          onTap: () =>
-                                                              FocusScope.of(
-                                                                      context)
-                                                                  .unfocus(),
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    context)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
                                                           child: Padding(
                                                             padding: MediaQuery
                                                                 .viewInsetsOf(
@@ -408,8 +417,8 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                                                                 valueOrDefault<
                                                                     String>(
                                                                   containerLightDashboardMetricsRowList
-                                                                      .first
-                                                                      .activeFixtures
+                                                                      .firstOrNull
+                                                                      ?.activeFixtures
                                                                       ?.toString(),
                                                                   '0',
                                                                 ),
@@ -471,8 +480,8 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                                                                   valueOrDefault<
                                                                       String>(
                                                                     containerLightDashboardMetricsRowList
-                                                                        .first
-                                                                        .totalFixtures
+                                                                        .firstOrNull
+                                                                        ?.totalFixtures
                                                                         ?.toString(),
                                                                     '0',
                                                                   ),
@@ -588,8 +597,8 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                                                                     valueOrDefault<
                                                                         String>(
                                                                       containerLightDashboardMetricsRowList
-                                                                          .first
-                                                                          .currentMonthKwh
+                                                                          .firstOrNull
+                                                                          ?.currentMonthKwh
                                                                           ?.toString(),
                                                                       '0',
                                                                     ),
@@ -665,8 +674,8 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                                                                     valueOrDefault<
                                                                         String>(
                                                                       containerLightDashboardMetricsRowList
-                                                                          .first
-                                                                          .energyChangePct
+                                                                          .firstOrNull
+                                                                          ?.energyChangePct
                                                                           ?.toString(),
                                                                       '0',
                                                                     ),
@@ -854,8 +863,8 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                                                                 valueOrDefault<
                                                                     String>(
                                                                   containerLightDashboardMetricsRowList
-                                                                      .first
-                                                                      .currentMonthCost
+                                                                      .firstOrNull
+                                                                      ?.currentMonthCost
                                                                       .toString(),
                                                                   '0',
                                                                 ),
@@ -923,8 +932,8 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                                                                 valueOrDefault<
                                                                     String>(
                                                                   containerLightDashboardMetricsRowList
-                                                                      .first
-                                                                      .costPerKwh
+                                                                      .firstOrNull
+                                                                      ?.costPerKwh
                                                                       ?.toString(),
                                                                   '0',
                                                                 ),

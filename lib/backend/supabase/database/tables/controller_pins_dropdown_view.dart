@@ -30,4 +30,7 @@ class ControllerPinsDropdownViewRow extends SupabaseDataRow {
   String? get relayDescription => getField<String>('relay_description');
   set relayDescription(String? value) =>
       setField<String>('relay_description', value);
+
+  String? get status => getField<String>('status');
+  set status(String? value) => setField<String>('status', value);
 }

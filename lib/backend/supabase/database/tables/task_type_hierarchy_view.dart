@@ -50,4 +50,8 @@ class TaskTypeHierarchyViewRow extends SupabaseDataRow {
 
   String? get categoryName => getField<String>('category_name');
   set categoryName(String? value) => setField<String>('category_name', value);
+
+  String? get towerSelectionType => getField<String>('tower_selection_type');
+  set towerSelectionType(String? value) =>
+      setField<String>('tower_selection_type', value);
 }

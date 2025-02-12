@@ -33,21 +33,17 @@ class IpmDashboardMetricsRow extends SupabaseDataRow {
   set treatmentCount30days(int? value) =>
       setField<int>('treatment_count_30days', value);
 
-  int? get totalObservations => getField<int>('total_observations');
-  set totalObservations(int? value) =>
-      setField<int>('total_observations', value);
+  DateTime? get latestApplicationDate =>
+      getField<DateTime>('latest_application_date');
+  set latestApplicationDate(DateTime? value) =>
+      setField<DateTime>('latest_application_date', value);
 
-  int? get highSeverityCount => getField<int>('high_severity_count');
-  set highSeverityCount(int? value) =>
-      setField<int>('high_severity_count', value);
+  String? get appliedChemicals => getField<String>('applied_chemicals');
+  set appliedChemicals(String? value) =>
+      setField<String>('applied_chemicals', value);
 
-  int? get mediumSeverityCount => getField<int>('medium_severity_count');
-  set mediumSeverityCount(int? value) =>
-      setField<int>('medium_severity_count', value);
-
-  int? get lowSeverityCount => getField<int>('low_severity_count');
-  set lowSeverityCount(int? value) =>
-      setField<int>('low_severity_count', value);
+  String? get treatmentArea => getField<String>('treatment_area');
+  set treatmentArea(String? value) => setField<String>('treatment_area', value);
 
   String? get alertLevel => getField<String>('alert_level');
   set alertLevel(String? value) => setField<String>('alert_level', value);
