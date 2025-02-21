@@ -21,6 +21,9 @@ export 'main_products_model.dart';
 class MainProductsWidget extends StatefulWidget {
   const MainProductsWidget({super.key});
 
+  static String routeName = 'main_products';
+  static String routePath = '/mainProducts';
+
   @override
   State<MainProductsWidget> createState() => _MainProductsWidgetState();
 }

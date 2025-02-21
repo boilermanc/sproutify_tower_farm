@@ -20,6 +20,9 @@ export 'main_sensors_model.dart';
 class MainSensorsWidget extends StatefulWidget {
   const MainSensorsWidget({super.key});
 
+  static String routeName = 'main_Sensors';
+  static String routePath = '/mainSensors';
+
   @override
   State<MainSensorsWidget> createState() => _MainSensorsWidgetState();
 }

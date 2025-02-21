@@ -234,6 +234,10 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                     _datePickedTime.minute,
                                   );
                                 });
+                              } else if (_model.datePicked != null) {
+                                safeSetState(() {
+                                  _model.datePicked = getCurrentTimestamp;
+                                });
                               }
                               _model.applicationDate = _model.datePicked;
                               safeSetState(() {});

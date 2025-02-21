@@ -25,6 +25,7 @@ import '/tasks/clean_complete_task/clean_complete_task_widget.dart';
 import '/towers/add_tower/add_tower_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import '/index.dart';
 import 'main_dashboard_widget.dart' show MainDashboardWidget;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';

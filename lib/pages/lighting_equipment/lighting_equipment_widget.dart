@@ -19,6 +19,9 @@ export 'lighting_equipment_model.dart';
 class LightingEquipmentWidget extends StatefulWidget {
   const LightingEquipmentWidget({super.key});
 
+  static String routeName = 'lightingEquipment';
+  static String routePath = '/lightingEquipment';
+
   @override
   State<LightingEquipmentWidget> createState() =>
       _LightingEquipmentWidgetState();

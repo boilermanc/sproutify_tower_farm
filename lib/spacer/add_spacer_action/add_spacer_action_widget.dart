@@ -428,6 +428,10 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                                 _datePicked1Date.day,
                                                                                                               );
                                                                                                             });
+                                                                                                          } else if (_model.datePicked1 != null) {
+                                                                                                            safeSetState(() {
+                                                                                                              _model.datePicked1 = getCurrentTimestamp;
+                                                                                                            });
                                                                                                           }
                                                                                                         },
                                                                                                         child: Icon(
@@ -559,6 +563,10 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                                 _datePicked2Date.day,
                                                                                                               );
                                                                                                             });
+                                                                                                          } else if (_model.datePicked2 != null) {
+                                                                                                            safeSetState(() {
+                                                                                                              _model.datePicked2 = getCurrentTimestamp;
+                                                                                                            });
                                                                                                           }
                                                                                                         },
                                                                                                         child: Icon(
@@ -689,6 +697,10 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                                 _datePicked3Date.month,
                                                                                                                 _datePicked3Date.day,
                                                                                                               );
+                                                                                                            });
+                                                                                                          } else if (_model.datePicked3 != null) {
+                                                                                                            safeSetState(() {
+                                                                                                              _model.datePicked3 = getCurrentTimestamp;
                                                                                                             });
                                                                                                           }
                                                                                                         },

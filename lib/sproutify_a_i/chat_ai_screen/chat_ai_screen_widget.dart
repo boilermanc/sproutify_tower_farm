@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sproutify_a_i/ai_chat_component/ai_chat_component_widget.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,6 +13,9 @@ export 'chat_ai_screen_model.dart';
 
 class ChatAiScreenWidget extends StatefulWidget {
   const ChatAiScreenWidget({super.key});
+
+  static String routeName = 'chat_ai_Screen';
+  static String routePath = '/chatAiScreen';
 
   @override
   State<ChatAiScreenWidget> createState() => _ChatAiScreenWidgetState();
@@ -86,7 +90,7 @@ class _ChatAiScreenWidgetState extends State<ChatAiScreenWidget> {
                       ),
                       onPressed: () async {
                         context.pushNamed(
-                          'chat_ai_Screen',
+                          ChatAiScreenWidget.routeName,
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,

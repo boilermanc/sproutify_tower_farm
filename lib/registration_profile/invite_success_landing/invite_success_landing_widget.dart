@@ -1,16 +1,32 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/registration_profile/invite_success/invite_success_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'invite_success_landing_model.dart';
 export 'invite_success_landing_model.dart';
 
 class InviteSuccessLandingWidget extends StatefulWidget {
-  const InviteSuccessLandingWidget({super.key});
+  const InviteSuccessLandingWidget({
+    super.key,
+    required this.invitationID,
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+  });
+
+  final String? invitationID;
+  final String? firstName;
+  final String? lastName;
+  final String? email;
+
+  static String routeName = 'inviteSuccessLanding';
+  static String routePath = '/inviteSuccessLanding';
 
   @override
   State<InviteSuccessLandingWidget> createState() =>
@@ -27,6 +43,31 @@ class _InviteSuccessLandingWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => InviteSuccessLandingModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await InvitationsTable().update(
+        data: {
+          'status': 'accepted',
+        },
+        matchingRows: (rows) => rows.eqOrNull(
+          'id',
+          widget!.invitationID,
+        ),
+      );
+      await ProfilesTable().update(
+        data: {
+          'first_name': widget!.firstName,
+          'last_name': widget!.lastName,
+          'profile_image_url':
+              'https://rsndonfydqhykowljuyn.supabase.co/storage/v1/object/public/profileImages/pics/default_profile.png',
+        },
+        matchingRows: (rows) => rows.eqOrNull(
+          'email',
+          widget!.email,
+        ),
+      );
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -76,10 +117,13 @@ class _InviteSuccessLandingWidgetState
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
-                child: wrapWithModel(
-                  model: _model.inviteSuccessModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: InviteSuccessWidget(),
+                child: Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: wrapWithModel(
+                    model: _model.inviteSuccessModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: InviteSuccessWidget(),
+                  ),
                 ),
               ),
             ],

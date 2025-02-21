@@ -1,19 +1,20 @@
 import '../database.dart';
 
-class PlantHarvestTimelineTable extends SupabaseTable<PlantHarvestTimelineRow> {
+class PlantHarvestTimelineNewTable
+    extends SupabaseTable<PlantHarvestTimelineNewRow> {
   @override
-  String get tableName => 'plant_harvest_timeline';
+  String get tableName => 'plant_harvest_timeline_new';
 
   @override
-  PlantHarvestTimelineRow createRow(Map<String, dynamic> data) =>
-      PlantHarvestTimelineRow(data);
+  PlantHarvestTimelineNewRow createRow(Map<String, dynamic> data) =>
+      PlantHarvestTimelineNewRow(data);
 }
 
-class PlantHarvestTimelineRow extends SupabaseDataRow {
-  PlantHarvestTimelineRow(Map<String, dynamic> data) : super(data);
+class PlantHarvestTimelineNewRow extends SupabaseDataRow {
+  PlantHarvestTimelineNewRow(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => PlantHarvestTimelineTable();
+  SupabaseTable get table => PlantHarvestTimelineNewTable();
 
   int? get towerId => getField<int>('tower_id');
   set towerId(int? value) => setField<int>('tower_id', value);

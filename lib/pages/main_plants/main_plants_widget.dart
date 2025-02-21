@@ -18,6 +18,9 @@ export 'main_plants_model.dart';
 class MainPlantsWidget extends StatefulWidget {
   const MainPlantsWidget({super.key});
 
+  static String routeName = 'main_Plants';
+  static String routePath = '/mainPlants';
+
   @override
   State<MainPlantsWidget> createState() => _MainPlantsWidgetState();
 }

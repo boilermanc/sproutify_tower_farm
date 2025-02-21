@@ -23,8 +23,8 @@ class OrderItemsRow extends SupabaseDataRow {
   String get productName => getField<String>('product_name')!;
   set productName(String value) => setField<String>('product_name', value);
 
-  double get pricePerUnit => getField<double>('price_per_unit')!;
-  set pricePerUnit(double value) => setField<double>('price_per_unit', value);
+  double? get pricePerUnit => getField<double>('price_per_unit');
+  set pricePerUnit(double? value) => setField<double>('price_per_unit', value);
 
   int get quantity => getField<int>('quantity')!;
   set quantity(int value) => setField<int>('quantity', value);

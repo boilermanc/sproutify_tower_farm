@@ -13,6 +13,9 @@ export 'main_profile_model.dart';
 class MainProfileWidget extends StatefulWidget {
   const MainProfileWidget({super.key});
 
+  static String routeName = 'main_Profile';
+  static String routePath = '/mainProfile';
+
   @override
   State<MainProfileWidget> createState() => _MainProfileWidgetState();
 }

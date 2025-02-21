@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,6 +18,9 @@ export 'sign_up_flow_two_model.dart';
 
 class SignUpFlowTwoWidget extends StatefulWidget {
   const SignUpFlowTwoWidget({super.key});
+
+  static String routeName = 'signUpFlowTwo';
+  static String routePath = '/signUpFlowTwo';
 
   @override
   State<SignUpFlowTwoWidget> createState() => _SignUpFlowTwoWidgetState();
@@ -460,7 +464,8 @@ class _SignUpFlowTwoWidgetState extends State<SignUpFlowTwoWidget> {
                                       !(FFAppState().usesLighting ?? true);
                                   safeSetState(() {});
 
-                                  context.pushNamed('signUpFlowFinal');
+                                  context.pushNamed(
+                                      SignUpFlowFinalWidget.routeName);
                                 },
                                 text: 'Next...',
                                 options: FFButtonOptions(

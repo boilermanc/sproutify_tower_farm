@@ -18,6 +18,9 @@ export 'main_vendors_model.dart';
 class MainVendorsWidget extends StatefulWidget {
   const MainVendorsWidget({super.key});
 
+  static String routeName = 'main_vendors';
+  static String routePath = '/mainVendors';
+
   @override
   State<MainVendorsWidget> createState() => _MainVendorsWidgetState();
 }

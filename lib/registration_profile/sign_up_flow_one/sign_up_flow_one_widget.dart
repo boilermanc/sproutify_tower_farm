@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,9 @@ export 'sign_up_flow_one_model.dart';
 
 class SignUpFlowOneWidget extends StatefulWidget {
   const SignUpFlowOneWidget({super.key});
+
+  static String routeName = 'signUpFlowOne';
+  static String routePath = '/signUpFlowOne';
 
   @override
   State<SignUpFlowOneWidget> createState() => _SignUpFlowOneWidgetState();
@@ -734,7 +738,8 @@ class _SignUpFlowOneWidgetState extends State<SignUpFlowOneWidget> {
                                     'created_by': currentUserUid,
                                   });
 
-                                  context.pushNamed('signUpFlowTwo');
+                                  context
+                                      .pushNamed(SignUpFlowTwoWidget.routeName);
                                 },
                                 text: 'Next...',
                                 options: FFButtonOptions(

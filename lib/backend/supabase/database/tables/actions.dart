@@ -62,4 +62,7 @@ class ActionsRow extends SupabaseDataRow {
 
   int? get wasteReasonId => getField<int>('waste_reason_id');
   set wasteReasonId(int? value) => setField<int>('waste_reason_id', value);
+
+  String? get notes => getField<String>('notes');
+  set notes(String? value) => setField<String>('notes', value);
 }

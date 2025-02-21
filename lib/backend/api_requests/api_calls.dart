@@ -15,7 +15,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class NeightnMainChatGroup {
   static String getBaseUrl() =>
-      'https://n8n.sproutify.app/webhook/d6ef0f5e-ceb2-4981-bcfa-76a430d43e74';
+      'https://n8n.sproutify.app/webhook/018ed09f-98ba-4faf-94ed-bd3585877cf9';
   static Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
@@ -27,14 +27,16 @@ class SendFullPromptCall {
     dynamic? promptJson,
     String? userMessage = '',
     String? farmID = '',
+    String? userID = '',
   }) async {
     final baseUrl = NeightnMainChatGroup.getBaseUrl();
 
     final prompt = _serializeJson(promptJson);
     final ffApiRequestBody = '''
 {
-  "text": "\${${userMessage}}",
-  "farmID": "${farmID}"
+  "chatInput": "\${${userMessage}}",
+  "farmID": "${farmID}",
+  "sessionId": "${userID}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Send Full Prompt',

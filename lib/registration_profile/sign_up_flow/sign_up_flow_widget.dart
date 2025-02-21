@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
@@ -17,6 +18,9 @@ export 'sign_up_flow_model.dart';
 
 class SignUpFlowWidget extends StatefulWidget {
   const SignUpFlowWidget({super.key});
+
+  static String routeName = 'signUpFlow';
+  static String routePath = '/signUpFlow';
 
   @override
   State<SignUpFlowWidget> createState() => _SignUpFlowWidgetState();
@@ -1716,7 +1720,8 @@ class _SignUpFlowWidgetState extends State<SignUpFlowWidget> {
                                             100.0, 20.0, 0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            context.pushNamed('main_Dashboard');
+                                            context.pushNamed(
+                                                MainDashboardWidget.routeName);
                                           },
                                           text: 'Happy Farming!',
                                           options: FFButtonOptions(

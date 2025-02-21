@@ -31,4 +31,7 @@ class HarvestListsRow extends SupabaseDataRow {
 
   String get createdBy => getField<String>('created_by')!;
   set createdBy(String value) => setField<String>('created_by', value);
+
+  String? get notes => getField<String>('notes');
+  set notes(String? value) => setField<String>('notes', value);
 }

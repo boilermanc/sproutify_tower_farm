@@ -189,6 +189,10 @@ class _LightScheduleDataTableWidgetState
                           _datePicked1Time.minute,
                         );
                       });
+                    } else if (_model.datePicked1 != null) {
+                      safeSetState(() {
+                        _model.datePicked1 = getCurrentTimestamp;
+                      });
                     }
                     await LightScheduleTable().update(
                       data: {
@@ -274,6 +278,10 @@ class _LightScheduleDataTableWidgetState
                           _datePicked2Time.hour,
                           _datePicked2Time.minute,
                         );
+                      });
+                    } else if (_model.datePicked2 != null) {
+                      safeSetState(() {
+                        _model.datePicked2 = getCurrentTimestamp;
                       });
                     }
                     await LightScheduleTable().update(

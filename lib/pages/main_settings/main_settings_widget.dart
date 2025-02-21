@@ -13,6 +13,9 @@ export 'main_settings_model.dart';
 class MainSettingsWidget extends StatefulWidget {
   const MainSettingsWidget({super.key});
 
+  static String routeName = 'main_Settings';
+  static String routePath = '/mainSettings';
+
   @override
   State<MainSettingsWidget> createState() => _MainSettingsWidgetState();
 }

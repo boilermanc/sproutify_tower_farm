@@ -479,6 +479,12 @@ class FFAppState extends ChangeNotifier {
   set profileImage(String value) {
     _profileImage = value;
   }
+
+  String _lastName = '';
+  String get lastName => _lastName;
+  set lastName(String value) {
+    _lastName = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

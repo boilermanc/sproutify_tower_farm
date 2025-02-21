@@ -25,6 +25,7 @@ import '/tasks/clean_complete_task/clean_complete_task_widget.dart';
 import '/towers/add_tower/add_tower_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import '/index.dart';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -37,6 +38,9 @@ export 'main_dashboard_model.dart';
 
 class MainDashboardWidget extends StatefulWidget {
   const MainDashboardWidget({super.key});
+
+  static String routeName = 'main_Dashboard';
+  static String routePath = '/mainDashboard';
 
   @override
   State<MainDashboardWidget> createState() => _MainDashboardWidgetState();
@@ -605,7 +609,8 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                     () async {
                                                                   context
                                                                       .pushNamed(
-                                                                    'main_LightManagement',
+                                                                    MainLightManagementWidget
+                                                                        .routeName,
                                                                     queryParameters:
                                                                         {
                                                                       'selectedFixtureQuantity':
@@ -787,7 +792,8 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                 onPressed:
                                                                     () async {
                                                                   context.pushNamed(
-                                                                      'main_Mechanical');
+                                                                      MainMechanicalWidget
+                                                                          .routeName);
                                                                 },
                                                               ),
                                                             ],
@@ -914,14 +920,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                         Colors.transparent,
                                                     onTap: () async {
                                                       context.pushNamed(
-                                                        'invite',
+                                                        InviteWidget.routeName,
                                                         queryParameters: {
                                                           'invitation':
                                                               serializeParam(
                                                             'ff6b54f6-99d2-428a-aa55-0386dff7731e',
                                                             ParamType.String,
                                                           ),
-                                                          'emailAddress':
+                                                          'email':
                                                               serializeParam(
                                                             'cade6655@yopmail.com',
                                                             ParamType.String,
@@ -1863,7 +1869,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                         label: DefaultTextStyle.merge(
                                                                                           softWrap: true,
                                                                                           child: Text(
-                                                                                            'Ports Used',
+                                                                                            'Available Ports',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                                   fontFamily: 'Plus Jakarta Sans',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -1878,7 +1884,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                         label: DefaultTextStyle.merge(
                                                                                           softWrap: true,
                                                                                           child: Text(
-                                                                                            'Total Ports',
+                                                                                            'Total Growing',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                                   fontFamily: 'Plus Jakarta Sans',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -1950,7 +1956,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                         child: PlantTowersWidget(
                                                                                                           towerID: towerStatusItem.towerId!,
                                                                                                           towerName: towerStatusItem.towerIdentifier!,
-                                                                                                          availablePorts: towerStatusItem.availablePorts!,
+                                                                                                          availablePorts: towerStatusItem.overallAvailablePorts!,
                                                                                                         ),
                                                                                                       ),
                                                                                                     );
@@ -2042,25 +2048,31 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                 letterSpacing: 0.0,
                                                                                               ),
                                                                                         ),
-                                                                                        Text(
-                                                                                          valueOrDefault<String>(
-                                                                                            towerStatusItem.portsUsed?.toString(),
-                                                                                            '0',
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                          child: Text(
+                                                                                            valueOrDefault<String>(
+                                                                                              towerStatusItem.overallAvailablePorts?.toString(),
+                                                                                              '0',
+                                                                                            ),
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  letterSpacing: 0.0,
+                                                                                                ),
                                                                                           ),
-                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
-                                                                                                letterSpacing: 0.0,
-                                                                                              ),
                                                                                         ),
-                                                                                        Text(
-                                                                                          valueOrDefault<String>(
-                                                                                            towerStatusItem.totalPorts?.toString(),
-                                                                                            '0',
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                          child: Text(
+                                                                                            valueOrDefault<String>(
+                                                                                              towerStatusItem.individualPortsUsed?.toString(),
+                                                                                              '0',
+                                                                                            ),
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  letterSpacing: 0.0,
+                                                                                                ),
                                                                                           ),
-                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
-                                                                                                letterSpacing: 0.0,
-                                                                                              ),
                                                                                         ),
                                                                                         Row(
                                                                                           mainAxisSize: MainAxisSize.max,
@@ -2113,7 +2125,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                             child: PlantTowersWidget(
                                                                                                               towerID: towerStatusItem.towerId!,
                                                                                                               towerName: towerStatusItem.towerIdentifier!,
-                                                                                                              availablePorts: towerStatusItem.availablePorts!,
+                                                                                                              availablePorts: towerStatusItem.overallAvailablePorts!,
                                                                                                             ),
                                                                                                           ),
                                                                                                         );
@@ -2170,7 +2182,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                               showDuration: Duration(milliseconds: 1500),
                                                                                               triggerMode: TooltipTriggerMode.tap,
                                                                                               child: Visibility(
-                                                                                                visible: (towerStatusItem.towerStatus == 'Growing') || (towerStatusItem.towerStatus == 'Partially Available'),
+                                                                                                visible: towerStatusItem.towerStatus == 'Growing',
                                                                                                 child: InkWell(
                                                                                                   splashColor: Colors.transparent,
                                                                                                   focusColor: Colors.transparent,
@@ -2196,7 +2208,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                               plantName: towerStatusItem.plantName!,
                                                                                                               plantID: towerStatusItem.plantId!,
                                                                                                               towerID: towerStatusItem.towerId!,
-                                                                                                              growingQuantity: towerStatusItem.portsUsed!,
+                                                                                                              growingQuantity: towerStatusItem.individualPortsUsed!,
                                                                                                               towerContentID: towerStatusItem.contentId,
                                                                                                             ),
                                                                                                           ),
@@ -2254,7 +2266,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                               showDuration: Duration(milliseconds: 1500),
                                                                                               triggerMode: TooltipTriggerMode.tap,
                                                                                               child: Visibility(
-                                                                                                visible: (towerStatusItem.towerStatus == 'Growing') || (towerStatusItem.towerStatus == 'Partially Available'),
+                                                                                                visible: towerStatusItem.towerStatus == 'Growing',
                                                                                                 child: InkWell(
                                                                                                   splashColor: Colors.transparent,
                                                                                                   focusColor: Colors.transparent,
@@ -2280,7 +2292,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                               plantID: towerStatusItem.plantId!,
                                                                                                               plantName: towerStatusItem.plantName!,
                                                                                                               plantQuantity: valueOrDefault<int>(
-                                                                                                                towerStatusItem.portsUsed,
+                                                                                                                towerStatusItem.individualPortsUsed,
                                                                                                                 0,
                                                                                                               ),
                                                                                                               towerContentsID: towerStatusItem.contentId!,
@@ -3377,7 +3389,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                         ),
                                                                                         Text(
                                                                                           valueOrDefault<String>(
-                                                                                            plantBreakdownItem.growthStatus,
+                                                                                            plantBreakdownItem.towerStatus,
                                                                                             'Status',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -3407,7 +3419,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                         ),
                                                                                         Text(
                                                                                           valueOrDefault<String>(
-                                                                                            plantBreakdownItem.totalPossiblePorts?.toString(),
+                                                                                            plantBreakdownItem.capacity?.toString(),
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -3417,7 +3429,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                         ),
                                                                                         Text(
                                                                                           valueOrDefault<String>(
-                                                                                            plantBreakdownItem.utilizationPercentage?.toString(),
+                                                                                            plantBreakdownItem.utilization?.toString(),
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -3805,7 +3817,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                 'farm_id',
                                                                                 FFAppState().farmID,
                                                                               )
-                                                                              .order('expected_ready_date', ascending: true),
+                                                                              .order('expected_date', ascending: true),
                                                                         ),
                                                                         builder:
                                                                             (context,
@@ -3979,15 +3991,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             height: 30.0,
                                                                                             decoration: BoxDecoration(
                                                                                               color: colorFromCssString(
-                                                                                                () {
-                                                                                                  if (growthScheduleItem.harvestStatus == 'Growing') {
-                                                                                                    return '#DBEAFE';
-                                                                                                  } else if (growthScheduleItem.harvestStatus == 'Overdue') {
-                                                                                                    return '#FEE2E2';
-                                                                                                  } else {
-                                                                                                    return '#DCFCE7';
-                                                                                                  }
-                                                                                                }(),
+                                                                                                growthScheduleItem.statusColor!,
                                                                                                 defaultColor: FlutterFlowTheme.of(context).alternate,
                                                                                               ),
                                                                                               borderRadius: BorderRadius.circular(5.0),
@@ -4007,13 +4011,16 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                           alignment: AlignmentDirectional(0.0, 0.0),
                                                                                                           child: Text(
                                                                                                             valueOrDefault<String>(
-                                                                                                              growthScheduleItem.harvestStatus,
+                                                                                                              growthScheduleItem.towerStatus,
                                                                                                               'Status',
                                                                                                             ),
                                                                                                             textAlign: TextAlign.center,
                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                   fontFamily: 'Plus Jakarta Sans',
-                                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                                  color: colorFromCssString(
+                                                                                                                    growthScheduleItem.textColor!,
+                                                                                                                    defaultColor: Colors.black,
+                                                                                                                  ),
                                                                                                                   fontSize: 12.0,
                                                                                                                   letterSpacing: 0.0,
                                                                                                                   fontWeight: FontWeight.bold,
@@ -4041,7 +4048,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                         ),
                                                                                         Text(
                                                                                           valueOrDefault<String>(
-                                                                                            growthScheduleItem.firstHarvest,
+                                                                                            growthScheduleItem.growthTime,
                                                                                             'First',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -4073,7 +4080,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                           child: Text(
                                                                                             valueOrDefault<String>(
-                                                                                              dateTimeFormat("MMMEd", growthScheduleItem.expectedReadyDate),
+                                                                                              dateTimeFormat("MMMEd", growthScheduleItem.plantedDate),
                                                                                               '0',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -4320,7 +4327,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                           child: Text(
                                                                                             valueOrDefault<String>(
-                                                                                              weeklyScheduleItem.totalPlantsReady?.toString(),
+                                                                                              weeklyScheduleItem.quantityReady?.toString(),
                                                                                               '0',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -4572,7 +4579,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                         ),
                                                                                         Text(
                                                                                           valueOrDefault<String>(
-                                                                                            plantBreakdownItem.growthStatus,
+                                                                                            plantBreakdownItem.towerStatus,
                                                                                             'Status',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -4602,7 +4609,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                         ),
                                                                                         Text(
                                                                                           valueOrDefault<String>(
-                                                                                            plantBreakdownItem.totalPossiblePorts?.toString(),
+                                                                                            plantBreakdownItem.utilization?.toString(),
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -4612,7 +4619,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                         ),
                                                                                         Text(
                                                                                           valueOrDefault<String>(
-                                                                                            plantBreakdownItem.utilizationPercentage?.toString(),
+                                                                                            plantBreakdownItem.utilization?.toString(),
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(

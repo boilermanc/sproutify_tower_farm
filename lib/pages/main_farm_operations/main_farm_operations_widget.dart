@@ -25,6 +25,9 @@ export 'main_farm_operations_model.dart';
 class MainFarmOperationsWidget extends StatefulWidget {
   const MainFarmOperationsWidget({super.key});
 
+  static String routeName = 'main_FarmOperations';
+  static String routePath = '/mainFarmOperations';
+
   @override
   State<MainFarmOperationsWidget> createState() =>
       _MainFarmOperationsWidgetState();

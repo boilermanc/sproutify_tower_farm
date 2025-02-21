@@ -1,5 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/components/add_to_order_widget.dart';
+import '/components/mark_order_complete_widget.dart';
 import '/components/mark_product_complete_widget.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -135,10 +136,25 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 0.0),
                                         child: Text(
+                                          'for ',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Plus Jakarta Sans',
+                                                fontSize: 22.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5.0, 0.0, 0.0, 0.0),
+                                        child: Text(
                                           valueOrDefault<String>(
                                             containerOrderHeadersViewRow
-                                                ?.orderNumber,
-                                            '0',
+                                                ?.customerName,
+                                            'name',
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -274,37 +290,60 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 0.0, 0.0, 0.0),
-                              child: Container(
-                                width: 100.0,
-                                height: 30.0,
-                                decoration: BoxDecoration(
-                                  color: colorFromCssString(
-                                    containerOrderHeadersViewRow!
-                                        .statusBackgroundColor!,
-                                    defaultColor:
-                                        FlutterFlowTheme.of(context).alternate,
-                                  ),
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      containerOrderHeadersViewRow?.status,
-                                      'Status',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          color: colorFromCssString(
-                                            containerOrderHeadersViewRow!
-                                                .statusTextColor!,
-                                            defaultColor: Colors.black,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    enableDrag: false,
+                                    context: context,
+                                    builder: (context) {
+                                      return Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: MarkOrderCompleteWidget(
+                                          orderID: widget!.orderID!,
                                         ),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+                                },
+                                child: Container(
+                                  width: 100.0,
+                                  height: 30.0,
+                                  decoration: BoxDecoration(
+                                    color: colorFromCssString(
+                                      containerOrderHeadersViewRow!
+                                          .statusBackgroundColor!,
+                                      defaultColor: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        containerOrderHeadersViewRow?.status,
+                                        'Status',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Plus Jakarta Sans',
+                                            color: colorFromCssString(
+                                              containerOrderHeadersViewRow!
+                                                  .statusTextColor!,
+                                              defaultColor: Colors.black,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
                                   ),
                                 ),
                               ),

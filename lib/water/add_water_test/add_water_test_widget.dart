@@ -165,6 +165,10 @@ class _AddWaterTestWidgetState extends State<AddWaterTestWidget> {
                                 _datePickedDate.day,
                               );
                             });
+                          } else if (_model.datePicked != null) {
+                            safeSetState(() {
+                              _model.datePicked = getCurrentTimestamp;
+                            });
                           }
                         },
                         child: Text(

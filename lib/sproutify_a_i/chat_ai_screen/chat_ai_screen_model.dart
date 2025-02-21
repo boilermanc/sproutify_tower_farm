@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sproutify_a_i/ai_chat_component/ai_chat_component_widget.dart';
+import '/index.dart';
 import 'chat_ai_screen_widget.dart' show ChatAiScreenWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

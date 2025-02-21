@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/registration_profile/sign_up_landing_page/sign_up_landing_page_widget.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,6 +14,9 @@ export 'main_login_model.dart';
 
 class MainLoginWidget extends StatefulWidget {
   const MainLoginWidget({super.key});
+
+  static String routeName = 'mainLogin';
+  static String routePath = '/mainLogin';
 
   @override
   State<MainLoginWidget> createState() => _MainLoginWidgetState();
@@ -315,7 +319,8 @@ class _MainLoginWidgetState extends State<MainLoginWidget> {
                                       }
 
                                       context.goNamedAuth(
-                                          'main_Dashboard', context.mounted);
+                                          MainDashboardWidget.routeName,
+                                          context.mounted);
                                     },
                                     text: 'Sign In',
                                     options: FFButtonOptions(

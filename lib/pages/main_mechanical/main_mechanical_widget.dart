@@ -10,6 +10,7 @@ import '/lighting/add_farm_controller/add_farm_controller_widget.dart';
 import '/lighting/no_lighting/no_lighting_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -21,6 +22,9 @@ export 'main_mechanical_model.dart';
 
 class MainMechanicalWidget extends StatefulWidget {
   const MainMechanicalWidget({super.key});
+
+  static String routeName = 'main_Mechanical';
+  static String routePath = '/main_Mechanical';
 
   @override
   State<MainMechanicalWidget> createState() => _MainMechanicalWidgetState();
@@ -265,7 +269,8 @@ class _MainMechanicalWidgetState extends State<MainMechanicalWidget>
                                                         .lightImpact();
 
                                                     context.pushNamed(
-                                                        'lightingEquipment');
+                                                        LightingEquipmentWidget
+                                                            .routeName);
                                                   },
                                                   text: 'Add Mechanicals',
                                                   options: FFButtonOptions(

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/registration_profile/invite_verification/invite_verification_widget.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,6 +19,9 @@ class VerifyInviteWidget extends StatefulWidget {
   });
 
   final String? invitation;
+
+  static String routeName = 'verify_invite';
+  static String routePath = '/verifyInvite';
 
   @override
   State<VerifyInviteWidget> createState() => _VerifyInviteWidgetState();
@@ -67,13 +71,13 @@ class _VerifyInviteWidgetState extends State<VerifyInviteWidget> {
         );
       } else {
         context.pushNamed(
-          'invite',
+          InviteWidget.routeName,
           queryParameters: {
             'invitation': serializeParam(
               _model.invite?.firstOrNull?.id,
               ParamType.String,
             ),
-            'emailAddress': serializeParam(
+            'email': serializeParam(
               _model.invite?.firstOrNull?.email,
               ParamType.String,
             ),

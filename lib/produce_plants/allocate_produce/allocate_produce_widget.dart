@@ -294,6 +294,10 @@ class _AllocateProduceWidgetState extends State<AllocateProduceWidget> {
                                     _datePicked1Date.day,
                                   );
                                 });
+                              } else if (_model.datePicked1 != null) {
+                                safeSetState(() {
+                                  _model.datePicked1 = getCurrentTimestamp;
+                                });
                               }
                               _model.weekDate = _model.datePicked1;
                               safeSetState(() {});
@@ -534,6 +538,10 @@ class _AllocateProduceWidgetState extends State<AllocateProduceWidget> {
                                       _datePicked2Date.month,
                                       _datePicked2Date.day,
                                     );
+                                  });
+                                } else if (_model.datePicked2 != null) {
+                                  safeSetState(() {
+                                    _model.datePicked2 = getCurrentTimestamp;
                                   });
                                 }
                                 _model.deliverDate = _model.datePicked2;

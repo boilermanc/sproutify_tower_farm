@@ -21,6 +21,9 @@ export 'main_water_management_model.dart';
 class MainWaterManagementWidget extends StatefulWidget {
   const MainWaterManagementWidget({super.key});
 
+  static String routeName = 'main_waterManagement';
+  static String routePath = '/mainWaterManagement';
+
   @override
   State<MainWaterManagementWidget> createState() =>
       _MainWaterManagementWidgetState();

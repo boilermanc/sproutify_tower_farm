@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/registration_profile/sign_up_landing_page/sign_up_landing_page_widget.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'main_login_widget.dart' show MainLoginWidget;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

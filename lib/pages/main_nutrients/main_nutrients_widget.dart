@@ -19,6 +19,9 @@ export 'main_nutrients_model.dart';
 class MainNutrientsWidget extends StatefulWidget {
   const MainNutrientsWidget({super.key});
 
+  static String routeName = 'main_Nutrients';
+  static String routePath = '/mainNutrients';
+
   @override
   State<MainNutrientsWidget> createState() => _MainNutrientsWidgetState();
 }

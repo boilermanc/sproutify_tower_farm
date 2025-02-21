@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -12,7 +13,16 @@ import 'create_new_staff_model.dart';
 export 'create_new_staff_model.dart';
 
 class CreateNewStaffWidget extends StatefulWidget {
-  const CreateNewStaffWidget({super.key});
+  const CreateNewStaffWidget({
+    super.key,
+    this.invitation,
+    this.email,
+  });
+
+  final String? invitation;
+
+  /// email
+  final String? email;
 
   @override
   State<CreateNewStaffWidget> createState() => _CreateNewStaffWidgetState();
@@ -40,14 +50,14 @@ class _CreateNewStaffWidgetState extends State<CreateNewStaffWidget> {
     _model.firstNameTextController ??= TextEditingController();
     _model.firstNameFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.lastNameTextController ??= TextEditingController();
+    _model.lastNameFocusNode ??= FocusNode();
 
-    _model.passwordTextController ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.password1TextController ??= TextEditingController();
+    _model.password1FocusNode ??= FocusNode();
 
-    _model.confirmPasswordTextController ??= TextEditingController();
-    _model.textFieldFocusNode3 ??= FocusNode();
+    _model.password2TextController ??= TextEditingController();
+    _model.password2FocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -193,8 +203,10 @@ class _CreateNewStaffWidgetState extends State<CreateNewStaffWidget> {
                                                 ),
                                           ),
                                           TextSpan(
-                                            text:
-                                                FFAppState().inviteEmailAddress,
+                                            text: valueOrDefault<String>(
+                                              FFAppState().inviteEmailAddress,
+                                              'emailTD',
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -309,9 +321,9 @@ class _CreateNewStaffWidgetState extends State<CreateNewStaffWidget> {
                                                 .asValidator(context),
                                           ),
                                           TextFormField(
-                                            controller: _model.textController2,
-                                            focusNode:
-                                                _model.textFieldFocusNode1,
+                                            controller:
+                                                _model.lastNameTextController,
+                                            focusNode: _model.lastNameFocusNode,
                                             autofocus: false,
                                             obscureText: false,
                                             decoration: InputDecoration(
@@ -376,17 +388,17 @@ class _CreateNewStaffWidgetState extends State<CreateNewStaffWidget> {
                                                   letterSpacing: 0.0,
                                                 ),
                                             validator: _model
-                                                .textController2Validator
+                                                .lastNameTextControllerValidator
                                                 .asValidator(context),
                                           ),
                                           TextFormField(
                                             controller:
-                                                _model.passwordTextController,
+                                                _model.password1TextController,
                                             focusNode:
-                                                _model.textFieldFocusNode2,
+                                                _model.password1FocusNode,
                                             autofocus: false,
                                             obscureText:
-                                                !_model.passwordVisibility1,
+                                                !_model.password1Visibility,
                                             decoration: InputDecoration(
                                               labelText: 'Password',
                                               hintText: 'Create a password',
@@ -443,14 +455,14 @@ class _CreateNewStaffWidgetState extends State<CreateNewStaffWidget> {
                                               suffixIcon: InkWell(
                                                 onTap: () => safeSetState(
                                                   () => _model
-                                                          .passwordVisibility1 =
+                                                          .password1Visibility =
                                                       !_model
-                                                          .passwordVisibility1,
+                                                          .password1Visibility,
                                                 ),
                                                 focusNode: FocusNode(
                                                     skipTraversal: true),
                                                 child: Icon(
-                                                  _model.passwordVisibility1
+                                                  _model.password1Visibility
                                                       ? Icons
                                                           .visibility_outlined
                                                       : Icons
@@ -470,17 +482,17 @@ class _CreateNewStaffWidgetState extends State<CreateNewStaffWidget> {
                                                   letterSpacing: 0.0,
                                                 ),
                                             validator: _model
-                                                .passwordTextControllerValidator
+                                                .password1TextControllerValidator
                                                 .asValidator(context),
                                           ),
                                           TextFormField(
-                                            controller: _model
-                                                .confirmPasswordTextController,
+                                            controller:
+                                                _model.password2TextController,
                                             focusNode:
-                                                _model.textFieldFocusNode3,
+                                                _model.password2FocusNode,
                                             autofocus: false,
                                             obscureText:
-                                                !_model.passwordVisibility2,
+                                                !_model.password2Visibility,
                                             decoration: InputDecoration(
                                               labelText: 'Confirm Password',
                                               hintText: 'Confirm your password',
@@ -537,14 +549,14 @@ class _CreateNewStaffWidgetState extends State<CreateNewStaffWidget> {
                                               suffixIcon: InkWell(
                                                 onTap: () => safeSetState(
                                                   () => _model
-                                                          .passwordVisibility2 =
+                                                          .password2Visibility =
                                                       !_model
-                                                          .passwordVisibility2,
+                                                          .password2Visibility,
                                                 ),
                                                 focusNode: FocusNode(
                                                     skipTraversal: true),
                                                 child: Icon(
-                                                  _model.passwordVisibility2
+                                                  _model.password2Visibility
                                                       ? Icons
                                                           .visibility_outlined
                                                       : Icons
@@ -564,7 +576,7 @@ class _CreateNewStaffWidgetState extends State<CreateNewStaffWidget> {
                                                   letterSpacing: 0.0,
                                                 ),
                                             validator: _model
-                                                .confirmPasswordTextControllerValidator
+                                                .password2TextControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ].divide(SizedBox(height: 16.0)),
@@ -576,10 +588,9 @@ class _CreateNewStaffWidgetState extends State<CreateNewStaffWidget> {
                                           onPressed: () async {
                                             GoRouter.of(context)
                                                 .prepareAuthEvent();
-                                            if (_model.passwordTextController
+                                            if (_model.password1TextController
                                                     .text !=
-                                                _model
-                                                    .confirmPasswordTextController
+                                                _model.password2TextController
                                                     .text) {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(
@@ -597,15 +608,37 @@ class _CreateNewStaffWidgetState extends State<CreateNewStaffWidget> {
                                               context,
                                               FFAppState().inviteEmailAddress,
                                               _model
-                                                  .passwordTextController.text,
+                                                  .password1TextController.text,
                                             );
                                             if (user == null) {
                                               return;
                                             }
 
                                             context.goNamedAuth(
-                                                'inviteSuccessLanding',
-                                                context.mounted);
+                                              InviteSuccessLandingWidget
+                                                  .routeName,
+                                              context.mounted,
+                                              queryParameters: {
+                                                'invitationID': serializeParam(
+                                                  FFAppState().inviteID,
+                                                  ParamType.String,
+                                                ),
+                                                'firstName': serializeParam(
+                                                  _model.firstNameTextController
+                                                      .text,
+                                                  ParamType.String,
+                                                ),
+                                                'lastName': serializeParam(
+                                                  _model.lastNameTextController
+                                                      .text,
+                                                  ParamType.String,
+                                                ),
+                                                'email': serializeParam(
+                                                  widget!.email,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
                                           },
                                           text: 'Create Account',
                                           options: FFButtonOptions(

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pests/sds_detail_overview/sds_detail_overview_widget.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -2409,7 +2410,8 @@ class _AddPestProductDetailsWidgetState
                                           safeSetState(() {});
                                           Navigator.pop(context);
 
-                                          context.pushNamed('main_products');
+                                          context.pushNamed(
+                                              MainProductsWidget.routeName);
 
                                           safeSetState(() {});
                                         },

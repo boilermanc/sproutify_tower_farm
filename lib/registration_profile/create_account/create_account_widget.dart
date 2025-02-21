@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,6 +13,9 @@ export 'create_account_model.dart';
 
 class CreateAccountWidget extends StatefulWidget {
   const CreateAccountWidget({super.key});
+
+  static String routeName = 'createAccount';
+  static String routePath = '/createAccount';
 
   @override
   State<CreateAccountWidget> createState() => _CreateAccountWidgetState();
@@ -417,7 +421,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                       }
 
                                       context.pushNamedAuth(
-                                          'signUpFlowOne', context.mounted);
+                                          SignUpFlowOneWidget.routeName,
+                                          context.mounted);
                                     },
                                     text: 'Create Account',
                                     options: FFButtonOptions(
@@ -451,7 +456,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                       0.0, 0.0, 0.0, 16.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      context.pushNamed('navigateAfterSignup');
+                                      context.pushNamed(
+                                          NavigateAfterSignupWidget.routeName);
                                     },
                                     text: 'Test Flow',
                                     options: FFButtonOptions(
@@ -491,7 +497,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      context.pushNamed('mainLogin');
+                                      context
+                                          .pushNamed(MainLoginWidget.routeName);
                                     },
                                     child: RichText(
                                       textScaler:

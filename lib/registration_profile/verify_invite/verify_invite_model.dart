@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/registration_profile/invite_verification/invite_verification_widget.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'verify_invite_widget.dart' show VerifyInviteWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

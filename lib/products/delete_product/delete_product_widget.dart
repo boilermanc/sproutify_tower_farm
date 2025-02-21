@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/products/no_products/no_products_widget.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -181,7 +182,7 @@ class _DeleteProductWidgetState extends State<DeleteProductWidget> {
                           Navigator.pop(context);
                           if (_model.productNullCheck8291 != null &&
                               (_model.productNullCheck8291)!.isNotEmpty) {
-                            context.pushNamed('main_products');
+                            context.pushNamed(MainProductsWidget.routeName);
                           } else {
                             await showModalBottomSheet(
                               isScrollControlled: true,

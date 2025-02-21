@@ -10,6 +10,7 @@ import '/lighting/add_farm_controller/add_farm_controller_widget.dart';
 import '/lighting/no_lighting/no_lighting_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import '/index.dart';
 import 'main_mechanical_widget.dart' show MainMechanicalWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

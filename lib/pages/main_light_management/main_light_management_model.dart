@@ -17,6 +17,7 @@ import '/lighting/no_lighting/no_lighting_widget.dart';
 import '/lighting/tower_zone_grid/tower_zone_grid_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import '/index.dart';
 import 'dart:async';
 import 'main_light_management_widget.dart' show MainLightManagementWidget;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,9 @@ export 'navigate_after_signup_model.dart';
 
 class NavigateAfterSignupWidget extends StatefulWidget {
   const NavigateAfterSignupWidget({super.key});
+
+  static String routeName = 'navigateAfterSignup';
+  static String routePath = '/navigateAfterSignup';
 
   @override
   State<NavigateAfterSignupWidget> createState() =>
@@ -207,7 +211,7 @@ class _NavigateAfterSignupWidgetState extends State<NavigateAfterSignupWidget> {
                           EdgeInsetsDirectional.fromSTEB(100.0, 0.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          context.pushNamed('signUpFlow');
+                          context.pushNamed(SignUpFlowWidget.routeName);
                         },
                         text: 'Next...',
                         options: FFButtonOptions(

@@ -665,6 +665,14 @@ class _AddPlantingWidgetState extends State<AddPlantingWidget> {
                                                                           .day,
                                                                     );
                                                                   });
+                                                                } else if (_model
+                                                                        .datePicked1 !=
+                                                                    null) {
+                                                                  safeSetState(
+                                                                      () {
+                                                                    _model.datePicked1 =
+                                                                        getCurrentTimestamp;
+                                                                  });
                                                                 }
                                                               },
                                                               child: Container(
@@ -914,6 +922,14 @@ class _AddPlantingWidgetState extends State<AddPlantingWidget> {
                                                                       _datePicked2Date
                                                                           .day,
                                                                     );
+                                                                  });
+                                                                } else if (_model
+                                                                        .datePicked2 !=
+                                                                    null) {
+                                                                  safeSetState(
+                                                                      () {
+                                                                    _model.datePicked2 =
+                                                                        getCurrentTimestamp;
                                                                   });
                                                                 }
                                                               },
@@ -1478,6 +1494,14 @@ class _AddPlantingWidgetState extends State<AddPlantingWidget> {
                                                                             _datePicked3Date.day,
                                                                           );
                                                                         });
+                                                                      } else if (_model
+                                                                              .datePicked3 !=
+                                                                          null) {
+                                                                        safeSetState(
+                                                                            () {
+                                                                          _model.datePicked3 =
+                                                                              getCurrentTimestamp;
+                                                                        });
                                                                       }
                                                                     },
                                                                     child: Row(
@@ -1631,6 +1655,14 @@ class _AddPlantingWidgetState extends State<AddPlantingWidget> {
                                                                             _datePicked4Date.month,
                                                                             _datePicked4Date.day,
                                                                           );
+                                                                        });
+                                                                      } else if (_model
+                                                                              .datePicked4 !=
+                                                                          null) {
+                                                                        safeSetState(
+                                                                            () {
+                                                                          _model.datePicked4 =
+                                                                              getCurrentTimestamp;
                                                                         });
                                                                       }
                                                                     },

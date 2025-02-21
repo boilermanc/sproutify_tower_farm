@@ -13,6 +13,9 @@ export 'main_configuration_model.dart';
 class MainConfigurationWidget extends StatefulWidget {
   const MainConfigurationWidget({super.key});
 
+  static String routeName = 'main_Configuration';
+  static String routePath = '/mainConfiguration';
+
   @override
   State<MainConfigurationWidget> createState() =>
       _MainConfigurationWidgetState();

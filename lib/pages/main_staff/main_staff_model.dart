@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/registration_profile/create_staff_invitation/create_staff_invitation_widget.dart';
-import '/registration_profile/no_staff_invitations/no_staff_invitations_widget.dart';
 import '/registration_profile/staff_proile_update/staff_proile_update_widget.dart';
 import '/registration_profile/update_employee_role/update_employee_role_widget.dart';
 import 'dart:ui';
@@ -36,10 +35,10 @@ class MainStaffModel extends FlutterFlowModel<MainStaffWidget> {
   set choiceChipsValues(List<String>? val) =>
       choiceChipsValueController?.value = val;
   // State field(s) for staffTable widget.
-  final staffTableController1 =
+  final staffTableController =
       FlutterFlowDataTableController<FarmProfilesViewRow>();
-  // State field(s) for staffTable widget.
-  final staffTableController2 =
+  // State field(s) for PaginatedDataTable widget.
+  final paginatedDataTableController =
       FlutterFlowDataTableController<InvitationsViewRow>();
 
   @override
@@ -53,7 +52,7 @@ class MainStaffModel extends FlutterFlowModel<MainStaffWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
 
-    staffTableController1.dispose();
-    staffTableController2.dispose();
+    staffTableController.dispose();
+    paginatedDataTableController.dispose();
   }
 }

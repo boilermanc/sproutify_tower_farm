@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,6 +15,9 @@ export 'sign_up_flow_final_model.dart';
 
 class SignUpFlowFinalWidget extends StatefulWidget {
   const SignUpFlowFinalWidget({super.key});
+
+  static String routeName = 'signUpFlowFinal';
+  static String routePath = '/signUpFlowFinal';
 
   @override
   State<SignUpFlowFinalWidget> createState() => _SignUpFlowFinalWidgetState();
@@ -206,7 +210,8 @@ class _SignUpFlowFinalWidgetState extends State<SignUpFlowFinalWidget> {
                                     ),
                                   );
 
-                                  context.pushNamed('main_Dashboard');
+                                  context
+                                      .pushNamed(MainDashboardWidget.routeName);
                                 },
                                 text: 'Happy Farming!',
                                 options: FFButtonOptions(

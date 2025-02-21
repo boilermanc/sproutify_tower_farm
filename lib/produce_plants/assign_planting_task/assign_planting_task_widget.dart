@@ -780,6 +780,10 @@ class _AssignPlantingTaskWidgetState extends State<AssignPlantingTaskWidget> {
                                                                                     _datePicked1Date.day,
                                                                                   );
                                                                                 });
+                                                                              } else if (_model.datePicked1 != null) {
+                                                                                safeSetState(() {
+                                                                                  _model.datePicked1 = getCurrentTimestamp;
+                                                                                });
                                                                               }
                                                                             },
                                                                             child:
@@ -1295,6 +1299,12 @@ class _AssignPlantingTaskWidgetState extends State<AssignPlantingTaskWidget> {
                                                 _datePicked2Date.month,
                                                 _datePicked2Date.day,
                                               );
+                                            });
+                                          } else if (_model.datePicked2 !=
+                                              null) {
+                                            safeSetState(() {
+                                              _model.datePicked2 =
+                                                  getCurrentTimestamp;
                                             });
                                           }
                                         },

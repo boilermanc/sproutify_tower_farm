@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'create_new_staff_widget.dart' show CreateNewStaffWidget;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -24,26 +25,25 @@ class CreateNewStaffModel extends FlutterFlowModel<CreateNewStaffWidget> {
   FocusNode? firstNameFocusNode;
   TextEditingController? firstNameTextController;
   String? Function(BuildContext, String?)? firstNameTextControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? passwordTextController;
-  late bool passwordVisibility1;
-  String? Function(BuildContext, String?)? passwordTextControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode3;
-  TextEditingController? confirmPasswordTextController;
-  late bool passwordVisibility2;
-  String? Function(BuildContext, String?)?
-      confirmPasswordTextControllerValidator;
+  // State field(s) for lastName widget.
+  FocusNode? lastNameFocusNode;
+  TextEditingController? lastNameTextController;
+  String? Function(BuildContext, String?)? lastNameTextControllerValidator;
+  // State field(s) for password1 widget.
+  FocusNode? password1FocusNode;
+  TextEditingController? password1TextController;
+  late bool password1Visibility;
+  String? Function(BuildContext, String?)? password1TextControllerValidator;
+  // State field(s) for password2 widget.
+  FocusNode? password2FocusNode;
+  TextEditingController? password2TextController;
+  late bool password2Visibility;
+  String? Function(BuildContext, String?)? password2TextControllerValidator;
 
   @override
   void initState(BuildContext context) {
-    passwordVisibility1 = false;
-    passwordVisibility2 = false;
+    password1Visibility = false;
+    password2Visibility = false;
   }
 
   @override
@@ -51,13 +51,13 @@ class CreateNewStaffModel extends FlutterFlowModel<CreateNewStaffWidget> {
     firstNameFocusNode?.dispose();
     firstNameTextController?.dispose();
 
-    textFieldFocusNode1?.dispose();
-    textController2?.dispose();
+    lastNameFocusNode?.dispose();
+    lastNameTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    passwordTextController?.dispose();
+    password1FocusNode?.dispose();
+    password1TextController?.dispose();
 
-    textFieldFocusNode3?.dispose();
-    confirmPasswordTextController?.dispose();
+    password2FocusNode?.dispose();
+    password2TextController?.dispose();
   }
 }

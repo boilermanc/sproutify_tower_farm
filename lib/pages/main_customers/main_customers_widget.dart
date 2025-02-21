@@ -21,6 +21,9 @@ export 'main_customers_model.dart';
 class MainCustomersWidget extends StatefulWidget {
   const MainCustomersWidget({super.key});
 
+  static String routeName = 'main_Customers';
+  static String routePath = '/mainCustomers';
+
   @override
   State<MainCustomersWidget> createState() => _MainCustomersWidgetState();
 }

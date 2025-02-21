@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/products/no_products/no_products_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -158,7 +159,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                   highlightColor: Colors.transparent,
                   onTap: () async {
                     context.pushNamed(
-                      'main_Profile',
+                      MainProfileWidget.routeName,
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
@@ -283,7 +284,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_Dashboard',
+                                MainDashboardWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -371,7 +372,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_Staff',
+                                MainStaffWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -449,7 +450,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_FarmOperations',
+                                MainFarmOperationsWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -573,7 +574,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_RecentOrders',
+                                MainRecentOrdersWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -661,7 +662,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_Nutrients',
+                                MainNutrientsWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -749,7 +750,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_waterManagement',
+                                MainWaterManagementWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -837,7 +838,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_Sensors',
+                                MainSensorsWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -925,7 +926,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_Plants',
+                                MainPlantsWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -1013,7 +1014,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_PestManagment',
+                                MainPestManagmentWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -1101,7 +1102,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_Customers',
+                                MainCustomersWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -1199,7 +1200,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               if (_model.checkProduct8734 != null &&
                                   (_model.checkProduct8734)!.isNotEmpty) {
                                 context.pushNamed(
-                                  'main_products',
+                                  MainProductsWidget.routeName,
                                   extra: <String, dynamic>{
                                     kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
@@ -1308,7 +1309,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_vendors',
+                                MainVendorsWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -1397,7 +1398,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                'main_Configuration',
+                                MainConfigurationWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -1786,7 +1787,8 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             await authManager.signOut();
                             GoRouter.of(context).clearRedirectLocation();
 
-                            context.goNamedAuth('mainLogin', context.mounted);
+                            context.goNamedAuth(
+                                MainLoginWidget.routeName, context.mounted);
                           },
                           child: Row(
                             mainAxisSize: MainAxisSize.max,

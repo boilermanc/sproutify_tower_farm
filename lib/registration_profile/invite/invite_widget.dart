@@ -15,11 +15,14 @@ class InviteWidget extends StatefulWidget {
   const InviteWidget({
     super.key,
     required this.invitation,
-    required this.emailAddress,
+    required this.email,
   });
 
   final String? invitation;
-  final String? emailAddress;
+  final String? email;
+
+  static String routeName = 'invite';
+  static String routePath = '/invite';
 
   @override
   State<InviteWidget> createState() => _InviteWidgetState();
@@ -39,7 +42,7 @@ class _InviteWidgetState extends State<InviteWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setDarkModeSetting(context, ThemeMode.light);
       FFAppState().inviteID = widget!.invitation!;
-      FFAppState().inviteEmailAddress = widget!.emailAddress!;
+      FFAppState().inviteEmailAddress = widget!.email!;
       safeSetState(() {});
     });
 
@@ -73,14 +76,9 @@ class _InviteWidgetState extends State<InviteWidget> {
             ? AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primary,
                 automaticallyImplyLeading: false,
-                title: Text(
-                  'Page Title',
-                  style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Outfit',
-                        color: Colors.white,
-                        fontSize: 22.0,
-                        letterSpacing: 0.0,
-                      ),
+                title: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [],
                 ),
                 actions: [],
                 centerTitle: false,

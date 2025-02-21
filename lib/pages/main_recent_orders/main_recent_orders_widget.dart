@@ -24,6 +24,9 @@ export 'main_recent_orders_model.dart';
 class MainRecentOrdersWidget extends StatefulWidget {
   const MainRecentOrdersWidget({super.key});
 
+  static String routeName = 'main_RecentOrders';
+  static String routePath = '/mainRecentOrders';
+
   @override
   State<MainRecentOrdersWidget> createState() => _MainRecentOrdersWidgetState();
 }
@@ -498,6 +501,10 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           .eqOrNull(
                                                                             'farm_id',
                                                                             FFAppState().farmID,
+                                                                          )
+                                                                          .neqOrNull(
+                                                                            'status',
+                                                                            'completed',
                                                                           )
                                                                           .order('created_at'),
                                                                     ),

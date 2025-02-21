@@ -17,6 +17,7 @@ import '/lighting/no_lighting/no_lighting_widget.dart';
 import '/lighting/tower_zone_grid/tower_zone_grid_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import '/index.dart';
 import 'dart:async';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -36,6 +37,9 @@ class MainLightManagementWidget extends StatefulWidget {
   });
 
   final int? selectedFixtureQuantity;
+
+  static String routeName = 'main_LightManagement';
+  static String routePath = '/mainLIghtManagement';
 
   @override
   State<MainLightManagementWidget> createState() =>
@@ -231,7 +235,8 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                         .lightImpact();
 
                                                     context.pushNamed(
-                                                        'lightingEquipment');
+                                                        LightingEquipmentWidget
+                                                            .routeName);
                                                   },
                                                   text: 'Farm Lighting',
                                                   options: FFButtonOptions(

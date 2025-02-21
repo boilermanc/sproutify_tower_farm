@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -184,8 +185,9 @@ class _SdsDetailOverviewWidgetState extends State<SdsDetailOverviewWidget> {
                                                         milliseconds: 3000));
                                                 Navigator.pop(context);
 
-                                                context
-                                                    .pushNamed('main_products');
+                                                context.pushNamed(
+                                                    MainProductsWidget
+                                                        .routeName);
                                               },
                                               text: 'Add Product',
                                               options: FFButtonOptions(

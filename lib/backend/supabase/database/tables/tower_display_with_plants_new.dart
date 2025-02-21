@@ -1,20 +1,20 @@
 import '../database.dart';
 
-class TowerDisplayWithPlantsTable
-    extends SupabaseTable<TowerDisplayWithPlantsRow> {
+class TowerDisplayWithPlantsNewTable
+    extends SupabaseTable<TowerDisplayWithPlantsNewRow> {
   @override
-  String get tableName => 'tower_display_with_plants';
+  String get tableName => 'tower_display_with_plants_new';
 
   @override
-  TowerDisplayWithPlantsRow createRow(Map<String, dynamic> data) =>
-      TowerDisplayWithPlantsRow(data);
+  TowerDisplayWithPlantsNewRow createRow(Map<String, dynamic> data) =>
+      TowerDisplayWithPlantsNewRow(data);
 }
 
-class TowerDisplayWithPlantsRow extends SupabaseDataRow {
-  TowerDisplayWithPlantsRow(Map<String, dynamic> data) : super(data);
+class TowerDisplayWithPlantsNewRow extends SupabaseDataRow {
+  TowerDisplayWithPlantsNewRow(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => TowerDisplayWithPlantsTable();
+  SupabaseTable get table => TowerDisplayWithPlantsNewTable();
 
   int? get towerId => getField<int>('tower_id');
   set towerId(int? value) => setField<int>('tower_id', value);
@@ -61,6 +61,9 @@ class TowerDisplayWithPlantsRow extends SupabaseDataRow {
 
   DateTime? get datePlanted => getField<DateTime>('date_planted');
   set datePlanted(DateTime? value) => setField<DateTime>('date_planted', value);
+
+  String? get notes => getField<String>('notes');
+  set notes(String? value) => setField<String>('notes', value);
 
   int? get actionId => getField<int>('action_id');
   set actionId(int? value) => setField<int>('action_id', value);

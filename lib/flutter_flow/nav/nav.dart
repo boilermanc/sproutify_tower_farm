@@ -11,13 +11,14 @@ import '/backend/supabase/supabase.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/lat_lng.dart';
 import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'serialization_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -94,113 +95,113 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : MainLoginWidget(),
         ),
         FFRoute(
-          name: 'main_Staff',
-          path: '/mainStaff',
+          name: MainStaffWidget.routeName,
+          path: MainStaffWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_Staff')
               : MainStaffWidget(),
         ),
         FFRoute(
-          name: 'main_RecentOrders',
-          path: '/mainRecentOrders',
+          name: MainRecentOrdersWidget.routeName,
+          path: MainRecentOrdersWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_RecentOrders')
               : MainRecentOrdersWidget(),
         ),
         FFRoute(
-          name: 'main_Profile',
-          path: '/mainProfile',
+          name: MainProfileWidget.routeName,
+          path: MainProfileWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_Profile')
               : MainProfileWidget(),
         ),
         FFRoute(
-          name: 'main_Dashboard',
-          path: '/mainDashboard',
+          name: MainDashboardWidget.routeName,
+          path: MainDashboardWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_Dashboard')
               : MainDashboardWidget(),
         ),
         FFRoute(
-          name: 'mainLogin',
-          path: '/mainLogin',
+          name: MainLoginWidget.routeName,
+          path: MainLoginWidget.routePath,
           builder: (context, params) => MainLoginWidget(),
         ),
         FFRoute(
-          name: 'main_waterManagement',
-          path: '/mainWaterManagement',
+          name: MainWaterManagementWidget.routeName,
+          path: MainWaterManagementWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_waterManagement')
               : MainWaterManagementWidget(),
         ),
         FFRoute(
-          name: 'main_Sensors',
-          path: '/mainSensors',
+          name: MainSensorsWidget.routeName,
+          path: MainSensorsWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_Sensors')
               : MainSensorsWidget(),
         ),
         FFRoute(
-          name: 'main_Plants',
-          path: '/mainPlants',
+          name: MainPlantsWidget.routeName,
+          path: MainPlantsWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_Plants')
               : MainPlantsWidget(),
         ),
         FFRoute(
-          name: 'main_vendors',
-          path: '/mainVendors',
+          name: MainVendorsWidget.routeName,
+          path: MainVendorsWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_vendors')
               : MainVendorsWidget(),
         ),
         FFRoute(
-          name: 'main_PestManagment',
-          path: '/mainPestManagment',
+          name: MainPestManagmentWidget.routeName,
+          path: MainPestManagmentWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_PestManagment')
               : MainPestManagmentWidget(),
         ),
         FFRoute(
-          name: 'main_Customers',
-          path: '/mainCustomers',
+          name: MainCustomersWidget.routeName,
+          path: MainCustomersWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_Customers')
               : MainCustomersWidget(),
         ),
         FFRoute(
-          name: 'createAccount',
-          path: '/createAccount',
+          name: CreateAccountWidget.routeName,
+          path: CreateAccountWidget.routePath,
           builder: (context, params) => CreateAccountWidget(),
         ),
         FFRoute(
-          name: 'signUpFlow',
-          path: '/signUpFlow',
+          name: SignUpFlowWidget.routeName,
+          path: SignUpFlowWidget.routePath,
           builder: (context, params) => SignUpFlowWidget(),
         ),
         FFRoute(
-          name: 'navigateAfterSignup',
-          path: '/navigateAfterSignup',
+          name: NavigateAfterSignupWidget.routeName,
+          path: NavigateAfterSignupWidget.routePath,
           builder: (context, params) => NavigateAfterSignupWidget(),
         ),
         FFRoute(
-          name: 'signUpFlowOne',
-          path: '/signUpFlowOne',
+          name: SignUpFlowOneWidget.routeName,
+          path: SignUpFlowOneWidget.routePath,
           builder: (context, params) => SignUpFlowOneWidget(),
         ),
         FFRoute(
-          name: 'signUpFlowTwo',
-          path: '/signUpFlowTwo',
+          name: SignUpFlowTwoWidget.routeName,
+          path: SignUpFlowTwoWidget.routePath,
           builder: (context, params) => SignUpFlowTwoWidget(),
         ),
         FFRoute(
-          name: 'signUpFlowFinal',
-          path: '/signUpFlowFinal',
+          name: SignUpFlowFinalWidget.routeName,
+          path: SignUpFlowFinalWidget.routePath,
           builder: (context, params) => SignUpFlowFinalWidget(),
         ),
         FFRoute(
-          name: 'main_LightManagement',
-          path: '/mainLIghtManagement',
+          name: MainLightManagementWidget.routeName,
+          path: MainLightManagementWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_LightManagement')
               : MainLightManagementWidget(
@@ -211,81 +212,81 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
         ),
         FFRoute(
-          name: 'lightingEquipment',
-          path: '/lightingEquipment',
+          name: LightingEquipmentWidget.routeName,
+          path: LightingEquipmentWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'lightingEquipment')
               : LightingEquipmentWidget(),
         ),
         FFRoute(
-          name: 'foodSafetyPlanflow',
-          path: '/foodSafetyPlanflow',
+          name: FoodSafetyPlanflowWidget.routeName,
+          path: FoodSafetyPlanflowWidget.routePath,
           builder: (context, params) => FoodSafetyPlanflowWidget(),
         ),
         FFRoute(
-          name: 'main_Mechanical',
-          path: '/main_Mechanical',
+          name: MainMechanicalWidget.routeName,
+          path: MainMechanicalWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_Mechanical')
               : MainMechanicalWidget(),
         ),
         FFRoute(
-          name: 'main_products',
-          path: '/mainProducts',
+          name: MainProductsWidget.routeName,
+          path: MainProductsWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_products')
               : MainProductsWidget(),
         ),
         FFRoute(
-          name: 'main_Nutrients',
-          path: '/mainNutrients',
+          name: MainNutrientsWidget.routeName,
+          path: MainNutrientsWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_Nutrients')
               : MainNutrientsWidget(),
         ),
         FFRoute(
-          name: 'main_Settings',
-          path: '/mainSettings',
+          name: MainSettingsWidget.routeName,
+          path: MainSettingsWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_Settings')
               : MainSettingsWidget(),
         ),
         FFRoute(
-          name: 'main_FarmOperations',
-          path: '/mainFarmOperations',
+          name: MainFarmOperationsWidget.routeName,
+          path: MainFarmOperationsWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_FarmOperations')
               : MainFarmOperationsWidget(),
         ),
         FFRoute(
-          name: 'main_Configuration',
-          path: '/mainConfiguration',
+          name: MainConfigurationWidget.routeName,
+          path: MainConfigurationWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_Configuration')
               : MainConfigurationWidget(),
         ),
         FFRoute(
-          name: 'chat_ai_Screen',
-          path: '/chatAiScreen',
+          name: ChatAiScreenWidget.routeName,
+          path: ChatAiScreenWidget.routePath,
           builder: (context, params) => ChatAiScreenWidget(),
         ),
         FFRoute(
-          name: 'invite',
-          path: '/invite',
+          name: InviteWidget.routeName,
+          path: InviteWidget.routePath,
           builder: (context, params) => InviteWidget(
             invitation: params.getParam(
               'invitation',
               ParamType.String,
             ),
-            emailAddress: params.getParam(
-              'emailAddress',
+            email: params.getParam(
+              'email',
               ParamType.String,
             ),
           ),
         ),
         FFRoute(
-          name: 'verify_invite',
-          path: '/verifyInvite',
+          name: VerifyInviteWidget.routeName,
+          path: VerifyInviteWidget.routePath,
           builder: (context, params) => VerifyInviteWidget(
             invitation: params.getParam(
               'invitation',
@@ -294,9 +295,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'inviteSuccessLanding',
-          path: '/inviteSuccessLanding',
-          builder: (context, params) => InviteSuccessLandingWidget(),
+          name: InviteSuccessLandingWidget.routeName,
+          path: InviteSuccessLandingWidget.routePath,
+          builder: (context, params) => InviteSuccessLandingWidget(
+            invitationID: params.getParam(
+              'invitationID',
+              ParamType.String,
+            ),
+            firstName: params.getParam(
+              'firstName',
+              ParamType.String,
+            ),
+            lastName: params.getParam(
+              'lastName',
+              ParamType.String,
+            ),
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -481,15 +499,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/DALLE_2025-02-12_07.02.43_-_A_photorealistic_image_of_fresh_green_lettuce_leaves_falling_through_the_air,_with_water_droplets_splashing_around_them._The_background_is_a_smooth,_n.webp',
+                    fit: BoxFit.cover,
                   ),
                 )
               : page;

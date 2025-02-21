@@ -30,6 +30,9 @@ export 'main_pest_managment_model.dart';
 class MainPestManagmentWidget extends StatefulWidget {
   const MainPestManagmentWidget({super.key});
 
+  static String routeName = 'main_PestManagment';
+  static String routePath = '/mainPestManagment';
+
   @override
   State<MainPestManagmentWidget> createState() =>
       _MainPestManagmentWidgetState();

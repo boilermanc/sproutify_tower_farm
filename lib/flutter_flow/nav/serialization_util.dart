@@ -448,6 +448,8 @@ dynamic deserializeParam<T>(
             return ProductMonthlyMetricsRow(data);
           case PestLatestTreatmentsRow:
             return PestLatestTreatmentsRow(data);
+          case TowerDisplayWithPlantsNewRow:
+            return TowerDisplayWithPlantsNewRow(data);
           case TaskPlantingsRow:
             return TaskPlantingsRow(data);
           case TowerLastActionRow:
@@ -754,6 +756,8 @@ dynamic deserializeParam<T>(
             return LightingZonesRow(data);
           case MonitoringPageViewRow:
             return MonitoringPageViewRow(data);
+          case PlantHarvestTimelineNewRow:
+            return PlantHarvestTimelineNewRow(data);
           case DosingUnitsRow:
             return DosingUnitsRow(data);
           case ViewPlantDetailsByCategoryRow:

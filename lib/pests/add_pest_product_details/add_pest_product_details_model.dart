@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pests/sds_detail_overview/sds_detail_overview_widget.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'add_pest_product_details_widget.dart' show AddPestProductDetailsWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
