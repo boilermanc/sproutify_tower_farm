@@ -1,3 +1,4 @@
+import '';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -74,7 +75,6 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
             padding: EdgeInsets.all(16.0),
             child: Container(
               width: 690.0,
-              height: 700.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).primaryBackground,
                 borderRadius: BorderRadius.circular(12.0),

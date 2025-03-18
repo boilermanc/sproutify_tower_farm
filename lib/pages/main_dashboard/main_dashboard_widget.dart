@@ -1,3 +1,4 @@
+import '';
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
@@ -16,6 +17,7 @@ import '/produce_plants/add_planting/add_planting_widget.dart';
 import '/produce_plants/confirm_tower_waste/confirm_tower_waste_widget.dart';
 import '/produce_plants/plant_towers/plant_towers_widget.dart';
 import '/registration_profile/profile_update_component/profile_update_component_widget.dart';
+import '/sensors/sensor_alerts_copy/sensor_alerts_copy_widget.dart';
 import '/spacer/add_spacer_action/add_spacer_action_widget.dart';
 import '/spacer/assign_spacer_task/assign_spacer_task_widget.dart';
 import '/spacer/confirm_spacer_ready/confirm_spacer_ready_widget.dart';
@@ -1227,6 +1229,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                     16.0, 12.0, 16.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
+                                  height: 720.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     boxShadow: [
@@ -1290,23 +1293,66 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                   4.0,
                                                                   0.0,
                                                                   0.0),
-                                                      child: Text(
-                                                        'An overview of your towers.',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .labelMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Plus Jakarta Sans',
-                                                              color: Color(
-                                                                  0xFF57636C),
-                                                              fontSize: 14.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal,
-                                                            ),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          await showModalBottomSheet(
+                                                            isScrollControlled:
+                                                                true,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            enableDrag: false,
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return GestureDetector(
+                                                                onTap: () {
+                                                                  FocusScope.of(
+                                                                          context)
+                                                                      .unfocus();
+                                                                  FocusManager
+                                                                      .instance
+                                                                      .primaryFocus
+                                                                      ?.unfocus();
+                                                                },
+                                                                child: Padding(
+                                                                  padding: MediaQuery
+                                                                      .viewInsetsOf(
+                                                                          context),
+                                                                  child:
+                                                                      SensorAlertsCopyWidget(),
+                                                                ),
+                                                              );
+                                                            },
+                                                          ).then((value) =>
+                                                              safeSetState(
+                                                                  () {}));
+                                                        },
+                                                        child: Text(
+                                                          'An overview of your towers.',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                color: Color(
+                                                                    0xFF57636C),
+                                                                fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
@@ -1560,7 +1606,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                             children: [
                                               Container(
                                                 width: 900.0,
-                                                height: 500.0,
+                                                height: 610.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -1806,6 +1852,8 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                               snapshot.data!;
 
                                                                           return Container(
+                                                                            height:
+                                                                                double.infinity,
                                                                             decoration:
                                                                                 BoxDecoration(),
                                                                             child:

@@ -54,4 +54,13 @@ class SensorsRow extends SupabaseDataRow {
 
   String? get macAddress => getField<String>('mac_address');
   set macAddress(String? value) => setField<String>('mac_address', value);
+
+  bool get isActive => getField<bool>('is_active')!;
+  set isActive(bool value) => setField<bool>('is_active', value);
+
+  DateTime? get lastSeen => getField<DateTime>('last_seen');
+  set lastSeen(DateTime? value) => setField<DateTime>('last_seen', value);
+
+  String? get readingType => getField<String>('reading_type');
+  set readingType(String? value) => setField<String>('reading_type', value);
 }

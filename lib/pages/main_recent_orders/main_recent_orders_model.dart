@@ -1,3 +1,4 @@
+import '';
 import '/backend/supabase/supabase.dart';
 import '/components/mark_order_complete_widget.dart';
 import '/components/order_detail_widget.dart';
@@ -24,6 +25,17 @@ class MainRecentOrdersModel extends FlutterFlowModel<MainRecentOrdersWidget> {
   ///  Local state fields for this page.
 
   int selectedPage = 4;
+
+  /// To track which column to sort by
+  String? sortBy = 'order_date';
+
+  /// To track active/all filter status
+  String? filterType = 'all';
+
+  /// To toggle between ascending/descending sorts
+  bool? sortDirection = true;
+
+  String? selectedOrderChips;
 
   ///  State fields for stateful widgets in this page.
 

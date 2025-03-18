@@ -18,8 +18,8 @@ class SensorReadingsRow extends SupabaseDataRow {
   int get id => getField<int>('id')!;
   set id(int value) => setField<int>('id', value);
 
-  String get sensorId => getField<String>('sensor_id')!;
-  set sensorId(String value) => setField<String>('sensor_id', value);
+  String? get sensorId => getField<String>('sensor_id');
+  set sensorId(String? value) => setField<String>('sensor_id', value);
 
   String get readingType => getField<String>('reading_type')!;
   set readingType(String value) => setField<String>('reading_type', value);
@@ -36,4 +36,11 @@ class SensorReadingsRow extends SupabaseDataRow {
 
   DateTime? get flowTime => getField<DateTime>('flow_time');
   set flowTime(DateTime? value) => setField<DateTime>('flow_time', value);
+
+  String? get macAddress => getField<String>('mac_address');
+  set macAddress(String? value) => setField<String>('mac_address', value);
+
+  String? get bleMacAddress => getField<String>('ble_mac_address');
+  set bleMacAddress(String? value) =>
+      setField<String>('ble_mac_address', value);
 }

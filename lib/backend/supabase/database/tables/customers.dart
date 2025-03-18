@@ -66,4 +66,10 @@ class CustomersRow extends SupabaseDataRow {
   String? get customerTypeId => getField<String>('customer_type_id');
   set customerTypeId(String? value) =>
       setField<String>('customer_type_id', value);
+
+  String? get customerColor => getField<String>('customer_color');
+  set customerColor(String? value) => setField<String>('customer_color', value);
+
+  String? get textColor => getField<String>('text_color');
+  set textColor(String? value) => setField<String>('text_color', value);
 }

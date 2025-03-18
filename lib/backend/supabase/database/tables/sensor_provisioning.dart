@@ -36,4 +36,13 @@ class SensorProvisioningRow extends SupabaseDataRow {
   String? get sproutifyModel => getField<String>('sproutify_model');
   set sproutifyModel(String? value) =>
       setField<String>('sproutify_model', value);
+
+  String get status => getField<String>('status')!;
+  set status(String value) => setField<String>('status', value);
+
+  String? get setupCode => getField<String>('setup_code');
+  set setupCode(String? value) => setField<String>('setup_code', value);
+
+  String? get macAddress => getField<String>('mac_address');
+  set macAddress(String? value) => setField<String>('mac_address', value);
 }

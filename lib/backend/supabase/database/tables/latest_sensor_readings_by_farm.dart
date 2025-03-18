@@ -39,6 +39,9 @@ class LatestSensorReadingsByFarmRow extends SupabaseDataRow {
   set latestTimeWithoutTz(DateTime? value) =>
       setField<DateTime>('latest_time_without_tz', value);
 
+  DateTime? get lastSeen => getField<DateTime>('last_seen');
+  set lastSeen(DateTime? value) => setField<DateTime>('last_seen', value);
+
   String? get readingTypeDisplayName =>
       getField<String>('reading_type_display_name');
   set readingTypeDisplayName(String? value) =>
@@ -47,7 +50,13 @@ class LatestSensorReadingsByFarmRow extends SupabaseDataRow {
   String? get readingUnit => getField<String>('reading_unit');
   set readingUnit(String? value) => setField<String>('reading_unit', value);
 
+  String? get displaySort => getField<String>('display_sort');
+  set displaySort(String? value) => setField<String>('display_sort', value);
+
   String? get measurementSystem => getField<String>('measurement_system');
   set measurementSystem(String? value) =>
       setField<String>('measurement_system', value);
+
+  String? get macAddress => getField<String>('mac_address');
+  set macAddress(String? value) => setField<String>('mac_address', value);
 }

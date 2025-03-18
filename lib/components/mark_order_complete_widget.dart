@@ -53,7 +53,6 @@ class _MarkOrderCompleteWidgetState extends State<MarkOrderCompleteWidget> {
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: 450.0,
-        height: 450.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).alternate,
           borderRadius: BorderRadius.circular(10.0),

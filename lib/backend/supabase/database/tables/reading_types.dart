@@ -22,4 +22,7 @@ class ReadingTypesRow extends SupabaseDataRow {
 
   String? get unitType => getField<String>('unit_type');
   set unitType(String? value) => setField<String>('unit_type', value);
+
+  String get displaySort => getField<String>('display sort')!;
+  set displaySort(String value) => setField<String>('display sort', value);
 }

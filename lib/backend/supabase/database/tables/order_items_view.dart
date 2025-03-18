@@ -66,6 +66,15 @@ class OrderItemsViewRow extends SupabaseDataRow {
   String? get vendorName => getField<String>('vendor_name');
   set vendorName(String? value) => setField<String>('vendor_name', value);
 
+  String? get vendorBackgroundColor =>
+      getField<String>('vendor_background_color');
+  set vendorBackgroundColor(String? value) =>
+      setField<String>('vendor_background_color', value);
+
+  String? get vendorTextColor => getField<String>('vendor_text_color');
+  set vendorTextColor(String? value) =>
+      setField<String>('vendor_text_color', value);
+
   String? get customerName => getField<String>('customer_name');
   set customerName(String? value) => setField<String>('customer_name', value);
 
@@ -81,4 +90,11 @@ class OrderItemsViewRow extends SupabaseDataRow {
       getField<String>('order_status_text_color');
   set orderStatusTextColor(String? value) =>
       setField<String>('order_status_text_color', value);
+
+  String? get customerColor => getField<String>('customer_color');
+  set customerColor(String? value) => setField<String>('customer_color', value);
+
+  String? get customerTextColor => getField<String>('customer_text_color');
+  set customerTextColor(String? value) =>
+      setField<String>('customer_text_color', value);
 }

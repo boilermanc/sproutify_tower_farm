@@ -47,4 +47,11 @@ class VendorsRow extends SupabaseDataRow {
 
   String get typeId => getField<String>('type_id')!;
   set typeId(String value) => setField<String>('type_id', value);
+
+  String? get backgroundColor => getField<String>('background_color');
+  set backgroundColor(String? value) =>
+      setField<String>('background_color', value);
+
+  String? get textColor => getField<String>('text_color');
+  set textColor(String? value) => setField<String>('text_color', value);
 }

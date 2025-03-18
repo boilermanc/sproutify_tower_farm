@@ -1,3 +1,4 @@
+import '';
 import '/backend/supabase/supabase.dart';
 import '/components/mark_order_complete_widget.dart';
 import '/components/order_detail_widget.dart';
@@ -464,12 +465,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           10.0),
                                                                       child:
                                                                           Text(
-                                                                        'Hello World',
+                                                                        'Track and manage all customer orders with complete fulfillment details and delivery status.',
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Plus Jakarta Sans',
                                                                               letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.w600,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -491,6 +493,121 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                     ),
                                                                   ],
                                                                 ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          InkWell(
+                                                                        splashColor:
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
+                                                                        highlightColor:
+                                                                            Colors.transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          _model.selectedOrderChips =
+                                                                              'All';
+                                                                          safeSetState(
+                                                                              () {});
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              110.0,
+                                                                          height:
+                                                                              30.0,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primary,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                          ),
+                                                                          alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Text(
+                                                                            'All',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            _model.selectedOrderChips =
+                                                                                'Completed';
+                                                                            safeSetState(() {});
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                110.0,
+                                                                            height:
+                                                                                30.0,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            child:
+                                                                                Align(
+                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                              child: Text(
+                                                                                'Active Orders',
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      letterSpacing: 0.0,
+                                                                                      fontWeight: FontWeight.w600,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
                                                                 Expanded(
                                                                   child: FutureBuilder<
                                                                       List<
@@ -504,7 +621,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           )
                                                                           .neqOrNull(
                                                                             'status',
-                                                                            'completed',
+                                                                            _model.selectedOrderChips,
                                                                           )
                                                                           .order('created_at'),
                                                                     ),
@@ -822,6 +939,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                         ordersListItem.statusTextColor!,
                                                                                                         defaultColor: Colors.black,
                                                                                                       ),
+                                                                                                      fontSize: 12.0,
                                                                                                       letterSpacing: 0.0,
                                                                                                       fontWeight: FontWeight.bold,
                                                                                                     ),
