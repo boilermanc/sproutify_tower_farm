@@ -104,12 +104,20 @@ class _OrderStatusDropdownWidgetState extends State<OrderStatusDropdownWidget> {
             width: 120.0,
             height: 40.0,
             textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Plus Jakarta Sans',
+                  font: GoogleFonts.plusJakartaSans(
+                    fontWeight:
+                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  ),
                   color: colorFromCssString(
                     statusDropDownOrderStatusesRowList.firstOrNull!.textColor!,
                     defaultColor: Colors.black,
                   ),
                   letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                 ),
             hintText: 'Select...',
             icon: Icon(

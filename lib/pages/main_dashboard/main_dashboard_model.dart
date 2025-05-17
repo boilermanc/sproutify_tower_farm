@@ -1,4 +1,3 @@
-import '';
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
@@ -61,6 +60,8 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
   TabController? tabBarController1;
   int get tabBarCurrentIndex1 =>
       tabBarController1 != null ? tabBarController1!.index : 0;
+  int get tabBarPreviousIndex1 =>
+      tabBarController1 != null ? tabBarController1!.previousIndex : 0;
 
   // State field(s) for towerDataTable widget.
   final towerDataTableController1 =
@@ -75,6 +76,8 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
   TabController? tabBarController2;
   int get tabBarCurrentIndex2 =>
       tabBarController2 != null ? tabBarController2!.index : 0;
+  int get tabBarPreviousIndex2 =>
+      tabBarController2 != null ? tabBarController2!.previousIndex : 0;
 
   // State field(s) for towerDataTable widget.
   final towerDataTableController2 =

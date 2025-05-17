@@ -51,3 +51,5 @@ export '/registration_profile/verify_invite/verify_invite_widget.dart'
     show VerifyInviteWidget;
 export '/registration_profile/invite_success_landing/invite_success_landing_widget.dart'
     show InviteSuccessLandingWidget;
+export '/pages/main_nutrients_copy/main_nutrients_copy_widget.dart'
+    show MainNutrientsCopyWidget;

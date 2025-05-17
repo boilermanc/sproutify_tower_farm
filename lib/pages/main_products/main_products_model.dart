@@ -1,4 +1,3 @@
-import '';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -6,8 +5,10 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pests/add_pest_product_details/add_pest_product_details_widget.dart';
 import '/produce_plants/chemical_catalog/chemical_catalog_widget.dart';
 import '/products/add_new_product/add_new_product_widget.dart';
+import '/products/add_new_product_from_s_d_s/add_new_product_from_s_d_s_widget.dart';
 import '/products/delete_product/delete_product_widget.dart';
 import 'dart:math';
 import 'dart:ui';

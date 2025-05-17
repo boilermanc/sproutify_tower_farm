@@ -34,4 +34,7 @@ class TaskStatusSummaryByFarmAndRoleViewRow extends SupabaseDataRow {
 
   int? get completedCount => getField<int>('completed_count');
   set completedCount(int? value) => setField<int>('completed_count', value);
+
+  int? get overdueCount => getField<int>('overdue_count');
+  set overdueCount(int? value) => setField<int>('overdue_count', value);
 }

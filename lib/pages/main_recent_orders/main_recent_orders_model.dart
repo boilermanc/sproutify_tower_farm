@@ -1,4 +1,3 @@
-import '';
 import '/backend/supabase/supabase.dart';
 import '/components/mark_order_complete_widget.dart';
 import '/components/order_detail_widget.dart';
@@ -9,6 +8,7 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/produce_plants/allocate_harvest/allocate_harvest_widget.dart';
 import '/produce_plants/allocate_produce/allocate_produce_widget.dart';
 import '/produce_plants/no_produce_display/no_produce_display_widget.dart';
 import 'dart:math';
@@ -45,13 +45,15 @@ class MainRecentOrdersModel extends FlutterFlowModel<MainRecentOrdersWidget> {
   TabController? tabBarController1;
   int get tabBarCurrentIndex1 =>
       tabBarController1 != null ? tabBarController1!.index : 0;
+  int get tabBarPreviousIndex1 =>
+      tabBarController1 != null ? tabBarController1!.previousIndex : 0;
 
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController1 =
       FlutterFlowDataTableController<OrderHeadersViewRow>();
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController2 =
-      FlutterFlowDataTableController<HarvestSummaryViewRow>();
+      FlutterFlowDataTableController<HarvestAvailableViewRow>();
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController3 =
       FlutterFlowDataTableController<TowerPlantsDetailRow>();
@@ -59,15 +61,14 @@ class MainRecentOrdersModel extends FlutterFlowModel<MainRecentOrdersWidget> {
   TabController? tabBarController2;
   int get tabBarCurrentIndex2 =>
       tabBarController2 != null ? tabBarController2!.index : 0;
+  int get tabBarPreviousIndex2 =>
+      tabBarController2 != null ? tabBarController2!.previousIndex : 0;
 
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController4 =
-      FlutterFlowDataTableController<WeeklyGrowSheetViewRow>();
+      FlutterFlowDataTableController<AllocationSummaryViewRow>();
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController5 =
-      FlutterFlowDataTableController<HarvestSummaryViewRow>();
-  // State field(s) for PaginatedDataTable widget.
-  final paginatedDataTableController6 =
       FlutterFlowDataTableController<TowerPlantsDetailRow>();
 
   @override
@@ -85,6 +86,5 @@ class MainRecentOrdersModel extends FlutterFlowModel<MainRecentOrdersWidget> {
     tabBarController2?.dispose();
     paginatedDataTableController4.dispose();
     paginatedDataTableController5.dispose();
-    paginatedDataTableController6.dispose();
   }
 }

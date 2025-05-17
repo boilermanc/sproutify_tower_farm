@@ -21,6 +21,10 @@ class ProductSummaryViewRow extends SupabaseDataRow {
   String? get productId => getField<String>('product_id');
   set productId(String? value) => setField<String>('product_id', value);
 
+  String? get productTypeId => getField<String>('product_type_id');
+  set productTypeId(String? value) =>
+      setField<String>('product_type_id', value);
+
   String? get productName => getField<String>('product_name');
   set productName(String? value) => setField<String>('product_name', value);
 

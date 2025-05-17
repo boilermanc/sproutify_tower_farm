@@ -1,4 +1,3 @@
-import '';
 import '/backend/supabase/supabase.dart';
 import '/components/alert_level_setting_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -30,6 +29,8 @@ class SensorAlertsCopy2Model extends FlutterFlowModel<SensorAlertsCopy2Widget> {
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   @override
   void initState(BuildContext context) {}

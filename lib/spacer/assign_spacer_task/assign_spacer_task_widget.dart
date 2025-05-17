@@ -130,13 +130,26 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                   .of(context)
                                                               .headlineSmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Outfit',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .outfit(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmall
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                         FlutterFlowIconButton(
@@ -276,10 +289,14 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                                         'Plant',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                            ),
                                                                                             color: Colors.black,
                                                                                             letterSpacing: 0.0,
                                                                                             fontWeight: FontWeight.bold,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -314,9 +331,13 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                                                               child: Text(
                                                                                                                 'Quantity to Space',
                                                                                                                 style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                                        fontWeight: FontWeight.bold,
+                                                                                                                        fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                                                      ),
                                                                                                                       letterSpacing: 0.0,
                                                                                                                       fontWeight: FontWeight.bold,
+                                                                                                                      fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
@@ -364,9 +385,13 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                                                                 child: Text(
                                                                                                                   'Due Date',
                                                                                                                   style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                                          fontWeight: FontWeight.bold,
+                                                                                                                          fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                                                        ),
                                                                                                                         letterSpacing: 0.0,
                                                                                                                         fontWeight: FontWeight.bold,
+                                                                                                                        fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ),
@@ -394,11 +419,15 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                                                                         'mm/dd/yyyy',
                                                                                                                       ),
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                                                              fontWeight: FontWeight.w600,
+                                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                                            ),
                                                                                                                             color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                                             fontSize: 16.0,
                                                                                                                             letterSpacing: 0.0,
                                                                                                                             fontWeight: FontWeight.w600,
+                                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                                           ),
                                                                                                                     ),
                                                                                                                     InkWell(
@@ -419,10 +448,14 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                                                                               headerBackgroundColor: FlutterFlowTheme.of(context).primary,
                                                                                                                               headerForegroundColor: FlutterFlowTheme.of(context).info,
                                                                                                                               headerTextStyle: FlutterFlowTheme.of(context).headlineLarge.override(
-                                                                                                                                    fontFamily: 'Outfit',
+                                                                                                                                    font: GoogleFonts.outfit(
+                                                                                                                                      fontWeight: FontWeight.w600,
+                                                                                                                                      fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                                                                                                                                    ),
                                                                                                                                     fontSize: 32.0,
                                                                                                                                     letterSpacing: 0.0,
                                                                                                                                     fontWeight: FontWeight.w600,
+                                                                                                                                    fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
                                                                                                                                   ),
                                                                                                                               pickerBackgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                               pickerForegroundColor: FlutterFlowTheme.of(context).primaryText,
@@ -498,9 +531,13 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                                                                 child: Text(
                                                                                                                   'Expected Ready Date',
                                                                                                                   style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                                          fontWeight: FontWeight.bold,
+                                                                                                                          fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                                                        ),
                                                                                                                         letterSpacing: 0.0,
                                                                                                                         fontWeight: FontWeight.bold,
+                                                                                                                        fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ),
@@ -528,11 +565,15 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                                                                         'mm/dd/yyyy',
                                                                                                                       ),
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                                                              fontWeight: FontWeight.w600,
+                                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                                            ),
                                                                                                                             color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                                             fontSize: 16.0,
                                                                                                                             letterSpacing: 0.0,
                                                                                                                             fontWeight: FontWeight.w600,
+                                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                                           ),
                                                                                                                     ),
                                                                                                                     InkWell(
@@ -553,10 +594,14 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                                                                               headerBackgroundColor: FlutterFlowTheme.of(context).primary,
                                                                                                                               headerForegroundColor: FlutterFlowTheme.of(context).info,
                                                                                                                               headerTextStyle: FlutterFlowTheme.of(context).headlineLarge.override(
-                                                                                                                                    fontFamily: 'Outfit',
+                                                                                                                                    font: GoogleFonts.outfit(
+                                                                                                                                      fontWeight: FontWeight.w600,
+                                                                                                                                      fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                                                                                                                                    ),
                                                                                                                                     fontSize: 32.0,
                                                                                                                                     letterSpacing: 0.0,
                                                                                                                                     fontWeight: FontWeight.w600,
+                                                                                                                                    fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
                                                                                                                                   ),
                                                                                                                               pickerBackgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                               pickerForegroundColor: FlutterFlowTheme.of(context).primaryText,
@@ -657,13 +702,23 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                         context)
                                                                     .titleLarge
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleLarge
+                                                                            .fontStyle,
+                                                                      ),
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleLarge
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ),
@@ -798,8 +853,13 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                           textStyle: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
                                                                                 letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
                                                                           hintText:
                                                                               'Select Staff Member...',
@@ -933,9 +993,13 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .titleLarge
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                ),
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.bold,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -1060,8 +1124,13 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                           textStyle: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
                                                                                 letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
                                                                           hintText:
                                                                               'Select Role...',
@@ -1126,13 +1195,25 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                     .of(context)
                                                                 .titleMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -1170,10 +1251,25 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                         context)
                                                                     .bodyLarge
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyLarge
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyLarge
+                                                                            .fontStyle,
+                                                                      ),
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .fontStyle,
                                                                     ),
                                                                 enabledBorder:
                                                                     InputBorder
@@ -1192,10 +1288,27 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                               maxLines: 3,
                                                               minLines: 3,
@@ -1248,13 +1361,28 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                         context)
                                                                     .titleSmall
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryText,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontStyle,
                                                                     ),
                                                             elevation: 0.0,
                                                             borderSide:
@@ -1298,13 +1426,28 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                                         context)
                                                                     .titleSmall
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryBackground,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontStyle,
                                                                     ),
                                                             elevation: 0.0,
                                                           ),
@@ -1342,11 +1485,24 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleLarge
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleLarge
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleLarge
+                                                                  .fontStyle,
                                                         ),
                                               ),
                                             ),
@@ -1376,10 +1532,22 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .titleLarge
                                                 .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
+                                                  font: GoogleFonts
+                                                      .plusJakartaSans(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleLarge
+                                                            .fontStyle,
+                                                  ),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleLarge
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ),
@@ -1402,9 +1570,19 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .titleLarge
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            font: GoogleFonts.plusJakartaSans(
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ),
@@ -1441,11 +1619,24 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleLarge
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        font: GoogleFonts
+                                                            .plusJakartaSans(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleLarge
+                                                                .fontStyle,
                                                       ),
                                             ),
                                           ),
@@ -1501,9 +1692,30 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleLarge
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleLarge
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleLarge
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleLarge
+                                                                  .fontStyle,
                                                         ),
                                               ),
                                               count: _model
@@ -1549,11 +1761,19 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .titleMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      font: GoogleFonts.plusJakartaSans(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontStyle,
+                                      ),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
                                     ),
                               ),
                             ),
@@ -1584,13 +1804,23 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              font: GoogleFonts.plusJakartaSans(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                       ),
                                       InkWell(
@@ -1619,11 +1849,25 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .headlineLarge
                                                         .override(
-                                                          fontFamily: 'Outfit',
+                                                          font: GoogleFonts
+                                                              .outfit(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineLarge
+                                                                    .fontStyle,
+                                                          ),
                                                           fontSize: 32.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineLarge
+                                                                  .fontStyle,
                                                         ),
                                                 pickerBackgroundColor:
                                                     FlutterFlowTheme.of(context)
@@ -1702,9 +1946,18 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .titleLarge
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        font: GoogleFonts.plusJakartaSans(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleLarge
+                                                  .fontStyle,
+                                        ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -1749,8 +2002,25 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .titleLarge
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          font: GoogleFonts.plusJakartaSans(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleLarge
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleLarge
+                                                  .fontStyle,
                                         ),
                                   ),
                                   count: _model.countControllerValue2 ??= 0,
@@ -1798,9 +2068,18 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .titleLarge
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        font: GoogleFonts.plusJakartaSans(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleLarge
+                                                  .fontStyle,
+                                        ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -1845,8 +2124,25 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .titleLarge
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          font: GoogleFonts.plusJakartaSans(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleLarge
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleLarge
+                                                  .fontStyle,
                                         ),
                                   ),
                                   count: _model.countControllerValue3 ??= 0,
@@ -1890,11 +2186,18 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                       'mm/dd/yyyy',
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          font: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.w600,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                           color: FlutterFlowTheme.of(context).secondaryText,
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
                   ),
                   InkWell(
@@ -1919,10 +2222,18 @@ class _AssignSpacerTaskWidgetState extends State<AssignSpacerTaskWidget> {
                             headerTextStyle: FlutterFlowTheme.of(context)
                                 .headlineLarge
                                 .override(
-                                  fontFamily: 'Outfit',
+                                  font: GoogleFonts.outfit(
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .headlineLarge
+                                        .fontStyle,
+                                  ),
                                   fontSize: 32.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineLarge
+                                      .fontStyle,
                                 ),
                             pickerBackgroundColor: FlutterFlowTheme.of(context)
                                 .secondaryBackground,

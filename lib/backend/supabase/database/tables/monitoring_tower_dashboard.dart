@@ -84,4 +84,10 @@ class MonitoringTowerDashboardRow extends SupabaseDataRow {
 
   String? get readerName => getField<String>('reader_name');
   set readerName(String? value) => setField<String>('reader_name', value);
+
+  double? get phValue => getField<double>('ph_value');
+  set phValue(double? value) => setField<double>('ph_value', value);
+
+  double? get ecValue => getField<double>('ec_value');
+  set ecValue(double? value) => setField<double>('ec_value', value);
 }

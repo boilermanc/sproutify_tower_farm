@@ -1,4 +1,3 @@
-import '';
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -109,9 +108,20 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .headlineSmall
                                               .override(
-                                                fontFamily: 'Outfit',
+                                                font: GoogleFonts.outfit(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineSmall
+                                                          .fontStyle,
+                                                ),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .fontStyle,
                                               ),
                                         ),
                                         FlutterFlowIconButton(
@@ -247,10 +257,14 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .titleLarge
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                ),
                                                                                 color: Colors.black,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.bold,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -296,9 +310,13 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                 child: Text(
                                                                                                   'Quantity to Space',
                                                                                                   style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                          fontWeight: FontWeight.bold,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                                        ),
                                                                                                         letterSpacing: 0.0,
                                                                                                         fontWeight: FontWeight.bold,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -351,9 +369,13 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                   child: Text(
                                                                                                     'Seeded Date',
                                                                                                     style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                                          fontFamily: 'Plus Jakarta Sans',
+                                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                                            fontWeight: FontWeight.bold,
+                                                                                                            fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                                          ),
                                                                                                           letterSpacing: 0.0,
                                                                                                           fontWeight: FontWeight.bold,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -381,11 +403,15 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                           'mm/dd/yyyy',
                                                                                                         ),
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FontWeight.w600,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                              ),
                                                                                                               color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                               fontSize: 16.0,
                                                                                                               letterSpacing: 0.0,
                                                                                                               fontWeight: FontWeight.w600,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                             ),
                                                                                                       ),
                                                                                                       InkWell(
@@ -406,10 +432,14 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                                 headerBackgroundColor: Color(0xFF63BFE5),
                                                                                                                 headerForegroundColor: FlutterFlowTheme.of(context).info,
                                                                                                                 headerTextStyle: FlutterFlowTheme.of(context).headlineLarge.override(
-                                                                                                                      fontFamily: 'Outfit',
+                                                                                                                      font: GoogleFonts.outfit(
+                                                                                                                        fontWeight: FontWeight.w600,
+                                                                                                                        fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                                                                                                                      ),
                                                                                                                       fontSize: 32.0,
                                                                                                                       letterSpacing: 0.0,
                                                                                                                       fontWeight: FontWeight.w600,
+                                                                                                                      fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
                                                                                                                     ),
                                                                                                                 pickerBackgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                 pickerForegroundColor: FlutterFlowTheme.of(context).primaryText,
@@ -486,9 +516,13 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                   child: Text(
                                                                                                     'Expected Ready Date',
                                                                                                     style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                                          fontFamily: 'Plus Jakarta Sans',
+                                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                                            fontWeight: FontWeight.bold,
+                                                                                                            fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                                          ),
                                                                                                           letterSpacing: 0.0,
                                                                                                           fontWeight: FontWeight.bold,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -516,11 +550,15 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                           'mm/dd/yyyy',
                                                                                                         ),
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FontWeight.w600,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                              ),
                                                                                                               color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                               fontSize: 16.0,
                                                                                                               letterSpacing: 0.0,
                                                                                                               fontWeight: FontWeight.w600,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                             ),
                                                                                                       ),
                                                                                                       InkWell(
@@ -541,10 +579,14 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                                 headerBackgroundColor: Color(0xFF63BFE5),
                                                                                                                 headerForegroundColor: FlutterFlowTheme.of(context).info,
                                                                                                                 headerTextStyle: FlutterFlowTheme.of(context).headlineLarge.override(
-                                                                                                                      fontFamily: 'Outfit',
+                                                                                                                      font: GoogleFonts.outfit(
+                                                                                                                        fontWeight: FontWeight.w600,
+                                                                                                                        fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                                                                                                                      ),
                                                                                                                       fontSize: 32.0,
                                                                                                                       letterSpacing: 0.0,
                                                                                                                       fontWeight: FontWeight.w600,
+                                                                                                                      fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
                                                                                                                     ),
                                                                                                                 pickerBackgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                 pickerForegroundColor: FlutterFlowTheme.of(context).primaryText,
@@ -621,10 +663,14 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                   child: Text(
                                                                                                     'Date Spaced',
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          fontFamily: 'Plus Jakarta Sans',
+                                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                                            fontWeight: FontWeight.bold,
+                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                          ),
                                                                                                           fontSize: 18.0,
                                                                                                           letterSpacing: 0.0,
                                                                                                           fontWeight: FontWeight.bold,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -652,10 +698,14 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                           'mm/dd/yyyy',
                                                                                                         ),
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FontWeight.w600,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                              ),
                                                                                                               fontSize: 16.0,
                                                                                                               letterSpacing: 0.0,
                                                                                                               fontWeight: FontWeight.w600,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                             ),
                                                                                                       ),
                                                                                                       InkWell(
@@ -676,10 +726,14 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                                 headerBackgroundColor: FlutterFlowTheme.of(context).primary,
                                                                                                                 headerForegroundColor: FlutterFlowTheme.of(context).info,
                                                                                                                 headerTextStyle: FlutterFlowTheme.of(context).headlineLarge.override(
-                                                                                                                      fontFamily: 'Outfit',
+                                                                                                                      font: GoogleFonts.outfit(
+                                                                                                                        fontWeight: FontWeight.w600,
+                                                                                                                        fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                                                                                                                      ),
                                                                                                                       fontSize: 32.0,
                                                                                                                       letterSpacing: 0.0,
                                                                                                                       fontWeight: FontWeight.w600,
+                                                                                                                      fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
                                                                                                                     ),
                                                                                                                 pickerBackgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                 pickerForegroundColor: FlutterFlowTheme.of(context).primaryText,
@@ -788,9 +842,14 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                   iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                   color: FlutterFlowTheme.of(context).primary,
                                                                                                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                          fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                                        ),
                                                                                                         color: FlutterFlowTheme.of(context).primaryBackground,
                                                                                                         letterSpacing: 0.0,
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                                       ),
                                                                                                   elevation: 0.0,
                                                                                                 ),
@@ -821,9 +880,14 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                   iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                   color: FlutterFlowTheme.of(context).primary,
                                                                                                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                          fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                                        ),
                                                                                                         color: FlutterFlowTheme.of(context).primaryBackground,
                                                                                                         letterSpacing: 0.0,
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                                       ),
                                                                                                   elevation: 0.0,
                                                                                                 ),
@@ -890,9 +954,14 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
           child: Text(
             'Expected Ready Date',
             style: FlutterFlowTheme.of(context).titleLarge.override(
-                  fontFamily: 'Plus Jakarta Sans',
+                  font: GoogleFonts.plusJakartaSans(
+                    fontWeight: FontWeight.bold,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                  ),
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.bold,
+                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                 ),
           ),
         ),

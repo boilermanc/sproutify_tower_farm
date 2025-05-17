@@ -58,9 +58,16 @@ class _NoIPMWidgetState extends State<NoIPMWidget> {
                   child: Text(
                     'You have not logged any inspections.',
                     style: FlutterFlowTheme.of(context).titleLarge.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          font: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
                         ),
                   ),
                 ),
@@ -77,9 +84,16 @@ class _NoIPMWidgetState extends State<NoIPMWidget> {
                   child: Text(
                     'Use this sectoin to talk about setting up an IPM.',
                     style: FlutterFlowTheme.of(context).titleLarge.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          font: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
                         ),
                   ),
                 ),

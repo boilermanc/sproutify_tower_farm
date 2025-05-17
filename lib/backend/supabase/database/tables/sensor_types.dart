@@ -23,13 +23,6 @@ class SensorTypesRow extends SupabaseDataRow {
   String get serialNumber => getField<String>('serial_number')!;
   set serialNumber(String value) => setField<String>('serial_number', value);
 
-  String? get vendorName => getField<String>('vendor_name');
-  set vendorName(String? value) => setField<String>('vendor_name', value);
-
-  String? get vendorContactInfo => getField<String>('vendor_contact_info');
-  set vendorContactInfo(String? value) =>
-      setField<String>('vendor_contact_info', value);
-
   double? get pulseConversionFactor =>
       getField<double>('pulse_conversion_factor');
   set pulseConversionFactor(double? value) =>
@@ -41,4 +34,7 @@ class SensorTypesRow extends SupabaseDataRow {
   String? get sproutifyModel => getField<String>('sproutify_model');
   set sproutifyModel(String? value) =>
       setField<String>('sproutify_model', value);
+
+  String? get vendorId => getField<String>('vendor_id');
+  set vendorId(String? value) => setField<String>('vendor_id', value);
 }

@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/registration_profile/setup_flow_main/setup_flow_main_widget.dart';
 import 'dart:ui';
 import '/index.dart';
 import 'create_account_widget.dart' show CreateAccountWidget;

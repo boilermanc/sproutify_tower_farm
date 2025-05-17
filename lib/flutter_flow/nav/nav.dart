@@ -315,6 +315,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: MainNutrientsCopyWidget.routeName,
+          path: MainNutrientsCopyWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'main_NutrientsCopy')
+              : MainNutrientsCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

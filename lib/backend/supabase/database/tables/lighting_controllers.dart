@@ -42,4 +42,7 @@ class LightingControllersRow extends SupabaseDataRow {
 
   bool? get isActive => getField<bool>('is_active');
   set isActive(bool? value) => setField<bool>('is_active', value);
+
+  String? get macAddress => getField<String>('mac_address');
+  set macAddress(String? value) => setField<String>('mac_address', value);
 }

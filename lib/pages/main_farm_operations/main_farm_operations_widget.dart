@@ -1,4 +1,3 @@
-import '';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -11,9 +10,12 @@ import '/produce_plants/no_tasks/no_tasks_widget.dart';
 import '/tasks/add_task/add_task_widget.dart';
 import '/tasks/task_mark_completed/task_mark_completed_widget.dart';
 import '/tasks/task_note/task_note_widget.dart';
+import '/tasks/update_task_role/update_task_role_widget.dart';
+import '/tasks/update_task_staff/update_task_staff_widget.dart';
 import '/towers/no_tower_display/no_tower_display_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import 'dart:async';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -50,6 +52,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
       length: 3,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -117,9 +120,17 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    font: GoogleFonts.outfit(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .fontStyle,
                                   ),
                             ),
                           ),
@@ -131,8 +142,21 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                             ),
                           ),
@@ -147,9 +171,18 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .headlineMedium
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        font: GoogleFonts.outfit(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -287,12 +320,29 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                   context)
                                                               .titleSmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                                ),
                                                                 color: Colors
                                                                     .white,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
                                                               ),
                                                       elevation: 3.0,
                                                       borderSide: BorderSide(
@@ -327,14 +377,27 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                           context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        font: GoogleFonts
+                                                            .plusJakartaSans(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         color:
                                                             Color(0xFF57636C),
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
                                                       ),
                                                 ),
                                               ),
@@ -393,8 +456,16 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                       .of(context)
                                                                   .labelMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     color: Color(
                                                                         0xFF57636C),
                                                                     fontSize:
@@ -404,6 +475,10 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ),
@@ -432,8 +507,14 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .tertiary,
                                                                         fontSize:
@@ -442,6 +523,9 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ],
@@ -493,8 +577,16 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                       .of(context)
                                                                   .labelMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     color: Color(
                                                                         0xFF57636C),
                                                                     fontSize:
@@ -504,6 +596,10 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ),
@@ -540,8 +636,11 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               context)
                                                                           .labelMedium
                                                                           .override(
-                                                                            fontFamily:
-                                                                                'Plus Jakarta Sans',
+                                                                            font:
+                                                                                GoogleFonts.plusJakartaSans(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondary,
                                                                             fontSize:
@@ -550,6 +649,8 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -608,8 +709,14 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           context)
                                                                       .labelMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         color: Color(
                                                                             0xFF57636C),
                                                                         fontSize:
@@ -618,6 +725,9 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -648,8 +758,14 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           context)
                                                                       .labelMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondary,
                                                                         fontSize:
@@ -658,6 +774,9 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -714,12 +833,21 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -746,12 +874,21 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -769,12 +906,21 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -799,12 +945,21 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -831,12 +986,21 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -854,12 +1018,21 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -917,12 +1090,25 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                       context)
                                                   .labelMedium
                                                   .override(
-                                                    fontFamily:
-                                                        'Plus Jakarta Sans',
+                                                    font: GoogleFonts
+                                                        .plusJakartaSans(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .fontStyle,
+                                                    ),
                                                     color: Color(0xFF57636C),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontStyle,
                                                   ),
                                             ),
                                           ),
@@ -970,17 +1156,59 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .titleMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        font: GoogleFonts
+                                                            .plusJakartaSans(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontStyle,
                                                       ),
                                               unselectedLabelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        font: GoogleFonts
+                                                            .plusJakartaSans(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontStyle,
                                                       ),
                                               labelColor:
                                                   FlutterFlowTheme.of(context)
@@ -1109,10 +1337,27 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -1143,25 +1388,24 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                             child: FutureBuilder<
                                                                 List<
                                                                     TaskAssignmentViewRow>>(
-                                                              future:
-                                                                  TaskAssignmentViewTable()
-                                                                      .queryRows(
-                                                                queryFn: (q) =>
-                                                                    q
-                                                                        .eqOrNull(
-                                                                          'farm_id',
-                                                                          FFAppState()
-                                                                              .farmID,
-                                                                        )
-                                                                        .neqOrNull(
-                                                                          'status',
-                                                                          'Completed',
-                                                                        )
-                                                                        .order(
-                                                                            'due_date',
-                                                                            ascending:
-                                                                                true),
-                                                              ),
+                                                              future: (_model.requestCompleter ??= Completer<
+                                                                      List<
+                                                                          TaskAssignmentViewRow>>()
+                                                                    ..complete(
+                                                                        TaskAssignmentViewTable()
+                                                                            .queryRows(
+                                                                      queryFn: (q) => q
+                                                                          .eqOrNull(
+                                                                            'farm_id',
+                                                                            FFAppState().farmID,
+                                                                          )
+                                                                          .neqOrNull(
+                                                                            'status',
+                                                                            'Completed',
+                                                                          )
+                                                                          .order('due_date', ascending: true),
+                                                                    )))
+                                                                  .future,
                                                               builder: (context,
                                                                   snapshot) {
                                                                 // Customize what your widget looks like when it's loading.
@@ -1186,7 +1430,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                   );
                                                                 }
                                                                 List<TaskAssignmentViewRow>
-                                                                    containerTaskAssignmentViewRowList =
+                                                                    assignedTaskContainerTaskAssignmentViewRowList =
                                                                     snapshot
                                                                         .data!;
 
@@ -1206,7 +1450,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                       builder:
                                                                           (context) {
                                                                         final taskAssignements =
-                                                                            containerTaskAssignmentViewRowList.toList();
+                                                                            assignedTaskContainerTaskAssignmentViewRowList.toList();
                                                                         if (taskAssignements
                                                                             .isEmpty) {
                                                                           return NoTasksWidget();
@@ -1226,11 +1470,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 child: Text(
                                                                                   'Task',
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                        ),
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontSize: 18.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.bold,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1241,11 +1489,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 child: Text(
                                                                                   'Due Date',
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                        ),
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontSize: 18.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.bold,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1257,11 +1509,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 child: Text(
                                                                                   'Assigned Staff',
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                        ),
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontSize: 18.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.bold,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1272,11 +1528,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 child: Text(
                                                                                   'Assigned Role',
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                        ),
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontSize: 18.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.bold,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1287,11 +1547,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 child: Text(
                                                                                   'Status',
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                        ),
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontSize: 18.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.bold,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1302,11 +1566,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 child: Text(
                                                                                   'Action',
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                        ),
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontSize: 18.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.bold,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1317,11 +1585,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 child: Text(
                                                                                   'Tower',
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                        ),
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontSize: 18.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.bold,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1343,9 +1615,13 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                     'Task',
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                          fontWeight: FontWeight.w600,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.w600,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1357,35 +1633,116 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                     '01/01/1901',
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
                                                                                         letterSpacing: 0.0,
+                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                       ),
                                                                                 ),
                                                                               ),
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                child: Text(
-                                                                                  valueOrDefault<String>(
-                                                                                    taskAssignementsItem.assignedTo,
-                                                                                    'n/a',
+                                                                                child: InkWell(
+                                                                                  splashColor: Colors.transparent,
+                                                                                  focusColor: Colors.transparent,
+                                                                                  hoverColor: Colors.transparent,
+                                                                                  highlightColor: Colors.transparent,
+                                                                                  onTap: () async {
+                                                                                    await showModalBottomSheet(
+                                                                                      isScrollControlled: true,
+                                                                                      backgroundColor: Colors.transparent,
+                                                                                      enableDrag: false,
+                                                                                      context: context,
+                                                                                      builder: (context) {
+                                                                                        return GestureDetector(
+                                                                                          onTap: () {
+                                                                                            FocusScope.of(context).unfocus();
+                                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                                          },
+                                                                                          child: Padding(
+                                                                                            padding: MediaQuery.viewInsetsOf(context),
+                                                                                            child: UpdateTaskStaffWidget(
+                                                                                              taskName: taskAssignementsItem.taskType!,
+                                                                                              taskID: taskAssignementsItem.taskId!,
+                                                                                              taskAssignedTo: valueOrDefault<String>(
+                                                                                                taskAssignementsItem.assignedTo,
+                                                                                                'Nobody',
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      },
+                                                                                    ).then((value) => safeSetState(() {}));
+                                                                                  },
+                                                                                  child: Text(
+                                                                                    valueOrDefault<String>(
+                                                                                      taskAssignementsItem.assignedTo,
+                                                                                      'n/a',
+                                                                                    ),
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
                                                                                   ),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
-                                                                                        letterSpacing: 0.0,
-                                                                                      ),
                                                                                 ),
                                                                               ),
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                child: Text(
-                                                                                  valueOrDefault<String>(
-                                                                                    taskAssignementsItem.assignedRole,
-                                                                                    'n/a',
+                                                                                child: InkWell(
+                                                                                  splashColor: Colors.transparent,
+                                                                                  focusColor: Colors.transparent,
+                                                                                  hoverColor: Colors.transparent,
+                                                                                  highlightColor: Colors.transparent,
+                                                                                  onTap: () async {
+                                                                                    await showModalBottomSheet(
+                                                                                      isScrollControlled: true,
+                                                                                      backgroundColor: Colors.transparent,
+                                                                                      enableDrag: false,
+                                                                                      context: context,
+                                                                                      builder: (context) {
+                                                                                        return GestureDetector(
+                                                                                          onTap: () {
+                                                                                            FocusScope.of(context).unfocus();
+                                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                                          },
+                                                                                          child: Padding(
+                                                                                            padding: MediaQuery.viewInsetsOf(context),
+                                                                                            child: UpdateTaskRoleWidget(
+                                                                                              taskRole: valueOrDefault<String>(
+                                                                                                taskAssignementsItem.assignedRole,
+                                                                                                'None',
+                                                                                              ),
+                                                                                              taskName: taskAssignementsItem.taskType!,
+                                                                                              taskID: taskAssignementsItem.taskId!,
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      },
+                                                                                    ).then((value) => safeSetState(() {}));
+                                                                                  },
+                                                                                  child: Text(
+                                                                                    valueOrDefault<String>(
+                                                                                      taskAssignementsItem.assignedRole,
+                                                                                      'n/a',
+                                                                                    ),
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
                                                                                   ),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
-                                                                                        letterSpacing: 0.0,
-                                                                                      ),
                                                                                 ),
                                                                               ),
                                                                               Container(
@@ -1406,12 +1763,17 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                       'Status',
                                                                                     ),
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Plus Jakarta Sans',
+                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
                                                                                           color: colorFromCssString(
                                                                                             taskAssignementsItem.colorCode!,
                                                                                             defaultColor: Colors.black,
                                                                                           ),
                                                                                           letterSpacing: 0.0,
+                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -1425,9 +1787,14 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                       child: Text(
                                                                                         'Close Task',
                                                                                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                              ),
                                                                                               fontSize: 12.0,
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1475,7 +1842,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                           width: 30.0,
                                                                                           height: 30.0,
                                                                                           decoration: BoxDecoration(
-                                                                                            color: FlutterFlowTheme.of(context).tertiary,
+                                                                                            color: Color(0xFFB8D3E6),
                                                                                             shape: BoxShape.circle,
                                                                                             border: Border.all(
                                                                                               color: FlutterFlowTheme.of(context).alternate,
@@ -1486,10 +1853,14 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                             child: Text(
                                                                                               'C',
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                    ),
                                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                     letterSpacing: 0.0,
                                                                                                     fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                   ),
                                                                                             ),
                                                                                           ),
@@ -1504,9 +1875,14 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                         child: Text(
                                                                                           'Plant Tower',
                                                                                           style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                ),
                                                                                                 fontSize: 12.0,
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -1537,10 +1913,14 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                             child: Text(
                                                                                               'P',
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                    ),
                                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                     letterSpacing: 0.0,
                                                                                                     fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                   ),
                                                                                             ),
                                                                                           ),
@@ -1555,14 +1935,25 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                   'N/A',
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
                                                                                       letterSpacing: 0.0,
+                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
                                                                               ),
                                                                             ].map((c) => DataCell(c)).toList(),
                                                                           ),
                                                                           emptyBuilder: () =>
                                                                               NoTasksWidget(),
+                                                                          onPageChanged:
+                                                                              (currentRowIndex) async {
+                                                                            safeSetState(() =>
+                                                                                _model.requestCompleter = null);
+                                                                            await _model.waitForRequestCompleted();
+                                                                          },
                                                                           paginated:
                                                                               true,
                                                                           selectable:
@@ -1716,11 +2107,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 Text(
                                                                               'Due Date',
                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                    ),
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     fontSize: 18.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1736,11 +2131,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 Text(
                                                                               'Task',
                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                    ),
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     fontSize: 18.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1754,11 +2153,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 Text(
                                                                               'Staff',
                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                    ),
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     fontSize: 18.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1772,11 +2175,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 Text(
                                                                               'Role',
                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                    ),
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     fontSize: 18.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1790,11 +2197,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 Text(
                                                                               'Notes',
                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                    ),
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     fontSize: 18.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1808,11 +2219,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 Text(
                                                                               'Status',
                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                    ),
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     fontSize: 18.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1836,8 +2251,13 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               'Due Date',
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                           Text(
@@ -1846,8 +2266,13 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               'Task Type',
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                           Text(
@@ -1856,9 +2281,13 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               'N/A',
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.w600,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w600,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                           Text(
@@ -1867,8 +2296,13 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               'N/A',
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                           InkWell(
@@ -1938,12 +2372,17 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                   'Status',
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
                                                                                       color: colorFromCssString(
                                                                                         taskListItem.colorCode!,
                                                                                         defaultColor: Colors.black,
                                                                                       ),
                                                                                       letterSpacing: 0.0,
+                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -2027,10 +2466,27 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -2121,11 +2577,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               Text(
                                                                             'Due Date',
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                  ),
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -2139,11 +2599,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               Text(
                                                                             'Tower',
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                  ),
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -2157,11 +2621,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               Text(
                                                                             'Plant',
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                  ),
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -2175,11 +2643,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               Text(
                                                                             'Quantity',
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                  ),
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -2193,11 +2665,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               Text(
                                                                             'Available',
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                  ),
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -2211,11 +2687,15 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                               Text(
                                                                             'Status',
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                  ),
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -2244,8 +2724,13 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
                                                                                 letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
                                                                         ),
                                                                         Text(
@@ -2257,8 +2742,13 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
                                                                                 letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
                                                                         ),
                                                                         Text(
@@ -2270,8 +2760,13 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
                                                                                 letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
                                                                         ),
                                                                         Text(
@@ -2283,8 +2778,13 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
                                                                                 letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
                                                                         ),
                                                                         Text(
@@ -2296,8 +2796,13 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
                                                                                 letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
                                                                         ),
                                                                         Container(
@@ -2326,12 +2831,17 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                 'status',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    ),
                                                                                     color: colorFromCssString(
                                                                                       taskPlantingsItem.statusColor!,
                                                                                       defaultColor: Colors.black,
                                                                                     ),
                                                                                     letterSpacing: 0.0,
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),

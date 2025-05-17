@@ -6,12 +6,24 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import 'dart:async';
 import 'edit_zone_widget.dart' show EditZoneWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class EditZoneModel extends FlutterFlowModel<EditZoneWidget> {
+  ///  Local state fields for this component.
+
+  String? status;
+
+  String? pinDescription;
+
+  bool? relayPinSet;
+
+  String? relayPinID;
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
@@ -23,6 +35,7 @@ class EditZoneModel extends FlutterFlowModel<EditZoneWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
+  Completer<List<ControllerPinsDropdownViewRow>>? requestCompleter;
   // State field(s) for relayPinDropDown widget.
   String? relayPinDropDownValue;
   FormFieldController<String>? relayPinDropDownValueController;
@@ -40,5 +53,21 @@ class EditZoneModel extends FlutterFlowModel<EditZoneWidget> {
 
     textFieldFocusNode2?.dispose();
     textController2?.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

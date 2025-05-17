@@ -1,4 +1,3 @@
-import '';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -11,9 +10,12 @@ import '/produce_plants/no_tasks/no_tasks_widget.dart';
 import '/tasks/add_task/add_task_widget.dart';
 import '/tasks/task_mark_completed/task_mark_completed_widget.dart';
 import '/tasks/task_note/task_note_widget.dart';
+import '/tasks/update_task_role/update_task_role_widget.dart';
+import '/tasks/update_task_staff/update_task_staff_widget.dart';
 import '/towers/no_tower_display/no_tower_display_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import 'dart:async';
 import 'main_farm_operations_widget.dart' show MainFarmOperationsWidget;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
@@ -36,10 +38,13 @@ class MainFarmOperationsModel
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController1 =
       FlutterFlowDataTableController<TaskAssignmentViewRow>();
+  Completer<List<TaskAssignmentViewRow>>? requestCompleter;
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController2 =
       FlutterFlowDataTableController<TaskListViewRow>();
@@ -59,5 +64,21 @@ class MainFarmOperationsModel
     paginatedDataTableController1.dispose();
     paginatedDataTableController2.dispose();
     paginatedDataTableController3.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

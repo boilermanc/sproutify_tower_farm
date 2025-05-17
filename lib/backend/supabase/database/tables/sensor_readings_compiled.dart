@@ -55,8 +55,8 @@ class SensorReadingsCompiledRow extends SupabaseDataRow {
   String? get typeId => getField<String>('type_id');
   set typeId(String? value) => setField<String>('type_id', value);
 
-  String? get location => getField<String>('location');
-  set location(String? value) => setField<String>('location', value);
+  String? get locationId => getField<String>('location_id');
+  set locationId(String? value) => setField<String>('location_id', value);
 
   double? get calibrationFactor => getField<double>('calibration_factor');
   set calibrationFactor(double? value) =>

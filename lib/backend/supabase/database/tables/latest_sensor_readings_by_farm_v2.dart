@@ -25,6 +25,15 @@ class LatestSensorReadingsByFarmV2Row extends SupabaseDataRow {
   String? get sensorName => getField<String>('sensor_name');
   set sensorName(String? value) => setField<String>('sensor_name', value);
 
+  String? get sensorColor => getField<String>('sensor_color');
+  set sensorColor(String? value) => setField<String>('sensor_color', value);
+
+  String? get locationId => getField<String>('location_id');
+  set locationId(String? value) => setField<String>('location_id', value);
+
+  String? get locationName => getField<String>('location_name');
+  set locationName(String? value) => setField<String>('location_name', value);
+
   String? get readingType => getField<String>('reading_type');
   set readingType(String? value) => setField<String>('reading_type', value);
 
@@ -46,6 +55,11 @@ class LatestSensorReadingsByFarmV2Row extends SupabaseDataRow {
 
   String? get readingUnit => getField<String>('reading_unit');
   set readingUnit(String? value) => setField<String>('reading_unit', value);
+
+  String? get readingTypeDisplaySort =>
+      getField<String>('reading_type_display_sort');
+  set readingTypeDisplaySort(String? value) =>
+      setField<String>('reading_type_display_sort', value);
 
   String? get measurementSystem => getField<String>('measurement_system');
   set measurementSystem(String? value) =>

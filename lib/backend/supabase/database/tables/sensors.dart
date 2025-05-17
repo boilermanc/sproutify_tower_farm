@@ -63,4 +63,10 @@ class SensorsRow extends SupabaseDataRow {
 
   String? get readingType => getField<String>('reading_type');
   set readingType(String? value) => setField<String>('reading_type', value);
+
+  String? get locationId => getField<String>('location_id');
+  set locationId(String? value) => setField<String>('location_id', value);
+
+  String? get sensorColor => getField<String>('sensor_color');
+  set sensorColor(String? value) => setField<String>('sensor_color', value);
 }

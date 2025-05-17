@@ -1,4 +1,3 @@
-import '';
 import '/backend/supabase/supabase.dart';
 import '/components/mark_order_complete_widget.dart';
 import '/components/order_detail_widget.dart';
@@ -9,6 +8,7 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/produce_plants/allocate_harvest/allocate_harvest_widget.dart';
 import '/produce_plants/allocate_produce/allocate_produce_widget.dart';
 import '/produce_plants/no_produce_display/no_produce_display_widget.dart';
 import 'dart:math';
@@ -50,11 +50,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
       length: 3,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
     _model.tabBarController2 = TabController(
       vsync: this,
       length: 3,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -186,8 +188,23 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .headlineMedium
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        font: GoogleFonts.outfit(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -200,8 +217,23 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        font: GoogleFonts.plusJakartaSans(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -255,13 +287,27 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                           context)
                                                       .headlineSmall
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        font:
+                                                            GoogleFonts.outfit(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineSmall
+                                                                  .fontStyle,
+                                                        ),
                                                         color:
                                                             Color(0xFF14181B),
                                                         fontSize: 24.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .fontStyle,
                                                       ),
                                                 ),
                                               ],
@@ -311,20 +357,54 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                       context)
                                                                   .titleMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontStyle,
                                                                   ),
                                                           unselectedLabelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .titleMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontStyle,
                                                                   ),
                                                           labelColor:
                                                               FlutterFlowTheme.of(
@@ -469,9 +549,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                fontWeight: FontWeight.w600,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                              ),
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w600,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -481,14 +565,19 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               context)
                                                                           .labelLarge
                                                                           .override(
-                                                                            fontFamily:
-                                                                                'Plus Jakarta Sans',
+                                                                            font:
+                                                                                GoogleFonts.plusJakartaSans(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                            ),
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryBackground,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                           ),
                                                                     ),
                                                                   ],
@@ -541,10 +630,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               Text(
                                                                             'All',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.w600,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w600,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -595,10 +688,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               child: Text(
                                                                                 'Active Orders',
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FontWeight.w600,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
                                                                                       color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.w600,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -678,11 +775,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Order Number',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -693,11 +794,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Customer',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -708,11 +813,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Order Date',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -727,11 +836,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                           Text(
                                                                                             'Fullfillment Date',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 16.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ],
@@ -744,11 +857,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Fullfillment Type',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -759,11 +876,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Fullfillment Time',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -774,11 +895,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Status',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -823,7 +948,10 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                           '0',
                                                                                         ),
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
                                                                                               color: colorFromCssString(
                                                                                                 ordersListItem.vendorTextColor!,
                                                                                                 defaultColor: Colors.black,
@@ -831,6 +959,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -842,17 +971,27 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                           'Customer',
                                                                                         ),
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
                                                                                     Text(
                                                                                       dateTimeFormat("MEd", ordersListItem.createdAt!),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             fontSize: 16.0,
                                                                                             letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                     Padding(
@@ -860,9 +999,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         dateTimeFormat("MEd", ordersListItem.fulfillmentDate!),
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -872,8 +1016,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                         'Type',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                     Text(
@@ -882,8 +1031,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                         'time',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                     Row(
@@ -934,7 +1088,10 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                   'status',
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                        fontWeight: FontWeight.bold,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                      ),
                                                                                                       color: colorFromCssString(
                                                                                                         ordersListItem.statusTextColor!,
                                                                                                         defaultColor: Colors.black,
@@ -942,6 +1099,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                       fontSize: 12.0,
                                                                                                       letterSpacing: 0.0,
                                                                                                       fontWeight: FontWeight.bold,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                     ),
                                                                                               ),
                                                                                             ),
@@ -998,15 +1156,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                 Expanded(
                                                                   child: FutureBuilder<
                                                                       List<
-                                                                          HarvestSummaryViewRow>>(
-                                                                    future: HarvestSummaryViewTable()
+                                                                          HarvestAvailableViewRow>>(
+                                                                    future: HarvestAvailableViewTable()
                                                                         .queryRows(
                                                                       queryFn: (q) => q
                                                                           .eqOrNull(
                                                                             'farm_id',
                                                                             FFAppState().farmID,
                                                                           )
-                                                                          .order('plant_name'),
+                                                                          .order('harvest_date', ascending: true),
                                                                     ),
                                                                     builder:
                                                                         (context,
@@ -1030,8 +1188,8 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           ),
                                                                         );
                                                                       }
-                                                                      List<HarvestSummaryViewRow>
-                                                                          containerHarvestSummaryViewRowList =
+                                                                      List<HarvestAvailableViewRow>
+                                                                          containerHarvestAvailableViewRowList =
                                                                           snapshot
                                                                               .data!;
 
@@ -1049,11 +1207,11 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final currentHarvest = containerHarvestSummaryViewRowList.toList();
+                                                                              final availableHarvest = containerHarvestAvailableViewRowList.toList();
 
-                                                                              return FlutterFlowDataTable<HarvestSummaryViewRow>(
+                                                                              return FlutterFlowDataTable<HarvestAvailableViewRow>(
                                                                                 controller: _model.paginatedDataTableController2,
-                                                                                data: currentHarvest,
+                                                                                data: availableHarvest,
                                                                                 columnsBuilder: (onSortChanged) => [
                                                                                   DataColumn2(
                                                                                     label: DefaultTextStyle.merge(
@@ -1061,26 +1219,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Plant',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  DataColumn2(
-                                                                                    label: DefaultTextStyle.merge(
-                                                                                      softWrap: true,
-                                                                                      child: Text(
-                                                                                        'Tower ID',
-                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              fontSize: 18.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1091,11 +1238,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Quantity',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1106,11 +1257,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Harvest Date',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1119,33 +1274,41 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                     label: DefaultTextStyle.merge(
                                                                                       softWrap: true,
                                                                                       child: Text(
-                                                                                        'Status',
+                                                                                        'Action',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
                                                                                   ),
                                                                                 ],
-                                                                                dataRowBuilder: (currentHarvestItem, currentHarvestIndex, selected, onSelectChanged) => DataRow(
+                                                                                dataRowBuilder: (availableHarvestItem, availableHarvestIndex, selected, onSelectChanged) => DataRow(
                                                                                   color: MaterialStateProperty.all(
-                                                                                    currentHarvestIndex % 2 == 0 ? FlutterFlowTheme.of(context).secondaryBackground : FlutterFlowTheme.of(context).primaryBackground,
+                                                                                    availableHarvestIndex % 2 == 0 ? FlutterFlowTheme.of(context).secondaryBackground : FlutterFlowTheme.of(context).primaryBackground,
                                                                                   ),
                                                                                   cells: [
                                                                                     Text(
                                                                                       valueOrDefault<String>(
-                                                                                        currentHarvestItem.plantName,
+                                                                                        availableHarvestItem.plantName,
                                                                                         'Plant',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             fontSize: 14.0,
                                                                                             letterSpacing: 0.0,
                                                                                             fontWeight: FontWeight.bold,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                     Row(
@@ -1153,122 +1316,95 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       children: [
                                                                                         Align(
                                                                                           alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              currentHarvestItem.towerIdentifier,
-                                                                                              'Tower ID',
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                            child: Text(
+                                                                                              valueOrDefault<String>(
+                                                                                                availableHarvestItem.qtyAvailable?.toString(),
+                                                                                                '0',
+                                                                                              ),
+                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                    ),
+                                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                    fontSize: 16.0,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                             ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
-                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                  fontSize: 16.0,
-                                                                                                  letterSpacing: 0.0,
-                                                                                                  fontWeight: FontWeight.bold,
-                                                                                                ),
                                                                                           ),
                                                                                         ),
                                                                                       ],
                                                                                     ),
-                                                                                    Text(
-                                                                                      valueOrDefault<String>(
-                                                                                        currentHarvestItem.harvestedQuantity?.toString(),
-                                                                                        '0',
-                                                                                      ),
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
-                                                                                            fontSize: 16.0,
-                                                                                            letterSpacing: 0.0,
-                                                                                          ),
-                                                                                    ),
                                                                                     Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                       child: Text(
                                                                                         valueOrDefault<String>(
-                                                                                          dateTimeFormat("MEd", currentHarvestItem.harvestDate),
+                                                                                          dateTimeFormat("MMMEd", availableHarvestItem.harvestDate),
                                                                                           '0',
                                                                                         ),
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
-                                                                                    Row(
-                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                      children: [
-                                                                                        Align(
-                                                                                          alignment: AlignmentDirectional(-1.0, 0.0),
-                                                                                          child: InkWell(
-                                                                                            splashColor: Colors.transparent,
-                                                                                            focusColor: Colors.transparent,
-                                                                                            hoverColor: Colors.transparent,
-                                                                                            highlightColor: Colors.transparent,
-                                                                                            onTap: () async {
-                                                                                              await showModalBottomSheet(
-                                                                                                isScrollControlled: true,
-                                                                                                backgroundColor: Colors.transparent,
-                                                                                                enableDrag: false,
-                                                                                                context: context,
-                                                                                                builder: (context) {
-                                                                                                  return GestureDetector(
-                                                                                                    onTap: () {
-                                                                                                      FocusScope.of(context).unfocus();
-                                                                                                      FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                    },
-                                                                                                    child: Padding(
-                                                                                                      padding: MediaQuery.viewInsetsOf(context),
-                                                                                                      child: AllocateProduceWidget(
-                                                                                                        towerID: currentHarvestItem.towerId!,
-                                                                                                        availableQuantity: currentHarvestItem.harvestedQuantity!,
-                                                                                                        plantName: currentHarvestItem.plantName!,
-                                                                                                        reservedQuantity: currentHarvestItem.harvestedQuantity!,
-                                                                                                        farmID: FFAppState().farmID,
-                                                                                                        itemID: currentHarvestItem.itemId!,
-                                                                                                        plantID: currentHarvestItem.plantId!,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  );
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                      child: FFButtonWidget(
+                                                                                        onPressed: () async {
+                                                                                          await showModalBottomSheet(
+                                                                                            isScrollControlled: true,
+                                                                                            backgroundColor: Colors.transparent,
+                                                                                            enableDrag: false,
+                                                                                            context: context,
+                                                                                            builder: (context) {
+                                                                                              return GestureDetector(
+                                                                                                onTap: () {
+                                                                                                  FocusScope.of(context).unfocus();
+                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
                                                                                                 },
-                                                                                              ).then((value) => safeSetState(() {}));
-                                                                                            },
-                                                                                            child: Container(
-                                                                                              width: 95.0,
-                                                                                              height: 30.0,
-                                                                                              decoration: BoxDecoration(
-                                                                                                color: colorFromCssString(
-                                                                                                  currentHarvestItem.statusBgColor!,
-                                                                                                  defaultColor: FlutterFlowTheme.of(context).alternate,
-                                                                                                ),
-                                                                                                borderRadius: BorderRadius.circular(7.0),
-                                                                                                border: Border.all(
-                                                                                                  color: FlutterFlowTheme.of(context).alternate,
-                                                                                                  width: 0.5,
-                                                                                                ),
-                                                                                              ),
-                                                                                              child: Align(
-                                                                                                alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                                child: Text(
-                                                                                                  valueOrDefault<String>(
-                                                                                                    currentHarvestItem.status,
-                                                                                                    'Status',
+                                                                                                child: Padding(
+                                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                                  child: AllocateHarvestWidget(
+                                                                                                    batchID: availableHarvestItem.batchId!,
+                                                                                                    produceQuantity: availableHarvestItem.qtyAvailable,
+                                                                                                    produceName: availableHarvestItem.plantName,
                                                                                                   ),
-                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                        fontFamily: 'Plus Jakarta Sans',
-                                                                                                        color: colorFromCssString(
-                                                                                                          currentHarvestItem.statusTextColor!,
-                                                                                                          defaultColor: Colors.black,
-                                                                                                        ),
-                                                                                                        fontSize: 16.0,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        fontWeight: FontWeight.bold,
-                                                                                                      ),
                                                                                                 ),
+                                                                                              );
+                                                                                            },
+                                                                                          ).then((value) => safeSetState(() {}));
+                                                                                        },
+                                                                                        text: 'Allocate',
+                                                                                        options: FFButtonOptions(
+                                                                                          height: 40.0,
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                          color: FlutterFlowTheme.of(context).primary,
+                                                                                          textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                                ),
+                                                                                                color: Colors.white,
+                                                                                                letterSpacing: 0.0,
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                               ),
-                                                                                            ),
-                                                                                          ),
+                                                                                          elevation: 0.0,
+                                                                                          borderRadius: BorderRadius.circular(8.0),
                                                                                         ),
-                                                                                      ],
+                                                                                      ),
                                                                                     ),
                                                                                   ].map((c) => DataCell(c)).toList(),
                                                                                 ),
@@ -1319,8 +1455,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                              ),
                                                                               letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -1395,9 +1536,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Tower',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1409,9 +1555,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Plant',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1422,9 +1573,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Available',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1435,9 +1591,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Date',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1448,8 +1609,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Edit Header 5',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1466,9 +1632,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                         '0',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             fontSize: 16.0,
                                                                                             letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                     Row(
@@ -1481,9 +1652,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                               'No Plants',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                                   fontSize: 16.0,
                                                                                                   letterSpacing: 0.0,
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -1495,17 +1671,27 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                         'None',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             fontSize: 16.0,
                                                                                             letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                     Text(
                                                                                       dateTimeFormat("MMMEd", produceAvailableItem.updatedAt!),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             fontSize: 16.0,
                                                                                             letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                     FFButtonWidget(
@@ -1544,11 +1730,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                         iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                         color: FlutterFlowTheme.of(context).primary,
                                                                                         textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.w600,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                              ),
                                                                                               color: Colors.white,
                                                                                               fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.w600,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                             ),
                                                                                         elevation: 3.0,
                                                                                         borderSide: BorderSide(
@@ -1653,13 +1843,27 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                           context)
                                                       .headlineSmall
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        font:
+                                                            GoogleFonts.outfit(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineSmall
+                                                                  .fontStyle,
+                                                        ),
                                                         color:
                                                             Color(0xFF14181B),
                                                         fontSize: 24.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .fontStyle,
                                                       ),
                                                 ),
                                                 Padding(
@@ -1672,14 +1876,28 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                             context)
                                                         .labelMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           color:
                                                               Color(0xFF57636C),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
                                                         ),
                                                   ),
                                                 ),
@@ -1730,20 +1948,54 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                       context)
                                                                   .titleMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontStyle,
                                                                   ),
                                                           unselectedLabelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .titleMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontStyle,
                                                                   ),
                                                           labelColor:
                                                               FlutterFlowTheme.of(
@@ -1819,7 +2071,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                 ),
                                                                 Tab(
                                                                   text:
-                                                                      'Available Harvest',
+                                                                      'Not Used',
                                                                 ),
                                                               ],
                                                             ),
@@ -1887,8 +2139,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                              ),
                                                                               letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -1898,14 +2155,19 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               context)
                                                                           .labelLarge
                                                                           .override(
-                                                                            fontFamily:
-                                                                                'Plus Jakarta Sans',
+                                                                            font:
+                                                                                GoogleFonts.plusJakartaSans(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                            ),
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryBackground,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                           ),
                                                                     ),
                                                                   ],
@@ -1913,15 +2175,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                 Expanded(
                                                                   child: FutureBuilder<
                                                                       List<
-                                                                          WeeklyGrowSheetViewRow>>(
-                                                                    future: WeeklyGrowSheetViewTable()
+                                                                          AllocationSummaryViewRow>>(
+                                                                    future: AllocationSummaryViewTable()
                                                                         .queryRows(
                                                                       queryFn: (q) => q
                                                                           .eqOrNull(
                                                                             'farm_id',
                                                                             FFAppState().farmID,
                                                                           )
-                                                                          .order('customer_name'),
+                                                                          .order('harvest_date'),
                                                                     ),
                                                                     builder:
                                                                         (context,
@@ -1945,8 +2207,8 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           ),
                                                                         );
                                                                       }
-                                                                      List<WeeklyGrowSheetViewRow>
-                                                                          containerWeeklyGrowSheetViewRowList =
+                                                                      List<AllocationSummaryViewRow>
+                                                                          containerAllocationSummaryViewRowList =
                                                                           snapshot
                                                                               .data!;
 
@@ -1964,23 +2226,27 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final weeklyGrowSheet = containerWeeklyGrowSheetViewRowList.toList();
+                                                                              final allocationSummaryList = containerAllocationSummaryViewRowList.toList();
 
-                                                                              return FlutterFlowDataTable<WeeklyGrowSheetViewRow>(
+                                                                              return FlutterFlowDataTable<AllocationSummaryViewRow>(
                                                                                 controller: _model.paginatedDataTableController4,
-                                                                                data: weeklyGrowSheet,
+                                                                                data: allocationSummaryList,
                                                                                 columnsBuilder: (onSortChanged) => [
                                                                                   DataColumn2(
                                                                                     label: DefaultTextStyle.merge(
                                                                                       softWrap: true,
                                                                                       child: Text(
-                                                                                        'Week',
+                                                                                        'Date',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1991,11 +2257,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Customer',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2006,11 +2276,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Plant',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2021,11 +2295,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Quantity',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2034,105 +2312,131 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                     label: DefaultTextStyle.merge(
                                                                                       softWrap: true,
                                                                                       child: Text(
-                                                                                        'Status',
+                                                                                        'Type',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
                                                                                   ),
                                                                                 ],
-                                                                                dataRowBuilder: (weeklyGrowSheetItem, weeklyGrowSheetIndex, selected, onSelectChanged) => DataRow(
+                                                                                dataRowBuilder: (allocationSummaryListItem, allocationSummaryListIndex, selected, onSelectChanged) => DataRow(
                                                                                   color: MaterialStateProperty.all(
-                                                                                    weeklyGrowSheetIndex % 2 == 0 ? FlutterFlowTheme.of(context).secondaryBackground : FlutterFlowTheme.of(context).primaryBackground,
+                                                                                    allocationSummaryListIndex % 2 == 0 ? FlutterFlowTheme.of(context).secondaryBackground : FlutterFlowTheme.of(context).primaryBackground,
                                                                                   ),
                                                                                   cells: [
-                                                                                    Text(
-                                                                                      dateTimeFormat("MEd", weeklyGrowSheetItem.weekStartDate!),
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
-                                                                                            fontSize: 16.0,
-                                                                                            letterSpacing: 0.0,
-                                                                                            fontWeight: FontWeight.bold,
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                      child: Text(
+                                                                                        dateTimeFormat("MEd", allocationSummaryListItem.allocatedAt!),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
+                                                                                              fontSize: 16.0,
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Row(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      children: [
+                                                                                        Flexible(
+                                                                                          child: Align(
+                                                                                            alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                            child: Text(
+                                                                                              valueOrDefault<String>(
+                                                                                                allocationSummaryListItem.destinationName,
+                                                                                                'Customer',
+                                                                                              ),
+                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                    ),
+                                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                    fontSize: 16.0,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
+                                                                                            ),
                                                                                           ),
+                                                                                        ),
+                                                                                      ],
+                                                                                    ),
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                      child: Text(
+                                                                                        valueOrDefault<String>(
+                                                                                          allocationSummaryListItem.plantName,
+                                                                                          'Plant',
+                                                                                        ),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
+                                                                                              fontSize: 16.0,
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                      child: Text(
+                                                                                        valueOrDefault<String>(
+                                                                                          allocationSummaryListItem.qtyAllocated?.toString(),
+                                                                                          '0',
+                                                                                        ),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
+                                                                                              fontSize: 16.0,
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                      ),
                                                                                     ),
                                                                                     Row(
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       children: [
                                                                                         Align(
                                                                                           alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              weeklyGrowSheetItem.customerName,
-                                                                                              'Customer',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
-                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                  fontSize: 16.0,
-                                                                                                  letterSpacing: 0.0,
-                                                                                                  fontWeight: FontWeight.bold,
-                                                                                                ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                    Text(
-                                                                                      valueOrDefault<String>(
-                                                                                        weeklyGrowSheetItem.plantName,
-                                                                                        'Plant',
-                                                                                      ),
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
-                                                                                            fontSize: 16.0,
-                                                                                            letterSpacing: 0.0,
-                                                                                          ),
-                                                                                    ),
-                                                                                    Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                      child: Text(
-                                                                                        valueOrDefault<String>(
-                                                                                          weeklyGrowSheetItem.allocatedQuantity?.toString(),
-                                                                                          '0',
-                                                                                        ),
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                                              fontSize: 16.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Row(
-                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                      children: [
-                                                                                        Align(
-                                                                                          alignment: AlignmentDirectional(-1.0, 0.0),
-                                                                                          child: Container(
-                                                                                            width: 95.0,
-                                                                                            height: 30.0,
-                                                                                            decoration: BoxDecoration(
-                                                                                              borderRadius: BorderRadius.circular(7.0),
-                                                                                              border: Border.all(
-                                                                                                color: FlutterFlowTheme.of(context).alternate,
-                                                                                                width: 0.5,
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                            child: Text(
+                                                                                              valueOrDefault<String>(
+                                                                                                allocationSummaryListItem.destinationType,
+                                                                                                'Type',
                                                                                               ),
-                                                                                            ),
-                                                                                            child: Align(
-                                                                                              alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                              child: Text(
-                                                                                                'tower',
-                                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                      fontFamily: 'Plus Jakarta Sans',
-                                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                      fontSize: 16.0,
-                                                                                                      letterSpacing: 0.0,
-                                                                                                      fontWeight: FontWeight.bold,
+                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                                      fontWeight: FontWeight.w500,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                     ),
-                                                                                              ),
+                                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                    fontSize: 16.0,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    fontWeight: FontWeight.w500,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                             ),
                                                                                           ),
                                                                                         ),
@@ -2195,7 +2499,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                             'farm_id',
                                                                             FFAppState().farmID,
                                                                           )
-                                                                          .order('plant_name'),
+                                                                          .order('harvest_date', ascending: true),
                                                                     ),
                                                                     builder:
                                                                         (context,
@@ -2227,259 +2531,6 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                       return Container(
                                                                         decoration:
                                                                             BoxDecoration(),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10.0,
-                                                                              10.0,
-                                                                              10.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Builder(
-                                                                            builder:
-                                                                                (context) {
-                                                                              final currentHarvest = containerHarvestSummaryViewRowList.toList();
-
-                                                                              return FlutterFlowDataTable<HarvestSummaryViewRow>(
-                                                                                controller: _model.paginatedDataTableController5,
-                                                                                data: currentHarvest,
-                                                                                columnsBuilder: (onSortChanged) => [
-                                                                                  DataColumn2(
-                                                                                    label: DefaultTextStyle.merge(
-                                                                                      softWrap: true,
-                                                                                      child: Text(
-                                                                                        'Plant',
-                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              fontSize: 18.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  DataColumn2(
-                                                                                    label: DefaultTextStyle.merge(
-                                                                                      softWrap: true,
-                                                                                      child: Text(
-                                                                                        'Tower ID',
-                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              fontSize: 18.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  DataColumn2(
-                                                                                    label: DefaultTextStyle.merge(
-                                                                                      softWrap: true,
-                                                                                      child: Text(
-                                                                                        'Quantity',
-                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              fontSize: 18.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  DataColumn2(
-                                                                                    label: DefaultTextStyle.merge(
-                                                                                      softWrap: true,
-                                                                                      child: Text(
-                                                                                        'Harvest Date',
-                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              fontSize: 18.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  DataColumn2(
-                                                                                    label: DefaultTextStyle.merge(
-                                                                                      softWrap: true,
-                                                                                      child: Text(
-                                                                                        'Status',
-                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              fontSize: 18.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
-                                                                                dataRowBuilder: (currentHarvestItem, currentHarvestIndex, selected, onSelectChanged) => DataRow(
-                                                                                  color: MaterialStateProperty.all(
-                                                                                    currentHarvestIndex % 2 == 0 ? FlutterFlowTheme.of(context).secondaryBackground : FlutterFlowTheme.of(context).primaryBackground,
-                                                                                  ),
-                                                                                  cells: [
-                                                                                    Text(
-                                                                                      valueOrDefault<String>(
-                                                                                        currentHarvestItem.plantName,
-                                                                                        'Plant',
-                                                                                      ),
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
-                                                                                            fontSize: 14.0,
-                                                                                            letterSpacing: 0.0,
-                                                                                            fontWeight: FontWeight.bold,
-                                                                                          ),
-                                                                                    ),
-                                                                                    Row(
-                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                      children: [
-                                                                                        Align(
-                                                                                          alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                          child: Text(
-                                                                                            valueOrDefault<String>(
-                                                                                              currentHarvestItem.towerIdentifier,
-                                                                                              'Tower ID',
-                                                                                            ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
-                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                  fontSize: 16.0,
-                                                                                                  letterSpacing: 0.0,
-                                                                                                  fontWeight: FontWeight.bold,
-                                                                                                ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                    Text(
-                                                                                      valueOrDefault<String>(
-                                                                                        currentHarvestItem.harvestedQuantity?.toString(),
-                                                                                        '0',
-                                                                                      ),
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
-                                                                                            fontSize: 16.0,
-                                                                                            letterSpacing: 0.0,
-                                                                                          ),
-                                                                                    ),
-                                                                                    Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                      child: Text(
-                                                                                        valueOrDefault<String>(
-                                                                                          dateTimeFormat("MEd", currentHarvestItem.harvestDate),
-                                                                                          '0',
-                                                                                        ),
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                                              fontSize: 16.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Row(
-                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                      children: [
-                                                                                        Align(
-                                                                                          alignment: AlignmentDirectional(-1.0, 0.0),
-                                                                                          child: InkWell(
-                                                                                            splashColor: Colors.transparent,
-                                                                                            focusColor: Colors.transparent,
-                                                                                            hoverColor: Colors.transparent,
-                                                                                            highlightColor: Colors.transparent,
-                                                                                            onTap: () async {
-                                                                                              await showModalBottomSheet(
-                                                                                                isScrollControlled: true,
-                                                                                                backgroundColor: Colors.transparent,
-                                                                                                enableDrag: false,
-                                                                                                context: context,
-                                                                                                builder: (context) {
-                                                                                                  return GestureDetector(
-                                                                                                    onTap: () {
-                                                                                                      FocusScope.of(context).unfocus();
-                                                                                                      FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                    },
-                                                                                                    child: Padding(
-                                                                                                      padding: MediaQuery.viewInsetsOf(context),
-                                                                                                      child: AllocateProduceWidget(
-                                                                                                        towerID: currentHarvestItem.towerId!,
-                                                                                                        availableQuantity: currentHarvestItem.harvestedQuantity!,
-                                                                                                        plantName: currentHarvestItem.plantName!,
-                                                                                                        reservedQuantity: currentHarvestItem.harvestedQuantity!,
-                                                                                                        farmID: FFAppState().farmID,
-                                                                                                        itemID: currentHarvestItem.itemId!,
-                                                                                                        plantID: currentHarvestItem.plantId!,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  );
-                                                                                                },
-                                                                                              ).then((value) => safeSetState(() {}));
-                                                                                            },
-                                                                                            child: Container(
-                                                                                              width: 95.0,
-                                                                                              height: 30.0,
-                                                                                              decoration: BoxDecoration(
-                                                                                                color: colorFromCssString(
-                                                                                                  currentHarvestItem.statusBgColor!,
-                                                                                                  defaultColor: FlutterFlowTheme.of(context).alternate,
-                                                                                                ),
-                                                                                                borderRadius: BorderRadius.circular(7.0),
-                                                                                                border: Border.all(
-                                                                                                  color: FlutterFlowTheme.of(context).alternate,
-                                                                                                  width: 0.5,
-                                                                                                ),
-                                                                                              ),
-                                                                                              child: Align(
-                                                                                                alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                                child: Text(
-                                                                                                  valueOrDefault<String>(
-                                                                                                    currentHarvestItem.status,
-                                                                                                    'Status',
-                                                                                                  ),
-                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                        fontFamily: 'Plus Jakarta Sans',
-                                                                                                        color: colorFromCssString(
-                                                                                                          currentHarvestItem.statusTextColor!,
-                                                                                                          defaultColor: Colors.black,
-                                                                                                        ),
-                                                                                                        fontSize: 16.0,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        fontWeight: FontWeight.bold,
-                                                                                                      ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                  ].map((c) => DataCell(c)).toList(),
-                                                                                ),
-                                                                                paginated: true,
-                                                                                selectable: false,
-                                                                                hidePaginator: false,
-                                                                                showFirstLastButtons: false,
-                                                                                headingRowHeight: 56.0,
-                                                                                dataRowHeight: 48.0,
-                                                                                columnSpacing: 20.0,
-                                                                                headingRowColor: FlutterFlowTheme.of(context).secondaryText,
-                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                                addHorizontalDivider: true,
-                                                                                addTopAndBottomDivider: false,
-                                                                                hideDefaultHorizontalDivider: true,
-                                                                                horizontalDividerColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                horizontalDividerThickness: 1.0,
-                                                                                addVerticalDivider: false,
-                                                                              );
-                                                                            },
-                                                                          ),
-                                                                        ),
                                                                       );
                                                                     },
                                                                   ),
@@ -2508,8 +2559,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                              ),
                                                                               letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -2556,7 +2612,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           );
                                                                         }
                                                                         List<TowerPlantsDetailRow>
-                                                                            towerDataTowerPlantsDetailRowList =
+                                                                            reservedProduceTowerPlantsDetailRowList =
                                                                             snapshot.data!;
 
                                                                         return Container(
@@ -2569,13 +2625,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final produceAvailable = towerDataTowerPlantsDetailRowList.toList();
+                                                                              final produceAvailable = reservedProduceTowerPlantsDetailRowList.toList();
                                                                               if (produceAvailable.isEmpty) {
                                                                                 return NoProduceDisplayWidget();
                                                                               }
 
                                                                               return FlutterFlowDataTable<TowerPlantsDetailRow>(
-                                                                                controller: _model.paginatedDataTableController6,
+                                                                                controller: _model.paginatedDataTableController5,
                                                                                 data: produceAvailable,
                                                                                 columnsBuilder: (onSortChanged) => [
                                                                                   DataColumn2(
@@ -2584,9 +2640,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Tower',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2598,9 +2659,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Plant',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2611,9 +2677,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Available',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2624,9 +2695,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Date',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2637,8 +2713,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       child: Text(
                                                                                         'Edit Header 5',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
                                                                                               letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2655,9 +2736,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                         '0',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             fontSize: 16.0,
                                                                                             letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                     Row(
@@ -2670,9 +2756,14 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                               'No Plants',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                                   fontSize: 16.0,
                                                                                                   letterSpacing: 0.0,
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2684,17 +2775,27 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                         'None',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             fontSize: 16.0,
                                                                                             letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                     Text(
                                                                                       dateTimeFormat("MMMEd", produceAvailableItem.updatedAt!),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             fontSize: 16.0,
                                                                                             letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                     FFButtonWidget(
@@ -2733,11 +2834,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                         iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                         color: FlutterFlowTheme.of(context).primary,
                                                                                         textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.w600,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                              ),
                                                                                               color: Colors.white,
                                                                                               fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.w600,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                             ),
                                                                                         elevation: 3.0,
                                                                                         borderSide: BorderSide(

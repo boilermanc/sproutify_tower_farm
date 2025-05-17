@@ -27,8 +27,11 @@ class SensorAlertStatusRow extends SupabaseDataRow {
   String? get sensorType => getField<String>('sensor_type');
   set sensorType(String? value) => setField<String>('sensor_type', value);
 
-  String? get location => getField<String>('location');
-  set location(String? value) => setField<String>('location', value);
+  String? get locationId => getField<String>('location_id');
+  set locationId(String? value) => setField<String>('location_id', value);
+
+  String? get locationName => getField<String>('location_name');
+  set locationName(String? value) => setField<String>('location_name', value);
 
   String? get readingType => getField<String>('reading_type');
   set readingType(String? value) => setField<String>('reading_type', value);

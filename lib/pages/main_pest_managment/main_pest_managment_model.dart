@@ -1,4 +1,3 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
@@ -42,6 +41,8 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered = false;

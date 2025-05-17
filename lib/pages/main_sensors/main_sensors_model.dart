@@ -1,4 +1,3 @@
-import '';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -7,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sensors/add_sensor/add_sensor_widget.dart';
+import '/sensors/edit_sensor/edit_sensor_widget.dart';
 import '/sensors/no_sensors/no_sensors_widget.dart';
 import '/sensors/sensor_alerts_copy2/sensor_alerts_copy2_widget.dart';
 import 'dart:math';

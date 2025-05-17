@@ -56,4 +56,10 @@ class LightingZonesRow extends SupabaseDataRow {
   bool get masterControlActive => getField<bool>('master_control_active')!;
   set masterControlActive(bool value) =>
       setField<bool>('master_control_active', value);
+
+  String? get pinId => getField<String>('pin_id');
+  set pinId(String? value) => setField<String>('pin_id', value);
+
+  bool? get relayPinSet => getField<bool>('relay_pin_set');
+  set relayPinSet(bool? value) => setField<bool>('relay_pin_set', value);
 }

@@ -18,8 +18,8 @@ class HarvestInventoryRow extends SupabaseDataRow {
   int get inventoryId => getField<int>('inventory_id')!;
   set inventoryId(int value) => setField<int>('inventory_id', value);
 
-  int get harvestItemId => getField<int>('harvest_item_id')!;
-  set harvestItemId(int value) => setField<int>('harvest_item_id', value);
+  int? get harvestItemId => getField<int>('harvest_item_id');
+  set harvestItemId(int? value) => setField<int>('harvest_item_id', value);
 
   int get plantId => getField<int>('plant_id')!;
   set plantId(int value) => setField<int>('plant_id', value);
@@ -44,4 +44,7 @@ class HarvestInventoryRow extends SupabaseDataRow {
 
   DateTime? get harvestDate => getField<DateTime>('harvest_date');
   set harvestDate(DateTime? value) => setField<DateTime>('harvest_date', value);
+
+  int get harvestActionId => getField<int>('harvest_action_id')!;
+  set harvestActionId(int value) => setField<int>('harvest_action_id', value);
 }

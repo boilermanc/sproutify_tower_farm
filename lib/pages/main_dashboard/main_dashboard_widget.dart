@@ -1,4 +1,3 @@
-import '';
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
@@ -141,11 +140,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
       length: 3,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
     _model.tabBarController2 = TabController(
       vsync: this,
       length: 3,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
     animationsMap.addAll({
       'containerOnPageLoadAnimation5': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -369,8 +370,16 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                     .of(context)
                                                                 .displaySmall
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
+                                                                  font: GoogleFonts
+                                                                      .outfit(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .displaySmall
+                                                                        .fontStyle,
+                                                                  ),
                                                                   color: Color(
                                                                       0xFF14181B),
                                                                   fontSize:
@@ -380,6 +389,10 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .displaySmall
+                                                                      .fontStyle,
                                                                 ),
                                                           ),
                                                           Padding(
@@ -442,8 +455,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                         context)
                                                                     .labelMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Color(
                                                                           0xFF57636C),
                                                                       fontSize:
@@ -453,6 +472,10 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ),
@@ -495,8 +518,16 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                     .of(context)
                                                                 .displaySmall
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
+                                                                  font: GoogleFonts
+                                                                      .outfit(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .displaySmall
+                                                                        .fontStyle,
+                                                                  ),
                                                                   color: Color(
                                                                       0xFFEE8B60),
                                                                   fontSize:
@@ -506,6 +537,10 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .displaySmall
+                                                                      .fontStyle,
                                                                 ),
                                                           ),
                                                           Padding(
@@ -522,8 +557,16 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                       .of(context)
                                                                   .labelMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     color: Color(
                                                                         0xFF57636C),
                                                                     fontSize:
@@ -533,6 +576,10 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ),
@@ -582,12 +629,27 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                         context)
                                                                     .headlineSmall
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Outfit',
+                                                                      font: GoogleFonts
+                                                                          .outfit(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .headlineSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .headlineSmall
+                                                                            .fontStyle,
+                                                                      ),
                                                                       fontSize:
                                                                           18.0,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineSmall
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineSmall
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                               FlutterFlowIconButton(
@@ -764,12 +826,27 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                         context)
                                                                     .headlineSmall
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Outfit',
+                                                                      font: GoogleFonts
+                                                                          .outfit(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .headlineSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .headlineSmall
+                                                                            .fontStyle,
+                                                                      ),
                                                                       fontSize:
                                                                           18.0,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineSmall
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineSmall
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                               FlutterFlowIconButton(
@@ -829,8 +906,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                           Text(
                                                                             'Fans',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                           Padding(
@@ -943,12 +1025,26 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                               .of(context)
                                                           .bodyMedium
                                                           .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
+                                                            font: GoogleFonts
+                                                                .plusJakartaSans(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                            ),
                                                             fontSize: 18.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                           ),
                                                     ),
                                                   ),
@@ -973,9 +1069,30 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                               context)
                                                           .bodyMedium
                                                           .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
+                                                            font: GoogleFonts
+                                                                .plusJakartaSans(
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                            ),
                                                             letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                           ),
                                                   hintText: 'Select...',
                                                   icon: Icon(
@@ -1034,13 +1151,25 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                   .of(context)
                                                               .titleLarge
                                                               .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleLarge
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleLarge
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                         Padding(
@@ -1057,13 +1186,25 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                     .of(context)
                                                                 .titleLarge
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleLarge
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleLarge
+                                                                      .fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -1091,13 +1232,25 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                         Padding(
@@ -1123,13 +1276,25 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                         Padding(
@@ -1146,13 +1311,25 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -1179,13 +1356,25 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                         Padding(
@@ -1202,13 +1391,25 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -1275,14 +1476,27 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                               .of(context)
                                                           .headlineSmall
                                                           .override(
-                                                            fontFamily:
-                                                                'Outfit',
+                                                            font: GoogleFonts
+                                                                .outfit(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontStyle: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmall
+                                                                  .fontStyle,
+                                                            ),
                                                             color: Color(
                                                                 0xFF14181B),
                                                             fontSize: 24.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w500,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .fontStyle,
                                                           ),
                                                     ),
                                                     Padding(
@@ -1341,8 +1555,16 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                   .of(context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 color: Color(
                                                                     0xFF57636C),
                                                                 fontSize: 14.0,
@@ -1351,6 +1573,10 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                       ),
@@ -1434,12 +1660,27 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                         context)
                                                                     .titleSmall
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Colors
                                                                           .white,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontStyle,
                                                                     ),
                                                             elevation: 3.0,
                                                             borderSide:
@@ -1573,14 +1814,19 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                               context)
                                                                           .bodyMedium
                                                                           .override(
-                                                                            fontFamily:
-                                                                                'Plus Jakarta Sans',
+                                                                            font:
+                                                                                GoogleFonts.plusJakartaSans(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -1641,20 +1887,46 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                           context)
                                                                       .titleMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontStyle,
                                                                       ),
                                                               unselectedLabelStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontStyle,
                                                                       ),
                                                               labelColor:
                                                                   FlutterFlowTheme.of(
@@ -1798,8 +2070,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                               Text(
                                                                             'Hello World',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -1808,10 +2085,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .labelLarge
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                ),
                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.bold,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                               ),
                                                                         ),
                                                                       ],
@@ -1853,7 +2134,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
 
                                                                           return Container(
                                                                             height:
-                                                                                double.infinity,
+                                                                                1000.0,
                                                                             decoration:
                                                                                 BoxDecoration(),
                                                                             child:
@@ -1873,11 +2154,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Tower',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -1888,11 +2173,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Status',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -1904,11 +2193,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Plant',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -1919,11 +2212,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Available Ports',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -1934,11 +2231,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Total Growing',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -1949,11 +2250,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Action',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -1964,11 +2269,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Date Planted',
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2017,8 +2326,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                   'Tower',
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                      ),
                                                                                                       letterSpacing: 0.0,
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                     ),
                                                                                               ),
                                                                                             ),
@@ -2028,8 +2342,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                 'TowerId',
                                                                                               ),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                    ),
                                                                                                     letterSpacing: 0.0,
+                                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                   ),
                                                                                             ),
                                                                                           ],
@@ -2066,7 +2385,10 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                             ),
                                                                                                             textAlign: TextAlign.center,
                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                                  ),
                                                                                                                   color: colorFromCssString(
                                                                                                                     towerStatusItem.textColor!,
                                                                                                                     defaultColor: Colors.black,
@@ -2074,6 +2396,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                   fontSize: 12.0,
                                                                                                                   letterSpacing: 0.0,
                                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                                 ),
                                                                                                           ),
                                                                                                         ),
@@ -2091,9 +2414,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'Empty',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 fontSize: 12.0,
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Padding(
@@ -2104,8 +2432,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                               '0',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                                   letterSpacing: 0.0,
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2117,8 +2450,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                               '0',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                                   letterSpacing: 0.0,
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2132,10 +2470,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                 child: Text(
                                                                                                   'Plant Tower',
                                                                                                   style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                        ),
                                                                                                         fontSize: 12.0,
                                                                                                         letterSpacing: 0.0,
                                                                                                         fontWeight: FontWeight.w600,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -2195,10 +2537,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                       child: Text(
                                                                                                         'P',
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FontWeight.bold,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                              ),
                                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                               letterSpacing: 0.0,
                                                                                                               fontWeight: FontWeight.bold,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -2212,10 +2558,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                 child: Text(
                                                                                                   'Harvest',
                                                                                                   style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                        ),
                                                                                                         fontSize: 12.0,
                                                                                                         letterSpacing: 0.0,
                                                                                                         fontWeight: FontWeight.w600,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -2279,10 +2629,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                       child: Text(
                                                                                                         'H',
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FontWeight.bold,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                              ),
                                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                               letterSpacing: 0.0,
                                                                                                               fontWeight: FontWeight.bold,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -2296,10 +2650,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                 child: Text(
                                                                                                   'Waste',
                                                                                                   style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                        ),
                                                                                                         fontSize: 12.0,
                                                                                                         letterSpacing: 0.0,
                                                                                                         fontWeight: FontWeight.w600,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -2365,10 +2723,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                       child: Text(
                                                                                                         'W',
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FontWeight.bold,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                              ),
                                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                               letterSpacing: 0.0,
                                                                                                               fontWeight: FontWeight.bold,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -2382,9 +2744,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                 child: Text(
                                                                                                   'Clean',
                                                                                                   style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                        ),
                                                                                                         fontSize: 12.0,
                                                                                                         letterSpacing: 0.0,
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -2439,11 +2806,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                       child: Text(
                                                                                                         'C',
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FontWeight.bold,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                              ),
                                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                               fontSize: 16.0,
                                                                                                               letterSpacing: 0.0,
                                                                                                               fontWeight: FontWeight.bold,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -2463,8 +2834,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                 '0',
                                                                                               ),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                    ),
                                                                                                     letterSpacing: 0.0,
+                                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                   ),
                                                                                             ),
                                                                                           ),
@@ -2548,9 +2924,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                 iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                 color: FlutterFlowTheme.of(context).primary,
                                                                                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                      ),
                                                                                       color: Colors.white,
                                                                                       letterSpacing: 0.0,
+                                                                                      fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                     ),
                                                                                 elevation: 0.0,
                                                                                 borderRadius: BorderRadius.circular(8.0),
@@ -2594,9 +2975,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                 iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                 color: FlutterFlowTheme.of(context).primary,
                                                                                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                      ),
                                                                                       color: Colors.white,
                                                                                       letterSpacing: 0.0,
+                                                                                      fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                     ),
                                                                                 elevation: 0.0,
                                                                                 borderRadius: BorderRadius.circular(8.0),
@@ -2665,11 +3051,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Plant Type',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2680,11 +3070,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Spacer Date',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2695,11 +3089,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Seeded Date',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2710,11 +3108,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Ready Date',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2725,11 +3127,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Status',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2740,11 +3146,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Action',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2755,11 +3165,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Quantity',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2776,9 +3190,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'Plant',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 fontSize: 12.0,
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -2787,9 +3206,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'Mon, 01/01',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 fontSize: 16.0,
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -2798,9 +3222,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'Mon, 01/01',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 fontSize: 16.0,
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -2809,9 +3238,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'Mon, 01/01',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 fontSize: 16.0,
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Row(
@@ -2841,7 +3275,10 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                       'Status',
                                                                                                     ),
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          fontFamily: 'Plus Jakarta Sans',
+                                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                                            fontWeight: FontWeight.bold,
+                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                          ),
                                                                                                           color: colorFromCssString(
                                                                                                             spacerInventoryItem.statusColor!,
                                                                                                             defaultColor: Colors.black,
@@ -2849,6 +3286,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                           fontSize: 16.0,
                                                                                                           letterSpacing: 0.0,
                                                                                                           fontWeight: FontWeight.bold,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -2868,9 +3306,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                       child: Text(
                                                                                                         'Mark As Ready',
                                                                                                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                              ),
                                                                                                               fontSize: 12.0,
                                                                                                               letterSpacing: 0.0,
+                                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -2930,10 +3373,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                               child: Text(
                                                                                                                 'R',
                                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                                        fontWeight: FontWeight.bold,
+                                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                                      ),
                                                                                                                       color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                       letterSpacing: 0.0,
                                                                                                                       fontWeight: FontWeight.bold,
+                                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
@@ -2948,9 +3395,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                       child: Text(
                                                                                                         'Mark As Waste',
                                                                                                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                              ),
                                                                                                               fontSize: 12.0,
                                                                                                               letterSpacing: 0.0,
+                                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -3010,10 +3462,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                               child: Text(
                                                                                                                 'W',
                                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                                        fontWeight: FontWeight.bold,
+                                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                                      ),
                                                                                                                       color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                       letterSpacing: 0.0,
                                                                                                                       fontWeight: FontWeight.bold,
+                                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
@@ -3034,9 +3490,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                       child: Text(
                                                                                                         'Plant',
                                                                                                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                              ),
                                                                                                               fontSize: 12.0,
                                                                                                               letterSpacing: 0.0,
+                                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -3098,10 +3559,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                               child: Text(
                                                                                                                 'P',
                                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                                        fontWeight: FontWeight.bold,
+                                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                                      ),
                                                                                                                       color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                       letterSpacing: 0.0,
                                                                                                                       fontWeight: FontWeight.bold,
+                                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
@@ -3116,9 +3581,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                       child: Text(
                                                                                                         'Mark As Waste',
                                                                                                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                              ),
                                                                                                               fontSize: 12.0,
                                                                                                               letterSpacing: 0.0,
+                                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -3181,10 +3651,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                               child: Text(
                                                                                                                 'W',
                                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                                        fontWeight: FontWeight.bold,
+                                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                                      ),
                                                                                                                       color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                       letterSpacing: 0.0,
                                                                                                                       fontWeight: FontWeight.bold,
+                                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
@@ -3208,9 +3682,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                   '0',
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                      ),
                                                                                                       fontSize: 16.0,
                                                                                                       letterSpacing: 0.0,
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                     ),
                                                                                               ),
                                                                                             ),
@@ -3220,8 +3699,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                 '0',
                                                                                               ),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                    ),
                                                                                                     letterSpacing: 0.0,
+                                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                   ),
                                                                                             ),
                                                                                           ],
@@ -3273,8 +3757,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                               Text(
                                                                             'Hello World',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -3335,11 +3824,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Plant',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -3350,11 +3843,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Status',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -3365,11 +3862,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Tower Count',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -3380,11 +3881,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Total Plants',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -3395,11 +3900,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Capacity',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -3410,11 +3919,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Utilization',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -3431,8 +3944,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'Plant',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -3441,8 +3959,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'Status',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -3451,8 +3974,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -3461,8 +3989,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -3471,8 +4004,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -3481,8 +4019,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                       ].map((c) => DataCell(c)).toList(),
@@ -3580,14 +4123,27 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                               .of(context)
                                                           .headlineSmall
                                                           .override(
-                                                            fontFamily:
-                                                                'Outfit',
+                                                            font: GoogleFonts
+                                                                .outfit(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontStyle: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmall
+                                                                  .fontStyle,
+                                                            ),
                                                             color: Color(
                                                                 0xFF14181B),
                                                             fontSize: 24.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w500,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .fontStyle,
                                                           ),
                                                     ),
                                                     Padding(
@@ -3604,8 +4160,16 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                 .of(context)
                                                             .labelMedium
                                                             .override(
-                                                              fontFamily:
-                                                                  'Plus Jakarta Sans',
+                                                              font: GoogleFonts
+                                                                  .plusJakartaSans(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
                                                               color: Color(
                                                                   0xFF57636C),
                                                               fontSize: 14.0,
@@ -3614,6 +4178,11 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                               fontWeight:
                                                                   FontWeight
                                                                       .normal,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
                                                             ),
                                                       ),
                                                     ),
@@ -3679,20 +4248,46 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                           context)
                                                                       .titleMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontStyle,
                                                                       ),
                                                               unselectedLabelStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontStyle,
                                                                       ),
                                                               labelColor:
                                                                   FlutterFlowTheme.of(
@@ -3836,8 +4431,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                               Text(
                                                                             'Hello World',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -3846,10 +4446,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .labelLarge
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                ),
                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.bold,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                               ),
                                                                         ),
                                                                       ],
@@ -3909,11 +4513,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Plant',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -3924,11 +4532,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Status',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -3940,11 +4552,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Tower',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -3955,11 +4571,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Growth Time',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -3970,11 +4590,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Seeded',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -3985,11 +4609,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Planted',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4000,11 +4628,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Expected',
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4025,8 +4657,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                   'Plant',
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                      ),
                                                                                                       letterSpacing: 0.0,
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                     ),
                                                                                               ),
                                                                                             ),
@@ -4064,7 +4701,10 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                             ),
                                                                                                             textAlign: TextAlign.center,
                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                                  ),
                                                                                                                   color: colorFromCssString(
                                                                                                                     growthScheduleItem.textColor!,
                                                                                                                     defaultColor: Colors.black,
@@ -4072,6 +4712,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                   fontSize: 12.0,
                                                                                                                   letterSpacing: 0.0,
                                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                                 ),
                                                                                                           ),
                                                                                                         ),
@@ -4089,9 +4730,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             '0.00',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 fontSize: 14.0,
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -4100,8 +4746,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'First',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -4110,8 +4761,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -4120,8 +4776,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Padding(
@@ -4132,8 +4793,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                               '0',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                                   letterSpacing: 0.0,
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4238,11 +4904,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Plant',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4253,11 +4923,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Harvest Day',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4268,11 +4942,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Date',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4283,11 +4961,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Ready To Harvest',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4298,11 +4980,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Tower Locations',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4319,10 +5005,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'Plant',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 fontSize: 14.0,
                                                                                                 letterSpacing: 0.0,
                                                                                                 fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Row(
@@ -4348,11 +5038,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                       'Status',
                                                                                                     ),
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          fontFamily: 'Plus Jakarta Sans',
+                                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                                            fontWeight: FontWeight.bold,
+                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                          ),
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                                           fontSize: 16.0,
                                                                                                           letterSpacing: 0.0,
                                                                                                           fontWeight: FontWeight.bold,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -4366,9 +5060,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'Mon, 01/01',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 fontSize: 16.0,
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Padding(
@@ -4379,8 +5078,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                               '0',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                                   letterSpacing: 0.0,
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4404,11 +5108,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                   child: Text(
                                                                                                     'tower',
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          fontFamily: 'Plus Jakarta Sans',
+                                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                                            fontWeight: FontWeight.bold,
+                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                          ),
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                                           fontSize: 16.0,
                                                                                                           letterSpacing: 0.0,
                                                                                                           fontWeight: FontWeight.bold,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -4463,8 +5171,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                               Text(
                                                                             'Hello World',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -4525,11 +5238,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Plant',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4540,11 +5257,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Status',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4555,11 +5276,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Tower Count',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4570,11 +5295,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Total Plants',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4585,11 +5314,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Capacity',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4600,11 +5333,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                           child: Text(
                                                                                             'Utilization',
                                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                                  ),
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 18.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4621,8 +5358,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'Plant',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -4631,8 +5373,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             'Status',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -4641,8 +5388,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -4651,8 +5403,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -4661,8 +5418,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -4671,8 +5433,13 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                             '0',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                       ].map((c) => DataCell(c)).toList(),

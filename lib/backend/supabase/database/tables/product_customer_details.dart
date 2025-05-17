@@ -24,10 +24,6 @@ class ProductCustomerDetailsRow extends SupabaseDataRow {
   set productChemicalId(String value) =>
       setField<String>('product_chemical_id', value);
 
-  String? get applicationMethod => getField<String>('application_method');
-  set applicationMethod(String? value) =>
-      setField<String>('application_method', value);
-
   double? get dosingAmount => getField<double>('dosing_amount');
   set dosingAmount(double? value) => setField<double>('dosing_amount', value);
 

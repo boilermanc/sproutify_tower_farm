@@ -1,4 +1,3 @@
-import '';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -82,6 +81,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
       length: 6,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
     _model.zoneNameTextController ??= TextEditingController();
     _model.zoneNameFocusNode ??= FocusNode();
 
@@ -156,8 +156,21 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    font: GoogleFonts.outfit(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .fontStyle,
                                   ),
                             ),
                           ),
@@ -169,9 +182,22 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                             ),
                           ),
@@ -257,10 +283,31 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                             .of(context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
                                                           color: Colors.white,
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
                                                         ),
                                                     elevation: 3.0,
                                                     borderSide: BorderSide(
@@ -293,14 +340,27 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           color:
                                                               Color(0xFF57636C),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
                                                         ),
                                               ),
                                             ),
@@ -356,8 +416,16 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                     .of(context)
                                                                 .labelMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   color: Color(
                                                                       0xFF57636C),
                                                                   fontSize:
@@ -367,6 +435,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -396,8 +468,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondary,
@@ -408,6 +486,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ],
@@ -432,10 +514,25 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                               Padding(
@@ -459,12 +556,21 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -474,10 +580,25 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ],
@@ -526,8 +647,16 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                     .of(context)
                                                                 .labelMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   color: Color(
                                                                       0xFF57636C),
                                                                   fontSize:
@@ -537,6 +666,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           ),
                                                         ),
@@ -574,8 +707,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             context)
                                                                         .labelMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Plus Jakarta Sans',
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondary,
                                                                           fontSize:
@@ -584,6 +722,9 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -600,8 +741,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             context)
                                                                         .labelMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Plus Jakarta Sans',
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondary,
                                                                           fontSize:
@@ -610,6 +756,9 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -651,8 +800,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             context)
                                                                         .labelMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Plus Jakarta Sans',
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
                                                                           color:
                                                                               Color(0xFF57636C),
                                                                           fontSize:
@@ -661,6 +815,9 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -677,8 +834,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             context)
                                                                         .labelMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Plus Jakarta Sans',
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
                                                                           color:
                                                                               Color(0xFF57636C),
                                                                           fontSize:
@@ -687,6 +849,9 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -713,10 +878,25 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ],
@@ -769,8 +949,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                         context)
                                                                     .labelMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Color(
                                                                           0xFF57636C),
                                                                       fontSize:
@@ -780,6 +966,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ),
@@ -803,8 +993,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                         context)
                                                                     .labelMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Color(
                                                                           0xFF57636C),
                                                                       fontSize:
@@ -814,6 +1010,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ),
@@ -838,8 +1038,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                         context)
                                                                     .labelMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondary,
@@ -850,6 +1056,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ),
@@ -873,8 +1083,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                         context)
                                                                     .labelMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Color(
                                                                           0xFF57636C),
                                                                       fontSize:
@@ -884,6 +1100,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ),
@@ -908,8 +1128,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                         context)
                                                                     .labelMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Color(
                                                                           0xFF57636C),
                                                                       fontSize:
@@ -919,6 +1145,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ),
@@ -936,8 +1166,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                         context)
                                                                     .labelMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Color(
                                                                           0xFF57636C),
                                                                       fontSize:
@@ -947,6 +1183,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ),
@@ -1028,16 +1268,50 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            font: GoogleFonts.plusJakartaSans(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontStyle,
                                           ),
-                                      unselectedLabelStyle:
-                                          FlutterFlowTheme.of(context)
-                                              .titleMedium
-                                              .override(
-                                                fontFamily: 'Plus Jakarta Sans',
-                                                letterSpacing: 0.0,
-                                              ),
+                                      unselectedLabelStyle: FlutterFlowTheme.of(
+                                              context)
+                                          .titleMedium
+                                          .override(
+                                            font: GoogleFonts.plusJakartaSans(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontStyle,
+                                          ),
                                       labelColor: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       unselectedLabelColor:
@@ -1349,12 +1623,21 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                           context)
                                                                       .headlineMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Outfit',
+                                                                        font: GoogleFonts
+                                                                            .outfit(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .headlineMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .headlineMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -1391,10 +1674,21 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Plus Jakarta Sans',
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -1459,7 +1753,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             0.0),
                                                                 child:
                                                                     Container(
-                                                                  width: 300.0,
+                                                                  width: 358.8,
                                                                   height: 50.0,
                                                                   decoration:
                                                                       BoxDecoration(
@@ -1489,45 +1783,47 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             .max,
                                                                     mainAxisAlignment:
                                                                         MainAxisAlignment
-                                                                            .spaceBetween,
+                                                                            .spaceAround,
                                                                     children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            10.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Text(
-                                                                          'Master Control',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .headlineMedium
-                                                                              .override(
-                                                                                fontFamily: 'Outfit',
-                                                                                letterSpacing: 0.0,
+                                                                      Text(
+                                                                        'Master Control',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .headlineMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.outfit(
                                                                                 fontWeight: FontWeight.bold,
+                                                                                fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                                                                               ),
-                                                                        ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                            ),
                                                                       ),
                                                                       Stack(
                                                                         children: [
                                                                           FFButtonWidget(
                                                                             onPressed:
                                                                                 () {
-                                                                              print('Button pressed ...');
+                                                                              print('zoneOn pressed ...');
                                                                             },
                                                                             text:
-                                                                                'Button',
+                                                                                'Zone On',
                                                                             options:
                                                                                 FFButtonOptions(
                                                                               height: 40.0,
                                                                               padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                                                                               iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              color: FlutterFlowTheme.of(context).secondary,
                                                                               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                    ),
                                                                                     color: Colors.white,
+                                                                                    fontSize: 18.0,
                                                                                     letterSpacing: 0.0,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                   ),
                                                                               elevation: 0.0,
                                                                               borderRadius: BorderRadius.circular(8.0),
@@ -1536,10 +1832,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                           FFButtonWidget(
                                                                             onPressed:
                                                                                 () {
-                                                                              print('Button pressed ...');
+                                                                              print('zoneOff pressed ...');
                                                                             },
                                                                             text:
-                                                                                'Button',
+                                                                                'Zone Off',
                                                                             options:
                                                                                 FFButtonOptions(
                                                                               height: 40.0,
@@ -1547,9 +1843,15 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                               color: FlutterFlowTheme.of(context).primary,
                                                                               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                    ),
                                                                                     color: Colors.white,
+                                                                                    fontSize: 18.0,
                                                                                     letterSpacing: 0.0,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                   ),
                                                                               elevation: 0.0,
                                                                               borderRadius: BorderRadius.circular(8.0),
@@ -1568,7 +1870,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                           padding:
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      10.0,
+                                                                      0.0,
                                                                       20.0,
                                                                       0.0,
                                                                       0.0),
@@ -1620,7 +1922,7 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       .data!;
 
                                                               return Container(
-                                                                width: 800.0,
+                                                                width: 896.25,
                                                                 height: 260.0,
                                                                 decoration:
                                                                     BoxDecoration(
@@ -1629,19 +1931,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       .alternate,
                                                                   borderRadius:
                                                                       BorderRadius
-                                                                          .only(
-                                                                    bottomLeft:
-                                                                        Radius.circular(
-                                                                            10.0),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            10.0),
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            10.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            10.0),
+                                                                          .circular(
+                                                                              8.0),
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    width: 1.0,
                                                                   ),
                                                                 ),
                                                                 child: Builder(
@@ -1673,8 +1970,6 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               itemBuilder: (context, getZoneScheduleIndex) {
                                                                                 final getZoneScheduleItem = getZoneSchedule[getZoneScheduleIndex];
                                                                                 return Container(
-                                                                                  width: 100.0,
-                                                                                  height: 100.0,
                                                                                   decoration: BoxDecoration(
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   ),
@@ -1682,86 +1977,142 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                     children: [
-                                                                                      Column(
-                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                        children: [
-                                                                                          Row(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            children: [
-                                                                                              Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                                child: Text(
-                                                                                                  valueOrDefault<String>(
-                                                                                                    getZoneScheduleItem.zoneName,
-                                                                                                    'Zone Name',
-                                                                                                  ),
-                                                                                                  style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                                        fontFamily: 'Outfit',
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        fontWeight: FontWeight.bold,
-                                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsets.all(10.0),
+                                                                                        child: Container(
+                                                                                          width: 300.0,
+                                                                                          decoration: BoxDecoration(
+                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                            boxShadow: [
+                                                                                              BoxShadow(
+                                                                                                blurRadius: 4.0,
+                                                                                                color: Color(0x33000000),
+                                                                                                offset: Offset(
+                                                                                                  0.0,
+                                                                                                  2.0,
                                                                                                 ),
-                                                                                              ),
+                                                                                              )
                                                                                             ],
+                                                                                            borderRadius: BorderRadius.circular(8.0),
                                                                                           ),
-                                                                                          Align(
-                                                                                            alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                            child: Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 30.0, 0.0, 0.0),
-                                                                                              child: FFButtonWidget(
-                                                                                                onPressed: () async {
-                                                                                                  _model.isActive7788 = await LightingZonesTable().queryRows(
-                                                                                                    queryFn: (q) => q.eqOrNull(
-                                                                                                      'id',
-                                                                                                      getZoneScheduleItem.id,
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsets.all(8.0),
+                                                                                            child: Column(
+                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                              children: [
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                                      child: Text(
+                                                                                                        valueOrDefault<String>(
+                                                                                                          getZoneScheduleItem.zoneName,
+                                                                                                          'Zone Name',
+                                                                                                        ),
+                                                                                                        style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                                              font: GoogleFonts.outfit(
+                                                                                                                fontWeight: FontWeight.bold,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                                                              ),
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              fontWeight: FontWeight.bold,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                                                            ),
+                                                                                                      ),
                                                                                                     ),
-                                                                                                  );
-                                                                                                  if (_model.isActive7788!.firstOrNull!.isActive!) {
-                                                                                                    await LightingZonesTable().update(
-                                                                                                      data: {
-                                                                                                        'is_active': false,
-                                                                                                      },
-                                                                                                      matchingRows: (rows) => rows.eqOrNull(
-                                                                                                        'id',
-                                                                                                        getZoneScheduleItem.id,
-                                                                                                      ),
-                                                                                                    );
-                                                                                                  } else {
-                                                                                                    await LightingZonesTable().update(
-                                                                                                      data: {
-                                                                                                        'is_active': true,
-                                                                                                      },
-                                                                                                      matchingRows: (rows) => rows.eqOrNull(
-                                                                                                        'id',
-                                                                                                        getZoneScheduleItem.id,
-                                                                                                      ),
-                                                                                                    );
-                                                                                                  }
-
-                                                                                                  safeSetState(() => _model.requestCompleter = null);
-                                                                                                  await _model.waitForRequestCompleted();
-
-                                                                                                  safeSetState(() {});
-                                                                                                },
-                                                                                                text: getZoneScheduleItem.isActive == false ? 'Not Active' : 'Active',
-                                                                                                options: FFButtonOptions(
-                                                                                                  height: 40.0,
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                                                                                  iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                  color: getZoneScheduleItem.isActive! ? FlutterFlowTheme.of(context).secondary : FlutterFlowTheme.of(context).tertiary,
-                                                                                                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                        fontFamily: 'Plus Jakarta Sans',
-                                                                                                        color: Colors.white,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                      ),
-                                                                                                  elevation: 0.0,
-                                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                                  ],
                                                                                                 ),
-                                                                                              ),
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                                                                                      child: Text(
+                                                                                                        valueOrDefault<String>(
+                                                                                                          getZoneScheduleItem.description,
+                                                                                                          'description',
+                                                                                                        ),
+                                                                                                        style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                                              font: GoogleFonts.outfit(
+                                                                                                                fontWeight: FontWeight.bold,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                                                              ),
+                                                                                                              fontSize: 18.0,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              fontWeight: FontWeight.bold,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                                                            ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                                Align(
+                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                  child: Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(20.0, 30.0, 0.0, 0.0),
+                                                                                                    child: FFButtonWidget(
+                                                                                                      onPressed: () async {
+                                                                                                        _model.isActive7788 = await LightingZonesTable().queryRows(
+                                                                                                          queryFn: (q) => q.eqOrNull(
+                                                                                                            'id',
+                                                                                                            getZoneScheduleItem.id,
+                                                                                                          ),
+                                                                                                        );
+                                                                                                        if (_model.isActive7788!.firstOrNull!.isActive!) {
+                                                                                                          await LightingZonesTable().update(
+                                                                                                            data: {
+                                                                                                              'is_active': false,
+                                                                                                            },
+                                                                                                            matchingRows: (rows) => rows.eqOrNull(
+                                                                                                              'id',
+                                                                                                              getZoneScheduleItem.id,
+                                                                                                            ),
+                                                                                                          );
+                                                                                                        } else {
+                                                                                                          await LightingZonesTable().update(
+                                                                                                            data: {
+                                                                                                              'is_active': true,
+                                                                                                            },
+                                                                                                            matchingRows: (rows) => rows.eqOrNull(
+                                                                                                              'id',
+                                                                                                              getZoneScheduleItem.id,
+                                                                                                            ),
+                                                                                                          );
+                                                                                                        }
+
+                                                                                                        safeSetState(() => _model.requestCompleter = null);
+                                                                                                        await _model.waitForRequestCompleted();
+
+                                                                                                        safeSetState(() {});
+                                                                                                      },
+                                                                                                      text: getZoneScheduleItem.isActive == false ? 'Not Active' : 'Active',
+                                                                                                      options: FFButtonOptions(
+                                                                                                        height: 40.0,
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                        color: getZoneScheduleItem.isActive! ? FlutterFlowTheme.of(context).secondary : FlutterFlowTheme.of(context).tertiary,
+                                                                                                        textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                                fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                                              ),
+                                                                                                              color: Colors.white,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                                            ),
+                                                                                                        elevation: 0.0,
+                                                                                                        borderRadius: BorderRadius.circular(8.0),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ],
                                                                                             ),
                                                                                           ),
-                                                                                        ],
+                                                                                        ),
                                                                                       ),
                                                                                       Align(
                                                                                         alignment: AlignmentDirectional(-1.0, 0.0),
@@ -1769,48 +2120,51 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                           mainAxisSize: MainAxisSize.min,
                                                                                           crossAxisAlignment: CrossAxisAlignment.start,
                                                                                           children: [
-                                                                                            FutureBuilder<List<LightingZoneSchedulesWithDaysRow>>(
-                                                                                              future: LightingZoneSchedulesWithDaysTable().queryRows(
-                                                                                                queryFn: (q) => q
-                                                                                                    .eqOrNull(
-                                                                                                      'farm_id',
-                                                                                                      FFAppState().farmID,
-                                                                                                    )
-                                                                                                    .eqOrNull(
-                                                                                                      'zone_id',
-                                                                                                      getZoneScheduleItem.id,
-                                                                                                    )
-                                                                                                    .order('day_of_week', ascending: true),
-                                                                                              ),
-                                                                                              builder: (context, snapshot) {
-                                                                                                // Customize what your widget looks like when it's loading.
-                                                                                                if (!snapshot.hasData) {
-                                                                                                  return Center(
-                                                                                                    child: SizedBox(
-                                                                                                      width: 50.0,
-                                                                                                      height: 50.0,
-                                                                                                      child: CircularProgressIndicator(
-                                                                                                        valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                                          FlutterFlowTheme.of(context).primary,
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                                                                                              child: FutureBuilder<List<LightingZoneSchedulesWithDaysRow>>(
+                                                                                                future: LightingZoneSchedulesWithDaysTable().queryRows(
+                                                                                                  queryFn: (q) => q
+                                                                                                      .eqOrNull(
+                                                                                                        'farm_id',
+                                                                                                        FFAppState().farmID,
+                                                                                                      )
+                                                                                                      .eqOrNull(
+                                                                                                        'zone_id',
+                                                                                                        getZoneScheduleItem.id,
+                                                                                                      )
+                                                                                                      .order('day_of_week', ascending: true),
+                                                                                                ),
+                                                                                                builder: (context, snapshot) {
+                                                                                                  // Customize what your widget looks like when it's loading.
+                                                                                                  if (!snapshot.hasData) {
+                                                                                                    return Center(
+                                                                                                      child: SizedBox(
+                                                                                                        width: 50.0,
+                                                                                                        height: 50.0,
+                                                                                                        child: CircularProgressIndicator(
+                                                                                                          valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                                            FlutterFlowTheme.of(context).primary,
+                                                                                                          ),
                                                                                                         ),
                                                                                                       ),
+                                                                                                    );
+                                                                                                  }
+                                                                                                  List<LightingZoneSchedulesWithDaysRow> containerLightingZoneSchedulesWithDaysRowList = snapshot.data!;
+
+                                                                                                  return Container(
+                                                                                                    width: 499.0,
+                                                                                                    decoration: BoxDecoration(
+                                                                                                      color: FlutterFlowTheme.of(context).info,
+                                                                                                    ),
+                                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                    child: LightScheduleDataTableWidget(
+                                                                                                      key: Key('Keyze8_${getZoneScheduleIndex}_of_${getZoneSchedule.length}'),
+                                                                                                      parameter1: containerLightingZoneSchedulesWithDaysRowList,
                                                                                                     ),
                                                                                                   );
-                                                                                                }
-                                                                                                List<LightingZoneSchedulesWithDaysRow> containerLightingZoneSchedulesWithDaysRowList = snapshot.data!;
-
-                                                                                                return Container(
-                                                                                                  width: 499.0,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    color: FlutterFlowTheme.of(context).info,
-                                                                                                  ),
-                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                                  child: LightScheduleDataTableWidget(
-                                                                                                    key: Key('Keyze8_${getZoneScheduleIndex}_of_${getZoneSchedule.length}'),
-                                                                                                    parameter1: containerLightingZoneSchedulesWithDaysRowList,
-                                                                                                  ),
-                                                                                                );
-                                                                                              },
+                                                                                                },
+                                                                                              ),
                                                                                             ),
                                                                                           ],
                                                                                         ),
@@ -2025,9 +2379,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                                   'No Zone',
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                                      fontFamily: 'Outfit',
+                                                                                                      font: GoogleFonts.outfit(
+                                                                                                        fontWeight: FontWeight.bold,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                                                      ),
                                                                                                       letterSpacing: 0.0,
                                                                                                       fontWeight: FontWeight.bold,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                                                                                                     ),
                                                                                               ),
                                                                                             ],
@@ -2069,9 +2427,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                                   iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                   color: FlutterFlowTheme.of(context).primary,
                                                                                                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                          fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                                        ),
                                                                                                         color: Colors.white,
                                                                                                         letterSpacing: 0.0,
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                                       ),
                                                                                                   elevation: 0.0,
                                                                                                   borderRadius: BorderRadius.circular(8.0),
@@ -2297,12 +2660,21 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                           context)
                                                                       .headlineMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Outfit',
+                                                                        font: GoogleFonts
+                                                                            .outfit(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .headlineMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .headlineMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -2446,19 +2818,29 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                           child: Text(
                                                                                             listViewLightingZonesWithControllerRow.zoneName!,
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
-                                                                                        Text(
-                                                                                          listViewLightingZonesWithControllerRow.description!,
-                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
-                                                                                                letterSpacing: 0.0,
-                                                                                                fontWeight: FontWeight.w600,
-                                                                                              ),
+                                                                                        Flexible(
+                                                                                          child: Text(
+                                                                                            listViewLightingZonesWithControllerRow.description!,
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.w600,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
+                                                                                                  letterSpacing: 0.0,
+                                                                                                  fontWeight: FontWeight.w600,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
+                                                                                          ),
                                                                                         ),
                                                                                         Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 7.0, 0.0),
@@ -2485,10 +2867,17 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                                         zoneID: listViewLightingZonesWithControllerRow.zoneId!,
                                                                                                         zoneName: listViewLightingZonesWithControllerRow.zoneName!,
                                                                                                         zoneDescription: listViewLightingZonesWithControllerRow.description!,
-                                                                                                        relayPinID: listViewLightingZonesWithControllerRow.relayPin!,
+                                                                                                        relayPinID: valueOrDefault<int>(
+                                                                                                          listViewLightingZonesWithControllerRow.relayPin,
+                                                                                                          0,
+                                                                                                        ),
                                                                                                         status: listViewLightingZonesWithControllerRow.isActive!.toString(),
                                                                                                         controllerID: listViewLightingZonesWithControllerRow.lightingControllerId!,
-                                                                                                        relayPinDescription: listViewLightingZonesWithControllerRow.relayDescription!,
+                                                                                                        relayPinDescription: valueOrDefault<String>(
+                                                                                                          listViewLightingZonesWithControllerRow.relayDescription,
+                                                                                                          'Not Assigned',
+                                                                                                        ),
+                                                                                                        relayPinSet: listViewLightingZonesWithControllerRow.relayPinSet!,
                                                                                                       ),
                                                                                                     ),
                                                                                                   );
@@ -2514,9 +2903,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                         Text(
                                                                                           'Controller:',
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
                                                                                                 letterSpacing: 0.0,
                                                                                                 fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                         ),
                                                                                         Padding(
@@ -2527,9 +2920,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                               'Controller Name',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                  ),
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.bold,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -2618,12 +3015,21 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                           context)
                                                                       .headlineMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Outfit',
+                                                                        font: GoogleFonts
+                                                                            .outfit(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .headlineMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .headlineMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -2677,13 +3083,23 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               decoration: InputDecoration(
                                                                                 isDense: true,
                                                                                 labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                      ),
                                                                                       letterSpacing: 0.0,
+                                                                                      fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                                     ),
                                                                                 hintText: 'Zone Name',
                                                                                 hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                      ),
                                                                                       letterSpacing: 0.0,
+                                                                                      fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                                     ),
                                                                                 enabledBorder: OutlineInputBorder(
                                                                                   borderSide: BorderSide(
@@ -2717,8 +3133,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                 fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    ),
                                                                                     letterSpacing: 0.0,
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
                                                                               cursorColor: FlutterFlowTheme.of(context).primaryText,
                                                                               validator: _model.zoneNameTextControllerValidator.asValidator(context),
@@ -2778,8 +3199,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               width: 200.0,
                                                                               height: 40.0,
                                                                               textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    ),
                                                                                     letterSpacing: 0.0,
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
                                                                               hintText: 'Select Controller...',
                                                                               icon: Icon(
@@ -2858,8 +3284,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                 width: 200.0,
                                                                                 height: 40.0,
                                                                                 textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
                                                                                       letterSpacing: 0.0,
+                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
                                                                                 hintText: 'Select...',
                                                                                 icon: Icon(
@@ -2939,8 +3370,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                 width: 200.0,
                                                                                 height: 40.0,
                                                                                 textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
                                                                                       letterSpacing: 0.0,
+                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
                                                                                 hintText: 'Is Active...',
                                                                                 icon: Icon(
@@ -2991,13 +3427,23 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                 decoration: InputDecoration(
                                                                                   isDense: true,
                                                                                   labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                          fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                        ),
                                                                                         letterSpacing: 0.0,
+                                                                                        fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                                       ),
                                                                                   hintText: 'Description',
                                                                                   hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                        fontFamily: 'Plus Jakarta Sans',
+                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                          fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                        ),
                                                                                         letterSpacing: 0.0,
+                                                                                        fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                                       ),
                                                                                   enabledBorder: OutlineInputBorder(
                                                                                     borderSide: BorderSide(
@@ -3031,8 +3477,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                   fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Plus Jakarta Sans',
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
                                                                                       letterSpacing: 0.0,
+                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
                                                                                 cursorColor: FlutterFlowTheme.of(context).primaryText,
                                                                                 validator: _model.descriptionTextControllerValidator.asValidator(context),
@@ -3078,6 +3529,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                   _model.selecRelayValue,
                                                                                 ),
                                                                               );
+                                                                              safeSetState(() {
+                                                                                _model.zoneNameTextController?.clear();
+                                                                                _model.descriptionTextController?.clear();
+                                                                              });
                                                                             },
                                                                             text:
                                                                                 'Add Zone',
@@ -3088,9 +3543,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                               color: FlutterFlowTheme.of(context).primary,
                                                                               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                    ),
                                                                                     color: Colors.white,
                                                                                     letterSpacing: 0.0,
+                                                                                    fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                   ),
                                                                               elevation: 0.0,
                                                                               borderRadius: BorderRadius.circular(8.0),
@@ -3116,24 +3576,10 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                     width: 300.0,
                                                     height: 300.0,
                                                     decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
+                                                      color: Color(0xFFD6E2F6),
                                                       borderRadius:
-                                                          BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        topLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        topRight:
-                                                            Radius.circular(
-                                                                10.0),
-                                                      ),
+                                                          BorderRadius.circular(
+                                                              8.0),
                                                       border: Border.all(
                                                         color:
                                                             FlutterFlowTheme.of(
@@ -3175,12 +3621,21 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                           context)
                                                                       .headlineMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Outfit',
+                                                                        font: GoogleFonts
+                                                                            .outfit(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .headlineMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .headlineMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ),
@@ -3243,9 +3698,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyLarge
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                ),
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.bold,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -3265,10 +3724,21 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                             context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Plus Jakarta Sans',
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -3313,13 +3783,25 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                     context)
                                                                 .headlineMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
+                                                                  font: GoogleFonts
+                                                                      .outfit(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineMedium
+                                                                      .fontStyle,
                                                                 ),
                                                       ),
                                                     ),
@@ -3445,9 +3927,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                         textStyle: FlutterFlowTheme.of(context)
                                                                             .titleSmall
                                                                             .override(
-                                                                              fontFamily: 'Plus Jakarta Sans',
+                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                              ),
                                                                               color: Colors.white,
                                                                               letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                             ),
                                                                         elevation:
                                                                             0.0,
@@ -3488,13 +3975,25 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       .of(context)
                                                                   .headlineMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Outfit',
+                                                                    font: GoogleFonts
+                                                                        .outfit(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           Text(
@@ -3504,13 +4003,25 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                     .of(context)
                                                                 .headlineMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
+                                                                  font: GoogleFonts
+                                                                      .outfit(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           ),
                                                         ],
@@ -3538,14 +4049,27 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                   .of(context)
                                                               .headlineMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Outfit',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .outfit(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 fontSize: 18.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineMedium
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                       ),
@@ -3640,10 +4164,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               Text(
                                                                             'Fixture',
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                  ),
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -3657,10 +4185,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               Text(
                                                                             'Total',
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                  ),
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -3674,10 +4206,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               Text(
                                                                             'Available',
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                  ),
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -3691,10 +4227,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               Text(
                                                                             'Allocated',
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                  ),
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -3712,10 +4252,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                                 Text(
                                                                               'Allocate',
                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                    fontFamily: 'Plus Jakarta Sans',
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                    ),
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -3744,8 +4288,13 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Plus Jakarta Sans',
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
                                                                                 letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
                                                                         ),
                                                                         Padding(
@@ -3761,9 +4310,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               'Total',
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -3780,9 +4334,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               'Available',
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -3799,9 +4358,14 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                               '0',
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Plus Jakarta Sans',
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
                                                                                   fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -3910,10 +4474,27 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ],
@@ -3934,10 +4515,27 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ],
@@ -3952,10 +4550,27 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ],
@@ -4003,9 +4618,19 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(
-                                          fontFamily: 'Outfit',
+                                          font: GoogleFonts.outfit(
+                                            fontWeight: FontWeight.bold,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ),
@@ -4073,14 +4698,27 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .fontStyle,
+                                                          ),
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelLarge
+                                                                  .fontStyle,
                                                         ),
                                               ),
                                             ),
@@ -4098,14 +4736,27 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                           context)
                                                       .labelLarge
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        font: GoogleFonts
+                                                            .plusJakartaSans(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLarge
+                                                                .fontStyle,
                                                       ),
                                                 ),
                                               ),
@@ -4120,14 +4771,27 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .fontStyle,
+                                                          ),
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelLarge
+                                                                  .fontStyle,
                                                         ),
                                               ),
                                             ),
@@ -4141,14 +4805,27 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .fontStyle,
+                                                          ),
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelLarge
+                                                                  .fontStyle,
                                                         ),
                                               ),
                                             ),
@@ -4162,14 +4839,27 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .fontStyle,
+                                                          ),
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelLarge
+                                                                  .fontStyle,
                                                         ),
                                               ),
                                             ),
@@ -4197,14 +4887,35 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        font: GoogleFonts
+                                                            .plusJakartaSans(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         fontSize: 18.0,
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                       ),
                                             ),
                                             Padding(
@@ -4222,13 +4933,34 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
                                                           fontSize: 18.0,
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                               ),
                                             ),
@@ -4250,10 +4982,31 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           fontSize: 18.0,
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   ),
                                                 ),
@@ -4263,10 +5016,31 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        font: GoogleFonts
+                                                            .plusJakartaSans(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         fontSize: 18.0,
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                       ),
                                                 ),
                                               ],
@@ -4283,10 +5057,31 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        font: GoogleFonts
+                                                            .plusJakartaSans(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         fontSize: 18.0,
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                       ),
                                             ),
                                             Text(
@@ -4301,10 +5096,31 @@ class _MainLightManagementWidgetState extends State<MainLightManagementWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        font: GoogleFonts
+                                                            .plusJakartaSans(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         fontSize: 18.0,
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                       ),
                                             ),
                                           ].map((c) => DataCell(c)).toList(),

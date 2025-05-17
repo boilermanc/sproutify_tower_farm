@@ -23,6 +23,9 @@ class SensorViewRow extends SupabaseDataRow {
   String? get sensorName => getField<String>('sensor_name');
   set sensorName(String? value) => setField<String>('sensor_name', value);
 
+  String? get sensorColor => getField<String>('sensor_color');
+  set sensorColor(String? value) => setField<String>('sensor_color', value);
+
   DateTime? get createdAt => getField<DateTime>('created_at');
   set createdAt(DateTime? value) => setField<DateTime>('created_at', value);
 
@@ -32,8 +35,14 @@ class SensorViewRow extends SupabaseDataRow {
   String? get typeId => getField<String>('type_id');
   set typeId(String? value) => setField<String>('type_id', value);
 
-  String? get location => getField<String>('location');
-  set location(String? value) => setField<String>('location', value);
+  String? get locationId => getField<String>('location_id');
+  set locationId(String? value) => setField<String>('location_id', value);
+
+  String? get locationName => getField<String>('location_name');
+  set locationName(String? value) => setField<String>('location_name', value);
+
+  String? get locationType => getField<String>('location_type');
+  set locationType(String? value) => setField<String>('location_type', value);
 
   double? get calibrationFactor => getField<double>('calibration_factor');
   set calibrationFactor(double? value) =>
@@ -82,4 +91,9 @@ class SensorViewRow extends SupabaseDataRow {
   String? get measurementSystem => getField<String>('measurement_system');
   set measurementSystem(String? value) =>
       setField<String>('measurement_system', value);
+
+  String? get supportedReadingTypes =>
+      getField<String>('supported_reading_types');
+  set supportedReadingTypes(String? value) =>
+      setField<String>('supported_reading_types', value);
 }

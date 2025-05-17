@@ -29,15 +29,21 @@ class MonitoringTowerReadingsRow extends SupabaseDataRow {
   set towerIdentifier(String value) =>
       setField<String>('tower_identifier', value);
 
-  String get phColor => getField<String>('ph_color')!;
-  set phColor(String value) => setField<String>('ph_color', value);
+  String? get phColor => getField<String>('ph_color');
+  set phColor(String? value) => setField<String>('ph_color', value);
 
-  String get ecStatus => getField<String>('ec_status')!;
-  set ecStatus(String value) => setField<String>('ec_status', value);
+  String? get ecStatus => getField<String>('ec_status');
+  set ecStatus(String? value) => setField<String>('ec_status', value);
 
   DateTime get readAt => getField<DateTime>('read_at')!;
   set readAt(DateTime value) => setField<DateTime>('read_at', value);
 
   String get readBy => getField<String>('read_by')!;
   set readBy(String value) => setField<String>('read_by', value);
+
+  double? get ecValue => getField<double>('ec_value');
+  set ecValue(double? value) => setField<double>('ec_value', value);
+
+  double? get phValue => getField<double>('ph_value');
+  set phValue(double? value) => setField<double>('ph_value', value);
 }

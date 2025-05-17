@@ -58,9 +58,16 @@ class _NoLightingWidgetState extends State<NoLightingWidget> {
                   child: Text(
                     'You have not added any lighting.',
                     style: FlutterFlowTheme.of(context).titleLarge.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          font: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
                         ),
                   ),
                 ),
@@ -77,9 +84,16 @@ class _NoLightingWidgetState extends State<NoLightingWidget> {
                   child: Text(
                     'Use this section to talk about setting up your lighting.',
                     style: FlutterFlowTheme.of(context).titleLarge.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          font: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
                         ),
                   ),
                 ),

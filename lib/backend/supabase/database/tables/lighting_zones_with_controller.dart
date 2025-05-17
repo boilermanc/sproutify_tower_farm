@@ -64,4 +64,13 @@ class LightingZonesWithControllerRow extends SupabaseDataRow {
 
   String? get farmId => getField<String>('farm_id');
   set farmId(String? value) => setField<String>('farm_id', value);
+
+  bool? get relayPinSet => getField<bool>('relay_pin_set');
+  set relayPinSet(bool? value) => setField<bool>('relay_pin_set', value);
+
+  String? get pinId => getField<String>('pin_id');
+  set pinId(String? value) => setField<String>('pin_id', value);
+
+  String? get pinStatus => getField<String>('pin_status');
+  set pinStatus(String? value) => setField<String>('pin_status', value);
 }

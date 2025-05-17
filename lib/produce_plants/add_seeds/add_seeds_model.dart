@@ -9,6 +9,7 @@ import '/produce_plants/seed_catalog/seed_catalog_widget.dart';
 import 'dart:ui';
 import 'add_seeds_widget.dart' show AddSeedsWidget;
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
