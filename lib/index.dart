@@ -46,10 +46,5 @@ export '/pages/main_configuration/main_configuration_widget.dart'
     show MainConfigurationWidget;
 export '/sproutify_a_i/chat_ai_screen/chat_ai_screen_widget.dart'
     show ChatAiScreenWidget;
-export '/registration_profile/invite/invite_widget.dart' show InviteWidget;
-export '/registration_profile/verify_invite/verify_invite_widget.dart'
-    show VerifyInviteWidget;
-export '/registration_profile/invite_success_landing/invite_success_landing_widget.dart'
-    show InviteSuccessLandingWidget;
 export '/pages/main_nutrients_copy/main_nutrients_copy_widget.dart'
     show MainNutrientsCopyWidget;

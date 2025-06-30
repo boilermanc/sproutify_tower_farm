@@ -24,11 +24,17 @@ class TaskDailyViewRow extends SupabaseDataRow {
   String? get taskType => getField<String>('task_type');
   set taskType(String? value) => setField<String>('task_type', value);
 
+  int? get taskTypeId => getField<int>('task_type_id');
+  set taskTypeId(int? value) => setField<int>('task_type_id', value);
+
   String? get status => getField<String>('status');
   set status(String? value) => setField<String>('status', value);
 
   DateTime? get dueDate => getField<DateTime>('due_date');
   set dueDate(DateTime? value) => setField<DateTime>('due_date', value);
+
+  DateTime? get assignedAt => getField<DateTime>('assigned_at');
+  set assignedAt(DateTime? value) => setField<DateTime>('assigned_at', value);
 
   String? get assignedTo => getField<String>('assigned_to');
   set assignedTo(String? value) => setField<String>('assigned_to', value);
@@ -38,4 +44,32 @@ class TaskDailyViewRow extends SupabaseDataRow {
 
   String? get notes => getField<String>('notes');
   set notes(String? value) => setField<String>('notes', value);
+
+  String? get colorCode => getField<String>('color_code');
+  set colorCode(String? value) => setField<String>('color_code', value);
+
+  String? get bgColorCode => getField<String>('bg_color_code');
+  set bgColorCode(String? value) => setField<String>('bg_color_code', value);
+
+  int? get towerId => getField<int>('tower_id');
+  set towerId(int? value) => setField<int>('tower_id', value);
+
+  String? get towerIdentifier => getField<String>('tower_identifier');
+  set towerIdentifier(String? value) =>
+      setField<String>('tower_identifier', value);
+
+  String? get urgencyLevel => getField<String>('urgency_level');
+  set urgencyLevel(String? value) => setField<String>('urgency_level', value);
+
+  String? get stickyTaskId => getField<String>('sticky_task_id');
+  set stickyTaskId(String? value) => setField<String>('sticky_task_id', value);
+
+  String? get cardId => getField<String>('card_id');
+  set cardId(String? value) => setField<String>('card_id', value);
+
+  String? get photoUrl => getField<String>('photo_url');
+  set photoUrl(String? value) => setField<String>('photo_url', value);
+
+  String? get actionType => getField<String>('action_type');
+  set actionType(String? value) => setField<String>('action_type', value);
 }

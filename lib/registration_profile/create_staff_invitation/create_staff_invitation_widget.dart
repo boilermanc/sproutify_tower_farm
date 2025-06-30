@@ -679,6 +679,7 @@ class _CreateStaffInvitationWidgetState
                                   'used': false,
                                   'created_by': currentUserUid,
                                   'status': 'pending',
+                                  'farm_name': FFAppState().farmName,
                                 });
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
@@ -686,7 +687,7 @@ class _CreateStaffInvitationWidgetState
                                       'New staff member has been sent an invitation.',
                                       style: TextStyle(
                                         color: FlutterFlowTheme.of(context)
-                                            .secondary,
+                                            .secondaryBackground,
                                         fontSize: 24.0,
                                       ),
                                     ),

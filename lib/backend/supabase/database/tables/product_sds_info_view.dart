@@ -27,10 +27,9 @@ class ProductSdsInfoViewRow extends SupabaseDataRow {
   String? get labelPath => getField<String>('label_path');
   set labelPath(String? value) => setField<String>('label_path', value);
 
-  List<String> get activeIngredients =>
-      getListField<String>('active_ingredients');
-  set activeIngredients(List<String>? value) =>
-      setListField<String>('active_ingredients', value);
+  dynamic? get activeIngredients => getField<dynamic>('active_ingredients');
+  set activeIngredients(dynamic? value) =>
+      setField<dynamic>('active_ingredients', value);
 
   bool? get omriCertified => getField<bool>('omri_certified');
   set omriCertified(bool? value) => setField<bool>('omri_certified', value);
@@ -52,34 +51,98 @@ class ProductSdsInfoViewRow extends SupabaseDataRow {
   set productApplicationMethods(String? value) =>
       setField<String>('product_application_methods', value);
 
-  String? get dosingId => getField<String>('dosing_id');
-  set dosingId(String? value) => setField<String>('dosing_id', value);
+  double? get recommendedApplicationRate =>
+      getField<double>('recommended_application_rate');
+  set recommendedApplicationRate(double? value) =>
+      setField<double>('recommended_application_rate', value);
 
-  double? get baseAmount => getField<double>('base_amount');
-  set baseAmount(double? value) => setField<double>('base_amount', value);
+  String? get recommendedApplicationRateUnit =>
+      getField<String>('recommended_application_rate_unit');
+  set recommendedApplicationRateUnit(String? value) =>
+      setField<String>('recommended_application_rate_unit', value);
 
-  String? get baseUnit => getField<String>('base_unit');
-  set baseUnit(String? value) => setField<String>('base_unit', value);
+  double? get dilutionRate => getField<double>('dilution_rate');
+  set dilutionRate(double? value) => setField<double>('dilution_rate', value);
 
-  double? get perVolume => getField<double>('per_volume');
-  set perVolume(double? value) => setField<double>('per_volume', value);
+  String? get dilutionRateUnit => getField<String>('dilution_rate_unit');
+  set dilutionRateUnit(String? value) =>
+      setField<String>('dilution_rate_unit', value);
 
-  String? get volumeUnit => getField<String>('volume_unit');
-  set volumeUnit(String? value) => setField<String>('volume_unit', value);
+  int? get labelReapplicationInterval =>
+      getField<int>('label_reapplication_interval');
+  set labelReapplicationInterval(int? value) =>
+      setField<int>('label_reapplication_interval', value);
 
-  double? get minimumDilution => getField<double>('minimum_dilution');
-  set minimumDilution(double? value) =>
-      setField<double>('minimum_dilution', value);
+  String? get labelReapplicationIntervalUnit =>
+      getField<String>('label_reapplication_interval_unit');
+  set labelReapplicationIntervalUnit(String? value) =>
+      setField<String>('label_reapplication_interval_unit', value);
 
-  double? get maximumDilution => getField<double>('maximum_dilution');
-  set maximumDilution(double? value) =>
-      setField<double>('maximum_dilution', value);
+  dynamic? get applicationSchedules =>
+      getField<dynamic>('application_schedules');
+  set applicationSchedules(dynamic? value) =>
+      setField<dynamic>('application_schedules', value);
 
-  String? get cropStage => getField<String>('crop_stage');
-  set cropStage(String? value) => setField<String>('crop_stage', value);
+  dynamic? get pests => getField<dynamic>('pests');
+  set pests(dynamic? value) => setField<dynamic>('pests', value);
 
-  String? get dosingNotes => getField<String>('dosing_notes');
-  set dosingNotes(String? value) => setField<String>('dosing_notes', value);
+  dynamic? get diseases => getField<dynamic>('diseases');
+  set diseases(dynamic? value) => setField<dynamic>('diseases', value);
+
+  String? get epaRegNo => getField<String>('epa_reg_no');
+  set epaRegNo(String? value) => setField<String>('epa_reg_no', value);
+
+  String? get chemicalCategory => getField<String>('chemical_category');
+  set chemicalCategory(String? value) =>
+      setField<String>('chemical_category', value);
+
+  String? get fracCode => getField<String>('frac_code');
+  set fracCode(String? value) => setField<String>('frac_code', value);
+
+  String? get iracCode => getField<String>('irac_code');
+  set iracCode(String? value) => setField<String>('irac_code', value);
+
+  String? get additionalInstructions =>
+      getField<String>('additional_instructions');
+  set additionalInstructions(String? value) =>
+      setField<String>('additional_instructions', value);
+
+  dynamic? get productFeatures => getField<dynamic>('product_features');
+  set productFeatures(dynamic? value) =>
+      setField<dynamic>('product_features', value);
+
+  String? get sdsManufacturerName => getField<String>('sds_manufacturer_name');
+  set sdsManufacturerName(String? value) =>
+      setField<String>('sds_manufacturer_name', value);
+
+  String? get sdsSignalWord => getField<String>('sds_signal_word');
+  set sdsSignalWord(String? value) =>
+      setField<String>('sds_signal_word', value);
+
+  dynamic? get sdsHazardStatements =>
+      getField<dynamic>('sds_hazard_statements');
+  set sdsHazardStatements(dynamic? value) =>
+      setField<dynamic>('sds_hazard_statements', value);
+
+  dynamic? get sdsPrecautionaryStatements =>
+      getField<dynamic>('sds_precautionary_statements');
+  set sdsPrecautionaryStatements(dynamic? value) =>
+      setField<dynamic>('sds_precautionary_statements', value);
+
+  dynamic? get sdsFirstAidMeasures =>
+      getField<dynamic>('sds_first_aid_measures');
+  set sdsFirstAidMeasures(dynamic? value) =>
+      setField<dynamic>('sds_first_aid_measures', value);
+
+  dynamic? get requiredPpe => getField<dynamic>('required_ppe');
+  set requiredPpe(dynamic? value) => setField<dynamic>('required_ppe', value);
+
+  dynamic? get safetyPrecautions => getField<dynamic>('safety_precautions');
+  set safetyPrecautions(dynamic? value) =>
+      setField<dynamic>('safety_precautions', value);
+
+  dynamic? get dosingRates => getField<dynamic>('dosing_rates');
+  set dosingRates(dynamic? value) => setField<dynamic>('dosing_rates', value);
 
   String? get scenario => getField<String>('scenario');
   set scenario(String? value) => setField<String>('scenario', value);

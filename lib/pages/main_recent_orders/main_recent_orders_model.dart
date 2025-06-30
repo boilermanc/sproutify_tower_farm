@@ -10,7 +10,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/produce_plants/allocate_harvest/allocate_harvest_widget.dart';
 import '/produce_plants/allocate_produce/allocate_produce_widget.dart';
+import '/produce_plants/no_available_harvest/no_available_harvest_widget.dart';
 import '/produce_plants/no_produce_display/no_produce_display_widget.dart';
+import '/products/no_harvest/no_harvest_widget.dart';
+import '/products/no_orders/no_orders_widget.dart';
 import 'dart:math';
 import 'dart:ui';
 import 'main_recent_orders_widget.dart' show MainRecentOrdersWidget;
@@ -36,6 +39,8 @@ class MainRecentOrdersModel extends FlutterFlowModel<MainRecentOrdersWidget> {
   bool? sortDirection = true;
 
   String? selectedOrderChips;
+
+  String? statusFilter;
 
   ///  State fields for stateful widgets in this page.
 

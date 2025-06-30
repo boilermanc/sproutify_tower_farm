@@ -36,8 +36,16 @@ class TaskAssignmentViewRow extends SupabaseDataRow {
   String? get assignedTo => getField<String>('assigned_to');
   set assignedTo(String? value) => setField<String>('assigned_to', value);
 
+  String? get assignedToName => getField<String>('assigned_to_name');
+  set assignedToName(String? value) =>
+      setField<String>('assigned_to_name', value);
+
   String? get assignedRole => getField<String>('assigned_role');
   set assignedRole(String? value) => setField<String>('assigned_role', value);
+
+  String? get assignedRoleName => getField<String>('assigned_role_name');
+  set assignedRoleName(String? value) =>
+      setField<String>('assigned_role_name', value);
 
   String? get notes => getField<String>('notes');
   set notes(String? value) => setField<String>('notes', value);

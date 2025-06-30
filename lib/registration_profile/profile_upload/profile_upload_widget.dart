@@ -152,7 +152,8 @@ class _ProfileUploadWidgetState extends State<ProfileUploadWidget> {
                       if (selectedMedia != null &&
                           selectedMedia.every((m) =>
                               validateFileFormat(m.storagePath, context))) {
-                        safeSetState(() => _model.isDataUploading = true);
+                        safeSetState(
+                            () => _model.isDataUploading_uploadDataArr = true);
                         var selectedUploadedFiles = <FFUploadedFile>[];
 
                         var downloadUrls = <String>[];
@@ -172,15 +173,16 @@ class _ProfileUploadWidgetState extends State<ProfileUploadWidget> {
                             selectedFiles: selectedMedia,
                           );
                         } finally {
-                          _model.isDataUploading = false;
+                          _model.isDataUploading_uploadDataArr = false;
                         }
                         if (selectedUploadedFiles.length ==
                                 selectedMedia.length &&
                             downloadUrls.length == selectedMedia.length) {
                           safeSetState(() {
-                            _model.uploadedLocalFile =
+                            _model.uploadedLocalFile_uploadDataArr =
                                 selectedUploadedFiles.first;
-                            _model.uploadedFileUrl = downloadUrls.first;
+                            _model.uploadedFileUrl_uploadDataArr =
+                                downloadUrls.first;
                           });
                         } else {
                           safeSetState(() {});
@@ -235,14 +237,16 @@ class _ProfileUploadWidgetState extends State<ProfileUploadWidget> {
                     onPressed: () async {
                       await ProfilesTable().update(
                         data: {
-                          'profile_image_url': _model.uploadedFileUrl,
+                          'profile_image_url':
+                              _model.uploadedFileUrl_uploadDataArr,
                         },
                         matchingRows: (rows) => rows.eqOrNull(
                           'id',
                           currentUserUid,
                         ),
                       );
-                      FFAppState().profileImage = _model.uploadedFileUrl;
+                      FFAppState().profileImage =
+                          _model.uploadedFileUrl_uploadDataArr;
                       safeSetState(() {});
                       Navigator.pop(context);
 

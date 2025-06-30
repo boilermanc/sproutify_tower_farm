@@ -248,18 +248,6 @@ class FFAppState extends ChangeNotifier {
     _selectedSDSName = value;
   }
 
-  String _farmLongitude = '';
-  String get farmLongitude => _farmLongitude;
-  set farmLongitude(String value) {
-    _farmLongitude = value;
-  }
-
-  String _farmLatitiude = '';
-  String get farmLatitiude => _farmLatitiude;
-  set farmLatitiude(String value) {
-    _farmLatitiude = value;
-  }
-
   String _localTemp = '';
   String get localTemp => _localTemp;
   set localTemp(String value) {
@@ -484,6 +472,177 @@ class FFAppState extends ChangeNotifier {
   String get lastName => _lastName;
   set lastName(String value) {
     _lastName = value;
+  }
+
+  /// Invitation roleID initial setup
+  String _roleID = '';
+  String get roleID => _roleID;
+  set roleID(String value) {
+    _roleID = value;
+  }
+
+  String _profileEmail = '';
+  String get profileEmail => _profileEmail;
+  set profileEmail(String value) {
+    _profileEmail = value;
+  }
+
+  List<int> _rowIndicies = [];
+  List<int> get rowIndicies => _rowIndicies;
+  set rowIndicies(List<int> value) {
+    _rowIndicies = value;
+  }
+
+  void addToRowIndicies(int value) {
+    rowIndicies.add(value);
+  }
+
+  void removeFromRowIndicies(int value) {
+    rowIndicies.remove(value);
+  }
+
+  void removeAtIndexFromRowIndicies(int index) {
+    rowIndicies.removeAt(index);
+  }
+
+  void updateRowIndiciesAtIndex(
+    int index,
+    int Function(int) updateFn,
+  ) {
+    rowIndicies[index] = updateFn(_rowIndicies[index]);
+  }
+
+  void insertAtIndexInRowIndicies(int index, int value) {
+    rowIndicies.insert(index, value);
+  }
+
+  List<int> _towerCounts = [];
+  List<int> get towerCounts => _towerCounts;
+  set towerCounts(List<int> value) {
+    _towerCounts = value;
+  }
+
+  void addToTowerCounts(int value) {
+    towerCounts.add(value);
+  }
+
+  void removeFromTowerCounts(int value) {
+    towerCounts.remove(value);
+  }
+
+  void removeAtIndexFromTowerCounts(int index) {
+    towerCounts.removeAt(index);
+  }
+
+  void updateTowerCountsAtIndex(
+    int index,
+    int Function(int) updateFn,
+  ) {
+    towerCounts[index] = updateFn(_towerCounts[index]);
+  }
+
+  void insertAtIndexInTowerCounts(int index, int value) {
+    towerCounts.insert(index, value);
+  }
+
+  int _towerCountPerRow = 0;
+  int get towerCountPerRow => _towerCountPerRow;
+  set towerCountPerRow(int value) {
+    _towerCountPerRow = value;
+  }
+
+  List<String> _allTowerPositions = [];
+  List<String> get allTowerPositions => _allTowerPositions;
+  set allTowerPositions(List<String> value) {
+    _allTowerPositions = value;
+  }
+
+  void addToAllTowerPositions(String value) {
+    allTowerPositions.add(value);
+  }
+
+  void removeFromAllTowerPositions(String value) {
+    allTowerPositions.remove(value);
+  }
+
+  void removeAtIndexFromAllTowerPositions(int index) {
+    allTowerPositions.removeAt(index);
+  }
+
+  void updateAllTowerPositionsAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    allTowerPositions[index] = updateFn(_allTowerPositions[index]);
+  }
+
+  void insertAtIndexInAllTowerPositions(int index, String value) {
+    allTowerPositions.insert(index, value);
+  }
+
+  List<int> _towerPortCounts = [];
+  List<int> get towerPortCounts => _towerPortCounts;
+  set towerPortCounts(List<int> value) {
+    _towerPortCounts = value;
+  }
+
+  void addToTowerPortCounts(int value) {
+    towerPortCounts.add(value);
+  }
+
+  void removeFromTowerPortCounts(int value) {
+    towerPortCounts.remove(value);
+  }
+
+  void removeAtIndexFromTowerPortCounts(int index) {
+    towerPortCounts.removeAt(index);
+  }
+
+  void updateTowerPortCountsAtIndex(
+    int index,
+    int Function(int) updateFn,
+  ) {
+    towerPortCounts[index] = updateFn(_towerPortCounts[index]);
+  }
+
+  void insertAtIndexInTowerPortCounts(int index, int value) {
+    towerPortCounts.insert(index, value);
+  }
+
+  int _defaultPortCount = 44;
+  int get defaultPortCount => _defaultPortCount;
+  set defaultPortCount(int value) {
+    _defaultPortCount = value;
+  }
+
+  bool _towersConfigured = false;
+  bool get towersConfigured => _towersConfigured;
+  set towersConfigured(bool value) {
+    _towersConfigured = value;
+  }
+
+  bool _towersAreConfigured = false;
+  bool get towersAreConfigured => _towersAreConfigured;
+  set towersAreConfigured(bool value) {
+    _towersAreConfigured = value;
+  }
+
+  String _farmCity = '';
+  String get farmCity => _farmCity;
+  set farmCity(String value) {
+    _farmCity = value;
+  }
+
+  double _farmLatitude = 0.0;
+  double get farmLatitude => _farmLatitude;
+  set farmLatitude(double value) {
+    _farmLatitude = value;
+  }
+
+  double _farmLongitude = 0.0;
+  double get farmLongitude => _farmLongitude;
+  set farmLongitude(double value) {
+    _farmLongitude = value;
   }
 }
 

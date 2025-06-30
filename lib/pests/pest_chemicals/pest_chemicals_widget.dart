@@ -2,6 +2,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/produce_plants/no_chemicals/no_chemicals_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -80,6 +81,9 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
             child: Builder(
               builder: (context) {
                 final pestChemicals = containerFarmChemicalsRowList.toList();
+                if (pestChemicals.isEmpty) {
+                  return NoChemicalsWidget();
+                }
 
                 return FlutterFlowDataTable<FarmChemicalsRow>(
                   controller: _model.paginatedDataTableController,
@@ -268,7 +272,7 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
                       ),
                       Text(
                         valueOrDefault<String>(
-                          pestChemicalsItem.reEntryInterval,
+                          pestChemicalsItem.reEntryInterval?.toString(),
                           'Re-Entry Interval',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -291,7 +295,7 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
                       ),
                       Text(
                         valueOrDefault<String>(
-                          pestChemicalsItem.preHarvestInterval,
+                          pestChemicalsItem.preHarvestInterval?.toString(),
                           'Pre-Harvest',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -346,6 +350,7 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
                       ),
                     ].map((c) => DataCell(c)).toList(),
                   ),
+                  emptyBuilder: () => NoChemicalsWidget(),
                   paginated: true,
                   selectable: false,
                   hidePaginator: false,

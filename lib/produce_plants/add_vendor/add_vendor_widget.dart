@@ -46,6 +46,7 @@ class _AddVendorWidgetState extends State<AddVendorWidget> {
     _model.customerPhoneTextController ??= TextEditingController();
     _model.customerPhoneFocusNode ??= FocusNode();
 
+    _model.customerPhoneMask = MaskTextInputFormatter(mask: '(###) ###-####');
     _model.customerEmailTextController ??= TextEditingController();
     _model.customerEmailFocusNode ??= FocusNode();
 

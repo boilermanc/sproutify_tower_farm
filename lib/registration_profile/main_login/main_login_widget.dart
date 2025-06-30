@@ -537,7 +537,7 @@ class _MainLoginWidgetState extends State<MainLoginWidget> {
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: Image.asset(
-                            'assets/images/tower_farm_main.JPG',
+                            'assets/images/IMG_20180629_101700.jpg',
                           ).image,
                         ),
                         borderRadius: BorderRadius.circular(16.0),

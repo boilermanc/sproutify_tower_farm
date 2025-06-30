@@ -5,13 +5,14 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pests/add_pest_product_details/add_pest_product_details_widget.dart';
 import '/produce_plants/chemical_catalog/chemical_catalog_widget.dart';
 import '/products/add_new_product/add_new_product_widget.dart';
 import '/products/add_new_product_from_s_d_s/add_new_product_from_s_d_s_widget.dart';
 import '/products/delete_product/delete_product_widget.dart';
+import '/products/update_stock/update_stock_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -1357,16 +1358,12 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                               },
                             ),
                           ),
-                          FutureBuilder<List<ProductSummaryViewRow>>(
-                            future: ProductSummaryViewTable().queryRows(
+                          FutureBuilder<List<FarmProductsViewRow>>(
+                            future: FarmProductsViewTable().queryRows(
                               queryFn: (q) => q
                                   .eqOrNull(
                                     'farm_id',
                                     FFAppState().farmID,
-                                  )
-                                  .eqOrNull(
-                                    'active',
-                                    true,
                                   )
                                   .order('updated_at', ascending: true),
                             ),
@@ -1385,8 +1382,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                   ),
                                 );
                               }
-                              List<ProductSummaryViewRow>
-                                  farmProductsProductSummaryViewRowList =
+                              List<FarmProductsViewRow>
+                                  farmProductsFarmProductsViewRowList =
                                   snapshot.data!;
 
                               return Container(
@@ -1402,11 +1399,11 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                   child: Builder(
                                     builder: (context) {
                                       final farmProducts =
-                                          farmProductsProductSummaryViewRowList
+                                          farmProductsFarmProductsViewRowList
                                               .toList();
 
                                       return FlutterFlowDataTable<
-                                          ProductSummaryViewRow>(
+                                          FarmProductsViewRow>(
                                         controller: _model
                                             .paginatedDataTableController1,
                                         data: farmProducts,
@@ -1733,7 +1730,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                             ),
                                             Text(
                                               valueOrDefault<String>(
-                                                farmProductsItem.categoryName,
+                                                farmProductsItem
+                                                    .productCategory,
                                                 'Catagory',
                                               ),
                                               style:
@@ -1773,7 +1771,7 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                             ),
                                             Text(
                                               valueOrDefault<String>(
-                                                farmProductsItem.typeName,
+                                                farmProductsItem.productType,
                                                 'Type',
                                               ),
                                               style:
@@ -1806,18 +1804,41 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                                 .fontStyle,
                                                       ),
                                             ),
-                                            Text(
-                                              valueOrDefault<String>(
-                                                farmProductsItem.quantityOnHand
-                                                    ?.toString(),
-                                                '0',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts
-                                                            .plusJakartaSans(
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          4.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      farmProductsItem
+                                                          .quantityOnHand
+                                                          ?.toString(),
+                                                      '0',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1829,18 +1850,131 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
+                                                  ),
+                                                ),
+                                                AlignedTooltip(
+                                                  content: Padding(
+                                                    padding:
+                                                        EdgeInsets.all(4.0),
+                                                    child: Text(
+                                                      'Update inventory',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLarge
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLarge
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLarge
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLarge
+                                                                    .fontStyle,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                  offset: 4.0,
+                                                  preferredDirection:
+                                                      AxisDirection.down,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 4.0,
+                                                  tailBaseWidth: 24.0,
+                                                  tailLength: 12.0,
+                                                  waitDuration: Duration(
+                                                      milliseconds: 100),
+                                                  showDuration: Duration(
+                                                      milliseconds: 1500),
+                                                  triggerMode:
+                                                      TooltipTriggerMode.tap,
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                10.0, 0.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        context)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    UpdateStockWidget(
+                                                                  currentQuantity:
+                                                                      farmProductsItem
+                                                                          .quantityOnHand!,
+                                                                  status: farmProductsItem
+                                                                      .stockStatus!,
+                                                                  productID:
+                                                                      farmProductsItem
+                                                                          .farmProductId!,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            safeSetState(
+                                                                () {}));
+                                                      },
+                                                      child: Icon(
+                                                        Icons
+                                                            .edit_note_outlined,
+                                                        color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
+                                                                .primaryText,
+                                                        size: 24.0,
                                                       ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
@@ -1984,72 +2118,6 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                     alignment:
                                                         AlignmentDirectional(
                                                             0.0, 0.0),
-                                                    child: InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        await showModalBottomSheet(
-                                                          isScrollControlled:
-                                                              true,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          enableDrag: false,
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return GestureDetector(
-                                                              onTap: () {
-                                                                FocusScope.of(
-                                                                        context)
-                                                                    .unfocus();
-                                                                FocusManager
-                                                                    .instance
-                                                                    .primaryFocus
-                                                                    ?.unfocus();
-                                                              },
-                                                              child: Padding(
-                                                                padding: MediaQuery
-                                                                    .viewInsetsOf(
-                                                                        context),
-                                                                child:
-                                                                    AddPestProductDetailsWidget(
-                                                                  passProductItemID:
-                                                                      farmProductsItem
-                                                                          .productId!,
-                                                                  passProductName:
-                                                                      farmProductsItem
-                                                                          .productName!,
-                                                                  passProductTypeID:
-                                                                      farmProductsItem
-                                                                          .productTypeId!,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ).then((value) =>
-                                                            safeSetState(
-                                                                () {}));
-                                                      },
-                                                      child: Icon(
-                                                        Icons.settings_sharp,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 24.0,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.0, 0.0),
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
@@ -2167,7 +2235,7 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 0.0, 0.0),
                                     child: Text(
-                                      'Pest Chemicals',
+                                      'Farm Chemicals',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
@@ -2216,7 +2284,7 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                 );
                               }
                               List<FarmChemicalsRow>
-                                  pesticideProductsFarmChemicalsRowList =
+                                  farmChemicalProductsFarmChemicalsRowList =
                                   snapshot.data!;
 
                               return Container(
@@ -2232,7 +2300,7 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                   child: Builder(
                                     builder: (context) {
                                       final pesticideProducts =
-                                          pesticideProductsFarmChemicalsRowList
+                                          farmChemicalProductsFarmChemicalsRowList
                                               .toList();
 
                                       return FlutterFlowDataTable<

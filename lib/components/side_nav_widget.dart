@@ -1465,7 +1465,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               _model.checkProduct8734 =
-                                  await ProductItemsTable().queryRows(
+                                  await FarmProductCatalogTable().queryRows(
                                 queryFn: (q) => q.eqOrNull(
                                   'farm_id',
                                   FFAppState().farmID,

@@ -44,7 +44,7 @@ class SideNavModel extends FlutterFlowModel<SideNavWidget> {
   // State field(s) for MouseRegion11 widget.
   bool mouseRegion11Hovered = false;
   // Stores action output result for [Backend Call - Query Rows] action in products widget.
-  List<ProductItemsRow>? checkProduct8734;
+  List<FarmProductCatalogRow>? checkProduct8734;
   // State field(s) for MouseRegion12 widget.
   bool mouseRegion12Hovered = false;
   // State field(s) for MouseRegion13 widget.

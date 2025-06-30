@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/registration_profile/invitation_entry_page/invitation_entry_page_widget.dart';
 import 'dart:ui';
 import '/index.dart';
 import 'sign_up_landing_page_widget.dart' show SignUpLandingPageWidget;

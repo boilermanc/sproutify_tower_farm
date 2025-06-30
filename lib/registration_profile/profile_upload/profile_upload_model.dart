@@ -18,10 +18,10 @@ class ProfileUploadModel extends FlutterFlowModel<ProfileUploadWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadDataArr = false;
+  FFUploadedFile uploadedLocalFile_uploadDataArr =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_uploadDataArr = '';
 
   // Stores action output result for [Backend Call - Update Row(s)] action in saveButton widget.
   List<ProfilesRow>? insertImage8844;

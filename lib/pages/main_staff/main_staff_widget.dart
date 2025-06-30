@@ -100,27 +100,38 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                               height: 24.0,
                               decoration: BoxDecoration(),
                             ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 16.0, 0.0, 4.0),
-                            child: Text(
-                              'Farm Staff',
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .override(
-                                    font: GoogleFonts.outfit(
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Icon(
+                                  Icons.emoji_people,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 30.0,
+                                ),
+                              ),
+                              Text(
+                                'Farm Staff',
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .override(
+                                      font: GoogleFonts.outfit(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .fontStyle,
                                     ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .headlineMedium
-                                        .fontStyle,
-                                  ),
-                            ),
+                              ),
+                            ],
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -1164,7 +1175,11 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                                         showRolesList[
                                                                             showRolesListIndex];
                                                                     return Text(
-                                                                      showRolesListItem,
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        showRolesListItem,
+                                                                        'Roles',
+                                                                      ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -1223,12 +1238,11 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                             AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            farmRoleProfilesItem
-                                                                .profileStatus,
-                                                            'status',
-                                                          ),
+                                                          farmRoleProfilesItem
+                                                                      .profileStatus ==
+                                                                  'active'
+                                                              ? 'Active'
+                                                              : 'Inactive',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -1268,8 +1282,11 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                       BorderRadius.circular(
                                                           8.0),
                                                   child: Image.network(
-                                                    farmRoleProfilesItem
-                                                        .profileImageUrl!,
+                                                    valueOrDefault<String>(
+                                                      farmRoleProfilesItem
+                                                          .profileImageUrl,
+                                                      'n/a',
+                                                    ),
                                                     width: 50.0,
                                                     height: 50.0,
                                                     fit: BoxFit.cover,
@@ -1516,7 +1533,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                             label: DefaultTextStyle.merge(
                                               softWrap: true,
                                               child: Text(
-                                                'Edit Header 2',
+                                                'Role',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge
@@ -1534,6 +1551,9 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                                     .labelLarge
                                                                     .fontStyle,
                                                           ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -1553,7 +1573,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                             label: DefaultTextStyle.merge(
                                               softWrap: true,
                                               child: Text(
-                                                'Edit Header 3',
+                                                'Status',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge
@@ -1561,22 +1581,19 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                           font: GoogleFonts
                                                               .plusJakartaSans(
                                                             fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontWeight,
+                                                                FontWeight.bold,
                                                             fontStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLarge
                                                                     .fontStyle,
                                                           ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelLarge
-                                                                  .fontWeight,
+                                                              FontWeight.bold,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1590,7 +1607,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                             label: DefaultTextStyle.merge(
                                               softWrap: true,
                                               child: Text(
-                                                'Edit Header 4',
+                                                'Date Created',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge
@@ -1598,22 +1615,19 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                           font: GoogleFonts
                                                               .plusJakartaSans(
                                                             fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontWeight,
+                                                                FontWeight.bold,
                                                             fontStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLarge
                                                                     .fontStyle,
                                                           ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelLarge
-                                                                  .fontWeight,
+                                                              FontWeight.bold,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1627,7 +1641,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                             label: DefaultTextStyle.merge(
                                               softWrap: true,
                                               child: Text(
-                                                'Edit Header 5',
+                                                'Experation Date',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge
@@ -1635,22 +1649,19 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                           font: GoogleFonts
                                                               .plusJakartaSans(
                                                             fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontWeight,
+                                                                FontWeight.bold,
                                                             fontStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLarge
                                                                     .fontStyle,
                                                           ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelLarge
-                                                                  .fontWeight,
+                                                              FontWeight.bold,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1745,10 +1756,10 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                       ),
                                             ),
                                             Text(
-                                              valueOrDefault<String>(
-                                                farmInvitesItem.status,
-                                                'status',
-                                              ),
+                                              farmInvitesItem.status ==
+                                                      'accepted'
+                                                  ? 'Accepted'
+                                                  : 'Pending',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium

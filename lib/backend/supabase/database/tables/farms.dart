@@ -20,9 +20,6 @@ class FarmsRow extends SupabaseDataRow {
   String get farmName => getField<String>('farm_name')!;
   set farmName(String value) => setField<String>('farm_name', value);
 
-  List<String> get location => getListField<String>('location');
-  set location(List<String>? value) => setListField<String>('location', value);
-
   DateTime? get createdAt => getField<DateTime>('created_at');
   set createdAt(DateTime? value) => setField<DateTime>('created_at', value);
 
@@ -73,9 +70,6 @@ class FarmsRow extends SupabaseDataRow {
   bool? get hasTowers => getField<bool>('has_towers');
   set hasTowers(bool? value) => setField<bool>('has_towers', value);
 
-  bool? get hasLighting => getField<bool>('has_lighting');
-  set hasLighting(bool? value) => setField<bool>('has_lighting', value);
-
   bool? get usesLighting => getField<bool>('uses_lighting');
   set usesLighting(bool? value) => setField<bool>('uses_lighting', value);
 
@@ -99,4 +93,13 @@ class FarmsRow extends SupabaseDataRow {
 
   String? get farmIconUrl => getField<String>('farm_icon_url');
   set farmIconUrl(String? value) => setField<String>('farm_icon_url', value);
+
+  List<String> get growingEnvironments =>
+      getListField<String>('growing_environments');
+  set growingEnvironments(List<String>? value) =>
+      setListField<String>('growing_environments', value);
+
+  String? get appUsageDescription => getField<String>('app_usage_description');
+  set appUsageDescription(String? value) =>
+      setField<String>('app_usage_description', value);
 }

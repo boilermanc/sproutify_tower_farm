@@ -43,4 +43,11 @@ class InvitationsRow extends SupabaseDataRow {
 
   String? get status => getField<String>('status');
   set status(String? value) => setField<String>('status', value);
+
+  String? get invitationCode => getField<String>('invitation_code');
+  set invitationCode(String? value) =>
+      setField<String>('invitation_code', value);
+
+  String? get farmName => getField<String>('farm_name');
+  set farmName(String? value) => setField<String>('farm_name', value);
 }

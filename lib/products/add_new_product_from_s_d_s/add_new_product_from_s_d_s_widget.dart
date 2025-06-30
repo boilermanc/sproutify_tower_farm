@@ -44,7 +44,6 @@ class _AddNewProductFromSDSWidgetState
       );
       _model.productName = _model.productName9988!.firstOrNull!.sdsProductName!;
       _model.sdsID = _model.productName9988?.firstOrNull?.sdsExtractedDataId;
-      _model.labelID = _model.productName9988?.firstOrNull?.productItemId;
       safeSetState(() {});
     });
 

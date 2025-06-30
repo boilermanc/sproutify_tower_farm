@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -29,6 +30,10 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
   late bool passwordConfirmVisibility;
   String? Function(BuildContext, String?)?
       passwordConfirmTextControllerValidator;
+  // State field(s) for firstName widget.
+  FocusNode? firstNameFocusNode;
+  TextEditingController? firstNameTextController;
+  String? Function(BuildContext, String?)? firstNameTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
@@ -46,5 +51,8 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
 
     passwordConfirmFocusNode?.dispose();
     passwordConfirmTextController?.dispose();
+
+    firstNameFocusNode?.dispose();
+    firstNameTextController?.dispose();
   }
 }

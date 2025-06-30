@@ -16,14 +16,9 @@ class ProductItemSdsCreationRow extends SupabaseDataRow {
   @override
   SupabaseTable get table => ProductItemSdsCreationTable();
 
-  String? get productItemId => getField<String>('product_item_id');
-  set productItemId(String? value) =>
-      setField<String>('product_item_id', value);
-
-  String? get labelExtractedDataId =>
-      getField<String>('label_extracted_data_id');
-  set labelExtractedDataId(String? value) =>
-      setField<String>('label_extracted_data_id', value);
+  String? get labelExtractedData => getField<String>('label_extracted_data');
+  set labelExtractedData(String? value) =>
+      setField<String>('label_extracted_data', value);
 
   String? get labelProductName => getField<String>('label_product_name');
   set labelProductName(String? value) =>

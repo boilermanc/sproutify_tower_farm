@@ -18,8 +18,8 @@ class ProductDosingRatesRow extends SupabaseDataRow {
   String get dosingId => getField<String>('dosing_id')!;
   set dosingId(String value) => setField<String>('dosing_id', value);
 
-  String get productSdsId => getField<String>('product_sds_id')!;
-  set productSdsId(String value) => setField<String>('product_sds_id', value);
+  String? get productSdsId => getField<String>('product_sds_id');
+  set productSdsId(String? value) => setField<String>('product_sds_id', value);
 
   double get baseAmount => getField<double>('base_amount')!;
   set baseAmount(double value) => setField<double>('base_amount', value);
@@ -135,4 +135,8 @@ class ProductDosingRatesRow extends SupabaseDataRow {
       getField<String>('standard_dose_liter_ounces_unit_id');
   set standardDoseLiterOuncesUnitId(String? value) =>
       setField<String>('standard_dose_liter_ounces_unit_id', value);
+
+  String? get extractedDataId => getField<String>('extracted_data_id');
+  set extractedDataId(String? value) =>
+      setField<String>('extracted_data_id', value);
 }

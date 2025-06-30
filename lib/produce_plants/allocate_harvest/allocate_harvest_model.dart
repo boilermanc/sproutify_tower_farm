@@ -10,6 +10,7 @@ import '/produce_plants/no_charity_available/no_charity_available_widget.dart';
 import '/produce_plants/no_customer_available/no_customer_available_widget.dart';
 import 'dart:ui';
 import 'allocate_harvest_widget.dart' show AllocateHarvestWidget;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,8 +34,11 @@ class AllocateHarvestModel extends FlutterFlowModel<AllocateHarvestWidget> {
 
   int? quantitySelected;
 
+  DateTime? dateAllocated;
+
   ///  State fields for stateful widgets in this component.
 
+  DateTime? datePicked;
   // State field(s) for quantityDropDown widget.
   String? quantityDropDownValue;
   FormFieldController<String>? quantityDropDownValueController;

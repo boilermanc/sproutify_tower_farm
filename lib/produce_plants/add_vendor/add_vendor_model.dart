@@ -29,7 +29,7 @@ class AddVendorModel extends FlutterFlowModel<AddVendorWidget> {
   // State field(s) for customerPhone widget.
   FocusNode? customerPhoneFocusNode;
   TextEditingController? customerPhoneTextController;
-  final customerPhoneMask = MaskTextInputFormatter(mask: '(###) ###-####');
+  late MaskTextInputFormatter customerPhoneMask;
   String? Function(BuildContext, String?)? customerPhoneTextControllerValidator;
   // State field(s) for customerEmail widget.
   FocusNode? customerEmailFocusNode;

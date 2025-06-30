@@ -5,14 +5,15 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pests/add_pest_product_details/add_pest_product_details_widget.dart';
 import '/produce_plants/chemical_catalog/chemical_catalog_widget.dart';
 import '/products/add_new_product/add_new_product_widget.dart';
 import '/products/add_new_product_from_s_d_s/add_new_product_from_s_d_s_widget.dart';
 import '/products/delete_product/delete_product_widget.dart';
+import '/products/update_stock/update_stock_widget.dart';
 import 'dart:math';
 import 'dart:ui';
 import 'main_products_widget.dart' show MainProductsWidget;
+import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -30,7 +31,7 @@ class MainProductsModel extends FlutterFlowModel<MainProductsWidget> {
   late SideNavModel sideNavModel;
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController1 =
-      FlutterFlowDataTableController<ProductSummaryViewRow>();
+      FlutterFlowDataTableController<FarmProductsViewRow>();
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController2 =
       FlutterFlowDataTableController<FarmChemicalsRow>();

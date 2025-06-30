@@ -2,11 +2,11 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/registration_profile/initial_tower_setup/initial_tower_setup_widget.dart';
 import 'dart:ui';
 import '/index.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
@@ -17,6 +17,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
+  ///  Local state fields for this component.
+
+  int? rowNumber;
+
+  List<int> rowIndices = [];
+  void addToRowIndices(int item) => rowIndices.add(item);
+  void removeFromRowIndices(int item) => rowIndices.remove(item);
+  void removeAtIndexFromRowIndices(int index) => rowIndices.removeAt(index);
+  void insertAtIndexInRowIndices(int index, int item) =>
+      rowIndices.insert(index, item);
+  void updateRowIndicesAtIndex(int index, Function(int) updateFn) =>
+      rowIndices[index] = updateFn(rowIndices[index]);
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for PageView widget.
@@ -40,18 +53,20 @@ class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
   TextEditingController? farmCityTextController;
   String? Function(BuildContext, String?)? farmCityTextControllerValidator;
   // State field(s) for stateDropDown widget.
-  int? stateDropDownValue;
-  FormFieldController<int>? stateDropDownValueController;
+  String? stateDropDownValue;
+  FormFieldController<String>? stateDropDownValueController;
   // State field(s) for farmPostal widget.
   FocusNode? farmPostalFocusNode;
   TextEditingController? farmPostalTextController;
   String? Function(BuildContext, String?)? farmPostalTextControllerValidator;
   // State field(s) for countryDropDown widget.
-  int? countryDropDownValue;
-  FormFieldController<int>? countryDropDownValueController;
+  String? countryDropDownValue;
+  FormFieldController<String>? countryDropDownValueController;
   // State field(s) for farmNumberEmployees widget.
   String? farmNumberEmployeesValue;
   FormFieldController<String>? farmNumberEmployeesValueController;
+  // Stores action output result for [Backend Call - Insert Row] action in nextButton widget.
+  FarmsRow? farmInput9999;
   // State field(s) for farmUnit widget.
   String? farmUnitValue;
   FormFieldController<String>? farmUnitValueController;
@@ -64,12 +79,14 @@ class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
   FocusNode? towerNumberFocusNode;
   TextEditingController? towerNumberTextController;
   String? Function(BuildContext, String?)? towerNumberTextControllerValidator;
-  // State field(s) for lightingButton widget.
-  FormFieldController<String>? lightingButtonValueController;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController6;
-  String? Function(BuildContext, String?)? textController6Validator;
+  // State field(s) for supplementalLightingDropDown widget.
+  bool? supplementalLightingDropDownValue;
+  FormFieldController<bool>? supplementalLightingDropDownValueController;
+  // State field(s) for howWillYouUseThisTextField widget.
+  FocusNode? howWillYouUseThisTextFieldFocusNode;
+  TextEditingController? howWillYouUseThisTextFieldTextController;
+  String? Function(BuildContext, String?)?
+      howWillYouUseThisTextFieldTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -91,10 +108,7 @@ class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
     towerNumberFocusNode?.dispose();
     towerNumberTextController?.dispose();
 
-    textFieldFocusNode?.dispose();
-    textController6?.dispose();
+    howWillYouUseThisTextFieldFocusNode?.dispose();
+    howWillYouUseThisTextFieldTextController?.dispose();
   }
-
-  /// Additional helper methods.
-  String? get lightingButtonValue => lightingButtonValueController?.value;
 }

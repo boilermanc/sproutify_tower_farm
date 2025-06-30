@@ -64,3 +64,183 @@ dynamic convertToJSON(String prompt) {
   // take the prompt and return a JSON with form [{"role": "user", "content": prompt}]
   return json.decode('{"role": "user", "content": "$prompt"}');
 }
+
+List<int>? createRowIndices(int? rowCount) {
+  if (rowCount == null || rowCount <= 0) {
+    return [];
+  }
+  return List.generate(rowCount, (index) => index);
+}
+
+List<int>? createDefaultTowerCounts(int? rowCount) {
+  if (rowCount == null || rowCount <= 0) {
+    return [];
+  }
+  return List.filled(rowCount, 1);
+}
+
+String? formatRowLabel(int? rowIndex) {
+  if (rowIndex == null) {
+    return "Row 1";
+  }
+  return "Row ${rowIndex + 1}";
+}
+
+List<int>? collectTowerCounts(
+  List<int>? currentCounts,
+  int? rowCount,
+) {
+  if (currentCounts == null || rowCount == null) {
+    return [];
+  }
+
+  // Return the current counts - they should already be updated by components
+  return currentCounts;
+}
+
+List<String>? generateAllTowerPositions(List<int>? towerCounts) {
+  if (towerCounts == null || towerCounts.isEmpty) {
+    return [];
+  }
+
+  List<String> positions = [];
+
+  for (int rowIndex = 0; rowIndex < towerCounts.length; rowIndex++) {
+    int rowNumber = rowIndex + 1; // Convert 0->1, 1->2, etc.
+    int towersInRow = towerCounts[rowIndex];
+
+    for (int towerIndex = 1; towerIndex <= towersInRow; towerIndex++) {
+      String position = "${rowNumber}.${towerIndex.toString().padLeft(2, '0')}";
+      positions.add(position);
+    }
+  }
+
+  return positions;
+}
+
+List<int>? updateTowerCountAtIndex(
+  List<int>? currentCounts,
+  int? rowIndex,
+  int? newValue,
+) {
+  if (rowIndex == null || newValue == null) {
+    return currentCounts ?? [];
+  }
+
+  // Initialize list if empty
+  List<int> counts = currentCounts ?? [];
+
+  // Expand list if needed to fit the index
+  while (counts.length <= rowIndex) {
+    counts.add(1); // default value
+  }
+
+  // Update the specific index
+  counts[rowIndex] = newValue;
+
+  return counts;
+}
+
+List<int>? setAllTowerPorts(
+  List<String>? allTowerPositions,
+  int? portCount,
+) {
+  if (allTowerPositions == null || portCount == null) {
+    return [];
+  }
+
+  return List.filled(allTowerPositions.length, portCount);
+}
+
+int? getTotalTowers(List<String>? allTowerPositions) {
+  if (allTowerPositions == null) {
+    return 0;
+  }
+  return allTowerPositions.length;
+}
+
+int? getTotalPorts(List<int>? towerPortCounts) {
+  if (towerPortCounts == null || towerPortCounts.isEmpty) {
+    return 0;
+  }
+  return towerPortCounts.reduce((a, b) => a + b);
+}
+
+int? getTowerPortCount(
+  List<int>? towerPortCounts,
+  String? towerPosition,
+  List<String>? allTowerPositions,
+) {
+  if (towerPortCounts == null ||
+      towerPosition == null ||
+      allTowerPositions == null) {
+    return 0; // default
+  }
+
+  int index = allTowerPositions.indexOf(towerPosition);
+  if (index >= 0 && index < towerPortCounts.length) {
+    return towerPortCounts[index];
+  }
+
+  return 0; // default fallback
+}
+
+List<int>? updateTowerPortCount(
+  List<int>? currentPortCounts,
+  String? towerId,
+  int? newPortCount,
+  List<String>? allTowerPositions,
+) {
+  if (currentPortCounts == null ||
+      towerId == null ||
+      newPortCount == null ||
+      allTowerPositions == null) {
+    return [];
+  }
+
+  if (currentPortCounts.isEmpty || allTowerPositions.isEmpty) {
+    return currentPortCounts;
+  }
+
+  int towerIndex = -1;
+  for (int i = 0; i < allTowerPositions.length; i++) {
+    if (allTowerPositions[i] == towerId) {
+      towerIndex = i;
+      break;
+    }
+  }
+
+  if (towerIndex >= 0 && towerIndex < currentPortCounts.length) {
+    List<int> result = [];
+    for (int i = 0; i < currentPortCounts.length; i++) {
+      if (i == towerIndex) {
+        result.add(newPortCount);
+      } else {
+        result.add(currentPortCounts[i]);
+      }
+    }
+    return result;
+  }
+
+  return currentPortCounts;
+}
+
+int? getRowNumber(String? towerPosition) {
+  if (towerPosition == null) return 1;
+
+  List<String> parts = towerPosition.split('.');
+  if (parts.length >= 1) {
+    return int.tryParse(parts[0]) ?? 1;
+  }
+  return 1;
+}
+
+int? getTowerNumber(String? towerPosition) {
+  if (towerPosition == null) return 1;
+
+  List<String> parts = towerPosition.split('.');
+  if (parts.length >= 2) {
+    return int.tryParse(parts[1]) ?? 1;
+  }
+  return 1;
+}

@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/deploy_new_card_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
@@ -7,8 +8,6 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/lighting/assign_towers_to_zones_copy/assign_towers_to_zones_copy_widget.dart';
-import '/lighting/tower_zone_grid/tower_zone_grid_widget.dart';
 import '/pests/add_pest_application/add_pest_application_widget.dart';
 import '/pests/no_i_p_m/no_i_p_m_widget.dart';
 import '/pests/no_pest_applications/no_pest_applications_widget.dart';
@@ -60,6 +59,9 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
           pageViewController!.page != null
       ? pageViewController!.page!.round()
       : 0;
+  // State field(s) for stickyCardDataTable widget.
+  final stickyCardDataTableController =
+      FlutterFlowDataTableController<ActiveStickyCardsViewRow>();
   // Model for pestChemicals component.
   late PestChemicalsModel pestChemicalsModel;
   // State field(s) for Expandable widget.
@@ -87,6 +89,7 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
     sideNavModel.dispose();
     tabBarController?.dispose();
     pestScheduleContainerModel.dispose();
+    stickyCardDataTableController.dispose();
     pestChemicalsModel.dispose();
     expandableExpandableController1.dispose();
     waterTestsController1.dispose();

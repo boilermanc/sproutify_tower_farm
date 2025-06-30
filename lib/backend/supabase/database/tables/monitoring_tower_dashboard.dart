@@ -39,6 +39,9 @@ class MonitoringTowerDashboardRow extends SupabaseDataRow {
   String? get phColorHex => getField<String>('ph_color_hex');
   set phColorHex(String? value) => setField<String>('ph_color_hex', value);
 
+  double? get phValue => getField<double>('ph_value');
+  set phValue(double? value) => setField<double>('ph_value', value);
+
   String? get ecStatus => getField<String>('ec_status');
   set ecStatus(String? value) => setField<String>('ec_status', value);
 
@@ -47,6 +50,9 @@ class MonitoringTowerDashboardRow extends SupabaseDataRow {
 
   String? get ecColorHex => getField<String>('ec_color_hex');
   set ecColorHex(String? value) => setField<String>('ec_color_hex', value);
+
+  double? get ecValue => getField<double>('ec_value');
+  set ecValue(double? value) => setField<double>('ec_value', value);
 
   DateTime? get readAt => getField<DateTime>('read_at');
   set readAt(DateTime? value) => setField<DateTime>('read_at', value);
@@ -72,6 +78,15 @@ class MonitoringTowerDashboardRow extends SupabaseDataRow {
   bool? get needsAttention => getField<bool>('needs_attention');
   set needsAttention(bool? value) => setField<bool>('needs_attention', value);
 
+  String? get phIssues => getField<String>('ph_issues');
+  set phIssues(String? value) => setField<String>('ph_issues', value);
+
+  String? get ecIssues => getField<String>('ec_issues');
+  set ecIssues(String? value) => setField<String>('ec_issues', value);
+
+  String? get readerName => getField<String>('reader_name');
+  set readerName(String? value) => setField<String>('reader_name', value);
+
   String? get issues => getField<String>('issues');
   set issues(String? value) => setField<String>('issues', value);
 
@@ -82,12 +97,9 @@ class MonitoringTowerDashboardRow extends SupabaseDataRow {
   set issueColorHex(String? value) =>
       setField<String>('issue_color_hex', value);
 
-  String? get readerName => getField<String>('reader_name');
-  set readerName(String? value) => setField<String>('reader_name', value);
+  int? get phReadingId => getField<int>('ph_reading_id');
+  set phReadingId(int? value) => setField<int>('ph_reading_id', value);
 
-  double? get phValue => getField<double>('ph_value');
-  set phValue(double? value) => setField<double>('ph_value', value);
-
-  double? get ecValue => getField<double>('ec_value');
-  set ecValue(double? value) => setField<double>('ec_value', value);
+  int? get ecReadingId => getField<int>('ec_reading_id');
+  set ecReadingId(int? value) => setField<int>('ec_reading_id', value);
 }

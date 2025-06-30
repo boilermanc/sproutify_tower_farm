@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/products/add_chemical/add_chemical_widget.dart';
 import 'dart:ui';
 import 'chemical_catalog_widget.dart' show ChemicalCatalogWidget;
 import 'package:easy_debounce/easy_debounce.dart';

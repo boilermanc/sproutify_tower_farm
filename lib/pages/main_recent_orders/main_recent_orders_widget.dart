@@ -10,7 +10,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/produce_plants/allocate_harvest/allocate_harvest_widget.dart';
 import '/produce_plants/allocate_produce/allocate_produce_widget.dart';
+import '/produce_plants/no_available_harvest/no_available_harvest_widget.dart';
 import '/produce_plants/no_produce_display/no_produce_display_widget.dart';
+import '/products/no_harvest/no_harvest_widget.dart';
+import '/products/no_orders/no_orders_widget.dart';
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -182,66 +185,88 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                 ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 16.0, 0.0, 0.0),
-                                child: Text(
-                                  'Orders',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .override(
-                                        font: GoogleFonts.outfit(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .fontStyle,
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 0.0, 0.0),
+                                      child: Icon(
+                                        Icons.shopping_cart,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 30.0,
                                       ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        'Orders',
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .override(
+                                              font: GoogleFonts.outfit(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontStyle,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 4.0, 0.0, 0.0),
-                                child: Text(
-                                  'Below are your most recent orders',
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        font: GoogleFonts.plusJakartaSans(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontStyle,
-                                      ),
-                                ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 4.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Below are your most recent orders',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            font: GoogleFonts.plusJakartaSans(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ].addToEnd(SizedBox(height: 64.0)),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 12.0, 16.0, 0.0),
+                                16.0, 0.0, 16.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
@@ -605,8 +630,8 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                             Colors.transparent,
                                                                         onTap:
                                                                             () async {
-                                                                          _model.selectedOrderChips =
-                                                                              'All';
+                                                                          _model.statusFilter =
+                                                                              null;
                                                                           safeSetState(
                                                                               () {});
                                                                         },
@@ -667,8 +692,8 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               Colors.transparent,
                                                                           onTap:
                                                                               () async {
-                                                                            _model.selectedOrderChips =
-                                                                                'Completed';
+                                                                            _model.statusFilter =
+                                                                                'New';
                                                                             safeSetState(() {});
                                                                           },
                                                                           child:
@@ -686,7 +711,127 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                 Align(
                                                                               alignment: AlignmentDirectional(0.0, 0.0),
                                                                               child: Text(
-                                                                                'Active Orders',
+                                                                                'New',
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FontWeight.w600,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
+                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      letterSpacing: 0.0,
+                                                                                      fontWeight: FontWeight.w600,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            _model.statusFilter =
+                                                                                'Scheduled';
+                                                                            safeSetState(() {});
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                110.0,
+                                                                            height:
+                                                                                30.0,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            child:
+                                                                                Align(
+                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                              child: Text(
+                                                                                'Scheduled',
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FontWeight.w600,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
+                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      letterSpacing: 0.0,
+                                                                                      fontWeight: FontWeight.w600,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            _model.statusFilter =
+                                                                                'Delivered';
+                                                                            safeSetState(() {});
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                110.0,
+                                                                            height:
+                                                                                30.0,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            child:
+                                                                                Align(
+                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                              child: Text(
+                                                                                'Delivered',
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       font: GoogleFonts.plusJakartaSans(
                                                                                         fontWeight: FontWeight.w600,
@@ -716,9 +861,9 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                             'farm_id',
                                                                             FFAppState().farmID,
                                                                           )
-                                                                          .neqOrNull(
+                                                                          .eqOrNull(
                                                                             'status',
-                                                                            _model.selectedOrderChips,
+                                                                            _model.statusFilter,
                                                                           )
                                                                           .order('created_at'),
                                                                     ),
@@ -764,6 +909,9 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                             builder:
                                                                                 (context) {
                                                                               final ordersList = containerOrderHeadersViewRowList.toList();
+                                                                              if (ordersList.isEmpty) {
+                                                                                return NoOrdersWidget();
+                                                                              }
 
                                                                               return FlutterFlowDataTable<OrderHeadersViewRow>(
                                                                                 controller: _model.paginatedDataTableController1,
@@ -1109,6 +1257,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                     ),
                                                                                   ].map((c) => DataCell(c)).toList(),
                                                                                 ),
+                                                                                emptyBuilder: () => NoOrdersWidget(),
                                                                                 paginated: true,
                                                                                 selectable: false,
                                                                                 hidePaginator: false,
@@ -1208,6 +1357,9 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                             builder:
                                                                                 (context) {
                                                                               final availableHarvest = containerHarvestAvailableViewRowList.toList();
+                                                                              if (availableHarvest.isEmpty) {
+                                                                                return NoAvailableHarvestWidget();
+                                                                              }
 
                                                                               return FlutterFlowDataTable<HarvestAvailableViewRow>(
                                                                                 controller: _model.paginatedDataTableController2,
@@ -1408,6 +1560,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                     ),
                                                                                   ].map((c) => DataCell(c)).toList(),
                                                                                 ),
+                                                                                emptyBuilder: () => NoAvailableHarvestWidget(),
                                                                                 paginated: true,
                                                                                 selectable: false,
                                                                                 hidePaginator: false,
@@ -2127,28 +2280,6 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                       MainAxisSize
                                                                           .max,
                                                                   children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          16.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          10.0),
-                                                                      child:
-                                                                          Text(
-                                                                        'Hello World',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              font: GoogleFonts.plusJakartaSans(
-                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                              ),
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                            ),
-                                                                      ),
-                                                                    ),
                                                                     Text(
                                                                       'Date Planted',
                                                                       style: FlutterFlowTheme.of(
@@ -2227,6 +2358,9 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                             builder:
                                                                                 (context) {
                                                                               final allocationSummaryList = containerAllocationSummaryViewRowList.toList();
+                                                                              if (allocationSummaryList.isEmpty) {
+                                                                                return NoHarvestWidget();
+                                                                              }
 
                                                                               return FlutterFlowDataTable<AllocationSummaryViewRow>(
                                                                                 controller: _model.paginatedDataTableController4,
@@ -2354,12 +2488,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                       children: [
                                                                                         Flexible(
                                                                                           child: Align(
-                                                                                            alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                            alignment: AlignmentDirectional(-1.0, 0.0),
                                                                                             child: Text(
                                                                                               valueOrDefault<String>(
                                                                                                 allocationSummaryListItem.destinationName,
                                                                                                 'Customer',
                                                                                               ),
+                                                                                              textAlign: TextAlign.start,
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     font: GoogleFonts.plusJakartaSans(
                                                                                                       fontWeight: FontWeight.bold,
@@ -2444,6 +2579,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                     ),
                                                                                   ].map((c) => DataCell(c)).toList(),
                                                                                 ),
+                                                                                emptyBuilder: () => NoHarvestWidget(),
                                                                                 paginated: true,
                                                                                 selectable: false,
                                                                                 hidePaginator: false,

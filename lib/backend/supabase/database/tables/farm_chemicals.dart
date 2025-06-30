@@ -80,62 +80,47 @@ class FarmChemicalsRow extends SupabaseDataRow {
   set createdByUserId(String? value) =>
       setField<String>('created_by_user_id', value);
 
-  String? get productChemicalId => getField<String>('product_chemical_id');
-  set productChemicalId(String? value) =>
-      setField<String>('product_chemical_id', value);
+  String? get labelDataId => getField<String>('label_data_id');
+  set labelDataId(String? value) => setField<String>('label_data_id', value);
 
-  String? get sdsId => getField<String>('sds_id');
-  set sdsId(String? value) => setField<String>('sds_id', value);
-
-  String? get msdsUrl => getField<String>('msds_url');
-  set msdsUrl(String? value) => setField<String>('msds_url', value);
-
-  String? get reEntryInterval => getField<String>('re_entry_interval');
-  set reEntryInterval(String? value) =>
-      setField<String>('re_entry_interval', value);
-
-  String? get preHarvestInterval => getField<String>('pre_harvest_interval');
-  set preHarvestInterval(String? value) =>
-      setField<String>('pre_harvest_interval', value);
-
-  List<String> get activeIngredients =>
-      getListField<String>('active_ingredients');
-  set activeIngredients(List<String>? value) =>
-      setListField<String>('active_ingredients', value);
-
-  String? get notes => getField<String>('notes');
-  set notes(String? value) => setField<String>('notes', value);
-
-  String? get sdsProductName => getField<String>('sds_product_name');
-  set sdsProductName(String? value) =>
-      setField<String>('sds_product_name', value);
-
-  String? get sdsPath => getField<String>('sds_path');
-  set sdsPath(String? value) => setField<String>('sds_path', value);
+  String? get sdsDataId => getField<String>('sds_data_id');
+  set sdsDataId(String? value) => setField<String>('sds_data_id', value);
 
   bool? get omriRated => getField<bool>('omri_rated');
   set omriRated(bool? value) => setField<bool>('omri_rated', value);
 
-  String? get labelPath => getField<String>('label_path');
-  set labelPath(String? value) => setField<String>('label_path', value);
+  int? get reEntryInterval => getField<int>('re_entry_interval');
+  set reEntryInterval(int? value) => setField<int>('re_entry_interval', value);
+
+  String? get reEntryIntervalUnit => getField<String>('re_entry_interval_unit');
+  set reEntryIntervalUnit(String? value) =>
+      setField<String>('re_entry_interval_unit', value);
+
+  int? get preHarvestInterval => getField<int>('pre_harvest_interval');
+  set preHarvestInterval(int? value) =>
+      setField<int>('pre_harvest_interval', value);
+
+  String? get preHarvestIntervalUnit =>
+      getField<String>('pre_harvest_interval_unit');
+  set preHarvestIntervalUnit(String? value) =>
+      setField<String>('pre_harvest_interval_unit', value);
+
+  dynamic? get activeIngredients => getField<dynamic>('active_ingredients');
+  set activeIngredients(dynamic? value) =>
+      setField<dynamic>('active_ingredients', value);
+
+  String? get notes => getField<String>('notes');
+  set notes(String? value) => setField<String>('notes', value);
+
+  String? get applicationMethods => getField<String>('application_methods');
+  set applicationMethods(String? value) =>
+      setField<String>('application_methods', value);
 
   double? get baseAmount => getField<double>('base_amount');
   set baseAmount(double? value) => setField<double>('base_amount', value);
 
   double? get perVolume => getField<double>('per_volume');
   set perVolume(double? value) => setField<double>('per_volume', value);
-
-  String? get dosingNotes => getField<String>('dosing_notes');
-  set dosingNotes(String? value) => setField<String>('dosing_notes', value);
-
-  double? get standardDoseGallon => getField<double>('standard_dose_gallon');
-  set standardDoseGallon(double? value) =>
-      setField<double>('standard_dose_gallon', value);
-
-  String? get standardDoseGallonUnitId =>
-      getField<String>('standard_dose_gallon_unit_id');
-  set standardDoseGallonUnitId(String? value) =>
-      setField<String>('standard_dose_gallon_unit_id', value);
 
   double? get minimumDilution => getField<double>('minimum_dilution');
   set minimumDilution(double? value) =>
@@ -145,7 +130,12 @@ class FarmChemicalsRow extends SupabaseDataRow {
   set maximumDilution(double? value) =>
       setField<double>('maximum_dilution', value);
 
-  String? get applicationMethods => getField<String>('application_methods');
-  set applicationMethods(String? value) =>
-      setField<String>('application_methods', value);
+  double? get standardDoseGallon => getField<double>('standard_dose_gallon');
+  set standardDoseGallon(double? value) =>
+      setField<double>('standard_dose_gallon', value);
+
+  String? get standardDoseGallonUnitId =>
+      getField<String>('standard_dose_gallon_unit_id');
+  set standardDoseGallonUnitId(String? value) =>
+      setField<String>('standard_dose_gallon_unit_id', value);
 }

@@ -48,9 +48,6 @@ class MainFarmOperationsModel
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController2 =
       FlutterFlowDataTableController<TaskListViewRow>();
-  // State field(s) for PaginatedDataTable widget.
-  final paginatedDataTableController3 =
-      FlutterFlowDataTableController<TaskPlantingsRow>();
 
   @override
   void initState(BuildContext context) {
@@ -63,7 +60,6 @@ class MainFarmOperationsModel
     tabBarController?.dispose();
     paginatedDataTableController1.dispose();
     paginatedDataTableController2.dispose();
-    paginatedDataTableController3.dispose();
   }
 
   /// Additional helper methods.

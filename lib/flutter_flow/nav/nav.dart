@@ -118,6 +118,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: MainDashboardWidget.routeName,
           path: MainDashboardWidget.routePath,
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_Dashboard')
               : MainDashboardWidget(),
@@ -269,52 +270,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ChatAiScreenWidget.routeName,
           path: ChatAiScreenWidget.routePath,
           builder: (context, params) => ChatAiScreenWidget(),
-        ),
-        FFRoute(
-          name: InviteWidget.routeName,
-          path: InviteWidget.routePath,
-          builder: (context, params) => InviteWidget(
-            invitation: params.getParam(
-              'invitation',
-              ParamType.String,
-            ),
-            email: params.getParam(
-              'email',
-              ParamType.String,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: VerifyInviteWidget.routeName,
-          path: VerifyInviteWidget.routePath,
-          builder: (context, params) => VerifyInviteWidget(
-            invitation: params.getParam(
-              'invitation',
-              ParamType.String,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: InviteSuccessLandingWidget.routeName,
-          path: InviteSuccessLandingWidget.routePath,
-          builder: (context, params) => InviteSuccessLandingWidget(
-            invitationID: params.getParam(
-              'invitationID',
-              ParamType.String,
-            ),
-            firstName: params.getParam(
-              'firstName',
-              ParamType.String,
-            ),
-            lastName: params.getParam(
-              'lastName',
-              ParamType.String,
-            ),
-            email: params.getParam(
-              'email',
-              ParamType.String,
-            ),
-          ),
         ),
         FFRoute(
           name: MainNutrientsCopyWidget.routeName,

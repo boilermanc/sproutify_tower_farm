@@ -7,8 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/produce_plants/select_plant_catalog_quantity/select_plant_catalog_quantity_widget.dart';
-import '/spacer/no_spacers_available/no_spacers_available_widget.dart';
-import '/spacer/select_spacer_count/select_spacer_count_widget.dart';
 import 'dart:ui';
 import 'assign_planting_task_widget.dart' show AssignPlantingTaskWidget;
 import 'package:flutter/foundation.dart';

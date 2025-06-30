@@ -513,33 +513,6 @@ class ChemicalCatalogSearchCall {
     );
   }
 
-  static List<String>? plantName(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].plant_name''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  static List<String>? shortDescription(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].short_description''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  static List<String>? plantImage(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].plant_image''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
   static List<bool>? isActive(dynamic response) => (getJsonField(
         response,
         r'''$[:].is_active''',
@@ -549,24 +522,34 @@ class ChemicalCatalogSearchCall {
           .map((x) => castToType<bool>(x))
           .withoutNulls
           .toList();
-  static List<bool>? isCore(dynamic response) => (getJsonField(
+  static bool? omriRated(dynamic response) => castToType<bool>(getJsonField(
         response,
-        r'''$[:].is_core''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<bool>(x))
-          .withoutNulls
-          .toList();
-  static List<String>? farmID(dynamic response) => (getJsonField(
+        r'''$[:].omri_rated''',
+      ));
+  static String? productType(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
-        r'''$[:].farm_id''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
+        r'''$[:].product_type_name''',
+      ));
+  static String? productName(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$[:].product_name''',
+      ));
+  static String? productID(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$[:].product_id''',
+      ));
+  static String? productCategory(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$[:].product_category_id''',
+      ));
+  static String? productTypeID(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$[:].product_type_id''',
+      ));
 }
 
 class UpsertLightingFixtureAllocationCall {
@@ -818,6 +801,39 @@ class GenerateTowerStatusReportwithNeightNCall {
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class ValidateInvitationCodeCall {
+  static Future<ApiCallResponse> call({
+    String? invitationCode = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "invitation_code": "${escapeStringForJson(invitationCode)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'validateInvitationCode',
+      apiUrl:
+          'https://n8n.sproutify.app/webhook/51eae998-ea40-41dc-b904-f793ca321ed1',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
+        'Authorization':
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
       },
       params: {},
       body: ffApiRequestBody,

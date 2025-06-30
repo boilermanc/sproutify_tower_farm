@@ -9,6 +9,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/produce_plants/no_charity_available/no_charity_available_widget.dart';
 import '/produce_plants/no_customer_available/no_customer_available_widget.dart';
 import 'dart:ui';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -245,14 +246,68 @@ class _AllocateHarvestWidgetState extends State<AllocateHarvestWidget>
                                   ),
                             ),
                           ),
+                          Flexible(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  30.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                valueOrDefault<String>(
+                                  widget!.produceName,
+                                  'Plant',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.plusJakartaSans(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      fontSize: 16.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Container(
+                      height: 30.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFDFEFF3),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 4.0,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                30.0, 0.0, 0.0, 0.0),
+                                10.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              valueOrDefault<String>(
-                                widget!.produceName,
-                                'Plant',
-                              ),
+                              'Date:',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -262,7 +317,7 @@ class _AllocateHarvestWidgetState extends State<AllocateHarvestWidget>
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    fontSize: 16.0,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
@@ -271,6 +326,68 @@ class _AllocateHarvestWidgetState extends State<AllocateHarvestWidget>
                                   ),
                             ),
                           ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                5.0, 0.0, 0.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                final _datePickedDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: getCurrentTimestamp,
+                                  firstDate: DateTime(1900),
+                                  lastDate: getCurrentTimestamp,
+                                );
+
+                                if (_datePickedDate != null) {
+                                  safeSetState(() {
+                                    _model.datePicked = DateTime(
+                                      _datePickedDate.year,
+                                      _datePickedDate.month,
+                                      _datePickedDate.day,
+                                    );
+                                  });
+                                } else if (_model.datePicked != null) {
+                                  safeSetState(() {
+                                    _model.datePicked = getCurrentTimestamp;
+                                  });
+                                }
+                                _model.dateAllocated = _model.datePicked;
+                                safeSetState(() {});
+                              },
+                              child: Icon(
+                                Icons.calendar_month_outlined,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 24.0,
+                              ),
+                            ),
+                          ),
+                          if (_model.dateAllocated != null)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                dateTimeFormat("MEd", _model.datePicked),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.plusJakartaSans(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ),
                         ],
                       ),
                     ),
@@ -478,6 +595,9 @@ class _AllocateHarvestWidgetState extends State<AllocateHarvestWidget>
                                                   'user_id': currentUserUid,
                                                   'destination_id':
                                                       _model.customerIDSelected,
+                                                  'allocated_at':
+                                                      supaSerialize<DateTime>(
+                                                          _model.datePicked),
                                                 });
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
@@ -738,9 +858,9 @@ class _AllocateHarvestWidgetState extends State<AllocateHarvestWidget>
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: FFButtonWidget(
                                                 onPressed: () async {
-                                                  if (_model.quantityDropDownValue !=
+                                                  if (_model.charityIDSelected !=
                                                           null &&
-                                                      _model.quantityDropDownValue !=
+                                                      _model.charityIDSelected !=
                                                           '') {
                                                     await AllocationsTable()
                                                         .insert({
