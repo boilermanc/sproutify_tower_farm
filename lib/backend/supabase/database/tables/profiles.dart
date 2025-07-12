@@ -52,4 +52,7 @@ class ProfilesRow extends SupabaseDataRow {
   String? get profileImageUrl => getField<String>('profile_image_url');
   set profileImageUrl(String? value) =>
       setField<String>('profile_image_url', value);
+
+  bool get needsSetup => getField<bool>('needs_setup')!;
+  set needsSetup(bool value) => setField<bool>('needs_setup', value);
 }

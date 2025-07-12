@@ -594,16 +594,22 @@ class GetOpenWeatherCall {
     String? farmLongitude = '',
     String? farmLatitude = '',
     String? farmUnit = '',
+    String? farmID = '',
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getOpenWeather',
       apiUrl:
-          'https://api.openweathermap.org/data/2.5/weather?lat=${farmLatitude}&lon=${farmLongitude}&units=${farmUnit}&appid=e7fb73b24708a4b7b5d163f7ca179c2e',
+          'https://n8n.sproutify.app/webhook/efb9b259-1837-447d-a104-80d54ed286df',
       callType: ApiCallType.GET,
       headers: {
         'api': 'e7fb73b24708a4b7b5d163f7ca179c2e',
       },
-      params: {},
+      params: {
+        'longitude': farmLongitude,
+        'latitude': farmLatitude,
+        'format': farmUnit,
+        'farmID': farmID,
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

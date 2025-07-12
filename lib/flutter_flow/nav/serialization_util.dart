@@ -376,6 +376,8 @@ dynamic deserializeParam<T>(
             return ColorCodesRow(data);
           case TaskRolesListRow:
             return TaskRolesListRow(data);
+          case TasksRecurringRow:
+            return TasksRecurringRow(data);
           case DeliveryOrderItemsViewRow:
             return DeliveryOrderItemsViewRow(data);
           case VDonationUserActivityRow:
@@ -528,6 +530,8 @@ dynamic deserializeParam<T>(
             return TowersRow(data);
           case VTowerStateVerificationRow:
             return VTowerStateVerificationRow(data);
+          case FarmsWithFormattedAddressRow:
+            return FarmsWithFormattedAddressRow(data);
           case StickyCardLocationsRow:
             return StickyCardLocationsRow(data);
           case MonitoringFarmRangesRow:
@@ -586,6 +590,8 @@ dynamic deserializeParam<T>(
             return PlantWasteAreasListRow(data);
           case MonitoringReportsRow:
             return MonitoringReportsRow(data);
+          case TaskRecurringViewRow:
+            return TaskRecurringViewRow(data);
           case MonitoringSummaryDashboardRow:
             return MonitoringSummaryDashboardRow(data);
           case ProductSafetyPrecautionsListRow:
@@ -922,6 +928,8 @@ dynamic deserializeParam<T>(
             return SeedInventoryViewRow(data);
           case ReadingTypesRow:
             return ReadingTypesRow(data);
+          case WeatherLogsRow:
+            return WeatherLogsRow(data);
           case ProductApplicationMethodsRow:
             return ProductApplicationMethodsRow(data);
           case TriggerLogsRow:

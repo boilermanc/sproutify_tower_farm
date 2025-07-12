@@ -1,7 +1,9 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/registration_profile/setup_flow_main/setup_flow_main_widget.dart';
 import '/registration_profile/sign_up_landing_page/sign_up_landing_page_widget.dart';
 import 'dart:ui';
 import '/index.dart';
@@ -377,9 +379,46 @@ class _MainLoginWidgetState extends State<MainLoginWidget> {
                                         return;
                                       }
 
-                                      context.goNamedAuth(
-                                          MainDashboardWidget.routeName,
-                                          context.mounted);
+                                      _model.profileResponse0011 =
+                                          await ProfilesTable().queryRows(
+                                        queryFn: (q) => q.eqOrNull(
+                                          'id',
+                                          currentUserUid,
+                                        ),
+                                      );
+                                      if (_model.profileResponse0011
+                                              ?.firstOrNull?.needsSetup ==
+                                          true) {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return GestureDetector(
+                                              onTap: () {
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: SetupFlowMainWidget(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      } else {
+                                        context.goNamedAuth(
+                                            MainLoadingPageWidget.routeName,
+                                            context.mounted);
+                                      }
+
+                                      safeSetState(() {});
                                     },
                                     text: 'Sign In',
                                     options: FFButtonOptions(
@@ -403,7 +442,7 @@ class _MainLoginWidgetState extends State<MainLoginWidget> {
                                                       .fontStyle,
                                             ),
                                             color: Colors.white,
-                                            fontSize: 18.0,
+                                            fontSize: 24.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:

@@ -248,30 +248,6 @@ class FFAppState extends ChangeNotifier {
     _selectedSDSName = value;
   }
 
-  String _localTemp = '';
-  String get localTemp => _localTemp;
-  set localTemp(String value) {
-    _localTemp = value;
-  }
-
-  String _localHumdity = '';
-  String get localHumdity => _localHumdity;
-  set localHumdity(String value) {
-    _localHumdity = value;
-  }
-
-  String _localCloudCover = '';
-  String get localCloudCover => _localCloudCover;
-  set localCloudCover(String value) {
-    _localCloudCover = value;
-  }
-
-  String _localWindSpeed = '';
-  String get localWindSpeed => _localWindSpeed;
-  set localWindSpeed(String value) {
-    _localWindSpeed = value;
-  }
-
   bool _isLoading = false;
   bool get isLoading => _isLoading;
   set isLoading(bool value) {
@@ -643,6 +619,173 @@ class FFAppState extends ChangeNotifier {
   double get farmLongitude => _farmLongitude;
   set farmLongitude(double value) {
     _farmLongitude = value;
+  }
+
+  String _farmImage = '';
+  String get farmImage => _farmImage;
+  set farmImage(String value) {
+    _farmImage = value;
+  }
+
+  String _farmStreet = '';
+  String get farmStreet => _farmStreet;
+  set farmStreet(String value) {
+    _farmStreet = value;
+  }
+
+  String _farmState = '';
+  String get farmState => _farmState;
+  set farmState(String value) {
+    _farmState = value;
+  }
+
+  String _farmPostal = '';
+  String get farmPostal => _farmPostal;
+  set farmPostal(String value) {
+    _farmPostal = value;
+  }
+
+  String _farmCountry = '';
+  String get farmCountry => _farmCountry;
+  set farmCountry(String value) {
+    _farmCountry = value;
+  }
+
+  String _farmEmployeeCount = '';
+  String get farmEmployeeCount => _farmEmployeeCount;
+  set farmEmployeeCount(String value) {
+    _farmEmployeeCount = value;
+  }
+
+  bool _hasWaterTest = false;
+  bool get hasWaterTest => _hasWaterTest;
+  set hasWaterTest(bool value) {
+    _hasWaterTest = value;
+  }
+
+  bool _hasVendors = false;
+  bool get hasVendors => _hasVendors;
+  set hasVendors(bool value) {
+    _hasVendors = value;
+  }
+
+  String _farmTemp = '';
+  String get farmTemp => _farmTemp;
+  set farmTemp(String value) {
+    _farmTemp = value;
+  }
+
+  String _farmHumidity = '';
+  String get farmHumidity => _farmHumidity;
+  set farmHumidity(String value) {
+    _farmHumidity = value;
+  }
+
+  String _farmCondition = '';
+  String get farmCondition => _farmCondition;
+  set farmCondition(String value) {
+    _farmCondition = value;
+  }
+
+  String _farmWeatherIcon = '';
+  String get farmWeatherIcon => _farmWeatherIcon;
+  set farmWeatherIcon(String value) {
+    _farmWeatherIcon = value;
+  }
+
+  String _taskRecurrencePattern = '';
+  String get taskRecurrencePattern => _taskRecurrencePattern;
+  set taskRecurrencePattern(String value) {
+    _taskRecurrencePattern = value;
+  }
+
+  int _taskRecurrenceInterval = 0;
+  int get taskRecurrenceInterval => _taskRecurrenceInterval;
+  set taskRecurrenceInterval(int value) {
+    _taskRecurrenceInterval = value;
+  }
+
+  List<String> _taskSelectedWeekdays = [];
+  List<String> get taskSelectedWeekdays => _taskSelectedWeekdays;
+  set taskSelectedWeekdays(List<String> value) {
+    _taskSelectedWeekdays = value;
+  }
+
+  void addToTaskSelectedWeekdays(String value) {
+    taskSelectedWeekdays.add(value);
+  }
+
+  void removeFromTaskSelectedWeekdays(String value) {
+    taskSelectedWeekdays.remove(value);
+  }
+
+  void removeAtIndexFromTaskSelectedWeekdays(int index) {
+    taskSelectedWeekdays.removeAt(index);
+  }
+
+  void updateTaskSelectedWeekdaysAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    taskSelectedWeekdays[index] = updateFn(_taskSelectedWeekdays[index]);
+  }
+
+  void insertAtIndexInTaskSelectedWeekdays(int index, String value) {
+    taskSelectedWeekdays.insert(index, value);
+  }
+
+  int _taskWeeklyInterval = 0;
+  int get taskWeeklyInterval => _taskWeeklyInterval;
+  set taskWeeklyInterval(int value) {
+    _taskWeeklyInterval = value;
+  }
+
+  int _taskMonthlyInterval = 0;
+  int get taskMonthlyInterval => _taskMonthlyInterval;
+  set taskMonthlyInterval(int value) {
+    _taskMonthlyInterval = value;
+  }
+
+  int _taskDayOfMonth = 0;
+  int get taskDayOfMonth => _taskDayOfMonth;
+  set taskDayOfMonth(int value) {
+    _taskDayOfMonth = value;
+  }
+
+  String _taskDueTime = '';
+  String get taskDueTime => _taskDueTime;
+  set taskDueTime(String value) {
+    _taskDueTime = value;
+  }
+
+  DateTime? _taskStartDate;
+  DateTime? get taskStartDate => _taskStartDate;
+  set taskStartDate(DateTime? value) {
+    _taskStartDate = value;
+  }
+
+  DateTime? _taskEndDate;
+  DateTime? get taskEndDate => _taskEndDate;
+  set taskEndDate(DateTime? value) {
+    _taskEndDate = value;
+  }
+
+  int _taskDailyInterval = 0;
+  int get taskDailyInterval => _taskDailyInterval;
+  set taskDailyInterval(int value) {
+    _taskDailyInterval = value;
+  }
+
+  bool _taskHasNoEndDate = false;
+  bool get taskHasNoEndDate => _taskHasNoEndDate;
+  set taskHasNoEndDate(bool value) {
+    _taskHasNoEndDate = value;
+  }
+
+  bool _hasPlants = false;
+  bool get hasPlants => _hasPlants;
+  set hasPlants(bool value) {
+    _hasPlants = value;
   }
 }
 

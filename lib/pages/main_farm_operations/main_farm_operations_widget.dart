@@ -1331,15 +1331,87 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          150.0,
+                                                                          50.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
                                                               child:
                                                                   FFButtonWidget(
-                                                                onPressed: () {
-                                                                  print(
-                                                                      'pendingButton pressed ...');
+                                                                onPressed:
+                                                                    () async {
+                                                                  _model.statusUpdated =
+                                                                      null;
+                                                                  safeSetState(
+                                                                      () {});
+                                                                },
+                                                                text: 'All',
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  height: 40.0,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16.0,
+                                                                          0.0,
+                                                                          16.0,
+                                                                          0.0),
+                                                                  iconPadding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        color: Colors
+                                                                            .white,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
+                                                                      ),
+                                                                  elevation:
+                                                                      0.0,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          15.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child:
+                                                                  FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  _model.statusUpdated =
+                                                                      'pending';
+                                                                  safeSetState(
+                                                                      () {});
                                                                 },
                                                                 text: 'Pending',
                                                                 options:
@@ -1403,9 +1475,12 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           0.0),
                                                               child:
                                                                   FFButtonWidget(
-                                                                onPressed: () {
-                                                                  print(
-                                                                      'inProgressButton pressed ...');
+                                                                onPressed:
+                                                                    () async {
+                                                                  _model.statusUpdated =
+                                                                      'in_progress';
+                                                                  safeSetState(
+                                                                      () {});
                                                                 },
                                                                 text:
                                                                     'In Progress',
@@ -1470,9 +1545,12 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           0.0),
                                                               child:
                                                                   FFButtonWidget(
-                                                                onPressed: () {
-                                                                  print(
-                                                                      'overdueButton pressed ...');
+                                                                onPressed:
+                                                                    () async {
+                                                                  _model.statusUpdated =
+                                                                      'overdue';
+                                                                  safeSetState(
+                                                                      () {});
                                                                 },
                                                                 text: 'Overdue',
                                                                 options:
@@ -1536,9 +1614,12 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           0.0),
                                                               child:
                                                                   FFButtonWidget(
-                                                                onPressed: () {
-                                                                  print(
-                                                                      'completedButton pressed ...');
+                                                                onPressed:
+                                                                    () async {
+                                                                  _model.statusUpdated =
+                                                                      'completed';
+                                                                  safeSetState(
+                                                                      () {});
                                                                 },
                                                                 text:
                                                                     'Completed',
@@ -1603,9 +1684,12 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           0.0),
                                                               child:
                                                                   FFButtonWidget(
-                                                                onPressed: () {
-                                                                  print(
-                                                                      'cancelledButton pressed ...');
+                                                                onPressed:
+                                                                    () async {
+                                                                  _model.statusUpdated =
+                                                                      'cancelled';
+                                                                  safeSetState(
+                                                                      () {});
                                                                 },
                                                                 text:
                                                                     'Cancelled',
@@ -1704,7 +1788,11 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                             )
                                                                             .neqOrNull(
                                                                               'status',
-                                                                              'Completed',
+                                                                              'completed',
+                                                                            )
+                                                                            .eqOrNull(
+                                                                              'status',
+                                                                              _model.statusUpdated,
                                                                             )
                                                                             .order('due_date', ascending: true),
                                                                       )))

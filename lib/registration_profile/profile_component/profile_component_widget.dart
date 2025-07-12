@@ -97,22 +97,24 @@ class _ProfileComponentWidgetState extends State<ProfileComponentWidget> {
                             width: 72.0,
                             height: 72.0,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).accent1,
-                              borderRadius: BorderRadius.circular(12.0),
+                              borderRadius: BorderRadius.circular(1.0),
                               border: Border.all(
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 width: 2.0,
                               ),
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(2.0),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
+                                borderRadius: BorderRadius.circular(2.0),
                                 child: CachedNetworkImage(
                                   fadeInDuration: Duration(milliseconds: 500),
                                   fadeOutDuration: Duration(milliseconds: 500),
-                                  imageUrl: containerProfilesRowList
-                                      .firstOrNull!.profileImageUrl!,
+                                  imageUrl: valueOrDefault<String>(
+                                    containerProfilesRowList
+                                        .firstOrNull?.profileImageUrl,
+                                    'https://rsndonfydqhykowljuyn.supabase.co/storage/v1/object/public/profileImages/pics/default_profile.png',
+                                  ),
                                   width: 44.0,
                                   height: 44.0,
                                   fit: BoxFit.cover,

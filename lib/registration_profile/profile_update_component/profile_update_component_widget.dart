@@ -41,9 +41,9 @@ class _ProfileUpdateComponentWidgetState
 
     _model.lastNameFocusNode ??= FocusNode();
 
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.emailTextFieldFocusNode ??= FocusNode();
 
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.phoneTextFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -108,7 +108,6 @@ class _ProfileUpdateComponentWidgetState
                               width: 120.0,
                               height: 120.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).accent2,
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: Image.network(
@@ -125,8 +124,11 @@ class _ProfileUpdateComponentWidgetState
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.network(
-                                  mainProfileContainerProfilesRowList
-                                      .firstOrNull!.profileImageUrl!,
+                                  valueOrDefault<String>(
+                                    mainProfileContainerProfilesRowList
+                                        .firstOrNull?.profileImageUrl,
+                                    'https://rsndonfydqhykowljuyn.supabase.co/storage/v1/object/public/profileImages/pics/default_profile.png',
+                                  ),
                                   width: 200.0,
                                   height: 200.0,
                                   fit: BoxFit.cover,
@@ -519,15 +521,16 @@ class _ProfileUpdateComponentWidgetState
                                   ),
                                 ),
                                 TextFormField(
-                                  controller: _model.textController3 ??=
-                                      TextEditingController(
+                                  controller:
+                                      _model.emailTextFieldTextController ??=
+                                          TextEditingController(
                                     text: valueOrDefault<String>(
                                       mainProfileContainerProfilesRowList
                                           .firstOrNull?.email,
                                       'Email',
                                     ),
                                   ),
-                                  focusNode: _model.textFieldFocusNode1,
+                                  focusNode: _model.emailTextFieldFocusNode,
                                   autofocus: false,
                                   textInputAction: TextInputAction.next,
                                   obscureText: false,
@@ -613,7 +616,8 @@ class _ProfileUpdateComponentWidgetState
                                       ),
                                   minLines: 1,
                                   keyboardType: TextInputType.emailAddress,
-                                  validator: _model.textController3Validator
+                                  validator: _model
+                                      .emailTextFieldTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ],
@@ -653,15 +657,16 @@ class _ProfileUpdateComponentWidgetState
                                   ),
                                 ),
                                 TextFormField(
-                                  controller: _model.textController4 ??=
-                                      TextEditingController(
+                                  controller:
+                                      _model.phoneTextFieldTextController ??=
+                                          TextEditingController(
                                     text: valueOrDefault<String>(
                                       mainProfileContainerProfilesRowList
                                           .firstOrNull?.phoneNumber,
-                                      'Phone',
+                                      'xxx-xxx-xxxx',
                                     ),
                                   ),
-                                  focusNode: _model.textFieldFocusNode2,
+                                  focusNode: _model.phoneTextFieldFocusNode,
                                   autofocus: false,
                                   textInputAction: TextInputAction.next,
                                   obscureText: false,
@@ -746,7 +751,8 @@ class _ProfileUpdateComponentWidgetState
                                       ),
                                   minLines: 1,
                                   keyboardType: TextInputType.phone,
-                                  validator: _model.textController4Validator
+                                  validator: _model
+                                      .phoneTextFieldTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ],
@@ -764,7 +770,8 @@ class _ProfileUpdateComponentWidgetState
                                 'last_name': _model.lastNameTextController.text,
                                 'updated_at': supaSerialize<DateTime>(
                                     getCurrentTimestamp),
-                                'phone_number': _model.textController4.text,
+                                'phone_number':
+                                    _model.phoneTextFieldTextController.text,
                               },
                               matchingRows: (rows) => rows.eqOrNull(
                                 'id',

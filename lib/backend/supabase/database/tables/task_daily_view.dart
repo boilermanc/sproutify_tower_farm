@@ -72,4 +72,15 @@ class TaskDailyViewRow extends SupabaseDataRow {
 
   String? get actionType => getField<String>('action_type');
   set actionType(String? value) => setField<String>('action_type', value);
+
+  String? get recurringTaskId => getField<String>('recurring_task_id');
+  set recurringTaskId(String? value) =>
+      setField<String>('recurring_task_id', value);
+
+  bool? get isRecurring => getField<bool>('is_recurring');
+  set isRecurring(bool? value) => setField<bool>('is_recurring', value);
+
+  String? get recurrencePattern => getField<String>('recurrence_pattern');
+  set recurrencePattern(String? value) =>
+      setField<String>('recurrence_pattern', value);
 }

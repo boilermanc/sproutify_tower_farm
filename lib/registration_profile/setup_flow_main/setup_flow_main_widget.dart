@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/registration_profile/exit_farm_setup/exit_farm_setup_widget.dart';
 import '/registration_profile/initial_tower_setup/initial_tower_setup_widget.dart';
 import 'dart:ui';
 import '/index.dart';
@@ -82,6 +83,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                   child: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
                     controller: _model.pageViewController ??=
                         PageController(initialPage: 0),
                     scrollDirection: Axis.horizontal,
@@ -140,7 +142,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           100.0, 0.0, 0.0, 0.0),
                                       child: Text(
-                                        'To get started, lets get some of the basics.',
+                                        'To get started, let\'s get some of the basics.',
                                         style: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .override(
@@ -173,7 +175,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           100.0, 10.0, 0.0, 5.0),
                                       child: Text(
-                                        'What is the name of your farm? ',
+                                        'Farm name:',
                                         style: FlutterFlowTheme.of(context)
                                             .headlineSmall
                                             .override(
@@ -371,7 +373,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           100.0, 10.0, 0.0, 0.0),
                                       child: Text(
-                                        'What is the address of your farm?',
+                                        'Farm address:',
                                         style: FlutterFlowTheme.of(context)
                                             .headlineSmall
                                             .override(
@@ -778,8 +780,13 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                               stateDropDownStatesRowList
                                                   .map((e) => e.name)
                                                   .toList(),
-                                          onChanged: (val) => safeSetState(() =>
-                                              _model.stateDropDownValue = val),
+                                          onChanged: (val) async {
+                                            safeSetState(() => _model
+                                                .stateDropDownValue = val);
+                                            FFAppState().farmState =
+                                                _model.stateDropDownValue!;
+                                            safeSetState(() {});
+                                          },
                                           width: 200.0,
                                           height: 50.0,
                                           textStyle: FlutterFlowTheme.of(
@@ -1038,7 +1045,8 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                       child:
                                           FutureBuilder<List<CountryCodesRow>>(
                                         future: CountryCodesTable().queryRows(
-                                          queryFn: (q) => q.order('iso_code',
+                                          queryFn: (q) => q.order(
+                                              'display_order',
                                               ascending: true),
                                         ),
                                         builder: (context, snapshot) {
@@ -1080,10 +1088,13 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                 countryDropDownCountryCodesRowList
                                                     .map((e) => e.countryName)
                                                     .toList(),
-                                            onChanged: (val) => safeSetState(
-                                                () => _model
-                                                        .countryDropDownValue =
-                                                    val),
+                                            onChanged: (val) async {
+                                              safeSetState(() => _model
+                                                  .countryDropDownValue = val);
+                                              FFAppState().farmCountry =
+                                                  _model.countryDropDownValue!;
+                                              safeSetState(() {});
+                                            },
                                             width: 200.0,
                                             height: 50.0,
                                             textStyle:
@@ -1200,9 +1211,13 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                 .farmNumberEmployeesValueController ??=
                                             FormFieldController<String>(null),
                                         options: ['1 - 3', '4 -10', '10+'],
-                                        onChanged: (val) => safeSetState(() =>
-                                            _model.farmNumberEmployeesValue =
-                                                val),
+                                        onChanged: (val) async {
+                                          safeSetState(() => _model
+                                              .farmNumberEmployeesValue = val);
+                                          FFAppState().farmEmployeeCount =
+                                              _model.farmNumberEmployeesValue!;
+                                          safeSetState(() {});
+                                        },
                                         width: 300.0,
                                         height: 56.0,
                                         textStyle: FlutterFlowTheme.of(context)
@@ -1266,30 +1281,14 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                           100.0, 0.0, 0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          _model.farmInput9999 =
-                                              await FarmsTable().insert({
-                                            'farm_name': _model
-                                                .farmNameTextController.text,
-                                            'created_at':
-                                                supaSerialize<DateTime>(
-                                                    getCurrentTimestamp),
-                                            'city': _model
-                                                .farmCityTextController.text,
-                                            'state': _model.stateDropDownValue,
-                                            'country_code':
-                                                _model.countryDropDownValue,
-                                            'postal_code': _model
-                                                .farmPostalTextController.text,
-                                            'street_address': _model
-                                                .farmAddressTextController.text,
-                                            'created_by': currentUserUid,
-                                          });
-                                          await Future.delayed(const Duration(
-                                              milliseconds: 2000));
-                                          FFAppState().farmID =
-                                              _model.farmInput9999!.id;
                                           FFAppState().farmName = _model
                                               .farmNameTextController.text;
+                                          FFAppState().farmCity = _model
+                                              .farmCityTextController.text;
+                                          FFAppState().farmStreet = _model
+                                              .farmAddressTextController.text;
+                                          FFAppState().farmPostal = _model
+                                              .farmPostalTextController.text;
                                           safeSetState(() {});
                                           await _model.pageViewController
                                               ?.nextPage(
@@ -1297,8 +1296,6 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                 Duration(milliseconds: 300),
                                             curve: Curves.ease,
                                           );
-
-                                          safeSetState(() {});
                                         },
                                         text: 'Next...',
                                         options: FFButtonOptions(
@@ -1311,6 +1308,78 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                font:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
+                                                color: Colors.white,
+                                                fontSize: 18.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          100.0, 0.0, 0.0, 0.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            enableDrag: false,
+                                            context: context,
+                                            builder: (context) {
+                                              return Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: ExitFarmSetupWidget(),
+                                              );
+                                            },
+                                          ).then(
+                                              (value) => safeSetState(() {}));
+                                        },
+                                        text:
+                                            'I\'m not ready to setup my farm.',
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
                                               .titleSmall
@@ -1419,51 +1488,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   100.0, 10.0, 0.0, 0.0),
                                           child: Text(
-                                            FFAppState().farmID,
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineSmall
-                                                .override(
-                                                  font: GoogleFonts.outfit(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineSmall
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineSmall
-                                                            .fontStyle,
-                                                  ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineSmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineSmall
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 20.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  100.0, 10.0, 0.0, 0.0),
-                                          child: Text(
-                                            'What is the unit of measure you use on the farm?',
+                                            'Select preferred unit of measurements:',
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
@@ -1516,12 +1541,16 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                             options: List<String>.from(
                                                 ['imperial', 'metric']),
                                             optionLabels: [
-                                              'Imperial',
+                                              'Imperial (US)',
                                               'Metric'
                                             ],
-                                            onChanged: (val) => safeSetState(
-                                                () =>
-                                                    _model.farmUnitValue = val),
+                                            onChanged: (val) async {
+                                              safeSetState(() =>
+                                                  _model.farmUnitValue = val);
+                                              FFAppState().farmUnit =
+                                                  _model.farmUnitValue!;
+                                              safeSetState(() {});
+                                            },
                                             width: 300.0,
                                             height: 56.0,
                                             textStyle:
@@ -1645,9 +1674,15 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                 'Indoor Farm',
                                                 'Outside'
                                               ],
-                                              onChanged: (val) => safeSetState(
-                                                  () => _model.locationValues =
-                                                      val),
+                                              onChanged: (val) async {
+                                                safeSetState(() => _model
+                                                    .locationValues = val);
+                                                FFAppState().whereDoYouGrow =
+                                                    _model.locationValues!
+                                                        .toList()
+                                                        .cast<String>();
+                                                safeSetState(() {});
+                                              },
                                               controller: _model
                                                       .locationValueController ??=
                                                   FormFieldController<
@@ -1986,9 +2021,14 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                             options:
                                                 List<bool>.from([true, false]),
                                             optionLabels: ['Yes', 'No'],
-                                            onChanged: (val) => safeSetState(() =>
-                                                _model.supplementalLightingDropDownValue =
-                                                    val),
+                                            onChanged: (val) async {
+                                              safeSetState(() => _model
+                                                      .supplementalLightingDropDownValue =
+                                                  val);
+                                              FFAppState().usesLighting = _model
+                                                  .supplementalLightingDropDownValue!;
+                                              safeSetState(() {});
+                                            },
                                             width: 200.0,
                                             height: 40.0,
                                             textStyle:
@@ -2062,38 +2102,11 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                   100.0, 20.0, 0.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
-                                              FFAppState().farmUnit =
-                                                  _model.farmUnitValue!;
-                                              FFAppState().whereDoYouGrow =
-                                                  _model.locationValues!
-                                                      .toList()
-                                                      .cast<String>();
                                               FFAppState().numberOfTowers =
                                                   int.parse(_model
                                                       .towerNumberTextController
                                                       .text);
-                                              FFAppState().usesLighting = _model
-                                                  .supplementalLightingDropDownValue!;
                                               safeSetState(() {});
-                                              await FarmsTable().update(
-                                                data: {
-                                                  'number_of_employees': _model
-                                                      .farmNumberEmployeesValue,
-                                                  'measurement_system':
-                                                      _model.farmUnitValue,
-                                                  'number_of_towers':
-                                                      int.tryParse(_model
-                                                          .towerNumberTextController
-                                                          .text),
-                                                  'growing_environments':
-                                                      _model.locationValues,
-                                                },
-                                                matchingRows: (rows) =>
-                                                    rows.eqOrNull(
-                                                  'id',
-                                                  FFAppState().farmID,
-                                                ),
-                                              );
                                               await _model.pageViewController
                                                   ?.nextPage(
                                                 duration:
@@ -2476,9 +2489,39 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                   100.0, 20.0, 0.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
-                                              await ProfilesTable().insert({
-                                                'profile_image_url':
-                                                    'https://rsndonfydqhykowljuyn.supabase.co/storage/v1/object/public/profileImages/pics/default_profile.png',
+                                              // Main Farm Insert
+                                              await FarmsTable().insert({
+                                                'farm_name':
+                                                    FFAppState().farmName,
+                                                'measurement_system':
+                                                    FFAppState().farmUnit,
+                                                'city': FFAppState().farmCity,
+                                                'state': FFAppState().farmState,
+                                                'country_code':
+                                                    FFAppState().farmCountry,
+                                                'postal_code':
+                                                    FFAppState().farmPostal,
+                                                'street_address':
+                                                    FFAppState().farmStreet,
+                                                'number_of_employees':
+                                                    FFAppState()
+                                                        .farmEmployeeCount,
+                                                'number_of_towers':
+                                                    FFAppState().numberOfTowers,
+                                                'created_by': currentUserUid,
+                                                'has_water_tests': false,
+                                                'has_vendors': false,
+                                                'has_towers': false,
+                                                'uses_lighting':
+                                                    FFAppState().usesLighting,
+                                                'status': 'active',
+                                                'farm_image_url':
+                                                    'https://rsndonfydqhykowljuyn.supabase.co/storage/v1/object/public/farmlogos/images/20250708_2047_Aeroponic%20Tower%20Farm_simple_compose_01jzpac92eff8vcf5c0qt3fpz5%20(1).png',
+                                                'growing_environments':
+                                                    _model.locationValues,
+                                                'app_usage_description': _model
+                                                    .howWillYouUseThisTextFieldTextController
+                                                    .text,
                                               });
                                               await _model.pageViewController
                                                   ?.nextPage(
@@ -2940,8 +2983,8 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                     false;
                                                 safeSetState(() {});
 
-                                                context.pushNamed(
-                                                    MainDashboardWidget
+                                                context.goNamed(
+                                                    MainLoadingPageWidget
                                                         .routeName);
                                               },
                                               text: 'I\'ll do this later',

@@ -102,7 +102,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
         curve: Curves.easeInOut,
-        width: FFAppState().navOpen == true ? 270.0 : 72.0,
+        width: FFAppState().navOpen == true ? 270.0 : 270.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primaryBackground,
           borderRadius: BorderRadius.circular(0.0),
@@ -126,10 +126,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
-                          'assets/images/AFFLogoFinal.png',
-                          width: 50.0,
-                          height: 50.0,
+                        child: Image.network(
+                          FFAppState().farmImage,
+                          width: 75.0,
+                          height: 75.0,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -207,10 +207,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.network(
-                                  FFAppState().profileImage != null &&
-                                          FFAppState().profileImage != ''
-                                      ? FFAppState().profileImage
-                                      : 'https://rsndonfydqhykowljuyn.supabase.co/storage/v1/object/public/profileImages/pics/default_profile.png',
+                                  FFAppState().profileImage,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -461,7 +458,17 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               width: double.infinity,
                               height: 44.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).alternate,
+                                color: () {
+                                  if (_model.mouseRegion2Hovered!) {
+                                    return FlutterFlowTheme.of(context)
+                                        .secondaryBackground;
+                                  } else if (widget!.selectedNav == 2) {
+                                    return FlutterFlowTheme.of(context).accent1;
+                                  } else {
+                                    return FlutterFlowTheme.of(context)
+                                        .primaryBackground;
+                                  }
+                                }(),
                                 borderRadius: BorderRadius.circular(12.0),
                                 shape: BoxShape.rectangle,
                               ),
@@ -622,63 +629,6 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                        ),
-                                      ),
-                                    if (FFAppState().navOpen == true)
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 2.0, 0.0),
-                                        child: Container(
-                                          height: 32.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          child: Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(8.0, 4.0, 8.0, 4.0),
-                                              child: Text(
-                                                '12',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .plusJakartaSans(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
                                         ),
                                       ),
                                   ],

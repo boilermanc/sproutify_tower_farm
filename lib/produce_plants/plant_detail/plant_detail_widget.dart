@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'plant_detail_model.dart';
@@ -86,8 +87,8 @@ class _PlantDetailWidgetState extends State<PlantDetailWidget> {
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Icon(
-                                  Icons.spa,
+                                FaIcon(
+                                  FontAwesomeIcons.leaf,
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
                                   size: 30.0,
@@ -224,6 +225,8 @@ class _PlantDetailWidgetState extends State<PlantDetailWidget> {
                                               getCurrentTimestamp),
                                           'created_by': currentUserUid,
                                         });
+                                        FFAppState().hasPlants = true;
+                                        safeSetState(() {});
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(

@@ -277,8 +277,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'main_NutrientsCopy')
               : MainNutrientsCopyWidget(),
+        ),
+        FFRoute(
+          name: MainLoadingPageWidget.routeName,
+          path: MainLoadingPageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => MainLoadingPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
+      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {
@@ -464,7 +471,7 @@ class FFRoute {
               ? Container(
                   color: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/DALLE_2025-02-12_07.02.43_-_A_photorealistic_image_of_fresh_green_lettuce_leaves_falling_through_the_air,_with_water_droplets_splashing_around_them._The_background_is_a_smooth,_n.webp',
+                    'assets/images/DALLE_2025-02-12_07.02.47_-_A_photorealistic_image_of_fresh_green_lettuce_leaves_falling_through_the_air,_with_water_droplets_splashing_around_them._The_background_is_a_smooth,_n.webp',
                     fit: BoxFit.cover,
                   ),
                 )

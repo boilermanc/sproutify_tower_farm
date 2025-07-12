@@ -1,4 +1,3 @@
-import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
@@ -15,13 +14,13 @@ import '/produce_plants/add_harvest_basic/add_harvest_basic_widget.dart';
 import '/produce_plants/add_planting/add_planting_widget.dart';
 import '/produce_plants/confirm_tower_waste/confirm_tower_waste_widget.dart';
 import '/produce_plants/plant_towers/plant_towers_widget.dart';
-import '/registration_profile/profile_update_component/profile_update_component_widget.dart';
 import '/spacer/add_spacer_action/add_spacer_action_widget.dart';
 import '/spacer/assign_spacer_task/assign_spacer_task_widget.dart';
 import '/spacer/confirm_spacer_ready/confirm_spacer_ready_widget.dart';
 import '/spacer/confirm_spacer_waste/confirm_spacer_waste_widget.dart';
 import '/sproutify_a_i/sproutify_a_i/sproutify_a_i_widget.dart';
 import '/tasks/clean_complete_task/clean_complete_task_widget.dart';
+import '/tasks/task_mark_completed/task_mark_completed_widget.dart';
 import '/towers/add_initial_towers/add_initial_towers_widget.dart';
 import '/towers/add_tower/add_tower_widget.dart';
 import 'dart:math';
@@ -43,10 +42,6 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - Query Rows] action in main_Dashboard widget.
-  List<InitialFarmLoadRow>? farmLoad4433;
-  // Stores action output result for [Backend Call - API (getOpenWeather)] action in main_Dashboard widget.
-  ApiCallResponse? farmWeather8888;
   // Model for sideNav component.
   late SideNavModel sideNavModel;
   // State field(s) for DropDown widget.

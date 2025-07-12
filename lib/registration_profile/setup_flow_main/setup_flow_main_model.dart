@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/registration_profile/exit_farm_setup/exit_farm_setup_widget.dart';
 import '/registration_profile/initial_tower_setup/initial_tower_setup_widget.dart';
 import 'dart:ui';
 import '/index.dart';
@@ -65,8 +66,6 @@ class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
   // State field(s) for farmNumberEmployees widget.
   String? farmNumberEmployeesValue;
   FormFieldController<String>? farmNumberEmployeesValueController;
-  // Stores action output result for [Backend Call - Insert Row] action in nextButton widget.
-  FarmsRow? farmInput9999;
   // State field(s) for farmUnit widget.
   String? farmUnitValue;
   FormFieldController<String>? farmUnitValueController;

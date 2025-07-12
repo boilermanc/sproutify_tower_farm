@@ -48,3 +48,5 @@ export '/sproutify_a_i/chat_ai_screen/chat_ai_screen_widget.dart'
     show ChatAiScreenWidget;
 export '/pages/main_nutrients_copy/main_nutrients_copy_widget.dart'
     show MainNutrientsCopyWidget;
+export '/pages/main_loading_page/main_loading_page_widget.dart'
+    show MainLoadingPageWidget;

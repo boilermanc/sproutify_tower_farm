@@ -60,4 +60,8 @@ class TasksRow extends SupabaseDataRow {
   String? get readableDueDate => getField<String>('readable_due_date');
   set readableDueDate(String? value) =>
       setField<String>('readable_due_date', value);
+
+  String? get recurringTaskId => getField<String>('recurring_task_id');
+  set recurringTaskId(String? value) =>
+      setField<String>('recurring_task_id', value);
 }

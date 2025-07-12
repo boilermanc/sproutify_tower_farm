@@ -30,6 +30,8 @@ class MainFarmOperationsModel
 
   int selectedPage = 3;
 
+  String? statusUpdated;
+
   ///  State fields for stateful widgets in this page.
 
   // Model for sideNav component.

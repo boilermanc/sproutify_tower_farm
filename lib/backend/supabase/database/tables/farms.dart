@@ -102,4 +102,23 @@ class FarmsRow extends SupabaseDataRow {
   String? get appUsageDescription => getField<String>('app_usage_description');
   set appUsageDescription(String? value) =>
       setField<String>('app_usage_description', value);
+
+  String? get addressLine2 => getField<String>('address_line_2');
+  set addressLine2(String? value) => setField<String>('address_line_2', value);
+
+  String? get neighborhood => getField<String>('neighborhood');
+  set neighborhood(String? value) => setField<String>('neighborhood', value);
+
+  String? get county => getField<String>('county');
+  set county(String? value) => setField<String>('county', value);
+
+  String? get suburb => getField<String>('suburb');
+  set suburb(String? value) => setField<String>('suburb', value);
+
+  String? get district => getField<String>('district');
+  set district(String? value) => setField<String>('district', value);
+
+  String? get addressFormatType => getField<String>('address_format_type');
+  set addressFormatType(String? value) =>
+      setField<String>('address_format_type', value);
 }

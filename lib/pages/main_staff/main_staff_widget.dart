@@ -1285,7 +1285,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                     valueOrDefault<String>(
                                                       farmRoleProfilesItem
                                                           .profileImageUrl,
-                                                      'n/a',
+                                                      'https://rsndonfydqhykowljuyn.supabase.co/storage/v1/object/public/profileImages/pics/default_profile.png',
                                                     ),
                                                     width: 50.0,
                                                     height: 50.0,

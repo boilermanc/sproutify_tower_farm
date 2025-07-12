@@ -3,10 +3,12 @@ import '/backend/supabase/supabase.dart';
 import '/components/edit_initial_towers_widget.dart';
 import '/components/initial_tower_count_per_row_widget.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
@@ -45,6 +47,9 @@ class InitialTowerSetupModel extends FlutterFlowModel<InitialTowerSetupWidget> {
       : 0;
   // State field(s) for rowCountController widget.
   int? rowCountControllerValue;
+  // State field(s) for portSelectionDropDown widget.
+  int? portSelectionDropDownValue;
+  FormFieldController<int>? portSelectionDropDownValueController;
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController;
 

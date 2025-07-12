@@ -70,4 +70,29 @@ class TowerDisplayWithPlantsRow extends SupabaseDataRow {
 
   String? get textColor => getField<String>('text_color');
   set textColor(String? value) => setField<String>('text_color', value);
+
+  bool? get hasMaintenance => getField<bool>('has_maintenance');
+  set hasMaintenance(bool? value) => setField<bool>('has_maintenance', value);
+
+  int? get maintenanceCount => getField<int>('maintenance_count');
+  set maintenanceCount(int? value) => setField<int>('maintenance_count', value);
+
+  List<String> get maintenanceTasks =>
+      getListField<String>('maintenance_tasks');
+  set maintenanceTasks(List<String>? value) =>
+      setListField<String>('maintenance_tasks', value);
+
+  List<int> get maintenanceTaskIds => getListField<int>('maintenance_task_ids');
+  set maintenanceTaskIds(List<int>? value) =>
+      setListField<int>('maintenance_task_ids', value);
+
+  List<int> get maintenanceTaskTypeIds =>
+      getListField<int>('maintenance_task_type_ids');
+  set maintenanceTaskTypeIds(List<int>? value) =>
+      setListField<int>('maintenance_task_type_ids', value);
+
+  DateTime? get nextMaintenanceDue =>
+      getField<DateTime>('next_maintenance_due');
+  set nextMaintenanceDue(DateTime? value) =>
+      setField<DateTime>('next_maintenance_due', value);
 }

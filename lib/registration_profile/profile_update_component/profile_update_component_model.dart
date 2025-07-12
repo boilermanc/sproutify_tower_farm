@@ -23,14 +23,16 @@ class ProfileUpdateComponentModel
   FocusNode? lastNameFocusNode;
   TextEditingController? lastNameTextController;
   String? Function(BuildContext, String?)? lastNameTextControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController3;
-  String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController4;
-  String? Function(BuildContext, String?)? textController4Validator;
+  // State field(s) for emailTextField widget.
+  FocusNode? emailTextFieldFocusNode;
+  TextEditingController? emailTextFieldTextController;
+  String? Function(BuildContext, String?)?
+      emailTextFieldTextControllerValidator;
+  // State field(s) for phoneTextField widget.
+  FocusNode? phoneTextFieldFocusNode;
+  TextEditingController? phoneTextFieldTextController;
+  String? Function(BuildContext, String?)?
+      phoneTextFieldTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -43,10 +45,10 @@ class ProfileUpdateComponentModel
     lastNameFocusNode?.dispose();
     lastNameTextController?.dispose();
 
-    textFieldFocusNode1?.dispose();
-    textController3?.dispose();
+    emailTextFieldFocusNode?.dispose();
+    emailTextFieldTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController4?.dispose();
+    phoneTextFieldFocusNode?.dispose();
+    phoneTextFieldTextController?.dispose();
   }
 }

@@ -25,4 +25,7 @@ class CountryCodesRow extends SupabaseDataRow {
 
   String get phoneCode => getField<String>('phone_code')!;
   set phoneCode(String value) => setField<String>('phone_code', value);
+
+  int? get displayOrder => getField<int>('display_order');
+  set displayOrder(int? value) => setField<int>('display_order', value);
 }

@@ -62,4 +62,23 @@ class TaskAssignmentViewRow extends SupabaseDataRow {
   String? get towerIdentifier => getField<String>('tower_identifier');
   set towerIdentifier(String? value) =>
       setField<String>('tower_identifier', value);
+
+  String? get recurringTaskId => getField<String>('recurring_task_id');
+  set recurringTaskId(String? value) =>
+      setField<String>('recurring_task_id', value);
+
+  bool? get isRecurring => getField<bool>('is_recurring');
+  set isRecurring(bool? value) => setField<bool>('is_recurring', value);
+
+  String? get recurrencePattern => getField<String>('recurrence_pattern');
+  set recurrencePattern(String? value) =>
+      setField<String>('recurrence_pattern', value);
+
+  int? get recurrenceInterval => getField<int>('recurrence_interval');
+  set recurrenceInterval(int? value) =>
+      setField<int>('recurrence_interval', value);
+
+  String? get recurrenceDays => getField<String>('recurrence_days');
+  set recurrenceDays(String? value) =>
+      setField<String>('recurrence_days', value);
 }

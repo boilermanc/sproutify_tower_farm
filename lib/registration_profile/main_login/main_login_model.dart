@@ -1,7 +1,9 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/registration_profile/setup_flow_main/setup_flow_main_widget.dart';
 import '/registration_profile/sign_up_landing_page/sign_up_landing_page_widget.dart';
 import 'dart:ui';
 import '/index.dart';
@@ -23,6 +25,8 @@ class MainLoginModel extends FlutterFlowModel<MainLoginWidget> {
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  // Stores action output result for [Backend Call - Query Rows] action in loginButton widget.
+  List<ProfilesRow>? profileResponse0011;
 
   @override
   void initState(BuildContext context) {
