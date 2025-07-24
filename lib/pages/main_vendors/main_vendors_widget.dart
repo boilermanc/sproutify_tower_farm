@@ -827,9 +827,17 @@ class _MainVendorsWidgetState extends State<MainVendorsWidget> {
                                                 width: 100.0,
                                                 height: 40.0,
                                                 decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
+                                                  color: colorFromCssString(
+                                                    farmVendorsItem
+                                                                .farmVendorActive ==
+                                                            true
+                                                        ? '#A5E5C2'
+                                                        : '#EE8B60',
+                                                    defaultColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                  ),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           10.0),
@@ -839,12 +847,11 @@ class _MainVendorsWidgetState extends State<MainVendorsWidget> {
                                                       AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Text(
-                                                    valueOrDefault<String>(
-                                                      farmVendorsItem
-                                                          .farmVendorActive
-                                                          ?.toString(),
-                                                      ' Active',
-                                                    ),
+                                                    farmVendorsItem
+                                                                .farmVendorActive ==
+                                                            true
+                                                        ? 'Active'
+                                                        : 'Inactive',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium

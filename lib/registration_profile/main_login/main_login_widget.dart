@@ -442,7 +442,7 @@ class _MainLoginWidgetState extends State<MainLoginWidget> {
                                                       .fontStyle,
                                             ),
                                             color: Colors.white,
-                                            fontSize: 24.0,
+                                            fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:

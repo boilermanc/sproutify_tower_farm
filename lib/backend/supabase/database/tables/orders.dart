@@ -17,8 +17,8 @@ class OrdersRow extends SupabaseDataRow {
   String get id => getField<String>('id')!;
   set id(String value) => setField<String>('id', value);
 
-  String get vendorId => getField<String>('vendor_id')!;
-  set vendorId(String value) => setField<String>('vendor_id', value);
+  String? get vendorId => getField<String>('vendor_id');
+  set vendorId(String? value) => setField<String>('vendor_id', value);
 
   String get farmId => getField<String>('farm_id')!;
   set farmId(String value) => setField<String>('farm_id', value);
@@ -78,4 +78,7 @@ class OrdersRow extends SupabaseDataRow {
 
   int get orderStatusId => getField<int>('order_status_id')!;
   set orderStatusId(int value) => setField<int>('order_status_id', value);
+
+  String? get customerId => getField<String>('customer_id');
+  set customerId(String? value) => setField<String>('customer_id', value);
 }

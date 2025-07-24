@@ -67,4 +67,7 @@ class PlantsRow extends SupabaseDataRow {
   String? get correctedImageUrl => getField<String>('corrected_image_url');
   set correctedImageUrl(String? value) =>
       setField<String>('corrected_image_url', value);
+
+  int? get categoryId => getField<int>('category_id');
+  set categoryId(int? value) => setField<int>('category_id', value);
 }

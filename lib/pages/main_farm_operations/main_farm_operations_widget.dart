@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/produce_plants/no_tasks/no_tasks_widget.dart';
 import '/tasks/add_task/add_task_widget.dart';
+import '/tasks/recurring_task_management/recurring_task_management_widget.dart';
 import '/tasks/task_mark_completed/task_mark_completed_widget.dart';
 import '/tasks/task_note/task_note_widget.dart';
 import '/tasks/update_task_role/update_task_role_widget.dart';
@@ -300,6 +301,105 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                           safeSetState(() {}));
                                                     },
                                                     text: 'Add Task',
+                                                    options: FFButtonOptions(
+                                                      height: 40.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  24.0,
+                                                                  0.0,
+                                                                  24.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: Colors
+                                                                    .white,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                              ),
+                                                      elevation: 3.0,
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          20.0, 0.0, 0.0, 0.0),
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return GestureDetector(
+                                                            onTap: () {
+                                                              FocusScope.of(
+                                                                      context)
+                                                                  .unfocus();
+                                                              FocusManager
+                                                                  .instance
+                                                                  .primaryFocus
+                                                                  ?.unfocus();
+                                                            },
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  RecurringTaskManagementWidget(),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
+                                                    },
+                                                    text:
+                                                        'Manage Recurring Tasks',
                                                     options: FFButtonOptions(
                                                       height: 40.0,
                                                       padding:
@@ -856,15 +956,17 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           0.0,
                                                                           0.0),
                                                                   child: Text(
-                                                                    formatNumber(
-                                                                      metricsContainerTaskDashboardOverviewRow!
-                                                                          .completionRate!,
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .decimal,
-                                                                      decimalType:
-                                                                          DecimalType
-                                                                              .periodDecimal,
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      formatNumber(
+                                                                        metricsContainerTaskDashboardOverviewRow
+                                                                            ?.completionRate,
+                                                                        formatType:
+                                                                            FormatType.decimal,
+                                                                        decimalType:
+                                                                            DecimalType.periodDecimal,
+                                                                      ),
+                                                                      '100',
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -962,15 +1064,17 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                           0.0,
                                                                           0.0),
                                                                   child: Text(
-                                                                    formatNumber(
-                                                                      metricsContainerTaskDashboardOverviewRow!
-                                                                          .avgCompletionTimeHours!,
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .decimal,
-                                                                      decimalType:
-                                                                          DecimalType
-                                                                              .periodDecimal,
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      formatNumber(
+                                                                        metricsContainerTaskDashboardOverviewRow
+                                                                            ?.avgCompletionTimeHours,
+                                                                        formatType:
+                                                                            FormatType.decimal,
+                                                                        decimalType:
+                                                                            DecimalType.periodDecimal,
+                                                                      ),
+                                                                      '0.0',
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)

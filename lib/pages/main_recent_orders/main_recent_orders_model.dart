@@ -1,6 +1,4 @@
 import '/backend/supabase/supabase.dart';
-import '/components/mark_order_complete_widget.dart';
-import '/components/order_detail_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
@@ -8,6 +6,8 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/orders/mark_order_complete/mark_order_complete_widget.dart';
+import '/orders/order_detail/order_detail_widget.dart';
 import '/produce_plants/allocate_harvest/allocate_harvest_widget.dart';
 import '/produce_plants/allocate_produce/allocate_produce_widget.dart';
 import '/produce_plants/no_available_harvest/no_available_harvest_widget.dart';

@@ -59,7 +59,8 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
     _model.dailyTextFieldTextController ??= TextEditingController();
     _model.dailyTextFieldFocusNode ??= FocusNode();
 
-    _model.setWeeklyDayTextFieldTextController ??= TextEditingController();
+    _model.setWeeklyDayTextFieldTextController ??=
+        TextEditingController(text: '1');
     _model.setWeeklyDayTextFieldFocusNode ??= FocusNode();
 
     _model.taskMonthlyIntervalTextController ??= TextEditingController();
@@ -4043,7 +4044,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                       _model.repeatPattern = 1;
                                                       FFAppState()
                                                               .taskRecurrencePattern =
-                                                          'Daily';
+                                                          'daily';
                                                       safeSetState(() {});
                                                     },
                                                     child: Container(
@@ -4238,7 +4239,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                     _model.repeatPattern = 2;
                                                     FFAppState()
                                                             .taskRecurrencePattern =
-                                                        'Weekly';
+                                                        'weekly';
                                                     safeSetState(() {});
                                                   },
                                                   child: Container(
@@ -4436,7 +4437,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                     _model.repeatPattern = 3;
                                                     FFAppState()
                                                             .taskRecurrencePattern =
-                                                        'Monthly';
+                                                        'monthly';
                                                     safeSetState(() {});
                                                   },
                                                   child: Container(
@@ -4754,6 +4755,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                           fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
                                                                                           fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                                         ),
+                                                                                        fontSize: 18.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
                                                                                         fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
@@ -4764,7 +4766,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                           fontWeight: FontWeight.w600,
                                                                                           fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                                         ),
-                                                                                        fontSize: 16.0,
+                                                                                        fontSize: 18.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.w600,
                                                                                         fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
@@ -4805,6 +4807,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                         fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                       ),
+                                                                                      fontSize: 18.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -4971,6 +4974,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                         fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
                                                                                         fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                                       ),
+                                                                                      fontSize: 16.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
                                                                                       fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
@@ -5022,6 +5026,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                       fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
+                                                                                    fontSize: 16.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -5085,19 +5090,18 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                     .cast<int>();
                                                                                 _model.mondaySelected = !_model.mondaySelected;
                                                                                 safeSetState(() {});
-                                                                                if (FFAppState().taskSelectedWeekdays.contains('monday') == true) {
-                                                                                  FFAppState().removeFromTaskSelectedWeekdays('monday');
-                                                                                  safeSetState(() {});
-                                                                                } else {
-                                                                                  FFAppState().addToTaskSelectedWeekdays('monday');
-                                                                                  safeSetState(() {});
-                                                                                }
+                                                                                FFAppState().taskSelectedWeekdays = (List<int> currentWeekdays) {
+                                                                                  return currentWeekdays.contains(1) ? currentWeekdays.where((day) => day != 1).toList() : [...currentWeekdays, 1];
+                                                                                }(FFAppState().taskSelectedWeekdays.toList())
+                                                                                    .toList()
+                                                                                    .cast<int>();
+                                                                                safeSetState(() {});
                                                                               },
                                                                               child: Container(
                                                                                 width: 35.0,
                                                                                 height: 35.0,
                                                                                 decoration: BoxDecoration(
-                                                                                  color: _model.mondaySelected ? FlutterFlowTheme.of(context).primary : FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                  color: !_model.mondaySelected ? FlutterFlowTheme.of(context).secondaryBackground : FlutterFlowTheme.of(context).primary,
                                                                                   borderRadius: BorderRadius.circular(5.0),
                                                                                 ),
                                                                                 child: Align(
@@ -5109,7 +5113,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                             fontWeight: FontWeight.w600,
                                                                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
-                                                                                          color: _model.mondaySelected ? FlutterFlowTheme.of(context).secondaryBackground : FlutterFlowTheme.of(context).primaryText,
+                                                                                          color: !_model.mondaySelected ? FlutterFlowTheme.of(context).primaryText : FlutterFlowTheme.of(context).secondaryBackground,
                                                                                           fontSize: 16.0,
                                                                                           letterSpacing: 0.0,
                                                                                           fontWeight: FontWeight.w600,
@@ -5139,6 +5143,12 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                     .toList()
                                                                                     .cast<int>();
                                                                                 _model.tuesdaySelected = !_model.tuesdaySelected;
+                                                                                safeSetState(() {});
+                                                                                FFAppState().taskSelectedWeekdays = (List<int> currentWeekdays) {
+                                                                                  return currentWeekdays.contains(2) ? currentWeekdays.where((day) => day != 2).toList() : [...currentWeekdays, 2];
+                                                                                }(FFAppState().taskSelectedWeekdays.toList())
+                                                                                    .toList()
+                                                                                    .cast<int>();
                                                                                 safeSetState(() {});
                                                                               },
                                                                               child: Container(
@@ -5188,6 +5198,12 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                     .cast<int>();
                                                                                 _model.wedSelected = !_model.wedSelected;
                                                                                 safeSetState(() {});
+                                                                                FFAppState().taskSelectedWeekdays = (List<int> currentWeekdays) {
+                                                                                  return currentWeekdays.contains(3) ? currentWeekdays.where((day) => day != 3).toList() : [...currentWeekdays, 3];
+                                                                                }(FFAppState().taskSelectedWeekdays.toList())
+                                                                                    .toList()
+                                                                                    .cast<int>();
+                                                                                safeSetState(() {});
                                                                               },
                                                                               child: Container(
                                                                                 width: 35.0,
@@ -5235,6 +5251,12 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                     .toList()
                                                                                     .cast<int>();
                                                                                 _model.thursdaySelected = !_model.thursdaySelected;
+                                                                                safeSetState(() {});
+                                                                                FFAppState().taskSelectedWeekdays = (List<int> currentWeekdays) {
+                                                                                  return currentWeekdays.contains(4) ? currentWeekdays.where((day) => day != 4).toList() : [...currentWeekdays, 4];
+                                                                                }(FFAppState().taskSelectedWeekdays.toList())
+                                                                                    .toList()
+                                                                                    .cast<int>();
                                                                                 safeSetState(() {});
                                                                               },
                                                                               child: Container(
@@ -5284,6 +5306,12 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                     .cast<int>();
                                                                                 _model.fridaySelected = !_model.fridaySelected;
                                                                                 safeSetState(() {});
+                                                                                FFAppState().taskSelectedWeekdays = (List<int> currentWeekdays) {
+                                                                                  return currentWeekdays.contains(5) ? currentWeekdays.where((day) => day != 5).toList() : [...currentWeekdays, 5];
+                                                                                }(FFAppState().taskSelectedWeekdays.toList())
+                                                                                    .toList()
+                                                                                    .cast<int>();
+                                                                                safeSetState(() {});
                                                                               },
                                                                               child: Container(
                                                                                 width: 35.0,
@@ -5332,6 +5360,12 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                     .cast<int>();
                                                                                 _model.saturdaySelected = !_model.saturdaySelected;
                                                                                 safeSetState(() {});
+                                                                                FFAppState().taskSelectedWeekdays = (List<int> currentWeekdays) {
+                                                                                  return currentWeekdays.contains(6) ? currentWeekdays.where((day) => day != 6).toList() : [...currentWeekdays, 6];
+                                                                                }(FFAppState().taskSelectedWeekdays.toList())
+                                                                                    .toList()
+                                                                                    .cast<int>();
+                                                                                safeSetState(() {});
                                                                               },
                                                                               child: Container(
                                                                                 width: 35.0,
@@ -5379,6 +5413,12 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                                     .toList()
                                                                                     .cast<int>();
                                                                                 _model.sundaySelected = !_model.sundaySelected;
+                                                                                safeSetState(() {});
+                                                                                FFAppState().taskSelectedWeekdays = (List<int> currentWeekdays) {
+                                                                                  return currentWeekdays.contains(7) ? currentWeekdays.where((day) => day != 7).toList() : [...currentWeekdays, 7];
+                                                                                }(FFAppState().taskSelectedWeekdays.toList())
+                                                                                    .toList()
+                                                                                    .cast<int>();
                                                                                 safeSetState(() {});
                                                                               },
                                                                               child: Container(
@@ -5966,6 +6006,9 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                     FFAppState().taskDueTime =
                                                         dateTimeFormat("jm",
                                                             _model.datePicked2);
+                                                    FFAppState()
+                                                            .taskDueTime24Hour =
+                                                        _model.datePicked2;
                                                     safeSetState(() {});
                                                   },
                                                   child: Container(
@@ -6356,10 +6399,10 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                 valueOrDefault<
                                                                     String>(
                                                                   dateTimeFormat(
-                                                                      "d/M/y",
-                                                                      _model
-                                                                          .startDate),
-                                                                  '07/07/2025',
+                                                                      "yMd",
+                                                                      FFAppState()
+                                                                          .taskStartDate),
+                                                                  '07/12/2025',
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -6595,8 +6638,8 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                     String>(
                                                                   dateTimeFormat(
                                                                       "yMd",
-                                                                      _model
-                                                                          .endDate),
+                                                                      FFAppState()
+                                                                          .taskEndDate),
                                                                   'mm/dd/yyyy',
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
@@ -6764,6 +6807,28 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                 .dailyTextFieldTextController
                                                                 .text);
                                                         safeSetState(() {});
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  RecurringTaskSummaryWidget(),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            safeSetState(
+                                                                () {}));
+
+                                                        Navigator.pop(context);
                                                       },
                                                       text: 'Next',
                                                       options: FFButtonOptions(
@@ -6823,8 +6888,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                                 .circular(8.0),
                                                       ),
                                                     ),
-                                                  if (_model.repeatPattern ==
-                                                      22)
+                                                  if (_model.repeatPattern == 2)
                                                     FFButtonWidget(
                                                       onPressed: () async {
                                                         FFAppState()
@@ -6832,8 +6896,30 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                             int.parse(_model
                                                                 .setWeeklyDayTextFieldTextController
                                                                 .text);
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  RecurringTaskSummaryWidget(),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            safeSetState(
+                                                                () {}));
+
+                                                        Navigator.pop(context);
                                                       },
-                                                      text: 'Button',
+                                                      text: 'Next',
                                                       options: FFButtonOptions(
                                                         height: 40.0,
                                                         padding:
@@ -6894,6 +6980,17 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                   if (_model.repeatPattern == 3)
                                                     FFButtonWidget(
                                                       onPressed: () async {
+                                                        FFAppState()
+                                                                .taskMonthlyInterval =
+                                                            int.parse(_model
+                                                                .taskMonthlyIntervalTextController
+                                                                .text);
+                                                        FFAppState()
+                                                                .taskDayOfMonth =
+                                                            int.parse(_model
+                                                                .montDayTextFieldTextController
+                                                                .text);
+                                                        safeSetState(() {});
                                                         Navigator.pop(context);
                                                         await showModalBottomSheet(
                                                           isScrollControlled:

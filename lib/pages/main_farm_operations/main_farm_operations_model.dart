@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/produce_plants/no_tasks/no_tasks_widget.dart';
 import '/tasks/add_task/add_task_widget.dart';
+import '/tasks/recurring_task_management/recurring_task_management_widget.dart';
 import '/tasks/task_mark_completed/task_mark_completed_widget.dart';
 import '/tasks/task_note/task_note_widget.dart';
 import '/tasks/update_task_role/update_task_role_widget.dart';

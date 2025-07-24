@@ -966,7 +966,7 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                                         color: farmCustomersItem
                                                                     .active ==
                                                                 true
-                                                            ? Color(0xFFE9FDE7)
+                                                            ? Color(0xFFA3DD9D)
                                                             : FlutterFlowTheme
                                                                     .of(context)
                                                                 .tertiary,

@@ -256,6 +256,8 @@ dynamic deserializeParam<T>(
             return SensorAlertHistoryViewRow(data);
           case MechanicalsHeaterDetailsRow:
             return MechanicalsHeaterDetailsRow(data);
+          case TowerDisplayWithPlantsTestRow:
+            return TowerDisplayWithPlantsTestRow(data);
           case LightingCostWithCountryRow:
             return LightingCostWithCountryRow(data);
           case CustomerCareSayingsRow:
@@ -362,6 +364,8 @@ dynamic deserializeParam<T>(
             return TowerDashboardBasicRow(data);
           case UnitConversionsRow:
             return UnitConversionsRow(data);
+          case TowerManagementViewRow:
+            return TowerManagementViewRow(data);
           case SpacerWasteSeverityListRow:
             return SpacerWasteSeverityListRow(data);
           case VendorsRow:
@@ -460,8 +464,6 @@ dynamic deserializeParam<T>(
             return GrowingMediaRow(data);
           case TowerHistoryRow:
             return TowerHistoryRow(data);
-          case VAvailableTowersRow:
-            return VAvailableTowersRow(data);
           case WaterFlowQuarterlyTotalsRow:
             return WaterFlowQuarterlyTotalsRow(data);
           case TaskCategoryTasksViewRow:
@@ -942,6 +944,8 @@ dynamic deserializeParam<T>(
             return CustomersRow(data);
           case MonitoringPhRangesRow:
             return MonitoringPhRangesRow(data);
+          case FarmTowerConfigsRow:
+            return FarmTowerConfigsRow(data);
           case TaskMainCategoriesRow:
             return TaskMainCategoriesRow(data);
           case PlantCatalogRow:

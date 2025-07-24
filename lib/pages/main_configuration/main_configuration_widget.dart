@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/registration_profile/profile_component/profile_component_widget.dart';
+import '/settings/general_farm_lighting/general_farm_lighting_widget.dart';
+import '/settings/general_farm_settings/general_farm_settings_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -43,6 +45,8 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -231,27 +235,50 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(5.0, 0.0, 5.0, 0.0),
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  color: Color(0xFFE5F3FD),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsets.all(10.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'Profile',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              font: GoogleFonts
-                                                                  .plusJakartaSans(
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  FFAppState().selectedFarmNav =
+                                                      'profile';
+                                                  safeSetState(() {});
+                                                },
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xFFE5F3FD),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsets.all(10.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          'Profile',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
@@ -260,20 +287,9 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                               ),
-                                                              fontSize: 16.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                      ),
-                                                    ],
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -358,28 +374,55 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         5.0, 0.0, 5.0, 0.0),
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xFFE5F3FD),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.all(10.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          'General',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .plusJakartaSans(
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    FFAppState()
+                                                            .selectedFarmNav =
+                                                        'general';
+                                                    safeSetState(() {});
+                                                  },
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xFFE5F3FD),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsets.all(10.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            'General',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
@@ -388,19 +431,9 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ],
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -415,6 +448,95 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                                     _model.mouseRegionHovered2 =
                                                         false);
                                               }),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 0.0),
+                                              child: MouseRegion(
+                                                opaque: false,
+                                                cursor: MouseCursor.defer ??
+                                                    MouseCursor.defer,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 5.0, 0.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      FFAppState()
+                                                              .selectedFarmNav =
+                                                          'lighting';
+                                                      safeSetState(() {});
+                                                    },
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0xFFE5F3FD),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      child: Padding(
+                                                        padding: EdgeInsets.all(
+                                                            10.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Text(
+                                                              'Lighting',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                onEnter: ((event) async {
+                                                  safeSetState(() => _model
+                                                          .mouseRegionHovered3 =
+                                                      true);
+                                                }),
+                                                onExit: ((event) async {
+                                                  safeSetState(() => _model
+                                                          .mouseRegionHovered3 =
+                                                      false);
+                                                }),
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -433,15 +555,8 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                         width: 650.0,
                                         height: 600.0,
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
                                           borderRadius:
                                               BorderRadius.circular(8.0),
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 1.0,
-                                          ),
                                         ),
                                         child: Padding(
                                           padding: EdgeInsets.all(5.0),
@@ -451,25 +566,90 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Stack(
-                                                  children: [
-                                                    Container(
-                                                      width: double.infinity,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
+                                                Container(
+                                                  width: 700.0,
+                                                  height: 620.0,
+                                                  child: Stack(
+                                                    children: [
+                                                      SingleChildScrollView(
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            if (FFAppState()
+                                                                    .selectedFarmNav ==
+                                                                'lighting')
+                                                              Expanded(
+                                                                child:
+                                                                    Container(
+                                                                  width: 600.0,
+                                                                  height: 600.0,
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                  child:
+                                                                      wrapWithModel(
+                                                                    model: _model
+                                                                        .generalFarmLightingModel,
+                                                                    updateCallback: () =>
+                                                                        safeSetState(
+                                                                            () {}),
+                                                                    child:
+                                                                        GeneralFarmLightingWidget(),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (FFAppState()
+                                                                    .selectedFarmNav ==
+                                                                'general')
+                                                              Container(
+                                                                width: 600.0,
+                                                                height: 600.0,
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child:
+                                                                    wrapWithModel(
+                                                                  model: _model
+                                                                      .generalFarmSettingsModel,
+                                                                  updateCallback: () =>
+                                                                      safeSetState(
+                                                                          () {}),
+                                                                  child:
+                                                                      GeneralFarmSettingsWidget(),
+                                                                ),
+                                                              ),
+                                                            if (FFAppState()
+                                                                    .selectedFarmNav ==
+                                                                'profile')
+                                                              Container(
+                                                                width: 600.0,
+                                                                height: 600.0,
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child:
+                                                                    SingleChildScrollView(
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      wrapWithModel(
+                                                                        model: _model
+                                                                            .profileComponentModel,
+                                                                        updateCallback:
+                                                                            () =>
+                                                                                safeSetState(() {}),
+                                                                        child:
+                                                                            ProfileComponentWidget(),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                          ],
+                                                        ),
                                                       ),
-                                                      child: wrapWithModel(
-                                                        model: _model
-                                                            .profileComponentModel,
-                                                        updateCallback: () =>
-                                                            safeSetState(() {}),
-                                                        child:
-                                                            ProfileComponentWidget(),
-                                                      ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ],
                                             ),

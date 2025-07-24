@@ -244,3 +244,168 @@ int? getTowerNumber(String? towerPosition) {
   }
   return 1;
 }
+
+String? formatSelectedDays(List<int>? taskSelectedWeekdays) {
+  if (taskSelectedWeekdays == null || taskSelectedWeekdays.isEmpty) {
+    return "";
+  }
+
+  Map<int, String> dayMap = {
+    1: "Mon",
+    2: "Tue",
+    3: "Wed",
+    4: "Thu",
+    5: "Fri",
+    6: "Sat",
+    7: "Sun"
+  };
+
+  List<int> sortedDays = List.from(taskSelectedWeekdays);
+  sortedDays.sort();
+  List<String> dayNames = sortedDays.map((day) => dayMap[day] ?? "").toList();
+  return dayNames.join(", ");
+}
+
+String convertWeekdaysToString(List<int> weekdays) {
+// Handle empty list
+  if (weekdays.isEmpty) {
+    return '';
+  }
+
+  // Day names mapping (0 = Sunday, 1 = Monday, etc.)
+  const List<String> dayNames = [
+    'sunday', // 0
+    'monday', // 1
+    'tuesday', // 2
+    'wednesday', // 3
+    'thursday', // 4
+    'friday', // 5
+    'saturday' // 6
+  ];
+
+  // Convert each number to day name
+  List<String> selectedDayNames = [];
+  for (int dayNumber in weekdays) {
+    if (dayNumber >= 0 && dayNumber <= 6) {
+      selectedDayNames.add(dayNames[dayNumber]);
+    }
+  }
+
+  // Join with commas and return
+  return selectedDayNames.join(',');
+}
+
+String convertTo24HourFormat(String time12h) {
+  try {
+    // Remove any extra spaces and convert to uppercase
+    String cleanTime = time12h.trim().toUpperCase();
+
+    // Split by space to separate time and AM/PM
+    List<String> parts = cleanTime.split(' ');
+    if (parts.length != 2) return '00:00:00';
+
+    String timePart = parts[0]; // "2:43"
+    String ampm = parts[1]; // "PM"
+
+    // Split time into hour and minute
+    List<String> timeParts = timePart.split(':');
+    if (timeParts.length != 2) return '00:00:00';
+
+    int hour = int.tryParse(timeParts[0]) ?? 0;
+    int minute = int.tryParse(timeParts[1]) ?? 0;
+
+    // Validate hour and minute ranges
+    if (hour < 1 || hour > 12 || minute < 0 || minute > 59) {
+      return '00:00:00';
+    }
+
+    // Convert to 24-hour format
+    if (ampm == 'PM' && hour != 12) {
+      hour += 12;
+    } else if (ampm == 'AM' && hour == 12) {
+      hour = 0;
+    }
+
+    // Format with leading zeros and add seconds
+    String hourStr = hour.toString().padLeft(2, '0');
+    String minuteStr = minute.toString().padLeft(2, '0');
+
+    return '$hourStr:$minuteStr:00';
+  } catch (e) {
+    // Return default time if any error occurs
+    return '00:00:00';
+  }
+}
+
+DateTime formatDateForDB(DateTime dateTime) {
+  try {
+    // Return a new DateTime with just the date portion (no time)
+    return DateTime(dateTime.year, dateTime.month, dateTime.day);
+  } catch (e) {
+    // Return today's date as fallback (date portion only)
+    DateTime now = DateTime.now();
+    return DateTime(now.year, now.month, now.day);
+  }
+}
+
+/// Convert weekday integers to database format
+String? formatSelectedDaysForDB(List<int>? taskSelectedWeekdays) {
+  if (taskSelectedWeekdays == null || taskSelectedWeekdays.isEmpty) {
+    return null;
+  }
+
+  Map<int, String> dayMap = {
+    1: "monday",
+    2: "tuesday",
+    3: "wednesday",
+    4: "thursday",
+    5: "friday",
+    6: "saturday",
+    7: "sunday"
+  };
+
+  List<int> sortedDays = List.from(taskSelectedWeekdays);
+  sortedDays.sort();
+  List<String> dayNames = sortedDays.map((day) => dayMap[day] ?? "").toList();
+  return dayNames.join(",");
+}
+
+/// Combine start date and due time for next_due_date field
+DateTime calculateNextDueDate(
+  DateTime startDate,
+  String dueTime,
+) {
+  try {
+    // Convert time part to 24-hour format
+    String cleanTime = dueTime.trim().toUpperCase();
+    List<String> parts = cleanTime.split(' ');
+
+    if (parts.length != 2) {
+      return DateTime(startDate.year, startDate.month, startDate.day, 0, 0);
+    }
+
+    String timePart = parts[0];
+    String ampm = parts[1];
+
+    List<String> timeParts = timePart.split(':');
+    if (timeParts.length != 2) {
+      return DateTime(startDate.year, startDate.month, startDate.day, 0, 0);
+    }
+
+    int hour = int.tryParse(timeParts[0]) ?? 0;
+    int minute = int.tryParse(timeParts[1]) ?? 0;
+
+    if (ampm == 'PM' && hour != 12) {
+      hour += 12;
+    } else if (ampm == 'AM' && hour == 12) {
+      hour = 0;
+    }
+
+    // Return DateTime object
+    return DateTime(
+        startDate.year, startDate.month, startDate.day, hour, minute);
+  } catch (e) {
+    // Fallback to start of day
+    return DateTime(startDate.year, startDate.month, startDate.day, 0, 0);
+  }
+}

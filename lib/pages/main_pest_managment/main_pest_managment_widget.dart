@@ -1,6 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/deploy_new_card_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
@@ -8,6 +7,7 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pest_management/deploy_new_card/deploy_new_card_widget.dart';
 import '/pests/add_pest_application/add_pest_application_widget.dart';
 import '/pests/no_i_p_m/no_i_p_m_widget.dart';
 import '/pests/no_pest_applications/no_pest_applications_widget.dart';

@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sproutify_a_i/ai_chat_component/ai_chat_component_widget.dart';
 import 'dart:async';
 import 'dart:ui';

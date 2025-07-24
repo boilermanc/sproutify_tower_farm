@@ -802,8 +802,7 @@ class GenerateTowerStatusReportwithNeightNCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'generateTowerStatusReportwithNeightN',
-      apiUrl:
-          'https://n8n.sproutify.app/webhook/94d9e14a-17c3-4928-bad9-49656428bdc1',
+      apiUrl: 'https://n8n.sproutify.app/webhook/generate-tower-report',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -218,13 +219,31 @@ class _PlantDetailWidgetState extends State<PlantDetailWidget> {
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        await FarmPlantsTable().insert({
-                                          'farm_id': FFAppState().farmID,
-                                          'plant_id': widget!.plantID,
-                                          'created_at': supaSerialize<DateTime>(
-                                              getCurrentTimestamp),
-                                          'created_by': currentUserUid,
-                                        });
+                                        unawaited(
+                                          () async {
+                                            _model.outputCode7777 =
+                                                await FarmPlantsTable().insert({
+                                              'farm_id': FFAppState().farmID,
+                                              'plant_id': widget!.plantID,
+                                              'created_at':
+                                                  supaSerialize<DateTime>(
+                                                      getCurrentTimestamp),
+                                              'created_by': currentUserUid,
+                                            });
+                                          }(),
+                                        );
+                                        if (FFAppState().hasPlants != true) {
+                                          await FarmsTable().update(
+                                            data: {
+                                              'has_plants': true,
+                                            },
+                                            matchingRows: (rows) =>
+                                                rows.eqOrNull(
+                                              'id',
+                                              FFAppState().farmID,
+                                            ),
+                                          );
+                                        }
                                         FFAppState().hasPlants = true;
                                         safeSetState(() {});
                                         ScaffoldMessenger.of(context)
@@ -246,6 +265,8 @@ class _PlantDetailWidgetState extends State<PlantDetailWidget> {
                                           ),
                                         );
                                         Navigator.pop(context);
+
+                                        safeSetState(() {});
                                       },
                                       text: 'Add to Farm',
                                       options: FFButtonOptions(

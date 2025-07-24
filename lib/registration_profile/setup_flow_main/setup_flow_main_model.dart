@@ -86,6 +86,8 @@ class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
   TextEditingController? howWillYouUseThisTextFieldTextController;
   String? Function(BuildContext, String?)?
       howWillYouUseThisTextFieldTextControllerValidator;
+  // Stores action output result for [Backend Call - Insert Row] action in nextButton widget.
+  FarmsRow? farmSetup3322;
 
   @override
   void initState(BuildContext context) {}

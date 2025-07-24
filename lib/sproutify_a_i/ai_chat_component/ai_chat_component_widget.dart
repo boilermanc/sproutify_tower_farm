@@ -3,6 +3,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sproutify_a_i/empty_list/empty_list_widget.dart';
 import '/sproutify_a_i/writing_indicator/writing_indicator_widget.dart';
 import 'dart:ui';
@@ -557,7 +558,10 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                           }
 
                           await Future.delayed(
-                              const Duration(milliseconds: 800));
+                            Duration(
+                              milliseconds: 800,
+                            ),
+                          );
                           await _model.listViewController?.animateTo(
                             _model.listViewController!.position.maxScrollExtent,
                             duration: Duration(milliseconds: 100),
@@ -759,7 +763,10 @@ class _AiChatComponentWidgetState extends State<AiChatComponentWidget> {
                           }
 
                           await Future.delayed(
-                              const Duration(milliseconds: 800));
+                            Duration(
+                              milliseconds: 800,
+                            ),
+                          );
                           await _model.listViewController?.animateTo(
                             _model.listViewController!.position.maxScrollExtent,
                             duration: Duration(milliseconds: 100),

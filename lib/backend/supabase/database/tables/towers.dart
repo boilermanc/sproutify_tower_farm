@@ -44,4 +44,7 @@ class TowersRow extends SupabaseDataRow {
 
   bool? get isSpacerTray => getField<bool>('is_spacer_tray');
   set isSpacerTray(bool? value) => setField<bool>('is_spacer_tray', value);
+
+  bool get isActive => getField<bool>('is_active')!;
+  set isActive(bool value) => setField<bool>('is_active', value);
 }

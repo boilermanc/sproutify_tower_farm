@@ -664,7 +664,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                       }
 
                                       await Future.delayed(
-                                          const Duration(milliseconds: 3000));
+                                        Duration(
+                                          milliseconds: 3000,
+                                        ),
+                                      );
                                       await ProfilesTable().update(
                                         data: {
                                           'first_name': _model

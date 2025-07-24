@@ -14,6 +14,7 @@ import '/produce_plants/add_harvest_basic/add_harvest_basic_widget.dart';
 import '/produce_plants/add_planting/add_planting_widget.dart';
 import '/produce_plants/confirm_tower_waste/confirm_tower_waste_widget.dart';
 import '/produce_plants/plant_towers/plant_towers_widget.dart';
+import '/registration_profile/initial_tower_setup/initial_tower_setup_widget.dart';
 import '/spacer/add_spacer_action/add_spacer_action_widget.dart';
 import '/spacer/assign_spacer_task/assign_spacer_task_widget.dart';
 import '/spacer/confirm_spacer_ready/confirm_spacer_ready_widget.dart';
@@ -22,7 +23,7 @@ import '/sproutify_a_i/sproutify_a_i/sproutify_a_i_widget.dart';
 import '/tasks/clean_complete_task/clean_complete_task_widget.dart';
 import '/tasks/task_mark_completed/task_mark_completed_widget.dart';
 import '/towers/add_initial_towers/add_initial_towers_widget.dart';
-import '/towers/add_tower/add_tower_widget.dart';
+import '/towers/update_towers/update_towers_widget.dart';
 import 'dart:math';
 import 'dart:ui';
 import '/index.dart';
@@ -39,6 +40,9 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
   ///  Local state fields for this page.
 
   int selectedPage = 1;
+
+  /// filter for the towers table.
+  String selectedStatusFilter = 'Null';
 
   ///  State fields for stateful widgets in this page.
 
@@ -58,8 +62,8 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
   int get tabBarPreviousIndex1 =>
       tabBarController1 != null ? tabBarController1!.previousIndex : 0;
 
-  // State field(s) for towerDataTable widget.
-  final towerDataTableController1 =
+  // State field(s) for towersDataTable widget.
+  final towersDataTableController =
       FlutterFlowDataTableController<TowerDisplayWithPlantsRow>();
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController1 =
@@ -75,7 +79,7 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
       tabBarController2 != null ? tabBarController2!.previousIndex : 0;
 
   // State field(s) for towerDataTable widget.
-  final towerDataTableController2 =
+  final towerDataTableController =
       FlutterFlowDataTableController<PlantHarvestTimelineRow>();
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController2 =
@@ -95,11 +99,11 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
     sideNavModel.dispose();
     addInitialTowersModel.dispose();
     tabBarController1?.dispose();
-    towerDataTableController1.dispose();
+    towersDataTableController.dispose();
     paginatedDataTableController1.dispose();
     mainDataTableController1.dispose();
     tabBarController2?.dispose();
-    towerDataTableController2.dispose();
+    towerDataTableController.dispose();
     paginatedDataTableController2.dispose();
     mainDataTableController2.dispose();
   }

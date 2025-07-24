@@ -63,6 +63,7 @@ class _MainLoadingPageWidgetState extends State<MainLoadingPageWidget> {
           _model.farmLoad4433!.firstOrNull!.usesLighting!;
       FFAppState().hasTower = _model.farmLoad4433!.firstOrNull!.hasTowers!;
       FFAppState().hasVendors = _model.farmLoad4433!.firstOrNull!.hasVendors!;
+      FFAppState().hasPlants = _model.farmLoad4433!.firstOrNull!.hasPlants!;
       _model.farmWeather8888 = await GetOpenWeatherCall.call(
         farmLongitude: _model.farmLoad4433?.firstOrNull?.longitude?.toString(),
         farmLatitude: _model.farmLoad4433?.firstOrNull?.latitude?.toString(),
@@ -108,12 +109,12 @@ class _MainLoadingPageWidgetState extends State<MainLoadingPageWidget> {
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: SafeArea(
-          top: true,
-          child: Column(
+      child: WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          body: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,

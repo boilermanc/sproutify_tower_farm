@@ -705,35 +705,6 @@ class FFAppState extends ChangeNotifier {
     _taskRecurrenceInterval = value;
   }
 
-  List<String> _taskSelectedWeekdays = [];
-  List<String> get taskSelectedWeekdays => _taskSelectedWeekdays;
-  set taskSelectedWeekdays(List<String> value) {
-    _taskSelectedWeekdays = value;
-  }
-
-  void addToTaskSelectedWeekdays(String value) {
-    taskSelectedWeekdays.add(value);
-  }
-
-  void removeFromTaskSelectedWeekdays(String value) {
-    taskSelectedWeekdays.remove(value);
-  }
-
-  void removeAtIndexFromTaskSelectedWeekdays(int index) {
-    taskSelectedWeekdays.removeAt(index);
-  }
-
-  void updateTaskSelectedWeekdaysAtIndex(
-    int index,
-    String Function(String) updateFn,
-  ) {
-    taskSelectedWeekdays[index] = updateFn(_taskSelectedWeekdays[index]);
-  }
-
-  void insertAtIndexInTaskSelectedWeekdays(int index, String value) {
-    taskSelectedWeekdays.insert(index, value);
-  }
-
   int _taskWeeklyInterval = 0;
   int get taskWeeklyInterval => _taskWeeklyInterval;
   set taskWeeklyInterval(int value) {
@@ -786,6 +757,65 @@ class FFAppState extends ChangeNotifier {
   bool get hasPlants => _hasPlants;
   set hasPlants(bool value) {
     _hasPlants = value;
+  }
+
+  List<int> _taskSelectedWeekdays = [];
+  List<int> get taskSelectedWeekdays => _taskSelectedWeekdays;
+  set taskSelectedWeekdays(List<int> value) {
+    _taskSelectedWeekdays = value;
+  }
+
+  void addToTaskSelectedWeekdays(int value) {
+    taskSelectedWeekdays.add(value);
+  }
+
+  void removeFromTaskSelectedWeekdays(int value) {
+    taskSelectedWeekdays.remove(value);
+  }
+
+  void removeAtIndexFromTaskSelectedWeekdays(int index) {
+    taskSelectedWeekdays.removeAt(index);
+  }
+
+  void updateTaskSelectedWeekdaysAtIndex(
+    int index,
+    int Function(int) updateFn,
+  ) {
+    taskSelectedWeekdays[index] = updateFn(_taskSelectedWeekdays[index]);
+  }
+
+  void insertAtIndexInTaskSelectedWeekdays(int index, int value) {
+    taskSelectedWeekdays.insert(index, value);
+  }
+
+  DateTime? _taskDueTime24Hour;
+  DateTime? get taskDueTime24Hour => _taskDueTime24Hour;
+  set taskDueTime24Hour(DateTime? value) {
+    _taskDueTime24Hour = value;
+  }
+
+  int _towerRowUpdated = 0;
+  int get towerRowUpdated => _towerRowUpdated;
+  set towerRowUpdated(int value) {
+    _towerRowUpdated = value;
+  }
+
+  int _towerPositionUpdate = 0;
+  int get towerPositionUpdate => _towerPositionUpdate;
+  set towerPositionUpdate(int value) {
+    _towerPositionUpdate = value;
+  }
+
+  int _towerPortsUpdate = 0;
+  int get towerPortsUpdate => _towerPortsUpdate;
+  set towerPortsUpdate(int value) {
+    _towerPortsUpdate = value;
+  }
+
+  String _selectedFarmNav = '';
+  String get selectedFarmNav => _selectedFarmNav;
+  set selectedFarmNav(String value) {
+    _selectedFarmNav = value;
   }
 }
 

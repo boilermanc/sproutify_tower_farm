@@ -145,6 +145,9 @@ class InitialFarmLoadRow extends SupabaseDataRow {
   set farmUpdatedAt(DateTime? value) =>
       setField<DateTime>('farm_updated_at', value);
 
+  bool? get hasPlants => getField<bool>('has_plants');
+  set hasPlants(bool? value) => setField<bool>('has_plants', value);
+
   bool? get hasFarm => getField<bool>('has_farm');
   set hasFarm(bool? value) => setField<bool>('has_farm', value);
 

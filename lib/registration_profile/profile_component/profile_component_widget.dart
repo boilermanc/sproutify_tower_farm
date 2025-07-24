@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/registration_profile/profile_update_component/profile_update_component_widget.dart';
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -97,7 +98,7 @@ class _ProfileComponentWidgetState extends State<ProfileComponentWidget> {
                             width: 72.0,
                             height: 72.0,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(1.0),
+                              borderRadius: BorderRadius.circular(8.0),
                               border: Border.all(
                                 color: FlutterFlowTheme.of(context).alternate,
                                 width: 2.0,
@@ -106,7 +107,7 @@ class _ProfileComponentWidgetState extends State<ProfileComponentWidget> {
                             child: Padding(
                               padding: EdgeInsets.all(2.0),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(2.0),
+                                borderRadius: BorderRadius.circular(8.0),
                                 child: CachedNetworkImage(
                                   fadeInDuration: Duration(milliseconds: 500),
                                   fadeOutDuration: Duration(milliseconds: 500),

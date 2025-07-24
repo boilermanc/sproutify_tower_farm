@@ -203,8 +203,10 @@ class _SdsDetailOverviewWidgetState extends State<SdsDetailOverviewWidget> {
                                                   ),
                                                 );
                                                 await Future.delayed(
-                                                    const Duration(
-                                                        milliseconds: 3000));
+                                                  Duration(
+                                                    milliseconds: 3000,
+                                                  ),
+                                                );
                                                 Navigator.pop(context);
 
                                                 context.pushNamed(

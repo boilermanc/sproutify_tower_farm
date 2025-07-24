@@ -1,7 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/edit_initial_towers_widget.dart';
-import '/components/initial_tower_count_per_row_widget.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -9,6 +7,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/registration_profile/initial_plant_setup/initial_plant_setup_widget.dart';
+import '/towers/edit_initial_towers/edit_initial_towers_widget.dart';
+import '/towers/initial_tower_count_per_row/initial_tower_count_per_row_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';

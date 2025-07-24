@@ -549,7 +549,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  fontSize: 12.0,
+                                                  fontSize: 18.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -716,7 +716,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
-                                                fontSize: 12.0,
+                                                fontSize: 18.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
@@ -984,7 +984,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
-                                                fontSize: 12.0,
+                                                fontSize: 18.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
@@ -1289,7 +1289,6 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                               .farmAddressTextController.text;
                                           FFAppState().farmPostal = _model
                                               .farmPostalTextController.text;
-                                          safeSetState(() {});
                                           await _model.pageViewController
                                               ?.nextPage(
                                             duration:
@@ -2106,7 +2105,6 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                   int.parse(_model
                                                       .towerNumberTextController
                                                       .text);
-                                              safeSetState(() {});
                                               await _model.pageViewController
                                                   ?.nextPage(
                                                 duration:
@@ -2337,6 +2335,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                                       .labelMedium
                                                                       .fontStyle,
                                                             ),
+                                                            fontSize: 16.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
@@ -2454,6 +2453,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -2490,7 +2490,8 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               // Main Farm Insert
-                                              await FarmsTable().insert({
+                                              _model.farmSetup3322 =
+                                                  await FarmsTable().insert({
                                                 'farm_name':
                                                     FFAppState().farmName,
                                                 'measurement_system':
@@ -2523,12 +2524,16 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                     .howWillYouUseThisTextFieldTextController
                                                     .text,
                                               });
+                                              FFAppState().farmID =
+                                                  _model.farmSetup3322!.id;
                                               await _model.pageViewController
                                                   ?.nextPage(
                                                 duration:
                                                     Duration(milliseconds: 300),
                                                 curve: Curves.ease,
                                               );
+
+                                              safeSetState(() {});
                                             },
                                             text: 'Next...',
                                             options: FFButtonOptions(
@@ -2725,161 +2730,6 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 20.0, 0.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            'Let\'s Set Up Your Tower System',
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineMedium
-                                                .override(
-                                                  font: GoogleFonts.outfit(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 20.0, 0.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            'Your farm management works by organizing your towers into a \nsimple grid system. This helps you:',
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineMedium
-                                                .override(
-                                                  font: GoogleFonts.outfit(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 20.0, 0.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              '- Track which plants are where\n- Monitor growth across your farm  \n- Schedule maintenance and harvests\n- Troubleshoot issues quickly',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMedium
-                                                      .override(
-                                                        font:
-                                                            GoogleFonts.outfit(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineMedium
-                                                                .fontStyle,
-                                                      ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 20.0, 0.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            'Think of it like giving each tower a street address!',
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineMedium
-                                                .override(
-                                                  font: GoogleFonts.outfit(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 5.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -2915,7 +2765,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                                 ).then((value) =>
                                                     safeSetState(() {}));
                                               },
-                                              text: 'Let\'s Learn How',
+                                              text: 'Get Started',
                                               icon: Icon(
                                                 Icons.arrow_forward,
                                                 size: 24.0,

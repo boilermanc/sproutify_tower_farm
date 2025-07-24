@@ -1,5 +1,4 @@
 import '/backend/supabase/supabase.dart';
-import '/components/ec_alert_towers_widget.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -18,6 +17,12 @@ class MainNutrientsModel extends FlutterFlowModel<MainNutrientsWidget> {
   ///  Local state fields for this page.
 
   int selectedPage = 5;
+
+  int? ecIssues = 0;
+
+  int? phIssues = 0;
+
+  int? noIssues = 0;
 
   ///  State fields for stateful widgets in this page.
 

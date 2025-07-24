@@ -121,4 +121,7 @@ class FarmsRow extends SupabaseDataRow {
   String? get addressFormatType => getField<String>('address_format_type');
   set addressFormatType(String? value) =>
       setField<String>('address_format_type', value);
+
+  bool? get hasPlants => getField<bool>('has_plants');
+  set hasPlants(bool? value) => setField<bool>('has_plants', value);
 }

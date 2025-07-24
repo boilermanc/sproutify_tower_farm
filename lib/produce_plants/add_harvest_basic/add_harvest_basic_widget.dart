@@ -908,7 +908,10 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
                             'notes': _model.textController2.text,
                           });
                           await Future.delayed(
-                              const Duration(milliseconds: 2000));
+                            Duration(
+                              milliseconds: 2000,
+                            ),
+                          );
                           if (_model.confirmTowerWasteNoButtonModel
                                   .wasteQuantityTextController.text !=
                               '0') {

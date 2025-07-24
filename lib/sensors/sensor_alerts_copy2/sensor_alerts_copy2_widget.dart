@@ -1,8 +1,9 @@
 import '/backend/supabase/supabase.dart';
-import '/components/alert_level_setting_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/settings/alert_level_setting/alert_level_setting_widget.dart';
 import 'dart:ui';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';

@@ -33,14 +33,17 @@ class MonitoringTowerDashboardRow extends SupabaseDataRow {
   set towerIdentifier(String? value) =>
       setField<String>('tower_identifier', value);
 
+  double? get phValue => getField<double>('ph_value');
+  set phValue(double? value) => setField<double>('ph_value', value);
+
   String? get phColor => getField<String>('ph_color');
   set phColor(String? value) => setField<String>('ph_color', value);
 
   String? get phColorHex => getField<String>('ph_color_hex');
   set phColorHex(String? value) => setField<String>('ph_color_hex', value);
 
-  double? get phValue => getField<double>('ph_value');
-  set phValue(double? value) => setField<double>('ph_value', value);
+  double? get ecValue => getField<double>('ec_value');
+  set ecValue(double? value) => setField<double>('ec_value', value);
 
   String? get ecStatus => getField<String>('ec_status');
   set ecStatus(String? value) => setField<String>('ec_status', value);
@@ -50,9 +53,6 @@ class MonitoringTowerDashboardRow extends SupabaseDataRow {
 
   String? get ecColorHex => getField<String>('ec_color_hex');
   set ecColorHex(String? value) => setField<String>('ec_color_hex', value);
-
-  double? get ecValue => getField<double>('ec_value');
-  set ecValue(double? value) => setField<double>('ec_value', value);
 
   DateTime? get readAt => getField<DateTime>('read_at');
   set readAt(DateTime? value) => setField<DateTime>('read_at', value);
@@ -87,6 +87,15 @@ class MonitoringTowerDashboardRow extends SupabaseDataRow {
   String? get readerName => getField<String>('reader_name');
   set readerName(String? value) => setField<String>('reader_name', value);
 
+  int? get phReadingId => getField<int>('ph_reading_id');
+  set phReadingId(int? value) => setField<int>('ph_reading_id', value);
+
+  int? get ecReadingId => getField<int>('ec_reading_id');
+  set ecReadingId(int? value) => setField<int>('ec_reading_id', value);
+
+  int? get rn => getField<int>('rn');
+  set rn(int? value) => setField<int>('rn', value);
+
   String? get issues => getField<String>('issues');
   set issues(String? value) => setField<String>('issues', value);
 
@@ -96,10 +105,4 @@ class MonitoringTowerDashboardRow extends SupabaseDataRow {
   String? get issueColorHex => getField<String>('issue_color_hex');
   set issueColorHex(String? value) =>
       setField<String>('issue_color_hex', value);
-
-  int? get phReadingId => getField<int>('ph_reading_id');
-  set phReadingId(int? value) => setField<int>('ph_reading_id', value);
-
-  int? get ecReadingId => getField<int>('ec_reading_id');
-  set ecReadingId(int? value) => setField<int>('ec_reading_id', value);
 }

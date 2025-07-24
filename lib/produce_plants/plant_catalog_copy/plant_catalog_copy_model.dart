@@ -1,8 +1,10 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/produce_plants/plant_detail/plant_detail_widget.dart';
 import 'dart:ui';
 import 'plant_catalog_copy_widget.dart' show PlantCatalogCopyWidget;
@@ -14,8 +16,22 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class PlantCatalogCopyModel extends FlutterFlowModel<PlantCatalogCopyWidget> {
+  ///  Local state fields for this component.
+
+  List<int> existingPlantIds = [];
+  void addToExistingPlantIds(int item) => existingPlantIds.add(item);
+  void removeFromExistingPlantIds(int item) => existingPlantIds.remove(item);
+  void removeAtIndexFromExistingPlantIds(int index) =>
+      existingPlantIds.removeAt(index);
+  void insertAtIndexInExistingPlantIds(int index, int item) =>
+      existingPlantIds.insert(index, item);
+  void updateExistingPlantIdsAtIndex(int index, Function(int) updateFn) =>
+      existingPlantIds[index] = updateFn(existingPlantIds[index]);
+
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Backend Call - Query Rows] action in plantCatalogCopy widget.
+  List<FarmPlantsRow>? plantList9911;
   // State field(s) for searchPlantName widget.
   final searchPlantNameKey = GlobalKey();
   FocusNode? searchPlantNameFocusNode;

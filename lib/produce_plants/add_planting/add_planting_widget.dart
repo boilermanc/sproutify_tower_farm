@@ -1185,7 +1185,11 @@ class _AddPlantingWidgetState extends State<AddPlantingWidget> {
                                                                                     backgroundColor: FlutterFlowTheme.of(context).secondary,
                                                                                   ),
                                                                                 );
-                                                                                await Future.delayed(const Duration(milliseconds: 2000));
+                                                                                await Future.delayed(
+                                                                                  Duration(
+                                                                                    milliseconds: 2000,
+                                                                                  ),
+                                                                                );
                                                                                 Navigator.pop(context);
                                                                               },
                                                                               text: 'Plant Tower',

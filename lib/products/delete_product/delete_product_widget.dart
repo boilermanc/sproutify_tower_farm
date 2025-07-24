@@ -130,18 +130,15 @@ class _DeleteProductWidgetState extends State<DeleteProductWidget> {
                       textStyle:
                           FlutterFlowTheme.of(context).bodyMedium.override(
                                 font: GoogleFonts.plusJakartaSans(
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
+                                  fontWeight: FontWeight.w600,
                                   fontStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .fontStyle,
                                 ),
                                 color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 18.0,
                                 letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
+                                fontWeight: FontWeight.w600,
                                 fontStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .fontStyle,
@@ -200,8 +197,10 @@ class _DeleteProductWidgetState extends State<DeleteProductWidget> {
                               content: Text(
                                 'Prodcut deleted.',
                                 style: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18.0,
                                 ),
                               ),
                               duration: Duration(milliseconds: 4000),
@@ -246,18 +245,15 @@ class _DeleteProductWidgetState extends State<DeleteProductWidget> {
                           textStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     font: GoogleFonts.plusJakartaSans(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                                     color: FlutterFlowTheme.of(context).info,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
+                                    fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontStyle,
