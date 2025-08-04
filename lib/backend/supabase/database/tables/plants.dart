@@ -70,4 +70,7 @@ class PlantsRow extends SupabaseDataRow {
 
   int? get categoryId => getField<int>('category_id');
   set categoryId(int? value) => setField<int>('category_id', value);
+
+  int? get seedsPerPort => getField<int>('seeds_per_port');
+  set seedsPerPort(int? value) => setField<int>('seeds_per_port', value);
 }

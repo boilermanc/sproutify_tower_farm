@@ -95,4 +95,35 @@ class TowerDisplayWithPlantsRow extends SupabaseDataRow {
       getField<DateTime>('next_maintenance_due');
   set nextMaintenanceDue(DateTime? value) =>
       setField<DateTime>('next_maintenance_due', value);
+
+  bool? get hasCleaning => getField<bool>('has_cleaning');
+  set hasCleaning(bool? value) => setField<bool>('has_cleaning', value);
+
+  int? get cleaningCount => getField<int>('cleaning_count');
+  set cleaningCount(int? value) => setField<int>('cleaning_count', value);
+
+  List<String> get cleaningTasks => getListField<String>('cleaning_tasks');
+  set cleaningTasks(List<String>? value) =>
+      setListField<String>('cleaning_tasks', value);
+
+  List<int> get cleaningTaskIds => getListField<int>('cleaning_task_ids');
+  set cleaningTaskIds(List<int>? value) =>
+      setListField<int>('cleaning_task_ids', value);
+
+  List<int> get cleaningTaskTypeIds =>
+      getListField<int>('cleaning_task_type_ids');
+  set cleaningTaskTypeIds(List<int>? value) =>
+      setListField<int>('cleaning_task_type_ids', value);
+
+  DateTime? get nextCleaningDue => getField<DateTime>('next_cleaning_due');
+  set nextCleaningDue(DateTime? value) =>
+      setField<DateTime>('next_cleaning_due', value);
+
+  String? get cleaningTaskName => getField<String>('cleaning_task_name');
+  set cleaningTaskName(String? value) =>
+      setField<String>('cleaning_task_name', value);
+
+  String? get maintenanceTaskName => getField<String>('maintenance_task_name');
+  set maintenanceTaskName(String? value) =>
+      setField<String>('maintenance_task_name', value);
 }

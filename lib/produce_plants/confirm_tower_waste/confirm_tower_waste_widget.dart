@@ -207,105 +207,6 @@ class _ConfirmTowerWasteWidgetState extends State<ConfirmTowerWasteWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Flexible(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 16.0, 0.0, 0.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              widget!.plantID?.toString(),
-                              '0',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  font: GoogleFonts.outfit(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontStyle,
-                                  ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontStyle,
-                                ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 16.0, 0.0, 0.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              widget!.plantID?.toString(),
-                              '0',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  font: GoogleFonts.outfit(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontStyle,
-                                  ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontStyle,
-                                ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 16.0, 0.0, 0.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              widget!.towerContentsID?.toString(),
-                              '0',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  font: GoogleFonts.outfit(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontStyle,
-                                  ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontStyle,
-                                ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 0.0, 0.0),
@@ -345,7 +246,7 @@ class _ConfirmTowerWasteWidgetState extends State<ConfirmTowerWasteWidget> {
                       children: [
                         Flexible(
                           child: Container(
-                            width: 50.0,
+                            width: 200.0,
                             child: TextFormField(
                               controller: _model.wasteQuantityTextController,
                               focusNode: _model.wasteQuantityFocusNode,
@@ -373,7 +274,7 @@ class _ConfirmTowerWasteWidgetState extends State<ConfirmTowerWasteWidget> {
                                           .labelMedium
                                           .fontStyle,
                                     ),
-                                hintText: 'TextField',
+                                hintText: 'Enter waste quantity',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
@@ -457,30 +358,6 @@ class _ConfirmTowerWasteWidgetState extends State<ConfirmTowerWasteWidget> {
                             ),
                           ),
                         ),
-                        Text(
-                          valueOrDefault<String>(
-                            _model.wasteReasonValue?.toString(),
-                            '0',
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.plusJakartaSans(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                        ),
                       ],
                     ),
                   ),
@@ -561,7 +438,7 @@ class _ConfirmTowerWasteWidgetState extends State<ConfirmTowerWasteWidget> {
                                   .toList(),
                               onChanged: (val) => safeSetState(
                                   () => _model.wasteReasonValue = val),
-                              width: 370.0,
+                              width: 350.0,
                               height: 40.0,
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium

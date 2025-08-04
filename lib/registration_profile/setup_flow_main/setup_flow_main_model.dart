@@ -16,6 +16,7 @@ import 'setup_flow_main_widget.dart' show SetupFlowMainWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
   ///  Local state fields for this component.
@@ -33,6 +34,13 @@ class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
 
   ///  State fields for stateful widgets in this component.
 
+  final formKey4 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
+  final formKey3 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
+  final formKey7 = GlobalKey<FormState>();
+  final formKey6 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
   // State field(s) for PageView widget.
   PageController? pageViewController;
 
@@ -45,14 +53,39 @@ class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
   FocusNode? farmNameFocusNode;
   TextEditingController? farmNameTextController;
   String? Function(BuildContext, String?)? farmNameTextControllerValidator;
+  String? _farmNameTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Enter your farm name... is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for farmAddress widget.
   FocusNode? farmAddressFocusNode;
   TextEditingController? farmAddressTextController;
   String? Function(BuildContext, String?)? farmAddressTextControllerValidator;
+  String? _farmAddressTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Street Address... is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for farmCity widget.
   FocusNode? farmCityFocusNode;
   TextEditingController? farmCityTextController;
   String? Function(BuildContext, String?)? farmCityTextControllerValidator;
+  String? _farmCityTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return ' City... is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for stateDropDown widget.
   String? stateDropDownValue;
   FormFieldController<String>? stateDropDownValueController;
@@ -60,6 +93,15 @@ class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
   FocusNode? farmPostalFocusNode;
   TextEditingController? farmPostalTextController;
   String? Function(BuildContext, String?)? farmPostalTextControllerValidator;
+  String? _farmPostalTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return ' Postal Code... is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for countryDropDown widget.
   String? countryDropDownValue;
   FormFieldController<String>? countryDropDownValueController;
@@ -78,6 +120,15 @@ class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
   FocusNode? towerNumberFocusNode;
   TextEditingController? towerNumberTextController;
   String? Function(BuildContext, String?)? towerNumberTextControllerValidator;
+  String? _towerNumberTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Number of towers is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for supplementalLightingDropDown widget.
   bool? supplementalLightingDropDownValue;
   FormFieldController<bool>? supplementalLightingDropDownValueController;
@@ -90,7 +141,13 @@ class SetupFlowMainModel extends FlutterFlowModel<SetupFlowMainWidget> {
   FarmsRow? farmSetup3322;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    farmNameTextControllerValidator = _farmNameTextControllerValidator;
+    farmAddressTextControllerValidator = _farmAddressTextControllerValidator;
+    farmCityTextControllerValidator = _farmCityTextControllerValidator;
+    farmPostalTextControllerValidator = _farmPostalTextControllerValidator;
+    towerNumberTextControllerValidator = _towerNumberTextControllerValidator;
+  }
 
   @override
   void dispose() {

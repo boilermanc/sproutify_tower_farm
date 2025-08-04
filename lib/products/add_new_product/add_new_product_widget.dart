@@ -7,11 +7,13 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pests/add_pest_product_details/add_pest_product_details_widget.dart';
+import '/produce_plants/add_vendor/add_vendor_widget.dart';
 import 'dart:ui';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'add_new_product_model.dart';
 export 'add_new_product_model.dart';
 
@@ -679,6 +681,10 @@ class _AddNewProductWidgetState extends State<AddNewProductWidget> {
                                                           _model
                                                               .categorySelected,
                                                         )
+                                                        .eqOrNull(
+                                                          'is_active',
+                                                          true,
+                                                        )
                                                         .order('type_name',
                                                             ascending: true),
                                                   ),
@@ -873,13 +879,51 @@ class _AddNewProductWidgetState extends State<AddNewProductWidget> {
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            'add vendor',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts
-                                                      .plusJakartaSans(
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                enableDrag: false,
+                                                context: context,
+                                                builder: (context) {
+                                                  return WebViewAware(
+                                                    child: Padding(
+                                                      padding: MediaQuery
+                                                          .viewInsetsOf(
+                                                              context),
+                                                      child: AddVendorWidget(),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then((value) =>
+                                                  safeSetState(() {}));
+                                            },
+                                            child: Text(
+                                              'add vendor',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts
+                                                        .plusJakartaSans(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .tertiary,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
@@ -887,17 +931,7 @@ class _AddNewProductWidgetState extends State<AddNewProductWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .tertiary,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -2368,17 +2402,20 @@ class _AddNewProductWidgetState extends State<AddNewProductWidget> {
                                       enableDrag: false,
                                       context: context,
                                       builder: (context) {
-                                        return Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: AddPestProductDetailsWidget(
-                                            passProductItemID: _model
-                                                .addedProdcut3939!.productId,
-                                            passProductName: _model
-                                                .addedProdcut3939!.productName,
-                                            passProductTypeID: _model
-                                                .addedProdcut3939!
-                                                .productTypeId,
+                                        return WebViewAware(
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: AddPestProductDetailsWidget(
+                                              passProductItemID: _model
+                                                  .addedProdcut3939!.productId,
+                                              passProductName: _model
+                                                  .addedProdcut3939!
+                                                  .productName,
+                                              passProductTypeID: _model
+                                                  .addedProdcut3939!
+                                                  .productTypeId,
+                                            ),
                                           ),
                                         );
                                       },

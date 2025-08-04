@@ -26,4 +26,7 @@ class ProductTypesRow extends SupabaseDataRow {
   String get productCategoryId => getField<String>('product_category_id')!;
   set productCategoryId(String value) =>
       setField<String>('product_category_id', value);
+
+  bool get isActive => getField<bool>('is_active')!;
+  set isActive(bool value) => setField<bool>('is_active', value);
 }

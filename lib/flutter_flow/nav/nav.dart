@@ -283,6 +283,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: MainLoadingPageWidget.routePath,
           requireAuth: true,
           builder: (context, params) => MainLoadingPageWidget(),
+        ),
+        FFRoute(
+          name: ChatAiScreenMCPWidget.routeName,
+          path: ChatAiScreenMCPWidget.routePath,
+          builder: (context, params) => ChatAiScreenMCPWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

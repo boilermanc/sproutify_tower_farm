@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'main_staff_model.dart';
 export 'main_staff_model.dart';
 
@@ -135,7 +136,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 0.0, 0.0),
+                                16.0, 5.0, 0.0, 0.0),
                             child: Text(
                               'Below are a list of members of your team.',
                               style: FlutterFlowTheme.of(context)
@@ -441,16 +442,21 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                         enableDrag: false,
                                         context: context,
                                         builder: (context) {
-                                          return GestureDetector(
-                                            onTap: () {
-                                              FocusScope.of(context).unfocus();
-                                              FocusManager.instance.primaryFocus
-                                                  ?.unfocus();
-                                            },
-                                            child: Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: FarmRolesWidget(),
+                                          return WebViewAware(
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: FarmRolesWidget(),
+                                              ),
                                             ),
                                           );
                                         },
@@ -889,22 +895,25 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                       enableDrag: false,
                                                       context: context,
                                                       builder: (context) {
-                                                        return GestureDetector(
-                                                          onTap: () {
-                                                            FocusScope.of(
-                                                                    context)
-                                                                .unfocus();
-                                                            FocusManager
-                                                                .instance
-                                                                .primaryFocus
-                                                                ?.unfocus();
-                                                          },
-                                                          child: Padding(
-                                                            padding: MediaQuery
-                                                                .viewInsetsOf(
-                                                                    context),
-                                                            child:
-                                                                StaffProileUpdateWidget(),
+                                                        return WebViewAware(
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () {
+                                                              FocusScope.of(
+                                                                      context)
+                                                                  .unfocus();
+                                                              FocusManager
+                                                                  .instance
+                                                                  .primaryFocus
+                                                                  ?.unfocus();
+                                                            },
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  StaffProileUpdateWidget(),
+                                                            ),
                                                           ),
                                                         );
                                                       },
@@ -1102,39 +1111,39 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                               context: context,
                                                               builder:
                                                                   (context) {
-                                                                return GestureDetector(
-                                                                  onTap: () {
-                                                                    FocusScope.of(
-                                                                            context)
-                                                                        .unfocus();
-                                                                    FocusManager
-                                                                        .instance
-                                                                        .primaryFocus
-                                                                        ?.unfocus();
-                                                                  },
+                                                                return WebViewAware(
                                                                   child:
-                                                                      Padding(
-                                                                    padding: MediaQuery
-                                                                        .viewInsetsOf(
-                                                                            context),
+                                                                      GestureDetector(
+                                                                    onTap: () {
+                                                                      FocusScope.of(
+                                                                              context)
+                                                                          .unfocus();
+                                                                      FocusManager
+                                                                          .instance
+                                                                          .primaryFocus
+                                                                          ?.unfocus();
+                                                                    },
                                                                     child:
-                                                                        UpdateEmployeeRoleWidget(
-                                                                      employeeID:
+                                                                        Padding(
+                                                                      padding: MediaQuery
+                                                                          .viewInsetsOf(
+                                                                              context),
+                                                                      child:
+                                                                          UpdateEmployeeRoleWidget(
+                                                                        employeeID:
+                                                                            farmRoleProfilesItem.id!,
+                                                                        employeeFirstName:
+                                                                            valueOrDefault<String>(
                                                                           farmRoleProfilesItem
-                                                                              .id!,
-                                                                      employeeFirstName:
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                        farmRoleProfilesItem
-                                                                            .firstName,
-                                                                        'First',
-                                                                      ),
-                                                                      employeeLastName:
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                        farmRoleProfilesItem
-                                                                            .lastName,
-                                                                        'Last',
+                                                                              .firstName,
+                                                                          'First',
+                                                                        ),
+                                                                        employeeLastName:
+                                                                            valueOrDefault<String>(
+                                                                          farmRoleProfilesItem
+                                                                              .lastName,
+                                                                          'Last',
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1374,20 +1383,22 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                           enableDrag: false,
                                           context: context,
                                           builder: (context) {
-                                            return GestureDetector(
-                                              onTap: () {
-                                                FocusScope.of(context)
-                                                    .unfocus();
-                                                FocusManager
-                                                    .instance.primaryFocus
-                                                    ?.unfocus();
-                                              },
-                                              child: Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child:
-                                                    CreateStaffInvitationWidget(),
+                                            return WebViewAware(
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(context)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child:
+                                                      CreateStaffInvitationWidget(),
+                                                ),
                                               ),
                                             );
                                           },

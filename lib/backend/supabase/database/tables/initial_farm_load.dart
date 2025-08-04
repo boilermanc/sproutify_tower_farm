@@ -45,6 +45,9 @@ class InitialFarmLoadRow extends SupabaseDataRow {
   set notificationPreferences(List<String>? value) =>
       setListField<String>('notification_preferences', value);
 
+  bool? get needsSetup => getField<bool>('needs_setup');
+  set needsSetup(bool? value) => setField<bool>('needs_setup', value);
+
   DateTime? get profileCreatedAt => getField<DateTime>('profile_created_at');
   set profileCreatedAt(DateTime? value) =>
       setField<DateTime>('profile_created_at', value);

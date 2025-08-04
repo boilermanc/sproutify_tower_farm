@@ -9,6 +9,7 @@ import '/produce_plants/chemical_catalog/chemical_catalog_widget.dart';
 import '/products/add_new_product/add_new_product_widget.dart';
 import '/products/add_new_product_from_s_d_s/add_new_product_from_s_d_s_widget.dart';
 import '/products/delete_product/delete_product_widget.dart';
+import '/products/no_products/no_products_widget.dart';
 import '/products/update_stock/update_stock_widget.dart';
 import 'dart:math';
 import 'dart:ui';
@@ -19,6 +20,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class MainProductsModel extends FlutterFlowModel<MainProductsWidget> {
   ///  Local state fields for this page.

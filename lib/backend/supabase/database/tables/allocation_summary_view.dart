@@ -45,6 +45,24 @@ class AllocationSummaryViewRow extends SupabaseDataRow {
   set destinationType(String? value) =>
       setField<String>('destination_type', value);
 
+  String? get allocationStatus => getField<String>('allocation_status');
+  set allocationStatus(String? value) =>
+      setField<String>('allocation_status', value);
+
+  DateTime? get deliveredAt => getField<DateTime>('delivered_at');
+  set deliveredAt(DateTime? value) => setField<DateTime>('delivered_at', value);
+
+  String? get notes => getField<String>('notes');
+  set notes(String? value) => setField<String>('notes', value);
+
   String? get farmId => getField<String>('farm_id');
   set farmId(String? value) => setField<String>('farm_id', value);
+
+  int? get remainingInventory => getField<int>('remaining_inventory');
+  set remainingInventory(int? value) =>
+      setField<int>('remaining_inventory', value);
+
+  String? get inventoryStatus => getField<String>('inventory_status');
+  set inventoryStatus(String? value) =>
+      setField<String>('inventory_status', value);
 }

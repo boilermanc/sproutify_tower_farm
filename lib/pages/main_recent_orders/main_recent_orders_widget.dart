@@ -1,27 +1,32 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
+import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/orders/mark_order_complete/mark_order_complete_widget.dart';
 import '/orders/order_detail/order_detail_widget.dart';
 import '/produce_plants/allocate_harvest/allocate_harvest_widget.dart';
 import '/produce_plants/allocate_produce/allocate_produce_widget.dart';
 import '/produce_plants/no_available_harvest/no_available_harvest_widget.dart';
 import '/produce_plants/no_produce_display/no_produce_display_widget.dart';
-import '/products/no_harvest/no_harvest_widget.dart';
+import '/produce_plants/reallocate_produce/reallocate_produce_widget.dart';
 import '/products/no_orders/no_orders_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import 'dart:async';
+import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'main_recent_orders_model.dart';
 export 'main_recent_orders_model.dart';
 
@@ -499,9 +504,9 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           0.0,
                                                                           5.0,
                                                                           0.0),
-                                                                  child: FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .leaf,
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .shopping_basket,
                                                                   ),
                                                                 ),
                                                                 Tab(
@@ -1074,16 +1079,18 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                           enableDrag: false,
                                                                                           context: context,
                                                                                           builder: (context) {
-                                                                                            return GestureDetector(
-                                                                                              onTap: () {
-                                                                                                FocusScope.of(context).unfocus();
-                                                                                                FocusManager.instance.primaryFocus?.unfocus();
-                                                                                              },
-                                                                                              child: Padding(
-                                                                                                padding: MediaQuery.viewInsetsOf(context),
-                                                                                                child: OrderDetailWidget(
-                                                                                                  orderNumber: ordersListItem.orderNumber,
-                                                                                                  orderID: ordersListItem.orderId,
+                                                                                            return WebViewAware(
+                                                                                              child: GestureDetector(
+                                                                                                onTap: () {
+                                                                                                  FocusScope.of(context).unfocus();
+                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                },
+                                                                                                child: Padding(
+                                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                                  child: OrderDetailWidget(
+                                                                                                    orderNumber: ordersListItem.orderNumber,
+                                                                                                    orderID: ordersListItem.orderId,
+                                                                                                  ),
                                                                                                 ),
                                                                                               ),
                                                                                             );
@@ -1203,15 +1210,17 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                               enableDrag: false,
                                                                                               context: context,
                                                                                               builder: (context) {
-                                                                                                return GestureDetector(
-                                                                                                  onTap: () {
-                                                                                                    FocusScope.of(context).unfocus();
-                                                                                                    FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                  },
-                                                                                                  child: Padding(
-                                                                                                    padding: MediaQuery.viewInsetsOf(context),
-                                                                                                    child: MarkOrderCompleteWidget(
-                                                                                                      orderID: ordersListItem.orderId!,
+                                                                                                return WebViewAware(
+                                                                                                  child: GestureDetector(
+                                                                                                    onTap: () {
+                                                                                                      FocusScope.of(context).unfocus();
+                                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                    },
+                                                                                                    child: Padding(
+                                                                                                      padding: MediaQuery.viewInsetsOf(context),
+                                                                                                      child: MarkOrderCompleteWidget(
+                                                                                                        orderID: ordersListItem.orderId!,
+                                                                                                      ),
                                                                                                     ),
                                                                                                   ),
                                                                                                 );
@@ -1338,7 +1347,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                         );
                                                                       }
                                                                       List<HarvestAvailableViewRow>
-                                                                          containerHarvestAvailableViewRowList =
+                                                                          availableContainerHarvestAvailableViewRowList =
                                                                           snapshot
                                                                               .data!;
 
@@ -1356,7 +1365,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final availableHarvest = containerHarvestAvailableViewRowList.toList();
+                                                                              final availableHarvest = availableContainerHarvestAvailableViewRowList.toList();
                                                                               if (availableHarvest.isEmpty) {
                                                                                 return NoAvailableHarvestWidget();
                                                                               }
@@ -1447,21 +1456,51 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                     availableHarvestIndex % 2 == 0 ? FlutterFlowTheme.of(context).secondaryBackground : FlutterFlowTheme.of(context).primaryBackground,
                                                                                   ),
                                                                                   cells: [
-                                                                                    Text(
-                                                                                      valueOrDefault<String>(
-                                                                                        availableHarvestItem.plantName,
-                                                                                        'Plant',
+                                                                                    AlignedTooltip(
+                                                                                      content: Padding(
+                                                                                        padding: EdgeInsets.all(4.0),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            availableHarvestItem.notes,
+                                                                                            'No Notes',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                ),
+                                                                                                letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                              ),
+                                                                                        ),
                                                                                       ),
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                      offset: 4.0,
+                                                                                      preferredDirection: AxisDirection.down,
+                                                                                      borderRadius: BorderRadius.circular(8.0),
+                                                                                      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      elevation: 4.0,
+                                                                                      tailBaseWidth: 24.0,
+                                                                                      tailLength: 12.0,
+                                                                                      waitDuration: Duration(milliseconds: 100),
+                                                                                      showDuration: Duration(milliseconds: 1500),
+                                                                                      triggerMode: TooltipTriggerMode.tap,
+                                                                                      child: Text(
+                                                                                        valueOrDefault<String>(
+                                                                                          availableHarvestItem.plantName,
+                                                                                          'Plant',
+                                                                                        ),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
+                                                                                              fontSize: 14.0,
+                                                                                              letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,
                                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                             ),
-                                                                                            fontSize: 14.0,
-                                                                                            letterSpacing: 0.0,
-                                                                                            fontWeight: FontWeight.bold,
-                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                          ),
+                                                                                      ),
                                                                                     ),
                                                                                     Row(
                                                                                       mainAxisSize: MainAxisSize.max,
@@ -1520,17 +1559,19 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                             enableDrag: false,
                                                                                             context: context,
                                                                                             builder: (context) {
-                                                                                              return GestureDetector(
-                                                                                                onTap: () {
-                                                                                                  FocusScope.of(context).unfocus();
-                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                },
-                                                                                                child: Padding(
-                                                                                                  padding: MediaQuery.viewInsetsOf(context),
-                                                                                                  child: AllocateHarvestWidget(
-                                                                                                    batchID: availableHarvestItem.batchId!,
-                                                                                                    produceQuantity: availableHarvestItem.qtyAvailable,
-                                                                                                    produceName: availableHarvestItem.plantName,
+                                                                                              return WebViewAware(
+                                                                                                child: GestureDetector(
+                                                                                                  onTap: () {
+                                                                                                    FocusScope.of(context).unfocus();
+                                                                                                    FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                  },
+                                                                                                  child: Padding(
+                                                                                                    padding: MediaQuery.viewInsetsOf(context),
+                                                                                                    child: AllocateHarvestWidget(
+                                                                                                      batchID: availableHarvestItem.batchId!,
+                                                                                                      produceQuantity: availableHarvestItem.qtyAvailable,
+                                                                                                      produceName: availableHarvestItem.plantName,
+                                                                                                    ),
                                                                                                   ),
                                                                                                 ),
                                                                                               );
@@ -1855,21 +1896,23 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                           enableDrag: false,
                                                                                           context: context,
                                                                                           builder: (context) {
-                                                                                            return GestureDetector(
-                                                                                              onTap: () {
-                                                                                                FocusScope.of(context).unfocus();
-                                                                                                FocusManager.instance.primaryFocus?.unfocus();
-                                                                                              },
-                                                                                              child: Padding(
-                                                                                                padding: MediaQuery.viewInsetsOf(context),
-                                                                                                child: AllocateProduceWidget(
-                                                                                                  towerID: produceAvailableItem.towerId!,
-                                                                                                  availableQuantity: produceAvailableItem.availableQuantity!,
-                                                                                                  plantName: produceAvailableItem.plantName!,
-                                                                                                  reservedQuantity: produceAvailableItem.reservedQuantity!,
-                                                                                                  farmID: FFAppState().farmID,
-                                                                                                  itemID: produceAvailableItem.towerId!,
-                                                                                                  plantID: produceAvailableItem.plantId!,
+                                                                                            return WebViewAware(
+                                                                                              child: GestureDetector(
+                                                                                                onTap: () {
+                                                                                                  FocusScope.of(context).unfocus();
+                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                },
+                                                                                                child: Padding(
+                                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                                  child: AllocateProduceWidget(
+                                                                                                    towerID: produceAvailableItem.towerId!,
+                                                                                                    availableQuantity: produceAvailableItem.availableQuantity!,
+                                                                                                    plantName: produceAvailableItem.plantName!,
+                                                                                                    reservedQuantity: produceAvailableItem.reservedQuantity!,
+                                                                                                    farmID: FFAppState().farmID,
+                                                                                                    itemID: produceAvailableItem.towerId!,
+                                                                                                    plantID: produceAvailableItem.plantId!,
+                                                                                                  ),
                                                                                                 ),
                                                                                               ),
                                                                                             );
@@ -2068,7 +2111,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Container(
-                                            width: 900.0,
+                                            width: 1000.0,
                                             height: 500.0,
                                             decoration: BoxDecoration(
                                               color:
@@ -2196,12 +2239,13 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           5.0,
                                                                           0.0),
                                                                   child: Icon(
-                                                                    Icons.spa,
+                                                                    Icons
+                                                                        .shopping_cart,
                                                                   ),
                                                                 ),
                                                                 Tab(
                                                                   text:
-                                                                      'Allocated Produce',
+                                                                      'Allocated Summary',
                                                                 ),
                                                               ],
                                                             ),
@@ -2217,9 +2261,9 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           0.0,
                                                                           5.0,
                                                                           0.0),
-                                                                  child: FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .leaf,
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .warning_amber,
                                                                   ),
                                                                 ),
                                                                 Tab(
@@ -2242,12 +2286,12 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           0.0),
                                                                   child: Icon(
                                                                     Icons
-                                                                        .spa_rounded,
+                                                                        .emoji_people,
                                                                   ),
                                                                 ),
                                                                 Tab(
                                                                   text:
-                                                                      'Reserved Produce',
+                                                                      'Donations',
                                                                 ),
                                                               ],
                                                             ),
@@ -2280,41 +2324,101 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                       MainAxisSize
                                                                           .max,
                                                                   children: [
-                                                                    Text(
-                                                                      'Date Planted',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelLarge
-                                                                          .override(
-                                                                            font:
-                                                                                GoogleFonts.plusJakartaSans(
-                                                                              fontWeight: FontWeight.bold,
-                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
-                                                                            ),
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryBackground,
-                                                                            letterSpacing:
+                                                                    Expanded(
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            10.0,
+                                                                            7.0,
+                                                                            0.0,
+                                                                            5.0),
+                                                                        child:
+                                                                            FlutterFlowChoiceChips(
+                                                                          options: [
+                                                                            ChipData('Option 1'),
+                                                                            ChipData('Option 2'),
+                                                                            ChipData('Option 3')
+                                                                          ],
+                                                                          onChanged: (val) =>
+                                                                              safeSetState(() => _model.choiceChipsValue = val?.firstOrNull),
+                                                                          selectedChipStyle:
+                                                                              ChipStyle(
+                                                                            backgroundColor:
+                                                                                FlutterFlowTheme.of(context).primary,
+                                                                            textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
+                                                                                  color: FlutterFlowTheme.of(context).info,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
+                                                                            iconColor:
+                                                                                FlutterFlowTheme.of(context).info,
+                                                                            iconSize:
+                                                                                16.0,
+                                                                            elevation:
                                                                                 0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.bold,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
                                                                           ),
+                                                                          unselectedChipStyle:
+                                                                              ChipStyle(
+                                                                            backgroundColor:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
+                                                                            textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
+                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
+                                                                            iconColor:
+                                                                                FlutterFlowTheme.of(context).secondaryText,
+                                                                            iconSize:
+                                                                                16.0,
+                                                                            elevation:
+                                                                                0.0,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                          ),
+                                                                          chipSpacing:
+                                                                              8.0,
+                                                                          rowSpacing:
+                                                                              8.0,
+                                                                          multiselect:
+                                                                              false,
+                                                                          alignment:
+                                                                              WrapAlignment.start,
+                                                                          controller: _model.choiceChipsValueController ??=
+                                                                              FormFieldController<List<String>>(
+                                                                            [],
+                                                                          ),
+                                                                          wrapped:
+                                                                              true,
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   ],
                                                                 ),
                                                                 Expanded(
                                                                   child: FutureBuilder<
                                                                       List<
-                                                                          AllocationSummaryViewRow>>(
-                                                                    future: AllocationSummaryViewTable()
+                                                                          RecentAllocationsViewRow>>(
+                                                                    future: RecentAllocationsViewTable()
                                                                         .queryRows(
-                                                                      queryFn: (q) => q
-                                                                          .eqOrNull(
-                                                                            'farm_id',
-                                                                            FFAppState().farmID,
-                                                                          )
-                                                                          .order('harvest_date'),
+                                                                      queryFn:
+                                                                          (q) =>
+                                                                              q.eqOrNull(
+                                                                        'farm_id',
+                                                                        FFAppState()
+                                                                            .farmID,
+                                                                      ),
                                                                     ),
                                                                     builder:
                                                                         (context,
@@ -2338,8 +2442,8 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           ),
                                                                         );
                                                                       }
-                                                                      List<AllocationSummaryViewRow>
-                                                                          containerAllocationSummaryViewRowList =
+                                                                      List<RecentAllocationsViewRow>
+                                                                          allocationSummaryContainerRecentAllocationsViewRowList =
                                                                           snapshot
                                                                               .data!;
 
@@ -2348,57 +2452,31 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                             BoxDecoration(),
                                                                         child:
                                                                             Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10.0,
-                                                                              10.0,
-                                                                              10.0,
-                                                                              0.0),
+                                                                          padding:
+                                                                              EdgeInsets.all(10.0),
                                                                           child:
                                                                               Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final allocationSummaryList = containerAllocationSummaryViewRowList.toList();
-                                                                              if (allocationSummaryList.isEmpty) {
-                                                                                return NoHarvestWidget();
-                                                                              }
+                                                                              final recentAllocationsView = allocationSummaryContainerRecentAllocationsViewRowList.toList();
 
-                                                                              return FlutterFlowDataTable<AllocationSummaryViewRow>(
+                                                                              return FlutterFlowDataTable<RecentAllocationsViewRow>(
                                                                                 controller: _model.paginatedDataTableController4,
-                                                                                data: allocationSummaryList,
+                                                                                data: recentAllocationsView,
                                                                                 columnsBuilder: (onSortChanged) => [
                                                                                   DataColumn2(
                                                                                     label: DefaultTextStyle.merge(
                                                                                       softWrap: true,
                                                                                       child: Text(
-                                                                                        'Date',
+                                                                                        'Status',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                               font: GoogleFonts.plusJakartaSans(
-                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontWeight: FontWeight.w600,
                                                                                                 fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                               ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
-                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  DataColumn2(
-                                                                                    label: DefaultTextStyle.merge(
-                                                                                      softWrap: true,
-                                                                                      child: Text(
-                                                                                        'Customer',
-                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                              font: GoogleFonts.plusJakartaSans(
-                                                                                                fontWeight: FontWeight.bold,
-                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
-                                                                                              ),
-                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              fontSize: 18.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
+                                                                                              fontWeight: FontWeight.w600,
                                                                                               fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
@@ -2411,13 +2489,12 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                         'Plant',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                               font: GoogleFonts.plusJakartaSans(
-                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontWeight: FontWeight.w600,
                                                                                                 fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                               ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
+                                                                                              fontWeight: FontWeight.w600,
                                                                                               fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
@@ -2427,16 +2504,15 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                     label: DefaultTextStyle.merge(
                                                                                       softWrap: true,
                                                                                       child: Text(
-                                                                                        'Quantity',
+                                                                                        'Customer',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                               font: GoogleFonts.plusJakartaSans(
-                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontWeight: FontWeight.w600,
                                                                                                 fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                               ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
+                                                                                              fontWeight: FontWeight.w600,
                                                                                               fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
@@ -2446,140 +2522,482 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                     label: DefaultTextStyle.merge(
                                                                                       softWrap: true,
                                                                                       child: Text(
-                                                                                        'Type',
+                                                                                        'Qty',
                                                                                         style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                               font: GoogleFonts.plusJakartaSans(
-                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontWeight: FontWeight.w600,
                                                                                                 fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                               ),
                                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                              fontSize: 18.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
+                                                                                              fontWeight: FontWeight.w600,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  DataColumn2(
+                                                                                    label: DefaultTextStyle.merge(
+                                                                                      softWrap: true,
+                                                                                      child: Text(
+                                                                                        'Days',
+                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.w600,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
+                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FontWeight.w600,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  DataColumn2(
+                                                                                    label: DefaultTextStyle.merge(
+                                                                                      softWrap: true,
+                                                                                      child: Text(
+                                                                                        'Actions',
+                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FontWeight.w600,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                              ),
+                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FontWeight.w600,
                                                                                               fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                             ),
                                                                                       ),
                                                                                     ),
                                                                                   ),
                                                                                 ],
-                                                                                dataRowBuilder: (allocationSummaryListItem, allocationSummaryListIndex, selected, onSelectChanged) => DataRow(
+                                                                                dataRowBuilder: (recentAllocationsViewItem, recentAllocationsViewIndex, selected, onSelectChanged) => DataRow(
                                                                                   color: MaterialStateProperty.all(
-                                                                                    allocationSummaryListIndex % 2 == 0 ? FlutterFlowTheme.of(context).secondaryBackground : FlutterFlowTheme.of(context).primaryBackground,
+                                                                                    recentAllocationsViewIndex % 2 == 0 ? FlutterFlowTheme.of(context).secondaryBackground : FlutterFlowTheme.of(context).primaryBackground,
                                                                                   ),
                                                                                   cells: [
-                                                                                    Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                      child: Text(
-                                                                                        dateTimeFormat("MEd", allocationSummaryListItem.allocatedAt!),
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              font: GoogleFonts.plusJakartaSans(
-                                                                                                fontWeight: FontWeight.bold,
+                                                                                    Container(
+                                                                                      width: 100.0,
+                                                                                      height: 40.0,
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: colorFromCssString(
+                                                                                          recentAllocationsViewItem.statusBackgroundColor!,
+                                                                                          defaultColor: FlutterFlowTheme.of(context).alternate,
+                                                                                        ),
+                                                                                        borderRadius: BorderRadius.circular(10.0),
+                                                                                      ),
+                                                                                      child: Align(
+                                                                                        alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                        child: Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            recentAllocationsViewItem.statusDisplayText,
+                                                                                            'Status',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
+                                                                                                color: colorFromCssString(
+                                                                                                  recentAllocationsViewItem.statusTextColor!,
+                                                                                                  defaultColor: Colors.black,
+                                                                                                ),
+                                                                                                letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
-                                                                                              fontSize: 16.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
-                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                            ),
+                                                                                        ),
                                                                                       ),
                                                                                     ),
-                                                                                    Row(
-                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                      children: [
-                                                                                        Flexible(
-                                                                                          child: Align(
-                                                                                            alignment: AlignmentDirectional(-1.0, 0.0),
-                                                                                            child: Text(
-                                                                                              valueOrDefault<String>(
-                                                                                                allocationSummaryListItem.destinationName,
-                                                                                                'Customer',
-                                                                                              ),
-                                                                                              textAlign: TextAlign.start,
-                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    font: GoogleFonts.plusJakartaSans(
-                                                                                                      fontWeight: FontWeight.bold,
-                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                                    ),
-                                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                    fontSize: 16.0,
-                                                                                                    letterSpacing: 0.0,
-                                                                                                    fontWeight: FontWeight.bold,
-                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                                  ),
+                                                                                    Text(
+                                                                                      valueOrDefault<String>(
+                                                                                        recentAllocationsViewItem.plantName,
+                                                                                        'Plant',
+                                                                                      ),
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                             ),
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
+                                                                                    ),
+                                                                                    Column(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                      children: [
+                                                                                        Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            recentAllocationsViewItem.destinationName,
+                                                                                            'Destination',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
+                                                                                                letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
+                                                                                        ),
+                                                                                        Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            recentAllocationsViewItem.destinationType,
+                                                                                            'Type',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
+                                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
                                                                                         ),
                                                                                       ],
                                                                                     ),
-                                                                                    Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                      child: Text(
-                                                                                        valueOrDefault<String>(
-                                                                                          allocationSummaryListItem.plantName,
-                                                                                          'Plant',
-                                                                                        ),
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              font: GoogleFonts.plusJakartaSans(
-                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                              ),
-                                                                                              fontSize: 16.0,
-                                                                                              letterSpacing: 0.0,
+                                                                                    Text(
+                                                                                      valueOrDefault<String>(
+                                                                                        recentAllocationsViewItem.qtyAllocated?.toString(),
+                                                                                        '0',
+                                                                                      ),
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
                                                                                               fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                             ),
-                                                                                      ),
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
                                                                                     ),
-                                                                                    Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                      child: Text(
-                                                                                        valueOrDefault<String>(
-                                                                                          allocationSummaryListItem.qtyAllocated?.toString(),
-                                                                                          '0',
-                                                                                        ),
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                    Column(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                      children: [
+                                                                                        Text(
+                                                                                          'Harvested',
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
+                                                                                                color: colorFromCssString(
+                                                                                                  recentAllocationsViewItem.daysTextColor!,
+                                                                                                  defaultColor: Colors.black,
+                                                                                                ),
+                                                                                                letterSpacing: 0.0,
                                                                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
-                                                                                              fontSize: 16.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                            ),
-                                                                                      ),
+                                                                                        ),
+                                                                                        Text(
+                                                                                          valueOrDefault<String>(
+                                                                                            recentAllocationsViewItem.daysSinceAllocatedText,
+                                                                                            '0',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                ),
+                                                                                                color: colorFromCssString(
+                                                                                                  recentAllocationsViewItem.daysTextColor!,
+                                                                                                  defaultColor: Colors.black,
+                                                                                                ),
+                                                                                                letterSpacing: 0.0,
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
+                                                                                        ),
+                                                                                      ],
                                                                                     ),
                                                                                     Row(
                                                                                       mainAxisSize: MainAxisSize.max,
+                                                                                      mainAxisAlignment: MainAxisAlignment.start,
                                                                                       children: [
-                                                                                        Align(
-                                                                                          alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                            child: Text(
-                                                                                              valueOrDefault<String>(
-                                                                                                allocationSummaryListItem.destinationType,
-                                                                                                'Type',
-                                                                                              ),
-                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    font: GoogleFonts.plusJakartaSans(
-                                                                                                      fontWeight: FontWeight.w500,
-                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        if (recentAllocationsViewItem.allocationStatus == 'allocated')
+                                                                                          AlignedTooltip(
+                                                                                            content: Padding(
+                                                                                              padding: EdgeInsets.all(4.0),
+                                                                                              child: Text(
+                                                                                                'Delivered',
+                                                                                                style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                      ),
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                                     ),
-                                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                    fontSize: 16.0,
-                                                                                                    letterSpacing: 0.0,
-                                                                                                    fontWeight: FontWeight.w500,
-                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
+                                                                                            ),
+                                                                                            offset: 4.0,
+                                                                                            preferredDirection: AxisDirection.down,
+                                                                                            borderRadius: BorderRadius.circular(8.0),
+                                                                                            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            elevation: 4.0,
+                                                                                            tailBaseWidth: 24.0,
+                                                                                            tailLength: 12.0,
+                                                                                            waitDuration: Duration(milliseconds: 100),
+                                                                                            showDuration: Duration(milliseconds: 1500),
+                                                                                            triggerMode: TooltipTriggerMode.tap,
+                                                                                            child: InkWell(
+                                                                                              splashColor: Colors.transparent,
+                                                                                              focusColor: Colors.transparent,
+                                                                                              hoverColor: Colors.transparent,
+                                                                                              highlightColor: Colors.transparent,
+                                                                                              onTap: () async {
+                                                                                                await AllocationsTable().update(
+                                                                                                  data: {
+                                                                                                    'status': 'delivered',
+                                                                                                    'delivered_at': supaSerialize<DateTime>(getCurrentTimestamp),
+                                                                                                    'delivered_by': currentUserUid,
+                                                                                                  },
+                                                                                                  matchingRows: (rows) => rows.eqOrNull(
+                                                                                                    'allocation_id',
+                                                                                                    recentAllocationsViewItem.allocationId,
                                                                                                   ),
+                                                                                                );
+                                                                                                safeSetState(() => _model.requestCompleter = null);
+                                                                                                await _model.waitForRequestCompleted();
+                                                                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                                                                  SnackBar(
+                                                                                                    content: Text(
+                                                                                                      'Deliery updated!',
+                                                                                                      style: TextStyle(
+                                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                        fontWeight: FontWeight.w600,
+                                                                                                        fontSize: 18.0,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                    duration: Duration(milliseconds: 4000),
+                                                                                                    backgroundColor: FlutterFlowTheme.of(context).secondary,
+                                                                                                  ),
+                                                                                                );
+                                                                                              },
+                                                                                              child: Container(
+                                                                                                width: 30.0,
+                                                                                                height: 30.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: Color(0xFF83E79C),
+                                                                                                  shape: BoxShape.circle,
+                                                                                                ),
+                                                                                                child: Align(
+                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                  child: Text(
+                                                                                                    'D',
+                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                                            fontWeight: FontWeight.w600,
+                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                          ),
+                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                          fontSize: 16.0,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                        ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
                                                                                             ),
                                                                                           ),
-                                                                                        ),
+                                                                                        if (recentAllocationsViewItem.allocationStatus == 'allocated')
+                                                                                          Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(7.0, 0.0, 0.0, 0.0),
+                                                                                            child: AlignedTooltip(
+                                                                                              content: Padding(
+                                                                                                padding: EdgeInsets.all(4.0),
+                                                                                                child: Text(
+                                                                                                  'Picked Up',
+                                                                                                  style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                        ),
+                                                                                                        letterSpacing: 0.0,
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                      ),
+                                                                                                ),
+                                                                                              ),
+                                                                                              offset: 4.0,
+                                                                                              preferredDirection: AxisDirection.down,
+                                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                                              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                              elevation: 4.0,
+                                                                                              tailBaseWidth: 24.0,
+                                                                                              tailLength: 12.0,
+                                                                                              waitDuration: Duration(milliseconds: 100),
+                                                                                              showDuration: Duration(milliseconds: 1500),
+                                                                                              triggerMode: TooltipTriggerMode.tap,
+                                                                                              child: InkWell(
+                                                                                                splashColor: Colors.transparent,
+                                                                                                focusColor: Colors.transparent,
+                                                                                                hoverColor: Colors.transparent,
+                                                                                                highlightColor: Colors.transparent,
+                                                                                                onTap: () async {
+                                                                                                  await AllocationsTable().update(
+                                                                                                    data: {
+                                                                                                      'status': 'picked_up',
+                                                                                                      'delivered_at': supaSerialize<DateTime>(getCurrentTimestamp),
+                                                                                                      'delivered_by': currentUserUid,
+                                                                                                    },
+                                                                                                    matchingRows: (rows) => rows.eqOrNull(
+                                                                                                      'allocation_id',
+                                                                                                      recentAllocationsViewItem.allocationId,
+                                                                                                    ),
+                                                                                                  );
+                                                                                                  safeSetState(() => _model.requestCompleter = null);
+                                                                                                  await _model.waitForRequestCompleted();
+                                                                                                  ScaffoldMessenger.of(context).showSnackBar(
+                                                                                                    SnackBar(
+                                                                                                      content: Text(
+                                                                                                        'Order picked up!',
+                                                                                                        style: TextStyle(
+                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          fontSize: 18.0,
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      duration: Duration(milliseconds: 4000),
+                                                                                                      backgroundColor: FlutterFlowTheme.of(context).secondary,
+                                                                                                    ),
+                                                                                                  );
+                                                                                                },
+                                                                                                child: Container(
+                                                                                                  width: 30.0,
+                                                                                                  height: 30.0,
+                                                                                                  decoration: BoxDecoration(
+                                                                                                    color: Color(0xFF83AEE7),
+                                                                                                    shape: BoxShape.circle,
+                                                                                                  ),
+                                                                                                  child: Align(
+                                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                    child: Text(
+                                                                                                      'P',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                                              fontWeight: FontWeight.w600,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                            ),
+                                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                            fontSize: 16.0,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            fontWeight: FontWeight.w600,
+                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        if (recentAllocationsViewItem.allocationStatus == 'allocated')
+                                                                                          Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(7.0, 0.0, 0.0, 0.0),
+                                                                                            child: AlignedTooltip(
+                                                                                              content: Padding(
+                                                                                                padding: EdgeInsets.all(4.0),
+                                                                                                child: Text(
+                                                                                                  'Reallocate',
+                                                                                                  style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                        ),
+                                                                                                        letterSpacing: 0.0,
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                      ),
+                                                                                                ),
+                                                                                              ),
+                                                                                              offset: 4.0,
+                                                                                              preferredDirection: AxisDirection.down,
+                                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                                              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                              elevation: 4.0,
+                                                                                              tailBaseWidth: 24.0,
+                                                                                              tailLength: 12.0,
+                                                                                              waitDuration: Duration(milliseconds: 100),
+                                                                                              showDuration: Duration(milliseconds: 1500),
+                                                                                              triggerMode: TooltipTriggerMode.tap,
+                                                                                              child: InkWell(
+                                                                                                splashColor: Colors.transparent,
+                                                                                                focusColor: Colors.transparent,
+                                                                                                hoverColor: Colors.transparent,
+                                                                                                highlightColor: Colors.transparent,
+                                                                                                onTap: () async {
+                                                                                                  await showModalBottomSheet(
+                                                                                                    isScrollControlled: true,
+                                                                                                    backgroundColor: Colors.transparent,
+                                                                                                    enableDrag: false,
+                                                                                                    context: context,
+                                                                                                    builder: (context) {
+                                                                                                      return WebViewAware(
+                                                                                                        child: GestureDetector(
+                                                                                                          onTap: () {
+                                                                                                            FocusScope.of(context).unfocus();
+                                                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                          },
+                                                                                                          child: Padding(
+                                                                                                            padding: MediaQuery.viewInsetsOf(context),
+                                                                                                            child: ReallocateProduceWidget(
+                                                                                                              allocationID: recentAllocationsViewItem.allocationId!,
+                                                                                                              batchID: recentAllocationsViewItem.batchId!,
+                                                                                                              plantName: recentAllocationsViewItem.plantName!,
+                                                                                                              quantity: recentAllocationsViewItem.qtyAllocated!,
+                                                                                                              customerName: recentAllocationsViewItem.destinationName!,
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      );
+                                                                                                    },
+                                                                                                  ).then((value) => safeSetState(() {}));
+                                                                                                },
+                                                                                                child: Container(
+                                                                                                  width: 30.0,
+                                                                                                  height: 30.0,
+                                                                                                  decoration: BoxDecoration(
+                                                                                                    color: Color(0xFFEC725B),
+                                                                                                    shape: BoxShape.circle,
+                                                                                                  ),
+                                                                                                  child: Align(
+                                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                    child: Text(
+                                                                                                      'R',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                                              fontWeight: FontWeight.w600,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                            ),
+                                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                            fontSize: 16.0,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            fontWeight: FontWeight.w600,
+                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
                                                                                       ],
                                                                                     ),
                                                                                   ].map((c) => DataCell(c)).toList(),
                                                                                 ),
-                                                                                emptyBuilder: () => NoHarvestWidget(),
                                                                                 paginated: true,
                                                                                 selectable: false,
                                                                                 hidePaginator: false,
@@ -2627,16 +3045,20 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                 Expanded(
                                                                   child: FutureBuilder<
                                                                       List<
-                                                                          HarvestSummaryViewRow>>(
-                                                                    future: HarvestSummaryViewTable()
-                                                                        .queryRows(
-                                                                      queryFn: (q) => q
-                                                                          .eqOrNull(
-                                                                            'farm_id',
-                                                                            FFAppState().farmID,
-                                                                          )
-                                                                          .order('harvest_date', ascending: true),
-                                                                    ),
+                                                                          RecentAllocationsViewRow>>(
+                                                                    future: (_model.requestCompleter ??= Completer<
+                                                                            List<
+                                                                                RecentAllocationsViewRow>>()
+                                                                          ..complete(
+                                                                              RecentAllocationsViewTable().queryRows(
+                                                                            queryFn: (q) => q
+                                                                                .eqOrNull(
+                                                                                  'farm_id',
+                                                                                  FFAppState().farmID,
+                                                                                )
+                                                                                .order('harvest_date', ascending: true),
+                                                                          )))
+                                                                        .future,
                                                                     builder:
                                                                         (context,
                                                                             snapshot) {
@@ -2659,14 +3081,547 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                           ),
                                                                         );
                                                                       }
-                                                                      List<HarvestSummaryViewRow>
-                                                                          containerHarvestSummaryViewRowList =
+                                                                      List<RecentAllocationsViewRow>
+                                                                          recentAllocationsContainerRecentAllocationsViewRowList =
                                                                           snapshot
                                                                               .data!;
 
                                                                       return Container(
                                                                         decoration:
                                                                             BoxDecoration(),
+                                                                        child:
+                                                                            Builder(
+                                                                          builder:
+                                                                              (context) {
+                                                                            final recentAllocationsView =
+                                                                                recentAllocationsContainerRecentAllocationsViewRowList.toList();
+
+                                                                            return FlutterFlowDataTable<RecentAllocationsViewRow>(
+                                                                              controller: _model.paginatedDataTableController5,
+                                                                              data: recentAllocationsView,
+                                                                              columnsBuilder: (onSortChanged) => [
+                                                                                DataColumn2(
+                                                                                  label: DefaultTextStyle.merge(
+                                                                                    softWrap: true,
+                                                                                    child: Text(
+                                                                                      'Status',
+                                                                                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FontWeight.w600,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                            ),
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FontWeight.w600,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                DataColumn2(
+                                                                                  label: DefaultTextStyle.merge(
+                                                                                    softWrap: true,
+                                                                                    child: Text(
+                                                                                      'Plant',
+                                                                                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FontWeight.w600,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                            ),
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FontWeight.w600,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                DataColumn2(
+                                                                                  label: DefaultTextStyle.merge(
+                                                                                    softWrap: true,
+                                                                                    child: Text(
+                                                                                      'Customer',
+                                                                                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FontWeight.w600,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                            ),
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FontWeight.w600,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                DataColumn2(
+                                                                                  label: DefaultTextStyle.merge(
+                                                                                    softWrap: true,
+                                                                                    child: Text(
+                                                                                      'Qty',
+                                                                                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FontWeight.w600,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                            ),
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FontWeight.w600,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                DataColumn2(
+                                                                                  label: DefaultTextStyle.merge(
+                                                                                    softWrap: true,
+                                                                                    child: Text(
+                                                                                      'Days',
+                                                                                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FontWeight.w600,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                            ),
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FontWeight.w600,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                DataColumn2(
+                                                                                  label: DefaultTextStyle.merge(
+                                                                                    softWrap: true,
+                                                                                    child: Text(
+                                                                                      'Actions',
+                                                                                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FontWeight.w600,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                            ),
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FontWeight.w600,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                              dataRowBuilder: (recentAllocationsViewItem, recentAllocationsViewIndex, selected, onSelectChanged) => DataRow(
+                                                                                color: MaterialStateProperty.all(
+                                                                                  recentAllocationsViewIndex % 2 == 0 ? FlutterFlowTheme.of(context).secondaryBackground : FlutterFlowTheme.of(context).primaryBackground,
+                                                                                ),
+                                                                                cells: [
+                                                                                  Container(
+                                                                                    width: 100.0,
+                                                                                    height: 40.0,
+                                                                                    decoration: BoxDecoration(
+                                                                                      color: colorFromCssString(
+                                                                                        recentAllocationsViewItem.statusBackgroundColor!,
+                                                                                        defaultColor: FlutterFlowTheme.of(context).alternate,
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(10.0),
+                                                                                    ),
+                                                                                    child: Align(
+                                                                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                      child: Text(
+                                                                                        valueOrDefault<String>(
+                                                                                          recentAllocationsViewItem.statusDisplayText,
+                                                                                          'Status',
+                                                                                        ),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
+                                                                                              color: colorFromCssString(
+                                                                                                recentAllocationsViewItem.statusTextColor!,
+                                                                                                defaultColor: Colors.black,
+                                                                                              ),
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Text(
+                                                                                    valueOrDefault<String>(
+                                                                                      recentAllocationsViewItem.plantName,
+                                                                                      'Plant',
+                                                                                    ),
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
+                                                                                  ),
+                                                                                  Column(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                    children: [
+                                                                                      Text(
+                                                                                        valueOrDefault<String>(
+                                                                                          recentAllocationsViewItem.destinationName,
+                                                                                          'Destination',
+                                                                                        ),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                      ),
+                                                                                      Text(
+                                                                                        valueOrDefault<String>(
+                                                                                          recentAllocationsViewItem.destinationType,
+                                                                                          'Type',
+                                                                                        ),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                              ),
+                                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                  Text(
+                                                                                    valueOrDefault<String>(
+                                                                                      recentAllocationsViewItem.qtyAllocated?.toString(),
+                                                                                      '0',
+                                                                                    ),
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
+                                                                                  ),
+                                                                                  Text(
+                                                                                    dateTimeFormat("MMMEd", recentAllocationsViewItem.allocatedAt!),
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
+                                                                                  ),
+                                                                                  Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                                                    children: [
+                                                                                      if (recentAllocationsViewItem.allocationStatus == 'allocated')
+                                                                                        AlignedTooltip(
+                                                                                          content: Padding(
+                                                                                            padding: EdgeInsets.all(4.0),
+                                                                                            child: Text(
+                                                                                              'Delivered',
+                                                                                              style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                    ),
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                  ),
+                                                                                            ),
+                                                                                          ),
+                                                                                          offset: 4.0,
+                                                                                          preferredDirection: AxisDirection.down,
+                                                                                          borderRadius: BorderRadius.circular(8.0),
+                                                                                          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                          elevation: 4.0,
+                                                                                          tailBaseWidth: 24.0,
+                                                                                          tailLength: 12.0,
+                                                                                          waitDuration: Duration(milliseconds: 100),
+                                                                                          showDuration: Duration(milliseconds: 1500),
+                                                                                          triggerMode: TooltipTriggerMode.tap,
+                                                                                          child: InkWell(
+                                                                                            splashColor: Colors.transparent,
+                                                                                            focusColor: Colors.transparent,
+                                                                                            hoverColor: Colors.transparent,
+                                                                                            highlightColor: Colors.transparent,
+                                                                                            onTap: () async {
+                                                                                              await AllocationsTable().update(
+                                                                                                data: {
+                                                                                                  'status': 'delivered',
+                                                                                                  'delivered_at': supaSerialize<DateTime>(getCurrentTimestamp),
+                                                                                                  'delivered_by': currentUserUid,
+                                                                                                },
+                                                                                                matchingRows: (rows) => rows.eqOrNull(
+                                                                                                  'allocation_id',
+                                                                                                  recentAllocationsViewItem.allocationId,
+                                                                                                ),
+                                                                                              );
+                                                                                              safeSetState(() => _model.requestCompleter = null);
+                                                                                              await _model.waitForRequestCompleted();
+                                                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                                                SnackBar(
+                                                                                                  content: Text(
+                                                                                                    'Deliery updated!',
+                                                                                                    style: TextStyle(
+                                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                      fontWeight: FontWeight.w600,
+                                                                                                      fontSize: 18.0,
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  duration: Duration(milliseconds: 4000),
+                                                                                                  backgroundColor: FlutterFlowTheme.of(context).secondary,
+                                                                                                ),
+                                                                                              );
+                                                                                            },
+                                                                                            child: Container(
+                                                                                              width: 30.0,
+                                                                                              height: 30.0,
+                                                                                              decoration: BoxDecoration(
+                                                                                                color: Color(0xFF83E79C),
+                                                                                                shape: BoxShape.circle,
+                                                                                              ),
+                                                                                              child: Align(
+                                                                                                alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                child: Text(
+                                                                                                  'D',
+                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                        font: GoogleFonts.plusJakartaSans(
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                        ),
+                                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                        fontSize: 16.0,
+                                                                                                        letterSpacing: 0.0,
+                                                                                                        fontWeight: FontWeight.w600,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                      ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      if (recentAllocationsViewItem.allocationStatus == 'allocated')
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(7.0, 0.0, 0.0, 0.0),
+                                                                                          child: AlignedTooltip(
+                                                                                            content: Padding(
+                                                                                              padding: EdgeInsets.all(4.0),
+                                                                                              child: Text(
+                                                                                                'Picked Up',
+                                                                                                style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                      ),
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                            offset: 4.0,
+                                                                                            preferredDirection: AxisDirection.down,
+                                                                                            borderRadius: BorderRadius.circular(8.0),
+                                                                                            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            elevation: 4.0,
+                                                                                            tailBaseWidth: 24.0,
+                                                                                            tailLength: 12.0,
+                                                                                            waitDuration: Duration(milliseconds: 100),
+                                                                                            showDuration: Duration(milliseconds: 1500),
+                                                                                            triggerMode: TooltipTriggerMode.tap,
+                                                                                            child: InkWell(
+                                                                                              splashColor: Colors.transparent,
+                                                                                              focusColor: Colors.transparent,
+                                                                                              hoverColor: Colors.transparent,
+                                                                                              highlightColor: Colors.transparent,
+                                                                                              onTap: () async {
+                                                                                                await AllocationsTable().update(
+                                                                                                  data: {
+                                                                                                    'status': 'picked_up',
+                                                                                                    'delivered_at': supaSerialize<DateTime>(getCurrentTimestamp),
+                                                                                                    'delivered_by': currentUserUid,
+                                                                                                  },
+                                                                                                  matchingRows: (rows) => rows.eqOrNull(
+                                                                                                    'allocation_id',
+                                                                                                    recentAllocationsViewItem.allocationId,
+                                                                                                  ),
+                                                                                                );
+                                                                                                safeSetState(() => _model.requestCompleter = null);
+                                                                                                await _model.waitForRequestCompleted();
+                                                                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                                                                  SnackBar(
+                                                                                                    content: Text(
+                                                                                                      'Order picked up!',
+                                                                                                      style: TextStyle(
+                                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                        fontWeight: FontWeight.w600,
+                                                                                                        fontSize: 18.0,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                    duration: Duration(milliseconds: 4000),
+                                                                                                    backgroundColor: FlutterFlowTheme.of(context).secondary,
+                                                                                                  ),
+                                                                                                );
+                                                                                              },
+                                                                                              child: Container(
+                                                                                                width: 30.0,
+                                                                                                height: 30.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: Color(0xFF83AEE7),
+                                                                                                  shape: BoxShape.circle,
+                                                                                                ),
+                                                                                                child: Align(
+                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                  child: Text(
+                                                                                                    'P',
+                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                                            fontWeight: FontWeight.w600,
+                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                          ),
+                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                          fontSize: 16.0,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                        ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      if (recentAllocationsViewItem.allocationStatus == 'allocated')
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(7.0, 0.0, 0.0, 0.0),
+                                                                                          child: AlignedTooltip(
+                                                                                            content: Padding(
+                                                                                              padding: EdgeInsets.all(4.0),
+                                                                                              child: Text(
+                                                                                                'Reallocate',
+                                                                                                style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                      ),
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                            offset: 4.0,
+                                                                                            preferredDirection: AxisDirection.down,
+                                                                                            borderRadius: BorderRadius.circular(8.0),
+                                                                                            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            elevation: 4.0,
+                                                                                            tailBaseWidth: 24.0,
+                                                                                            tailLength: 12.0,
+                                                                                            waitDuration: Duration(milliseconds: 100),
+                                                                                            showDuration: Duration(milliseconds: 1500),
+                                                                                            triggerMode: TooltipTriggerMode.tap,
+                                                                                            child: InkWell(
+                                                                                              splashColor: Colors.transparent,
+                                                                                              focusColor: Colors.transparent,
+                                                                                              hoverColor: Colors.transparent,
+                                                                                              highlightColor: Colors.transparent,
+                                                                                              onTap: () async {
+                                                                                                await showModalBottomSheet(
+                                                                                                  isScrollControlled: true,
+                                                                                                  backgroundColor: Colors.transparent,
+                                                                                                  enableDrag: false,
+                                                                                                  context: context,
+                                                                                                  builder: (context) {
+                                                                                                    return WebViewAware(
+                                                                                                      child: GestureDetector(
+                                                                                                        onTap: () {
+                                                                                                          FocusScope.of(context).unfocus();
+                                                                                                          FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                        },
+                                                                                                        child: Padding(
+                                                                                                          padding: MediaQuery.viewInsetsOf(context),
+                                                                                                          child: ReallocateProduceWidget(
+                                                                                                            allocationID: recentAllocationsViewItem.allocationId!,
+                                                                                                            batchID: recentAllocationsViewItem.batchId!,
+                                                                                                            plantName: recentAllocationsViewItem.plantName!,
+                                                                                                            quantity: recentAllocationsViewItem.qtyAllocated!,
+                                                                                                            customerName: recentAllocationsViewItem.destinationName!,
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    );
+                                                                                                  },
+                                                                                                ).then((value) => safeSetState(() {}));
+                                                                                              },
+                                                                                              child: Container(
+                                                                                                width: 30.0,
+                                                                                                height: 30.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: Color(0xFFEC725B),
+                                                                                                  shape: BoxShape.circle,
+                                                                                                ),
+                                                                                                child: Align(
+                                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                                  child: Text(
+                                                                                                    'R',
+                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                          font: GoogleFonts.plusJakartaSans(
+                                                                                                            fontWeight: FontWeight.w600,
+                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                          ),
+                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                          fontSize: 16.0,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                        ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ].map((c) => DataCell(c)).toList(),
+                                                                              ),
+                                                                              paginated: true,
+                                                                              selectable: false,
+                                                                              hidePaginator: false,
+                                                                              showFirstLastButtons: false,
+                                                                              headingRowHeight: 56.0,
+                                                                              dataRowHeight: 48.0,
+                                                                              columnSpacing: 20.0,
+                                                                              headingRowColor: FlutterFlowTheme.of(context).secondaryText,
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                              addHorizontalDivider: true,
+                                                                              addTopAndBottomDivider: false,
+                                                                              hideDefaultHorizontalDivider: true,
+                                                                              horizontalDividerColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              horizontalDividerThickness: 1.0,
+                                                                              addVerticalDivider: false,
+                                                                            );
+                                                                          },
+                                                                        ),
                                                                       );
                                                                     },
                                                                   ),
@@ -2767,7 +3722,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               }
 
                                                                               return FlutterFlowDataTable<TowerPlantsDetailRow>(
-                                                                                controller: _model.paginatedDataTableController5,
+                                                                                controller: _model.paginatedDataTableController6,
                                                                                 data: produceAvailable,
                                                                                 columnsBuilder: (onSortChanged) => [
                                                                                   DataColumn2(
@@ -2942,21 +3897,23 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                           enableDrag: false,
                                                                                           context: context,
                                                                                           builder: (context) {
-                                                                                            return GestureDetector(
-                                                                                              onTap: () {
-                                                                                                FocusScope.of(context).unfocus();
-                                                                                                FocusManager.instance.primaryFocus?.unfocus();
-                                                                                              },
-                                                                                              child: Padding(
-                                                                                                padding: MediaQuery.viewInsetsOf(context),
-                                                                                                child: AllocateProduceWidget(
-                                                                                                  towerID: produceAvailableItem.towerId!,
-                                                                                                  availableQuantity: produceAvailableItem.availableQuantity!,
-                                                                                                  plantName: produceAvailableItem.plantName!,
-                                                                                                  reservedQuantity: produceAvailableItem.reservedQuantity!,
-                                                                                                  farmID: FFAppState().farmID,
-                                                                                                  itemID: produceAvailableItem.towerId!,
-                                                                                                  plantID: produceAvailableItem.plantId!,
+                                                                                            return WebViewAware(
+                                                                                              child: GestureDetector(
+                                                                                                onTap: () {
+                                                                                                  FocusScope.of(context).unfocus();
+                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                },
+                                                                                                child: Padding(
+                                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                                  child: AllocateProduceWidget(
+                                                                                                    towerID: produceAvailableItem.towerId!,
+                                                                                                    availableQuantity: produceAvailableItem.availableQuantity!,
+                                                                                                    plantName: produceAvailableItem.plantName!,
+                                                                                                    reservedQuantity: produceAvailableItem.reservedQuantity!,
+                                                                                                    farmID: FFAppState().farmID,
+                                                                                                    itemID: produceAvailableItem.towerId!,
+                                                                                                    plantID: produceAvailableItem.plantId!,
+                                                                                                  ),
                                                                                                 ),
                                                                                               ),
                                                                                             );

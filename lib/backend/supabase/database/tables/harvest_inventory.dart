@@ -47,4 +47,19 @@ class HarvestInventoryRow extends SupabaseDataRow {
 
   int get harvestActionId => getField<int>('harvest_action_id')!;
   set harvestActionId(int value) => setField<int>('harvest_action_id', value);
+
+  int? get originalQuantity => getField<int>('original_quantity');
+  set originalQuantity(int? value) => setField<int>('original_quantity', value);
+
+  DateTime? get expiryDate => getField<DateTime>('expiry_date');
+  set expiryDate(DateTime? value) => setField<DateTime>('expiry_date', value);
+
+  int? get wasteQuantity => getField<int>('waste_quantity');
+  set wasteQuantity(int? value) => setField<int>('waste_quantity', value);
+
+  int? get donatedQuantity => getField<int>('donated_quantity');
+  set donatedQuantity(int? value) => setField<int>('donated_quantity', value);
+
+  String? get notes => getField<String>('notes');
+  set notes(String? value) => setField<String>('notes', value);
 }

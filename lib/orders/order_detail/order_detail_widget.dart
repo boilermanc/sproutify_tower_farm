@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'order_detail_model.dart';
 export 'order_detail_model.dart';
 
@@ -222,11 +223,13 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
                                               enableDrag: false,
                                               context: context,
                                               builder: (context) {
-                                                return Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: AddToOrderWidget(),
+                                                return WebViewAware(
+                                                  child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child: AddToOrderWidget(),
+                                                  ),
                                                 );
                                               },
                                             ).then(
@@ -367,11 +370,13 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
                                     enableDrag: false,
                                     context: context,
                                     builder: (context) {
-                                      return Padding(
-                                        padding:
-                                            MediaQuery.viewInsetsOf(context),
-                                        child: MarkOrderCompleteWidget(
-                                          orderID: widget!.orderID!,
+                                      return WebViewAware(
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: MarkOrderCompleteWidget(
+                                            orderID: widget!.orderID!,
+                                          ),
                                         ),
                                       );
                                     },
@@ -1580,15 +1585,17 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
                                                       enableDrag: false,
                                                       context: context,
                                                       builder: (context) {
-                                                        return Padding(
-                                                          padding: MediaQuery
-                                                              .viewInsetsOf(
-                                                                  context),
-                                                          child:
-                                                              MarkProductCompleteWidget(
-                                                            itemID:
-                                                                orderItemsTableItem
-                                                                    .itemId!,
+                                                        return WebViewAware(
+                                                          child: Padding(
+                                                            padding: MediaQuery
+                                                                .viewInsetsOf(
+                                                                    context),
+                                                            child:
+                                                                MarkProductCompleteWidget(
+                                                              itemID:
+                                                                  orderItemsTableItem
+                                                                      .itemId!,
+                                                            ),
                                                           ),
                                                         );
                                                       },

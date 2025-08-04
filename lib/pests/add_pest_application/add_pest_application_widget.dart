@@ -408,7 +408,9 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                           'roles',
                                           [
                                             'Private Applicator Certification',
-                                            'Commercial Applicator Certification'
+                                            'Commercial Applicator Certification',
+                                            'Farmhand',
+                                            'Farm Manager'
                                           ],
                                         ).order('full_name'),
                                       ),
@@ -702,18 +704,19 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    FutureBuilder<
-                                        List<
-                                            PestControlProductsRecentApplicationsRow>>(
-                                      future:
-                                          PestControlProductsRecentApplicationsTable()
-                                              .queryRows(
+                                    FutureBuilder<List<FarmChemicalsRow>>(
+                                      future: FarmChemicalsTable().queryRows(
                                         queryFn: (q) => q
                                             .eqOrNull(
                                               'farm_id',
                                               FFAppState().farmID,
                                             )
-                                            .order('product_name'),
+                                            .eqOrNull(
+                                              'category_name',
+                                              'Pest and Disease Control',
+                                            )
+                                            .order('product_name',
+                                                ascending: true),
                                       ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
@@ -733,8 +736,8 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                             ),
                                           );
                                         }
-                                        List<PestControlProductsRecentApplicationsRow>
-                                            selectProductPestControlProductsRecentApplicationsRowList =
+                                        List<FarmChemicalsRow>
+                                            selectProductFarmChemicalsRowList =
                                             snapshot.data!;
 
                                         return FlutterFlowDropDown<String>(
@@ -744,12 +747,12 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                             _model.selectProductValue ??= '',
                                           ),
                                           options: List<String>.from(
-                                              selectProductPestControlProductsRecentApplicationsRowList
+                                              selectProductFarmChemicalsRowList
                                                   .map((e) => e.productId)
                                                   .withoutNulls
                                                   .toList()),
                                           optionLabels:
-                                              selectProductPestControlProductsRecentApplicationsRowList
+                                              selectProductFarmChemicalsRowList
                                                   .map((e) => e.productName)
                                                   .withoutNulls
                                                   .toList(),

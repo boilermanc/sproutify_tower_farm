@@ -114,16 +114,6 @@ class _GeneralFarmLightingWidgetState extends State<GeneralFarmLightingWidget> {
                     height: 70.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 0.0,
-                          color: FlutterFlowTheme.of(context).alternate,
-                          offset: Offset(
-                            0.0,
-                            1.0,
-                          ),
-                        )
-                      ],
                       shape: BoxShape.rectangle,
                     ),
                     child: Padding(

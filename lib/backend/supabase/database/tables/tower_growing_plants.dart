@@ -43,4 +43,16 @@ class TowerGrowingPlantsRow extends SupabaseDataRow {
 
   int? get contentId => getField<int>('content_id');
   set contentId(int? value) => setField<int>('content_id', value);
+
+  DateTime? get seededDate => getField<DateTime>('seeded_date');
+  set seededDate(DateTime? value) => setField<DateTime>('seeded_date', value);
+
+  int? get consolidatedRecordCount =>
+      getField<int>('consolidated_record_count');
+  set consolidatedRecordCount(int? value) =>
+      setField<int>('consolidated_record_count', value);
+
+  String? get quantityDisplay => getField<String>('quantity_display');
+  set quantityDisplay(String? value) =>
+      setField<String>('quantity_display', value);
 }

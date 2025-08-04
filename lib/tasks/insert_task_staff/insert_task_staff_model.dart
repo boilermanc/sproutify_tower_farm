@@ -7,6 +7,7 @@ import 'dart:ui';
 import 'insert_task_staff_widget.dart' show InsertTaskStaffWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

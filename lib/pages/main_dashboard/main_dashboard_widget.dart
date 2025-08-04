@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
@@ -19,7 +20,9 @@ import '/spacer/add_spacer_action/add_spacer_action_widget.dart';
 import '/spacer/assign_spacer_task/assign_spacer_task_widget.dart';
 import '/spacer/confirm_spacer_ready/confirm_spacer_ready_widget.dart';
 import '/spacer/confirm_spacer_waste/confirm_spacer_waste_widget.dart';
+import '/sproutify_a_i/mcp_reponse_window/mcp_reponse_window_widget.dart';
 import '/sproutify_a_i/sproutify_a_i/sproutify_a_i_widget.dart';
+import '/sproutify_a_i/sproutify_a_i_m_c_p_copy/sproutify_a_i_m_c_p_copy_widget.dart';
 import '/tasks/clean_complete_task/clean_complete_task_widget.dart';
 import '/tasks/task_mark_completed/task_mark_completed_widget.dart';
 import '/towers/add_initial_towers/add_initial_towers_widget.dart';
@@ -34,6 +37,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'main_dashboard_model.dart';
 export 'main_dashboard_model.dart';
 
@@ -62,10 +66,86 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      // Set Loading and Nav
+      FFAppState().isLoading = true;
+      FFAppState().navOpen = true;
       if (!(FFAppState().farmID != null && FFAppState().farmID != '')) {
-        context.goNamed(MainLoadingPageWidget.routeName);
+        _model.profileResponse0011 = await InitialFarmLoadTable().queryRows(
+          queryFn: (q) => q.eqOrNull(
+            'user_id',
+            currentUserUid,
+          ),
+        );
+        if (!_model.profileResponse0011!.firstOrNull!.needsSetup!) {
+          // Farm ID
+          FFAppState().farmID =
+              _model.profileResponse0011!.firstOrNull!.farmId!;
+          // Farm Name
+          FFAppState().farmName =
+              _model.profileResponse0011!.firstOrNull!.farmName!;
+          // Farm Unit
+          FFAppState().farmUnit =
+              _model.profileResponse0011!.firstOrNull!.measurementSystem!;
+          // First Name
+          FFAppState().firstName =
+              _model.profileResponse0011!.firstOrNull!.firstName!;
+          // Last Name
+          FFAppState().lastName = valueOrDefault<String>(
+            _model.profileResponse0011?.firstOrNull?.lastName,
+            'Farmer',
+          );
+          // Farm City
+          FFAppState().farmCity =
+              _model.profileResponse0011!.firstOrNull!.city!;
+          // Lattitude
+          FFAppState().farmLatitude =
+              _model.profileResponse0011!.firstOrNull!.latitude!;
+          // Longitude
+          FFAppState().farmLongitude =
+              _model.profileResponse0011!.firstOrNull!.longitude!;
+          // Has Towers
+          FFAppState().towersAreConfigured =
+              _model.profileResponse0011!.firstOrNull!.hasTowers!;
+          // Profile Image
+          FFAppState().profileImage =
+              _model.profileResponse0011!.firstOrNull!.profileImageUrl!;
+          // Uses Lighting
+          FFAppState().usesLighting =
+              _model.profileResponse0011!.firstOrNull!.usesLighting!;
+          // Has Vendors
+          FFAppState().hasVendors =
+              _model.profileResponse0011!.firstOrNull!.hasVendors!;
+          // Has Plants
+          FFAppState().hasPlants =
+              _model.profileResponse0011!.firstOrNull!.hasPlants!;
+          FFAppState().farmImage = valueOrDefault<String>(
+            _model.profileResponse0011?.firstOrNull?.farmImageUrl,
+            'https://rsndonfydqhykowljuyn.supabase.co/storage/v1/object/public/farmlogos/images/20250708_2047_Aeroponic%20Tower%20Farm_simple_compose_01jzpac92eff8vcf5c0qt3fpz5%20(1).png',
+          );
+        }
+        // Query Weather Logs
+        _model.weatherData5533 = await WeatherLogsTable().queryRows(
+          queryFn: (q) => q.eqOrNull(
+            'farm_id',
+            FFAppState().farmID,
+          ),
+        );
+        // setFarmWeather
+        FFAppState().farmTemp =
+            _model.weatherData5533!.firstOrNull!.tempF!.toString();
+        FFAppState().farmHumidity =
+            _model.weatherData5533!.firstOrNull!.humidity!.toString();
+        FFAppState().farmCondition =
+            _model.weatherData5533!.firstOrNull!.conditions!;
+        safeSetState(() {});
       }
+      // Loading Set To False
+      FFAppState().isLoading = false;
+      safeSetState(() {});
     });
+
+    _model.reportTextFieldTextController ??= TextEditingController();
+    _model.reportTextFieldFocusNode ??= FocusNode();
 
     _model.tabBarController1 = TabController(
       vsync: this,
@@ -180,14 +260,16 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                 enableDrag: false,
                 context: context,
                 builder: (context) {
-                  return GestureDetector(
-                    onTap: () {
-                      FocusScope.of(context).unfocus();
-                      FocusManager.instance.primaryFocus?.unfocus();
-                    },
-                    child: Padding(
-                      padding: MediaQuery.viewInsetsOf(context),
-                      child: SproutifyAIWidget(),
+                  return WebViewAware(
+                    child: GestureDetector(
+                      onTap: () {
+                        FocusScope.of(context).unfocus();
+                        FocusManager.instance.primaryFocus?.unfocus();
+                      },
+                      child: Padding(
+                        padding: MediaQuery.viewInsetsOf(context),
+                        child: SproutifyAIWidget(),
+                      ),
                     ),
                   );
                 },
@@ -415,14 +497,16 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                               enableDrag: false,
                                                                               context: context,
                                                                               builder: (context) {
-                                                                                return GestureDetector(
-                                                                                  onTap: () {
-                                                                                    FocusScope.of(context).unfocus();
-                                                                                    FocusManager.instance.primaryFocus?.unfocus();
-                                                                                  },
-                                                                                  child: Padding(
-                                                                                    padding: MediaQuery.viewInsetsOf(context),
-                                                                                    child: InitialTowerSetupWidget(),
+                                                                                return WebViewAware(
+                                                                                  child: GestureDetector(
+                                                                                    onTap: () {
+                                                                                      FocusScope.of(context).unfocus();
+                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                                    },
+                                                                                    child: Padding(
+                                                                                      padding: MediaQuery.viewInsetsOf(context),
+                                                                                      child: InitialTowerSetupWidget(),
+                                                                                    ),
                                                                                   ),
                                                                                 );
                                                                               },
@@ -1030,6 +1114,353 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                     ),
                                                   ],
                                                 ),
+                                              if (FFAppState()
+                                                      .towersAreConfigured ==
+                                                  true)
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return WebViewAware(
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        context)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    SproutifyAIMCPCopyWidget(),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
+                                                    },
+                                                    child: Container(
+                                                      width: 350.0,
+                                                      height: 60.0,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10.0),
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                        ),
+                                                      ),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Container(
+                                                              width: 300.0,
+                                                              child:
+                                                                  TextFormField(
+                                                                controller: _model
+                                                                    .reportTextFieldTextController,
+                                                                focusNode: _model
+                                                                    .reportTextFieldFocusNode,
+                                                                onFieldSubmitted:
+                                                                    (_) async {
+                                                                  // The "chatHistory" is the generated JSON -- we send the whole chat history to AI in order for it to understand context.
+                                                                  _model.apiMCPResponse3311 =
+                                                                      await McpChatGroupGroup
+                                                                          .sendFullPromptMCPCall
+                                                                          .call(
+                                                                    userMessage:
+                                                                        _model
+                                                                            .reportTextFieldTextController
+                                                                            .text,
+                                                                    farmID: FFAppState()
+                                                                        .farmID,
+                                                                    userID:
+                                                                        currentUserUid,
+                                                                  );
+
+                                                                  if ((_model
+                                                                          .apiMCPResponse3311
+                                                                          ?.succeeded ??
+                                                                      true)) {
+                                                                    FFAppState()
+                                                                            .mcpHtml =
+                                                                        getJsonField(
+                                                                      (_model.apiMCPResponse3311
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                      r'''$.widgetCode''',
+                                                                    ).toString();
+                                                                    FFAppState()
+                                                                            .mcpIsLoading =
+                                                                        false;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  } else {
+                                                                    ScaffoldMessenger.of(
+                                                                            context)
+                                                                        .showSnackBar(
+                                                                      SnackBar(
+                                                                        content:
+                                                                            Text(
+                                                                          'Your request failed.',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .override(
+                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                ),
+                                                                                color: FlutterFlowTheme.of(context).info,
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                              ),
+                                                                        ),
+                                                                        duration:
+                                                                            Duration(milliseconds: 4000),
+                                                                        backgroundColor:
+                                                                            FlutterFlowTheme.of(context).error,
+                                                                      ),
+                                                                    );
+                                                                  }
+
+                                                                  await Future
+                                                                      .delayed(
+                                                                    Duration(
+                                                                      milliseconds:
+                                                                          800,
+                                                                    ),
+                                                                  );
+                                                                  await showModalBottomSheet(
+                                                                    isScrollControlled:
+                                                                        true,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    enableDrag:
+                                                                        false,
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (context) {
+                                                                      return WebViewAware(
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            FocusScope.of(context).unfocus();
+                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                          },
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                MediaQuery.viewInsetsOf(context),
+                                                                            child:
+                                                                                McpReponseWindowWidget(),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  ).then((value) =>
+                                                                      safeSetState(
+                                                                          () {}));
+
+                                                                  safeSetState(
+                                                                      () {
+                                                                    _model
+                                                                        .reportTextFieldTextController
+                                                                        ?.clear();
+                                                                  });
+
+                                                                  safeSetState(
+                                                                      () {});
+                                                                },
+                                                                autofocus:
+                                                                    false,
+                                                                obscureText:
+                                                                    false,
+                                                                decoration:
+                                                                    InputDecoration(
+                                                                  isDense: true,
+                                                                  labelStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                  hintText:
+                                                                      'Generate  Reports',
+                                                                  hintStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        fontSize:
+                                                                            18.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                  enabledBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                  ),
+                                                                  focusedBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                  ),
+                                                                  errorBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                  ),
+                                                                  focusedErrorBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                  ),
+                                                                  filled: true,
+                                                                  fillColor: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  suffixIcon:
+                                                                      Icon(
+                                                                    Icons
+                                                                        .arrow_forward,
+                                                                  ),
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .plusJakartaSans(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                cursorColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                validator: _model
+                                                                    .reportTextFieldTextControllerValidator
+                                                                    .asValidator(
+                                                                        context),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
                                               Stack(
                                                 children: [
                                                   Container(
@@ -1282,7 +1713,6 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                           16.0, 12.0, 16.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
-                                        height: 720.0,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
                                           boxShadow: [
@@ -1408,16 +1838,17 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                             context,
                                                                         builder:
                                                                             (context) {
-                                                                          return GestureDetector(
-                                                                            onTap:
-                                                                                () {
-                                                                              FocusScope.of(context).unfocus();
-                                                                              FocusManager.instance.primaryFocus?.unfocus();
-                                                                            },
+                                                                          return WebViewAware(
                                                                             child:
-                                                                                Padding(
-                                                                              padding: MediaQuery.viewInsetsOf(context),
-                                                                              child: UpdateTowersWidget(),
+                                                                                GestureDetector(
+                                                                              onTap: () {
+                                                                                FocusScope.of(context).unfocus();
+                                                                                FocusManager.instance.primaryFocus?.unfocus();
+                                                                              },
+                                                                              child: Padding(
+                                                                                padding: MediaQuery.viewInsetsOf(context),
+                                                                                child: UpdateTowersWidget(),
+                                                                              ),
                                                                             ),
                                                                           );
                                                                         },
@@ -1474,133 +1905,6 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               8.0),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              if (FFAppState()
-                                                                      .towersAreConfigured ==
-                                                                  true)
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      _model.apiResultit9 =
-                                                                          await GenerateTowerStatusReportwithNeightNCall
-                                                                              .call(
-                                                                        farmID:
-                                                                            FFAppState().farmID,
-                                                                      );
-
-                                                                      if ((_model
-                                                                              .apiResultit9
-                                                                              ?.succeeded ??
-                                                                          true)) {
-                                                                        ScaffoldMessenger.of(context)
-                                                                            .showSnackBar(
-                                                                          SnackBar(
-                                                                            content:
-                                                                                Text(
-                                                                              'Request successful',
-                                                                              style: TextStyle(
-                                                                                color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                              ),
-                                                                            ),
-                                                                            duration:
-                                                                                Duration(milliseconds: 4000),
-                                                                            backgroundColor:
-                                                                                FlutterFlowTheme.of(context).secondary,
-                                                                          ),
-                                                                        );
-                                                                      } else {
-                                                                        ScaffoldMessenger.of(context)
-                                                                            .showSnackBar(
-                                                                          SnackBar(
-                                                                            content:
-                                                                                Text(
-                                                                              'Request failed',
-                                                                              style: TextStyle(
-                                                                                color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                              ),
-                                                                            ),
-                                                                            duration:
-                                                                                Duration(milliseconds: 4000),
-                                                                            backgroundColor:
-                                                                                FlutterFlowTheme.of(context).tertiary,
-                                                                          ),
-                                                                        );
-                                                                      }
-
-                                                                      safeSetState(
-                                                                          () {});
-                                                                    },
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          175.1,
-                                                                      height:
-                                                                          40.0,
-                                                                      decoration:
-                                                                          BoxDecoration(),
-                                                                      child:
-                                                                          Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        children: [
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                10.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                Icon(
-                                                                              Icons.print_sharp,
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              size: 24.0,
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                2.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                Text(
-                                                                              'Generate Report',
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    font: GoogleFonts.plusJakartaSans(
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                    ),
-                                                                                    fontSize: 16.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                  ),
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1671,7 +1975,7 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                             true)
                                                           Container(
                                                             width: 900.0,
-                                                            height: 610.0,
+                                                            height: 700.0,
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme
@@ -2244,17 +2548,19 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                     enableDrag: false,
                                                                                                                     context: context,
                                                                                                                     builder: (context) {
-                                                                                                                      return GestureDetector(
-                                                                                                                        onTap: () {
-                                                                                                                          FocusScope.of(context).unfocus();
-                                                                                                                          FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                                        },
-                                                                                                                        child: Padding(
-                                                                                                                          padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                          child: PlantTowersWidget(
-                                                                                                                            towerID: towerStatusItem.towerId!,
-                                                                                                                            towerName: towerStatusItem.towerIdentifier!,
-                                                                                                                            availablePorts: towerStatusItem.overallAvailablePorts!,
+                                                                                                                      return WebViewAware(
+                                                                                                                        child: GestureDetector(
+                                                                                                                          onTap: () {
+                                                                                                                            FocusScope.of(context).unfocus();
+                                                                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                                          },
+                                                                                                                          child: Padding(
+                                                                                                                            padding: MediaQuery.viewInsetsOf(context),
+                                                                                                                            child: PlantTowersWidget(
+                                                                                                                              towerID: towerStatusItem.towerId!,
+                                                                                                                              towerName: towerStatusItem.towerIdentifier!,
+                                                                                                                              availablePorts: towerStatusItem.overallAvailablePorts!,
+                                                                                                                            ),
                                                                                                                           ),
                                                                                                                         ),
                                                                                                                       );
@@ -2332,21 +2638,23 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                   enableDrag: false,
                                                                                                                   context: context,
                                                                                                                   builder: (context) {
-                                                                                                                    return GestureDetector(
-                                                                                                                      onTap: () {
-                                                                                                                        FocusScope.of(context).unfocus();
-                                                                                                                        FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                                      },
-                                                                                                                      child: Padding(
-                                                                                                                        padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                        child: AddHarvestBasicWidget(
-                                                                                                                          actionID: towerStatusItem.actionId!,
-                                                                                                                          towerIdentifier: towerStatusItem.towerIdentifier!,
-                                                                                                                          plantName: towerStatusItem.plantName!,
-                                                                                                                          plantID: towerStatusItem.plantId!,
-                                                                                                                          towerID: towerStatusItem.towerId!,
-                                                                                                                          growingQuantity: towerStatusItem.individualPortsUsed!,
-                                                                                                                          towerContentID: towerStatusItem.contentId,
+                                                                                                                    return WebViewAware(
+                                                                                                                      child: GestureDetector(
+                                                                                                                        onTap: () {
+                                                                                                                          FocusScope.of(context).unfocus();
+                                                                                                                          FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                                        },
+                                                                                                                        child: Padding(
+                                                                                                                          padding: MediaQuery.viewInsetsOf(context),
+                                                                                                                          child: AddHarvestBasicWidget(
+                                                                                                                            actionID: towerStatusItem.actionId!,
+                                                                                                                            towerIdentifier: towerStatusItem.towerIdentifier!,
+                                                                                                                            plantName: towerStatusItem.plantName!,
+                                                                                                                            plantID: towerStatusItem.plantId!,
+                                                                                                                            towerID: towerStatusItem.towerId!,
+                                                                                                                            growingQuantity: towerStatusItem.individualPortsUsed!,
+                                                                                                                            towerContentID: towerStatusItem.contentId,
+                                                                                                                          ),
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                     );
@@ -2424,23 +2732,25 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                   enableDrag: false,
                                                                                                                   context: context,
                                                                                                                   builder: (context) {
-                                                                                                                    return GestureDetector(
-                                                                                                                      onTap: () {
-                                                                                                                        FocusScope.of(context).unfocus();
-                                                                                                                        FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                                      },
-                                                                                                                      child: Padding(
-                                                                                                                        padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                        child: ConfirmTowerWasteWidget(
-                                                                                                                          actionID: towerStatusItem.actionId!,
-                                                                                                                          towerID: towerStatusItem.towerId!,
-                                                                                                                          plantID: towerStatusItem.plantId!,
-                                                                                                                          plantName: towerStatusItem.plantName!,
-                                                                                                                          plantQuantity: valueOrDefault<int>(
-                                                                                                                            towerStatusItem.individualPortsUsed,
-                                                                                                                            0,
+                                                                                                                    return WebViewAware(
+                                                                                                                      child: GestureDetector(
+                                                                                                                        onTap: () {
+                                                                                                                          FocusScope.of(context).unfocus();
+                                                                                                                          FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                                        },
+                                                                                                                        child: Padding(
+                                                                                                                          padding: MediaQuery.viewInsetsOf(context),
+                                                                                                                          child: ConfirmTowerWasteWidget(
+                                                                                                                            actionID: towerStatusItem.actionId!,
+                                                                                                                            towerID: towerStatusItem.towerId!,
+                                                                                                                            plantID: towerStatusItem.plantId!,
+                                                                                                                            plantName: towerStatusItem.plantName!,
+                                                                                                                            plantQuantity: valueOrDefault<int>(
+                                                                                                                              towerStatusItem.individualPortsUsed,
+                                                                                                                              0,
+                                                                                                                            ),
+                                                                                                                            towerContentsID: towerStatusItem.contentId!,
                                                                                                                           ),
-                                                                                                                          towerContentsID: towerStatusItem.contentId!,
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                     );
@@ -2518,15 +2828,19 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                   enableDrag: false,
                                                                                                                   context: context,
                                                                                                                   builder: (context) {
-                                                                                                                    return GestureDetector(
-                                                                                                                      onTap: () {
-                                                                                                                        FocusScope.of(context).unfocus();
-                                                                                                                        FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                                      },
-                                                                                                                      child: Padding(
-                                                                                                                        padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                        child: CleanCompleteTaskWidget(
-                                                                                                                          towerID: towerStatusItem.towerId!,
+                                                                                                                    return WebViewAware(
+                                                                                                                      child: GestureDetector(
+                                                                                                                        onTap: () {
+                                                                                                                          FocusScope.of(context).unfocus();
+                                                                                                                          FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                                        },
+                                                                                                                        child: Padding(
+                                                                                                                          padding: MediaQuery.viewInsetsOf(context),
+                                                                                                                          child: CleanCompleteTaskWidget(
+                                                                                                                            towerID: towerStatusItem.towerId!,
+                                                                                                                            taskID: towerStatusItem.cleaningTaskIds.firstOrNull!,
+                                                                                                                            taskName: towerStatusItem.cleaningTaskName!,
+                                                                                                                          ),
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                     );
@@ -2602,16 +2916,18 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                   enableDrag: false,
                                                                                                                   context: context,
                                                                                                                   builder: (context) {
-                                                                                                                    return GestureDetector(
-                                                                                                                      onTap: () {
-                                                                                                                        FocusScope.of(context).unfocus();
-                                                                                                                        FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                                      },
-                                                                                                                      child: Padding(
-                                                                                                                        padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                        child: TaskMarkCompletedWidget(
-                                                                                                                          taskID: towerStatusItem.maintenanceTaskIds.firstOrNull!,
-                                                                                                                          taskName: towerStatusItem.maintenanceTasks.firstOrNull!,
+                                                                                                                    return WebViewAware(
+                                                                                                                      child: GestureDetector(
+                                                                                                                        onTap: () {
+                                                                                                                          FocusScope.of(context).unfocus();
+                                                                                                                          FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                                        },
+                                                                                                                        child: Padding(
+                                                                                                                          padding: MediaQuery.viewInsetsOf(context),
+                                                                                                                          child: TaskMarkCompletedWidget(
+                                                                                                                            taskID: towerStatusItem.maintenanceTaskIds.firstOrNull!,
+                                                                                                                            taskName: towerStatusItem.maintenanceTaskName!,
+                                                                                                                          ),
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                     );
@@ -2715,14 +3031,16 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                               enableDrag: false,
                                                                                               context: context,
                                                                                               builder: (context) {
-                                                                                                return GestureDetector(
-                                                                                                  onTap: () {
-                                                                                                    FocusScope.of(context).unfocus();
-                                                                                                    FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                  },
-                                                                                                  child: Padding(
-                                                                                                    padding: MediaQuery.viewInsetsOf(context),
-                                                                                                    child: AssignSpacerTaskWidget(),
+                                                                                                return WebViewAware(
+                                                                                                  child: GestureDetector(
+                                                                                                    onTap: () {
+                                                                                                      FocusScope.of(context).unfocus();
+                                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                    },
+                                                                                                    child: Padding(
+                                                                                                      padding: MediaQuery.viewInsetsOf(context),
+                                                                                                      child: AssignSpacerTaskWidget(),
+                                                                                                    ),
                                                                                                   ),
                                                                                                 );
                                                                                               },
@@ -2759,15 +3077,17 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                               enableDrag: false,
                                                                                               context: context,
                                                                                               builder: (context) {
-                                                                                                return GestureDetector(
-                                                                                                  onTap: () {
-                                                                                                    FocusScope.of(context).unfocus();
-                                                                                                    FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                  },
-                                                                                                  child: Padding(
-                                                                                                    padding: MediaQuery.viewInsetsOf(context),
-                                                                                                    child: AddSpacerActionWidget(
-                                                                                                      spacerCount: 1,
+                                                                                                return WebViewAware(
+                                                                                                  child: GestureDetector(
+                                                                                                    onTap: () {
+                                                                                                      FocusScope.of(context).unfocus();
+                                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                    },
+                                                                                                    child: Padding(
+                                                                                                      padding: MediaQuery.viewInsetsOf(context),
+                                                                                                      child: AddSpacerActionWidget(
+                                                                                                        spacerCount: 1,
+                                                                                                      ),
                                                                                                     ),
                                                                                                   ),
                                                                                                 );
@@ -3139,15 +3459,17 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                           enableDrag: false,
                                                                                                                           context: context,
                                                                                                                           builder: (context) {
-                                                                                                                            return GestureDetector(
-                                                                                                                              onTap: () {
-                                                                                                                                FocusScope.of(context).unfocus();
-                                                                                                                                FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                                              },
-                                                                                                                              child: Padding(
-                                                                                                                                padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                child: ConfirmSpacerReadyWidget(
-                                                                                                                                  actionID: spacerInventoryItem.actionId!,
+                                                                                                                            return WebViewAware(
+                                                                                                                              child: GestureDetector(
+                                                                                                                                onTap: () {
+                                                                                                                                  FocusScope.of(context).unfocus();
+                                                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                                                },
+                                                                                                                                child: Padding(
+                                                                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                                                                  child: ConfirmSpacerReadyWidget(
+                                                                                                                                    actionID: spacerInventoryItem.actionId!,
+                                                                                                                                  ),
                                                                                                                                 ),
                                                                                                                               ),
                                                                                                                             );
@@ -3228,18 +3550,20 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                           enableDrag: false,
                                                                                                                           context: context,
                                                                                                                           builder: (context) {
-                                                                                                                            return GestureDetector(
-                                                                                                                              onTap: () {
-                                                                                                                                FocusScope.of(context).unfocus();
-                                                                                                                                FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                                              },
-                                                                                                                              child: Padding(
-                                                                                                                                padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                child: ConfirmSpacerWasteWidget(
-                                                                                                                                  actionID: spacerInventoryItem.actionId!,
-                                                                                                                                  spacerID: containerSpacerInventoryRowList.firstOrNull!.spacerId!,
-                                                                                                                                  plantID: spacerInventoryItem.plantId!,
-                                                                                                                                  seededDate: spacerInventoryItem.seededDate!,
+                                                                                                                            return WebViewAware(
+                                                                                                                              child: GestureDetector(
+                                                                                                                                onTap: () {
+                                                                                                                                  FocusScope.of(context).unfocus();
+                                                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                                                },
+                                                                                                                                child: Padding(
+                                                                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                                                                  child: ConfirmSpacerWasteWidget(
+                                                                                                                                    actionID: spacerInventoryItem.actionId!,
+                                                                                                                                    spacerID: containerSpacerInventoryRowList.firstOrNull!.spacerId!,
+                                                                                                                                    plantID: spacerInventoryItem.plantId!,
+                                                                                                                                    seededDate: spacerInventoryItem.seededDate!,
+                                                                                                                                  ),
                                                                                                                                 ),
                                                                                                                               ),
                                                                                                                             );
@@ -3323,17 +3647,19 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                           enableDrag: false,
                                                                                                                           context: context,
                                                                                                                           builder: (context) {
-                                                                                                                            return GestureDetector(
-                                                                                                                              onTap: () {
-                                                                                                                                FocusScope.of(context).unfocus();
-                                                                                                                                FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                                              },
-                                                                                                                              child: Padding(
-                                                                                                                                padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                child: AddPlantingWidget(
-                                                                                                                                  towerID: 0,
-                                                                                                                                  towerName: '',
-                                                                                                                                  availablePorts: 0,
+                                                                                                                            return WebViewAware(
+                                                                                                                              child: GestureDetector(
+                                                                                                                                onTap: () {
+                                                                                                                                  FocusScope.of(context).unfocus();
+                                                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                                                },
+                                                                                                                                child: Padding(
+                                                                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                                                                  child: AddPlantingWidget(
+                                                                                                                                    towerID: 0,
+                                                                                                                                    towerName: '',
+                                                                                                                                    availablePorts: 0,
+                                                                                                                                  ),
                                                                                                                                 ),
                                                                                                                               ),
                                                                                                                             );
@@ -3414,21 +3740,23 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                           enableDrag: false,
                                                                                                                           context: context,
                                                                                                                           builder: (context) {
-                                                                                                                            return GestureDetector(
-                                                                                                                              onTap: () {
-                                                                                                                                FocusScope.of(context).unfocus();
-                                                                                                                                FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                                              },
-                                                                                                                              child: Padding(
-                                                                                                                                padding: MediaQuery.viewInsetsOf(context),
-                                                                                                                                child: ConfirmSpacerWasteWidget(
-                                                                                                                                  actionID: spacerInventoryItem.actionId!,
-                                                                                                                                  spacerID: containerSpacerInventoryRowList.firstOrNull!.spacerId!,
-                                                                                                                                  plantID: valueOrDefault<int>(
-                                                                                                                                    spacerInventoryItem.plantId,
-                                                                                                                                    0,
+                                                                                                                            return WebViewAware(
+                                                                                                                              child: GestureDetector(
+                                                                                                                                onTap: () {
+                                                                                                                                  FocusScope.of(context).unfocus();
+                                                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                                                },
+                                                                                                                                child: Padding(
+                                                                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                                                                  child: ConfirmSpacerWasteWidget(
+                                                                                                                                    actionID: spacerInventoryItem.actionId!,
+                                                                                                                                    spacerID: containerSpacerInventoryRowList.firstOrNull!.spacerId!,
+                                                                                                                                    plantID: valueOrDefault<int>(
+                                                                                                                                      spacerInventoryItem.plantId,
+                                                                                                                                      0,
+                                                                                                                                    ),
+                                                                                                                                    seededDate: spacerInventoryItem.seededDate!,
                                                                                                                                   ),
-                                                                                                                                  seededDate: spacerInventoryItem.seededDate!,
                                                                                                                                 ),
                                                                                                                               ),
                                                                                                                             );

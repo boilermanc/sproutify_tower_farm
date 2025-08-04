@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,6 +12,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'main_login_model.dart';
 export 'main_login_model.dart';
 
@@ -52,6 +54,8 @@ class _MainLoginWidgetState extends State<MainLoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -379,10 +383,14 @@ class _MainLoginWidgetState extends State<MainLoginWidget> {
                                         return;
                                       }
 
+                                      // Set Loading and Nav
+                                      FFAppState().isLoading = true;
+                                      FFAppState().navOpen = true;
                                       _model.profileResponse0011 =
-                                          await ProfilesTable().queryRows(
+                                          await InitialFarmLoadTable()
+                                              .queryRows(
                                         queryFn: (q) => q.eqOrNull(
-                                          'id',
+                                          'user_id',
                                           currentUserUid,
                                         ),
                                       );
@@ -395,28 +403,146 @@ class _MainLoginWidgetState extends State<MainLoginWidget> {
                                           enableDrag: false,
                                           context: context,
                                           builder: (context) {
-                                            return GestureDetector(
-                                              onTap: () {
-                                                FocusScope.of(context)
-                                                    .unfocus();
-                                                FocusManager
-                                                    .instance.primaryFocus
-                                                    ?.unfocus();
-                                              },
-                                              child: Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: SetupFlowMainWidget(),
+                                            return WebViewAware(
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(context)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: SetupFlowMainWidget(),
+                                                ),
                                               ),
                                             );
                                           },
                                         ).then((value) => safeSetState(() {}));
                                       } else {
-                                        context.goNamedAuth(
-                                            MainLoadingPageWidget.routeName,
-                                            context.mounted);
+                                        // Farm ID
+                                        FFAppState().farmID = _model
+                                            .profileResponse0011!
+                                            .firstOrNull!
+                                            .farmId!;
+                                        // Farm Name
+                                        FFAppState().farmName = _model
+                                            .profileResponse0011!
+                                            .firstOrNull!
+                                            .farmName!;
+                                        // Farm Unit
+                                        FFAppState().farmUnit = _model
+                                            .profileResponse0011!
+                                            .firstOrNull!
+                                            .measurementSystem!;
+                                        // First Name
+                                        FFAppState().firstName = _model
+                                            .profileResponse0011!
+                                            .firstOrNull!
+                                            .firstName!;
+                                        // Last Name
+                                        FFAppState().lastName =
+                                            valueOrDefault<String>(
+                                          _model.profileResponse0011
+                                              ?.firstOrNull?.lastName,
+                                          'Last Name',
+                                        );
+                                        // Farm City
+                                        FFAppState().farmCity =
+                                            valueOrDefault<String>(
+                                          _model.profileResponse0011
+                                              ?.firstOrNull?.city,
+                                          'City',
+                                        );
+                                        // Lattitude
+                                        FFAppState().farmLatitude = _model
+                                            .profileResponse0011!
+                                            .firstOrNull!
+                                            .latitude!;
+                                        // Longitude
+                                        FFAppState().farmLongitude = _model
+                                            .profileResponse0011!
+                                            .firstOrNull!
+                                            .longitude!;
+                                        // Has Towers
+                                        FFAppState().towersAreConfigured =
+                                            _model.profileResponse0011!
+                                                .firstOrNull!.hasTowers!;
+                                        // Profile Image
+                                        FFAppState().profileImage = _model
+                                            .profileResponse0011!
+                                            .firstOrNull!
+                                            .profileImageUrl!;
+                                        // Uses Lighting
+                                        FFAppState().usesLighting = _model
+                                            .profileResponse0011!
+                                            .firstOrNull!
+                                            .usesLighting!;
+                                        // Has Vendors
+                                        FFAppState().hasVendors = _model
+                                            .profileResponse0011!
+                                            .firstOrNull!
+                                            .hasVendors!;
+                                        // Has Plants
+                                        FFAppState().hasPlants = _model
+                                            .profileResponse0011!
+                                            .firstOrNull!
+                                            .hasPlants!;
+                                        FFAppState().farmImage =
+                                            valueOrDefault<String>(
+                                          _model.profileResponse0011
+                                              ?.firstOrNull?.farmImageUrl,
+                                          'https://rsndonfydqhykowljuyn.supabase.co/storage/v1/object/public/farmlogos/images/20250708_2047_Aeroponic%20Tower%20Farm_simple_compose_01jzpac92eff8vcf5c0qt3fpz5%20(1).png',
+                                        );
                                       }
+
+                                      // Open Weather API
+                                      _model.farmWeather8888 =
+                                          await GetOpenWeatherCall.call(
+                                        farmLongitude: _model
+                                            .profileResponse0011
+                                            ?.firstOrNull
+                                            ?.longitude
+                                            ?.toString(),
+                                        farmLatitude: _model.profileResponse0011
+                                            ?.firstOrNull?.longitude
+                                            ?.toString(),
+                                        farmUnit: _model.profileResponse0011
+                                            ?.firstOrNull?.measurementSystem,
+                                        farmID: FFAppState().farmID,
+                                      );
+
+                                      // Query Weather Logs
+                                      _model.weatherData5533 =
+                                          await WeatherLogsTable().queryRows(
+                                        queryFn: (q) => q.eqOrNull(
+                                          'farm_id',
+                                          FFAppState().farmID,
+                                        ),
+                                      );
+                                      // setFarmWeather
+                                      FFAppState().farmTemp = _model
+                                          .weatherData5533!.firstOrNull!.tempF!
+                                          .toString();
+                                      FFAppState().farmHumidity = _model
+                                          .weatherData5533!
+                                          .firstOrNull!
+                                          .humidity!
+                                          .toString();
+                                      FFAppState().farmCondition = _model
+                                          .weatherData5533!
+                                          .firstOrNull!
+                                          .conditions!;
+                                      safeSetState(() {});
+                                      // Loading Set To False
+                                      FFAppState().isLoading = false;
+
+                                      context.goNamedAuth(
+                                          MainDashboardWidget.routeName,
+                                          context.mounted);
 
                                       safeSetState(() {});
                                     },
@@ -506,20 +632,22 @@ class _MainLoginWidgetState extends State<MainLoginWidget> {
                                                 enableDrag: false,
                                                 context: context,
                                                 builder: (context) {
-                                                  return GestureDetector(
-                                                    onTap: () {
-                                                      FocusScope.of(context)
-                                                          .unfocus();
-                                                      FocusManager
-                                                          .instance.primaryFocus
-                                                          ?.unfocus();
-                                                    },
-                                                    child: Padding(
-                                                      padding: MediaQuery
-                                                          .viewInsetsOf(
-                                                              context),
-                                                      child:
-                                                          SignUpLandingPageWidget(),
+                                                  return WebViewAware(
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(context)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: Padding(
+                                                        padding: MediaQuery
+                                                            .viewInsetsOf(
+                                                                context),
+                                                        child:
+                                                            SignUpLandingPageWidget(),
+                                                      ),
                                                     ),
                                                   );
                                                 },

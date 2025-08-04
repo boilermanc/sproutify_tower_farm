@@ -22,8 +22,10 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
   ///  Local state fields for this page.
@@ -43,8 +45,10 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
   int get tabBarPreviousIndex =>
       tabBarController != null ? tabBarController!.previousIndex : 0;
 
-  // State field(s) for MouseRegion widget.
-  bool mouseRegionHovered = false;
+  // State field(s) for sprayMouseRegion widget.
+  bool sprayMouseRegionHovered = false;
+  // State field(s) for stickyCardMouseRegion widget.
+  bool stickyCardMouseRegionHovered = false;
   // Stores action output result for [Backend Call - Query Rows] action in Tab widget.
   List<LightingZonesRow>? lightingZoneCount7755;
   // Model for pestScheduleContainer component.
@@ -67,14 +71,14 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController1;
 
-  // State field(s) for waterTests widget.
-  final waterTestsController1 =
+  // State field(s) for pestApplications widget.
+  final pestApplicationsController =
       FlutterFlowDataTableController<PestRecentApplicationsRow>();
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController2;
 
   // State field(s) for waterTests widget.
-  final waterTestsController2 = FlutterFlowDataTableController<dynamic>();
+  final waterTestsController = FlutterFlowDataTableController<dynamic>();
 
   @override
   void initState(BuildContext context) {
@@ -92,8 +96,8 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
     stickyCardDataTableController.dispose();
     pestChemicalsModel.dispose();
     expandableExpandableController1.dispose();
-    waterTestsController1.dispose();
+    pestApplicationsController.dispose();
     expandableExpandableController2.dispose();
-    waterTestsController2.dispose();
+    waterTestsController.dispose();
   }
 }

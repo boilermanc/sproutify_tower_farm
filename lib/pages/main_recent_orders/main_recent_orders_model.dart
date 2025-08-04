@@ -1,28 +1,33 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
+import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/orders/mark_order_complete/mark_order_complete_widget.dart';
 import '/orders/order_detail/order_detail_widget.dart';
 import '/produce_plants/allocate_harvest/allocate_harvest_widget.dart';
 import '/produce_plants/allocate_produce/allocate_produce_widget.dart';
 import '/produce_plants/no_available_harvest/no_available_harvest_widget.dart';
 import '/produce_plants/no_produce_display/no_produce_display_widget.dart';
-import '/products/no_harvest/no_harvest_widget.dart';
+import '/produce_plants/reallocate_produce/reallocate_produce_widget.dart';
 import '/products/no_orders/no_orders_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import 'dart:async';
 import 'main_recent_orders_widget.dart' show MainRecentOrdersWidget;
+import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class MainRecentOrdersModel extends FlutterFlowModel<MainRecentOrdersWidget> {
   ///  Local state fields for this page.
@@ -69,11 +74,21 @@ class MainRecentOrdersModel extends FlutterFlowModel<MainRecentOrdersWidget> {
   int get tabBarPreviousIndex2 =>
       tabBarController2 != null ? tabBarController2!.previousIndex : 0;
 
+  // State field(s) for ChoiceChips widget.
+  FormFieldController<List<String>>? choiceChipsValueController;
+  String? get choiceChipsValue =>
+      choiceChipsValueController?.value?.firstOrNull;
+  set choiceChipsValue(String? val) =>
+      choiceChipsValueController?.value = val != null ? [val] : [];
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController4 =
-      FlutterFlowDataTableController<AllocationSummaryViewRow>();
+      FlutterFlowDataTableController<RecentAllocationsViewRow>();
+  Completer<List<RecentAllocationsViewRow>>? requestCompleter;
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController5 =
+      FlutterFlowDataTableController<RecentAllocationsViewRow>();
+  // State field(s) for PaginatedDataTable widget.
+  final paginatedDataTableController6 =
       FlutterFlowDataTableController<TowerPlantsDetailRow>();
 
   @override
@@ -91,5 +106,22 @@ class MainRecentOrdersModel extends FlutterFlowModel<MainRecentOrdersWidget> {
     tabBarController2?.dispose();
     paginatedDataTableController4.dispose();
     paginatedDataTableController5.dispose();
+    paginatedDataTableController6.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

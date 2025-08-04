@@ -29,4 +29,7 @@ class HarvestAvailableViewRow extends SupabaseDataRow {
 
   int? get qtyAvailable => getField<int>('qty_available');
   set qtyAvailable(int? value) => setField<int>('qty_available', value);
+
+  String? get notes => getField<String>('notes');
+  set notes(String? value) => setField<String>('notes', value);
 }

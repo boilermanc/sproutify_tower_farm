@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
@@ -19,7 +20,9 @@ import '/spacer/add_spacer_action/add_spacer_action_widget.dart';
 import '/spacer/assign_spacer_task/assign_spacer_task_widget.dart';
 import '/spacer/confirm_spacer_ready/confirm_spacer_ready_widget.dart';
 import '/spacer/confirm_spacer_waste/confirm_spacer_waste_widget.dart';
+import '/sproutify_a_i/mcp_reponse_window/mcp_reponse_window_widget.dart';
 import '/sproutify_a_i/sproutify_a_i/sproutify_a_i_widget.dart';
+import '/sproutify_a_i/sproutify_a_i_m_c_p_copy/sproutify_a_i_m_c_p_copy_widget.dart';
 import '/tasks/clean_complete_task/clean_complete_task_widget.dart';
 import '/tasks/task_mark_completed/task_mark_completed_widget.dart';
 import '/towers/add_initial_towers/add_initial_towers_widget.dart';
@@ -35,6 +38,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
   ///  Local state fields for this page.
@@ -46,13 +50,22 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - Query Rows] action in main_Dashboard widget.
+  List<InitialFarmLoadRow>? profileResponse0011;
+  // Stores action output result for [Backend Call - Query Rows] action in main_Dashboard widget.
+  List<WeatherLogsRow>? weatherData5533;
   // Model for sideNav component.
   late SideNavModel sideNavModel;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
-  // Stores action output result for [Backend Call - API (generateTowerStatusReportwithNeightN)] action in Container widget.
-  ApiCallResponse? apiResultit9;
+  // State field(s) for reportTextField widget.
+  FocusNode? reportTextFieldFocusNode;
+  TextEditingController? reportTextFieldTextController;
+  String? Function(BuildContext, String?)?
+      reportTextFieldTextControllerValidator;
+  // Stores action output result for [Backend Call - API (Send Full Prompt MCP)] action in reportTextField widget.
+  ApiCallResponse? apiMCPResponse3311;
   // Model for addInitialTowers component.
   late AddInitialTowersModel addInitialTowersModel;
   // State field(s) for TabBar widget.
@@ -97,6 +110,9 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
   @override
   void dispose() {
     sideNavModel.dispose();
+    reportTextFieldFocusNode?.dispose();
+    reportTextFieldTextController?.dispose();
+
     addInitialTowersModel.dispose();
     tabBarController1?.dispose();
     towersDataTableController.dispose();

@@ -6,6 +6,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'add_initial_towers_model.dart';
 export 'add_initial_towers_model.dart';
 
@@ -225,12 +226,14 @@ class _AddInitialTowersWidgetState extends State<AddInitialTowersWidget> {
                                                 enableDrag: false,
                                                 context: context,
                                                 builder: (context) {
-                                                  return Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child:
-                                                        InitialTowerSetupWidget(),
+                                                  return WebViewAware(
+                                                    child: Padding(
+                                                      padding: MediaQuery
+                                                          .viewInsetsOf(
+                                                              context),
+                                                      child:
+                                                          InitialTowerSetupWidget(),
+                                                    ),
                                                   );
                                                 },
                                               ).then((value) =>

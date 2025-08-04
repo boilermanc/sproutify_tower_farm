@@ -7,12 +7,14 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pests/add_pest_product_details/add_pest_product_details_widget.dart';
+import '/produce_plants/add_vendor/add_vendor_widget.dart';
 import 'dart:ui';
 import 'add_new_product_widget.dart' show AddNewProductWidget;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class AddNewProductModel extends FlutterFlowModel<AddNewProductWidget> {
   ///  Local state fields for this component.

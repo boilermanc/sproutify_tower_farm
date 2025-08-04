@@ -9,6 +9,7 @@ import '/produce_plants/chemical_catalog/chemical_catalog_widget.dart';
 import '/products/add_new_product/add_new_product_widget.dart';
 import '/products/add_new_product_from_s_d_s/add_new_product_from_s_d_s_widget.dart';
 import '/products/delete_product/delete_product_widget.dart';
+import '/products/no_products/no_products_widget.dart';
 import '/products/update_stock/update_stock_widget.dart';
 import 'dart:math';
 import 'dart:ui';
@@ -18,6 +19,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'main_products_model.dart';
 export 'main_products_model.dart';
 
@@ -220,22 +222,25 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                         enableDrag: false,
                                                         context: context,
                                                         builder: (context) {
-                                                          return GestureDetector(
-                                                            onTap: () {
-                                                              FocusScope.of(
-                                                                      context)
-                                                                  .unfocus();
-                                                              FocusManager
-                                                                  .instance
-                                                                  .primaryFocus
-                                                                  ?.unfocus();
-                                                            },
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  AddNewProductWidget(),
+                                                          return WebViewAware(
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        context)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    AddNewProductWidget(),
+                                                              ),
                                                             ),
                                                           );
                                                         },
@@ -316,22 +321,25 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                         enableDrag: false,
                                                         context: context,
                                                         builder: (context) {
-                                                          return GestureDetector(
-                                                            onTap: () {
-                                                              FocusScope.of(
-                                                                      context)
-                                                                  .unfocus();
-                                                              FocusManager
-                                                                  .instance
-                                                                  .primaryFocus
-                                                                  ?.unfocus();
-                                                            },
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  ChemicalCatalogWidget(),
+                                                          return WebViewAware(
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        context)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    ChemicalCatalogWidget(),
+                                                              ),
                                                             ),
                                                           );
                                                         },
@@ -412,22 +420,25 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                         enableDrag: false,
                                                         context: context,
                                                         builder: (context) {
-                                                          return GestureDetector(
-                                                            onTap: () {
-                                                              FocusScope.of(
-                                                                      context)
-                                                                  .unfocus();
-                                                              FocusManager
-                                                                  .instance
-                                                                  .primaryFocus
-                                                                  ?.unfocus();
-                                                            },
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  AddNewProductFromSDSWidget(),
+                                                          return WebViewAware(
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        context)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    AddNewProductFromSDSWidget(),
+                                                              ),
                                                             ),
                                                           );
                                                         },
@@ -1401,6 +1412,9 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                       final farmProducts =
                                           farmProductsFarmProductsViewRowList
                                               .toList();
+                                      if (farmProducts.isEmpty) {
+                                        return NoProductsWidget();
+                                      }
 
                                       return FlutterFlowDataTable<
                                           FarmProductsViewRow>(
@@ -1930,30 +1944,33 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                           enableDrag: false,
                                                           context: context,
                                                           builder: (context) {
-                                                            return GestureDetector(
-                                                              onTap: () {
-                                                                FocusScope.of(
-                                                                        context)
-                                                                    .unfocus();
-                                                                FocusManager
-                                                                    .instance
-                                                                    .primaryFocus
-                                                                    ?.unfocus();
-                                                              },
-                                                              child: Padding(
-                                                                padding: MediaQuery
-                                                                    .viewInsetsOf(
-                                                                        context),
-                                                                child:
-                                                                    UpdateStockWidget(
-                                                                  currentQuantity:
-                                                                      farmProductsItem
-                                                                          .quantityOnHand!,
-                                                                  status: farmProductsItem
-                                                                      .stockStatus!,
-                                                                  productID:
-                                                                      farmProductsItem
-                                                                          .farmProductId!,
+                                                            return WebViewAware(
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () {
+                                                                  FocusScope.of(
+                                                                          context)
+                                                                      .unfocus();
+                                                                  FocusManager
+                                                                      .instance
+                                                                      .primaryFocus
+                                                                      ?.unfocus();
+                                                                },
+                                                                child: Padding(
+                                                                  padding: MediaQuery
+                                                                      .viewInsetsOf(
+                                                                          context),
+                                                                  child:
+                                                                      UpdateStockWidget(
+                                                                    currentQuantity:
+                                                                        farmProductsItem
+                                                                            .quantityOnHand!,
+                                                                    status: farmProductsItem
+                                                                        .stockStatus!,
+                                                                    productID:
+                                                                        farmProductsItem
+                                                                            .farmProductId!,
+                                                                  ),
                                                                 ),
                                                               ),
                                                             );
@@ -2150,22 +2167,26 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                             enableDrag: false,
                                                             context: context,
                                                             builder: (context) {
-                                                              return GestureDetector(
-                                                                onTap: () {
-                                                                  FocusScope.of(
-                                                                          context)
-                                                                      .unfocus();
-                                                                  FocusManager
-                                                                      .instance
-                                                                      .primaryFocus
-                                                                      ?.unfocus();
-                                                                },
-                                                                child: Padding(
-                                                                  padding: MediaQuery
-                                                                      .viewInsetsOf(
-                                                                          context),
+                                                              return WebViewAware(
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () {
+                                                                    FocusScope.of(
+                                                                            context)
+                                                                        .unfocus();
+                                                                    FocusManager
+                                                                        .instance
+                                                                        .primaryFocus
+                                                                        ?.unfocus();
+                                                                  },
                                                                   child:
-                                                                      DeleteProductWidget(),
+                                                                      Padding(
+                                                                    padding: MediaQuery
+                                                                        .viewInsetsOf(
+                                                                            context),
+                                                                    child:
+                                                                        DeleteProductWidget(),
+                                                                  ),
                                                                 ),
                                                               );
                                                             },
@@ -2188,6 +2209,7 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                             ),
                                           ].map((c) => DataCell(c)).toList(),
                                         ),
+                                        emptyBuilder: () => NoProductsWidget(),
                                         paginated: true,
                                         selectable: false,
                                         hidePaginator: false,
@@ -2688,24 +2710,11 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                               .bodyMedium
                                                               .fontStyle,
                                                     ),
-                                                    color:
-                                                        valueOrDefault<Color>(
-                                                      () {
-                                                        if (pesticideProductsItem
-                                                                .stockStatus ==
-                                                            'Critical') {
-                                                          return Color(
-                                                              0xFFFF4444);
-                                                        } else if (pesticideProductsItem
-                                                                .stockStatus ==
-                                                            'Warning') {
-                                                          return Color(
-                                                              0xFFFFA500);
-                                                        } else {
-                                                          return Colors.green;
-                                                        }
-                                                      }(),
-                                                      Colors.green,
+                                                    color: colorFromCssString(
+                                                      pesticideProductsItem
+                                                          .stockStatusColor!,
+                                                      defaultColor:
+                                                          Colors.black,
                                                     ),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,

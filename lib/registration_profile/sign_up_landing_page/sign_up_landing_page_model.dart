@@ -8,6 +8,7 @@ import 'sign_up_landing_page_widget.dart' show SignUpLandingPageWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class SignUpLandingPageModel extends FlutterFlowModel<SignUpLandingPageWidget> {
   @override

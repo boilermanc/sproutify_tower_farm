@@ -1,6 +1,7 @@
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'main_customers_model.dart';
 export 'main_customers_model.dart';
 
@@ -107,7 +109,7 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 10.0, 0.0),
+                                        20.0, 0.0, 10.0, 0.0),
                                     child: FaIcon(
                                       FontAwesomeIcons.users,
                                       color: FlutterFlowTheme.of(context)
@@ -348,6 +350,27 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 0.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderRadius: 8.0,
+                                      buttonSize: 40.0,
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      icon: Icon(
+                                        Icons.refresh_sharp,
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () async {
+                                        safeSetState(() =>
+                                            _model.requestCompleter = null);
+                                        await _model.waitForRequestCompleted();
+                                      },
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 0.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         await showModalBottomSheet(
@@ -356,19 +379,21 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                           enableDrag: false,
                                           context: context,
                                           builder: (context) {
-                                            return GestureDetector(
-                                              onTap: () {
-                                                FocusScope.of(context)
-                                                    .unfocus();
-                                                FocusManager
-                                                    .instance.primaryFocus
-                                                    ?.unfocus();
-                                              },
-                                              child: Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: AddCustomerWidget(),
+                                            return WebViewAware(
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(context)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: AddCustomerWidget(),
+                                                ),
                                               ),
                                             );
                                           },
@@ -450,7 +475,8 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                 );
                               }
                               List<CustomerViewRow>
-                                  containerCustomerViewRowList = snapshot.data!;
+                                  customerContainerCustomerViewRowList =
+                                  snapshot.data!;
 
                               return Container(
                                 width: double.infinity,
@@ -465,7 +491,8 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                   child: Builder(
                                     builder: (context) {
                                       final farmCustomers =
-                                          containerCustomerViewRowList.toList();
+                                          customerContainerCustomerViewRowList
+                                              .toList();
                                       if (farmCustomers.isEmpty) {
                                         return NoCustomersWidget();
                                       }
@@ -1031,20 +1058,24 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                                     enableDrag: false,
                                                     context: context,
                                                     builder: (context) {
-                                                      return GestureDetector(
-                                                        onTap: () {
-                                                          FocusScope.of(context)
-                                                              .unfocus();
-                                                          FocusManager.instance
-                                                              .primaryFocus
-                                                              ?.unfocus();
-                                                        },
-                                                        child: Padding(
-                                                          padding: MediaQuery
-                                                              .viewInsetsOf(
-                                                                  context),
-                                                          child:
-                                                              CustomerNotesWidget(),
+                                                      return WebViewAware(
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    context)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child: Padding(
+                                                            padding: MediaQuery
+                                                                .viewInsetsOf(
+                                                                    context),
+                                                            child:
+                                                                CustomerNotesWidget(),
+                                                          ),
                                                         ),
                                                       );
                                                     },

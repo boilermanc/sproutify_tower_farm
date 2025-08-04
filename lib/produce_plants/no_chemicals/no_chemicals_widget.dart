@@ -6,6 +6,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'no_chemicals_model.dart';
 export 'no_chemicals_model.dart';
 
@@ -91,9 +92,11 @@ class _NoChemicalsWidgetState extends State<NoChemicalsWidget> {
                         enableDrag: false,
                         context: context,
                         builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: ChemicalCatalogWidget(),
+                          return WebViewAware(
+                            child: Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: ChemicalCatalogWidget(),
+                            ),
                           );
                         },
                       ).then((value) => safeSetState(() {}));

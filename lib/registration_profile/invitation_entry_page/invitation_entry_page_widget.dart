@@ -10,6 +10,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'invitation_entry_page_model.dart';
 export 'invitation_entry_page_model.dart';
 
@@ -442,14 +443,17 @@ class _InvitationEntryPageWidgetState extends State<InvitationEntryPageWidget> {
                                   enableDrag: false,
                                   context: context,
                                   builder: (context) {
-                                    return Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: InvitationCreateAccountWidget(
-                                        farmID: FFAppState().farmID,
-                                        roleID: FFAppState().roleID,
-                                        farmName: FFAppState().farmName,
-                                        invitationEmail: currentUserEmail,
-                                        inviteID: FFAppState().inviteID,
+                                    return WebViewAware(
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: InvitationCreateAccountWidget(
+                                          farmID: FFAppState().farmID,
+                                          roleID: FFAppState().roleID,
+                                          farmName: FFAppState().farmName,
+                                          invitationEmail: currentUserEmail,
+                                          inviteID: FFAppState().inviteID,
+                                        ),
                                       ),
                                     );
                                   },

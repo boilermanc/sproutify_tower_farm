@@ -52,11 +52,15 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
     super.initState();
     _model = createModel(context, () => AddHarvestBasicModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.harveTextFieldTextController ??= TextEditingController(
+        text: valueOrDefault<String>(
+      widget!.growingQuantity?.toString(),
+      '0',
+    ));
+    _model.harveTextFieldFocusNode ??= FocusNode();
 
     _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.textFieldFocusNode ??= FocusNode();
 
     _model.expandableExpandableController =
         ExpandableController(initialExpanded: false);
@@ -112,7 +116,7 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Icon(
-                                  Icons.spa,
+                                  Icons.pending_actions_sharp,
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
                                   size: 30.0,
@@ -206,126 +210,8 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
                                         10.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       valueOrDefault<String>(
-                                        widget!.actionID?.toString(),
-                                        '0',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            font: GoogleFonts.plusJakartaSans(
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontStyle,
-                                            ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontStyle,
-                                          ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        widget!.towerContentID.toString(),
-                                        'contentid',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            font: GoogleFonts.plusJakartaSans(
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontStyle,
-                                            ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontStyle,
-                                          ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        widget!.towerID?.toString(),
-                                        'towerid',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            font: GoogleFonts.plusJakartaSans(
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontStyle,
-                                            ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontStyle,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    valueOrDefault<String>(
-                                      widget!.towerIdentifier,
-                                      '0.00',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          font: GoogleFonts.plusJakartaSans(
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyLarge
-                                                    .fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyLarge
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        widget!.plantName,
-                                        'Plant Name',
+                                        widget!.towerIdentifier,
+                                        '0.00',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
@@ -345,6 +231,34 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
                                                     .fontStyle,
                                           ),
                                     ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    valueOrDefault<String>(
+                                      widget!.plantName,
+                                      'Plant Name',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          font: GoogleFonts.plusJakartaSans(
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontStyle,
+                                        ),
                                   ),
                                 ],
                               ),
@@ -440,13 +354,12 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
                             child: Container(
                               decoration: BoxDecoration(),
                               child: TextFormField(
-                                controller: _model.textController1,
-                                focusNode: _model.textFieldFocusNode1,
+                                controller: _model.harveTextFieldTextController,
+                                focusNode: _model.harveTextFieldFocusNode,
                                 autofocus: false,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Plants Harvested',
-                                  hintText: 'Enter quantity...',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyLarge
                                       .override(
@@ -460,7 +373,7 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
                                                   .bodyLarge
                                                   .fontStyle,
                                         ),
-                                        fontSize: 18.0,
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .bodyLarge
@@ -511,7 +424,7 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      fontSize: 18.0,
+                                      fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -520,7 +433,8 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                validator: _model.textController1Validator
+                                validator: _model
+                                    .harveTextFieldTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -681,7 +595,7 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
                             decoration: BoxDecoration(),
                             child: TextFormField(
                               controller: _model.textController2,
-                              focusNode: _model.textFieldFocusNode2,
+                              focusNode: _model.textFieldFocusNode,
                               autofocus: false,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -896,8 +810,8 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
                             'action_type_id': 3,
                             'plant_id': widget!.plantID,
                             'tower_id': widget!.towerID,
-                            'quantity':
-                                int.tryParse(_model.textController1.text),
+                            'quantity': int.tryParse(
+                                _model.harveTextFieldTextController.text),
                             'action_date':
                                 supaSerialize<DateTime>(_model.datePicked),
                             'user_id': currentUserUid,

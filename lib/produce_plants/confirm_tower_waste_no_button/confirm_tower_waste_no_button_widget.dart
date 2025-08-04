@@ -43,7 +43,7 @@ class _ConfirmTowerWasteNoButtonWidgetState
     super.initState();
     _model = createModel(context, () => ConfirmTowerWasteNoButtonModel());
 
-    _model.wasteQuantityTextController ??= TextEditingController(text: '0');
+    _model.wasteQuantityTextController ??= TextEditingController();
     _model.wasteQuantityFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -144,7 +144,7 @@ class _ConfirmTowerWasteNoButtonWidgetState
                 children: [
                   Flexible(
                     child: Container(
-                      width: 50.0,
+                      width: 200.0,
                       child: TextFormField(
                         controller: _model.wasteQuantityTextController,
                         focusNode: _model.wasteQuantityFocusNode,
@@ -162,7 +162,7 @@ class _ConfirmTowerWasteNoButtonWidgetState
                                           .labelMedium
                                           .fontStyle,
                                     ),
-                                    fontSize: 18.0,
+                                    fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelMedium
@@ -171,7 +171,7 @@ class _ConfirmTowerWasteNoButtonWidgetState
                                         .labelMedium
                                         .fontStyle,
                                   ),
-                          hintText: 'TextField',
+                          hintText: 'Enter quantity...',
                           hintStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     font: GoogleFonts.plusJakartaSans(
@@ -182,7 +182,7 @@ class _ConfirmTowerWasteNoButtonWidgetState
                                           .labelMedium
                                           .fontStyle,
                                     ),
-                                    fontSize: 18.0,
+                                    fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelMedium
@@ -233,7 +233,7 @@ class _ConfirmTowerWasteNoButtonWidgetState
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              fontSize: 18.0,
+                              fontSize: 16.0,
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
                                   .bodyMedium

@@ -51,4 +51,10 @@ class VendorsRow extends SupabaseDataRow {
 
   String? get textColor => getField<String>('text_color');
   set textColor(String? value) => setField<String>('text_color', value);
+
+  String? get email => getField<String>('email');
+  set email(String? value) => setField<String>('email', value);
+
+  String? get farmId => getField<String>('farm_id');
+  set farmId(String? value) => setField<String>('farm_id', value);
 }

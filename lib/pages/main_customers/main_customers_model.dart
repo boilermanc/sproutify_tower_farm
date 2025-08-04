@@ -1,6 +1,7 @@
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -15,6 +16,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class MainCustomersModel extends FlutterFlowModel<MainCustomersWidget> {
   ///  Local state fields for this page.
@@ -29,10 +31,10 @@ class MainCustomersModel extends FlutterFlowModel<MainCustomersWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  Completer<List<CustomerViewRow>>? requestCompleter;
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController =
       FlutterFlowDataTableController<CustomerViewRow>();
-  Completer<List<CustomerViewRow>>? requestCompleter;
 
   @override
   void initState(BuildContext context) {

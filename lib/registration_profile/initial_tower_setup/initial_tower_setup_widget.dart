@@ -20,6 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'initial_tower_setup_model.dart';
 export 'initial_tower_setup_model.dart';
 
@@ -140,7 +141,7 @@ class _InitialTowerSetupWidgetState extends State<InitialTowerSetupWidget> {
                                           size: 24.0,
                                         ),
                                         onPressed: () async {
-                                          context.pushNamed(
+                                          context.goNamed(
                                               MainDashboardWidget.routeName);
                                         },
                                       ),
@@ -1655,7 +1656,6 @@ class _InitialTowerSetupWidgetState extends State<InitialTowerSetupWidget> {
                                                                 .toList())!
                                                         .toList()
                                                         .cast<String>();
-                                                safeSetState(() {});
                                                 await _model.pageViewController
                                                     ?.nextPage(
                                                   duration: Duration(
@@ -2446,10 +2446,12 @@ class _InitialTowerSetupWidgetState extends State<InitialTowerSetupWidget> {
                                                                                             enableDrag: false,
                                                                                             context: context,
                                                                                             builder: (context) {
-                                                                                              return Padding(
-                                                                                                padding: MediaQuery.viewInsetsOf(context),
-                                                                                                child: EditInitialTowersWidget(
-                                                                                                  towerID: towerLIstItem,
+                                                                                              return WebViewAware(
+                                                                                                child: Padding(
+                                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                                  child: EditInitialTowersWidget(
+                                                                                                    towerID: towerLIstItem,
+                                                                                                  ),
                                                                                                 ),
                                                                                               );
                                                                                             },
@@ -3801,12 +3803,14 @@ class _InitialTowerSetupWidgetState extends State<InitialTowerSetupWidget> {
                                                   enableDrag: false,
                                                   context: context,
                                                   builder: (context) {
-                                                    return Padding(
-                                                      padding: MediaQuery
-                                                          .viewInsetsOf(
-                                                              context),
-                                                      child:
-                                                          InitialPlantSetupWidget(),
+                                                    return WebViewAware(
+                                                      child: Padding(
+                                                        padding: MediaQuery
+                                                            .viewInsetsOf(
+                                                                context),
+                                                        child:
+                                                            InitialPlantSetupWidget(),
+                                                      ),
                                                     );
                                                   },
                                                 ).then((value) =>

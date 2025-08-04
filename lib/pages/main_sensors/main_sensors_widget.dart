@@ -18,6 +18,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'main_sensors_model.dart';
 export 'main_sensors_model.dart';
 
@@ -212,19 +213,22 @@ class _MainSensorsWidgetState extends State<MainSensorsWidget>
                                                 enableDrag: false,
                                                 context: context,
                                                 builder: (context) {
-                                                  return GestureDetector(
-                                                    onTap: () {
-                                                      FocusScope.of(context)
-                                                          .unfocus();
-                                                      FocusManager
-                                                          .instance.primaryFocus
-                                                          ?.unfocus();
-                                                    },
-                                                    child: Padding(
-                                                      padding: MediaQuery
-                                                          .viewInsetsOf(
-                                                              context),
-                                                      child: AddSensorWidget(),
+                                                  return WebViewAware(
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(context)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: Padding(
+                                                        padding: MediaQuery
+                                                            .viewInsetsOf(
+                                                                context),
+                                                        child:
+                                                            AddSensorWidget(),
+                                                      ),
                                                     ),
                                                   );
                                                 },
@@ -1131,22 +1135,25 @@ class _MainSensorsWidgetState extends State<MainSensorsWidget>
                                                   enableDrag: false,
                                                   context: context,
                                                   builder: (context) {
-                                                    return GestureDetector(
-                                                      onTap: () {
-                                                        FocusScope.of(context)
-                                                            .unfocus();
-                                                        FocusManager.instance
-                                                            .primaryFocus
-                                                            ?.unfocus();
-                                                      },
-                                                      child: Padding(
-                                                        padding: MediaQuery
-                                                            .viewInsetsOf(
-                                                                context),
-                                                        child: EditSensorWidget(
-                                                          sensorID:
-                                                              sensorListingItem
-                                                                  .sensorId!,
+                                                    return WebViewAware(
+                                                      child: GestureDetector(
+                                                        onTap: () {
+                                                          FocusScope.of(context)
+                                                              .unfocus();
+                                                          FocusManager.instance
+                                                              .primaryFocus
+                                                              ?.unfocus();
+                                                        },
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child:
+                                                              EditSensorWidget(
+                                                            sensorID:
+                                                                sensorListingItem
+                                                                    .sensorId!,
+                                                          ),
                                                         ),
                                                       ),
                                                     );
@@ -1551,38 +1558,42 @@ class _MainSensorsWidgetState extends State<MainSensorsWidget>
                                                     enableDrag: false,
                                                     context: context,
                                                     builder: (context) {
-                                                      return GestureDetector(
-                                                        onTap: () {
-                                                          FocusScope.of(context)
-                                                              .unfocus();
-                                                          FocusManager.instance
-                                                              .primaryFocus
-                                                              ?.unfocus();
-                                                        },
-                                                        child: Padding(
-                                                          padding: MediaQuery
-                                                              .viewInsetsOf(
-                                                                  context),
-                                                          child:
-                                                              SensorAlertsCopy2Widget(
-                                                            sensorName:
-                                                                sensorListingItem
-                                                                    .sensorName!,
-                                                            sensorID:
-                                                                sensorListingItem
-                                                                    .sensorId!,
-                                                            sensorLocation:
-                                                                sensorListingItem
-                                                                    .locationName!,
-                                                            sensorType:
-                                                                sensorListingItem
-                                                                    .sensorType!,
-                                                            sensorModel:
-                                                                sensorListingItem
-                                                                    .sproutifyModel!,
-                                                            sensorReadingType:
-                                                                sensorListingItem
-                                                                    .readingType!,
+                                                      return WebViewAware(
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    context)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child: Padding(
+                                                            padding: MediaQuery
+                                                                .viewInsetsOf(
+                                                                    context),
+                                                            child:
+                                                                SensorAlertsCopy2Widget(
+                                                              sensorName:
+                                                                  sensorListingItem
+                                                                      .sensorName!,
+                                                              sensorID:
+                                                                  sensorListingItem
+                                                                      .sensorId!,
+                                                              sensorLocation:
+                                                                  sensorListingItem
+                                                                      .locationName!,
+                                                              sensorType:
+                                                                  sensorListingItem
+                                                                      .sensorType!,
+                                                              sensorModel:
+                                                                  sensorListingItem
+                                                                      .sproutifyModel!,
+                                                              sensorReadingType:
+                                                                  sensorListingItem
+                                                                      .readingType!,
+                                                            ),
                                                           ),
                                                         ),
                                                       );

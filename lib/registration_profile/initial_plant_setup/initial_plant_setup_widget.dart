@@ -2,7 +2,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/produce_plants/plant_catalog_copy/plant_catalog_copy_widget.dart';
+import '/produce_plants/plant_catalog/plant_catalog_widget.dart';
 import 'dart:ui';
 import '/index.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
@@ -10,6 +10,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'initial_plant_setup_model.dart';
 export 'initial_plant_setup_model.dart';
 
@@ -126,7 +127,7 @@ class _InitialPlantSetupWidgetState extends State<InitialPlantSetupWidget> {
                                           size: 24.0,
                                         ),
                                         onPressed: () async {
-                                          context.pushNamed(
+                                          context.goNamed(
                                               MainDashboardWidget.routeName);
                                         },
                                       ),
@@ -186,12 +187,13 @@ class _InitialPlantSetupWidgetState extends State<InitialPlantSetupWidget> {
                                               enableDrag: false,
                                               context: context,
                                               builder: (context) {
-                                                return Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child:
-                                                      PlantCatalogCopyWidget(),
+                                                return WebViewAware(
+                                                  child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child: PlantCatalogWidget(),
+                                                  ),
                                                 );
                                               },
                                             ).then(

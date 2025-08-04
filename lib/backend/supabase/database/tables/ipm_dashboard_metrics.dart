@@ -50,4 +50,13 @@ class IpmDashboardMetricsRow extends SupabaseDataRow {
 
   DateTime? get lastUpdated => getField<DateTime>('last_updated');
   set lastUpdated(DateTime? value) => setField<DateTime>('last_updated', value);
+
+  String? get daysSinceTreatment => getField<String>('days_since_treatment');
+  set daysSinceTreatment(String? value) =>
+      setField<String>('days_since_treatment', value);
+
+  String? get formattedTreatmentDate =>
+      getField<String>('formatted_treatment_date');
+  set formattedTreatmentDate(String? value) =>
+      setField<String>('formatted_treatment_date', value);
 }

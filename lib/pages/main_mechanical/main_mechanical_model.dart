@@ -3,21 +3,22 @@ import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/lighting/add_farm_controller/add_farm_controller_widget.dart';
-import '/lighting/no_lighting/no_lighting_widget.dart';
+import '/mechanicals/add_mechanical/add_mechanical_widget.dart';
 import 'dart:math';
 import 'dart:ui';
-import '/index.dart';
 import 'main_mechanical_widget.dart' show MainMechanicalWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class MainMechanicalModel extends FlutterFlowModel<MainMechanicalWidget> {
   ///  Local state fields for this page.
@@ -40,9 +41,9 @@ class MainMechanicalModel extends FlutterFlowModel<MainMechanicalWidget> {
   List<ProfilesRow>? farmEmployeeList;
   // Model for sideNav component.
   late SideNavModel sideNavModel;
-  // State field(s) for waterTests widget.
-  final waterTestsController =
-      FlutterFlowDataTableController<LightZoneUsageSummaryRow>();
+  // State field(s) for PaginatedDataTable widget.
+  final paginatedDataTableController =
+      FlutterFlowDataTableController<MechanicalDashboardViewRow>();
 
   @override
   void initState(BuildContext context) {
@@ -52,6 +53,6 @@ class MainMechanicalModel extends FlutterFlowModel<MainMechanicalWidget> {
   @override
   void dispose() {
     sideNavModel.dispose();
-    waterTestsController.dispose();
+    paginatedDataTableController.dispose();
   }
 }

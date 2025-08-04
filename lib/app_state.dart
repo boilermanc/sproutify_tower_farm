@@ -812,10 +812,34 @@ class FFAppState extends ChangeNotifier {
     _towerPortsUpdate = value;
   }
 
-  String _selectedFarmNav = '';
+  String _selectedFarmNav = 'profile';
   String get selectedFarmNav => _selectedFarmNav;
   set selectedFarmNav(String value) {
     _selectedFarmNav = value;
+  }
+
+  String _towerReportHtml = '';
+  String get towerReportHtml => _towerReportHtml;
+  set towerReportHtml(String value) {
+    _towerReportHtml = value;
+  }
+
+  String _mcpHtml = '';
+  String get mcpHtml => _mcpHtml;
+  set mcpHtml(String value) {
+    _mcpHtml = value;
+  }
+
+  bool _mcpIsLoading = true;
+  bool get mcpIsLoading => _mcpIsLoading;
+  set mcpIsLoading(bool value) {
+    _mcpIsLoading = value;
+  }
+
+  bool _showChatContainer = true;
+  bool get showChatContainer => _showChatContainer;
+  set showChatContainer(bool value) {
+    _showChatContainer = value;
   }
 }
 

@@ -16,13 +16,14 @@ import 'package:provider/provider.dart';
 class AddHarvestBasicModel extends FlutterFlowModel<AddHarvestBasicWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
+  // State field(s) for harveTextField widget.
+  FocusNode? harveTextFieldFocusNode;
+  TextEditingController? harveTextFieldTextController;
+  String? Function(BuildContext, String?)?
+      harveTextFieldTextControllerValidator;
   DateTime? datePicked;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
+  FocusNode? textFieldFocusNode;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
   // State field(s) for Expandable widget.
@@ -39,10 +40,10 @@ class AddHarvestBasicModel extends FlutterFlowModel<AddHarvestBasicWidget> {
 
   @override
   void dispose() {
-    textFieldFocusNode1?.dispose();
-    textController1?.dispose();
+    harveTextFieldFocusNode?.dispose();
+    harveTextFieldTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
+    textFieldFocusNode?.dispose();
     textController2?.dispose();
 
     expandableExpandableController.dispose();

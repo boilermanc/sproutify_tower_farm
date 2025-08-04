@@ -19,6 +19,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'add_task_model.dart';
 export 'add_task_model.dart';
 
@@ -233,8 +234,8 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                         milliseconds: 2000),
                                                     () async {
                                                       _model.searchTerm = _model
-                                                          .selectTowerValue
-                                                          ?.toString();
+                                                          .searchTasksTextController
+                                                          .text;
                                                       safeSetState(() {});
                                                     },
                                                   ),
@@ -983,17 +984,19 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                           enableDrag: false,
                                                           context: context,
                                                           builder: (context) {
-                                                            return Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  InsertTaskStaffWidget(
-                                                                taskName:
-                                                                    FFAppState()
-                                                                        .taskInsertName,
-                                                                taskID: FFAppState()
-                                                                    .taskInsertID,
+                                                            return WebViewAware(
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    InsertTaskStaffWidget(
+                                                                  taskName:
+                                                                      FFAppState()
+                                                                          .taskInsertName,
+                                                                  taskID: FFAppState()
+                                                                      .taskInsertID,
+                                                                ),
                                                               ),
                                                             );
                                                           },
@@ -1126,17 +1129,19 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                           enableDrag: false,
                                                           context: context,
                                                           builder: (context) {
-                                                            return Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  InsertTaskRoleWidget(
-                                                                taskName:
-                                                                    FFAppState()
-                                                                        .taskInsertName,
-                                                                taskID: FFAppState()
-                                                                    .taskInsertID,
+                                                            return WebViewAware(
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    InsertTaskRoleWidget(
+                                                                  taskName:
+                                                                      FFAppState()
+                                                                          .taskInsertName,
+                                                                  taskID: FFAppState()
+                                                                      .taskInsertID,
+                                                                ),
                                                               ),
                                                             );
                                                           },
@@ -6816,12 +6821,14 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                           enableDrag: false,
                                                           context: context,
                                                           builder: (context) {
-                                                            return Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  RecurringTaskSummaryWidget(),
+                                                            return WebViewAware(
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    RecurringTaskSummaryWidget(),
+                                                              ),
                                                             );
                                                           },
                                                         ).then((value) =>
@@ -6905,12 +6912,14 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                           enableDrag: false,
                                                           context: context,
                                                           builder: (context) {
-                                                            return Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  RecurringTaskSummaryWidget(),
+                                                            return WebViewAware(
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    RecurringTaskSummaryWidget(),
+                                                              ),
                                                             );
                                                           },
                                                         ).then((value) =>
@@ -7001,12 +7010,14 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                                                           enableDrag: false,
                                                           context: context,
                                                           builder: (context) {
-                                                            return Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  RecurringTaskSummaryWidget(),
+                                                            return WebViewAware(
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    RecurringTaskSummaryWidget(),
+                                                              ),
                                                             );
                                                           },
                                                         ).then((value) =>

@@ -12,6 +12,7 @@ import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'add_pest_product_details_model.dart';
 export 'add_pest_product_details_model.dart';
 
@@ -364,14 +365,16 @@ class _AddPestProductDetailsWidgetState
                                                         enableDrag: false,
                                                         context: context,
                                                         builder: (context) {
-                                                          return Padding(
-                                                            padding: MediaQuery
-                                                                .viewInsetsOf(
-                                                                    context),
-                                                            child:
-                                                                SdsDetailOverviewWidget(
-                                                              sdsPassedID: _model
-                                                                  .sdsDocumentValue!,
+                                                          return WebViewAware(
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  SdsDetailOverviewWidget(
+                                                                sdsPassedID: _model
+                                                                    .sdsDocumentValue!,
+                                                              ),
                                                             ),
                                                           );
                                                         },

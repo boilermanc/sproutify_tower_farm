@@ -30,4 +30,7 @@ class FarmPlantsViewRow extends SupabaseDataRow {
 
   bool? get isActive => getField<bool>('is_active');
   set isActive(bool? value) => setField<bool>('is_active', value);
+
+  String? get imageUrl => getField<String>('image_url');
+  set imageUrl(String? value) => setField<String>('image_url', value);
 }

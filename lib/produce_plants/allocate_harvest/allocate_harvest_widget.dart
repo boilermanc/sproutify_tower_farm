@@ -178,7 +178,7 @@ class _AllocateHarvestWidgetState extends State<AllocateHarvestWidget>
                   child: Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Container(
-                      height: 30.0,
+                      height: 60.0,
                       decoration: BoxDecoration(
                         color: Color(0xFFDFEFF3),
                         boxShadow: [

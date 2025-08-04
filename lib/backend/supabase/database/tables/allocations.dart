@@ -37,4 +37,16 @@ class AllocationsRow extends SupabaseDataRow {
 
   String get destinationId => getField<String>('destination_id')!;
   set destinationId(String value) => setField<String>('destination_id', value);
+
+  String? get status => getField<String>('status');
+  set status(String? value) => setField<String>('status', value);
+
+  DateTime? get deliveredAt => getField<DateTime>('delivered_at');
+  set deliveredAt(DateTime? value) => setField<DateTime>('delivered_at', value);
+
+  String? get deliveredBy => getField<String>('delivered_by');
+  set deliveredBy(String? value) => setField<String>('delivered_by', value);
+
+  String? get notes => getField<String>('notes');
+  set notes(String? value) => setField<String>('notes', value);
 }

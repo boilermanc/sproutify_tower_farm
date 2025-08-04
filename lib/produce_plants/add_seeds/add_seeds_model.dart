@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/produce_plants/seed_catalog/seed_catalog_widget.dart';
 import 'dart:ui';
 import 'add_seeds_widget.dart' show AddSeedsWidget;
 import 'package:flutter/material.dart';

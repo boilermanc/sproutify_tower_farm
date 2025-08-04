@@ -23,6 +23,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'main_farm_operations_model.dart';
 export 'main_farm_operations_model.dart';
 
@@ -278,22 +279,25 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                         enableDrag: false,
                                                         context: context,
                                                         builder: (context) {
-                                                          return GestureDetector(
-                                                            onTap: () {
-                                                              FocusScope.of(
-                                                                      context)
-                                                                  .unfocus();
-                                                              FocusManager
-                                                                  .instance
-                                                                  .primaryFocus
-                                                                  ?.unfocus();
-                                                            },
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  AddTaskWidget(),
+                                                          return WebViewAware(
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        context)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    AddTaskWidget(),
+                                                              ),
                                                             ),
                                                           );
                                                         },
@@ -376,22 +380,25 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                         enableDrag: false,
                                                         context: context,
                                                         builder: (context) {
-                                                          return GestureDetector(
-                                                            onTap: () {
-                                                              FocusScope.of(
-                                                                      context)
-                                                                  .unfocus();
-                                                              FocusManager
-                                                                  .instance
-                                                                  .primaryFocus
-                                                                  ?.unfocus();
-                                                            },
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  RecurringTaskManagementWidget(),
+                                                          return WebViewAware(
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        context)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    RecurringTaskManagementWidget(),
+                                                              ),
                                                             ),
                                                           );
                                                         },
@@ -2148,19 +2155,21 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                         enableDrag: false,
                                                                                         context: context,
                                                                                         builder: (context) {
-                                                                                          return GestureDetector(
-                                                                                            onTap: () {
-                                                                                              FocusScope.of(context).unfocus();
-                                                                                              FocusManager.instance.primaryFocus?.unfocus();
-                                                                                            },
-                                                                                            child: Padding(
-                                                                                              padding: MediaQuery.viewInsetsOf(context),
-                                                                                              child: UpdateTaskStaffWidget(
-                                                                                                taskName: taskAssignementsItem.taskType!,
-                                                                                                taskID: taskAssignementsItem.taskId!,
-                                                                                                taskAssignedTo: valueOrDefault<String>(
-                                                                                                  taskAssignementsItem.assignedTo,
-                                                                                                  'Nobody',
+                                                                                          return WebViewAware(
+                                                                                            child: GestureDetector(
+                                                                                              onTap: () {
+                                                                                                FocusScope.of(context).unfocus();
+                                                                                                FocusManager.instance.primaryFocus?.unfocus();
+                                                                                              },
+                                                                                              child: Padding(
+                                                                                                padding: MediaQuery.viewInsetsOf(context),
+                                                                                                child: UpdateTaskStaffWidget(
+                                                                                                  taskName: taskAssignementsItem.taskType!,
+                                                                                                  taskID: taskAssignementsItem.taskId!,
+                                                                                                  taskAssignedTo: valueOrDefault<String>(
+                                                                                                    taskAssignementsItem.assignedTo,
+                                                                                                    'Nobody',
+                                                                                                  ),
                                                                                                 ),
                                                                                               ),
                                                                                             ),
@@ -2199,20 +2208,22 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                         enableDrag: false,
                                                                                         context: context,
                                                                                         builder: (context) {
-                                                                                          return GestureDetector(
-                                                                                            onTap: () {
-                                                                                              FocusScope.of(context).unfocus();
-                                                                                              FocusManager.instance.primaryFocus?.unfocus();
-                                                                                            },
-                                                                                            child: Padding(
-                                                                                              padding: MediaQuery.viewInsetsOf(context),
-                                                                                              child: UpdateTaskRoleWidget(
-                                                                                                taskRole: valueOrDefault<String>(
-                                                                                                  taskAssignementsItem.assignedRole,
-                                                                                                  'None',
+                                                                                          return WebViewAware(
+                                                                                            child: GestureDetector(
+                                                                                              onTap: () {
+                                                                                                FocusScope.of(context).unfocus();
+                                                                                                FocusManager.instance.primaryFocus?.unfocus();
+                                                                                              },
+                                                                                              child: Padding(
+                                                                                                padding: MediaQuery.viewInsetsOf(context),
+                                                                                                child: UpdateTaskRoleWidget(
+                                                                                                  taskRole: valueOrDefault<String>(
+                                                                                                    taskAssignementsItem.assignedRole,
+                                                                                                    'None',
+                                                                                                  ),
+                                                                                                  taskName: taskAssignementsItem.taskType!,
+                                                                                                  taskID: taskAssignementsItem.taskId!,
                                                                                                 ),
-                                                                                                taskName: taskAssignementsItem.taskType!,
-                                                                                                taskID: taskAssignementsItem.taskId!,
                                                                                               ),
                                                                                             ),
                                                                                           );
@@ -2322,16 +2333,18 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                               enableDrag: false,
                                                                                               context: context,
                                                                                               builder: (context) {
-                                                                                                return GestureDetector(
-                                                                                                  onTap: () {
-                                                                                                    FocusScope.of(context).unfocus();
-                                                                                                    FocusManager.instance.primaryFocus?.unfocus();
-                                                                                                  },
-                                                                                                  child: Padding(
-                                                                                                    padding: MediaQuery.viewInsetsOf(context),
-                                                                                                    child: TaskMarkCompletedWidget(
-                                                                                                      taskID: taskAssignementsItem.taskId!,
-                                                                                                      taskName: taskAssignementsItem.taskType!,
+                                                                                                return WebViewAware(
+                                                                                                  child: GestureDetector(
+                                                                                                    onTap: () {
+                                                                                                      FocusScope.of(context).unfocus();
+                                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                    },
+                                                                                                    child: Padding(
+                                                                                                      padding: MediaQuery.viewInsetsOf(context),
+                                                                                                      child: TaskMarkCompletedWidget(
+                                                                                                        taskID: taskAssignementsItem.taskId!,
+                                                                                                        taskName: taskAssignementsItem.taskType!,
+                                                                                                      ),
                                                                                                     ),
                                                                                                   ),
                                                                                                 );
@@ -3168,16 +3181,18 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                   enableDrag: false,
                                                                                   context: context,
                                                                                   builder: (context) {
-                                                                                    return GestureDetector(
-                                                                                      onTap: () {
-                                                                                        FocusScope.of(context).unfocus();
-                                                                                        FocusManager.instance.primaryFocus?.unfocus();
-                                                                                      },
-                                                                                      child: Padding(
-                                                                                        padding: MediaQuery.viewInsetsOf(context),
-                                                                                        child: TaskNoteWidget(
-                                                                                          taskNote: taskListItem.notes!,
-                                                                                          taskID: taskListItem.taskId!,
+                                                                                    return WebViewAware(
+                                                                                      child: GestureDetector(
+                                                                                        onTap: () {
+                                                                                          FocusScope.of(context).unfocus();
+                                                                                          FocusManager.instance.primaryFocus?.unfocus();
+                                                                                        },
+                                                                                        child: Padding(
+                                                                                          padding: MediaQuery.viewInsetsOf(context),
+                                                                                          child: TaskNoteWidget(
+                                                                                            taskNote: taskListItem.notes!,
+                                                                                            taskID: taskListItem.taskId!,
+                                                                                          ),
                                                                                         ),
                                                                                       ),
                                                                                     );
@@ -3242,16 +3257,18 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                     enableDrag: false,
                                                                                     context: context,
                                                                                     builder: (context) {
-                                                                                      return GestureDetector(
-                                                                                        onTap: () {
-                                                                                          FocusScope.of(context).unfocus();
-                                                                                          FocusManager.instance.primaryFocus?.unfocus();
-                                                                                        },
-                                                                                        child: Padding(
-                                                                                          padding: MediaQuery.viewInsetsOf(context),
-                                                                                          child: TaskMarkCompletedWidget(
-                                                                                            taskID: taskListItem.taskId!,
-                                                                                            taskName: taskListItem.taskType!,
+                                                                                      return WebViewAware(
+                                                                                        child: GestureDetector(
+                                                                                          onTap: () {
+                                                                                            FocusScope.of(context).unfocus();
+                                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                                          },
+                                                                                          child: Padding(
+                                                                                            padding: MediaQuery.viewInsetsOf(context),
+                                                                                            child: TaskMarkCompletedWidget(
+                                                                                              taskID: taskListItem.taskId!,
+                                                                                              taskName: taskListItem.taskType!,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
                                                                                       );

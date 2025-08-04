@@ -4,12 +4,14 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/produce_plants/add_another_plant/add_another_plant_widget.dart';
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'plant_detail_model.dart';
 export 'plant_detail_model.dart';
 
@@ -264,6 +266,23 @@ class _PlantDetailWidgetState extends State<PlantDetailWidget> {
                                                     .secondary,
                                           ),
                                         );
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return WebViewAware(
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: AddAnotherPlantWidget(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+
                                         Navigator.pop(context);
 
                                         safeSetState(() {});
@@ -292,6 +311,7 @@ class _PlantDetailWidgetState extends State<PlantDetailWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Colors.white,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)

@@ -51,4 +51,7 @@ class SeedInventoryViewRow extends SupabaseDataRow {
 
   bool? get active => getField<bool>('active');
   set active(bool? value) => setField<bool>('active', value);
+
+  int? get seedsPerPort => getField<int>('seeds_per_port');
+  set seedsPerPort(int? value) => setField<int>('seeds_per_port', value);
 }

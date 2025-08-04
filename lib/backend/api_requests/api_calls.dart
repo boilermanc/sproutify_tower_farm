@@ -73,6 +73,72 @@ class SendFullPromptCall {
 
 /// End neightn main chat Group Code
 
+/// Start mcp Chat Group Group Code
+
+class McpChatGroupGroup {
+  static String getBaseUrl() =>
+      'https://n8n.sproutify.app/webhook/ba3480d2-b729-4e49-988b-dcac0dadbe9b';
+  static Map<String, String> headers = {
+    'Content-Type': 'application/json',
+  };
+  static SendFullPromptMCPCall sendFullPromptMCPCall = SendFullPromptMCPCall();
+}
+
+class SendFullPromptMCPCall {
+  Future<ApiCallResponse> call({
+    dynamic? promptJson,
+    String? userMessage = '',
+    String? farmID = '',
+    String? userID = '',
+  }) async {
+    final baseUrl = McpChatGroupGroup.getBaseUrl();
+
+    final prompt = _serializeJson(promptJson);
+    final ffApiRequestBody = '''
+{
+  "chatInput": "\${${userMessage}}",
+  "farmID": "${farmID}",
+  "sessionId": "${userID}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Send Full Prompt MCP',
+      apiUrl: '${baseUrl}/chat',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  int? createdTimestamp(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.created''',
+      ));
+  String? role(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.choices[:].message.role''',
+      ));
+  String? content(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.choices[:].message.content''',
+      ));
+  String? widgetCode(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.widgetCode''',
+      ));
+}
+
+/// End mcp Chat Group Group Code
+
 class GetUserProfileCall {
   static Future<ApiCallResponse> call({
     String? userID = '',
@@ -818,6 +884,12 @@ class GenerateTowerStatusReportwithNeightNCall {
       alwaysAllowBody: false,
     );
   }
+
+  static String? towerReportHtml(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.html''',
+      ));
 }
 
 class ValidateInvitationCodeCall {

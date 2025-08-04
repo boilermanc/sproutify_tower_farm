@@ -11,6 +11,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'invitation_create_account_model.dart';
 export 'invitation_create_account_model.dart';
 
@@ -1285,11 +1286,14 @@ class _InvitationCreateAccountWidgetState
                                   enableDrag: false,
                                   context: context,
                                   builder: (context) {
-                                    return Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: InviteSuccessWidget(
-                                        farmName: widget!.farmName,
-                                        inviteID: FFAppState().inviteID,
+                                    return WebViewAware(
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: InviteSuccessWidget(
+                                          farmName: widget!.farmName,
+                                          inviteID: FFAppState().inviteID,
+                                        ),
                                       ),
                                     );
                                   },

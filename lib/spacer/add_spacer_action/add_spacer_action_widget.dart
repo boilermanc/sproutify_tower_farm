@@ -11,6 +11,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'add_spacer_action_model.dart';
 export 'add_spacer_action_model.dart';
 
@@ -826,10 +827,12 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                     enableDrag: false,
                                                                                                     context: context,
                                                                                                     builder: (context) {
-                                                                                                      return Padding(
-                                                                                                        padding: MediaQuery.viewInsetsOf(context),
-                                                                                                        child: AddSpacerActionWidget(
-                                                                                                          spacerCount: 1,
+                                                                                                      return WebViewAware(
+                                                                                                        child: Padding(
+                                                                                                          padding: MediaQuery.viewInsetsOf(context),
+                                                                                                          child: AddSpacerActionWidget(
+                                                                                                            spacerCount: 1,
+                                                                                                          ),
                                                                                                         ),
                                                                                                       );
                                                                                                     },
