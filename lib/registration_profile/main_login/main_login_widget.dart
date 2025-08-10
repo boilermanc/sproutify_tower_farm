@@ -600,7 +600,7 @@ class _MainLoginWidgetState extends State<MainLoginWidget> {
                                           style: TextStyle(),
                                         ),
                                         TextSpan(
-                                          text: ' Sign Up here',
+                                          text: 'Sign up here',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(

@@ -33,7 +33,6 @@ class AddPlantingModel extends FlutterFlowModel<AddPlantingWidget> {
   DateTime? datePicked1;
   DateTime? datePicked2;
   DateTime? datePicked3;
-  DateTime? datePicked4;
   // State field(s) for plantingInstructions widget.
   FocusNode? plantingInstructionsFocusNode;
   TextEditingController? plantingInstructionsTextController;

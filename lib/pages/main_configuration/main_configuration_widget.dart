@@ -97,7 +97,7 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Manage Settings',
+                                        'Farm Configuration',
                                         style: FlutterFlowTheme.of(context)
                                             .headlineSmall
                                             .override(
@@ -126,7 +126,7 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Text(
-                                          'blah blah blah',
+                                          '',
                                           style: FlutterFlowTheme.of(context)
                                               .labelMedium
                                               .override(
@@ -492,7 +492,7 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                                               MainAxisSize.max,
                                                           children: [
                                                             Text(
-                                                              'Lighting',
+                                                              'Staff',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -538,6 +538,95 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                                 }),
                                               ),
                                             ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 0.0),
+                                              child: MouseRegion(
+                                                opaque: false,
+                                                cursor: MouseCursor.defer ??
+                                                    MouseCursor.defer,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 5.0, 0.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      FFAppState()
+                                                              .selectedFarmNav =
+                                                          'lighting';
+                                                      safeSetState(() {});
+                                                    },
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0xFFE5F3FD),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      child: Padding(
+                                                        padding: EdgeInsets.all(
+                                                            10.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Text(
+                                                              'Lighting',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                onEnter: ((event) async {
+                                                  safeSetState(() => _model
+                                                          .mouseRegionHovered4 =
+                                                      true);
+                                                }),
+                                                onExit: ((event) async {
+                                                  safeSetState(() => _model
+                                                          .mouseRegionHovered4 =
+                                                      false);
+                                                }),
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -571,83 +660,70 @@ class _MainConfigurationWidgetState extends State<MainConfigurationWidget> {
                                                   height: 620.0,
                                                   child: Stack(
                                                     children: [
-                                                      SingleChildScrollView(
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            if (FFAppState()
-                                                                    .selectedFarmNav ==
-                                                                'lighting')
-                                                              Expanded(
-                                                                child:
-                                                                    Container(
-                                                                  width: 600.0,
-                                                                  height: 600.0,
-                                                                  decoration:
-                                                                      BoxDecoration(),
-                                                                  child:
-                                                                      wrapWithModel(
-                                                                    model: _model
-                                                                        .generalFarmLightingModel,
-                                                                    updateCallback: () =>
-                                                                        safeSetState(
-                                                                            () {}),
-                                                                    child:
-                                                                        GeneralFarmLightingWidget(),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            if (FFAppState()
-                                                                    .selectedFarmNav ==
-                                                                'general')
-                                                              Container(
-                                                                width: 600.0,
-                                                                height: 600.0,
-                                                                decoration:
-                                                                    BoxDecoration(),
-                                                                child:
-                                                                    wrapWithModel(
+                                                      if (FFAppState()
+                                                              .selectedFarmNav ==
+                                                          'lighting')
+                                                        Container(
+                                                          width: 600.0,
+                                                          height: 600.0,
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child: wrapWithModel(
+                                                            model: _model
+                                                                .generalFarmLightingModel,
+                                                            updateCallback: () =>
+                                                                safeSetState(
+                                                                    () {}),
+                                                            child:
+                                                                GeneralFarmLightingWidget(),
+                                                          ),
+                                                        ),
+                                                      if (FFAppState()
+                                                              .selectedFarmNav ==
+                                                          'general')
+                                                        Container(
+                                                          width: 600.0,
+                                                          height: 600.0,
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child: wrapWithModel(
+                                                            model: _model
+                                                                .generalFarmSettingsModel,
+                                                            updateCallback: () =>
+                                                                safeSetState(
+                                                                    () {}),
+                                                            child:
+                                                                GeneralFarmSettingsWidget(),
+                                                          ),
+                                                        ),
+                                                      if (FFAppState()
+                                                              .selectedFarmNav ==
+                                                          'profile')
+                                                        Container(
+                                                          width: 600.0,
+                                                          height: 600.0,
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child:
+                                                              SingleChildScrollView(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                wrapWithModel(
                                                                   model: _model
-                                                                      .generalFarmSettingsModel,
+                                                                      .profileComponentModel,
                                                                   updateCallback: () =>
                                                                       safeSetState(
                                                                           () {}),
                                                                   child:
-                                                                      GeneralFarmSettingsWidget(),
+                                                                      ProfileComponentWidget(),
                                                                 ),
-                                                              ),
-                                                            if (FFAppState()
-                                                                    .selectedFarmNav ==
-                                                                'profile')
-                                                              Container(
-                                                                width: 600.0,
-                                                                height: 600.0,
-                                                                decoration:
-                                                                    BoxDecoration(),
-                                                                child:
-                                                                    SingleChildScrollView(
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      wrapWithModel(
-                                                                        model: _model
-                                                                            .profileComponentModel,
-                                                                        updateCallback:
-                                                                            () =>
-                                                                                safeSetState(() {}),
-                                                                        child:
-                                                                            ProfileComponentWidget(),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                          ],
+                                                              ],
+                                                            ),
+                                                          ),
                                                         ),
-                                                      ),
                                                     ],
                                                   ),
                                                 ),

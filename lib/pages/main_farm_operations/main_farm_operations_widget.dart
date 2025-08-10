@@ -2269,6 +2269,8 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                           return 'In Progress';
                                                                                         } else if (taskAssignementsItem.status == 'cancelled') {
                                                                                           return 'Cancelled';
+                                                                                        } else if (taskAssignementsItem.status == 'overdue') {
+                                                                                          return 'Overdue';
                                                                                         } else {
                                                                                           return 'Unknown';
                                                                                         }

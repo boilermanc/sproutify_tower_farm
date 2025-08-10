@@ -829,6 +829,12 @@ class TowerPlantingCatalogCall {
       alwaysAllowBody: false,
     );
   }
+
+  static List? seededDate(dynamic response) => getJsonField(
+        response,
+        r'''$[:].seeded_date''',
+        true,
+      ) as List?;
 }
 
 class GetWeeklyHarvestForcastCall {
@@ -869,6 +875,43 @@ class GenerateTowerStatusReportwithNeightNCall {
     return ApiManager.instance.makeApiCall(
       callName: 'generateTowerStatusReportwithNeightN',
       apiUrl: 'https://n8n.sproutify.app/webhook/generate-tower-report',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? towerReportHtml(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.html''',
+      ));
+}
+
+class GenerateWeeklySeedingReportWithNeightNCall {
+  static Future<ApiCallResponse> call({
+    String? farmID = '',
+    String? planID = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "farm_id": "${escapeStringForJson(farmID)}",
+  "plan_id": "${escapeStringForJson(planID)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'generateWeeklySeedingReportWithNeightN',
+      apiUrl:
+          'https://n8n.sproutify.app/webhook/c0488413-779e-477c-a760-1efb3c89e862',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',

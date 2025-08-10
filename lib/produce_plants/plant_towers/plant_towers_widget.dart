@@ -14,6 +14,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'plant_towers_model.dart';
@@ -96,8 +97,8 @@ class _PlantTowersWidgetState extends State<PlantTowersWidget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 0.0, 0.0),
-                                child: Icon(
-                                  Icons.spa_outlined,
+                                child: FaIcon(
+                                  FontAwesomeIcons.leaf,
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
                                   size: 32.0,
@@ -809,88 +810,6 @@ class _PlantTowersWidgetState extends State<PlantTowersWidget> {
                                                                     ),
                                                               ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                getJsonField(
-                                                                  plantListItem,
-                                                                  r'''$.plant_id''',
-                                                                ).toString(),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleLarge
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .titleLarge
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      color: Colors
-                                                                          .black,
-                                                                      fontSize:
-                                                                          22.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleLarge
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                getJsonField(
-                                                                  plantListItem,
-                                                                  r'''$.spacer_id''',
-                                                                ).toString(),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleLarge
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .titleLarge
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      color: Colors
-                                                                          .black,
-                                                                      fontSize:
-                                                                          22.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleLarge
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
                                                           ],
                                                         ),
                                                         collapsed: Column(
@@ -1164,7 +1083,10 @@ class _PlantTowersWidgetState extends State<PlantTowersWidget> {
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                               child: Text(
-                                                                                dateTimeFormat("MMMEd", _model.datePicked1),
+                                                                                getJsonField(
+                                                                                  plantListItem,
+                                                                                  r'''$.seeded_date''',
+                                                                                ).toString(),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       font: GoogleFonts.plusJakartaSans(
                                                                                         fontWeight: FontWeight.w600,
@@ -1195,25 +1117,6 @@ class _PlantTowersWidgetState extends State<PlantTowersWidget> {
                                                                               padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                               child: Text(
                                                                                 'Quantity to plant:',
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      font: GoogleFonts.plusJakartaSans(
-                                                                                        fontWeight: FontWeight.w600,
-                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                      ),
-                                                                                      fontSize: 18.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.w600,
-                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                            Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                              child: Text(
-                                                                                valueOrDefault<String>(
-                                                                                  _model.availablePorts?.toString(),
-                                                                                  '0',
-                                                                                ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       font: GoogleFonts.plusJakartaSans(
                                                                                         fontWeight: FontWeight.w600,
@@ -1455,19 +1358,21 @@ class _PlantTowersWidgetState extends State<PlantTowersWidget> {
                                                                                   FFButtonWidget(
                                                                                     onPressed: () async {
                                                                                       await ActionsTable().insert({
-                                                                                        'action_type_id': 2,
+                                                                                        'action_type_id': 22,
                                                                                         'plant_id': getJsonField(
                                                                                           plantListItem,
                                                                                           r'''$.plant_id''',
                                                                                         ),
                                                                                         'tower_id': widget!.towerID,
-                                                                                        'quantity': _model.availablePorts,
+                                                                                        'quantity': valueOrDefault<int>(
+                                                                                          _model.availablePorts,
+                                                                                          44,
+                                                                                        ),
                                                                                         'action_date': supaSerialize<DateTime>(_model.datePicked2),
                                                                                         'user_id': currentUserUid,
                                                                                         'farm_id': FFAppState().farmID,
                                                                                         'created_at': supaSerialize<DateTime>(getCurrentTimestamp),
                                                                                         'updated_at': supaSerialize<DateTime>(getCurrentTimestamp),
-                                                                                        'seeded_date': supaSerialize<DateTime>(_model.datePicked1),
                                                                                         'spacer_id': valueOrDefault<int>(
                                                                                           getJsonField(
                                                                                             plantListItem,

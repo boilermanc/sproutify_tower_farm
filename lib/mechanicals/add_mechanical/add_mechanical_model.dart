@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -14,6 +15,22 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class AddMechanicalModel extends FlutterFlowModel<AddMechanicalWidget> {
+  ///  Local state fields for this component.
+
+  String equipmentName = 'Name';
+
+  int category = 1;
+
+  int type = 1;
+
+  String? model;
+
+  String? zone;
+
+  String? vendor;
+
+  String? measurementSystem = '';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for PageView widget.
@@ -29,23 +46,24 @@ class AddMechanicalModel extends FlutterFlowModel<AddMechanicalWidget> {
   TextEditingController? equipmentNameTextController;
   String? Function(BuildContext, String?)? equipmentNameTextControllerValidator;
   // State field(s) for categoryDropdown widget.
-  String? categoryDropdownValue1;
-  FormFieldController<String>? categoryDropdownValueController1;
+  int? categoryDropdownValue;
+  FormFieldController<int>? categoryDropdownValueController;
   // State field(s) for typeDropdown widget.
-  String? typeDropdownValue1;
-  FormFieldController<String>? typeDropdownValueController1;
-  // State field(s) for categoryDropdown widget.
-  String? categoryDropdownValue2;
-  FormFieldController<String>? categoryDropdownValueController2;
-  // State field(s) for typeDropdown widget.
-  String? typeDropdownValue2;
-  FormFieldController<String>? typeDropdownValueController2;
-  // State field(s) for categoryDropdown widget.
-  String? categoryDropdownValue3;
-  FormFieldController<String>? categoryDropdownValueController3;
-  // State field(s) for typeDropdown widget.
-  String? typeDropdownValue3;
-  FormFieldController<String>? typeDropdownValueController3;
+  int? typeDropdownValue;
+  FormFieldController<int>? typeDropdownValueController;
+  // State field(s) for model widget.
+  FocusNode? modelFocusNode;
+  TextEditingController? modelTextController;
+  String? Function(BuildContext, String?)? modelTextControllerValidator;
+  // State field(s) for zoneDropdown widget.
+  String? zoneDropdownValue;
+  FormFieldController<String>? zoneDropdownValueController;
+  // State field(s) for vendorDropdown widget.
+  String? vendorDropdownValue;
+  FormFieldController<String>? vendorDropdownValueController;
+  // State field(s) for measurmentSystem widget.
+  String? measurmentSystemValue;
+  FormFieldController<String>? measurmentSystemValueController;
   // State field(s) for fueTypeDropdown widget.
   String? fueTypeDropdownValue1;
   FormFieldController<String>? fueTypeDropdownValueController1;
@@ -69,8 +87,8 @@ class AddMechanicalModel extends FlutterFlowModel<AddMechanicalWidget> {
   String? Function(BuildContext, String?)? btuRatingTextController3Validator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
-  TextEditingController? textController5;
-  String? Function(BuildContext, String?)? textController5Validator;
+  TextEditingController? textController6;
+  String? Function(BuildContext, String?)? textController6Validator;
   // State field(s) for controllerDropDown widget.
   String? controllerDropDownValue;
   FormFieldController<String>? controllerDropDownValueController;
@@ -83,6 +101,9 @@ class AddMechanicalModel extends FlutterFlowModel<AddMechanicalWidget> {
     equipmentNameFocusNode?.dispose();
     equipmentNameTextController?.dispose();
 
+    modelFocusNode?.dispose();
+    modelTextController?.dispose();
+
     btuRatingFocusNode1?.dispose();
     btuRatingTextController1?.dispose();
 
@@ -93,6 +114,6 @@ class AddMechanicalModel extends FlutterFlowModel<AddMechanicalWidget> {
     btuRatingTextController3?.dispose();
 
     textFieldFocusNode?.dispose();
-    textController5?.dispose();
+    textController6?.dispose();
   }
 }

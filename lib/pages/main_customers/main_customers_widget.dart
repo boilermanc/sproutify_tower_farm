@@ -184,10 +184,7 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 0.0, 0.0),
                                     child: Text(
-                                      valueOrDefault<String>(
-                                        containerCustomerCareSayingsRow?.saying,
-                                        'Customer Saying',
-                                      ),
+                                      'Manage all your customer relationships in one place - from order tracking and communications to sales history.',
                                       style: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(

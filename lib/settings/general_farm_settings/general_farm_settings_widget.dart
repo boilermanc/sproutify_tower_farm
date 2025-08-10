@@ -50,7 +50,7 @@ class _GeneralFarmSettingsWidgetState extends State<GeneralFarmSettingsWidget> {
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: 900.0,
-        height: 1000.0,
+        height: 500.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primaryBackground,
           borderRadius: BorderRadius.circular(10.0),

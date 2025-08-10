@@ -50,4 +50,7 @@ class SeedingPlanTowersRow extends SupabaseDataRow {
 
   String? get completedBy => getField<String>('completed_by');
   set completedBy(String? value) => setField<String>('completed_by', value);
+
+  String? get status => getField<String>('status');
+  set status(String? value) => setField<String>('status', value);
 }

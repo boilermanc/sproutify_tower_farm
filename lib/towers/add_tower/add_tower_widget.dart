@@ -714,7 +714,7 @@ class _AddTowerWidgetState extends State<AddTowerWidget> {
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
-                                                  hintText: 'Please select...',
+                                                  hintText: 'Select ports...',
                                                   icon: Icon(
                                                     Icons
                                                         .keyboard_arrow_down_rounded,
@@ -1114,7 +1114,7 @@ class _AddTowerWidgetState extends State<AddTowerWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'Specify the row or section where the tower will be located within the indoor farm or greenhouse.',
+                                                        'Enter what row the new tower is in.',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1226,7 +1226,7 @@ class _AddTowerWidgetState extends State<AddTowerWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'Assign a unique tower number for easy identification, especially if you have multiple towers in the same row or area.',
+                                                        'Enter the position the tower is in the row.',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1337,7 +1337,7 @@ class _AddTowerWidgetState extends State<AddTowerWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'Choose the appropriate port(s) from the dropdown menu based on the sensors or devices connected to this tower.',
+                                                        'Select the number of ports  in the tower.',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1448,7 +1448,7 @@ class _AddTowerWidgetState extends State<AddTowerWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'Once all information is entered, click Add Tower to save the tower details in your system.',
+                                                        'Once complete, click [Add Tower].',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)

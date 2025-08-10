@@ -5,3 +5,6 @@ export 'invite_user.dart' show inviteUser;
 export 'calculate_seeding.dart' show calculateSeeding;
 export 'generate_tower_farm_pdf.dart' show generateTowerFarmPdf;
 export 'print_html.dart' show printHtml;
+export 'spray_calculator_action.dart' show sprayCalculatorAction;
+export 'get_calculated_dose.dart' show getCalculatedDose;
+export 'get_dose_unit.dart' show getDoseUnit;

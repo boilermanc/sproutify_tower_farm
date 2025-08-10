@@ -360,6 +360,8 @@ dynamic deserializeParam<T>(
             return PlantDetailWithImagesRow(data);
           case TowerPortsRow:
             return TowerPortsRow(data);
+          case SeedLotsRow:
+            return SeedLotsRow(data);
           case ProductTransactionsRow:
             return ProductTransactionsRow(data);
           case PlantCategoryRow:
@@ -438,6 +440,8 @@ dynamic deserializeParam<T>(
             return InitialFarmLoadRow(data);
           case StickyCardsRow:
             return StickyCardsRow(data);
+          case SeedInventorySummaryRow:
+            return SeedInventorySummaryRow(data);
           case SpacerInventoryRow:
             return SpacerInventoryRow(data);
           case HarvestListViewRow:
@@ -732,6 +736,8 @@ dynamic deserializeParam<T>(
             return ProductInventoryTransactionsRow(data);
           case WorkflowTransitionsRow:
             return WorkflowTransitionsRow(data);
+          case SeedTransactionsRow:
+            return SeedTransactionsRow(data);
           case WaterQualityTestsRow:
             return WaterQualityTestsRow(data);
           case SquareInventoryRow:

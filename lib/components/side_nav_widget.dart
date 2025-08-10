@@ -444,114 +444,6 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                MainStaffWidget.routeName,
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 0),
-                                  ),
-                                },
-                              );
-                            },
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 200),
-                              curve: Curves.easeInOut,
-                              width: double.infinity,
-                              height: 44.0,
-                              decoration: BoxDecoration(
-                                color: () {
-                                  if (_model.mouseRegion2Hovered!) {
-                                    return FlutterFlowTheme.of(context)
-                                        .secondaryBackground;
-                                  } else if (widget!.selectedNav == 2) {
-                                    return FlutterFlowTheme.of(context).accent1;
-                                  } else {
-                                    return FlutterFlowTheme.of(context)
-                                        .primaryBackground;
-                                  }
-                                }(),
-                                borderRadius: BorderRadius.circular(12.0),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(4.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 8.0, 0.0),
-                                      child: Icon(
-                                        Icons.groups,
-                                        color: _model.selectedNav == 2
-                                            ? FlutterFlowTheme.of(context)
-                                                .primary
-                                            : FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    if (FFAppState().navOpen == true)
-                                      Expanded(
-                                        child: Text(
-                                          'Staff',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font:
-                                                    GoogleFonts.plusJakartaSans(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegion2Hovered = true);
-                        }),
-                        onExit: ((event) async {
-                          safeSetState(
-                              () => _model.mouseRegion2Hovered = false);
-                        }),
-                      ),
-                      MouseRegion(
-                        opaque: false,
-                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 8.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed(
                                 MainFarmOperationsWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
@@ -604,7 +496,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                     if (FFAppState().navOpen == true)
                                       Expanded(
                                         child: Text(
-                                          'Farm Operations',
+                                          'Farm Tasks',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -645,438 +537,6 @@ class _SideNavWidgetState extends State<SideNavWidget>
                         onExit: ((event) async {
                           safeSetState(
                               () => _model.mouseRegion3Hovered = false);
-                        }),
-                      ),
-                      MouseRegion(
-                        opaque: false,
-                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 8.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed(
-                                MainRecentOrdersWidget.routeName,
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 0),
-                                  ),
-                                },
-                              );
-                            },
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 200),
-                              curve: Curves.easeInOut,
-                              width: double.infinity,
-                              height: 44.0,
-                              decoration: BoxDecoration(
-                                color: () {
-                                  if (_model.mouseRegion4Hovered!) {
-                                    return FlutterFlowTheme.of(context)
-                                        .secondaryBackground;
-                                  } else if (widget!.selectedNav == 4) {
-                                    return FlutterFlowTheme.of(context).accent1;
-                                  } else {
-                                    return FlutterFlowTheme.of(context)
-                                        .primaryBackground;
-                                  }
-                                }(),
-                                borderRadius: BorderRadius.circular(12.0),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(4.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 8.0, 0.0),
-                                      child: Icon(
-                                        Icons.receipt,
-                                        color: _model.selectedNav == 4
-                                            ? FlutterFlowTheme.of(context)
-                                                .primary
-                                            : FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    if (FFAppState().navOpen == true)
-                                      Expanded(
-                                        child: Text(
-                                          'Manage Orders',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font:
-                                                    GoogleFonts.plusJakartaSans(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegion4Hovered = true);
-                        }),
-                        onExit: ((event) async {
-                          safeSetState(
-                              () => _model.mouseRegion4Hovered = false);
-                        }),
-                      ),
-                      MouseRegion(
-                        opaque: false,
-                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 8.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed(
-                                MainNutrientsWidget.routeName,
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 0),
-                                  ),
-                                },
-                              );
-                            },
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 200),
-                              curve: Curves.easeInOut,
-                              width: double.infinity,
-                              height: 44.0,
-                              decoration: BoxDecoration(
-                                color: () {
-                                  if (_model.mouseRegion5Hovered!) {
-                                    return FlutterFlowTheme.of(context)
-                                        .secondaryBackground;
-                                  } else if (widget!.selectedNav == 5) {
-                                    return FlutterFlowTheme.of(context).accent1;
-                                  } else {
-                                    return FlutterFlowTheme.of(context)
-                                        .primaryBackground;
-                                  }
-                                }(),
-                                borderRadius: BorderRadius.circular(12.0),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(4.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 8.0, 0.0),
-                                      child: Icon(
-                                        Icons.science,
-                                        color: _model.selectedNav == 4
-                                            ? FlutterFlowTheme.of(context)
-                                                .primary
-                                            : FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    if (FFAppState().navOpen == true)
-                                      Expanded(
-                                        child: Text(
-                                          'Nutrient Management',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font:
-                                                    GoogleFonts.plusJakartaSans(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegion5Hovered = true);
-                        }),
-                        onExit: ((event) async {
-                          safeSetState(
-                              () => _model.mouseRegion5Hovered = false);
-                        }),
-                      ),
-                      MouseRegion(
-                        opaque: false,
-                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 8.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed(
-                                MainWaterManagementWidget.routeName,
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 0),
-                                  ),
-                                },
-                              );
-                            },
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 200),
-                              curve: Curves.easeInOut,
-                              width: double.infinity,
-                              height: 44.0,
-                              decoration: BoxDecoration(
-                                color: () {
-                                  if (_model.mouseRegion6Hovered!) {
-                                    return FlutterFlowTheme.of(context)
-                                        .secondaryBackground;
-                                  } else if (widget!.selectedNav == 6) {
-                                    return FlutterFlowTheme.of(context).accent1;
-                                  } else {
-                                    return FlutterFlowTheme.of(context)
-                                        .primaryBackground;
-                                  }
-                                }(),
-                                borderRadius: BorderRadius.circular(12.0),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(4.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 8.0, 0.0),
-                                      child: Icon(
-                                        Icons.water_drop,
-                                        color: _model.selectedNav == 4
-                                            ? FlutterFlowTheme.of(context)
-                                                .primary
-                                            : FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    if (FFAppState().navOpen == true)
-                                      Expanded(
-                                        child: Text(
-                                          'Water Management',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font:
-                                                    GoogleFonts.plusJakartaSans(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegion6Hovered = true);
-                        }),
-                        onExit: ((event) async {
-                          safeSetState(
-                              () => _model.mouseRegion6Hovered = false);
-                        }),
-                      ),
-                      MouseRegion(
-                        opaque: false,
-                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 8.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed(
-                                MainSensorsWidget.routeName,
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 0),
-                                  ),
-                                },
-                              );
-                            },
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 200),
-                              curve: Curves.easeInOut,
-                              width: double.infinity,
-                              height: 44.0,
-                              decoration: BoxDecoration(
-                                color: () {
-                                  if (_model.mouseRegion7Hovered!) {
-                                    return FlutterFlowTheme.of(context)
-                                        .secondaryBackground;
-                                  } else if (widget!.selectedNav == 7) {
-                                    return FlutterFlowTheme.of(context).accent1;
-                                  } else {
-                                    return FlutterFlowTheme.of(context)
-                                        .primaryBackground;
-                                  }
-                                }(),
-                                borderRadius: BorderRadius.circular(12.0),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(4.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 8.0, 0.0),
-                                      child: Icon(
-                                        Icons.sensors_rounded,
-                                        color: _model.selectedNav == 4
-                                            ? FlutterFlowTheme.of(context)
-                                                .primary
-                                            : FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    if (FFAppState().navOpen == true)
-                                      Expanded(
-                                        child: Text(
-                                          'Sensors',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font:
-                                                    GoogleFonts.plusJakartaSans(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        onEnter: ((event) async {
-                          safeSetState(() => _model.mouseRegion7Hovered = true);
-                        }),
-                        onExit: ((event) async {
-                          safeSetState(
-                              () => _model.mouseRegion7Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -1293,6 +753,331 @@ class _SideNavWidgetState extends State<SideNavWidget>
                         onExit: ((event) async {
                           safeSetState(
                               () => _model.mouseRegion9Hovered = false);
+                        }),
+                      ),
+                      MouseRegion(
+                        opaque: false,
+                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                MainNutrientsWidget.routeName,
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            },
+                            child: AnimatedContainer(
+                              duration: Duration(milliseconds: 200),
+                              curve: Curves.easeInOut,
+                              width: double.infinity,
+                              height: 44.0,
+                              decoration: BoxDecoration(
+                                color: () {
+                                  if (_model.mouseRegion5Hovered!) {
+                                    return FlutterFlowTheme.of(context)
+                                        .secondaryBackground;
+                                  } else if (widget!.selectedNav == 5) {
+                                    return FlutterFlowTheme.of(context).accent1;
+                                  } else {
+                                    return FlutterFlowTheme.of(context)
+                                        .primaryBackground;
+                                  }
+                                }(),
+                                borderRadius: BorderRadius.circular(12.0),
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(4.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 8.0, 0.0),
+                                      child: Icon(
+                                        Icons.science,
+                                        color: _model.selectedNav == 4
+                                            ? FlutterFlowTheme.of(context)
+                                                .primary
+                                            : FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                    if (FFAppState().navOpen == true)
+                                      Expanded(
+                                        child: Text(
+                                          'Nutrient Management',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        onEnter: ((event) async {
+                          safeSetState(() => _model.mouseRegion5Hovered = true);
+                        }),
+                        onExit: ((event) async {
+                          safeSetState(
+                              () => _model.mouseRegion5Hovered = false);
+                        }),
+                      ),
+                      MouseRegion(
+                        opaque: false,
+                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                MainRecentOrdersWidget.routeName,
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            },
+                            child: AnimatedContainer(
+                              duration: Duration(milliseconds: 200),
+                              curve: Curves.easeInOut,
+                              width: double.infinity,
+                              height: 44.0,
+                              decoration: BoxDecoration(
+                                color: () {
+                                  if (_model.mouseRegion4Hovered!) {
+                                    return FlutterFlowTheme.of(context)
+                                        .secondaryBackground;
+                                  } else if (widget!.selectedNav == 4) {
+                                    return FlutterFlowTheme.of(context).accent1;
+                                  } else {
+                                    return FlutterFlowTheme.of(context)
+                                        .primaryBackground;
+                                  }
+                                }(),
+                                borderRadius: BorderRadius.circular(12.0),
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(4.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 8.0, 0.0),
+                                      child: Icon(
+                                        Icons.receipt,
+                                        color: _model.selectedNav == 4
+                                            ? FlutterFlowTheme.of(context)
+                                                .primary
+                                            : FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                    if (FFAppState().navOpen == true)
+                                      Expanded(
+                                        child: Text(
+                                          'Orders',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        onEnter: ((event) async {
+                          safeSetState(() => _model.mouseRegion4Hovered = true);
+                        }),
+                        onExit: ((event) async {
+                          safeSetState(
+                              () => _model.mouseRegion4Hovered = false);
+                        }),
+                      ),
+                      MouseRegion(
+                        opaque: false,
+                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                MainVendorsWidget.routeName,
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            },
+                            child: AnimatedContainer(
+                              duration: Duration(milliseconds: 200),
+                              curve: Curves.easeInOut,
+                              width: double.infinity,
+                              height: 44.0,
+                              decoration: BoxDecoration(
+                                color: () {
+                                  if (_model.mouseRegion12Hovered!) {
+                                    return FlutterFlowTheme.of(context)
+                                        .secondaryBackground;
+                                  } else if (widget!.selectedNav == 12) {
+                                    return FlutterFlowTheme.of(context).accent1;
+                                  } else {
+                                    return FlutterFlowTheme.of(context)
+                                        .primaryBackground;
+                                  }
+                                }(),
+                                borderRadius: BorderRadius.circular(12.0),
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(4.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 8.0, 0.0),
+                                      child: Icon(
+                                        Icons.local_shipping_rounded,
+                                        color: _model.selectedNav == 4
+                                            ? FlutterFlowTheme.of(context)
+                                                .primary
+                                            : FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                    if (FFAppState().navOpen == true)
+                                      Expanded(
+                                        child: Text(
+                                          'Vendors',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        onEnter: ((event) async {
+                          safeSetState(
+                              () => _model.mouseRegion12Hovered = true);
+                        }),
+                        onExit: ((event) async {
+                          safeSetState(
+                              () => _model.mouseRegion12Hovered = false);
                         }),
                       ),
                       MouseRegion(
@@ -1558,7 +1343,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pushNamed(
-                                MainVendorsWidget.routeName,
+                                MainWaterManagementWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -1575,10 +1360,10 @@ class _SideNavWidgetState extends State<SideNavWidget>
                               height: 44.0,
                               decoration: BoxDecoration(
                                 color: () {
-                                  if (_model.mouseRegion12Hovered!) {
+                                  if (_model.mouseRegion6Hovered!) {
                                     return FlutterFlowTheme.of(context)
                                         .secondaryBackground;
-                                  } else if (widget!.selectedNav == 12) {
+                                  } else if (widget!.selectedNav == 6) {
                                     return FlutterFlowTheme.of(context).accent1;
                                   } else {
                                     return FlutterFlowTheme.of(context)
@@ -1598,7 +1383,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 8.0, 0.0),
                                       child: Icon(
-                                        Icons.local_shipping_rounded,
+                                        Icons.water_drop,
                                         color: _model.selectedNav == 4
                                             ? FlutterFlowTheme.of(context)
                                                 .primary
@@ -1610,7 +1395,7 @@ class _SideNavWidgetState extends State<SideNavWidget>
                                     if (FFAppState().navOpen == true)
                                       Expanded(
                                         child: Text(
-                                          'Vendors',
+                                          'Water Management',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -1646,12 +1431,227 @@ class _SideNavWidgetState extends State<SideNavWidget>
                           ),
                         ),
                         onEnter: ((event) async {
-                          safeSetState(
-                              () => _model.mouseRegion12Hovered = true);
+                          safeSetState(() => _model.mouseRegion6Hovered = true);
                         }),
                         onExit: ((event) async {
                           safeSetState(
-                              () => _model.mouseRegion12Hovered = false);
+                              () => _model.mouseRegion6Hovered = false);
+                        }),
+                      ),
+                      MouseRegion(
+                        opaque: false,
+                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                MainSensorsWidget.routeName,
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            },
+                            child: AnimatedContainer(
+                              duration: Duration(milliseconds: 200),
+                              curve: Curves.easeInOut,
+                              width: double.infinity,
+                              height: 44.0,
+                              decoration: BoxDecoration(
+                                color: () {
+                                  if (_model.mouseRegion7Hovered!) {
+                                    return FlutterFlowTheme.of(context)
+                                        .secondaryBackground;
+                                  } else if (widget!.selectedNav == 7) {
+                                    return FlutterFlowTheme.of(context).accent1;
+                                  } else {
+                                    return FlutterFlowTheme.of(context)
+                                        .primaryBackground;
+                                  }
+                                }(),
+                                borderRadius: BorderRadius.circular(12.0),
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(4.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 8.0, 0.0),
+                                      child: Icon(
+                                        Icons.sensors_rounded,
+                                        color: _model.selectedNav == 4
+                                            ? FlutterFlowTheme.of(context)
+                                                .primary
+                                            : FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                    if (FFAppState().navOpen == true)
+                                      Expanded(
+                                        child: Text(
+                                          'Sensors',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        onEnter: ((event) async {
+                          safeSetState(() => _model.mouseRegion7Hovered = true);
+                        }),
+                        onExit: ((event) async {
+                          safeSetState(
+                              () => _model.mouseRegion7Hovered = false);
+                        }),
+                      ),
+                      MouseRegion(
+                        opaque: false,
+                        cursor: SystemMouseCursors.click ?? MouseCursor.defer,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                MainStaffWidget.routeName,
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            },
+                            child: AnimatedContainer(
+                              duration: Duration(milliseconds: 200),
+                              curve: Curves.easeInOut,
+                              width: double.infinity,
+                              height: 44.0,
+                              decoration: BoxDecoration(
+                                color: () {
+                                  if (_model.mouseRegion2Hovered!) {
+                                    return FlutterFlowTheme.of(context)
+                                        .secondaryBackground;
+                                  } else if (widget!.selectedNav == 2) {
+                                    return FlutterFlowTheme.of(context).accent1;
+                                  } else {
+                                    return FlutterFlowTheme.of(context)
+                                        .primaryBackground;
+                                  }
+                                }(),
+                                borderRadius: BorderRadius.circular(12.0),
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(4.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 8.0, 0.0),
+                                      child: Icon(
+                                        Icons.groups,
+                                        color: _model.selectedNav == 2
+                                            ? FlutterFlowTheme.of(context)
+                                                .primary
+                                            : FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                    if (FFAppState().navOpen == true)
+                                      Expanded(
+                                        child: Text(
+                                          'Staff',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        onEnter: ((event) async {
+                          safeSetState(() => _model.mouseRegion2Hovered = true);
+                        }),
+                        onExit: ((event) async {
+                          safeSetState(
+                              () => _model.mouseRegion2Hovered = false);
                         }),
                       ),
                       MouseRegion(

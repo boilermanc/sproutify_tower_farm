@@ -573,6 +573,8 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
+                                                                  fontSize:
+                                                                      18.0,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
@@ -787,7 +789,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                               .fontStyle,
                                                                         ),
                                                                         fontSize:
-                                                                            16.0,
+                                                                            18.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight: FlutterFlowTheme.of(context)
@@ -1248,6 +1250,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
+                                                                                fontSize: 18.0,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -1379,6 +1382,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
+                                                                                  fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -4185,23 +4189,30 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                                             width: 120.0,
                                                                                             height: 40.0,
                                                                                             decoration: BoxDecoration(
-                                                                                              color: Color(0xFFCAF6F0),
+                                                                                              color: colorFromCssString(
+                                                                                                weeklyPlansItem.statusBgColor!,
+                                                                                                defaultColor: FlutterFlowTheme.of(context).alternate,
+                                                                                              ),
                                                                                               borderRadius: BorderRadius.circular(10.0),
                                                                                             ),
                                                                                             child: Align(
                                                                                               alignment: AlignmentDirectional(0.0, 0.0),
                                                                                               child: Text(
                                                                                                 valueOrDefault<String>(
-                                                                                                  weeklyPlansItem.status,
+                                                                                                  weeklyPlansItem.statusDisplay,
                                                                                                   'Status',
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                       font: GoogleFonts.plusJakartaSans(
-                                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                        fontWeight: FontWeight.w600,
                                                                                                         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                       ),
+                                                                                                      color: colorFromCssString(
+                                                                                                        weeklyPlansItem.statusTextColor!,
+                                                                                                        defaultColor: Colors.black,
+                                                                                                      ),
                                                                                                       letterSpacing: 0.0,
-                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                      fontWeight: FontWeight.w600,
                                                                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                     ),
                                                                                               ),

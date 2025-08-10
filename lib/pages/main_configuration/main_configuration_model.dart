@@ -26,6 +26,8 @@ class MainConfigurationModel extends FlutterFlowModel<MainConfigurationWidget> {
   bool mouseRegionHovered2 = false;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered3 = false;
+  // State field(s) for MouseRegion widget.
+  bool mouseRegionHovered4 = false;
   // Model for generalFarmLighting component.
   late GeneralFarmLightingModel generalFarmLightingModel;
   // Model for generalFarmSettings component.

@@ -60,4 +60,15 @@ class WeeklySeedingPlansUiRow extends SupabaseDataRow {
   double? get completionPercentage => getField<double>('completion_percentage');
   set completionPercentage(double? value) =>
       setField<double>('completion_percentage', value);
+
+  String? get statusDisplay => getField<String>('status_display');
+  set statusDisplay(String? value) => setField<String>('status_display', value);
+
+  String? get statusBgColor => getField<String>('status_bg_color');
+  set statusBgColor(String? value) =>
+      setField<String>('status_bg_color', value);
+
+  String? get statusTextColor => getField<String>('status_text_color');
+  set statusTextColor(String? value) =>
+      setField<String>('status_text_color', value);
 }

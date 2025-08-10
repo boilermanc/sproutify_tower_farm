@@ -11,6 +11,7 @@ import '/pest_management/deploy_new_card/deploy_new_card_widget.dart';
 import '/pests/add_pest_application/add_pest_application_widget.dart';
 import '/pests/no_i_p_m/no_i_p_m_widget.dart';
 import '/pests/no_pest_applications/no_pest_applications_widget.dart';
+import '/pests/no_sticky_card/no_sticky_card_widget.dart';
 import '/pests/pest_chemicals/pest_chemicals_widget.dart';
 import '/pests/pest_schedule_container/pest_schedule_container_widget.dart';
 import 'dart:math';
@@ -32,7 +33,7 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
 
   int selectedPage = 9;
 
-  bool selectedApplication = true;
+  int? selectedBox = 0;
 
   ///  State fields for stateful widgets in this page.
 
@@ -47,8 +48,12 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
 
   // State field(s) for sprayMouseRegion widget.
   bool sprayMouseRegionHovered = false;
+  // State field(s) for drenchingMouseRegion widget.
+  bool drenchingMouseRegionHovered = false;
   // State field(s) for stickyCardMouseRegion widget.
   bool stickyCardMouseRegionHovered = false;
+  // State field(s) for benificialMouseRegion widget.
+  bool benificialMouseRegionHovered = false;
   // Stores action output result for [Backend Call - Query Rows] action in Tab widget.
   List<LightingZonesRow>? lightingZoneCount7755;
   // Model for pestScheduleContainer component.

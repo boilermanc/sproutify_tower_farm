@@ -56,4 +56,35 @@ class WeeklyPlanDetailsUiRow extends SupabaseDataRow {
 
   String? get towerConfig => getField<String>('tower_config');
   set towerConfig(String? value) => setField<String>('tower_config', value);
+
+  DateTime? get weekStartDate => getField<DateTime>('week_start_date');
+  set weekStartDate(DateTime? value) =>
+      setField<DateTime>('week_start_date', value);
+
+  String? get planName => getField<String>('plan_name');
+  set planName(String? value) => setField<String>('plan_name', value);
+
+  String? get planStatus => getField<String>('plan_status');
+  set planStatus(String? value) => setField<String>('plan_status', value);
+
+  int? get totalSheetsNeeded => getField<int>('total_sheets_needed');
+  set totalSheetsNeeded(int? value) =>
+      setField<int>('total_sheets_needed', value);
+
+  String? get farmId => getField<String>('farm_id');
+  set farmId(String? value) => setField<String>('farm_id', value);
+
+  String? get status => getField<String>('status');
+  set status(String? value) => setField<String>('status', value);
+
+  String? get statusDisplay => getField<String>('status_display');
+  set statusDisplay(String? value) => setField<String>('status_display', value);
+
+  String? get statusBgColor => getField<String>('status_bg_color');
+  set statusBgColor(String? value) =>
+      setField<String>('status_bg_color', value);
+
+  String? get statusTextColor => getField<String>('status_text_color');
+  set statusTextColor(String? value) =>
+      setField<String>('status_text_color', value);
 }

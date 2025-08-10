@@ -31,4 +31,18 @@ class FarmPlantsRow extends SupabaseDataRow {
 
   bool get isActive => getField<bool>('is_active')!;
   set isActive(bool value) => setField<bool>('is_active', value);
+
+  int? get lowStockThreshold => getField<int>('low_stock_threshold');
+  set lowStockThreshold(int? value) =>
+      setField<int>('low_stock_threshold', value);
+
+  int? get reorderPoint => getField<int>('reorder_point');
+  set reorderPoint(int? value) => setField<int>('reorder_point', value);
+
+  int? get maxStockLevel => getField<int>('max_stock_level');
+  set maxStockLevel(int? value) => setField<int>('max_stock_level', value);
+
+  String? get preferredVendorId => getField<String>('preferred_vendor_id');
+  set preferredVendorId(String? value) =>
+      setField<String>('preferred_vendor_id', value);
 }

@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/produce_plants/plant_detail/plant_detail_widget.dart';
 import 'dart:ui';
-import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -148,7 +147,7 @@ class _PlantCatalogWidgetState extends State<PlantCatalogWidget> {
                             size: 24.0,
                           ),
                           onPressed: () async {
-                            context.goNamed(MainDashboardWidget.routeName);
+                            Navigator.pop(context);
                           },
                         ),
                       ),

@@ -841,6 +841,48 @@ class FFAppState extends ChangeNotifier {
   set showChatContainer(bool value) {
     _showChatContainer = value;
   }
+
+  double _calculatedDose = 0.0;
+  double get calculatedDose => _calculatedDose;
+  set calculatedDose(double value) {
+    _calculatedDose = value;
+  }
+
+  String _selectedDoseUnit = '';
+  String get selectedDoseUnit => _selectedDoseUnit;
+  set selectedDoseUnit(String value) {
+    _selectedDoseUnit = value;
+  }
+
+  int _selectedVolume = 1;
+  int get selectedVolume => _selectedVolume;
+  set selectedVolume(int value) {
+    _selectedVolume = value;
+  }
+
+  int _multiplierEntry = 1;
+  int get multiplierEntry => _multiplierEntry;
+  set multiplierEntry(int value) {
+    _multiplierEntry = value;
+  }
+
+  String _selectedUnit = 'gallon';
+  String get selectedUnit => _selectedUnit;
+  set selectedUnit(String value) {
+    _selectedUnit = value;
+  }
+
+  int _spacerQuantity = 0;
+  int get spacerQuantity => _spacerQuantity;
+  set spacerQuantity(int value) {
+    _spacerQuantity = value;
+  }
+
+  DateTime? _spacerSeededDate;
+  DateTime? get spacerSeededDate => _spacerSeededDate;
+  set spacerSeededDate(DateTime? value) {
+    _spacerSeededDate = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

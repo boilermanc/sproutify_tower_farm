@@ -138,7 +138,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 5.0, 0.0, 0.0),
                             child: Text(
-                              'Below are a list of members of your team.',
+                              'Keep track of your farm workforce in one place - from staff profiles and contact information to roles and team member details.',
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(

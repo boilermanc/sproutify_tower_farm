@@ -2,7 +2,9 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
+import '/components/test_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -32,6 +34,7 @@ import 'dart:ui';
 import '/index.dart';
 import 'main_dashboard_widget.dart' show MainDashboardWidget;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -47,6 +50,8 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
 
   /// filter for the towers table.
   String selectedStatusFilter = 'Null';
+
+  String selectedTower = '\"\"';
 
   ///  State fields for stateful widgets in this page.
 
@@ -75,6 +80,13 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
   int get tabBarPreviousIndex1 =>
       tabBarController1 != null ? tabBarController1!.previousIndex : 0;
 
+  // State field(s) for searchTowerTextField widget.
+  final searchTowerTextFieldKey = GlobalKey();
+  FocusNode? searchTowerTextFieldFocusNode;
+  TextEditingController? searchTowerTextFieldTextController;
+  String? searchTowerTextFieldSelectedOption;
+  String? Function(BuildContext, String?)?
+      searchTowerTextFieldTextControllerValidator;
   // State field(s) for towersDataTable widget.
   final towersDataTableController =
       FlutterFlowDataTableController<TowerDisplayWithPlantsRow>();
@@ -115,6 +127,8 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
 
     addInitialTowersModel.dispose();
     tabBarController1?.dispose();
+    searchTowerTextFieldFocusNode?.dispose();
+
     towersDataTableController.dispose();
     paginatedDataTableController1.dispose();
     mainDataTableController1.dispose();

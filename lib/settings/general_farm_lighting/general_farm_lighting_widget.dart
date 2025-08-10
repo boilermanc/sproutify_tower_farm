@@ -83,7 +83,7 @@ class _GeneralFarmLightingWidgetState extends State<GeneralFarmLightingWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Farm Lighting',
+                              'Supplemental Lighting',
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
                                   .override(
@@ -127,7 +127,7 @@ class _GeneralFarmLightingWidgetState extends State<GeneralFarmLightingWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                'Select whether your farm has suplemental lighthing.',
+                                'Toggle whether your farm uses supplemental lighting.',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -262,7 +262,7 @@ class _GeneralFarmLightingWidgetState extends State<GeneralFarmLightingWidget> {
                                     ),
                                   );
                                 },
-                                text: 'Lighting inActive',
+                                text: 'Lighting Inactive',
                                 options: FFButtonOptions(
                                   width: 200.0,
                                   height: 40.0,

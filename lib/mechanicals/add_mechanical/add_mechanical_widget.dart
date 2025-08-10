@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -38,6 +39,9 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
     _model.equipmentNameTextController ??= TextEditingController();
     _model.equipmentNameFocusNode ??= FocusNode();
 
+    _model.modelTextController ??= TextEditingController();
+    _model.modelFocusNode ??= FocusNode();
+
     _model.btuRatingTextController1 ??= TextEditingController();
     _model.btuRatingFocusNode1 ??= FocusNode();
 
@@ -47,7 +51,7 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
     _model.btuRatingTextController3 ??= TextEditingController();
     _model.btuRatingFocusNode3 ??= FocusNode();
 
-    _model.textController5 ??= TextEditingController();
+    _model.textController6 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -62,6 +66,8 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -312,6 +318,13 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
                                                                                 _model.equipmentNameTextController,
                                                                             focusNode:
                                                                                 _model.equipmentNameFocusNode,
+                                                                            onFieldSubmitted:
+                                                                                (_) async {
+                                                                              _model.equipmentName = valueOrDefault<String>(
+                                                                                _model.equipmentNameTextController.text,
+                                                                                'Name',
+                                                                              );
+                                                                            },
                                                                             autofocus:
                                                                                 false,
                                                                             obscureText:
@@ -328,7 +341,6 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
                                                                                     fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
                                                                                     fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                                   ),
-                                                                              hintText: 'TextField',
                                                                               hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                     font: GoogleFonts.plusJakartaSans(
                                                                                       fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
@@ -437,41 +449,64 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
                                                                                 Row(
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
-                                                                                FlutterFlowDropDown<String>(
-                                                                                  controller: _model.categoryDropdownValueController1 ??= FormFieldController<String>(null),
-                                                                                  options: [
-                                                                                    'Option 1',
-                                                                                    'Option 2',
-                                                                                    'Option 3'
-                                                                                  ],
-                                                                                  onChanged: (val) => safeSetState(() => _model.categoryDropdownValue1 = val),
-                                                                                  width: 200.0,
-                                                                                  height: 40.0,
-                                                                                  textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        font: GoogleFonts.plusJakartaSans(
-                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                        ),
-                                                                                        letterSpacing: 0.0,
-                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                      ),
-                                                                                  hintText: 'Select...',
-                                                                                  icon: Icon(
-                                                                                    Icons.keyboard_arrow_down_rounded,
-                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                    size: 24.0,
+                                                                                FutureBuilder<List<MechanicalsCategoriesRow>>(
+                                                                                  future: MechanicalsCategoriesTable().queryRows(
+                                                                                    queryFn: (q) => q.order('name', ascending: true),
                                                                                   ),
-                                                                                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                  elevation: 2.0,
-                                                                                  borderColor: FlutterFlowTheme.of(context).alternate,
-                                                                                  borderWidth: 0.0,
-                                                                                  borderRadius: 8.0,
-                                                                                  margin: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                                                                                  hidesUnderline: true,
-                                                                                  isOverButton: false,
-                                                                                  isSearchable: false,
-                                                                                  isMultiSelect: false,
+                                                                                  builder: (context, snapshot) {
+                                                                                    // Customize what your widget looks like when it's loading.
+                                                                                    if (!snapshot.hasData) {
+                                                                                      return Center(
+                                                                                        child: SizedBox(
+                                                                                          width: 50.0,
+                                                                                          height: 50.0,
+                                                                                          child: CircularProgressIndicator(
+                                                                                            valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                              FlutterFlowTheme.of(context).primary,
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }
+                                                                                    List<MechanicalsCategoriesRow> categoryDropdownMechanicalsCategoriesRowList = snapshot.data!;
+
+                                                                                    return FlutterFlowDropDown<int>(
+                                                                                      controller: _model.categoryDropdownValueController ??= FormFieldController<int>(null),
+                                                                                      options: List<int>.from(categoryDropdownMechanicalsCategoriesRowList.map((e) => e.categoryId).toList()),
+                                                                                      optionLabels: categoryDropdownMechanicalsCategoriesRowList.map((e) => e.name).toList(),
+                                                                                      onChanged: (val) async {
+                                                                                        safeSetState(() => _model.categoryDropdownValue = val);
+                                                                                        _model.category = _model.categoryDropdownValue!;
+                                                                                      },
+                                                                                      width: 200.0,
+                                                                                      height: 40.0,
+                                                                                      textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                      hintText: 'Select...',
+                                                                                      icon: Icon(
+                                                                                        Icons.keyboard_arrow_down_rounded,
+                                                                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                        size: 24.0,
+                                                                                      ),
+                                                                                      fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      elevation: 2.0,
+                                                                                      borderColor: FlutterFlowTheme.of(context).alternate,
+                                                                                      borderWidth: 0.0,
+                                                                                      borderRadius: 8.0,
+                                                                                      margin: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                      hidesUnderline: true,
+                                                                                      isOverButton: false,
+                                                                                      isSearchable: false,
+                                                                                      isMultiSelect: false,
+                                                                                    );
+                                                                                  },
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -512,41 +547,66 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
                                                                                 Row(
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
-                                                                                FlutterFlowDropDown<String>(
-                                                                                  controller: _model.typeDropdownValueController1 ??= FormFieldController<String>(null),
-                                                                                  options: [
-                                                                                    'Option 1',
-                                                                                    'Option 2',
-                                                                                    'Option 3'
-                                                                                  ],
-                                                                                  onChanged: (val) => safeSetState(() => _model.typeDropdownValue1 = val),
-                                                                                  width: 200.0,
-                                                                                  height: 40.0,
-                                                                                  textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        font: GoogleFonts.plusJakartaSans(
-                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                        ),
-                                                                                        letterSpacing: 0.0,
-                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                      ),
-                                                                                  hintText: 'Select...',
-                                                                                  icon: Icon(
-                                                                                    Icons.keyboard_arrow_down_rounded,
-                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                    size: 24.0,
+                                                                                FutureBuilder<List<MechanicalTypesRow>>(
+                                                                                  future: MechanicalTypesTable().queryRows(
+                                                                                    queryFn: (q) => q.order('name', ascending: true),
                                                                                   ),
-                                                                                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                  elevation: 2.0,
-                                                                                  borderColor: FlutterFlowTheme.of(context).alternate,
-                                                                                  borderWidth: 0.0,
-                                                                                  borderRadius: 8.0,
-                                                                                  margin: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                                                                                  hidesUnderline: true,
-                                                                                  isOverButton: false,
-                                                                                  isSearchable: false,
-                                                                                  isMultiSelect: false,
+                                                                                  builder: (context, snapshot) {
+                                                                                    // Customize what your widget looks like when it's loading.
+                                                                                    if (!snapshot.hasData) {
+                                                                                      return Center(
+                                                                                        child: SizedBox(
+                                                                                          width: 50.0,
+                                                                                          height: 50.0,
+                                                                                          child: CircularProgressIndicator(
+                                                                                            valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                              FlutterFlowTheme.of(context).primary,
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }
+                                                                                    List<MechanicalTypesRow> typeDropdownMechanicalTypesRowList = snapshot.data!;
+
+                                                                                    return FlutterFlowDropDown<int>(
+                                                                                      controller: _model.typeDropdownValueController ??= FormFieldController<int>(
+                                                                                        _model.typeDropdownValue ??= 1,
+                                                                                      ),
+                                                                                      options: List<int>.from(typeDropdownMechanicalTypesRowList.map((e) => e.typeId).toList()),
+                                                                                      optionLabels: typeDropdownMechanicalTypesRowList.map((e) => e.name).toList(),
+                                                                                      onChanged: (val) async {
+                                                                                        safeSetState(() => _model.typeDropdownValue = val);
+                                                                                        _model.type = _model.typeDropdownValue!;
+                                                                                      },
+                                                                                      width: 200.0,
+                                                                                      height: 40.0,
+                                                                                      textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                      hintText: 'Select...',
+                                                                                      icon: Icon(
+                                                                                        Icons.keyboard_arrow_down_rounded,
+                                                                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                        size: 24.0,
+                                                                                      ),
+                                                                                      fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      elevation: 2.0,
+                                                                                      borderColor: FlutterFlowTheme.of(context).alternate,
+                                                                                      borderWidth: 0.0,
+                                                                                      borderRadius: 8.0,
+                                                                                      margin: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                      hidesUnderline: true,
+                                                                                      isOverButton: false,
+                                                                                      isSearchable: false,
+                                                                                      isMultiSelect: false,
+                                                                                    );
+                                                                                  },
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -605,41 +665,81 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
                                                                                 Row(
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
-                                                                                FlutterFlowDropDown<String>(
-                                                                                  controller: _model.categoryDropdownValueController2 ??= FormFieldController<String>(null),
-                                                                                  options: [
-                                                                                    'Option 1',
-                                                                                    'Option 2',
-                                                                                    'Option 3'
-                                                                                  ],
-                                                                                  onChanged: (val) => safeSetState(() => _model.categoryDropdownValue2 = val),
-                                                                                  width: 200.0,
-                                                                                  height: 40.0,
-                                                                                  textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        font: GoogleFonts.plusJakartaSans(
-                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                Expanded(
+                                                                                  child: Container(
+                                                                                    width: 240.0,
+                                                                                    child: TextFormField(
+                                                                                      controller: _model.modelTextController,
+                                                                                      focusNode: _model.modelFocusNode,
+                                                                                      onFieldSubmitted: (_) async {
+                                                                                        _model.model = _model.modelTextController.text;
+                                                                                      },
+                                                                                      autofocus: false,
+                                                                                      obscureText: false,
+                                                                                      decoration: InputDecoration(
+                                                                                        isDense: true,
+                                                                                        labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                              ),
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                            ),
+                                                                                        hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                              ),
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                            ),
+                                                                                        enabledBorder: OutlineInputBorder(
+                                                                                          borderSide: BorderSide(
+                                                                                            color: FlutterFlowTheme.of(context).alternate,
+                                                                                            width: 1.0,
+                                                                                          ),
+                                                                                          borderRadius: BorderRadius.circular(8.0),
                                                                                         ),
-                                                                                        letterSpacing: 0.0,
-                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        focusedBorder: OutlineInputBorder(
+                                                                                          borderSide: BorderSide(
+                                                                                            color: Color(0x00000000),
+                                                                                            width: 1.0,
+                                                                                          ),
+                                                                                          borderRadius: BorderRadius.circular(8.0),
+                                                                                        ),
+                                                                                        errorBorder: OutlineInputBorder(
+                                                                                          borderSide: BorderSide(
+                                                                                            color: FlutterFlowTheme.of(context).error,
+                                                                                            width: 1.0,
+                                                                                          ),
+                                                                                          borderRadius: BorderRadius.circular(8.0),
+                                                                                        ),
+                                                                                        focusedErrorBorder: OutlineInputBorder(
+                                                                                          borderSide: BorderSide(
+                                                                                            color: FlutterFlowTheme.of(context).error,
+                                                                                            width: 1.0,
+                                                                                          ),
+                                                                                          borderRadius: BorderRadius.circular(8.0),
+                                                                                        ),
+                                                                                        filled: true,
+                                                                                        fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                       ),
-                                                                                  hintText: 'Select...',
-                                                                                  icon: Icon(
-                                                                                    Icons.keyboard_arrow_down_rounded,
-                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                    size: 24.0,
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                      cursorColor: FlutterFlowTheme.of(context).primaryText,
+                                                                                      validator: _model.modelTextControllerValidator.asValidator(context),
+                                                                                    ),
                                                                                   ),
-                                                                                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                  elevation: 2.0,
-                                                                                  borderColor: FlutterFlowTheme.of(context).alternate,
-                                                                                  borderWidth: 0.0,
-                                                                                  borderRadius: 8.0,
-                                                                                  margin: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                                                                                  hidesUnderline: true,
-                                                                                  isOverButton: false,
-                                                                                  isSearchable: false,
-                                                                                  isMultiSelect: false,
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -681,13 +781,16 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
                                                                                 FlutterFlowDropDown<String>(
-                                                                                  controller: _model.typeDropdownValueController2 ??= FormFieldController<String>(null),
+                                                                                  controller: _model.zoneDropdownValueController ??= FormFieldController<String>(null),
                                                                                   options: [
                                                                                     'Option 1',
                                                                                     'Option 2',
                                                                                     'Option 3'
                                                                                   ],
-                                                                                  onChanged: (val) => safeSetState(() => _model.typeDropdownValue2 = val),
+                                                                                  onChanged: (val) async {
+                                                                                    safeSetState(() => _model.zoneDropdownValue = val);
+                                                                                    _model.zone = _model.zone;
+                                                                                  },
                                                                                   width: 200.0,
                                                                                   height: 40.0,
                                                                                   textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -773,41 +876,69 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
                                                                                 Row(
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
-                                                                                FlutterFlowDropDown<String>(
-                                                                                  controller: _model.categoryDropdownValueController3 ??= FormFieldController<String>(null),
-                                                                                  options: [
-                                                                                    'Option 1',
-                                                                                    'Option 2',
-                                                                                    'Option 3'
-                                                                                  ],
-                                                                                  onChanged: (val) => safeSetState(() => _model.categoryDropdownValue3 = val),
-                                                                                  width: 200.0,
-                                                                                  height: 40.0,
-                                                                                  textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        font: GoogleFonts.plusJakartaSans(
-                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                        ),
-                                                                                        letterSpacing: 0.0,
-                                                                                        fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                      ),
-                                                                                  hintText: 'Select...',
-                                                                                  icon: Icon(
-                                                                                    Icons.keyboard_arrow_down_rounded,
-                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                    size: 24.0,
+                                                                                FutureBuilder<List<FarmVendorsViewRow>>(
+                                                                                  future: FarmVendorsViewTable().queryRows(
+                                                                                    queryFn: (q) => q.eqOrNull(
+                                                                                      'farm_id',
+                                                                                      FFAppState().farmID,
+                                                                                    ),
                                                                                   ),
-                                                                                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                  elevation: 2.0,
-                                                                                  borderColor: FlutterFlowTheme.of(context).alternate,
-                                                                                  borderWidth: 0.0,
-                                                                                  borderRadius: 8.0,
-                                                                                  margin: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                                                                                  hidesUnderline: true,
-                                                                                  isOverButton: false,
-                                                                                  isSearchable: false,
-                                                                                  isMultiSelect: false,
+                                                                                  builder: (context, snapshot) {
+                                                                                    // Customize what your widget looks like when it's loading.
+                                                                                    if (!snapshot.hasData) {
+                                                                                      return Center(
+                                                                                        child: SizedBox(
+                                                                                          width: 50.0,
+                                                                                          height: 50.0,
+                                                                                          child: CircularProgressIndicator(
+                                                                                            valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                              FlutterFlowTheme.of(context).primary,
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }
+                                                                                    List<FarmVendorsViewRow> vendorDropdownFarmVendorsViewRowList = snapshot.data!;
+
+                                                                                    return FlutterFlowDropDown<String>(
+                                                                                      controller: _model.vendorDropdownValueController ??= FormFieldController<String>(
+                                                                                        _model.vendorDropdownValue ??= 'Vendor',
+                                                                                      ),
+                                                                                      options: List<String>.from(vendorDropdownFarmVendorsViewRowList.map((e) => e.farmVendorId).withoutNulls.toList()),
+                                                                                      optionLabels: vendorDropdownFarmVendorsViewRowList.map((e) => e.vendorName).withoutNulls.toList(),
+                                                                                      onChanged: (val) async {
+                                                                                        safeSetState(() => _model.vendorDropdownValue = val);
+                                                                                        _model.vendor = '';
+                                                                                      },
+                                                                                      width: 200.0,
+                                                                                      height: 40.0,
+                                                                                      textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                      hintText: 'Select...',
+                                                                                      icon: Icon(
+                                                                                        Icons.keyboard_arrow_down_rounded,
+                                                                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                        size: 24.0,
+                                                                                      ),
+                                                                                      fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      elevation: 2.0,
+                                                                                      borderColor: FlutterFlowTheme.of(context).alternate,
+                                                                                      borderWidth: 0.0,
+                                                                                      borderRadius: 8.0,
+                                                                                      margin: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                      hidesUnderline: true,
+                                                                                      isOverButton: false,
+                                                                                      isSearchable: false,
+                                                                                      isMultiSelect: false,
+                                                                                    );
+                                                                                  },
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -849,13 +980,15 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
                                                                                 FlutterFlowDropDown<String>(
-                                                                                  controller: _model.typeDropdownValueController3 ??= FormFieldController<String>(null),
+                                                                                  controller: _model.measurmentSystemValueController ??= FormFieldController<String>(null),
                                                                                   options: [
-                                                                                    'Option 1',
-                                                                                    'Option 2',
-                                                                                    'Option 3'
+                                                                                    'Imperial',
+                                                                                    'Metric'
                                                                                   ],
-                                                                                  onChanged: (val) => safeSetState(() => _model.typeDropdownValue3 = val),
+                                                                                  onChanged: (val) async {
+                                                                                    safeSetState(() => _model.measurmentSystemValue = val);
+                                                                                    _model.measurementSystem = '';
+                                                                                  },
                                                                                   width: 200.0,
                                                                                   height: 40.0,
                                                                                   textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1716,7 +1849,7 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
                                                                                       child: Container(
                                                                                         width: 200.0,
                                                                                         child: TextFormField(
-                                                                                          controller: _model.textController5,
+                                                                                          controller: _model.textController6,
                                                                                           focusNode: _model.textFieldFocusNode,
                                                                                           autofocus: false,
                                                                                           obscureText: false,
@@ -1783,7 +1916,7 @@ class _AddMechanicalWidgetState extends State<AddMechanicalWidget> {
                                                                                               ),
                                                                                           maxLines: 3,
                                                                                           cursorColor: FlutterFlowTheme.of(context).primaryText,
-                                                                                          validator: _model.textController5Validator.asValidator(context),
+                                                                                          validator: _model.textController6Validator.asValidator(context),
                                                                                         ),
                                                                                       ),
                                                                                     ),

@@ -8,7 +8,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -58,8 +60,10 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: 600.0,
+        height: 900.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
+          borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
           padding: EdgeInsets.all(10.0),
@@ -410,7 +414,8 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                             'Private Applicator Certification',
                                             'Commercial Applicator Certification',
                                             'Farmhand',
-                                            'Farm Manager'
+                                            'Farm Manager',
+                                            'Admin'
                                           ],
                                         ).order('full_name'),
                                       ),
@@ -761,6 +766,32 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                                 .selectProductValue = val);
                                             _model.pestProductID =
                                                 _model.selectProductValue;
+                                            _model.pestProductReturn3333 =
+                                                await FarmChemicalsTable()
+                                                    .queryRows(
+                                              queryFn: (q) => q.eqOrNull(
+                                                'product_id',
+                                                _model.pestProductID,
+                                              ),
+                                            );
+                                            _model.pestChemical = _model
+                                                .pestProductReturn3333
+                                                ?.firstOrNull
+                                                ?.productName;
+                                            safeSetState(() {});
+                                            _model.selectedProduct4444 =
+                                                await actions
+                                                    .sprayCalculatorAction(
+                                              FFAppState().selectedUnit,
+                                              valueOrDefault<int>(
+                                                FFAppState().multiplierEntry,
+                                                1,
+                                              ),
+                                              _model.pestProductReturn3333!
+                                                  .firstOrNull!.productId!,
+                                            );
+
+                                            safeSetState(() {});
                                           },
                                           width: 350.0,
                                           height: 40.0,
@@ -1002,13 +1033,28 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                                       ),
                                                 ),
                                                 count: _model
-                                                    .volumeCountControllerValue ??= 0,
+                                                    .multiplierEntryValue ??= 1,
                                                 updateCount: (count) async {
                                                   safeSetState(() => _model
-                                                          .volumeCountControllerValue =
+                                                          .multiplierEntryValue =
                                                       count);
-                                                  _model.waterAmount =
-                                                      _model.waterAmount! + 1;
+                                                  FFAppState().multiplierEntry =
+                                                      _model
+                                                          .multiplierEntryValue!;
+                                                  safeSetState(() {});
+                                                  _model.selectedProduct5555 =
+                                                      await actions
+                                                          .sprayCalculatorAction(
+                                                    FFAppState().selectedUnit,
+                                                    FFAppState()
+                                                        .multiplierEntry,
+                                                    _model
+                                                        .pestProductReturn3333!
+                                                        .firstOrNull!
+                                                        .productId!,
+                                                  );
+
+                                                  safeSetState(() {});
                                                 },
                                                 stepSize: 1,
                                                 contentPadding:
@@ -1073,7 +1119,9 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                               controller: _model
                                                       .waterUnitValueController ??=
                                                   FormFieldController<String>(
-                                                      null),
+                                                _model.waterUnitValue ??=
+                                                    'Gallon',
+                                              ),
                                               options: [
                                                 'Gallon',
                                                 'Liter',
@@ -1082,8 +1130,18 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                               onChanged: (val) async {
                                                 safeSetState(() => _model
                                                     .waterUnitValue = val);
-                                                _model.waterUnit =
-                                                    _model.waterUnitValue;
+                                                FFAppState().selectedUnit =
+                                                    _model.waterUnitValue!;
+                                                safeSetState(() {});
+                                                _model.selectedProduct8888 =
+                                                    await actions
+                                                        .sprayCalculatorAction(
+                                                  FFAppState().selectedUnit,
+                                                  FFAppState().multiplierEntry,
+                                                  _model.pestProductReturn3333!
+                                                      .firstOrNull!.productId!,
+                                                );
+
                                                 safeSetState(() {});
                                               },
                                               width: 200.0,
@@ -1105,6 +1163,7 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -1157,274 +1216,64 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(10.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 5.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                'Product Amount',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .plusJakartaSans(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: 120.0,
-                                              height: 40.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                shape: BoxShape.rectangle,
-                                              ),
-                                              child: FlutterFlowCountController(
-                                                decrementIconBuilder:
-                                                    (enabled) => Icon(
-                                                  Icons.remove_rounded,
-                                                  color: enabled
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryText
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  size: 24.0,
-                                                ),
-                                                incrementIconBuilder:
-                                                    (enabled) => Icon(
-                                                  Icons.add_rounded,
-                                                  color: enabled
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  size: 24.0,
-                                                ),
-                                                countBuilder: (count) => Text(
-                                                  count.toString(),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleLarge
-                                                      .override(
-                                                        font: GoogleFonts
-                                                            .plusJakartaSans(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleLarge
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleLarge
-                                                                  .fontStyle,
-                                                        ),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleLarge
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleLarge
-                                                                .fontStyle,
-                                                      ),
-                                                ),
-                                                count: _model
-                                                    .doseCountControllerValue ??= 0,
-                                                updateCount: (count) async {
-                                                  safeSetState(() => _model
-                                                          .doseCountControllerValue =
-                                                      count);
-                                                  _model.productAmount =
-                                                      _model.productAmount! + 1;
-                                                  safeSetState(() {});
-                                                },
-                                                stepSize: 1,
-                                                contentPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(12.0, 0.0,
-                                                            12.0, 0.0),
-                                              ),
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Mixing Instructions',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.plusJakartaSans(
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
-                                          ],
-                                        ),
-                                      ],
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.all(10.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 5.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 10.0, 10.0),
+                              child: Container(
+                                width: 500.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(20.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Flexible(
+                                        child: RichText(
+                                          textScaler:
+                                              MediaQuery.of(context).textScaler,
+                                          text: TextSpan(
                                             children: [
-                                              Text(
-                                                'Unit',
+                                              TextSpan(
+                                                text: 'Add ',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
                                                               .plusJakartaSans(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            FutureBuilder<List<DosingUnitsRow>>(
-                                              future:
-                                                  DosingUnitsTable().queryRows(
-                                                queryFn: (q) => q
-                                                    .eqOrNull(
-                                                      'unit_system',
-                                                      FFAppState().farmUnit,
-                                                    )
-                                                    .eqOrNull(
-                                                      'unit_type',
-                                                      'amount',
-                                                    )
-                                                    .order('unit_name'),
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        valueColor:
-                                                            AlwaysStoppedAnimation<
-                                                                Color>(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<DosingUnitsRow>
-                                                    productUnitDosingUnitsRowList =
-                                                    snapshot.data!;
-
-                                                return FlutterFlowDropDown<
-                                                    String>(
-                                                  controller: _model
-                                                          .productUnitValueController ??=
-                                                      FormFieldController<
-                                                          String>(
-                                                    _model.productUnitValue ??=
-                                                        '',
-                                                  ),
-                                                  options: List<String>.from(
-                                                      productUnitDosingUnitsRowList
-                                                          .map((e) => e.unitId)
-                                                          .toList()),
-                                                  optionLabels:
-                                                      productUnitDosingUnitsRowList
-                                                          .map(
-                                                              (e) => e.unitName)
-                                                          .toList(),
-                                                  onChanged: (val) async {
-                                                    safeSetState(() => _model
-                                                            .productUnitValue =
-                                                        val);
-                                                    _model.productUnit =
-                                                        _model.productUnitValue;
-                                                    safeSetState(() {});
-                                                  },
-                                                  width: 200.0,
-                                                  height: 40.0,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .plusJakartaSans(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                            letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -1436,40 +1285,287 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
-                                                  hintText: 'Select...',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_down_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24.0,
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                              ),
+                                              TextSpan(
+                                                text: FFAppState()
+                                                    .calculatedDose
+                                                    .toString(),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                              ),
+                                              TextSpan(
+                                                text: ' ',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                              ),
+                                              TextSpan(
+                                                text: FFAppState()
+                                                    .selectedDoseUnit,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle: FontStyle
+                                                                .italic,
+                                                          ),
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FontStyle.italic,
+                                                        ),
+                                              ),
+                                              TextSpan(
+                                                text: ' of ',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                              ),
+                                              TextSpan(
+                                                text: valueOrDefault<String>(
+                                                  _model.pestChemical,
+                                                  'Chemical',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .underline,
+                                                        ),
+                                              ),
+                                              TextSpan(
+                                                text: ' to ',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                              ),
+                                              TextSpan(
+                                                text: valueOrDefault<String>(
+                                                  FFAppState()
+                                                      .multiplierEntry
+                                                      .toString(),
+                                                  '1',
+                                                ),
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20.0,
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text: ' ',
+                                                style: TextStyle(
+                                                  fontSize: 20.0,
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text: FFAppState().selectedUnit,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20.0,
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text: (int multiplier) {
+                                                  return multiplier > 1
+                                                      ? 's'
+                                                      : '';
+                                                }(_model.multiplierEntryValue!),
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20.0,
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text: ' of water.',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 20.0,
+                                                ),
+                                              )
+                                            ],
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts
+                                                      .plusJakartaSans(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
                                                   ),
-                                                  fillColor:
+                                                  fontSize: 18.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .secondaryBackground,
-                                                  elevation: 2.0,
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderWidth: 0.0,
-                                                  borderRadius: 8.0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          12.0, 0.0, 12.0, 0.0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: false,
-                                                  isSearchable: false,
-                                                  isMultiSelect: false,
-                                                );
-                                              },
-                                            ),
-                                          ],
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ],
@@ -1641,6 +1737,7 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                                                 .labelMedium
                                                                 .fontStyle,
                                                       ),
+                                                      fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
@@ -1671,6 +1768,7 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                                                 .labelMedium
                                                                 .fontStyle,
                                                       ),
+                                                      fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
@@ -1743,6 +1841,7 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
+                                                fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
@@ -1794,11 +1893,9 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                               'product_id': _model.selectProductValue,
                               'safety_confirmed':
                                   _model.confirmSafetyRequirments,
-                              'dose_amount':
-                                  _model.doseCountControllerValue?.toDouble(),
-                              'dose_unit': _model.productUnitValue,
-                              'volume':
-                                  _model.volumeCountControllerValue?.toString(),
+                              'dose_amount': FFAppState().calculatedDose,
+                              'dose_unit': _model.waterUnitValue,
+                              'volume': _model.multiplierEntryValue?.toString(),
                               'volume_unit': _model.waterUnitValue,
                               'notes': _model.textController.text,
                             });

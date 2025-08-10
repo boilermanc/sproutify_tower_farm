@@ -1,15 +1,18 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/produce_plants/seed_weekly_printed_chart/seed_weekly_printed_chart_widget.dart';
 import '/produce_plants/seeding_planner/seeding_planner_widget.dart';
 import 'dart:ui';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -64,6 +67,8 @@ class _SeedingPlannerDetailWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
@@ -508,7 +513,7 @@ class _SeedingPlannerDetailWidgetState
                                         text: 'Mark Week Complete',
                                         icon: Icon(
                                           Icons.check,
-                                          size: 15.0,
+                                          size: 24.0,
                                         ),
                                         options: FFButtonOptions(
                                           height: 40.0,
@@ -580,7 +585,7 @@ class _SeedingPlannerDetailWidgetState
                                           text: 'Add More Plants',
                                           icon: Icon(
                                             Icons.add,
-                                            size: 15.0,
+                                            size: 24.0,
                                           ),
                                           options: FFButtonOptions(
                                             height: 40.0,
@@ -591,6 +596,151 @@ class _SeedingPlannerDetailWidgetState
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: Color(0xFF5D9BE7),
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      font: GoogleFonts
+                                                          .plusJakartaSans(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Colors.white,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
+                                                    ),
+                                            elevation: 0.0,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            30.0, 0.0, 0.0, 0.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            _model.apiResult4h7 =
+                                                await GenerateWeeklySeedingReportWithNeightNCall
+                                                    .call(
+                                              farmID: FFAppState().farmID,
+                                              planID: widget!.seedingPlanID,
+                                            );
+
+                                            if ((_model
+                                                    .apiResult4h7?.succeeded ??
+                                                true)) {
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                enableDrag: false,
+                                                context: context,
+                                                builder: (context) {
+                                                  return WebViewAware(
+                                                    child: Padding(
+                                                      padding: MediaQuery
+                                                          .viewInsetsOf(
+                                                              context),
+                                                      child:
+                                                          SeedWeeklyPrintedChartWidget(
+                                                        planName: getJsonField(
+                                                          (_model.apiResult4h7
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.plan_name''',
+                                                        ).toString(),
+                                                        sheetsNeeded:
+                                                            getJsonField(
+                                                          (_model.apiResult4h7
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.sheets_needed''',
+                                                        ),
+                                                        totalRows: getJsonField(
+                                                          (_model.apiResult4h7
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.total_rows''',
+                                                        ),
+                                                        chartHtml: getJsonField(
+                                                          (_model.apiResult4h7
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.html''',
+                                                        ).toString(),
+                                                        chartHtmlDataUri:
+                                                            getJsonField(
+                                                          (_model.apiResult4h7
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.html_data_uri''',
+                                                        ).toString(),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then((value) =>
+                                                  safeSetState(() {}));
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Failed to generate seeding chart. Please try again.',
+                                                    style: TextStyle(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 18.0,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .tertiary,
+                                                ),
+                                              );
+                                            }
+
+                                            safeSetState(() {});
+                                          },
+                                          text: 'Print Weekly Sheet',
+                                          icon: Icon(
+                                            Icons.print,
+                                            size: 24.0,
+                                          ),
+                                          options: FFButtonOptions(
+                                            height: 40.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
@@ -951,88 +1101,170 @@ class _SeedingPlannerDetailWidgetState
                                                                   .primaryBackground,
                                                         ),
                                                         cells: [
-                                                          Stack(
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
                                                             children: [
                                                               if (seedingTableItem
-                                                                      .isCompleted ==
-                                                                  false)
-                                                                InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    await SeedingPlanTowersTable()
-                                                                        .update(
-                                                                      data: {
-                                                                        'is_completed':
-                                                                            true,
-                                                                        'completed_at':
-                                                                            supaSerialize<DateTime>(getCurrentTimestamp),
-                                                                        'completed_by':
-                                                                            currentUserUid,
-                                                                      },
-                                                                      matchingRows:
-                                                                          (rows) =>
-                                                                              rows.eqOrNull(
-                                                                        'item_id',
-                                                                        seedingTableItem
-                                                                            .itemId,
-                                                                      ),
-                                                                    );
-                                                                    ScaffoldMessenger.of(
-                                                                            context)
-                                                                        .showSnackBar(
-                                                                      SnackBar(
-                                                                        content:
-                                                                            Text(
-                                                                          'Seeding updated!',
-                                                                          style:
-                                                                              TextStyle(
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryBackground,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                            fontSize:
-                                                                                18.0,
-                                                                          ),
+                                                                      .status !=
+                                                                  'cancelled')
+                                                                Stack(
+                                                                  children: [
+                                                                    if (seedingTableItem
+                                                                            .isCompleted ==
+                                                                        false)
+                                                                      InkWell(
+                                                                        splashColor:
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
+                                                                        highlightColor:
+                                                                            Colors.transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          await SeedingPlanTowersTable()
+                                                                              .update(
+                                                                            data: {
+                                                                              'completed_at': supaSerialize<DateTime>(getCurrentTimestamp),
+                                                                              'completed_by': currentUserUid,
+                                                                              'status': 'completed',
+                                                                            },
+                                                                            matchingRows: (rows) =>
+                                                                                rows.eqOrNull(
+                                                                              'item_id',
+                                                                              seedingTableItem.itemId,
+                                                                            ),
+                                                                          );
+                                                                          ScaffoldMessenger.of(context)
+                                                                              .showSnackBar(
+                                                                            SnackBar(
+                                                                              content: Text(
+                                                                                'Seeding updated!',
+                                                                                style: TextStyle(
+                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                  fontSize: 18.0,
+                                                                                ),
+                                                                              ),
+                                                                              duration: Duration(milliseconds: 4000),
+                                                                              backgroundColor: FlutterFlowTheme.of(context).secondary,
+                                                                            ),
+                                                                          );
+                                                                          safeSetState(() =>
+                                                                              _model.requestCompleter = null);
+                                                                          await _model
+                                                                              .waitForRequestCompleted();
+                                                                        },
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .check_box_outline_blank,
+                                                                          color:
+                                                                              Color(0xFF39D251),
+                                                                          size:
+                                                                              32.0,
                                                                         ),
-                                                                        duration:
-                                                                            Duration(milliseconds: 4000),
-                                                                        backgroundColor:
-                                                                            FlutterFlowTheme.of(context).secondary,
                                                                       ),
-                                                                    );
-                                                                    safeSetState(() =>
-                                                                        _model.requestCompleter =
-                                                                            null);
-                                                                    await _model
-                                                                        .waitForRequestCompleted();
-                                                                  },
-                                                                  child: Icon(
-                                                                    Icons
-                                                                        .check_box_outline_blank,
-                                                                    color: Color(
-                                                                        0xFF39D251),
-                                                                    size: 32.0,
-                                                                  ),
+                                                                    if (seedingTableItem
+                                                                            .status ==
+                                                                        'completed')
+                                                                      Icon(
+                                                                        Icons
+                                                                            .check_box,
+                                                                        color: Color(
+                                                                            0xFF39D251),
+                                                                        size:
+                                                                            32.0,
+                                                                      ),
+                                                                  ],
                                                                 ),
                                                               if (seedingTableItem
-                                                                      .isCompleted ==
-                                                                  true)
-                                                                Icon(
-                                                                  Icons
-                                                                      .check_box,
-                                                                  color: Color(
-                                                                      0xFF39D251),
-                                                                  size: 32.0,
+                                                                      .status !=
+                                                                  'completed')
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          15.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      await SeedingPlanTowersTable()
+                                                                          .update(
+                                                                        data: {
+                                                                          'completed_at':
+                                                                              supaSerialize<DateTime>(getCurrentTimestamp),
+                                                                          'completed_by':
+                                                                              currentUserUid,
+                                                                          'status':
+                                                                              'cancelled',
+                                                                        },
+                                                                        matchingRows:
+                                                                            (rows) =>
+                                                                                rows.eqOrNull(
+                                                                          'item_id',
+                                                                          seedingTableItem
+                                                                              .itemId,
+                                                                        ),
+                                                                      );
+                                                                      ScaffoldMessenger.of(
+                                                                              context)
+                                                                          .showSnackBar(
+                                                                        SnackBar(
+                                                                          content:
+                                                                              Text(
+                                                                            'Seeding updated!',
+                                                                            style:
+                                                                                TextStyle(
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              fontWeight: FontWeight.w600,
+                                                                              fontSize: 18.0,
+                                                                            ),
+                                                                          ),
+                                                                          duration:
+                                                                              Duration(milliseconds: 4000),
+                                                                          backgroundColor:
+                                                                              FlutterFlowTheme.of(context).secondary,
+                                                                        ),
+                                                                      );
+                                                                      safeSetState(() =>
+                                                                          _model.requestCompleter =
+                                                                              null);
+                                                                      await _model
+                                                                          .waitForRequestCompleted();
+                                                                    },
+                                                                    child:
+                                                                        FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .trashAlt,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                  ),
                                                                 ),
                                                             ],
                                                           ),
@@ -1255,8 +1487,15 @@ class _SeedingPlannerDetailWidgetState
                                                             height: 40.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: Color(
-                                                                  0xFFBBF0BF),
+                                                              color:
+                                                                  colorFromCssString(
+                                                                seedingTableItem
+                                                                    .statusBgColor!,
+                                                                defaultColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                              ),
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -1267,7 +1506,12 @@ class _SeedingPlannerDetailWidgetState
                                                                   AlignmentDirectional(
                                                                       0.0, 0.0),
                                                               child: Text(
-                                                                'Status',
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  seedingTableItem
+                                                                      .statusDisplay,
+                                                                  'Status',
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -1280,9 +1524,13 @@ class _SeedingPlannerDetailWidgetState
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
+                                                                      color:
+                                                                          colorFromCssString(
+                                                                        seedingTableItem
+                                                                            .statusTextColor!,
+                                                                        defaultColor:
+                                                                            Colors.black,
+                                                                      ),
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight:

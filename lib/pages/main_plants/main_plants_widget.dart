@@ -419,7 +419,7 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                           },
                                         ).then((value) => safeSetState(() {}));
                                       },
-                                      text: 'Inventory',
+                                      text: 'Seed Inventory',
                                       options: FFButtonOptions(
                                         height: 40.0,
                                         padding: EdgeInsetsDirectional.fromSTEB(

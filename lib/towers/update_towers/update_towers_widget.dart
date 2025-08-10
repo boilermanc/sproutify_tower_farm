@@ -490,7 +490,7 @@ class _UpdateTowersWidgetState extends State<UpdateTowersWidget> {
                                                                   ),
                                                                 );
                                                               },
-                                                              text: 'inActive',
+                                                              text: 'Inactive',
                                                               options:
                                                                   FFButtonOptions(
                                                                 height: 40.0,

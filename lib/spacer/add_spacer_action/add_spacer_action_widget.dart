@@ -515,7 +515,7 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                                 Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                                                   child: Text(
-                                                                                                    'Expected Ready Date',
+                                                                                                    'Expected Ready Date (optional)',
                                                                                                     style: FlutterFlowTheme.of(context).titleLarge.override(
                                                                                                           font: GoogleFonts.plusJakartaSans(
                                                                                                             fontWeight: FontWeight.bold,
@@ -860,13 +860,11 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                               FFButtonWidget(
                                                                                                 onPressed: () async {
                                                                                                   await ActionsTable().insert({
-                                                                                                    'action_type_id': 9,
+                                                                                                    'action_type_id': 1,
                                                                                                     'plant_id': plantCatalogExpandableItem.plantId,
                                                                                                     'quantity': FFAppState().spacerPlantCount,
                                                                                                     'action_date': supaSerialize<DateTime>(_model.datePicked3),
                                                                                                     'farm_id': FFAppState().farmID,
-                                                                                                    'created_at': supaSerialize<DateTime>(getCurrentTimestamp),
-                                                                                                    'updated_at': supaSerialize<DateTime>(_model.datePicked3),
                                                                                                     'seeded_date': supaSerialize<DateTime>(_model.datePicked1),
                                                                                                     'user_id': currentUserUid,
                                                                                                     'expected_ready_date': supaSerialize<DateTime>(_model.datePicked2),
