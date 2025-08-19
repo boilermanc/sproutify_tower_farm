@@ -33,6 +33,22 @@ class FarmVendorsViewRow extends SupabaseDataRow {
   String? get contactNumber => getField<String>('contact_number');
   set contactNumber(String? value) => setField<String>('contact_number', value);
 
+  String? get farmContactInfo => getField<String>('farm_contact_info');
+  set farmContactInfo(String? value) =>
+      setField<String>('farm_contact_info', value);
+
+  String? get farmContactNumber => getField<String>('farm_contact_number');
+  set farmContactNumber(String? value) =>
+      setField<String>('farm_contact_number', value);
+
+  String? get vendorContactInfo => getField<String>('vendor_contact_info');
+  set vendorContactInfo(String? value) =>
+      setField<String>('vendor_contact_info', value);
+
+  String? get vendorContactNumber => getField<String>('vendor_contact_number');
+  set vendorContactNumber(String? value) =>
+      setField<String>('vendor_contact_number', value);
+
   String? get webSite => getField<String>('web_site');
   set webSite(String? value) => setField<String>('web_site', value);
 

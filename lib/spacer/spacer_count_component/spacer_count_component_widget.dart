@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'spacer_count_component_model.dart';
@@ -32,6 +33,12 @@ class _SpacerCountComponentWidgetState
     super.initState();
     _model = createModel(context, () => SpacerCountComponentModel());
 
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      FFAppState().spacerPlantCount = 44;
+      safeSetState(() {});
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -44,6 +51,8 @@ class _SpacerCountComponentWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       decoration: BoxDecoration(),
       child: Row(
@@ -91,8 +100,7 @@ class _SpacerCountComponentWidgetState
               count: _model.spacerCountValue ??= 44,
               updateCount: (count) async {
                 safeSetState(() => _model.spacerCountValue = count);
-                FFAppState().spacerPlantCount =
-                    FFAppState().spacerPlantCount + 1;
+                FFAppState().spacerPlantCount = _model.spacerCountValue!;
                 safeSetState(() {});
               },
               stepSize: 1,

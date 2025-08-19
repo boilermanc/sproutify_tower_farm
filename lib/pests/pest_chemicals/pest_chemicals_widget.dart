@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/produce_plants/no_chemicals/no_chemicals_widget.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -225,28 +226,33 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
                           : FlutterFlowTheme.of(context).primaryBackground,
                     ),
                     cells: [
-                      Text(
-                        valueOrDefault<String>(
-                          pestChemicalsItem.productName,
-                          'Product',
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.plusJakartaSans(
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              valueOrDefault<String>(
+                                pestChemicalsItem.productName,
+                                'Product',
                               ),
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
+                              style: FlutterFlowTheme.of(context)
                                   .bodyMedium
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
+                                  .override(
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                             ),
+                          ),
+                        ],
                       ),
                       Text(
                         valueOrDefault<String>(
@@ -321,9 +327,13 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
                         width: 70.0,
                         height: 30.0,
                         decoration: BoxDecoration(
-                          color: pestChemicalsItem.omriRated!
-                              ? FlutterFlowTheme.of(context).secondary
-                              : FlutterFlowTheme.of(context).tertiary,
+                          color: valueOrDefault<Color>(
+                            pestChemicalsItem.omriRated!
+                                ? Color(0xFFA6EEA8)
+                                : Color(0xFFF8CAB6),
+                            FlutterFlowTheme.of(context).alternate,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
@@ -333,15 +343,19 @@ class _PestChemicalsWidgetState extends State<PestChemicalsWidget> {
                                 .bodyMedium
                                 .override(
                                   font: GoogleFonts.plusJakartaSans(
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                  color: valueOrDefault<Color>(
+                                    pestChemicalsItem.omriRated!
+                                        ? Color(0xFF166518)
+                                        : Color(0xFF803C1F),
+                                    FlutterFlowTheme.of(context).primaryText,
+                                  ),
                                   letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w600,
                                   fontStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .fontStyle,

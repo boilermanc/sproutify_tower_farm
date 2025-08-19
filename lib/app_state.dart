@@ -883,6 +883,18 @@ class FFAppState extends ChangeNotifier {
   set spacerSeededDate(DateTime? value) {
     _spacerSeededDate = value;
   }
+
+  bool _taskCompleted = false;
+  bool get taskCompleted => _taskCompleted;
+  set taskCompleted(bool value) {
+    _taskCompleted = value;
+  }
+
+  int _spacerQuanityForAddTask = 0;
+  int get spacerQuanityForAddTask => _spacerQuanityForAddTask;
+  set spacerQuanityForAddTask(int value) {
+    _spacerQuanityForAddTask = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

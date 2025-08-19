@@ -2008,7 +2008,7 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                       font: GoogleFonts
                                                           .plusJakartaSans(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                            FontWeight.w600,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -2037,7 +2037,7 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                          FontWeight.w600,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -2084,8 +2084,8 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                     color: farmProductsItem
                                                                 .active ==
                                                             true
-                                                        ? Color(0xFF4A985A)
-                                                        : Color(0xFFA87863),
+                                                        ? Color(0xFFBEF6C9)
+                                                        : Color(0xFFE3B49F),
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .titleSmall
@@ -2093,23 +2093,23 @@ class _MainProductsWidgetState extends State<MainProductsWidget>
                                                           font: GoogleFonts
                                                               .plusJakartaSans(
                                                             fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontWeight,
+                                                                FontWeight.w600,
                                                             fontStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmall
                                                                     .fontStyle,
                                                           ),
-                                                          color: Colors.white,
+                                                          color: farmProductsItem
+                                                                      .active ==
+                                                                  true
+                                                              ? Color(
+                                                                  0xFF2B8B3E)
+                                                              : Color(
+                                                                  0xFF984219),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontWeight,
+                                                              FontWeight.w600,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)

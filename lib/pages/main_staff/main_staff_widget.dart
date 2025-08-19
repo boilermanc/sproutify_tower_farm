@@ -933,7 +933,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                           font: GoogleFonts
                                                               .plusJakartaSans(
                                                             fontWeight:
-                                                                FontWeight.bold,
+                                                                FontWeight.w600,
                                                             fontStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -946,7 +946,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                              FontWeight.w600,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1235,9 +1235,18 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                                     .profileStatus ==
                                                                 'active'
                                                             ? Color(0xFFAAF4C5)
-                                                            : FlutterFlowTheme
-                                                                    .of(context)
-                                                                .tertiary,
+                                                            : Color(0xFFF4C5B0),
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            blurRadius: 4.0,
+                                                            color: Color(
+                                                                0x33000000),
+                                                            offset: Offset(
+                                                              0.0,
+                                                              2.0,
+                                                            ),
+                                                          )
+                                                        ],
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(8.0),
@@ -1260,17 +1269,24 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                                                     .plusJakartaSans(
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .bold,
+                                                                          .w600,
                                                                   fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
+                                                                color: farmRoleProfilesItem
+                                                                            .profileStatus ==
+                                                                        'active'
+                                                                    ? Color(
+                                                                        0xFF257A44)
+                                                                    : Color(
+                                                                        0xFFB04F23),
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .bold,
+                                                                        .w600,
                                                                 fontStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -1618,7 +1634,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                             label: DefaultTextStyle.merge(
                                               softWrap: true,
                                               child: Text(
-                                                'Date Created',
+                                                'Invitation Sent',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge
@@ -1652,7 +1668,7 @@ class _MainStaffWidgetState extends State<MainStaffWidget> {
                                             label: DefaultTextStyle.merge(
                                               softWrap: true,
                                               child: Text(
-                                                'Experation Date',
+                                                'Invite Expires',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge

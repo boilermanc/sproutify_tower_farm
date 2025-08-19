@@ -176,7 +176,7 @@ class _SeedThresholdUpdateWidgetState extends State<SeedThresholdUpdateWidget> {
                 padding: EdgeInsets.all(15.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(0xFFD1E9FD),
+                    color: Color(0xFFE3F1FB),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Column(

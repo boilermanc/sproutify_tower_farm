@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/registration_profile/update_towers_plugin/update_towers_plugin_widget.dart';
 import '/towers/add_tower/add_tower_widget.dart';
 import 'dart:ui';
+import 'dart:async';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -227,14 +228,18 @@ class _UpdateTowersWidgetState extends State<UpdateTowersWidget> {
                       children: [
                         Expanded(
                           child: FutureBuilder<List<TowerManagementViewRow>>(
-                            future: TowerManagementViewTable().queryRows(
-                              queryFn: (q) => q
-                                  .eqOrNull(
-                                    'farm_id',
-                                    FFAppState().farmID,
-                                  )
-                                  .order('row_number', ascending: true),
-                            ),
+                            future: (_model.requestCompleter ??= Completer<
+                                    List<TowerManagementViewRow>>()
+                                  ..complete(
+                                      TowerManagementViewTable().queryRows(
+                                    queryFn: (q) => q
+                                        .eqOrNull(
+                                          'farm_id',
+                                          FFAppState().farmID,
+                                        )
+                                        .order('row_number', ascending: true),
+                                  )))
+                                .future,
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -372,6 +377,11 @@ class _UpdateTowersWidgetState extends State<UpdateTowersWidget> {
                                                                         .towerId,
                                                                   ),
                                                                 );
+                                                                safeSetState(() =>
+                                                                    _model.requestCompleter =
+                                                                        null);
+                                                                await _model
+                                                                    .waitForRequestCompleted();
                                                                 ScaffoldMessenger.of(
                                                                         context)
                                                                     .showSnackBar(
@@ -466,6 +476,11 @@ class _UpdateTowersWidgetState extends State<UpdateTowersWidget> {
                                                                         .towerId,
                                                                   ),
                                                                 );
+                                                                safeSetState(() =>
+                                                                    _model.requestCompleter =
+                                                                        null);
+                                                                await _model
+                                                                    .waitForRequestCompleted();
                                                                 ScaffoldMessenger.of(
                                                                         context)
                                                                     .showSnackBar(

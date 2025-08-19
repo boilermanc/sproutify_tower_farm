@@ -20,8 +20,8 @@ class FarmVendorsRow extends SupabaseDataRow {
   String get farmId => getField<String>('farm_id')!;
   set farmId(String value) => setField<String>('farm_id', value);
 
-  String get vendorId => getField<String>('vendor_id')!;
-  set vendorId(String value) => setField<String>('vendor_id', value);
+  String? get vendorId => getField<String>('vendor_id');
+  set vendorId(String? value) => setField<String>('vendor_id', value);
 
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);
@@ -35,4 +35,10 @@ class FarmVendorsRow extends SupabaseDataRow {
 
   bool get active => getField<bool>('active')!;
   set active(bool value) => setField<bool>('active', value);
+
+  String? get contactInfo => getField<String>('contact_info');
+  set contactInfo(String? value) => setField<String>('contact_info', value);
+
+  String? get contactNumber => getField<String>('contact_number');
+  set contactNumber(String? value) => setField<String>('contact_number', value);
 }

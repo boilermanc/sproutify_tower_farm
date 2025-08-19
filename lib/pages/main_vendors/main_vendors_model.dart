@@ -4,9 +4,11 @@ import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/nutrients/update_vendor/update_vendor_widget.dart';
 import '/produce_plants/vendor_catalog/vendor_catalog_widget.dart';
 import '/products/no_vendor/no_vendor_widget.dart';
 import 'dart:ui';
+import 'dart:async';
 import 'main_vendors_widget.dart' show MainVendorsWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,6 +32,7 @@ class MainVendorsModel extends FlutterFlowModel<MainVendorsWidget> {
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController =
       FlutterFlowDataTableController<FarmVendorsViewRow>();
+  Completer<List<FarmVendorsViewRow>>? requestCompleter;
 
   @override
   void initState(BuildContext context) {
@@ -43,5 +46,21 @@ class MainVendorsModel extends FlutterFlowModel<MainVendorsWidget> {
     textController?.dispose();
 
     paginatedDataTableController.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

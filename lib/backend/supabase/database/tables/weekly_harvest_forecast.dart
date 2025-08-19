@@ -50,4 +50,7 @@ class WeeklyHarvestForecastRow extends SupabaseDataRow {
 
   String? get textColor => getField<String>('text_color');
   set textColor(String? value) => setField<String>('text_color', value);
+
+  String? get statusDisplay => getField<String>('status_display');
+  set statusDisplay(String? value) => setField<String>('status_display', value);
 }

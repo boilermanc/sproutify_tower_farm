@@ -424,7 +424,7 @@ class _AddHarvestBasicWidgetState extends State<AddHarvestBasicWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      fontSize: 16.0,
+                                      fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodyMedium

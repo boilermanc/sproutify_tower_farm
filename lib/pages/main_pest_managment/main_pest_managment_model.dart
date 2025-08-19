@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -82,8 +81,15 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController2;
 
-  // State field(s) for waterTests widget.
-  final waterTestsController = FlutterFlowDataTableController<dynamic>();
+  // State field(s) for pestsObservations widget.
+  final pestsObservationsController =
+      FlutterFlowDataTableController<PestObservationsRow>();
+  // State field(s) for Expandable widget.
+  late ExpandableController expandableExpandableController3;
+
+  // State field(s) for diseaseObservations widget.
+  final diseaseObservationsController =
+      FlutterFlowDataTableController<DiseaseObservationsRow>();
 
   @override
   void initState(BuildContext context) {
@@ -103,6 +109,8 @@ class MainPestManagmentModel extends FlutterFlowModel<MainPestManagmentWidget> {
     expandableExpandableController1.dispose();
     pestApplicationsController.dispose();
     expandableExpandableController2.dispose();
-    waterTestsController.dispose();
+    pestsObservationsController.dispose();
+    expandableExpandableController3.dispose();
+    diseaseObservationsController.dispose();
   }
 }

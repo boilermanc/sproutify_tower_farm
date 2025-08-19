@@ -1,19 +1,19 @@
 import '../database.dart';
 
-class PestObservationsTable extends SupabaseTable<PestObservationsRow> {
+class DiseaseObservationsTable extends SupabaseTable<DiseaseObservationsRow> {
   @override
-  String get tableName => 'pest_observations';
+  String get tableName => 'disease_observations';
 
   @override
-  PestObservationsRow createRow(Map<String, dynamic> data) =>
-      PestObservationsRow(data);
+  DiseaseObservationsRow createRow(Map<String, dynamic> data) =>
+      DiseaseObservationsRow(data);
 }
 
-class PestObservationsRow extends SupabaseDataRow {
-  PestObservationsRow(Map<String, dynamic> data) : super(data);
+class DiseaseObservationsRow extends SupabaseDataRow {
+  DiseaseObservationsRow(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => PestObservationsTable();
+  SupabaseTable get table => DiseaseObservationsTable();
 
   String? get observationId => getField<String>('observation_id');
   set observationId(String? value) => setField<String>('observation_id', value);
@@ -28,8 +28,8 @@ class PestObservationsRow extends SupabaseDataRow {
   set observationDate(DateTime? value) =>
       setField<DateTime>('observation_date', value);
 
-  String? get pestId => getField<String>('pest_id');
-  set pestId(String? value) => setField<String>('pest_id', value);
+  String? get diseaseId => getField<String>('disease_id');
+  set diseaseId(String? value) => setField<String>('disease_id', value);
 
   String? get severityId => getField<String>('severity_id');
   set severityId(String? value) => setField<String>('severity_id', value);
@@ -43,8 +43,8 @@ class PestObservationsRow extends SupabaseDataRow {
   String? get methodId => getField<String>('method_id');
   set methodId(String? value) => setField<String>('method_id', value);
 
-  String? get pestImage => getField<String>('pest_image');
-  set pestImage(String? value) => setField<String>('pest_image', value);
+  String? get diseaseImage => getField<String>('disease_image');
+  set diseaseImage(String? value) => setField<String>('disease_image', value);
 
   String? get notes => getField<String>('notes');
   set notes(String? value) => setField<String>('notes', value);
@@ -55,12 +55,26 @@ class PestObservationsRow extends SupabaseDataRow {
   DateTime? get updatedAt => getField<DateTime>('updated_at');
   set updatedAt(DateTime? value) => setField<DateTime>('updated_at', value);
 
-  String? get pestName => getField<String>('pest_name');
-  set pestName(String? value) => setField<String>('pest_name', value);
+  String? get diseaseName => getField<String>('disease_name');
+  set diseaseName(String? value) => setField<String>('disease_name', value);
 
-  String? get pestDescription => getField<String>('pest_description');
-  set pestDescription(String? value) =>
-      setField<String>('pest_description', value);
+  String? get diseaseDescription => getField<String>('disease_description');
+  set diseaseDescription(String? value) =>
+      setField<String>('disease_description', value);
+
+  String? get symptoms => getField<String>('symptoms');
+  set symptoms(String? value) => setField<String>('symptoms', value);
+
+  String? get pathogenType => getField<String>('pathogen_type');
+  set pathogenType(String? value) => setField<String>('pathogen_type', value);
+
+  String? get managementStrategy => getField<String>('management_strategy');
+  set managementStrategy(String? value) =>
+      setField<String>('management_strategy', value);
+
+  String? get preventionStrategy => getField<String>('prevention_strategy');
+  set preventionStrategy(String? value) =>
+      setField<String>('prevention_strategy', value);
 
   String? get towerIdentifier => getField<String>('tower_identifier');
   set towerIdentifier(String? value) =>

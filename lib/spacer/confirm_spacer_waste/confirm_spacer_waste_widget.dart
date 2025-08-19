@@ -20,12 +20,14 @@ class ConfirmSpacerWasteWidget extends StatefulWidget {
     required this.spacerID,
     required this.plantID,
     required this.seededDate,
+    required this.plantName,
   });
 
   final int? actionID;
   final int? spacerID;
   final int? plantID;
   final DateTime? seededDate;
+  final String? plantName;
 
   @override
   State<ConfirmSpacerWasteWidget> createState() =>

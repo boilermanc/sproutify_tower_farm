@@ -1,7 +1,9 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/farm_cycles_widget.dart';
 import '/components/side_nav_widget.dart';
+import '/components/spacer_quantiry_text_field_widget.dart';
 import '/components/test_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
@@ -14,12 +16,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/produce_plants/add_harvest_basic/add_harvest_basic_widget.dart';
-import '/produce_plants/add_planting/add_planting_widget.dart';
 import '/produce_plants/confirm_tower_waste/confirm_tower_waste_widget.dart';
 import '/produce_plants/plant_towers/plant_towers_widget.dart';
 import '/registration_profile/initial_tower_setup/initial_tower_setup_widget.dart';
 import '/spacer/add_spacer_action/add_spacer_action_widget.dart';
-import '/spacer/assign_spacer_task/assign_spacer_task_widget.dart';
 import '/spacer/confirm_spacer_ready/confirm_spacer_ready_widget.dart';
 import '/spacer/confirm_spacer_waste/confirm_spacer_waste_widget.dart';
 import '/sproutify_a_i/mcp_reponse_window/mcp_reponse_window_widget.dart';
@@ -32,6 +32,7 @@ import '/towers/update_towers/update_towers_widget.dart';
 import 'dart:math';
 import 'dart:ui';
 import '/index.dart';
+import 'dart:async';
 import 'main_dashboard_widget.dart' show MainDashboardWidget;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -52,6 +53,10 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
   String selectedStatusFilter = 'Null';
 
   String selectedTower = '\"\"';
+
+  bool syncIsLoading = false;
+
+  int? loadingRowID = -1;
 
   ///  State fields for stateful widgets in this page.
 
@@ -74,11 +79,11 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
   // Model for addInitialTowers component.
   late AddInitialTowersModel addInitialTowersModel;
   // State field(s) for TabBar widget.
-  TabController? tabBarController1;
-  int get tabBarCurrentIndex1 =>
-      tabBarController1 != null ? tabBarController1!.index : 0;
-  int get tabBarPreviousIndex1 =>
-      tabBarController1 != null ? tabBarController1!.previousIndex : 0;
+  TabController? tabBarController;
+  int get tabBarCurrentIndex =>
+      tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   // State field(s) for searchTowerTextField widget.
   final searchTowerTextFieldKey = GlobalKey();
@@ -90,27 +95,12 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
   // State field(s) for towersDataTable widget.
   final towersDataTableController =
       FlutterFlowDataTableController<TowerDisplayWithPlantsRow>();
+  Completer<List<SpacerInventoryRow>>? requestCompleter;
   // State field(s) for PaginatedDataTable widget.
-  final paginatedDataTableController1 =
+  final paginatedDataTableController =
       FlutterFlowDataTableController<SpacerInventoryRow>();
   // State field(s) for mainDataTable widget.
-  final mainDataTableController1 =
-      FlutterFlowDataTableController<PlantDistributionBreakdownRow>();
-  // State field(s) for TabBar widget.
-  TabController? tabBarController2;
-  int get tabBarCurrentIndex2 =>
-      tabBarController2 != null ? tabBarController2!.index : 0;
-  int get tabBarPreviousIndex2 =>
-      tabBarController2 != null ? tabBarController2!.previousIndex : 0;
-
-  // State field(s) for towerDataTable widget.
-  final towerDataTableController =
-      FlutterFlowDataTableController<PlantHarvestTimelineRow>();
-  // State field(s) for PaginatedDataTable widget.
-  final paginatedDataTableController2 =
-      FlutterFlowDataTableController<WeeklyHarvestForecastRow>();
-  // State field(s) for mainDataTable widget.
-  final mainDataTableController2 =
+  final mainDataTableController =
       FlutterFlowDataTableController<PlantDistributionBreakdownRow>();
 
   @override
@@ -126,15 +116,27 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
     reportTextFieldTextController?.dispose();
 
     addInitialTowersModel.dispose();
-    tabBarController1?.dispose();
+    tabBarController?.dispose();
     searchTowerTextFieldFocusNode?.dispose();
 
     towersDataTableController.dispose();
-    paginatedDataTableController1.dispose();
-    mainDataTableController1.dispose();
-    tabBarController2?.dispose();
-    towerDataTableController.dispose();
-    paginatedDataTableController2.dispose();
-    mainDataTableController2.dispose();
+    paginatedDataTableController.dispose();
+    mainDataTableController.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

@@ -1,8 +1,10 @@
 import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -57,7 +59,7 @@ class _TaskMarkCompletedWidgetState extends State<TaskMarkCompletedWidget> {
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: 350.0,
-        height: 300.0,
+        height: 366.89,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primaryBackground,
           borderRadius: BorderRadius.circular(8.0),
@@ -188,12 +190,156 @@ class _TaskMarkCompletedWidgetState extends State<TaskMarkCompletedWidget> {
                   ),
                   Padding(
                     padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              'Completed By',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .fontStyle,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                        child: FutureBuilder<List<FarmProfilesViewRow>>(
+                          future: FarmProfilesViewTable().queryRows(
+                            queryFn: (q) => q
+                                .eqOrNull(
+                                  'farm_id',
+                                  FFAppState().farmID,
+                                )
+                                .order('first_name', ascending: true),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            List<FarmProfilesViewRow>
+                                completedByDropDownFarmProfilesViewRowList =
+                                snapshot.data!;
+
+                            return FlutterFlowDropDown<String>(
+                              controller:
+                                  _model.completedByDropDownValueController ??=
+                                      FormFieldController<String>(
+                                _model.completedByDropDownValue ??= '',
+                              ),
+                              options: List<String>.from(
+                                  completedByDropDownFarmProfilesViewRowList
+                                      .map((e) => e.id)
+                                      .withoutNulls
+                                      .toList()),
+                              optionLabels:
+                                  completedByDropDownFarmProfilesViewRowList
+                                      .map((e) => e.fullName)
+                                      .withoutNulls
+                                      .toList(),
+                              onChanged: (val) => safeSetState(
+                                  () => _model.completedByDropDownValue = val),
+                              width: 250.0,
+                              height: 40.0,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                              hintText: 'Select...',
+                              icon: Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 2.0,
+                              borderColor:
+                                  FlutterFlowTheme.of(context).alternate,
+                              borderWidth: 1.0,
+                              borderRadius: 8.0,
+                              margin: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 12.0, 0.0),
+                              hidesUnderline: true,
+                              isOverButton: false,
+                              isSearchable: false,
+                              isMultiSelect: false,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 40.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         await TasksTable().update(
                           data: {
                             'status': 'completed',
+                            'completed_at':
+                                supaSerialize<DateTime>(getCurrentTimestamp),
+                            'updated_at':
+                                supaSerialize<DateTime>(getCurrentTimestamp),
+                            'completed_by': _model.completedByDropDownValue,
                           },
                           matchingRows: (rows) => rows
                               .eqOrNull(
@@ -205,6 +351,8 @@ class _TaskMarkCompletedWidgetState extends State<TaskMarkCompletedWidget> {
                                 widget!.taskID,
                               ),
                         );
+                        FFAppState().taskCompleted = true;
+                        _model.updatePage(() {});
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(

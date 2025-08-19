@@ -154,7 +154,7 @@ class _RecurringTaskManagementWidgetState
                                     height: 500.0,
                                     child: Builder(
                                       builder: (context) {
-                                        final roleList =
+                                        final recurringList =
                                             containerTaskRecurringViewRowList
                                                 .toList();
 
@@ -162,7 +162,7 @@ class _RecurringTaskManagementWidgetState
                                             TaskRecurringViewRow>(
                                           controller: _model
                                               .paginatedDataTableController,
-                                          data: roleList,
+                                          data: recurringList,
                                           columnsBuilder: (onSortChanged) => [
                                             DataColumn2(
                                               label: DefaultTextStyle.merge(
@@ -375,13 +375,13 @@ class _RecurringTaskManagementWidgetState
                                               ),
                                             ),
                                           ],
-                                          dataRowBuilder: (roleListItem,
-                                                  roleListIndex,
+                                          dataRowBuilder: (recurringListItem,
+                                                  recurringListIndex,
                                                   selected,
                                                   onSelectChanged) =>
                                               DataRow(
                                             color: MaterialStateProperty.all(
-                                              roleListIndex % 2 == 0
+                                              recurringListIndex % 2 == 0
                                                   ? FlutterFlowTheme.of(context)
                                                       .secondaryBackground
                                                   : FlutterFlowTheme.of(context)
@@ -390,7 +390,7 @@ class _RecurringTaskManagementWidgetState
                                             cells: [
                                               Text(
                                                 valueOrDefault<String>(
-                                                  roleListItem.taskName,
+                                                  recurringListItem.taskName,
                                                   'Task',
                                                 ),
                                                 style:
@@ -435,12 +435,19 @@ class _RecurringTaskManagementWidgetState
                                                     children: [
                                                       Flexible(
                                                         child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            roleListItem
-                                                                .recurrencePattern,
-                                                            'Pattern',
-                                                          ),
+                                                          () {
+                                                            if (recurringListItem
+                                                                    .recurrencePattern ==
+                                                                'daily') {
+                                                              return 'Daily';
+                                                            } else if (recurringListItem
+                                                                    .recurrencePattern ==
+                                                                'monthly') {
+                                                              return 'Monthly';
+                                                            } else {
+                                                              return 'Weekly';
+                                                            }
+                                                          }(),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -480,7 +487,7 @@ class _RecurringTaskManagementWidgetState
                                                     children: [
                                                       Text(
                                                         valueOrDefault<String>(
-                                                          roleListItem
+                                                          recurringListItem
                                                               .recurrenceDays,
                                                           'Days',
                                                         ),
@@ -548,7 +555,7 @@ class _RecurringTaskManagementWidgetState
                                                         valueOrDefault<String>(
                                                           dateTimeFormat(
                                                               "jm",
-                                                              roleListItem
+                                                              recurringListItem
                                                                   .dueTime
                                                                   ?.time),
                                                           '09:00am',
@@ -653,7 +660,7 @@ class _RecurringTaskManagementWidgetState
                                                             child: Text(
                                                               valueOrDefault<
                                                                   String>(
-                                                                roleListItem
+                                                                recurringListItem
                                                                     .assignedRoleName,
                                                                 'n/a',
                                                               ),
@@ -723,7 +730,7 @@ class _RecurringTaskManagementWidgetState
                                                           Text(
                                                             valueOrDefault<
                                                                 String>(
-                                                              roleListItem
+                                                              recurringListItem
                                                                   .assignedToName,
                                                               'n/a',
                                                             ),
@@ -761,8 +768,10 @@ class _RecurringTaskManagementWidgetState
                                                 ],
                                               ),
                                               Text(
-                                                dateTimeFormat("M/d h:mm a",
-                                                    roleListItem.nextDueDate!),
+                                                dateTimeFormat(
+                                                    "M/d h:mm a",
+                                                    recurringListItem
+                                                        .nextDueDate!),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -793,40 +802,74 @@ class _RecurringTaskManagementWidgetState
                                                                   .fontStyle,
                                                         ),
                                               ),
-                                              Text(
-                                                valueOrDefault<String>(
-                                                  roleListItem.generationStatus,
-                                                  'Status',
+                                              Container(
+                                                width: 120.0,
+                                                height: 30.0,
+                                                decoration: BoxDecoration(
+                                                  color: colorFromCssString(
+                                                    recurringListItem
+                                                        .statusBgColor!,
+                                                    defaultColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                  ),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(
+                                                        0.0,
+                                                        2.0,
+                                                      ),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.0),
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      recurringListItem
+                                                          .generationStatus,
+                                                      'Status',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyMedium
                                                         .override(
                                                           font: GoogleFonts
                                                               .plusJakartaSans(
                                                             fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
+                                                                FontWeight.w600,
                                                             fontStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
+                                                          color:
+                                                              colorFromCssString(
+                                                            recurringListItem
+                                                                .statusTextColor!,
+                                                            defaultColor:
+                                                                Colors.black,
+                                                          ),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
+                                                              FontWeight.w600,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
+                                                  ),
+                                                ),
                                               ),
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -946,7 +989,7 @@ class _RecurringTaskManagementWidgetState
                                                   ),
                                                   Stack(
                                                     children: [
-                                                      if (roleListItem
+                                                      if (recurringListItem
                                                               .isActive ==
                                                           true)
                                                         AlignedTooltip(
@@ -1039,7 +1082,7 @@ class _RecurringTaskManagementWidgetState
                                                                       (rows) =>
                                                                           rows.eqOrNull(
                                                                     'recurring_id',
-                                                                    roleListItem
+                                                                    recurringListItem
                                                                         .recurringId,
                                                                   ),
                                                                 );
@@ -1092,7 +1135,7 @@ class _RecurringTaskManagementWidgetState
                                                             ),
                                                           ),
                                                         ),
-                                                      if (roleListItem
+                                                      if (recurringListItem
                                                               .isActive ==
                                                           false)
                                                         AlignedTooltip(
@@ -1185,7 +1228,7 @@ class _RecurringTaskManagementWidgetState
                                                                       (rows) =>
                                                                           rows.eqOrNull(
                                                                     'recurring_id',
-                                                                    roleListItem
+                                                                    recurringListItem
                                                                         .recurringId,
                                                                   ),
                                                                 );

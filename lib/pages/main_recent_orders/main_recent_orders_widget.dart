@@ -1104,7 +1104,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                         ),
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               font: GoogleFonts.plusJakartaSans(
-                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontWeight: FontWeight.w600,
                                                                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                               ),
                                                                                               color: colorFromCssString(
@@ -1113,7 +1113,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                               ),
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.bold,
+                                                                                              fontWeight: FontWeight.w600,
                                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                             ),
                                                                                       ),
@@ -1235,6 +1235,16 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                 ordersListItem.statusBackgroundColor!,
                                                                                                 defaultColor: FlutterFlowTheme.of(context).alternate,
                                                                                               ),
+                                                                                              boxShadow: [
+                                                                                                BoxShadow(
+                                                                                                  blurRadius: 4.0,
+                                                                                                  color: Color(0x33000000),
+                                                                                                  offset: Offset(
+                                                                                                    0.0,
+                                                                                                    2.0,
+                                                                                                  ),
+                                                                                                )
+                                                                                              ],
                                                                                               borderRadius: BorderRadius.circular(8.0),
                                                                                             ),
                                                                                             child: Align(
@@ -1246,7 +1256,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                       font: GoogleFonts.plusJakartaSans(
-                                                                                                        fontWeight: FontWeight.bold,
+                                                                                                        fontWeight: FontWeight.w600,
                                                                                                         fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                       ),
                                                                                                       color: colorFromCssString(
@@ -1255,7 +1265,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                       ),
                                                                                                       fontSize: 12.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                      fontWeight: FontWeight.w600,
                                                                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                     ),
                                                                                               ),

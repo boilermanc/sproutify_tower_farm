@@ -1,19 +1,19 @@
 import '../database.dart';
 
-class PestSeverityLevelsTable extends SupabaseTable<PestSeverityLevelsRow> {
+class SeverityLevelsTable extends SupabaseTable<SeverityLevelsRow> {
   @override
-  String get tableName => 'pest_severity_levels';
+  String get tableName => 'severity_levels';
 
   @override
-  PestSeverityLevelsRow createRow(Map<String, dynamic> data) =>
-      PestSeverityLevelsRow(data);
+  SeverityLevelsRow createRow(Map<String, dynamic> data) =>
+      SeverityLevelsRow(data);
 }
 
-class PestSeverityLevelsRow extends SupabaseDataRow {
-  PestSeverityLevelsRow(Map<String, dynamic> data) : super(data);
+class SeverityLevelsRow extends SupabaseDataRow {
+  SeverityLevelsRow(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => PestSeverityLevelsTable();
+  SupabaseTable get table => SeverityLevelsTable();
 
   String get severityId => getField<String>('severity_id')!;
   set severityId(String value) => setField<String>('severity_id', value);

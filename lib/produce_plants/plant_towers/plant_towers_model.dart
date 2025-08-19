@@ -26,6 +26,8 @@ class PlantTowersModel extends FlutterFlowModel<PlantTowersWidget> {
 
   int? setAvailablePorts;
 
+  DateTime? spacerDate;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for searchPlants widget.

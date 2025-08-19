@@ -88,4 +88,12 @@ class TaskRecurringViewRow extends SupabaseDataRow {
   String? get generationStatus => getField<String>('generation_status');
   set generationStatus(String? value) =>
       setField<String>('generation_status', value);
+
+  String? get statusBgColor => getField<String>('status_bg_color');
+  set statusBgColor(String? value) =>
+      setField<String>('status_bg_color', value);
+
+  String? get statusTextColor => getField<String>('status_text_color');
+  set statusTextColor(String? value) =>
+      setField<String>('status_text_color', value);
 }

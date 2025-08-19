@@ -904,9 +904,19 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                                         height: 30.0,
                                                         decoration:
                                                             BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .tertiary,
+                                                          color:
+                                                              Color(0xFFE7B8A3),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
+                                                              color: Color(
+                                                                  0x33000000),
+                                                              offset: Offset(
+                                                                0.0,
+                                                                2.0,
+                                                              ),
+                                                            )
+                                                          ],
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
@@ -932,9 +942,8 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
+                                                                  color: Color(
+                                                                      0xFFCC724B),
                                                                   fontSize:
                                                                       16.0,
                                                                   letterSpacing:
@@ -993,9 +1002,19 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                                         height: 30.0,
                                                         decoration:
                                                             BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondary,
+                                                          color:
+                                                              Color(0xFFA9F6A7),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
+                                                              color: Color(
+                                                                  0x33000000),
+                                                              offset: Offset(
+                                                                0.0,
+                                                                2.0,
+                                                              ),
+                                                            )
+                                                          ],
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
@@ -1015,22 +1034,21 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                                                       .plusJakartaSans(
                                                                     fontWeight:
                                                                         FontWeight
-                                                                            .bold,
+                                                                            .w600,
                                                                     fontStyle: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
+                                                                  color: Color(
+                                                                      0xFF2C9C23),
                                                                   fontSize:
                                                                       16.0,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .bold,
+                                                                          .w600,
                                                                   fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium

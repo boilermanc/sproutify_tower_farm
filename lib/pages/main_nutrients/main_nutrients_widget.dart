@@ -1026,7 +1026,7 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget> {
                                         decoration: BoxDecoration(),
                                         child: Container(
                                           width: 1100.0,
-                                          height: 600.0,
+                                          height: 800.0,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(10.0),
@@ -1045,6 +1045,7 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget> {
                                                 controller: _model
                                                     .paginatedDataTableController,
                                                 data: phECList,
+                                                numRows: phECList.length,
                                                 columnsBuilder:
                                                     (onSortChanged) => [
                                                   DataColumn2(
@@ -1792,10 +1793,8 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget> {
                                                 ),
                                                 emptyBuilder: () =>
                                                     NoMonitoringWidget(),
-                                                paginated: true,
+                                                paginated: false,
                                                 selectable: false,
-                                                hidePaginator: false,
-                                                showFirstLastButtons: false,
                                                 headingRowHeight: 56.0,
                                                 dataRowHeight: 48.0,
                                                 columnSpacing: 20.0,
