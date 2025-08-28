@@ -508,7 +508,7 @@ class _PlantCatalogWidgetState extends State<PlantCatalogWidget> {
                         child: Padding(
                           padding: EdgeInsets.all(15.0),
                           child: Container(
-                            height: 620.0,
+                            height: 600.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,

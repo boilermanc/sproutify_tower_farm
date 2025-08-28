@@ -97,7 +97,7 @@ class _SpacerCountComponentWidgetState
                           FlutterFlowTheme.of(context).titleLarge.fontStyle,
                     ),
               ),
-              count: _model.spacerCountValue ??= 44,
+              count: _model.spacerCountValue ??= 50,
               updateCount: (count) async {
                 safeSetState(() => _model.spacerCountValue = count);
                 FFAppState().spacerPlantCount = _model.spacerCountValue!;

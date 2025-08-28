@@ -8,6 +8,7 @@ import '/nutrients/update_e_c_tower/update_e_c_tower_widget.dart';
 import '/nutrients/updateph_tower/updateph_tower_widget.dart';
 import '/products/no_monitoring/no_monitoring_widget.dart';
 import 'dart:ui';
+import 'dart:async';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -990,17 +991,21 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget> {
                                   FutureBuilder<
                                       List<
                                           MonitoringTowerDashboardEnhancedWithValuesRow>>(
-                                    future:
-                                        MonitoringTowerDashboardEnhancedWithValuesTable()
-                                            .queryRows(
-                                      queryFn: (q) => q
-                                          .eqOrNull(
-                                            'farm_id',
-                                            FFAppState().farmID,
-                                          )
-                                          .order('tower_identifier',
-                                              ascending: true),
-                                    ),
+                                    future: (_model.requestCompleter ??= Completer<
+                                            List<
+                                                MonitoringTowerDashboardEnhancedWithValuesRow>>()
+                                          ..complete(
+                                              MonitoringTowerDashboardEnhancedWithValuesTable()
+                                                  .queryRows(
+                                            queryFn: (q) => q
+                                                .eqOrNull(
+                                                  'farm_id',
+                                                  FFAppState().farmID,
+                                                )
+                                                .order('tower_identifier',
+                                                    ascending: true),
+                                          )))
+                                        .future,
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
@@ -1561,8 +1566,20 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget> {
                                                               );
                                                             },
                                                           ).then((value) =>
-                                                              safeSetState(
-                                                                  () {}));
+                                                              safeSetState(() =>
+                                                                  _model.phValueUpdate6633 =
+                                                                      value));
+
+                                                          if (_model
+                                                              .phValueUpdate6633!) {
+                                                            safeSetState(() =>
+                                                                _model.requestCompleter =
+                                                                    null);
+                                                            await _model
+                                                                .waitForRequestCompleted();
+                                                          }
+
+                                                          safeSetState(() {});
                                                         },
                                                         child: Container(
                                                           width: 30.0,
@@ -1695,8 +1712,20 @@ class _MainNutrientsWidgetState extends State<MainNutrientsWidget> {
                                                               );
                                                             },
                                                           ).then((value) =>
-                                                              safeSetState(
-                                                                  () {}));
+                                                              safeSetState(() =>
+                                                                  _model.updateECValue =
+                                                                      value));
+
+                                                          if (_model
+                                                              .updateECValue!) {
+                                                            safeSetState(() =>
+                                                                _model.requestCompleter =
+                                                                    null);
+                                                            await _model
+                                                                .waitForRequestCompleted();
+                                                          }
+
+                                                          safeSetState(() {});
                                                         },
                                                         child: Container(
                                                           width: 30.0,

@@ -968,6 +968,33 @@ class ValidateInvitationCodeCall {
   }
 }
 
+class VendorCatalogSearchCall {
+  static Future<ApiCallResponse> call({
+    String? farmID = '',
+    String? searchString = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'vendorCatalogSearch',
+      apiUrl:
+          'https://rsndonfydqhykowljuyn.supabase.co/rest/v1/rpc/get_vendor_catalog?p_farm_id=${farmID}&search_term=${searchString}',
+      callType: ApiCallType.GET,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
+        'Authorization':
+            'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzbmRvbmZ5ZHFoeWtvd2xqdXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIwOTU0OTgsImV4cCI6MjAyNzY3MTQ5OH0.DmciGSlnVvOgxOGTfmkHm5YaD793VkAqOyKl7T__IiE',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

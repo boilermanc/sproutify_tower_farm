@@ -923,7 +923,7 @@ class _AddSpacerActionWidgetState extends State<AddSpacerActionWidget> {
                                                                                       safeSetState(() {});
                                                                                       safeSetState(() => _model.requestCompleter = null);
                                                                                       await _model.waitForRequestCompleted();
-                                                                                      Navigator.pop(context);
+                                                                                      Navigator.pop(context, true);
                                                                                     },
                                                                                     text: 'Add Spacer',
                                                                                     options: FFButtonOptions(

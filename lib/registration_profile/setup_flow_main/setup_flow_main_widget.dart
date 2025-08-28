@@ -2715,6 +2715,7 @@ class _SetupFlowMainWidgetState extends State<SetupFlowMainWidget> {
                                               });
                                               FFAppState().farmID =
                                                   _model.farmSetup3322!.id;
+                                              FFAppState().hasChemicals = false;
                                               await _model.pageViewController
                                                   ?.nextPage(
                                                 duration:

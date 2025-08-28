@@ -477,7 +477,7 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
 
                               return Container(
                                 width: double.infinity,
-                                height: 500.0,
+                                height: 800.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
@@ -1200,10 +1200,8 @@ class _MainCustomersWidgetState extends State<MainCustomersWidget> {
                                           ].map((c) => DataCell(c)).toList(),
                                         ),
                                         emptyBuilder: () => NoCustomersWidget(),
-                                        paginated: true,
+                                        paginated: false,
                                         selectable: false,
-                                        hidePaginator: false,
-                                        showFirstLastButtons: false,
                                         headingRowHeight: 56.0,
                                         dataRowHeight: 72.0,
                                         columnSpacing: 10.0,

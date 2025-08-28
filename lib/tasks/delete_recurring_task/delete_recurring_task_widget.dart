@@ -213,6 +213,9 @@ class _DeleteRecurringTaskWidgetState extends State<DeleteRecurringTaskWidget> {
                                   FlutterFlowTheme.of(context).secondary,
                             ),
                           );
+                          Navigator.pop(context, true);
+
+                          safeSetState(() {});
                         },
                         text: 'Delete',
                         options: FFButtonOptions(

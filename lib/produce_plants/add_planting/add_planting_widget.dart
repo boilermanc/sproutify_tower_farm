@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/spacer_port_counter_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
@@ -840,39 +841,11 @@ class _AddPlantingWidgetState extends State<AddPlantingWidget> {
                                                                                   fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
                                                                                 ),
                                                                           ),
-                                                                          Align(
-                                                                            alignment:
-                                                                                AlignmentDirectional(0.0, 0.0),
-                                                                            child:
-                                                                                Container(
-                                                                              width: 110.0,
-                                                                              height: 40.0,
-                                                                              decoration: BoxDecoration(
-                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                                border: Border.all(
-                                                                                  color: FlutterFlowTheme.of(context).alternate,
-                                                                                  width: 0.5,
-                                                                                ),
-                                                                              ),
-                                                                              child: Container(
-                                                                                width: 120.0,
-                                                                                height: 40.0,
-                                                                                child: custom_widgets.PortCounterWidget(
-                                                                                  width: 120.0,
-                                                                                  height: 40.0,
-                                                                                  availablePorts: valueOrDefault<int>(
-                                                                                    spacerPlantsItem.quantity,
-                                                                                    0,
-                                                                                  ),
-                                                                                  onCountChanged: (onCountChanged) async {
-                                                                                    FFAppState().spacerQuantity = onCountChanged;
-                                                                                    safeSetState(() {});
-                                                                                  },
-                                                                                  onAvailableChanged: (onAvailableChange) async {},
-                                                                                ),
-                                                                              ),
-                                                                            ),
+                                                                          SpacerPortCounterWidget(
+                                                                            key:
+                                                                                Key('Keyjwy_${spacerPlantsIndex}_of_${spacerPlants.length}'),
+                                                                            portCount:
+                                                                                widget!.availablePorts!,
                                                                           ),
                                                                         ],
                                                                       ),
@@ -1090,7 +1063,7 @@ class _AddPlantingWidgetState extends State<AddPlantingWidget> {
                                                                               onPressed: () async {
                                                                                 await ActionsTable().insert({
                                                                                   'action_type_id': 22,
-                                                                                  'quantity': _model.availablePorts,
+                                                                                  'quantity': FFAppState().spacerPortPlantingCount,
                                                                                   'updated_at': supaSerialize<DateTime>(getCurrentTimestamp),
                                                                                   'user_id': currentUserUid,
                                                                                   'tower_id': widget!.towerID,

@@ -996,9 +996,7 @@ class _AddVendorWidgetState extends State<AddVendorWidget> {
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
-                                          contentPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
+                                          contentPadding: EdgeInsets.all(10.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -1156,18 +1154,15 @@ class _AddVendorWidgetState extends State<AddVendorWidget> {
                                 10.0, 0.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                await VendorsTable().insert({
+                                await FarmVendorsTable().insert({
                                   'contact_info':
                                       _model.mainContactTextController.text,
                                   'contact_number':
                                       _model.vendorPhoneTextController.text,
-                                  'email':
-                                      _model.vendorEmailTextController.text,
                                   'active': true,
                                   'created_by_user_id': currentUserUid,
                                   'farm_id': FFAppState().farmID,
-                                  'vendor_name':
-                                      _model.vendorNameTextController.text,
+                                  'farm_vendor_id': '',
                                 });
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

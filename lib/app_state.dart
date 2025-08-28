@@ -895,6 +895,18 @@ class FFAppState extends ChangeNotifier {
   set spacerQuanityForAddTask(int value) {
     _spacerQuanityForAddTask = value;
   }
+
+  bool _hasChemicals = false;
+  bool get hasChemicals => _hasChemicals;
+  set hasChemicals(bool value) {
+    _hasChemicals = value;
+  }
+
+  int _spacerPortPlantingCount = 0;
+  int get spacerPortPlantingCount => _spacerPortPlantingCount;
+  set spacerPortPlantingCount(int value) {
+    _spacerPortPlantingCount = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

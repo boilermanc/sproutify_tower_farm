@@ -3,7 +3,6 @@ import '/components/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -1300,6 +1299,7 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                           if (FFAppState().farmID == FFAppState().farmID)
                             Container(
                               width: double.infinity,
+                              height: 800.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -1512,42 +1512,6 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                           mainAxisSize:
                                                               MainAxisSize.max,
                                                           children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          40.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child:
-                                                                  FlutterFlowIconButton(
-                                                                borderRadius:
-                                                                    8.0,
-                                                                buttonSize:
-                                                                    40.0,
-                                                                fillColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                icon: Icon(
-                                                                  Icons
-                                                                      .refresh_sharp,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                                  size: 24.0,
-                                                                ),
-                                                                onPressed:
-                                                                    () async {
-                                                                  safeSetState(() =>
-                                                                      _model.requestCompleter =
-                                                                          null);
-                                                                  await _model
-                                                                      .waitForRequestCompleted();
-                                                                },
-                                                              ),
-                                                            ),
                                                             Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
@@ -2461,7 +2425,14 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                                   ),
                                                                                                 );
                                                                                               },
-                                                                                            ).then((value) => safeSetState(() {}));
+                                                                                            ).then((value) => safeSetState(() => _model.taskMarkedComplete8877 = value));
+
+                                                                                            if (_model.taskMarkedComplete8877!) {
+                                                                                              safeSetState(() => _model.requestCompleter = null);
+                                                                                              await _model.waitForRequestCompleted();
+                                                                                            }
+
+                                                                                            safeSetState(() {});
                                                                                           },
                                                                                           child: Container(
                                                                                             width: 30.0,
@@ -2573,18 +2544,9 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                             ),
                                                                             emptyBuilder: () =>
                                                                                 NoTasksWidget(),
-                                                                            onPageChanged:
-                                                                                (currentRowIndex) async {
-                                                                              safeSetState(() => _model.requestCompleter = null);
-                                                                              await _model.waitForRequestCompleted();
-                                                                            },
                                                                             paginated:
-                                                                                true,
+                                                                                false,
                                                                             selectable:
-                                                                                false,
-                                                                            hidePaginator:
-                                                                                false,
-                                                                            showFirstLastButtons:
                                                                                 false,
                                                                             headingRowHeight:
                                                                                 56.0,
@@ -3385,7 +3347,14 @@ class _MainFarmOperationsWidgetState extends State<MainFarmOperationsWidget>
                                                                                         ),
                                                                                       );
                                                                                     },
-                                                                                  ).then((value) => safeSetState(() {}));
+                                                                                  ).then((value) => safeSetState(() => _model.allTaskItemComplete8888 = value));
+
+                                                                                  if (_model.allTaskItemComplete8888!) {
+                                                                                    safeSetState(() => _model.requestCompleter = null);
+                                                                                    await _model.waitForRequestCompleted();
+                                                                                  }
+
+                                                                                  safeSetState(() {});
                                                                                 },
                                                                                 child: Container(
                                                                                   width: 30.0,

@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/tasks/delete_recurring_task/delete_recurring_task_widget.dart';
 import 'dart:ui';
+import 'dart:async';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -122,12 +123,16 @@ class _RecurringTaskManagementWidgetState
                             child: Padding(
                               padding: EdgeInsets.all(10.0),
                               child: FutureBuilder<List<TaskRecurringViewRow>>(
-                                future: TaskRecurringViewTable().queryRows(
-                                  queryFn: (q) => q.eqOrNull(
-                                    'farm_id',
-                                    FFAppState().farmID,
-                                  ),
-                                ),
+                                future: (_model.requestCompleter ??=
+                                        Completer<List<TaskRecurringViewRow>>()
+                                          ..complete(TaskRecurringViewTable()
+                                              .queryRows(
+                                            queryFn: (q) => q.eqOrNull(
+                                              'farm_id',
+                                              FFAppState().farmID,
+                                            ),
+                                          )))
+                                    .future,
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
@@ -146,7 +151,7 @@ class _RecurringTaskManagementWidgetState
                                     );
                                   }
                                   List<TaskRecurringViewRow>
-                                      containerTaskRecurringViewRowList =
+                                      manageRecurringTaskContainerTaskRecurringViewRowList =
                                       snapshot.data!;
 
                                   return Container(
@@ -155,7 +160,7 @@ class _RecurringTaskManagementWidgetState
                                     child: Builder(
                                       builder: (context) {
                                         final recurringList =
-                                            containerTaskRecurringViewRowList
+                                            manageRecurringTaskContainerTaskRecurringViewRowList
                                                 .toList();
 
                                         return FlutterFlowDataTable<
@@ -1111,6 +1116,11 @@ class _RecurringTaskManagementWidgetState
                                                                             .secondary,
                                                                   ),
                                                                 );
+                                                                safeSetState(() =>
+                                                                    _model.requestCompleter =
+                                                                        null);
+                                                                await _model
+                                                                    .waitForRequestCompleted();
                                                               },
                                                               child: Container(
                                                                 width: 30.0,
@@ -1257,6 +1267,14 @@ class _RecurringTaskManagementWidgetState
                                                                             .secondary,
                                                                   ),
                                                                 );
+                                                                safeSetState(() =>
+                                                                    _model.requestCompleter =
+                                                                        null);
+                                                                await _model
+                                                                    .waitForRequestCompleted();
+
+                                                                safeSetState(
+                                                                    () {});
                                                               },
                                                               child: Container(
                                                                 width: 30.0,
@@ -1368,8 +1386,20 @@ class _RecurringTaskManagementWidgetState
                                                             );
                                                           },
                                                         ).then((value) =>
-                                                            safeSetState(
-                                                                () {}));
+                                                            safeSetState(() =>
+                                                                _model.deleteRecurring1111 =
+                                                                    value));
+
+                                                        if (_model
+                                                            .deleteRecurring1111!) {
+                                                          safeSetState(() =>
+                                                              _model.requestCompleter =
+                                                                  null);
+                                                          await _model
+                                                              .waitForRequestCompleted();
+                                                        }
+
+                                                        safeSetState(() {});
                                                       },
                                                       child: Container(
                                                         width: 30.0,

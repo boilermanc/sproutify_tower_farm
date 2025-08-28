@@ -1063,10 +1063,8 @@ class _MainPlantsWidgetState extends State<MainPlantsWidget> {
                                             ),
                                           ].map((c) => DataCell(c)).toList(),
                                         ),
-                                        paginated: true,
+                                        paginated: false,
                                         selectable: true,
-                                        hidePaginator: false,
-                                        showFirstLastButtons: false,
                                         headingRowHeight: 70.0,
                                         columnSpacing: 10.0,
                                         headingRowColor:

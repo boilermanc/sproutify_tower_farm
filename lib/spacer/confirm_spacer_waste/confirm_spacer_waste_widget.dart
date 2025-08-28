@@ -489,7 +489,7 @@ class _ConfirmSpacerWasteWidgetState extends State<ConfirmSpacerWasteWidget> {
                                 FlutterFlowTheme.of(context).tertiary,
                           ),
                         );
-                        Navigator.pop(context);
+                        Navigator.pop(context, true);
                       },
                       text: 'Submit',
                       options: FFButtonOptions(

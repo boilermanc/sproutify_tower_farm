@@ -1,19 +1,20 @@
 import '../database.dart';
 
-class VendorsWithTypesTable extends SupabaseTable<VendorsWithTypesRow> {
+class VendorsWithFarmStatusTable
+    extends SupabaseTable<VendorsWithFarmStatusRow> {
   @override
-  String get tableName => 'vendors_with_types';
+  String get tableName => 'vendors_with_farm_status';
 
   @override
-  VendorsWithTypesRow createRow(Map<String, dynamic> data) =>
-      VendorsWithTypesRow(data);
+  VendorsWithFarmStatusRow createRow(Map<String, dynamic> data) =>
+      VendorsWithFarmStatusRow(data);
 }
 
-class VendorsWithTypesRow extends SupabaseDataRow {
-  VendorsWithTypesRow(Map<String, dynamic> data) : super(data);
+class VendorsWithFarmStatusRow extends SupabaseDataRow {
+  VendorsWithFarmStatusRow(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => VendorsWithTypesTable();
+  SupabaseTable get table => VendorsWithFarmStatusTable();
 
   String? get vendorId => getField<String>('vendor_id');
   set vendorId(String? value) => setField<String>('vendor_id', value);
@@ -48,4 +49,13 @@ class VendorsWithTypesRow extends SupabaseDataRow {
 
   String? get typeName => getField<String>('type_name');
   set typeName(String? value) => setField<String>('type_name', value);
+
+  String? get farmId => getField<String>('farm_id');
+  set farmId(String? value) => setField<String>('farm_id', value);
+
+  String? get farmVendorId => getField<String>('farm_vendor_id');
+  set farmVendorId(String? value) => setField<String>('farm_vendor_id', value);
+
+  bool? get isInFarm => getField<bool>('is_in_farm');
+  set isInFarm(bool? value) => setField<bool>('is_in_farm', value);
 }

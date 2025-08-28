@@ -42,6 +42,8 @@ class AddfarmVendorModel extends FlutterFlowModel<AddfarmVendorWidget> {
   // State field(s) for vendorType widget.
   String? vendorTypeValue;
   FormFieldController<String>? vendorTypeValueController;
+  // Stores action output result for [Backend Call - Insert Row] action in addVendorButton widget.
+  FarmSpecificVendorsRow? farmVendorAdded5544;
 
   @override
   void initState(BuildContext context) {}

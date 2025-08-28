@@ -369,7 +369,7 @@ class _TaskMarkCompletedWidgetState extends State<TaskMarkCompletedWidget> {
                                 FlutterFlowTheme.of(context).secondary,
                           ),
                         );
-                        Navigator.pop(context);
+                        Navigator.pop(context, true);
                       },
                       text: 'Completed',
                       options: FFButtonOptions(

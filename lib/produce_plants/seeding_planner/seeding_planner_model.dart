@@ -74,6 +74,8 @@ class SeedingPlannerModel extends FlutterFlowModel<SeedingPlannerWidget> {
 
   int? overageSeeds;
 
+  int? sheetsNeeded;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TabBar widget.
@@ -123,6 +125,8 @@ class SeedingPlannerModel extends FlutterFlowModel<SeedingPlannerWidget> {
   FocusNode? textFieldFocusNode3;
   TextEditingController? textController5;
   String? Function(BuildContext, String?)? textController5Validator;
+  // Stores action output result for [Backend Call - Query Rows] action in Container widget.
+  List<WeeklySeedingPlansRow>? seedingPlanResults5566;
 
   @override
   void initState(BuildContext context) {}

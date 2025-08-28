@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/orders/mark_order_complete/mark_order_complete_widget.dart';
 import '/orders/order_detail/order_detail_widget.dart';
+import '/produce_plants/add_reserved_produce/add_reserved_produce_widget.dart';
 import '/produce_plants/allocate_harvest/allocate_harvest_widget.dart';
 import '/produce_plants/allocate_produce/allocate_produce_widget.dart';
 import '/produce_plants/no_available_harvest/no_available_harvest_widget.dart';
@@ -650,6 +651,16 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               BoxDecoration(
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primary,
+                                                                            boxShadow: [
+                                                                              BoxShadow(
+                                                                                blurRadius: 4.0,
+                                                                                color: Color(0x33000000),
+                                                                                offset: Offset(
+                                                                                  0.0,
+                                                                                  2.0,
+                                                                                ),
+                                                                              )
+                                                                            ],
                                                                             borderRadius:
                                                                                 BorderRadius.circular(8.0),
                                                                           ),
@@ -710,6 +721,16 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color: FlutterFlowTheme.of(context).primary,
+                                                                              boxShadow: [
+                                                                                BoxShadow(
+                                                                                  blurRadius: 4.0,
+                                                                                  color: Color(0x33000000),
+                                                                                  offset: Offset(
+                                                                                    0.0,
+                                                                                    2.0,
+                                                                                  ),
+                                                                                )
+                                                                              ],
                                                                               borderRadius: BorderRadius.circular(8.0),
                                                                             ),
                                                                             child:
@@ -770,6 +791,16 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color: FlutterFlowTheme.of(context).primary,
+                                                                              boxShadow: [
+                                                                                BoxShadow(
+                                                                                  blurRadius: 4.0,
+                                                                                  color: Color(0x33000000),
+                                                                                  offset: Offset(
+                                                                                    0.0,
+                                                                                    2.0,
+                                                                                  ),
+                                                                                )
+                                                                              ],
                                                                               borderRadius: BorderRadius.circular(8.0),
                                                                             ),
                                                                             child:
@@ -830,6 +861,16 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color: FlutterFlowTheme.of(context).primary,
+                                                                              boxShadow: [
+                                                                                BoxShadow(
+                                                                                  blurRadius: 4.0,
+                                                                                  color: Color(0x33000000),
+                                                                                  offset: Offset(
+                                                                                    0.0,
+                                                                                    2.0,
+                                                                                  ),
+                                                                                )
+                                                                              ],
                                                                               borderRadius: BorderRadius.circular(8.0),
                                                                             ),
                                                                             child:
@@ -837,6 +878,101 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                               alignment: AlignmentDirectional(0.0, 0.0),
                                                                               child: Text(
                                                                                 'Delivered',
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      font: GoogleFonts.plusJakartaSans(
+                                                                                        fontWeight: FontWeight.w600,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
+                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      letterSpacing: 0.0,
+                                                                                      fontWeight: FontWeight.w600,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            await showModalBottomSheet(
+                                                                              isScrollControlled: true,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              enableDrag: false,
+                                                                              context: context,
+                                                                              builder: (context) {
+                                                                                return WebViewAware(
+                                                                                  child: GestureDetector(
+                                                                                    onTap: () {
+                                                                                      FocusScope.of(context).unfocus();
+                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                                    },
+                                                                                    child: Padding(
+                                                                                      padding: MediaQuery.viewInsetsOf(context),
+                                                                                      child: AddReservedProduceWidget(
+                                                                                        actionID: 0,
+                                                                                        towerIdentifier: '',
+                                                                                        plantName: '',
+                                                                                        plantID: 0,
+                                                                                        towerID: 0,
+                                                                                        growingQuantity: 0,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            ).then((value) =>
+                                                                                safeSetState(() {}));
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                150.0,
+                                                                            height:
+                                                                                30.0,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              boxShadow: [
+                                                                                BoxShadow(
+                                                                                  blurRadius: 4.0,
+                                                                                  color: Color(0x33000000),
+                                                                                  offset: Offset(
+                                                                                    0.0,
+                                                                                    2.0,
+                                                                                  ),
+                                                                                )
+                                                                              ],
+                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                            ),
+                                                                            child:
+                                                                                Align(
+                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                              child: Text(
+                                                                                'Create New Order',
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       font: GoogleFonts.plusJakartaSans(
                                                                                         fontWeight: FontWeight.w600,
@@ -1642,34 +1778,19 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                   MainAxisSize
                                                                       .max,
                                                               children: [
-                                                                Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          16.0,
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
                                                                           10.0,
                                                                           0.0,
-                                                                          10.0),
-                                                                      child:
-                                                                          Text(
-                                                                        'Hello World',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              font: GoogleFonts.plusJakartaSans(
-                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                              ),
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
+                                                                          0.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [],
+                                                                  ),
                                                                 ),
                                                                 Expanded(
                                                                   child:

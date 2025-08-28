@@ -289,7 +289,7 @@ class _UpdatephTowerWidgetState extends State<UpdatephTowerWidget> {
                                               .secondary,
                                     ),
                                   );
-                                  Navigator.pop(context);
+                                  Navigator.pop(context, true);
                                 },
                                 text: 'Update',
                                 options: FFButtonOptions(

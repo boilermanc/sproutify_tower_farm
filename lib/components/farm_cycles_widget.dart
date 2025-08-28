@@ -884,7 +884,7 @@ class _FarmCyclesWidgetState extends State<FarmCyclesWidget>
                                                                 headingRowHeight:
                                                                     56.0,
                                                                 dataRowHeight:
-                                                                    48.0,
+                                                                    55.0,
                                                                 columnSpacing:
                                                                     20.0,
                                                                 headingRowColor:

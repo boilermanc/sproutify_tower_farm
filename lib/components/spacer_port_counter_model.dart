@@ -1,19 +1,17 @@
-import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import 'delete_recurring_task_widget.dart' show DeleteRecurringTaskWidget;
+import 'spacer_port_counter_widget.dart' show SpacerPortCounterWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class DeleteRecurringTaskModel
-    extends FlutterFlowModel<DeleteRecurringTaskWidget> {
+class SpacerPortCounterModel extends FlutterFlowModel<SpacerPortCounterWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Backend Call - Delete Row(s)] action in deleteButton widget.
-  List<TasksRecurringRow>? deleteReccuring4433;
+  // State field(s) for portCountCountController widget.
+  int? portCountCountControllerValue;
 
   @override
   void initState(BuildContext context) {}

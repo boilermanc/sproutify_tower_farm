@@ -76,6 +76,8 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
       reportTextFieldTextControllerValidator;
   // Stores action output result for [Backend Call - API (Send Full Prompt MCP)] action in reportTextField widget.
   ApiCallResponse? apiMCPResponse3311;
+  // Stores action output result for [Backend Call - API (Send Full Prompt MCP)] action in Icon widget.
+  ApiCallResponse? apiMCPResponse3311Copy;
   // Model for addInitialTowers component.
   late AddInitialTowersModel addInitialTowersModel;
   // State field(s) for TabBar widget.
@@ -95,10 +97,18 @@ class MainDashboardModel extends FlutterFlowModel<MainDashboardWidget> {
   // State field(s) for towersDataTable widget.
   final towersDataTableController =
       FlutterFlowDataTableController<TowerDisplayWithPlantsRow>();
+  // Stores action output result for [Bottom Sheet - addSpacerAction] action in addSpacer widget.
+  bool? addSpacerTray5555;
   Completer<List<SpacerInventoryRow>>? requestCompleter;
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController =
       FlutterFlowDataTableController<SpacerInventoryRow>();
+  // Stores action output result for [Bottom Sheet - confirmSpacerReady] action in readyButton widget.
+  bool? spacerReady0000;
+  // Stores action output result for [Bottom Sheet - confirmSpacerWaste] action in wasteButton widget.
+  bool? spacerWasteGrowing7722;
+  // Stores action output result for [Bottom Sheet - confirmSpacerWaste] action in wasteButton widget.
+  bool? spacerWasteReady9999;
   // State field(s) for mainDataTable widget.
   final mainDataTableController =
       FlutterFlowDataTableController<PlantDistributionBreakdownRow>();

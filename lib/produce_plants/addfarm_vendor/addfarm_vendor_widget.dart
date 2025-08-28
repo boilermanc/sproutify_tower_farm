@@ -1156,15 +1156,23 @@ class _AddfarmVendorWidgetState extends State<AddfarmVendorWidget> {
                                 10.0, 0.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                await FarmVendorsTable().insert({
-                                  'contact_info':
-                                      _model.mainContactTextController.text,
-                                  'contact_number':
-                                      _model.vendorPhoneTextController.text,
-                                  'active': true,
-                                  'created_by_user_id': currentUserUid,
+                                _model.farmVendorAdded5544 =
+                                    await FarmSpecificVendorsTable().insert({
                                   'farm_id': FFAppState().farmID,
-                                  'farm_vendor_id': '',
+                                  'business_name':
+                                      _model.vendorNameTextController.text,
+                                  'main_contact_name':
+                                      _model.mainContactTextController.text,
+                                  'phone_number':
+                                      _model.vendorPhoneTextController.text,
+                                  'email':
+                                      (_model.vendorEmailFocusNode?.hasFocus ??
+                                              false)
+                                          .toString(),
+                                  'vendor_type_id': _model.vendorTypeValue,
+                                  'notes':
+                                      _model.vendorNotesTextController.text,
+                                  'created_by_user_id': currentUserUid,
                                 });
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
@@ -1182,7 +1190,9 @@ class _AddfarmVendorWidgetState extends State<AddfarmVendorWidget> {
                                         FlutterFlowTheme.of(context).secondary,
                                   ),
                                 );
-                                Navigator.pop(context);
+                                Navigator.pop(context, true);
+
+                                safeSetState(() {});
                               },
                               text: 'Add Vendor',
                               options: FFButtonOptions(

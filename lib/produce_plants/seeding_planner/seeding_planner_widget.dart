@@ -126,7 +126,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                     ),
                                   ),
                                   Text(
-                                    'Tower Farm Seeding Planner',
+                                    'Seeding Planner',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineLarge
                                         .override(
@@ -173,7 +173,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                           children: [
                             Flexible(
                               child: Text(
-                                'Plan your weekly seeding with 98-hole rockwool sheets (14 rows × 7 holes). Different plants require different seeding densities per port.',
+                                'Plan your seeding schedule using 98-cube rockwool sheets (14 rows × 7 cubes). Different plants require different seeding densities per cube.',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -270,6 +270,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                             Expanded(
                               child: TabBarView(
                                 controller: _model.tabBarController,
+                                physics: const NeverScrollableScrollPhysics(),
                                 children: [
                                   SingleChildScrollView(
                                     child: Column(
@@ -297,7 +298,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                         MainAxisSize.max,
                                                     children: [
                                                       Text(
-                                                        'Configuration',
+                                                        'Variety Configuration',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -398,7 +399,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          'Buffer percentage for variety',
+                                                          'Buffer percentage',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -609,7 +610,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          'Varieties & Tower Configurations',
+                                                          'Plant Variety & Seeding Date',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -800,7 +801,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                             .fontStyle,
                                                                       ),
                                                               hintText:
-                                                                  'Select...',
+                                                                  'Select Plant...',
                                                               icon: Icon(
                                                                 Icons
                                                                     .keyboard_arrow_down_rounded,
@@ -891,7 +892,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            'Seeding Week',
+                                                                            'Seeding Date',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   font: GoogleFonts.plusJakartaSans(
                                                                                     fontWeight: FontWeight.w600,
@@ -1035,7 +1036,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          'Tower Configurations',
+                                                          'Tower Configuration',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -1160,6 +1161,23 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                                 _model.overagePercent!,
                                                                               );
                                                                               _model.calculationResults = _model.seedingNeeded4432;
+                                                                              safeSetState(() {});
+                                                                              _model.rowsNeeded = getJsonField(
+                                                                                _model.seedingNeeded4433,
+                                                                                r'''$.rowsNeeded''',
+                                                                              );
+                                                                              _model.seedsToPlant = getJsonField(
+                                                                                _model.seedingNeeded4432,
+                                                                                r'''$.seedsToPlant''',
+                                                                              );
+                                                                              _model.overagePercent = getJsonField(
+                                                                                _model.seedingNeeded4432,
+                                                                                r'''$.overagePercent''',
+                                                                              );
+                                                                              _model.sheetsNeeded = getJsonField(
+                                                                                _model.seedingNeeded4432,
+                                                                                r'''$.sheetsNeeded''',
+                                                                              );
                                                                               safeSetState(() {});
                                                                               ScaffoldMessenger.of(context).showSnackBar(
                                                                                 SnackBar(
@@ -1348,7 +1366,13 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                                 (val) async {
                                                                               safeSetState(() => _model.portCountDropDownValue = val);
                                                                               _model.portsPerTower = _model.portCountDropDownValue;
+                                                                              _model.totalPorts = _model.portCountDropDownValue;
                                                                               safeSetState(() {});
+                                                                              await Future.delayed(
+                                                                                Duration(
+                                                                                  milliseconds: 500,
+                                                                                ),
+                                                                              );
                                                                               _model.seedingNeeded4431 = await actions.calculateSeeding(
                                                                                 _model.towerCount!,
                                                                                 _model.portsPerTower!,
@@ -1388,7 +1412,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                             hintText:
-                                                                                'Select...',
+                                                                                'Select Tower...',
                                                                             icon:
                                                                                 Icon(
                                                                               Icons.keyboard_arrow_down_rounded,
@@ -1473,7 +1497,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                         ),
                                                       ),
                                                       Text(
-                                                        'Tower Seeding Plan Results',
+                                                        'Seeding Plan Results',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -2054,8 +2078,24 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                               'farm_id': FFAppState().farmID,
                                                                               'week_start_date': supaSerialize<DateTime>(_model.selectedSeedingDate),
                                                                               'plan_name': 'Week of ${dateTimeFormat("yMd", _model.selectedSeedingDate)}',
-                                                                              'status': 'draft',
+                                                                              'status': 'pending',
                                                                               'created_by': currentUserUid,
+                                                                              'total_sheets_needed': valueOrDefault<int>(
+                                                                                _model.sheetsNeeded,
+                                                                                0,
+                                                                              ),
+                                                                              'total_rows': valueOrDefault<int>(
+                                                                                _model.rowsNeeded,
+                                                                                0,
+                                                                              ),
+                                                                              'total_seeds': valueOrDefault<int>(
+                                                                                _model.seedsToPlant,
+                                                                                0,
+                                                                              ),
+                                                                              'overage_percent': valueOrDefault<int>(
+                                                                                _model.overagePercent,
+                                                                                0,
+                                                                              ),
                                                                             });
                                                                             await Future.delayed(
                                                                               Duration(
@@ -2110,7 +2150,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                               () {});
                                                                         },
                                                                         text:
-                                                                            'Add to Weekly Plan',
+                                                                            'Add to Seeding Plan',
                                                                         icon:
                                                                             Icon(
                                                                           Icons
@@ -4091,6 +4131,14 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                             Colors.transparent,
                                                                         onTap:
                                                                             () async {
+                                                                          _model.seedingPlanResults5566 =
+                                                                              await WeeklySeedingPlansTable().queryRows(
+                                                                            queryFn: (q) =>
+                                                                                q.eqOrNull(
+                                                                              'plan_id',
+                                                                              weeklyPlansItem.planId,
+                                                                            ),
+                                                                          );
                                                                           await showModalBottomSheet(
                                                                             isScrollControlled:
                                                                                 true,
@@ -4108,15 +4156,18 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                                   child: SeedingPlannerDetailWidget(
                                                                                     seedingPlan: weeklyPlansItem.planName!,
                                                                                     seedingPlanID: weeklyPlansItem.planId!,
-                                                                                    totalSheets: weeklyPlansItem.totalSheetsNeeded!,
-                                                                                    totalRows: weeklyPlansItem.totalRows!,
-                                                                                    totalSeeds: weeklyPlansItem.totalSeeds!,
+                                                                                    totalSheets: _model.seedingPlanResults5566!.firstOrNull!.totalSheetsNeeded!,
+                                                                                    totalRows: _model.seedingPlanResults5566!.firstOrNull!.totalRows!,
+                                                                                    totalSeeds: _model.seedingPlanResults5566!.firstOrNull!.totalSeeds!,
                                                                                   ),
                                                                                 ),
                                                                               );
                                                                             },
                                                                           ).then((value) =>
                                                                               safeSetState(() {}));
+
+                                                                          safeSetState(
+                                                                              () {});
                                                                         },
                                                                         child:
                                                                             Container(

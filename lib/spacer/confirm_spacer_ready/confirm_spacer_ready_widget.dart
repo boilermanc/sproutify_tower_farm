@@ -344,7 +344,7 @@ class _ConfirmSpacerReadyWidgetState extends State<ConfirmSpacerReadyWidget> {
                                 FlutterFlowTheme.of(context).secondary,
                           ),
                         );
-                        Navigator.pop(context);
+                        Navigator.pop(context, true);
                       },
                       text: 'Ready to Plant',
                       options: FFButtonOptions(

@@ -289,7 +289,7 @@ class _UpdateECTowerWidgetState extends State<UpdateECTowerWidget> {
                                               .secondary,
                                     ),
                                   );
-                                  Navigator.pop(context);
+                                  Navigator.pop(context, true);
                                 },
                                 text: 'Update',
                                 options: FFButtonOptions(

@@ -24,6 +24,11 @@ class FarmVendorsViewRow extends SupabaseDataRow {
   String? get vendorId => getField<String>('vendor_id');
   set vendorId(String? value) => setField<String>('vendor_id', value);
 
+  String? get farmSpecificVendorId =>
+      getField<String>('farm_specific_vendor_id');
+  set farmSpecificVendorId(String? value) =>
+      setField<String>('farm_specific_vendor_id', value);
+
   String? get vendorName => getField<String>('vendor_name');
   set vendorName(String? value) => setField<String>('vendor_name', value);
 
@@ -48,6 +53,13 @@ class FarmVendorsViewRow extends SupabaseDataRow {
   String? get vendorContactNumber => getField<String>('vendor_contact_number');
   set vendorContactNumber(String? value) =>
       setField<String>('vendor_contact_number', value);
+
+  String? get email => getField<String>('email');
+  set email(String? value) => setField<String>('email', value);
+
+  String? get mainContactName => getField<String>('main_contact_name');
+  set mainContactName(String? value) =>
+      setField<String>('main_contact_name', value);
 
   String? get webSite => getField<String>('web_site');
   set webSite(String? value) => setField<String>('web_site', value);
@@ -79,4 +91,7 @@ class FarmVendorsViewRow extends SupabaseDataRow {
   String? get createdByUserId => getField<String>('created_by_user_id');
   set createdByUserId(String? value) =>
       setField<String>('created_by_user_id', value);
+
+  String? get vendorSource => getField<String>('vendor_source');
+  set vendorSource(String? value) => setField<String>('vendor_source', value);
 }

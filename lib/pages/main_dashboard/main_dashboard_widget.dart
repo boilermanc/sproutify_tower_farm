@@ -1213,146 +1213,151 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                               .alternate,
                                                         ),
                                                       ),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            child: Container(
-                                                              width: 300.0,
-                                                              child:
-                                                                  TextFormField(
-                                                                controller: _model
-                                                                    .reportTextFieldTextController,
-                                                                focusNode: _model
-                                                                    .reportTextFieldFocusNode,
-                                                                onFieldSubmitted:
-                                                                    (_) async {
-                                                                  // The "chatHistory" is the generated JSON -- we send the whole chat history to AI in order for it to understand context.
-                                                                  _model.apiMCPResponse3311 =
-                                                                      await McpChatGroupGroup
-                                                                          .sendFullPromptMCPCall
-                                                                          .call(
-                                                                    userMessage:
-                                                                        _model
-                                                                            .reportTextFieldTextController
-                                                                            .text,
-                                                                    farmID: FFAppState()
-                                                                        .farmID,
-                                                                    userID:
-                                                                        currentUserUid,
-                                                                  );
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.all(3.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Expanded(
+                                                              child: Container(
+                                                                width: 300.0,
+                                                                child:
+                                                                    TextFormField(
+                                                                  controller: _model
+                                                                      .reportTextFieldTextController,
+                                                                  focusNode: _model
+                                                                      .reportTextFieldFocusNode,
+                                                                  onFieldSubmitted:
+                                                                      (_) async {
+                                                                    // The "chatHistory" is the generated JSON -- we send the whole chat history to AI in order for it to understand context.
+                                                                    _model.apiMCPResponse3311 =
+                                                                        await McpChatGroupGroup
+                                                                            .sendFullPromptMCPCall
+                                                                            .call(
+                                                                      userMessage: _model
+                                                                          .reportTextFieldTextController
+                                                                          .text,
+                                                                      farmID: FFAppState()
+                                                                          .farmID,
+                                                                      userID:
+                                                                          currentUserUid,
+                                                                    );
 
-                                                                  if ((_model
-                                                                          .apiMCPResponse3311
-                                                                          ?.succeeded ??
-                                                                      true)) {
-                                                                    FFAppState()
-                                                                            .mcpHtml =
-                                                                        getJsonField(
-                                                                      (_model.apiMCPResponse3311
-                                                                              ?.jsonBody ??
-                                                                          ''),
-                                                                      r'''$.widgetCode''',
-                                                                    ).toString();
-                                                                    FFAppState()
-                                                                            .mcpIsLoading =
-                                                                        false;
-                                                                    safeSetState(
-                                                                        () {});
-                                                                  } else {
-                                                                    ScaffoldMessenger.of(
-                                                                            context)
-                                                                        .showSnackBar(
-                                                                      SnackBar(
-                                                                        content:
-                                                                            Text(
-                                                                          'Your request failed.',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .override(
-                                                                                font: GoogleFonts.plusJakartaSans(
+                                                                    if ((_model
+                                                                            .apiMCPResponse3311
+                                                                            ?.succeeded ??
+                                                                        true)) {
+                                                                      FFAppState()
+                                                                              .mcpHtml =
+                                                                          getJsonField(
+                                                                        (_model.apiMCPResponse3311?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.widgetCode''',
+                                                                      ).toString();
+                                                                      FFAppState()
+                                                                              .mcpIsLoading =
+                                                                          false;
+                                                                      safeSetState(
+                                                                          () {});
+                                                                    } else {
+                                                                      ScaffoldMessenger.of(
+                                                                              context)
+                                                                          .showSnackBar(
+                                                                        SnackBar(
+                                                                          content:
+                                                                              Text(
+                                                                            'Your request failed.',
+                                                                            style: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                  ),
+                                                                                  color: FlutterFlowTheme.of(context).info,
+                                                                                  letterSpacing: 0.0,
                                                                                   fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
                                                                                   fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                 ),
-                                                                                color: FlutterFlowTheme.of(context).info,
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                                                              ),
-                                                                        ),
-                                                                        duration:
-                                                                            Duration(milliseconds: 4000),
-                                                                        backgroundColor:
-                                                                            FlutterFlowTheme.of(context).error,
-                                                                      ),
-                                                                    );
-                                                                  }
-
-                                                                  await Future
-                                                                      .delayed(
-                                                                    Duration(
-                                                                      milliseconds:
-                                                                          800,
-                                                                    ),
-                                                                  );
-                                                                  await showModalBottomSheet(
-                                                                    isScrollControlled:
-                                                                        true,
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    enableDrag:
-                                                                        false,
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (context) {
-                                                                      return WebViewAware(
-                                                                        child:
-                                                                            GestureDetector(
-                                                                          onTap:
-                                                                              () {
-                                                                            FocusScope.of(context).unfocus();
-                                                                            FocusManager.instance.primaryFocus?.unfocus();
-                                                                          },
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                MediaQuery.viewInsetsOf(context),
-                                                                            child:
-                                                                                McpReponseWindowWidget(),
                                                                           ),
+                                                                          duration:
+                                                                              Duration(milliseconds: 4000),
+                                                                          backgroundColor:
+                                                                              FlutterFlowTheme.of(context).error,
                                                                         ),
                                                                       );
-                                                                    },
-                                                                  ).then((value) =>
-                                                                      safeSetState(
-                                                                          () {}));
+                                                                    }
 
-                                                                  safeSetState(
-                                                                      () {
-                                                                    _model
-                                                                        .reportTextFieldTextController
-                                                                        ?.clear();
-                                                                  });
+                                                                    await Future
+                                                                        .delayed(
+                                                                      Duration(
+                                                                        milliseconds:
+                                                                            800,
+                                                                      ),
+                                                                    );
+                                                                    await showModalBottomSheet(
+                                                                      isScrollControlled:
+                                                                          true,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      enableDrag:
+                                                                          false,
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) {
+                                                                        return WebViewAware(
+                                                                          child:
+                                                                              GestureDetector(
+                                                                            onTap:
+                                                                                () {
+                                                                              FocusScope.of(context).unfocus();
+                                                                              FocusManager.instance.primaryFocus?.unfocus();
+                                                                            },
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: MediaQuery.viewInsetsOf(context),
+                                                                              child: McpReponseWindowWidget(),
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ).then((value) =>
+                                                                        safeSetState(
+                                                                            () {}));
 
-                                                                  safeSetState(
-                                                                      () {});
-                                                                },
-                                                                autofocus:
-                                                                    false,
-                                                                obscureText:
-                                                                    false,
-                                                                decoration:
-                                                                    InputDecoration(
-                                                                  isDense: true,
-                                                                  labelStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .override(
-                                                                        font: GoogleFonts
-                                                                            .plusJakartaSans(
+                                                                    safeSetState(
+                                                                        () {
+                                                                      _model
+                                                                          .reportTextFieldTextController
+                                                                          ?.clear();
+                                                                    });
+
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
+                                                                  autofocus:
+                                                                      false,
+                                                                  obscureText:
+                                                                      false,
+                                                                  decoration:
+                                                                      InputDecoration(
+                                                                    isDense:
+                                                                        true,
+                                                                    labelStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .labelMedium
                                                                               .fontWeight,
@@ -1360,115 +1365,108 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                               .labelMedium
                                                                               .fontStyle,
                                                                         ),
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .labelMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .labelMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                  hintText:
-                                                                      'Generate  Reports',
-                                                                  hintStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .override(
-                                                                        font: GoogleFonts
-                                                                            .plusJakartaSans(
+                                                                    hintText:
+                                                                        'Generate  Reports',
+                                                                    hintStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                          fontSize:
+                                                                              18.0,
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
                                                                           fontStyle: FlutterFlowTheme.of(context)
                                                                               .labelMedium
                                                                               .fontStyle,
                                                                         ),
-                                                                        fontSize:
-                                                                            18.0,
+                                                                    enabledBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                    focusedBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                    errorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .error,
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                    focusedErrorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .error,
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                    filled:
+                                                                        true,
+                                                                    fillColor: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    contentPadding:
+                                                                        EdgeInsetsDirectional.fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            10.0,
+                                                                            0.0),
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .labelMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                  enabledBorder:
-                                                                      OutlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: Color(
-                                                                          0x00000000),
-                                                                      width:
-                                                                          1.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                  ),
-                                                                  focusedBorder:
-                                                                      OutlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: Color(
-                                                                          0x00000000),
-                                                                      width:
-                                                                          1.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                  ),
-                                                                  errorBorder:
-                                                                      OutlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .error,
-                                                                      width:
-                                                                          1.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                  ),
-                                                                  focusedErrorBorder:
-                                                                      OutlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .error,
-                                                                      width:
-                                                                          1.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                  ),
-                                                                  filled: true,
-                                                                  fillColor: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  contentPadding:
-                                                                      EdgeInsetsDirectional.fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                                  suffixIcon:
-                                                                      Icon(
-                                                                    Icons
-                                                                        .arrow_forward,
-                                                                  ),
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontWeight,
@@ -1476,29 +1474,160 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                  cursorColor:
+                                                                      FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                                cursorColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                validator: _model
-                                                                    .reportTextFieldTextControllerValidator
-                                                                    .asValidator(
-                                                                        context),
+                                                                          .primaryText,
+                                                                  enableInteractiveSelection:
+                                                                      true,
+                                                                  validator: _model
+                                                                      .reportTextFieldTextControllerValidator
+                                                                      .asValidator(
+                                                                          context),
+                                                                ),
                                                               ),
                                                             ),
-                                                          ),
-                                                        ],
+                                                            InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                // The "chatHistory" is the generated JSON -- we send the whole chat history to AI in order for it to understand context.
+                                                                _model.apiMCPResponse3311Copy =
+                                                                    await McpChatGroupGroup
+                                                                        .sendFullPromptMCPCall
+                                                                        .call(
+                                                                  userMessage:
+                                                                      _model
+                                                                          .reportTextFieldTextController
+                                                                          .text,
+                                                                  farmID:
+                                                                      FFAppState()
+                                                                          .farmID,
+                                                                  userID:
+                                                                      currentUserUid,
+                                                                );
+
+                                                                if ((_model
+                                                                        .apiMCPResponse3311Copy
+                                                                        ?.succeeded ??
+                                                                    true)) {
+                                                                  FFAppState()
+                                                                          .mcpHtml =
+                                                                      getJsonField(
+                                                                    (_model.apiMCPResponse3311Copy
+                                                                            ?.jsonBody ??
+                                                                        ''),
+                                                                    r'''$.widgetCode''',
+                                                                  ).toString();
+                                                                  FFAppState()
+                                                                          .mcpIsLoading =
+                                                                      false;
+                                                                  safeSetState(
+                                                                      () {});
+                                                                } else {
+                                                                  ScaffoldMessenger.of(
+                                                                          context)
+                                                                      .showSnackBar(
+                                                                    SnackBar(
+                                                                      content:
+                                                                          Text(
+                                                                        'Your request failed.',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                              ),
+                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                      duration: Duration(
+                                                                          milliseconds:
+                                                                              4000),
+                                                                      backgroundColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .error,
+                                                                    ),
+                                                                  );
+                                                                }
+
+                                                                await Future
+                                                                    .delayed(
+                                                                  Duration(
+                                                                    milliseconds:
+                                                                        800,
+                                                                  ),
+                                                                );
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                      true,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  enableDrag:
+                                                                      false,
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return WebViewAware(
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          FocusScope.of(context)
+                                                                              .unfocus();
+                                                                          FocusManager
+                                                                              .instance
+                                                                              .primaryFocus
+                                                                              ?.unfocus();
+                                                                        },
+                                                                        child:
+                                                                            Padding(
+                                                                          padding:
+                                                                              MediaQuery.viewInsetsOf(context),
+                                                                          child:
+                                                                              McpReponseWindowWidget(),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    safeSetState(
+                                                                        () {}));
+
+                                                                safeSetState(
+                                                                    () {
+                                                                  _model
+                                                                      .reportTextFieldTextController
+                                                                      ?.clear();
+                                                                });
+
+                                                                safeSetState(
+                                                                    () {});
+                                                              },
+                                                              child: Icon(
+                                                                Icons
+                                                                    .arrow_forward,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                size: 24.0,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -3261,23 +3390,6 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                     children: [
                                                                                       Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                                                                                        child: FlutterFlowIconButton(
-                                                                                          borderRadius: 8.0,
-                                                                                          buttonSize: 40.0,
-                                                                                          fillColor: FlutterFlowTheme.of(context).primary,
-                                                                                          icon: Icon(
-                                                                                            Icons.refresh_sharp,
-                                                                                            color: FlutterFlowTheme.of(context).info,
-                                                                                            size: 24.0,
-                                                                                          ),
-                                                                                          onPressed: () async {
-                                                                                            safeSetState(() => _model.requestCompleter = null);
-                                                                                            await _model.waitForRequestCompleted();
-                                                                                          },
-                                                                                        ),
-                                                                                      ),
-                                                                                      Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                                         child: FFButtonWidget(
                                                                                           onPressed: () async {
                                                                                             await showModalBottomSheet(
@@ -3301,7 +3413,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                   ),
                                                                                                 );
                                                                                               },
-                                                                                            ).then((value) => safeSetState(() {}));
+                                                                                            ).then((value) => safeSetState(() => _model.addSpacerTray5555 = value));
+
+                                                                                            if (_model.addSpacerTray5555!) {
+                                                                                              safeSetState(() => _model.requestCompleter = null);
+                                                                                              await _model.waitForRequestCompleted();
+                                                                                            }
+
+                                                                                            safeSetState(() {});
                                                                                           },
                                                                                           text: 'Add Spacer',
                                                                                           options: FFButtonOptions(
@@ -3690,7 +3809,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                               ),
                                                                                                                             );
                                                                                                                           },
-                                                                                                                        ).then((value) => safeSetState(() {}));
+                                                                                                                        ).then((value) => safeSetState(() => _model.spacerReady0000 = value));
+
+                                                                                                                        if (_model.spacerReady0000!) {
+                                                                                                                          safeSetState(() => _model.requestCompleter = null);
+                                                                                                                          await _model.waitForRequestCompleted();
+                                                                                                                        }
+
+                                                                                                                        safeSetState(() {});
                                                                                                                       },
                                                                                                                       child: Container(
                                                                                                                         width: 30.0,
@@ -3785,7 +3911,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                               ),
                                                                                                                             );
                                                                                                                           },
-                                                                                                                        ).then((value) => safeSetState(() {}));
+                                                                                                                        ).then((value) => safeSetState(() => _model.spacerWasteGrowing7722 = value));
+
+                                                                                                                        if (_model.spacerWasteGrowing7722!) {
+                                                                                                                          safeSetState(() => _model.requestCompleter = null);
+                                                                                                                          await _model.waitForRequestCompleted();
+                                                                                                                        }
+
+                                                                                                                        safeSetState(() {});
                                                                                                                       },
                                                                                                                       child: Container(
                                                                                                                         width: 30.0,
@@ -3886,7 +4019,14 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                                               ),
                                                                                                                             );
                                                                                                                           },
-                                                                                                                        ).then((value) => safeSetState(() {}));
+                                                                                                                        ).then((value) => safeSetState(() => _model.spacerWasteReady9999 = value));
+
+                                                                                                                        if (_model.spacerWasteReady9999!) {
+                                                                                                                          safeSetState(() => _model.requestCompleter = null);
+                                                                                                                          await _model.waitForRequestCompleted();
+                                                                                                                        }
+
+                                                                                                                        safeSetState(() {});
                                                                                                                       },
                                                                                                                       child: Container(
                                                                                                                         width: 30.0,
@@ -3953,6 +4093,8 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
                                                                                                               }
                                                                                                               _model.syncIsLoading = false;
                                                                                                               safeSetState(() {});
+                                                                                                              safeSetState(() => _model.requestCompleter = null);
+                                                                                                              await _model.waitForRequestCompleted();
                                                                                                               ScaffoldMessenger.of(context).showSnackBar(
                                                                                                                 SnackBar(
                                                                                                                   content: Text(

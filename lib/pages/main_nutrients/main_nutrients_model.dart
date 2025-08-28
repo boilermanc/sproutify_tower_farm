@@ -8,6 +8,7 @@ import '/nutrients/update_e_c_tower/update_e_c_tower_widget.dart';
 import '/nutrients/updateph_tower/updateph_tower_widget.dart';
 import '/products/no_monitoring/no_monitoring_widget.dart';
 import 'dart:ui';
+import 'dart:async';
 import 'main_nutrients_widget.dart' show MainNutrientsWidget;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,12 @@ class MainNutrientsModel extends FlutterFlowModel<MainNutrientsWidget> {
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController = FlutterFlowDataTableController<
       MonitoringTowerDashboardEnhancedWithValuesRow>();
+  // Stores action output result for [Bottom Sheet - updatephTower] action in phContainer widget.
+  bool? phValueUpdate6633;
+  Completer<List<MonitoringTowerDashboardEnhancedWithValuesRow>>?
+      requestCompleter;
+  // Stores action output result for [Bottom Sheet - updateECTower] action in ecContainer widget.
+  bool? updateECValue;
 
   @override
   void initState(BuildContext context) {
@@ -46,5 +53,21 @@ class MainNutrientsModel extends FlutterFlowModel<MainNutrientsWidget> {
   void dispose() {
     sideNavModel.dispose();
     paginatedDataTableController.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

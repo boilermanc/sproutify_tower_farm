@@ -41,4 +41,9 @@ class FarmVendorsRow extends SupabaseDataRow {
 
   String? get contactNumber => getField<String>('contact_number');
   set contactNumber(String? value) => setField<String>('contact_number', value);
+
+  String? get farmSpecificVendorId =>
+      getField<String>('farm_specific_vendor_id');
+  set farmSpecificVendorId(String? value) =>
+      setField<String>('farm_specific_vendor_id', value);
 }

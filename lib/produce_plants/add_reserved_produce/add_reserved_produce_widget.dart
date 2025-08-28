@@ -1,9 +1,13 @@
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'add_reserved_produce_model.dart';
@@ -46,11 +50,11 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
     super.initState();
     _model = createModel(context, () => AddReservedProduceModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.orderQuantityTextFieldTextController ??= TextEditingController();
+    _model.orderQuantityTextFieldFocusNode ??= FocusNode();
 
     _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.textFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -64,9 +68,13 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
+        width: 500.0,
+        height: 800.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primaryBackground,
           borderRadius: BorderRadius.circular(12.0),
@@ -74,8 +82,6 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
         child: Padding(
           padding: EdgeInsets.all(12.0),
           child: Container(
-            width: 400.0,
-            height: 600.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
               borderRadius: BorderRadius.circular(12.0),
@@ -96,8 +102,8 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Icon(
-                                Icons.spa,
+                              FaIcon(
+                                FontAwesomeIcons.clipboardCheck,
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 size: 30.0,
                               ),
@@ -105,7 +111,7 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Text(
-                                  'Reserve Plants',
+                                  'Add Order',
                                   style: FlutterFlowTheme.of(context)
                                       .headlineSmall
                                       .override(
@@ -162,7 +168,7 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'Tower',
+                                  'Select Plant',
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -185,32 +191,12 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      widget!.actionID?.toString(),
-                                      '0',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          font: GoogleFonts.plusJakartaSans(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 18.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
-                                        ),
+                                      20.0, 0.0, 0.0, 0.0),
+                                  child: Icon(
+                                    Icons.add_box,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 24.0,
                                   ),
                                 ),
                               ],
@@ -266,6 +252,144 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
                                                   .fontStyle,
                                         ),
                                   ),
+                                ),
+                              ],
+                            ),
+                          ].divide(SizedBox(height: 4.0)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 0.0),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'Customer',
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.plusJakartaSans(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        fontSize: 18.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                FutureBuilder<List<CustomerViewRow>>(
+                                  future: CustomerViewTable().queryRows(
+                                    queryFn: (q) => q.eqOrNull(
+                                      'farm_id',
+                                      FFAppState().farmID,
+                                    ),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<CustomerViewRow>
+                                        customerDropDownCustomerViewRowList =
+                                        snapshot.data!;
+
+                                    return FlutterFlowDropDown<String>(
+                                      controller: _model
+                                              .customerDropDownValueController ??=
+                                          FormFieldController<String>(null),
+                                      options: [
+                                        'Option 1',
+                                        'Option 2',
+                                        'Option 3'
+                                      ],
+                                      onChanged: (val) => safeSetState(() =>
+                                          _model.customerDropDownValue = val),
+                                      width: 300.0,
+                                      height: 40.0,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.plusJakartaSans(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                      hintText: 'Select...',
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      elevation: 2.0,
+                                      borderColor: Colors.transparent,
+                                      borderWidth: 0.0,
+                                      borderRadius: 8.0,
+                                      margin: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 12.0, 0.0),
+                                      hidesUnderline: true,
+                                      isOverButton: false,
+                                      isSearchable: false,
+                                      isMultiSelect: false,
+                                    );
+                                  },
                                 ),
                               ],
                             ),
@@ -359,12 +483,13 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
                           child: Container(
                             decoration: BoxDecoration(),
                             child: TextFormField(
-                              controller: _model.textController1,
-                              focusNode: _model.textFieldFocusNode1,
+                              controller:
+                                  _model.orderQuantityTextFieldTextController,
+                              focusNode: _model.orderQuantityTextFieldFocusNode,
                               autofocus: false,
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelText: 'Plants Harvested',
+                                labelText: 'Order Quantity',
                                 hintText: 'Enter quantity...',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyLarge
@@ -435,7 +560,8 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                              validator: _model.textController1Validator
+                              validator: _model
+                                  .orderQuantityTextFieldTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -444,7 +570,7 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
                           decoration: BoxDecoration(),
                           child: TextFormField(
                             controller: _model.textController2,
-                            focusNode: _model.textFieldFocusNode2,
+                            focusNode: _model.textFieldFocusNode,
                             autofocus: false,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -582,9 +708,9 @@ class _AddReservedProduceWidgetState extends State<AddReservedProduceWidget> {
                         EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () {
-                        print('recordHarvestButton pressed ...');
+                        print('createOrderButton pressed ...');
                       },
-                      text: 'Reserve Plants',
+                      text: 'Create Order',
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 50.0,

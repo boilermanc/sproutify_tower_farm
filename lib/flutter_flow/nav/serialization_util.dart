@@ -404,6 +404,8 @@ dynamic deserializeParam<T>(
             return StickyCardN8nInputRow(data);
           case FarmPestDiseaseControlRow:
             return FarmPestDiseaseControlRow(data);
+          case SpacerHealthCheckRow:
+            return SpacerHealthCheckRow(data);
           case SimplifiedTowerDashboardRow:
             return SimplifiedTowerDashboardRow(data);
           case LightUsageRow:
@@ -452,6 +454,8 @@ dynamic deserializeParam<T>(
             return ActionTypesRow(data);
           case DiseaseObservationsRow:
             return DiseaseObservationsRow(data);
+          case VendorsWithFarmStatusRow:
+            return VendorsWithFarmStatusRow(data);
           case ProductUnitsRow:
             return ProductUnitsRow(data);
           case TaskUsersRow:
@@ -652,8 +656,6 @@ dynamic deserializeParam<T>(
             return TowerActionHistoryBackup20241123Row(data);
           case ProductTypesRow:
             return ProductTypesRow(data);
-          case VendorsWithTypesRow:
-            return VendorsWithTypesRow(data);
           case RptSummaryStatsRow:
             return RptSummaryStatsRow(data);
           case SeedInventoryRow:
@@ -852,6 +854,8 @@ dynamic deserializeParam<T>(
             return DosingOptionsRow(data);
           case WaterFlowTotalsRow:
             return WaterFlowTotalsRow(data);
+          case FarmSpecificVendorsRow:
+            return FarmSpecificVendorsRow(data);
           case TaskUsersListRow:
             return TaskUsersListRow(data);
           case LightDashboardMetricsRow:
