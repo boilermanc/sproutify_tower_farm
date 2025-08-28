@@ -122,10 +122,15 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
           // Has Plants
           FFAppState().hasPlants =
               _model.profileResponse0011!.firstOrNull!.hasPlants!;
+          // farm image
           FFAppState().farmImage = valueOrDefault<String>(
             _model.profileResponse0011?.firstOrNull?.farmImageUrl,
             'https://rsndonfydqhykowljuyn.supabase.co/storage/v1/object/public/farmlogos/images/20250708_2047_Aeroponic%20Tower%20Farm_simple_compose_01jzpac92eff8vcf5c0qt3fpz5%20(1).png',
           );
+          // has Chemicals
+          FFAppState().hasChemicals =
+              _model.profileResponse0011!.firstOrNull!.hasChemicals!;
+          safeSetState(() {});
         }
         // Query Weather Logs
         _model.weatherData5533 = await WeatherLogsTable().queryRows(

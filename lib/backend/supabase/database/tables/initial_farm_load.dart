@@ -151,6 +151,9 @@ class InitialFarmLoadRow extends SupabaseDataRow {
   bool? get hasPlants => getField<bool>('has_plants');
   set hasPlants(bool? value) => setField<bool>('has_plants', value);
 
+  bool? get hasChemicals => getField<bool>('has_chemicals');
+  set hasChemicals(bool? value) => setField<bool>('has_chemicals', value);
+
   bool? get hasFarm => getField<bool>('has_farm');
   set hasFarm(bool? value) => setField<bool>('has_farm', value);
 

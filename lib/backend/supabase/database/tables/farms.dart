@@ -124,4 +124,7 @@ class FarmsRow extends SupabaseDataRow {
 
   bool? get hasPlants => getField<bool>('has_plants');
   set hasPlants(bool? value) => setField<bool>('has_plants', value);
+
+  bool? get hasChemicals => getField<bool>('has_chemicals');
+  set hasChemicals(bool? value) => setField<bool>('has_chemicals', value);
 }
