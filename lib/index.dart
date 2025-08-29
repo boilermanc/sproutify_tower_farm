@@ -39,7 +39,6 @@ export '/pages/main_mechanical/main_mechanical_widget.dart'
 export '/pages/main_products/main_products_widget.dart' show MainProductsWidget;
 export '/pages/main_nutrients/main_nutrients_widget.dart'
     show MainNutrientsWidget;
-export '/pages/main_settings/main_settings_widget.dart' show MainSettingsWidget;
 export '/pages/main_farm_operations/main_farm_operations_widget.dart'
     show MainFarmOperationsWidget;
 export '/pages/main_configuration/main_configuration_widget.dart'

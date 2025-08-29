@@ -907,6 +907,12 @@ class FFAppState extends ChangeNotifier {
   set spacerPortPlantingCount(int value) {
     _spacerPortPlantingCount = value;
   }
+
+  int _spacerTrayPerFarm = 0;
+  int get spacerTrayPerFarm => _spacerTrayPerFarm;
+  set spacerTrayPerFarm(int value) {
+    _spacerTrayPerFarm = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

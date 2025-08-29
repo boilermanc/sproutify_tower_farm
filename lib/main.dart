@@ -22,8 +22,6 @@ void main() async {
 
   await SupaFlow.initialize();
 
-  await FlutterFlowTheme.initialize();
-
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
 
@@ -51,7 +49,7 @@ class MyAppScrollBehavior extends MaterialScrollBehavior {
 }
 
 class _MyAppState extends State<MyApp> {
-  ThemeMode _themeMode = FlutterFlowTheme.themeMode;
+  ThemeMode _themeMode = ThemeMode.system;
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
@@ -89,7 +87,6 @@ class _MyAppState extends State<MyApp> {
 
   void setThemeMode(ThemeMode mode) => safeSetState(() {
         _themeMode = mode;
-        FlutterFlowTheme.saveThemeMode(mode);
       });
 
   @override
@@ -106,10 +103,6 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(
         brightness: Brightness.light,
-        useMaterial3: false,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
         useMaterial3: false,
       ),
       themeMode: _themeMode,
@@ -164,7 +157,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'main_Mechanical': MainMechanicalWidget(),
       'main_products': MainProductsWidget(),
       'main_Nutrients': MainNutrientsWidget(),
-      'main_Settings': MainSettingsWidget(),
       'main_FarmOperations': MainFarmOperationsWidget(),
       'main_Configuration': MainConfigurationWidget(),
       'main_NutrientsCopy': MainNutrientsCopyWidget(),
@@ -311,14 +303,6 @@ class _NavBarPageState extends State<NavBarPage> {
                 size: 24.0,
               ),
               label: '--',
-              tooltip: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.account_circle_outlined,
-                size: 24.0,
-              ),
-              label: '__',
               tooltip: '',
             ),
             BottomNavigationBarItem(

@@ -8,6 +8,7 @@ import '/produce_plants/no_seed_lots/no_seed_lots_widget.dart';
 import '/produce_plants/seed_lot_update/seed_lot_update_widget.dart';
 import '/produce_plants/seed_threshold_update/seed_threshold_update_widget.dart';
 import 'dart:ui';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -161,29 +162,33 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                               color: FlutterFlowTheme.of(context).alternate,
                               borderRadius: BorderRadius.circular(10.0),
                             ),
-                            child: Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Text(
-                                valueOrDefault<String>(
-                                  widget!.inventoryStatus,
-                                  'Status',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.plusJakartaSans(
+                            child: Visibility(
+                              visible: widget!.inventoryStatus == 'good',
+                              child: Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Text(
+                                  valueOrDefault<String>(
+                                    widget!.inventoryStatus,
+                                    'Status',
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.plusJakartaSans(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
+                                ),
                               ),
                             ),
                           ),
@@ -214,17 +219,20 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       FutureBuilder<List<SeedInventorySummaryRow>>(
-                        future: SeedInventorySummaryTable().queryRows(
-                          queryFn: (q) => q
-                              .eqOrNull(
-                                'farm_id',
-                                widget!.farmID,
-                              )
-                              .eqOrNull(
-                                'plant_id',
-                                widget!.plantID,
-                              ),
-                        ),
+                        future: (_model.requestCompleter1 ??= Completer<
+                                List<SeedInventorySummaryRow>>()
+                              ..complete(SeedInventorySummaryTable().queryRows(
+                                queryFn: (q) => q
+                                    .eqOrNull(
+                                      'farm_id',
+                                      widget!.farmID,
+                                    )
+                                    .eqOrNull(
+                                      'plant_id',
+                                      widget!.plantID,
+                                    ),
+                              )))
+                            .future,
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -354,10 +362,9 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                                 .override(
                                                                   font: GoogleFonts
                                                                       .plusJakartaSans(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
                                                                     fontStyle: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -365,10 +372,9 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                                   ),
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
                                                                   fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -441,10 +447,9 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                                 .override(
                                                                   font: GoogleFonts
                                                                       .plusJakartaSans(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
                                                                     fontStyle: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -452,10 +457,9 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                                   ),
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
                                                                   fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -490,6 +494,8 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                               padding: EdgeInsets.all(7.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
                                                 children: [
                                                   Row(
                                                     mainAxisSize:
@@ -517,7 +523,7 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                               ),
-                                                              fontSize: 18.0,
+                                                              fontSize: 22.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               fontWeight:
@@ -561,6 +567,7 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
+                                                                fontSize: 20.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight: FlutterFlowTheme.of(
@@ -602,6 +609,8 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                               padding: EdgeInsets.all(7.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
                                                 children: [
                                                   Row(
                                                     mainAxisSize:
@@ -634,6 +643,7 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                                 ),
                                                                 color: Color(
                                                                     0xFF6AB864),
+                                                                fontSize: 22.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight: FlutterFlowTheme.of(
@@ -671,7 +681,7 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                               ),
                                                               color: Color(
                                                                   0xFF6AB864),
-                                                              fontSize: 18.0,
+                                                              fontSize: 22.0,
                                                               letterSpacing:
                                                                   0.0,
                                                               fontWeight:
@@ -715,6 +725,7 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
+                                                                fontSize: 20.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight: FlutterFlowTheme.of(
@@ -749,9 +760,61 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 20.0, 0.0),
                                           child: FFButtonWidget(
-                                            onPressed: () {
-                                              print(
-                                                  'addNewLotButton pressed ...');
+                                            onPressed: () async {
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                enableDrag: false,
+                                                context: context,
+                                                builder: (context) {
+                                                  return WebViewAware(
+                                                    child: Padding(
+                                                      padding: MediaQuery
+                                                          .viewInsetsOf(
+                                                              context),
+                                                      child:
+                                                          SeedLotUpdateWidget(
+                                                        plantName:
+                                                            summaryContainerSeedInventorySummaryRowList
+                                                                .firstOrNull!
+                                                                .plantName!,
+                                                        plantID:
+                                                            summaryContainerSeedInventorySummaryRowList
+                                                                .firstOrNull!
+                                                                .plantId!,
+                                                        lotStatus: widget!
+                                                            .inventoryStatus!,
+                                                        seedCurrentQuantity:
+                                                            summaryContainerSeedInventorySummaryRowList
+                                                                .firstOrNull!
+                                                                .totalCurrentStock!,
+                                                        totalInventoryValue:
+                                                            summaryContainerSeedInventorySummaryRowList
+                                                                .firstOrNull!
+                                                                .totalCurrentStock!
+                                                                .toDouble(),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then((value) => safeSetState(
+                                                  () => _model
+                                                          .seedLotUpdated6666 =
+                                                      value));
+
+                                              if (_model.seedLotUpdated6666!) {
+                                                safeSetState(() => _model
+                                                    .requestCompleter1 = null);
+                                                await _model
+                                                    .waitForRequestCompleted1();
+                                                safeSetState(() => _model
+                                                    .requestCompleter2 = null);
+                                                await _model
+                                                    .waitForRequestCompleted2();
+                                              }
+
+                                              safeSetState(() {});
                                             },
                                             text: 'Add New Lot',
                                             icon: Icon(
@@ -1812,6 +1875,14 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                                 lotStatus: summaryContainerSeedInventorySummaryRowList
                                                                     .firstOrNull!
                                                                     .inventoryStatus!,
+                                                                seedCurrentQuantity:
+                                                                    summaryContainerSeedInventorySummaryRowList
+                                                                        .firstOrNull!
+                                                                        .totalCurrentStock!,
+                                                                totalInventoryValue:
+                                                                    summaryContainerSeedInventorySummaryRowList
+                                                                        .firstOrNull!
+                                                                        .totalInventoryValue!,
                                                               ),
                                                             ),
                                                           );
@@ -1851,24 +1922,34 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                     .firstOrNull!.activeLots! >
                                                 0)
                                               FutureBuilder<List<SeedLotsRow>>(
-                                                future:
-                                                    SeedLotsTable().queryRows(
-                                                  queryFn: (q) => q
-                                                      .eqOrNull(
-                                                        'farm_id',
-                                                        widget!.farmID,
-                                                      )
-                                                      .eqOrNull(
-                                                        'plant_id',
-                                                        widget!.plantID,
-                                                      )
-                                                      .eqOrNull(
-                                                        'active',
-                                                        true,
-                                                      )
-                                                      .order('received_date',
-                                                          ascending: true),
-                                                ),
+                                                future: (_model
+                                                            .requestCompleter2 ??=
+                                                        Completer<
+                                                            List<SeedLotsRow>>()
+                                                          ..complete(
+                                                              SeedLotsTable()
+                                                                  .queryRows(
+                                                            queryFn: (q) => q
+                                                                .eqOrNull(
+                                                                  'farm_id',
+                                                                  widget!
+                                                                      .farmID,
+                                                                )
+                                                                .eqOrNull(
+                                                                  'plant_id',
+                                                                  widget!
+                                                                      .plantID,
+                                                                )
+                                                                .eqOrNull(
+                                                                  'active',
+                                                                  true,
+                                                                )
+                                                                .order(
+                                                                    'received_date',
+                                                                    ascending:
+                                                                        true),
+                                                          )))
+                                                    .future,
                                                 builder: (context, snapshot) {
                                                   // Customize what your widget looks like when it's loading.
                                                   if (!snapshot.hasData) {
@@ -1890,7 +1971,7 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                     );
                                                   }
                                                   List<SeedLotsRow>
-                                                      containerSeedLotsRowList =
+                                                      seedLotsContainerSeedLotsRowList =
                                                       snapshot.data!;
 
                                                   return Container(
@@ -1909,7 +1990,7 @@ class _SeedInventoryDetailWidgetState extends State<SeedInventoryDetailWidget> {
                                                           Builder(
                                                             builder: (context) {
                                                               final lotList =
-                                                                  containerSeedLotsRowList
+                                                                  seedLotsContainerSeedLotsRowList
                                                                       .toList();
 
                                                               return FlutterFlowDataTable<

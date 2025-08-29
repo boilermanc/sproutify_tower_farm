@@ -246,13 +246,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : MainNutrientsWidget(),
         ),
         FFRoute(
-          name: MainSettingsWidget.routeName,
-          path: MainSettingsWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_Settings')
-              : MainSettingsWidget(),
-        ),
-        FFRoute(
           name: MainFarmOperationsWidget.routeName,
           path: MainFarmOperationsWidget.routePath,
           builder: (context, params) => params.isEmpty

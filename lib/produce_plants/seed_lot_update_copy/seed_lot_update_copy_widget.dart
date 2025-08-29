@@ -183,7 +183,7 @@ class _SeedLotUpdateCopyWidgetState extends State<SeedLotUpdateCopyWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'Enter the details of your new seed delivery',
+                                              'Enter the details of your new seed lot',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .titleLarge
