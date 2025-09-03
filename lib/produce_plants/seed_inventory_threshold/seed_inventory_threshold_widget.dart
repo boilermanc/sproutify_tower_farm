@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/produce_plants/seed_low_stock_alert/seed_low_stock_alert_widget.dart';
 import '/produce_plants/seed_max_stock_alert/seed_max_stock_alert_widget.dart';
-import '/produce_plants/seed_preferred_vendor/seed_preferred_vendor_widget.dart';
 import '/produce_plants/seed_reorder_point/seed_reorder_point_widget.dart';
 import '/produce_plants/seed_threshold_update/seed_threshold_update_widget.dart';
 import 'dart:ui';
@@ -601,14 +600,47 @@ class _SeedInventoryThresholdWidgetState
                                         0,
                                       ),
                                     ),
-                                    SeedPreferredVendorWidget(
-                                      key: Key(
-                                          'Keyc1y_${seedInventoryIndex}_of_${seedInventory.length}'),
-                                      initialPreferredVendor:
-                                          valueOrDefault<String>(
-                                        seedInventoryItem.preferredVendorName,
-                                        'Vendor',
-                                      ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Flexible(
+                                          child: Text(
+                                            valueOrDefault<String>(
+                                              seedInventoryItem
+                                                  .preferredVendorName,
+                                              'Vendor Name',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts
+                                                      .plusJakartaSans(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ].map((c) => DataCell(c)).toList(),
                                 ),

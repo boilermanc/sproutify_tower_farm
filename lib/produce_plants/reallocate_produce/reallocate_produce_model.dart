@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -21,14 +23,15 @@ class ReallocateProduceModel extends FlutterFlowModel<ReallocateProduceWidget> {
   // State field(s) for customerDropDown widget.
   String? customerDropDownValue;
   FormFieldController<String>? customerDropDownValueController;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for quanityTextField widget.
+  FocusNode? quanityTextFieldFocusNode;
+  TextEditingController? quanityTextFieldTextController;
+  String? Function(BuildContext, String?)?
+      quanityTextFieldTextControllerValidator;
+  // State field(s) for noteTextField widget.
+  FocusNode? noteTextFieldFocusNode;
+  TextEditingController? noteTextFieldTextController;
+  String? Function(BuildContext, String?)? noteTextFieldTextControllerValidator;
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController2;
 
@@ -41,10 +44,10 @@ class ReallocateProduceModel extends FlutterFlowModel<ReallocateProduceWidget> {
   String? wasteDropDownValue;
   FormFieldController<String>? wasteDropDownValueController;
   // State field(s) for wasteNotesTextField widget.
-  FocusNode? wasteNotesTextFieldFocusNode1;
-  TextEditingController? wasteNotesTextFieldTextController1;
+  FocusNode? wasteNotesTextFieldFocusNode;
+  TextEditingController? wasteNotesTextFieldTextController;
   String? Function(BuildContext, String?)?
-      wasteNotesTextFieldTextController1Validator;
+      wasteNotesTextFieldTextControllerValidator;
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController3;
 
@@ -53,14 +56,14 @@ class ReallocateProduceModel extends FlutterFlowModel<ReallocateProduceWidget> {
   TextEditingController? donateQuanityTextFieldTextController;
   String? Function(BuildContext, String?)?
       donateQuanityTextFieldTextControllerValidator;
-  // State field(s) for locationDropDown widget.
-  String? locationDropDownValue;
-  FormFieldController<String>? locationDropDownValueController;
-  // State field(s) for wasteNotesTextField widget.
-  FocusNode? wasteNotesTextFieldFocusNode2;
-  TextEditingController? wasteNotesTextFieldTextController2;
+  // State field(s) for donationDropDown widget.
+  String? donationDropDownValue;
+  FormFieldController<String>? donationDropDownValueController;
+  // State field(s) for donationNotesTextField widget.
+  FocusNode? donationNotesTextFieldFocusNode;
+  TextEditingController? donationNotesTextFieldTextController;
   String? Function(BuildContext, String?)?
-      wasteNotesTextFieldTextController2Validator;
+      donationNotesTextFieldTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -68,24 +71,24 @@ class ReallocateProduceModel extends FlutterFlowModel<ReallocateProduceWidget> {
   @override
   void dispose() {
     expandableExpandableController1.dispose();
-    textFieldFocusNode1?.dispose();
-    textController1?.dispose();
+    quanityTextFieldFocusNode?.dispose();
+    quanityTextFieldTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController2?.dispose();
+    noteTextFieldFocusNode?.dispose();
+    noteTextFieldTextController?.dispose();
 
     expandableExpandableController2.dispose();
     wasteQuanityTextFieldFocusNode?.dispose();
     wasteQuanityTextFieldTextController?.dispose();
 
-    wasteNotesTextFieldFocusNode1?.dispose();
-    wasteNotesTextFieldTextController1?.dispose();
+    wasteNotesTextFieldFocusNode?.dispose();
+    wasteNotesTextFieldTextController?.dispose();
 
     expandableExpandableController3.dispose();
     donateQuanityTextFieldFocusNode?.dispose();
     donateQuanityTextFieldTextController?.dispose();
 
-    wasteNotesTextFieldFocusNode2?.dispose();
-    wasteNotesTextFieldTextController2?.dispose();
+    donationNotesTextFieldFocusNode?.dispose();
+    donationNotesTextFieldTextController?.dispose();
   }
 }

@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/produce_plants/no_seed_lots/no_seed_lots_widget.dart';
 import '/produce_plants/seed_lot_update/seed_lot_update_widget.dart';
 import '/produce_plants/seed_threshold_update/seed_threshold_update_widget.dart';
 import 'dart:ui';
@@ -22,27 +21,21 @@ class SeedInventoryDetailModel
 
   // Stores action output result for [Bottom Sheet - seedLotUpdate] action in addNewLotButton widget.
   bool? seedLotUpdated6666;
-  Completer<List<SeedInventorySummaryRow>>? requestCompleter1;
-  Completer<List<SeedLotsRow>>? requestCompleter2;
+  Completer<List<SeedLotsRow>>? requestCompleter;
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController =
       FlutterFlowDataTableController<SeedLotsRow>();
-  // Model for noSeedLots component.
-  late NoSeedLotsModel noSeedLotsModel;
 
   @override
-  void initState(BuildContext context) {
-    noSeedLotsModel = createModel(context, () => NoSeedLotsModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
     paginatedDataTableController.dispose();
-    noSeedLotsModel.dispose();
   }
 
   /// Additional helper methods.
-  Future waitForRequestCompleted1({
+  Future waitForRequestCompleted({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -50,22 +43,7 @@ class SeedInventoryDetailModel
     while (true) {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter1?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
-
-  Future waitForRequestCompleted2({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter2?.isCompleted ?? false;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

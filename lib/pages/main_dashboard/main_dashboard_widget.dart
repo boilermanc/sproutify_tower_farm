@@ -130,7 +130,8 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
           // has Chemicals
           FFAppState().hasChemicals =
               _model.profileResponse0011!.firstOrNull!.hasChemicals!;
-          safeSetState(() {});
+          FFAppState().spacerPlantCount =
+              _model.profileResponse0011!.firstOrNull!.spacerSizeCount!;
         }
         // Query Weather Logs
         _model.weatherData5533 = await WeatherLogsTable().queryRows(
@@ -146,7 +147,6 @@ class _MainDashboardWidgetState extends State<MainDashboardWidget>
             _model.weatherData5533!.firstOrNull!.humidity!.toString();
         FFAppState().farmCondition =
             _model.weatherData5533!.firstOrNull!.conditions!;
-        safeSetState(() {});
       }
       // Loading Set To False
       FFAppState().isLoading = false;

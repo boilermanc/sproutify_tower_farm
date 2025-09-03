@@ -127,4 +127,7 @@ class FarmsRow extends SupabaseDataRow {
 
   bool? get hasChemicals => getField<bool>('has_chemicals');
   set hasChemicals(bool? value) => setField<bool>('has_chemicals', value);
+
+  int? get spacerSizeCount => getField<int>('spacer_size_count');
+  set spacerSizeCount(int? value) => setField<int>('spacer_size_count', value);
 }

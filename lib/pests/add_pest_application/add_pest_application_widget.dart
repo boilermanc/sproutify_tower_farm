@@ -1894,7 +1894,7 @@ class _AddPestApplicationWidgetState extends State<AddPestApplicationWidget> {
                               'safety_confirmed':
                                   _model.confirmSafetyRequirments,
                               'dose_amount': FFAppState().calculatedDose,
-                              'dose_unit': _model.waterUnitValue,
+                              'dose_unit': FFAppState().selectedDoseUnit,
                               'volume': _model.multiplierEntryValue?.toString(),
                               'volume_unit': _model.waterUnitValue,
                               'notes': _model.textController.text,

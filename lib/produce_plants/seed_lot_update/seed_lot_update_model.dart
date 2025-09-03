@@ -28,6 +28,16 @@ class SeedLotUpdateModel extends FlutterFlowModel<SeedLotUpdateWidget> {
 
   int? newTotalQuantity;
 
+  double? itemCost;
+
+  int? newTotalStock;
+
+  DateTime? recievedDate;
+
+  DateTime? expirationDate;
+
+  DateTime? germinationDate;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for vendorDropDown widget.
@@ -38,37 +48,38 @@ class SeedLotUpdateModel extends FlutterFlowModel<SeedLotUpdateWidget> {
   TextEditingController? lotNumberTextFieldTextController;
   String? Function(BuildContext, String?)?
       lotNumberTextFieldTextControllerValidator;
+  // State field(s) for seedIDTextField widget.
+  FocusNode? seedIDTextFieldFocusNode;
+  TextEditingController? seedIDTextFieldTextController;
+  String? Function(BuildContext, String?)?
+      seedIDTextFieldTextControllerValidator;
   // State field(s) for poTextField widget.
   FocusNode? poTextFieldFocusNode;
   TextEditingController? poTextFieldTextController;
   String? Function(BuildContext, String?)? poTextFieldTextControllerValidator;
-  // State field(s) for receivedDateTextField widget.
-  FocusNode? receivedDateTextFieldFocusNode;
-  TextEditingController? receivedDateTextFieldTextController;
-  String? Function(BuildContext, String?)?
-      receivedDateTextFieldTextControllerValidator;
   DateTime? datePicked1;
+  // State field(s) for seedNameTextField widget.
+  FocusNode? seedNameTextFieldFocusNode;
+  TextEditingController? seedNameTextFieldTextController;
+  String? Function(BuildContext, String?)?
+      seedNameTextFieldTextControllerValidator;
   // State field(s) for quantityReceivedTextField widget.
   FocusNode? quantityReceivedTextFieldFocusNode;
   TextEditingController? quantityReceivedTextFieldTextController;
   String? Function(BuildContext, String?)?
       quantityReceivedTextFieldTextControllerValidator;
-  // State field(s) for costPerSeedTextField widget.
-  FocusNode? costPerSeedTextFieldFocusNode;
-  TextEditingController? costPerSeedTextFieldTextController;
+  // State field(s) for orderCostTextField widget.
+  FocusNode? orderCostTextFieldFocusNode;
+  TextEditingController? orderCostTextFieldTextController;
   String? Function(BuildContext, String?)?
-      costPerSeedTextFieldTextControllerValidator;
-  // State field(s) for expirationTextField widget.
-  FocusNode? expirationTextFieldFocusNode;
-  TextEditingController? expirationTextFieldTextController;
-  String? Function(BuildContext, String?)?
-      expirationTextFieldTextControllerValidator;
+      orderCostTextFieldTextControllerValidator;
   DateTime? datePicked2;
   // State field(s) for germRateTextField widget.
   FocusNode? germRateTextFieldFocusNode;
   TextEditingController? germRateTextFieldTextController;
   String? Function(BuildContext, String?)?
       germRateTextFieldTextControllerValidator;
+  DateTime? datePicked3;
   // State field(s) for locationTextField widget.
   FocusNode? locationTextFieldFocusNode;
   TextEditingController? locationTextFieldTextController;
@@ -93,20 +104,20 @@ class SeedLotUpdateModel extends FlutterFlowModel<SeedLotUpdateWidget> {
     lotNumberTextFieldFocusNode?.dispose();
     lotNumberTextFieldTextController?.dispose();
 
+    seedIDTextFieldFocusNode?.dispose();
+    seedIDTextFieldTextController?.dispose();
+
     poTextFieldFocusNode?.dispose();
     poTextFieldTextController?.dispose();
 
-    receivedDateTextFieldFocusNode?.dispose();
-    receivedDateTextFieldTextController?.dispose();
+    seedNameTextFieldFocusNode?.dispose();
+    seedNameTextFieldTextController?.dispose();
 
     quantityReceivedTextFieldFocusNode?.dispose();
     quantityReceivedTextFieldTextController?.dispose();
 
-    costPerSeedTextFieldFocusNode?.dispose();
-    costPerSeedTextFieldTextController?.dispose();
-
-    expirationTextFieldFocusNode?.dispose();
-    expirationTextFieldTextController?.dispose();
+    orderCostTextFieldFocusNode?.dispose();
+    orderCostTextFieldTextController?.dispose();
 
     germRateTextFieldFocusNode?.dispose();
     germRateTextFieldTextController?.dispose();

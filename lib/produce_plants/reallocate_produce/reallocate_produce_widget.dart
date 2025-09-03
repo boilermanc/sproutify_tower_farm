@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -17,17 +19,17 @@ class ReallocateProduceWidget extends StatefulWidget {
   const ReallocateProduceWidget({
     super.key,
     required this.allocationID,
+    required this.customerName,
+    required this.quantity,
     required this.batchID,
     required this.plantName,
-    required this.quantity,
-    required this.customerName,
   });
 
   final int? allocationID;
+  final String? customerName;
+  final int? quantity;
   final int? batchID;
   final String? plantName;
-  final int? quantity;
-  final String? customerName;
 
   @override
   State<ReallocateProduceWidget> createState() =>
@@ -50,39 +52,29 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
 
     _model.expandableExpandableController1 =
         ExpandableController(initialExpanded: false);
-    _model.textController1 ??= TextEditingController(
-        text: valueOrDefault<String>(
-      widget!.quantity?.toString(),
-      '0',
-    ));
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.quanityTextFieldTextController ??= TextEditingController(text: '0');
+    _model.quanityTextFieldFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.noteTextFieldTextController ??= TextEditingController();
+    _model.noteTextFieldFocusNode ??= FocusNode();
 
     _model.expandableExpandableController2 =
         ExpandableController(initialExpanded: false);
-    _model.wasteQuanityTextFieldTextController ??= TextEditingController(
-        text: valueOrDefault<String>(
-      widget!.quantity?.toString(),
-      '0',
-    ));
+    _model.wasteQuanityTextFieldTextController ??=
+        TextEditingController(text: '0');
     _model.wasteQuanityTextFieldFocusNode ??= FocusNode();
 
-    _model.wasteNotesTextFieldTextController1 ??= TextEditingController();
-    _model.wasteNotesTextFieldFocusNode1 ??= FocusNode();
+    _model.wasteNotesTextFieldTextController ??= TextEditingController();
+    _model.wasteNotesTextFieldFocusNode ??= FocusNode();
 
     _model.expandableExpandableController3 =
         ExpandableController(initialExpanded: false);
-    _model.donateQuanityTextFieldTextController ??= TextEditingController(
-        text: valueOrDefault<String>(
-      widget!.quantity?.toString(),
-      '0',
-    ));
+    _model.donateQuanityTextFieldTextController ??=
+        TextEditingController(text: '0');
     _model.donateQuanityTextFieldFocusNode ??= FocusNode();
 
-    _model.wasteNotesTextFieldTextController2 ??= TextEditingController();
-    _model.wasteNotesTextFieldFocusNode2 ??= FocusNode();
+    _model.donationNotesTextFieldTextController ??= TextEditingController();
+    _model.donationNotesTextFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -96,6 +88,8 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
@@ -194,7 +188,7 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                     Text(
                                       valueOrDefault<String>(
                                         widget!.plantName,
-                                        'Plant',
+                                        'Plant Name',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -249,7 +243,7 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                     Text(
                                       valueOrDefault<String>(
                                         widget!.customerName,
-                                        'Customer',
+                                        'Customer Name',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -547,79 +541,134 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                FlutterFlowDropDown<String>(
-                                                  controller: _model
-                                                          .customerDropDownValueController ??=
-                                                      FormFieldController<
-                                                          String>(null),
-                                                  options: [
-                                                    'Option 1',
-                                                    'Option 2',
-                                                    'Option 3'
-                                                  ],
-                                                  onChanged: (val) =>
-                                                      safeSetState(() => _model
-                                                              .customerDropDownValue =
-                                                          val),
-                                                  width: 200.0,
-                                                  height: 40.0,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .plusJakartaSans(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
+                                                FutureBuilder<
+                                                    List<CustomerViewRow>>(
+                                                  future: CustomerViewTable()
+                                                      .queryRows(
+                                                    queryFn: (q) => q
+                                                        .eqOrNull(
+                                                          'farm_id',
+                                                          FFAppState().farmID,
+                                                        )
+                                                        .neqOrNull(
+                                                          'customer_type_id',
+                                                          '5105c5b2-da0d-48fd-82dc-e275d231b77f',
+                                                        )
+                                                        .order('customer_name',
+                                                            ascending: true),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                    Color>(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    List<CustomerViewRow>
+                                                        customerDropDownCustomerViewRowList =
+                                                        snapshot.data!;
+
+                                                    return FlutterFlowDropDown<
+                                                        String>(
+                                                      controller: _model
+                                                              .customerDropDownValueController ??=
+                                                          FormFieldController<
+                                                              String>(
+                                                        _model.customerDropDownValue ??=
+                                                            '',
+                                                      ),
+                                                      options: List<
+                                                              String>.from(
+                                                          customerDropDownCustomerViewRowList
+                                                              .map((e) =>
+                                                                  e.customerId)
+                                                              .withoutNulls
+                                                              .toList()),
+                                                      optionLabels:
+                                                          customerDropDownCustomerViewRowList
+                                                              .map((e) => e
+                                                                  .customerName)
+                                                              .withoutNulls
+                                                              .toList(),
+                                                      onChanged: (val) =>
+                                                          safeSetState(() =>
+                                                              _model.customerDropDownValue =
+                                                                  val),
+                                                      width: 300.0,
+                                                      height: 40.0,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
+                                                                  fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontStyle,
-                                                            ),
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
+                                                                fontStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontStyle,
-                                                          ),
-                                                  hintText: 'Select...',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_down_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24.0,
-                                                  ),
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
+                                                              ),
+                                                      hintText: 'Select...',
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
                                                           .secondaryBackground,
-                                                  elevation: 2.0,
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  borderWidth: 1.0,
-                                                  borderRadius: 8.0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          12.0, 0.0, 12.0, 0.0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: false,
-                                                  isSearchable: false,
-                                                  isMultiSelect: false,
+                                                      elevation: 2.0,
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      borderWidth: 1.0,
+                                                      borderRadius: 8.0,
+                                                      margin:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  0.0,
+                                                                  12.0,
+                                                                  0.0),
+                                                      hidesUnderline: true,
+                                                      isOverButton: false,
+                                                      isSearchable: false,
+                                                      isMultiSelect: false,
+                                                    );
+                                                  },
                                                 ),
                                               ],
                                             ),
@@ -679,10 +728,10 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                                 Container(
                                                   width: 200.0,
                                                   child: TextFormField(
-                                                    controller:
-                                                        _model.textController1,
+                                                    controller: _model
+                                                        .quanityTextFieldTextController,
                                                     focusNode: _model
-                                                        .textFieldFocusNode1,
+                                                        .quanityTextFieldFocusNode,
                                                     autofocus: false,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -810,6 +859,7 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -827,7 +877,7 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                                                 context)
                                                             .primaryText,
                                                     validator: _model
-                                                        .textController1Validator
+                                                        .quanityTextFieldTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
@@ -891,9 +941,9 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                                     width: 200.0,
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .textController2,
+                                                          .noteTextFieldTextController,
                                                       focusNode: _model
-                                                          .textFieldFocusNode2,
+                                                          .noteTextFieldFocusNode,
                                                       autofocus: false,
                                                       obscureText: false,
                                                       decoration:
@@ -1048,7 +1098,7 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                                                   context)
                                                               .primaryText,
                                                       validator: _model
-                                                          .textController2Validator
+                                                          .noteTextFieldTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -1064,8 +1114,63 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 FFButtonWidget(
-                                                  onPressed: () {
-                                                    print('Button pressed ...');
+                                                  onPressed: () async {
+                                                    await AllocationsTable()
+                                                        .update(
+                                                      data: {
+                                                        'quantity': (widget!
+                                                                .quantity!) -
+                                                            int.parse(_model
+                                                                .quanityTextFieldTextController
+                                                                .text),
+                                                      },
+                                                      matchingRows: (rows) =>
+                                                          rows.eqOrNull(
+                                                        'allocation_id',
+                                                        widget!.allocationID,
+                                                      ),
+                                                    );
+                                                    await AllocationsTable()
+                                                        .insert({
+                                                      'quantity': int.tryParse(
+                                                          _model
+                                                              .quanityTextFieldTextController
+                                                              .text),
+                                                      'batch_id':
+                                                          widget!.batchID,
+                                                      'farm_id': '',
+                                                      'user_id': currentUserUid,
+                                                      'destination_id': _model
+                                                          .customerDropDownValue,
+                                                      'notes': _model
+                                                          .noteTextFieldTextController
+                                                          .text,
+                                                    });
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          'Allocations updated!',
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontSize: 18.0,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                      ),
+                                                    );
+                                                    Navigator.pop(
+                                                        context, true);
                                                   },
                                                   text: 'Reallocate',
                                                   options: FFButtonOptions(
@@ -1435,6 +1540,7 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -1511,79 +1617,117 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                FlutterFlowDropDown<String>(
-                                                  controller: _model
-                                                          .wasteDropDownValueController ??=
-                                                      FormFieldController<
-                                                          String>(null),
-                                                  options: [
-                                                    'Option 1',
-                                                    'Option 2',
-                                                    'Option 3'
-                                                  ],
-                                                  onChanged: (val) =>
-                                                      safeSetState(() => _model
-                                                              .wasteDropDownValue =
-                                                          val),
-                                                  width: 200.0,
-                                                  height: 40.0,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .plusJakartaSans(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
+                                                FutureBuilder<
+                                                    List<PlantWasteReasonsRow>>(
+                                                  future:
+                                                      PlantWasteReasonsTable()
+                                                          .queryRows(
+                                                    queryFn: (q) => q.order(
+                                                        'reason_name',
+                                                        ascending: true),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                    Color>(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    List<PlantWasteReasonsRow>
+                                                        wasteDropDownPlantWasteReasonsRowList =
+                                                        snapshot.data!;
+
+                                                    return FlutterFlowDropDown<
+                                                        String>(
+                                                      controller: _model
+                                                              .wasteDropDownValueController ??=
+                                                          FormFieldController<
+                                                              String>(null),
+                                                      options: [
+                                                        'Option 1',
+                                                        'Option 2',
+                                                        'Option 3'
+                                                      ],
+                                                      onChanged: (val) =>
+                                                          safeSetState(() =>
+                                                              _model.wasteDropDownValue =
+                                                                  val),
+                                                      width: 300.0,
+                                                      height: 40.0,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
+                                                                  fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontStyle,
-                                                            ),
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
+                                                                ),
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
+                                                                fontStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontStyle,
-                                                          ),
-                                                  hintText: 'Select...',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_down_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24.0,
-                                                  ),
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
+                                                              ),
+                                                      hintText: 'Select...',
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
                                                           .secondaryBackground,
-                                                  elevation: 2.0,
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  borderWidth: 1.0,
-                                                  borderRadius: 8.0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          12.0, 0.0, 12.0, 0.0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: false,
-                                                  isSearchable: false,
-                                                  isMultiSelect: false,
+                                                      elevation: 2.0,
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      borderWidth: 1.0,
+                                                      borderRadius: 8.0,
+                                                      margin:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  0.0,
+                                                                  12.0,
+                                                                  0.0),
+                                                      hidesUnderline: true,
+                                                      isOverButton: false,
+                                                      isSearchable: false,
+                                                      isMultiSelect: false,
+                                                    );
+                                                  },
                                                 ),
                                               ],
                                             ),
@@ -1645,9 +1789,9 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                                     width: 200.0,
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .wasteNotesTextFieldTextController1,
+                                                          .wasteNotesTextFieldTextController,
                                                       focusNode: _model
-                                                          .wasteNotesTextFieldFocusNode1,
+                                                          .wasteNotesTextFieldFocusNode,
                                                       autofocus: false,
                                                       obscureText: false,
                                                       decoration:
@@ -1802,7 +1946,7 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                                                   context)
                                                               .primaryText,
                                                       validator: _model
-                                                          .wasteNotesTextFieldTextController1Validator
+                                                          .wasteNotesTextFieldTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -2189,6 +2333,7 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -2265,79 +2410,123 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                FlutterFlowDropDown<String>(
-                                                  controller: _model
-                                                          .locationDropDownValueController ??=
-                                                      FormFieldController<
-                                                          String>(null),
-                                                  options: [
-                                                    'Option 1',
-                                                    'Option 2',
-                                                    'Option 3'
-                                                  ],
-                                                  onChanged: (val) =>
-                                                      safeSetState(() => _model
-                                                              .locationDropDownValue =
-                                                          val),
-                                                  width: 200.0,
-                                                  height: 40.0,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .plusJakartaSans(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
+                                                FutureBuilder<
+                                                    List<CustomerViewRow>>(
+                                                  future: CustomerViewTable()
+                                                      .queryRows(
+                                                    queryFn: (q) => q
+                                                        .eqOrNull(
+                                                          'farm_id',
+                                                          FFAppState().farmID,
+                                                        )
+                                                        .eqOrNull(
+                                                          'customer_type_id',
+                                                          '5105c5b2-da0d-48fd-82dc-e275d231b77f',
+                                                        )
+                                                        .order('customer_name',
+                                                            ascending: true),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                    Color>(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    List<CustomerViewRow>
+                                                        donationDropDownCustomerViewRowList =
+                                                        snapshot.data!;
+
+                                                    return FlutterFlowDropDown<
+                                                        String>(
+                                                      controller: _model
+                                                              .donationDropDownValueController ??=
+                                                          FormFieldController<
+                                                              String>(null),
+                                                      options: [
+                                                        'Option 1',
+                                                        'Option 2',
+                                                        'Option 3'
+                                                      ],
+                                                      onChanged: (val) =>
+                                                          safeSetState(() =>
+                                                              _model.donationDropDownValue =
+                                                                  val),
+                                                      width: 300.0,
+                                                      height: 40.0,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .plusJakartaSans(
+                                                                  fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
+                                                                  fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontStyle,
-                                                            ),
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
+                                                                fontStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontStyle,
-                                                          ),
-                                                  hintText: 'Select...',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_down_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24.0,
-                                                  ),
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
+                                                              ),
+                                                      hintText: 'Select...',
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
                                                           .secondaryBackground,
-                                                  elevation: 2.0,
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  borderWidth: 1.0,
-                                                  borderRadius: 8.0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          12.0, 0.0, 12.0, 0.0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: false,
-                                                  isSearchable: false,
-                                                  isMultiSelect: false,
+                                                      elevation: 2.0,
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      borderWidth: 1.0,
+                                                      borderRadius: 8.0,
+                                                      margin:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  0.0,
+                                                                  12.0,
+                                                                  0.0),
+                                                      hidesUnderline: true,
+                                                      isOverButton: false,
+                                                      isSearchable: false,
+                                                      isMultiSelect: false,
+                                                    );
+                                                  },
                                                 ),
                                               ],
                                             ),
@@ -2399,9 +2588,9 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                                     width: 200.0,
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .wasteNotesTextFieldTextController2,
+                                                          .donationNotesTextFieldTextController,
                                                       focusNode: _model
-                                                          .wasteNotesTextFieldFocusNode2,
+                                                          .donationNotesTextFieldFocusNode,
                                                       autofocus: false,
                                                       obscureText: false,
                                                       decoration:
@@ -2556,7 +2745,7 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                                                   context)
                                                               .primaryText,
                                                       validator: _model
-                                                          .wasteNotesTextFieldTextController2Validator
+                                                          .donationNotesTextFieldTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -2572,8 +2761,63 @@ class _ReallocateProduceWidgetState extends State<ReallocateProduceWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 FFButtonWidget(
-                                                  onPressed: () {
-                                                    print('Button pressed ...');
+                                                  onPressed: () async {
+                                                    await AllocationsTable()
+                                                        .update(
+                                                      data: {
+                                                        'quantity': (widget!
+                                                                .quantity!) -
+                                                            int.parse(_model
+                                                                .quanityTextFieldTextController
+                                                                .text),
+                                                      },
+                                                      matchingRows: (rows) =>
+                                                          rows.eqOrNull(
+                                                        'allocation_id',
+                                                        widget!.allocationID,
+                                                      ),
+                                                    );
+                                                    await AllocationsTable()
+                                                        .insert({
+                                                      'quantity': int.tryParse(
+                                                          _model
+                                                              .quanityTextFieldTextController
+                                                              .text),
+                                                      'batch_id':
+                                                          widget!.batchID,
+                                                      'farm_id': '',
+                                                      'user_id': currentUserUid,
+                                                      'destination_id': _model
+                                                          .customerDropDownValue,
+                                                      'notes': _model
+                                                          .noteTextFieldTextController
+                                                          .text,
+                                                    });
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          'Allocations updated!',
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontSize: 18.0,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                      ),
+                                                    );
+                                                    Navigator.pop(
+                                                        context, true);
                                                   },
                                                   text: 'Donate',
                                                   options: FFButtonOptions(

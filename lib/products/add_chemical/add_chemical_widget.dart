@@ -236,8 +236,6 @@ class _AddChemicalWidgetState extends State<AddChemicalWidget> {
                                     widget!.productCatagoryID,
                                 'product_type_id': widget!.productType,
                               });
-                              FFAppState().hasChemicals = true;
-                              safeSetState(() {});
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(

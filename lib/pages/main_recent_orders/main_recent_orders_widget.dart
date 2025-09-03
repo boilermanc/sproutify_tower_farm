@@ -2541,16 +2541,18 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                   child: FutureBuilder<
                                                                       List<
                                                                           RecentAllocationsViewRow>>(
-                                                                    future: RecentAllocationsViewTable()
-                                                                        .queryRows(
-                                                                      queryFn:
-                                                                          (q) =>
-                                                                              q.eqOrNull(
-                                                                        'farm_id',
-                                                                        FFAppState()
-                                                                            .farmID,
-                                                                      ),
-                                                                    ),
+                                                                    future: (_model.requestCompleter1 ??= Completer<
+                                                                            List<
+                                                                                RecentAllocationsViewRow>>()
+                                                                          ..complete(
+                                                                              RecentAllocationsViewTable().queryRows(
+                                                                            queryFn: (q) =>
+                                                                                q.eqOrNull(
+                                                                              'farm_id',
+                                                                              FFAppState().farmID,
+                                                                            ),
+                                                                          )))
+                                                                        .future,
                                                                     builder:
                                                                         (context,
                                                                             snapshot) {
@@ -2900,8 +2902,8 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                     recentAllocationsViewItem.allocationId,
                                                                                                   ),
                                                                                                 );
-                                                                                                safeSetState(() => _model.requestCompleter = null);
-                                                                                                await _model.waitForRequestCompleted();
+                                                                                                safeSetState(() => _model.requestCompleter2 = null);
+                                                                                                await _model.waitForRequestCompleted2();
                                                                                                 ScaffoldMessenger.of(context).showSnackBar(
                                                                                                   SnackBar(
                                                                                                     content: Text(
@@ -2990,8 +2992,8 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                       recentAllocationsViewItem.allocationId,
                                                                                                     ),
                                                                                                   );
-                                                                                                  safeSetState(() => _model.requestCompleter = null);
-                                                                                                  await _model.waitForRequestCompleted();
+                                                                                                  safeSetState(() => _model.requestCompleter2 = null);
+                                                                                                  await _model.waitForRequestCompleted2();
                                                                                                   ScaffoldMessenger.of(context).showSnackBar(
                                                                                                     SnackBar(
                                                                                                       content: Text(
@@ -3086,10 +3088,10 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                             padding: MediaQuery.viewInsetsOf(context),
                                                                                                             child: ReallocateProduceWidget(
                                                                                                               allocationID: recentAllocationsViewItem.allocationId!,
+                                                                                                              customerName: recentAllocationsViewItem.destinationName!,
+                                                                                                              quantity: recentAllocationsViewItem.qtyAllocated!,
                                                                                                               batchID: recentAllocationsViewItem.batchId!,
                                                                                                               plantName: recentAllocationsViewItem.plantName!,
-                                                                                                              quantity: recentAllocationsViewItem.qtyAllocated!,
-                                                                                                              customerName: recentAllocationsViewItem.destinationName!,
                                                                                                             ),
                                                                                                           ),
                                                                                                         ),
@@ -3177,7 +3179,7 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                   child: FutureBuilder<
                                                                       List<
                                                                           RecentAllocationsViewRow>>(
-                                                                    future: (_model.requestCompleter ??= Completer<
+                                                                    future: (_model.requestCompleter2 ??= Completer<
                                                                             List<
                                                                                 RecentAllocationsViewRow>>()
                                                                           ..complete(
@@ -3506,8 +3508,8 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                   recentAllocationsViewItem.allocationId,
                                                                                                 ),
                                                                                               );
-                                                                                              safeSetState(() => _model.requestCompleter = null);
-                                                                                              await _model.waitForRequestCompleted();
+                                                                                              safeSetState(() => _model.requestCompleter2 = null);
+                                                                                              await _model.waitForRequestCompleted2();
                                                                                               ScaffoldMessenger.of(context).showSnackBar(
                                                                                                 SnackBar(
                                                                                                   content: Text(
@@ -3596,8 +3598,8 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                     recentAllocationsViewItem.allocationId,
                                                                                                   ),
                                                                                                 );
-                                                                                                safeSetState(() => _model.requestCompleter = null);
-                                                                                                await _model.waitForRequestCompleted();
+                                                                                                safeSetState(() => _model.requestCompleter2 = null);
+                                                                                                await _model.waitForRequestCompleted2();
                                                                                                 ScaffoldMessenger.of(context).showSnackBar(
                                                                                                   SnackBar(
                                                                                                     content: Text(
@@ -3692,16 +3694,23 @@ class _MainRecentOrdersWidgetState extends State<MainRecentOrdersWidget>
                                                                                                           padding: MediaQuery.viewInsetsOf(context),
                                                                                                           child: ReallocateProduceWidget(
                                                                                                             allocationID: recentAllocationsViewItem.allocationId!,
+                                                                                                            customerName: recentAllocationsViewItem.destinationName!,
+                                                                                                            quantity: recentAllocationsViewItem.qtyAllocated!,
                                                                                                             batchID: recentAllocationsViewItem.batchId!,
                                                                                                             plantName: recentAllocationsViewItem.plantName!,
-                                                                                                            quantity: recentAllocationsViewItem.qtyAllocated!,
-                                                                                                            customerName: recentAllocationsViewItem.destinationName!,
                                                                                                           ),
                                                                                                         ),
                                                                                                       ),
                                                                                                     );
                                                                                                   },
-                                                                                                ).then((value) => safeSetState(() {}));
+                                                                                                ).then((value) => safeSetState(() => _model.reallocateUpdate2211 = value));
+
+                                                                                                if (_model.reallocateUpdate2211!) {
+                                                                                                  safeSetState(() => _model.requestCompleter1 = null);
+                                                                                                  await _model.waitForRequestCompleted1();
+                                                                                                }
+
+                                                                                                safeSetState(() {});
                                                                                               },
                                                                                               child: Container(
                                                                                                 width: 30.0,

@@ -97,6 +97,7 @@ class _SpacerCountComponentWidgetState
                 safeSetState(() {});
               },
               stepSize: 1,
+              minimum: 0,
               maximum: FFAppState().spacerTrayPerFarm,
               contentPadding:
                   EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),

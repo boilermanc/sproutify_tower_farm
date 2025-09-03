@@ -84,10 +84,13 @@ class MainRecentOrdersModel extends FlutterFlowModel<MainRecentOrdersWidget> {
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController4 =
       FlutterFlowDataTableController<RecentAllocationsViewRow>();
-  Completer<List<RecentAllocationsViewRow>>? requestCompleter;
+  Completer<List<RecentAllocationsViewRow>>? requestCompleter2;
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController5 =
       FlutterFlowDataTableController<RecentAllocationsViewRow>();
+  // Stores action output result for [Bottom Sheet - reallocateProduce] action in Container widget.
+  bool? reallocateUpdate2211;
+  Completer<List<RecentAllocationsViewRow>>? requestCompleter1;
   // State field(s) for PaginatedDataTable widget.
   final paginatedDataTableController6 =
       FlutterFlowDataTableController<TowerPlantsDetailRow>();
@@ -111,7 +114,7 @@ class MainRecentOrdersModel extends FlutterFlowModel<MainRecentOrdersWidget> {
   }
 
   /// Additional helper methods.
-  Future waitForRequestCompleted({
+  Future waitForRequestCompleted2({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -119,7 +122,22 @@ class MainRecentOrdersModel extends FlutterFlowModel<MainRecentOrdersWidget> {
     while (true) {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter?.isCompleted ?? false;
+      final requestComplete = requestCompleter2?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
+  Future waitForRequestCompleted1({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter1?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

@@ -53,22 +53,20 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
     _model.lotNumberTextFieldTextController ??= TextEditingController();
     _model.lotNumberTextFieldFocusNode ??= FocusNode();
 
+    _model.seedIDTextFieldTextController ??= TextEditingController();
+    _model.seedIDTextFieldFocusNode ??= FocusNode();
+
     _model.poTextFieldTextController ??= TextEditingController();
     _model.poTextFieldFocusNode ??= FocusNode();
 
-    _model.receivedDateTextFieldTextController ??= TextEditingController();
-    _model.receivedDateTextFieldFocusNode ??= FocusNode();
+    _model.seedNameTextFieldTextController ??= TextEditingController();
+    _model.seedNameTextFieldFocusNode ??= FocusNode();
 
-    _model.quantityReceivedTextFieldTextController ??=
-        TextEditingController(text: '0');
+    _model.quantityReceivedTextFieldTextController ??= TextEditingController();
     _model.quantityReceivedTextFieldFocusNode ??= FocusNode();
 
-    _model.costPerSeedTextFieldTextController ??=
-        TextEditingController(text: '0');
-    _model.costPerSeedTextFieldFocusNode ??= FocusNode();
-
-    _model.expirationTextFieldTextController ??= TextEditingController();
-    _model.expirationTextFieldFocusNode ??= FocusNode();
+    _model.orderCostTextFieldTextController ??= TextEditingController();
+    _model.orderCostTextFieldFocusNode ??= FocusNode();
 
     _model.germRateTextFieldTextController ??= TextEditingController();
     _model.germRateTextFieldFocusNode ??= FocusNode();
@@ -96,24 +94,23 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        Container(
-          width: 1000.0,
-          height: 800.0,
-          decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).primaryBackground,
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          child: Padding(
-            padding: EdgeInsets.all(15.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Container(
+            width: 1000.0,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).primaryBackground,
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -317,7 +314,7 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Text(
-                                                'Basic Information',
+                                                'Seed Order',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -570,42 +567,6 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                 },
                                                               ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Choose the seed supplier for this lot',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
                                                           ],
                                                         ),
                                                       ),
@@ -812,6 +773,53 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                 ),
                                                               ),
                                                             ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    60.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              'Seed ID',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                            ),
                                                             Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
@@ -820,14 +828,135 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                           5.0,
                                                                           0.0,
                                                                           0.0),
-                                                              child: Text(
-                                                                'Supplier\'s lot or batch number from the package',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
+                                                              child: Container(
+                                                                width: 200.0,
+                                                                child:
+                                                                    TextFormField(
+                                                                  controller: _model
+                                                                      .seedIDTextFieldTextController,
+                                                                  focusNode: _model
+                                                                      .seedIDTextFieldFocusNode,
+                                                                  autofocus:
+                                                                      false,
+                                                                  obscureText:
+                                                                      false,
+                                                                  decoration:
+                                                                      InputDecoration(
+                                                                    isDense:
+                                                                        true,
+                                                                    labelStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                    hintStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.plusJakartaSans(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                    enabledBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .alternate,
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                    focusedBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                    errorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .error,
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                    focusedErrorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .error,
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                    filled:
+                                                                        true,
+                                                                    fillColor: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontWeight,
@@ -835,17 +964,17 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                  cursorColor:
+                                                                      FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
+                                                                          .primaryText,
+                                                                  enableInteractiveSelection:
+                                                                      true,
+                                                                  validator: _model
+                                                                      .seedIDTextFieldTextControllerValidator
+                                                                      .asValidator(
+                                                                          context),
+                                                                ),
                                                               ),
                                                             ),
                                                           ],
@@ -883,7 +1012,7 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              'Purchase Order#',
+                                                              ' Order#',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -956,7 +1085,7 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                               .fontStyle,
                                                                         ),
                                                                     hintText:
-                                                                        'e.g. PO-2024-156',
+                                                                        '2024-156',
                                                                     hintStyle: FlutterFlowTheme.of(
                                                                             context)
                                                                         .labelMedium
@@ -1070,42 +1199,6 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                 ),
                                                               ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Choose the seed supplier for this lot',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
                                                             Container(
                                                               width: 200.0,
                                                             ),
@@ -1156,25 +1249,79 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                         .fontStyle,
                                                                   ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Container(
+                                                                  width: 200.0,
+                                                                  height: 40.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    border:
+                                                                        Border
+                                                                            .all(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                    ),
+                                                                  ),
+                                                                  child: Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          7.0,
                                                                           0.0,
-                                                                          5.0,
                                                                           0.0,
                                                                           0.0),
-                                                              child: Container(
-                                                                width: 200.0,
-                                                                child:
-                                                                    TextFormField(
-                                                                  controller: _model
-                                                                      .receivedDateTextFieldTextController,
-                                                                  focusNode: _model
-                                                                      .receivedDateTextFieldFocusNode,
-                                                                  onFieldSubmitted:
-                                                                      (_) async {
-                                                                    // Recieved Date Time
+                                                                      child:
+                                                                          Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          dateTimeFormat(
+                                                                              "d/M/y",
+                                                                              _model.recievedDate),
+                                                                          '08/16/2025',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
                                                                     final _datePicked1Date =
                                                                         await showDatePicker(
                                                                       context:
@@ -1247,7 +1394,86 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                             getCurrentTimestamp;
                                                                       });
                                                                     }
+                                                                    _model.recievedDate =
+                                                                        _model
+                                                                            .datePicked1;
+                                                                    safeSetState(
+                                                                        () {});
                                                                   },
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .calendar_month,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                    size: 24.0,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    60.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              'Seed Name',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Container(
+                                                                width: 200.0,
+                                                                child:
+                                                                    TextFormField(
+                                                                  controller: _model
+                                                                      .seedNameTextFieldTextController,
+                                                                  focusNode: _model
+                                                                      .seedNameTextFieldFocusNode,
                                                                   autofocus:
                                                                       false,
                                                                   obscureText:
@@ -1276,8 +1502,6 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                               .labelMedium
                                                                               .fontStyle,
                                                                         ),
-                                                                    hintText:
-                                                                        '08/16/2024',
                                                                     hintStyle: FlutterFlowTheme.of(
                                                                             context)
                                                                         .labelMedium
@@ -1355,11 +1579,6 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                     fillColor: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryBackground,
-                                                                    suffixIcon:
-                                                                        Icon(
-                                                                      Icons
-                                                                          .calendar_month,
-                                                                    ),
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -1390,46 +1609,10 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                   enableInteractiveSelection:
                                                                       true,
                                                                   validator: _model
-                                                                      .receivedDateTextFieldTextControllerValidator
+                                                                      .seedNameTextFieldTextControllerValidator
                                                                       .asValidator(
                                                                           context),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Supplier\'s lot or batch number from the package',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
                                                               ),
                                                             ),
                                                           ],
@@ -1592,30 +1775,42 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                         milliseconds:
                                                                             2000),
                                                                     () async {
+                                                                      // Quantity Seeds
                                                                       _model.quantitySeeds = int.tryParse(_model
                                                                           .quantityReceivedTextFieldTextController
                                                                           .text);
                                                                       safeSetState(
                                                                           () {});
+                                                                      // Cost Per Seed
                                                                       _model
-                                                                          .totalCost = (_model
-                                                                              .quantitySeeds!) *
+                                                                          .costPerSeed = double.parse(_model
+                                                                              .orderCostTextFieldTextController
+                                                                              .text) /
                                                                           (_model
-                                                                              .costPerSeed!);
+                                                                              .quantitySeeds!);
                                                                       safeSetState(
                                                                           () {});
+                                                                      // Total Cost
+                                                                      _model.totalCost =
+                                                                          _model
+                                                                              .itemCost;
+                                                                      safeSetState(
+                                                                          () {});
+                                                                      // NewTotal Value
                                                                       _model
                                                                           .newTotalValue = (widget!
                                                                               .totalInventoryValue!) +
                                                                           (_model
-                                                                              .totalCost!);
+                                                                              .itemCost!);
                                                                       safeSetState(
                                                                           () {});
+                                                                      // New Total Stock
                                                                       _model
-                                                                          .newTotalQuantity = (widget!
+                                                                          .newTotalStock = (widget!
                                                                               .seedCurrentQuantity!) +
-                                                                          (_model
-                                                                              .quantitySeeds!);
+                                                                          int.parse(_model
+                                                                              .quantityReceivedTextFieldTextController
+                                                                              .text);
                                                                       safeSetState(
                                                                           () {});
                                                                     },
@@ -1763,42 +1958,6 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                 ),
                                                               ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Choose the seed supplier for this lot',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
                                                             Container(
                                                               width: 200.0,
                                                             ),
@@ -1821,7 +1980,7 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              'Cost Per Seed *',
+                                                              'Item Cost *',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -1862,41 +2021,53 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                 child:
                                                                     TextFormField(
                                                                   controller: _model
-                                                                      .costPerSeedTextFieldTextController,
+                                                                      .orderCostTextFieldTextController,
                                                                   focusNode: _model
-                                                                      .costPerSeedTextFieldFocusNode,
+                                                                      .orderCostTextFieldFocusNode,
                                                                   onChanged: (_) =>
                                                                       EasyDebounce
                                                                           .debounce(
-                                                                    '_model.costPerSeedTextFieldTextController',
+                                                                    '_model.orderCostTextFieldTextController',
                                                                     Duration(
                                                                         milliseconds:
                                                                             2000),
                                                                     () async {
-                                                                      _model.costPerSeed = double.tryParse(_model
-                                                                          .costPerSeedTextFieldTextController
+                                                                      // Item Cost
+                                                                      _model.itemCost = double.tryParse(_model
+                                                                          .orderCostTextFieldTextController
                                                                           .text);
                                                                       safeSetState(
                                                                           () {});
+                                                                      // Cost Per Seed
                                                                       _model
-                                                                          .totalCost = (_model
-                                                                              .quantitySeeds!) *
+                                                                          .costPerSeed = double.parse(_model
+                                                                              .orderCostTextFieldTextController
+                                                                              .text) /
                                                                           (_model
-                                                                              .costPerSeed!);
+                                                                              .quantitySeeds!);
                                                                       safeSetState(
                                                                           () {});
+                                                                      // Total Cost
+                                                                      _model.totalCost =
+                                                                          _model
+                                                                              .itemCost;
+                                                                      safeSetState(
+                                                                          () {});
+                                                                      // NewTotal Value
                                                                       _model
                                                                           .newTotalValue = (widget!
                                                                               .totalInventoryValue!) +
                                                                           (_model
-                                                                              .totalCost!);
+                                                                              .itemCost!);
                                                                       safeSetState(
                                                                           () {});
+                                                                      // New Total Stock
                                                                       _model
-                                                                          .newTotalQuantity = (widget!
+                                                                          .newTotalStock = (widget!
                                                                               .seedCurrentQuantity!) +
-                                                                          (_model
-                                                                              .quantitySeeds!);
+                                                                          int.parse(_model
+                                                                              .quantityReceivedTextFieldTextController
+                                                                              .text);
                                                                       safeSetState(
                                                                           () {});
                                                                     },
@@ -2038,46 +2209,10 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                   enableInteractiveSelection:
                                                                       true,
                                                                   validator: _model
-                                                                      .costPerSeedTextFieldTextControllerValidator
+                                                                      .orderCostTextFieldTextControllerValidator
                                                                       .asValidator(
                                                                           context),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Supplier\'s lot or batch number from the package',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
                                                               ),
                                                             ),
                                                           ],
@@ -2302,7 +2437,11 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                _model.costPerSeedTextFieldTextController.text,
+                                                                                formatNumber(
+                                                                                  _model.costPerSeed,
+                                                                                  formatType: FormatType.decimal,
+                                                                                  decimalType: DecimalType.periodDecimal,
+                                                                                ),
                                                                                 '0',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2433,7 +2572,7 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                           children: [
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                _model.newTotalQuantity?.toString(),
+                                                                                _model.newTotalStock?.toString(),
                                                                                 '0',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2576,54 +2715,113 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                               CrossAxisAlignment
                                                                   .start,
                                                           children: [
-                                                            Text(
-                                                              'Expiration Date',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .plusJakartaSans(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    fontSize:
-                                                                        16.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Text(
+                                                                  'Expiration Date (optional)',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .plusJakartaSans(
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        fontSize:
+                                                                            16.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                ),
+                                                              ],
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Container(
+                                                                  width: 200.0,
+                                                                  height: 40.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    border:
+                                                                        Border
+                                                                            .all(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                  ),
+                                                                  child: Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          7.0,
                                                                           0.0,
-                                                                          5.0,
                                                                           0.0,
                                                                           0.0),
-                                                              child: Container(
-                                                                width: 200.0,
-                                                                child:
-                                                                    TextFormField(
-                                                                  controller: _model
-                                                                      .expirationTextFieldTextController,
-                                                                  focusNode: _model
-                                                                      .expirationTextFieldFocusNode,
-                                                                  onFieldSubmitted:
-                                                                      (_) async {
-                                                                    // Expiration Date
+                                                                      child:
+                                                                          Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          dateTimeFormat(
+                                                                              "yMd",
+                                                                              _model.expirationDate),
+                                                                          '08/16/2027',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
                                                                     final _datePicked2Date =
                                                                         await showDatePicker(
                                                                       context:
@@ -2696,193 +2894,22 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                             getCurrentTimestamp;
                                                                       });
                                                                     }
+                                                                    _model.expirationDate =
+                                                                        _model
+                                                                            .datePicked2;
+                                                                    safeSetState(
+                                                                        () {});
                                                                   },
-                                                                  autofocus:
-                                                                      false,
-                                                                  obscureText:
-                                                                      false,
-                                                                  decoration:
-                                                                      InputDecoration(
-                                                                    isDense:
-                                                                        true,
-                                                                    labelStyle: FlutterFlowTheme.of(
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .calendar_month,
+                                                                    color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .labelMedium
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.plusJakartaSans(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
-                                                                          ),
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontStyle,
-                                                                        ),
-                                                                    hintText:
-                                                                        '08/01/02026',
-                                                                    hintStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.plusJakartaSans(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
-                                                                          ),
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontStyle,
-                                                                        ),
-                                                                    enabledBorder:
-                                                                        OutlineInputBorder(
-                                                                      borderSide:
-                                                                          BorderSide(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                        width:
-                                                                            1.0,
-                                                                      ),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8.0),
-                                                                    ),
-                                                                    focusedBorder:
-                                                                        OutlineInputBorder(
-                                                                      borderSide:
-                                                                          BorderSide(
-                                                                        color: Color(
-                                                                            0x00000000),
-                                                                        width:
-                                                                            1.0,
-                                                                      ),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8.0),
-                                                                    ),
-                                                                    errorBorder:
-                                                                        OutlineInputBorder(
-                                                                      borderSide:
-                                                                          BorderSide(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .error,
-                                                                        width:
-                                                                            1.0,
-                                                                      ),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8.0),
-                                                                    ),
-                                                                    focusedErrorBorder:
-                                                                        OutlineInputBorder(
-                                                                      borderSide:
-                                                                          BorderSide(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .error,
-                                                                        width:
-                                                                            1.0,
-                                                                      ),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8.0),
-                                                                    ),
-                                                                    filled:
-                                                                        true,
-                                                                    fillColor: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                    suffixIcon:
-                                                                        Icon(
-                                                                      Icons
-                                                                          .calendar_month,
-                                                                    ),
+                                                                        .primaryText,
+                                                                    size: 24.0,
                                                                   ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        font: GoogleFonts
-                                                                            .plusJakartaSans(
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .fontStyle,
-                                                                        ),
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                  cursorColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                  enableInteractiveSelection:
-                                                                      true,
-                                                                  validator: _model
-                                                                      .expirationTextFieldTextControllerValidator
-                                                                      .asValidator(
-                                                                          context),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'When do these seeds expire? (if known)',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              width: 200.0,
+                                                              ],
                                                             ),
                                                           ],
                                                         ),
@@ -2903,7 +2930,7 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              'Germination Rate',
+                                                              'Germination Rate (%)',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -3090,41 +3117,216 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                 ),
                                                               ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Expected germination percentage (0-100)',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontWeight,
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    60.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              'Germination Test Date',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .plusJakartaSans(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
                                                                       fontStyle: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
-                                                              ),
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                            ),
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Container(
+                                                                  width: 200.0,
+                                                                  height: 40.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    border:
+                                                                        Border
+                                                                            .all(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                  ),
+                                                                  child: Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          7.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          dateTimeFormat(
+                                                                              "yMd",
+                                                                              _model.germinationDate),
+                                                                          '08/16/2024',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.plusJakartaSans(
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
+                                                                    final _datePicked3Date =
+                                                                        await showDatePicker(
+                                                                      context:
+                                                                          context,
+                                                                      initialDate:
+                                                                          getCurrentTimestamp,
+                                                                      firstDate:
+                                                                          DateTime(
+                                                                              1900),
+                                                                      lastDate:
+                                                                          getCurrentTimestamp,
+                                                                      builder:
+                                                                          (context,
+                                                                              child) {
+                                                                        return wrapInMaterialDatePickerTheme(
+                                                                          context,
+                                                                          child!,
+                                                                          headerBackgroundColor:
+                                                                              FlutterFlowTheme.of(context).primary,
+                                                                          headerForegroundColor:
+                                                                              FlutterFlowTheme.of(context).info,
+                                                                          headerTextStyle: FlutterFlowTheme.of(context)
+                                                                              .headlineLarge
+                                                                              .override(
+                                                                                font: GoogleFonts.outfit(
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                                                                                ),
+                                                                                fontSize: 32.0,
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FontWeight.w600,
+                                                                                fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                                                                              ),
+                                                                          pickerBackgroundColor:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          pickerForegroundColor:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          selectedDateTimeBackgroundColor:
+                                                                              FlutterFlowTheme.of(context).primary,
+                                                                          selectedDateTimeForegroundColor:
+                                                                              FlutterFlowTheme.of(context).info,
+                                                                          actionButtonForegroundColor:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          iconSize:
+                                                                              24.0,
+                                                                        );
+                                                                      },
+                                                                    );
+
+                                                                    if (_datePicked3Date !=
+                                                                        null) {
+                                                                      safeSetState(
+                                                                          () {
+                                                                        _model.datePicked3 =
+                                                                            DateTime(
+                                                                          _datePicked3Date
+                                                                              .year,
+                                                                          _datePicked3Date
+                                                                              .month,
+                                                                          _datePicked3Date
+                                                                              .day,
+                                                                        );
+                                                                      });
+                                                                    } else if (_model
+                                                                            .datePicked3 !=
+                                                                        null) {
+                                                                      safeSetState(
+                                                                          () {
+                                                                        _model.datePicked3 =
+                                                                            getCurrentTimestamp;
+                                                                      });
+                                                                    }
+                                                                    _model.germinationDate =
+                                                                        _model
+                                                                            .datePicked3;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .calendar_month,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                    size: 24.0,
+                                                                  ),
+                                                                ),
+                                                              ],
                                                             ),
                                                           ],
                                                         ),
@@ -3348,42 +3550,6 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                 ),
                                                               ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Where are the seeds stored?',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
                                                             Container(
                                                               width: 200.0,
                                                             ),
@@ -3593,42 +3759,6 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                                 ),
                                                               ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'What temperature do you store your seeds at?',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .plusJakartaSans(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
                                                           ],
                                                         ),
                                                       ),
@@ -3638,66 +3768,6 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                               ),
                                               Container(
                                                 decoration: BoxDecoration(),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 20.0, 0.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    20.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              'Additional Notes',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .plusJakartaSans(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    fontSize:
-                                                                        18.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
                                               ),
                                               Container(
                                                 decoration: BoxDecoration(),
@@ -3958,57 +4028,6 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                                         0.0, 0.0, 0.0, 30.0),
                                                 child: Container(
                                                   decoration: BoxDecoration(),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 20.0,
-                                                                0.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      60.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'Any additional information about this lot',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .plusJakartaSans(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle:
-                                                                        FontStyle
-                                                                            .italic,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle:
-                                                                      FontStyle
-                                                                          .italic,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -4039,7 +4058,6 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                 await SeedLotsTable().insert({
                                   'farm_id': FFAppState().farmID,
                                   'plant_id': widget!.plantID,
-                                  'vendor_id': _model.vendorDropDownValue,
                                   'lot_number': _model
                                       .lotNumberTextFieldTextController.text,
                                   'purchase_order_number':
@@ -4047,19 +4065,34 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
                                   'original_quantity': int.tryParse(_model
                                       .quantityReceivedTextFieldTextController
                                       .text),
-                                  'current_quantity': _model.newTotalQuantity,
-                                  'cost_per_unit': double.tryParse(_model
-                                      .costPerSeedTextFieldTextController.text),
-                                  'total_cost': 0.0,
+                                  'current_quantity': int.tryParse(_model
+                                      .quantityReceivedTextFieldTextController
+                                      .text),
+                                  'cost_per_unit': valueOrDefault<double>(
+                                    _model.costPerSeed,
+                                    0.0,
+                                  ),
                                   'received_date': supaSerialize<DateTime>(
-                                      _model.datePicked1),
-                                  'expiration_date': supaSerialize<DateTime>(
-                                      _model.datePicked2),
+                                      _model.recievedDate),
                                   'storage_location': _model
                                       .locationTextFieldTextController.text,
                                   'storage_temperature': double.tryParse(_model
                                       .storageTempTextFieldTextController.text),
                                   'created_by': currentUserUid,
+                                  'germination_rate': double.tryParse(_model
+                                      .germRateTextFieldTextController.text),
+                                  'vendor_seed_name': _model
+                                      .seedNameTextFieldTextController.text,
+                                  'vendor_seed_id':
+                                      _model.seedIDTextFieldTextController.text,
+                                  'total_cost': double.tryParse(_model
+                                      .orderCostTextFieldTextController.text),
+                                  'farm_vendor_id': _model.vendorDropDownValue,
+                                  'expiration_date': supaSerialize<DateTime>(
+                                      _model.expirationDate),
+                                  'last_germ_test_date':
+                                      supaSerialize<DateTime>(
+                                          _model.germinationDate),
                                 });
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
@@ -4120,39 +4153,8 @@ class _SeedLotUpdateWidgetState extends State<SeedLotUpdateWidget> {
               ),
             ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 5.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                child: Icon(
-                  Icons.monetization_on_rounded,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 24.0,
-                ),
-              ),
-              Text(
-                'Cost Calculator',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      font: GoogleFonts.plusJakartaSans(
-                        fontWeight: FontWeight.w600,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                      ),
-                      fontSize: 16.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w600,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                    ),
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

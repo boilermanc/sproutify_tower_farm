@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/produce_plants/seed_low_stock_alert/seed_low_stock_alert_widget.dart';
 import '/produce_plants/seed_max_stock_alert/seed_max_stock_alert_widget.dart';
-import '/produce_plants/seed_preferred_vendor/seed_preferred_vendor_widget.dart';
 import '/produce_plants/seed_reorder_point/seed_reorder_point_widget.dart';
 import '/produce_plants/seed_threshold_update/seed_threshold_update_widget.dart';
 import 'dart:ui';

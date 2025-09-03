@@ -73,7 +73,7 @@ class _SeedMaxStockAlertWidgetState extends State<SeedMaxStockAlertWidget> {
                 fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
                 fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
               ),
-          hintText: 'TextField',
+          hintText: 'Max Stock',
           hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
                 font: GoogleFonts.plusJakartaSans(
                   fontWeight:

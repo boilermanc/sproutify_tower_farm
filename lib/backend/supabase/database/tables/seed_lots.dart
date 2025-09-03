@@ -23,8 +23,8 @@ class SeedLotsRow extends SupabaseDataRow {
   int get plantId => getField<int>('plant_id')!;
   set plantId(int value) => setField<int>('plant_id', value);
 
-  String get vendorId => getField<String>('vendor_id')!;
-  set vendorId(String value) => setField<String>('vendor_id', value);
+  String get farmVendorId => getField<String>('farm_vendor_id')!;
+  set farmVendorId(String value) => setField<String>('farm_vendor_id', value);
 
   String get lotNumber => getField<String>('lot_number')!;
   set lotNumber(String value) => setField<String>('lot_number', value);
@@ -41,9 +41,6 @@ class SeedLotsRow extends SupabaseDataRow {
 
   double get costPerUnit => getField<double>('cost_per_unit')!;
   set costPerUnit(double value) => setField<double>('cost_per_unit', value);
-
-  double? get totalCost => getField<double>('total_cost');
-  set totalCost(double? value) => setField<double>('total_cost', value);
 
   DateTime get receivedDate => getField<DateTime>('received_date')!;
   set receivedDate(DateTime value) =>
@@ -84,4 +81,14 @@ class SeedLotsRow extends SupabaseDataRow {
 
   String get createdBy => getField<String>('created_by')!;
   set createdBy(String value) => setField<String>('created_by', value);
+
+  double get totalCost => getField<double>('total_cost')!;
+  set totalCost(double value) => setField<double>('total_cost', value);
+
+  String? get vendorSeedName => getField<String>('vendor_seed_name');
+  set vendorSeedName(String? value) =>
+      setField<String>('vendor_seed_name', value);
+
+  String? get vendorSeedId => getField<String>('vendor_seed_id');
+  set vendorSeedId(String? value) => setField<String>('vendor_seed_id', value);
 }

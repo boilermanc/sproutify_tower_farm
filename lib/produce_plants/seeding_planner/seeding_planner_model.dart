@@ -46,7 +46,7 @@ class SeedingPlannerModel extends FlutterFlowModel<SeedingPlannerWidget> {
   void updateSelectedTowerIdsAtIndex(int index, Function(int) updateFn) =>
       selectedTowerIds[index] = updateFn(selectedTowerIds[index]);
 
-  int? overagePercent = 10;
+  int? overagePercent = 0;
 
   int? totalPorts = 0;
 
@@ -55,8 +55,6 @@ class SeedingPlannerModel extends FlutterFlowModel<SeedingPlannerWidget> {
   int? towerCount = 1;
 
   int? selectedPortCount;
-
-  int? selectedPlantId = 1;
 
   dynamic calculationResults;
 

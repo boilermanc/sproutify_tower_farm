@@ -53,7 +53,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: 1000.0,
-        height: 700.0,
+        height: 800.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primaryBackground,
           borderRadius: BorderRadius.circular(10.0),
@@ -209,6 +209,10 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                             .eqOrNull(
                               'farm_id',
                               FFAppState().farmID,
+                            )
+                            .eqOrNull(
+                              'farm_plant_active',
+                              true,
                             )
                             .order('plant_name', ascending: true),
                       ),
@@ -496,9 +500,6 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                           plantID:
                                                               seedInventoryItem
                                                                   .plantId,
-                                                          farmID:
-                                                              seedInventoryItem
-                                                                  .farmId,
                                                           inventoryStatus:
                                                               valueOrDefault<
                                                                   String>(
@@ -506,6 +507,24 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                                 .inventoryStatus,
                                                             'Status',
                                                           ),
+                                                          statusTextColor:
+                                                              seedInventoryItem
+                                                                  .statusTextColor,
+                                                          statusBackgroundColor:
+                                                              colorFromCssString(
+                                                            seedInventoryItem
+                                                                .statusBackgroundColor!,
+                                                            defaultColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate,
+                                                          ),
+                                                          seedCurrentQuantity:
+                                                              seedInventoryItem
+                                                                  .totalCurrentStock!,
+                                                          seedCurrentValue:
+                                                              seedInventoryItem
+                                                                  .totalInventoryValue!,
                                                         ),
                                                       ),
                                                     );
@@ -672,39 +691,26 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                       ],
                                     ),
                                     Container(
-                                      width: 100.0,
+                                      width: 120.0,
                                       height: 30.0,
                                       decoration: BoxDecoration(
                                         color: colorFromCssString(
-                                          () {
-                                            if (seedInventoryItem
-                                                    .inventoryStatus ==
-                                                'out_of_stock') {
-                                              return '#ef4444';
-                                            } else if (seedInventoryItem
-                                                    .inventoryStatus ==
-                                                'low_stock') {
-                                              return '#f97316';
-                                            } else if (seedInventoryItem
-                                                    .inventoryStatus ==
-                                                'reorder_needed') {
-                                              return '#f59e0b';
-                                            } else if (seedInventoryItem
-                                                    .inventoryStatus ==
-                                                'expiring_soon') {
-                                              return '#eab308';
-                                            } else if (seedInventoryItem
-                                                    .inventoryStatus ==
-                                                'quarantined') {
-                                              return '#8b5cf6';
-                                            } else {
-                                              return '#22c55e';
-                                            }
-                                          }(),
+                                          seedInventoryItem
+                                              .statusBackgroundColor!,
                                           defaultColor:
                                               FlutterFlowTheme.of(context)
                                                   .alternate,
                                         ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: Color(0x33000000),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
+                                          )
+                                        ],
                                         borderRadius:
                                             BorderRadius.circular(10.0),
                                       ),
@@ -715,6 +721,10 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                           () {
                                             if (seedInventoryItem
                                                     .inventoryStatus ==
+                                                'no_inventory') {
+                                              return 'No Inventory';
+                                            } else if (seedInventoryItem
+                                                    .inventoryStatus ==
                                                 'out_of_stock') {
                                               return 'Out of Stock';
                                             } else if (seedInventoryItem
@@ -724,15 +734,15 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                             } else if (seedInventoryItem
                                                     .inventoryStatus ==
                                                 'reorder_needed') {
-                                              return 'Reorder Needed';
+                                              return 'ReOrder';
                                             } else if (seedInventoryItem
                                                     .inventoryStatus ==
                                                 'expiring_soon') {
-                                              return 'Expiring Soon';
+                                              return 'Expiring';
                                             } else if (seedInventoryItem
                                                     .inventoryStatus ==
                                                 'quarantined') {
-                                              return 'Quarantiened';
+                                              return 'Quarantine';
                                             } else {
                                               return 'Good';
                                             }
@@ -751,10 +761,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                 ),
                                                 color: colorFromCssString(
                                                   seedInventoryItem
-                                                              .inventoryStatus ==
-                                                          'good'
-                                                      ? '#000000'
-                                                      : '#ffffff ',
+                                                      .statusTextColor!,
                                                   defaultColor: Colors.black,
                                                 ),
                                                 letterSpacing: 0.0,
@@ -773,6 +780,16 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .alternate,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: Color(0x33000000),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
+                                          )
+                                        ],
                                         borderRadius:
                                             BorderRadius.circular(10.0),
                                       ),
@@ -870,7 +887,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                             "yMMMd",
                                             seedInventoryItem
                                                 .nextExpirationDate),
-                                        'Last Restock',
+                                        '08/16/2025',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -910,11 +927,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                 .override(
                                                   font: GoogleFonts
                                                       .plusJakartaSans(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
+                                                    fontWeight: FontWeight.w600,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -923,11 +936,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                   ),
                                                   color: Color(0xFF4CAB52),
                                                   letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
+                                                  fontWeight: FontWeight.w600,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -942,8 +951,13 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                   5.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
-                                              seedInventoryItem.avgCostPerUnit
-                                                  ?.toString(),
+                                              formatNumber(
+                                                seedInventoryItem
+                                                    .avgCostPerUnit,
+                                                formatType: FormatType.decimal,
+                                                decimalType:
+                                                    DecimalType.periodDecimal,
+                                              ),
                                               '0',
                                             ),
                                             style: FlutterFlowTheme.of(context)
@@ -951,11 +965,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                 .override(
                                                   font: GoogleFonts
                                                       .plusJakartaSans(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
+                                                    fontWeight: FontWeight.w600,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -964,11 +974,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                   ),
                                                   color: Color(0xFF4CAB52),
                                                   letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
+                                                  fontWeight: FontWeight.w600,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -993,11 +999,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                 .override(
                                                   font: GoogleFonts
                                                       .plusJakartaSans(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
+                                                    fontWeight: FontWeight.w600,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -1006,11 +1008,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                   ),
                                                   color: Color(0xFF4CAB52),
                                                   letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
+                                                  fontWeight: FontWeight.w600,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1035,11 +1033,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                 .override(
                                                   font: GoogleFonts
                                                       .plusJakartaSans(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
+                                                    fontWeight: FontWeight.w600,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -1048,11 +1042,7 @@ class _SeedInventoryWidgetState extends State<SeedInventoryWidget> {
                                                   ),
                                                   color: Color(0xFF4CAB52),
                                                   letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
+                                                  fontWeight: FontWeight.w600,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)

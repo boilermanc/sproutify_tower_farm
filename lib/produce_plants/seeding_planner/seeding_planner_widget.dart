@@ -334,48 +334,6 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 10.0,
-                                                                0.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          'Overage Percent',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .plusJakartaSans(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                fontSize: 18.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 5.0,
                                                                 0.0, 5.0),
                                                     child: Row(
@@ -399,7 +357,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          'Buffer percentage',
+                                                          'Buffer percentage (optional)',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -447,6 +405,26 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                 .bufferPercentTextController,
                                                             focusNode: _model
                                                                 .bufferPercentFocusNode,
+                                                            onChanged: (_) =>
+                                                                EasyDebounce
+                                                                    .debounce(
+                                                              '_model.bufferPercentTextController',
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      2000),
+                                                              () async {
+                                                                _model.overagePercent =
+                                                                    valueOrDefault<
+                                                                        int>(
+                                                                  int.tryParse(_model
+                                                                      .bufferPercentTextController
+                                                                      .text),
+                                                                  0,
+                                                                );
+                                                                safeSetState(
+                                                                    () {});
+                                                              },
+                                                            ),
                                                             autofocus: false,
                                                             obscureText: false,
                                                             decoration:
@@ -475,8 +453,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                             .labelMedium
                                                                             .fontStyle,
                                                                       ),
-                                                              hintText:
-                                                                  'Overage Percent...',
+                                                              hintText: '0',
                                                               hintStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -517,8 +494,9 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                   OutlineInputBorder(
                                                                 borderSide:
                                                                     BorderSide(
-                                                                  color: Color(
-                                                                      0x00000000),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
                                                                   width: 1.0,
                                                                 ),
                                                                 borderRadius:
@@ -558,6 +536,10 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                               fillColor: FlutterFlowTheme
                                                                       .of(context)
                                                                   .secondaryBackground,
+                                                              hoverColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -587,6 +569,9 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .number,
                                                             cursorColor:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -596,48 +581,6 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                 .asValidator(
                                                                     context),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 10.0,
-                                                                0.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          'Plant Variety & Seeding Date',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .plusJakartaSans(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                fontSize: 18.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
                                                         ),
                                                       ],
                                                     ),
@@ -725,10 +668,12 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                     _model.seedDropDownValue =
                                                                         val);
                                                                 _model.selectedPlantID =
-                                                                    _model
-                                                                        .seedDropDownValue;
-                                                                safeSetState(
-                                                                    () {});
+                                                                    valueOrDefault<
+                                                                        int>(
+                                                                  _model
+                                                                      .seedDropDownValue,
+                                                                  0,
+                                                                );
                                                                 _model.seedingNeeded4433 =
                                                                     await actions
                                                                         .calculateSeeding(
@@ -737,13 +682,57 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                   _model
                                                                       .portsPerTower!,
                                                                   _model
-                                                                      .selectedPlantID!,
-                                                                  _model
-                                                                      .overagePercent!,
+                                                                      .seedDropDownValue!,
+                                                                  valueOrDefault<
+                                                                      int>(
+                                                                    int.tryParse(_model
+                                                                        .bufferPercentTextController
+                                                                        .text),
+                                                                    0,
+                                                                  ),
                                                                 );
                                                                 _model.calculationResults =
                                                                     _model
                                                                         .seedingNeeded4433;
+                                                                // Rows Needed
+                                                                _model.rowsNeeded =
+                                                                    getJsonField(
+                                                                  _model
+                                                                      .seedingNeeded4433,
+                                                                  r'''$.rowsNeeded''',
+                                                                );
+                                                                // Sheets Needed
+                                                                _model.sheetsNeeded =
+                                                                    getJsonField(
+                                                                  _model
+                                                                      .seedingNeeded4433,
+                                                                  r'''$.sheetsNeeded''',
+                                                                );
+                                                                // Seeds To Plant
+                                                                _model.seedsToPlant =
+                                                                    getJsonField(
+                                                                  _model
+                                                                      .seedingNeeded4433,
+                                                                  r'''$.seedsToPlant''',
+                                                                );
+                                                                // Overage Seeds
+                                                                _model.overageSeeds =
+                                                                    valueOrDefault<
+                                                                        int>(
+                                                                  int.tryParse(_model
+                                                                      .bufferPercentTextController
+                                                                      .text),
+                                                                  0,
+                                                                );
+                                                                safeSetState(
+                                                                    () {});
+                                                                // Total Ports
+                                                                _model.totalPorts =
+                                                                    getJsonField(
+                                                                  _model
+                                                                      .seedingNeeded4433,
+                                                                  r'''$.totalPorts''',
+                                                                );
                                                                 safeSetState(
                                                                     () {});
                                                                 ScaffoldMessenger.of(
@@ -773,7 +762,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                 safeSetState(
                                                                     () {});
                                                               },
-                                                              width: 200.0,
+                                                              width: 300.0,
                                                               height: 40.0,
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
@@ -818,7 +807,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                   FlutterFlowTheme.of(
                                                                           context)
                                                                       .alternate,
-                                                              borderWidth: 0.0,
+                                                              borderWidth: 1.0,
                                                               borderRadius: 8.0,
                                                               margin:
                                                                   EdgeInsetsDirectional
@@ -941,7 +930,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                               final _datePickedDate = await showDatePicker(
                                                                                 context: context,
                                                                                 initialDate: getCurrentTimestamp,
-                                                                                firstDate: getCurrentTimestamp,
+                                                                                firstDate: DateTime(1900),
                                                                                 lastDate: DateTime(2050),
                                                                                 builder: (context, child) {
                                                                                   return wrapInMaterialDatePickerTheme(
@@ -1003,7 +992,10 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              dateTimeFormat("MMMMEEEEd", _model.datePicked),
+                                                                              valueOrDefault<String>(
+                                                                                dateTimeFormat("MMMMEEEEd", _model.datePicked),
+                                                                                '08/16/2025',
+                                                                              ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     font: GoogleFonts.plusJakartaSans(
                                                                                       fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -1022,48 +1014,6 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 10.0,
-                                                                0.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          'Tower Configuration',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .plusJakartaSans(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
                                                         ),
                                                       ],
                                                     ),
@@ -1152,33 +1102,44 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                             '_model.towerCountTextController',
                                                                             Duration(milliseconds: 2000),
                                                                             () async {
+                                                                              // Update Tower Count
                                                                               _model.towerCount = int.tryParse(_model.towerCountTextController.text);
-                                                                              safeSetState(() {});
+                                                                              _model.overagePercent = int.tryParse(_model.bufferPercentTextController.text);
+                                                                              await Future.delayed(
+                                                                                Duration(
+                                                                                  milliseconds: 100,
+                                                                                ),
+                                                                              );
+                                                                              // Calculate Seeding
                                                                               _model.seedingNeeded4432 = await actions.calculateSeeding(
-                                                                                _model.towerCount!,
+                                                                                int.parse(_model.towerCountTextController.text),
                                                                                 _model.portsPerTower!,
                                                                                 _model.selectedPlantID!,
-                                                                                _model.overagePercent!,
+                                                                                valueOrDefault<int>(
+                                                                                  int.tryParse(_model.bufferPercentTextController.text),
+                                                                                  0,
+                                                                                ),
                                                                               );
-                                                                              _model.calculationResults = _model.seedingNeeded4432;
-                                                                              safeSetState(() {});
+                                                                              // Update Results Component
                                                                               _model.rowsNeeded = getJsonField(
-                                                                                _model.seedingNeeded4433,
+                                                                                _model.seedingNeeded4432,
                                                                                 r'''$.rowsNeeded''',
                                                                               );
                                                                               _model.seedsToPlant = getJsonField(
                                                                                 _model.seedingNeeded4432,
                                                                                 r'''$.seedsToPlant''',
                                                                               );
-                                                                              _model.overagePercent = getJsonField(
-                                                                                _model.seedingNeeded4432,
-                                                                                r'''$.overagePercent''',
+                                                                              _model.overagePercent = valueOrDefault<int>(
+                                                                                int.tryParse(_model.bufferPercentTextController.text),
+                                                                                0,
                                                                               );
                                                                               _model.sheetsNeeded = getJsonField(
                                                                                 _model.seedingNeeded4432,
                                                                                 r'''$.sheetsNeeded''',
                                                                               );
-                                                                              safeSetState(() {});
+                                                                              _model.updatePage(() {});
+                                                                              // Calculation Results
+                                                                              _model.calculationResults = _model.seedingNeeded4432;
                                                                               ScaffoldMessenger.of(context).showSnackBar(
                                                                                 SnackBar(
                                                                                   content: Text(
@@ -1213,8 +1174,6 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                                   fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
                                                                                   fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                                 ),
-                                                                            hintText:
-                                                                                'TextField',
                                                                             hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                   font: GoogleFonts.plusJakartaSans(
                                                                                     fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
@@ -1235,7 +1194,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                             focusedBorder:
                                                                                 OutlineInputBorder(
                                                                               borderSide: BorderSide(
-                                                                                color: Color(0x00000000),
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
                                                                                 width: 1.0,
                                                                               ),
                                                                               borderRadius: BorderRadius.circular(8.0),
@@ -1260,6 +1219,8 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                                 true,
                                                                             fillColor:
                                                                                 FlutterFlowTheme.of(context).secondaryBackground,
+                                                                            hoverColor:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                           ),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
@@ -1283,170 +1244,174 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                     ],
                                                                   ),
                                                                 ),
-                                                                Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          15.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          5.0),
-                                                                      child:
-                                                                          Text(
-                                                                        'Tower Configuration',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              font: GoogleFonts.plusJakartaSans(
-                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                              ),
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          15.0,
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          30.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      child: FutureBuilder<
-                                                                          List<
-                                                                              FarmTowerConfigsRow>>(
-                                                                        future:
-                                                                            FarmTowerConfigsTable().queryRows(
-                                                                          queryFn: (q) =>
-                                                                              q.eqOrNull(
-                                                                            'farm_id',
-                                                                            FFAppState().farmID,
-                                                                          ),
-                                                                        ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50.0,
-                                                                                height: 50.0,
-                                                                                child: CircularProgressIndicator(
-                                                                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                    FlutterFlowTheme.of(context).primary,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<FarmTowerConfigsRow>
-                                                                              portCountDropDownFarmTowerConfigsRowList =
-                                                                              snapshot.data!;
-
-                                                                          return FlutterFlowDropDown<
-                                                                              int>(
-                                                                            controller: _model.portCountDropDownValueController ??=
-                                                                                FormFieldController<int>(
-                                                                              _model.portCountDropDownValue ??= 44,
-                                                                            ),
-                                                                            options:
-                                                                                List<int>.from(portCountDropDownFarmTowerConfigsRowList.map((e) => e.numPorts).withoutNulls.toList()),
-                                                                            optionLabels:
-                                                                                portCountDropDownFarmTowerConfigsRowList.map((e) => e.displayName).withoutNulls.toList(),
-                                                                            onChanged:
-                                                                                (val) async {
-                                                                              safeSetState(() => _model.portCountDropDownValue = val);
-                                                                              _model.portsPerTower = _model.portCountDropDownValue;
-                                                                              _model.totalPorts = _model.portCountDropDownValue;
-                                                                              safeSetState(() {});
-                                                                              await Future.delayed(
-                                                                                Duration(
-                                                                                  milliseconds: 500,
-                                                                                ),
-                                                                              );
-                                                                              _model.seedingNeeded4431 = await actions.calculateSeeding(
-                                                                                _model.towerCount!,
-                                                                                _model.portsPerTower!,
-                                                                                _model.selectedPlantID!,
-                                                                                _model.overagePercent!,
-                                                                              );
-                                                                              _model.calculationResults = _model.seedingNeeded4431;
-                                                                              safeSetState(() {});
-                                                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                                                SnackBar(
-                                                                                  content: Text(
-                                                                                    'Seeding updated',
-                                                                                    style: TextStyle(
-                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      fontSize: 18.0,
-                                                                                    ),
-                                                                                  ),
-                                                                                  duration: Duration(milliseconds: 9050),
-                                                                                  backgroundColor: FlutterFlowTheme.of(context).secondary,
-                                                                                ),
-                                                                              );
-
-                                                                              safeSetState(() {});
-                                                                            },
-                                                                            width:
-                                                                                200.0,
-                                                                            height:
-                                                                                40.0,
-                                                                            textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  font: GoogleFonts.plusJakartaSans(
-                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                  ),
-                                                                                  fontSize: 18.0,
-                                                                                  letterSpacing: 0.0,
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            15.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0),
+                                                                        child:
+                                                                            Text(
+                                                                          'Tower Configuration',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.plusJakartaSans(
                                                                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
-                                                                            hintText:
-                                                                                'Select Tower...',
-                                                                            icon:
-                                                                                Icon(
-                                                                              Icons.keyboard_arrow_down_rounded,
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              size: 24.0,
-                                                                            ),
-                                                                            fillColor:
-                                                                                FlutterFlowTheme.of(context).secondaryBackground,
-                                                                            elevation:
-                                                                                2.0,
-                                                                            borderColor:
-                                                                                Colors.transparent,
-                                                                            borderWidth:
-                                                                                0.0,
-                                                                            borderRadius:
-                                                                                8.0,
-                                                                            margin: EdgeInsetsDirectional.fromSTEB(
-                                                                                12.0,
-                                                                                0.0,
-                                                                                12.0,
-                                                                                0.0),
-                                                                            hidesUnderline:
-                                                                                true,
-                                                                            isOverButton:
-                                                                                false,
-                                                                            isSearchable:
-                                                                                false,
-                                                                            isMultiSelect:
-                                                                                false,
-                                                                          );
-                                                                        },
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                              ),
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                  ],
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            15.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child: FutureBuilder<
+                                                                            List<FarmTowerConfigsRow>>(
+                                                                          future:
+                                                                              FarmTowerConfigsTable().queryRows(
+                                                                            queryFn: (q) =>
+                                                                                q.eqOrNull(
+                                                                              'farm_id',
+                                                                              FFAppState().farmID,
+                                                                            ),
+                                                                          ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50.0,
+                                                                                  height: 50.0,
+                                                                                  child: CircularProgressIndicator(
+                                                                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                      FlutterFlowTheme.of(context).primary,
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            }
+                                                                            List<FarmTowerConfigsRow>
+                                                                                portCountDropDownFarmTowerConfigsRowList =
+                                                                                snapshot.data!;
+
+                                                                            return FlutterFlowDropDown<int>(
+                                                                              controller: _model.portCountDropDownValueController ??= FormFieldController<int>(
+                                                                                _model.portCountDropDownValue ??= 44,
+                                                                              ),
+                                                                              options: List<int>.from(portCountDropDownFarmTowerConfigsRowList.map((e) => e.numPorts).withoutNulls.toList()),
+                                                                              optionLabels: portCountDropDownFarmTowerConfigsRowList.map((e) => e.displayName).withoutNulls.toList(),
+                                                                              onChanged: (val) async {
+                                                                                safeSetState(() => _model.portCountDropDownValue = val);
+                                                                                _model.portsPerTower = _model.portCountDropDownValue;
+                                                                                _model.totalPorts = _model.portCountDropDownValue;
+                                                                                safeSetState(() {});
+                                                                                await Future.delayed(
+                                                                                  Duration(
+                                                                                    milliseconds: 500,
+                                                                                  ),
+                                                                                );
+                                                                                _model.seedingNeeded4431 = await actions.calculateSeeding(
+                                                                                  _model.towerCount!,
+                                                                                  _model.portsPerTower!,
+                                                                                  _model.selectedPlantID!,
+                                                                                  valueOrDefault<int>(
+                                                                                    int.tryParse(_model.bufferPercentTextController.text),
+                                                                                    0,
+                                                                                  ),
+                                                                                );
+                                                                                _model.calculationResults = _model.seedingNeeded4431;
+                                                                                safeSetState(() {});
+                                                                                // Rows Needed
+                                                                                _model.rowsNeeded = getJsonField(
+                                                                                  _model.seedingNeeded4431,
+                                                                                  r'''$.rowsNeeded''',
+                                                                                );
+                                                                                // Sheets Needed
+                                                                                _model.sheetsNeeded = getJsonField(
+                                                                                  _model.seedingNeeded4431,
+                                                                                  r'''$.sheetsNeeded''',
+                                                                                );
+                                                                                // Seeds To Plant
+                                                                                _model.seedsToPlant = getJsonField(
+                                                                                  _model.seedingNeeded4431,
+                                                                                  r'''$.seedsToPlant''',
+                                                                                );
+                                                                                // Overage Percent
+                                                                                _model.overagePercent = int.tryParse(_model.bufferPercentTextController.text);
+                                                                                safeSetState(() {});
+                                                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                                                  SnackBar(
+                                                                                    content: Text(
+                                                                                      'Seeding updated',
+                                                                                      style: TextStyle(
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                        fontSize: 18.0,
+                                                                                      ),
+                                                                                    ),
+                                                                                    duration: Duration(milliseconds: 9050),
+                                                                                    backgroundColor: FlutterFlowTheme.of(context).secondary,
+                                                                                  ),
+                                                                                );
+
+                                                                                safeSetState(() {});
+                                                                              },
+                                                                              width: 250.0,
+                                                                              height: 40.0,
+                                                                              textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                    font: GoogleFonts.plusJakartaSans(
+                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    ),
+                                                                                    fontSize: 18.0,
+                                                                                    letterSpacing: 0.0,
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
+                                                                              hintText: 'Select Tower...',
+                                                                              icon: Icon(
+                                                                                Icons.keyboard_arrow_down_rounded,
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                size: 24.0,
+                                                                              ),
+                                                                              fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              elevation: 2.0,
+                                                                              borderColor: FlutterFlowTheme.of(context).alternate,
+                                                                              borderWidth: 1.0,
+                                                                              borderRadius: 8.0,
+                                                                              margin: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                              hidesUnderline: true,
+                                                                              isOverButton: false,
+                                                                              isSearchable: false,
+                                                                              isMultiSelect: false,
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),
@@ -2137,6 +2102,14 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                               backgroundColor: FlutterFlowTheme.of(context).secondary,
                                                                             ),
                                                                           );
+                                                                          safeSetState(
+                                                                              () {
+                                                                            _model.bufferPercentTextController?.clear();
+                                                                            _model.towerCountTextController?.clear();
+                                                                            _model.textController3?.clear();
+                                                                            _model.textController4?.clear();
+                                                                            _model.textController5?.clear();
+                                                                          });
                                                                           safeSetState(
                                                                               () {
                                                                             _model.tabBarController!.animateTo(
@@ -4060,7 +4033,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                               );
                                             }
                                             List<WeeklySeedingPlansUiRow>
-                                                containerWeeklySeedingPlansUiRowList =
+                                                weeklyPlanContainerWeeklySeedingPlansUiRowList =
                                                 snapshot.data!;
 
                                             return Container(
@@ -4092,7 +4065,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                               builder:
                                                                   (context) {
                                                                 final weeklyPlans =
-                                                                    containerWeeklySeedingPlansUiRowList
+                                                                    weeklyPlanContainerWeeklySeedingPlansUiRowList
                                                                         .toList();
 
                                                                 return ListView
@@ -4159,6 +4132,7 @@ class _SeedingPlannerWidgetState extends State<SeedingPlannerWidget>
                                                                                     totalSheets: _model.seedingPlanResults5566!.firstOrNull!.totalSheetsNeeded!,
                                                                                     totalRows: _model.seedingPlanResults5566!.firstOrNull!.totalRows!,
                                                                                     totalSeeds: _model.seedingPlanResults5566!.firstOrNull!.totalSeeds!,
+                                                                                    seedingDate: weeklyPlansItem.weekStartDate!,
                                                                                   ),
                                                                                 ),
                                                                               );

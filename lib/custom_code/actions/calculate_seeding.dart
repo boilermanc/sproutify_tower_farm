@@ -15,6 +15,14 @@ Future<dynamic> calculateSeeding(
   int plantId,
   int overagePercent,
 ) async {
+  // ADD THESE DEBUG LINES RIGHT HERE ↓
+  print('calculateSeeding called with:');
+  print('towerCount: $towerCount');
+  print('portsPerTower: $portsPerTower');
+  print('plantId: $plantId');
+  print('overagePercent: $overagePercent');
+  // ↑ END OF NEW DEBUG LINES
+
   // Handle empty or invalid inputs
   if (towerCount == 0 || portsPerTower == 0 || plantId == 0) {
     return {
@@ -57,6 +65,11 @@ Future<dynamic> calculateSeeding(
     int seedsToPlant = rowsNeeded * 7;
     int overageSeeds = seedsToPlant - baseSeedsNeeded;
     int sheetsNeeded = (rowsNeeded / 14).ceil();
+
+    // ADD THIS PRINT STATEMENT RIGHT HERE ↓
+    print(
+        'Returning successful result with towerCount: $towerCount, totalPorts: $totalPorts');
+    // ↑ ADD THAT LINE RIGHT ABOVE THE RETURN STATEMENT
 
     return {
       'success': true,

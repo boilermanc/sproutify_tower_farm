@@ -599,6 +599,7 @@ class _GeneralFarmSettingsWidgetState extends State<GeneralFarmSettingsWidget> {
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
+                                                fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
@@ -630,6 +631,17 @@ class _GeneralFarmSettingsWidgetState extends State<GeneralFarmSettingsWidget> {
                                                 .farmSpacerTraySizeTextController
                                                 .text);
                                         safeSetState(() {});
+                                        await FarmsTable().update(
+                                          data: {
+                                            'spacer_size_count': int.tryParse(_model
+                                                .farmSpacerTraySizeTextController
+                                                .text),
+                                          },
+                                          matchingRows: (rows) => rows.eqOrNull(
+                                            'id',
+                                            FFAppState().farmID,
+                                          ),
+                                        );
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(

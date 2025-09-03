@@ -100,6 +100,9 @@ class InitialFarmLoadRow extends SupabaseDataRow {
   int? get numberOfTowers => getField<int>('number_of_towers');
   set numberOfTowers(int? value) => setField<int>('number_of_towers', value);
 
+  int? get spacerSizeCount => getField<int>('spacer_size_count');
+  set spacerSizeCount(int? value) => setField<int>('spacer_size_count', value);
+
   bool? get hasWaterTests => getField<bool>('has_water_tests');
   set hasWaterTests(bool? value) => setField<bool>('has_water_tests', value);
 

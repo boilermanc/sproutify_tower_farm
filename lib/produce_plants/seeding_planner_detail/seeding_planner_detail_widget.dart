@@ -27,6 +27,7 @@ class SeedingPlannerDetailWidget extends StatefulWidget {
     required this.totalSheets,
     required this.totalRows,
     required this.totalSeeds,
+    required this.seedingDate,
   });
 
   final String? seedingPlan;
@@ -34,6 +35,7 @@ class SeedingPlannerDetailWidget extends StatefulWidget {
   final int? totalSheets;
   final int? totalRows;
   final int? totalSeeds;
+  final DateTime? seedingDate;
 
   @override
   State<SeedingPlannerDetailWidget> createState() =>
@@ -114,10 +116,7 @@ class _SeedingPlannerDetailWidgetState
                                   ),
                                 ),
                                 Text(
-                                  valueOrDefault<String>(
-                                    widget!.seedingPlan,
-                                    'Seeding Plan',
-                                  ),
+                                  'Seeding Planner',
                                   style: FlutterFlowTheme.of(context)
                                       .headlineLarge
                                       .override(
@@ -135,6 +134,35 @@ class _SeedingPlannerDetailWidgetState
                                             .headlineLarge
                                             .fontStyle,
                                       ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    valueOrDefault<String>(
+                                      dateTimeFormat(
+                                          "MMMEd", widget!.seedingDate),
+                                      'Thursday 8/16',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineLarge
+                                        .override(
+                                          font: GoogleFonts.outfit(
+                                            fontWeight: FontWeight.bold,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineLarge
+                                                    .fontStyle,
+                                          ),
+                                          fontSize: 24.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineLarge
+                                                  .fontStyle,
+                                        ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -830,7 +858,7 @@ class _SeedingPlannerDetailWidgetState
                                             return Container(
                                               decoration: BoxDecoration(),
                                               child: Container(
-                                                height: 300.0,
+                                                height: 420.0,
                                                 child: Builder(
                                                   builder: (context) {
                                                     final seedingTable =
@@ -1549,12 +1577,8 @@ class _SeedingPlannerDetailWidgetState
                                                                 DataCell(c))
                                                             .toList(),
                                                       ),
-                                                      paginated: true,
+                                                      paginated: false,
                                                       selectable: false,
-                                                      hidePaginator: false,
-                                                      showFirstLastButtons:
-                                                          false,
-                                                      height: 300.0,
                                                       headingRowHeight: 56.0,
                                                       dataRowHeight: 60.0,
                                                       columnSpacing: 20.0,
